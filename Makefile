@@ -22,7 +22,7 @@ SRCS	= ft_bzero.c\
 		  ft_toupper.c\
 		  ft_tolower.c\
 		  ft_strdup.c\
-		  ft_strldup.c\
+		  ft_strndup.c\
 		  ft_calloc.c\
 		  ft_substr.c\
 		  ft_strjoin.c\
@@ -62,8 +62,8 @@ $(NAME):	$(OBJS) $(HDRS)
 
 all:		$(NAME)
 
-bonus:		$(OBJS) $(BONUS_OBJS) $(HDRS)
-			$(AR) $(NAME) $(OBJS) $(BONUS_OBJS)
+#bonus:		$(OBJS) $(BONUS_OBJS) $(HDRS)
+#			$(AR) $(NAME) $(OBJS) $(BONUS_OBJS)
 
 re:			clean fclean all		
 

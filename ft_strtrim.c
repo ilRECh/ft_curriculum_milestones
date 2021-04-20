@@ -13,6 +13,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 	if (start != end)
 		while (ft_strchr(set, *(end - 1)))
 			end--;
-	dst = ft_strldup(start, end - start);
+	dst = ft_strndup(start, end - start);
 	return (dst);
 }

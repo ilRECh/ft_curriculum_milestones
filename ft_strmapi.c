@@ -12,5 +12,4 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int n, char c))
 	while (s[++iter_1])
 		result[iter_1] = (*f)(iter_1, s[iter_1]);
 	return (result);
-}
-		
+}		

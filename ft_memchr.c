@@ -7,7 +7,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 
 	source = (unsigned char *)s;
 	character = (unsigned char)c;
-	while (n-- && *source)
+	while (n--)
 	{
 		if (*source == character)
 			return (source);

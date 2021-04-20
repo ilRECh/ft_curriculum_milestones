@@ -10,7 +10,7 @@ static char	substr_check(const char *big, const char *little, size_t len)
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	if (!big || !little || *little == 0)
+	if (*little == 0)
 		return ((char *)big);
 	while (*big && len--)
 	{

@@ -4,6 +4,8 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dst_size)
 {
 	size_t	source_len;
 
+	if (!dst && !src)
+		return (0);
 	source_len = ft_strlen(src);
 	if (dst_size)
 	{

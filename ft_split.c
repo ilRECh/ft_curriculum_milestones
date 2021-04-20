@@ -53,7 +53,7 @@ char	**ft_split(char const *s, char c)
 	while (iter_1 < result_size)
 	{
 		ft_getword(&start, &end, c);
-		result[iter_1++] = ft_strldup(start, end - start);
+		result[iter_1++] = ft_strndup(start, end - start);
 		start = end + 1;
 	}
 	return (result);
