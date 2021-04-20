@@ -5,6 +5,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int n, char c))
 	char	*result;
 	size_t	iter_1;
 
+	if (!s || !f)
+		return (NULL);
 	result = (char *)ft_calloc(ft_strlen(s) + 1, sizeof(char));
 	if (!result)
 		return (NULL);
