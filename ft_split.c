@@ -7,7 +7,7 @@ static size_t	ft_wrdcnt(char const *s, char c)
 
 	count = 0;
 	in_word_flag = 0;
-	while (*s == c)
+	while (*s && *s == c)
 		s++;
 	if (*s)
 		count++;
@@ -44,8 +44,8 @@ char	**ft_split(char const *s, char c)
 
 	if (!s)
 		return (NULL);
-	result = (char **)ft_calloc((
-				result_size = ft_wrdcnt(s, c)) + 1, sizeof(char *));
+	result = (char **)ft_calloc(
+			(result_size = ft_wrdcnt(s, c)) + 1, sizeof(char *));
 	if (!result)
 		return (NULL);
 	start = s;
