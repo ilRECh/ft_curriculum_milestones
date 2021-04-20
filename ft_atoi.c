@@ -9,7 +9,7 @@ int	ft_atoi(const char *nptr)
 	result = 0;
 	minus_sign = 1;
 	digits_countdown = 19;
-	while (ft_isspace(*nptr))
+	while (ft_isspace(*nptr) || *nptr == '0')
 		nptr++;
 	if (*nptr == '-')
 	{
