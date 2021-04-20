@@ -1,32 +1,18 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_list_push_back.c                                :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vcobbler <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/18 20:08:06 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/02/18 20:43:54 by vcobbler         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#include "libft.h"
 
-#include "ft_list.h"
-
-#include <stdio.h>
-
-void	ft_list_push_back(t_list **begin_list, void *data)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_list *tmp;
+	t_list	*last;
 
-	tmp = *begin_list;
-	if (tmp == NULL)
+	if (!lst)
 		return ;
-	while (tmp != NULL)
+	else if (!*lst)
 	{
-		if (tmp->next != NULL)
-			tmp = tmp->next;
-		else
-			break ;
+		*lst = new;
+		return ;
 	}
-	tmp->next = ft_create_elem(data);
+	last = *lst;
+	while (last->next)
+		last = last->next;
+	last->next = new;
 }

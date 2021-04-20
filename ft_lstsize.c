@@ -1,26 +1,14 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_list_size.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vcobbler <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/18 18:52:01 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/02/18 19:09:22 by vcobbler         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#include "libft.h"
 
-#include "ft_list.h"
-
-int		ft_list_size(t_list *begin_list)
+int	ft_lstsize(t_list *lst)
 {
-	int count;
+	int	count;
 
 	count = 0;
-	while (begin_list)
+	while (lst)
 	{
 		count++;
-		begin_list = begin_list->next;
+		lst = lst->next;
 	}
 	return (count);
 }
