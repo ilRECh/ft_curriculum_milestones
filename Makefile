@@ -36,7 +36,11 @@ SRCS	= ft_bzero.c\
 		  ft_putendl_fd.c\
 		  ft_putnbr_fd.c\
 
+BONUS_SRCS	= ft
+
 OBJS	= $(SRCS:.c=.o)
+
+BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 
 HDRS	= libft.h
 
@@ -57,6 +61,9 @@ $(NAME):	$(OBJS) $(HDRS)
 			$(AR) $(NAME) $(OBJS)
 
 all:		$(NAME)
+
+bonus:		$(OBJS) $(BONUS_OBJS) $(HDRS)
+			$(AR) $(NAME) $(OBJS) $(BONUS_OBJS)
 
 re:			clean fclean all		
 
