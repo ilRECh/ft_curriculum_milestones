@@ -63,17 +63,17 @@ AR	= ar -crs
 FLAGS	= -Wall -Wextra -Werror
 
 .c.o:
-			$(GCC) $(FLAGS) -c $< -o $(<:.c=.o)
+			$(GCC) $(FLAGS) -I includes -c $< -o $(<:.c=.o)
 
 $(NAME):	$(OBJS) $(HDRS)
 			$(AR) $(NAME) $(OBJS)
 
 all:		$(NAME)
 
-bonus:		$(OBJS) $(BONUS_OBJS) $(HDRS)
+bonus:		$(NAME) $(OBJS) $(BONUS_OBJS) $(HDRS)
 			$(AR) $(NAME) $(OBJS) $(BONUS_OBJS)
 
-re:			clean fclean all		
+re:			clean fclean all
 
 clean:
 			$(RM) $(OBJS) $(BONUS_OBJS)
