@@ -1,6 +1,6 @@
 #include "libft.h"
 
-static size_t	ft_wrdcnt(char const *s, char c)
+static size_t	wrdcnt(char const *s, char c)
 {
 	size_t	count;
 	char	in_word_flag;
@@ -25,13 +25,21 @@ static size_t	ft_wrdcnt(char const *s, char c)
 	return (count);
 }
 
-static void	ft_getword(const char **start, const char **end, char c)
+static void	getword(const char **start, const char **end, char c)
 {
 	while (**start == c)
 		(*start)++;
 	*end = *start + 1;
 	while (**end != c)
 		(*end)++;
+}
+
+static char	clear(char **to_clear, size_t size)
+{
+	while (size--)
+		free(to_clear[size]);
+	free(to_clear);
+	return (1);
 }
 
 char	**ft_split(char const *s, char c)
@@ -45,15 +53,17 @@ char	**ft_split(char const *s, char c)
 	if (!s)
 		return (NULL);
 	result = (char **)ft_calloc(
-			(result_size = ft_wrdcnt(s, c)) + 1, sizeof(char *));
+			(result_size = wrdcnt(s, c)) + 1, sizeof(char *));
 	if (!result)
 		return (NULL);
 	start = s;
 	iter_1 = 0;
 	while (iter_1 < result_size)
 	{
-		ft_getword(&start, &end, c);
-		result[iter_1++] = ft_strndup(start, end - start);
+		getword(&start, &end, c);
+		result[iter_1] = ft_strndup(start, end - start);
+		if (!result[iter_1++] && clear(result, result_size))
+			break;
 		start = end + 1;
 	}
 	return (result);
