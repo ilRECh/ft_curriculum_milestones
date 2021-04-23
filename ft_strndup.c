@@ -10,7 +10,7 @@ char	*ft_strndup(const char *s, size_t len)
 	dst = (char *)ft_calloc(len + 1, sizeof(char));
 	if (!dst)
 		return (NULL);
-	dst_copy = dst;	
+	dst_copy = dst;
 	while (len--)
 		*dst_copy++ = *s++;
 	return (dst);

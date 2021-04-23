@@ -35,20 +35,17 @@ SRCS	= ft_bzero.c\
 		  ft_putstr_fd.c\
 		  ft_putendl_fd.c\
 		  ft_putnbr_fd.c\
-
-BONUS_SRCS	= ft_lstnew.c\
-			  ft_lstadd_front.c\
-			  ft_lstsize.c\
-			  ft_lstlast.c\
-			  ft_lstadd_back.c\
-			  ft_lstdelone.c\
-			  ft_lstclear.c\
-			  ft_lstiter.c\
-			  ft_lstmap.c\
+		  ft_lstnew.c\
+		  ft_lstadd_front.c\
+		  ft_lstsize.c\
+		  ft_lstlast.c\
+		  ft_lstadd_back.c\
+		  ft_lstdelone.c\
+		  ft_lstclear.c\
+		  ft_lstiter.c\
+		  ft_lstmap.c\
 
 OBJS	= $(SRCS:.c=.o)
-
-BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 
 HDRS	= libft.h
 
@@ -70,10 +67,7 @@ $(NAME):	$(OBJS)
 
 all:		$(NAME)
 
-bonus:		$(NAME) $(OBJS) $(BONUS_OBJS)
-			$(AR) $(NAME) $(OBJS) $(BONUS_OBJS)
-
-re:			clean fclean all
+re:			fclean all
 
 clean:
 			$(RM) $(OBJS) $(BONUS_OBJS)
@@ -82,4 +76,4 @@ fclean: 	clean
 			$(RM) $(NAME)
 
 .PHONY:	
-			all clean fclean re bonus
+			all clean fclean re 
