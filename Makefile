@@ -62,7 +62,7 @@ AR	= ar -crs
 
 FLAGS	= -Wall -Wextra -Werror
 
-%.o : %.c   $(HDRS)
+%.o : %.c  $(HDRS)
 			$(GCC) $(FLAGS) -I includes -c $< -o $(<:.c=.o)
 
 $(NAME):	$(OBJS)

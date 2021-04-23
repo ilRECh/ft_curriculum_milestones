@@ -5,6 +5,8 @@ char	*ft_strrchr(const char *s, int c)
 	const char		*start;
 	unsigned char	character;
 
+	if (!s)
+		return (NULL);
 	character = (unsigned char)c;
 	start = s;
 	s += ft_strlen(s);
