@@ -20,7 +20,7 @@ int	ft_atoi(const char *nptr)
 		nptr++;
 	while (ft_isdigit(*nptr))
 	{
-		if (digits_countdown-- == 0 && ft_isdigit(*(nptr)))
+		if (!digits_countdown-- && ft_isdigit(*(nptr)))
 			return ((1 + minus_sign) / (-2));
 		result = result * 10 + (*nptr++ - '0');
 	}

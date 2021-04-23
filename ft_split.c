@@ -34,6 +34,8 @@ static void	ft_getword(const char **start, const char **end, char c)
 		(*end)++;
 }
 
+//change func
+
 char	**ft_split(char const *s, char c)
 {
 	char		**result;
