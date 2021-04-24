@@ -1,4 +1,4 @@
-NAME			= libft.a
+NAME			= libftprintf.a
 
 RM				= rm -rf
 GCC				= gcc
@@ -10,15 +10,15 @@ HDRS_DIR		= ./includes/
 HDRS			= $(addprefix $(HDRS_DIR), $(HDRS_LIST))
 INCLUDES 		= -I $(HDRS_DIR)
 
-LIBFT_SRCS_LIST	= 
-LIBFT_SRCS_DIR		= ./libft/
-LIBFT_SRCS			= $(addprefix $(LIBFT_SRCS_DIR), $(LIBFT_SRCS_LIST))
+LIBFT_LIST	=
+LIBFT_DIR		= ./libft/
+LIBFT			= $(addprefix $(LIBFT_DIR), $(LIBFT_LIST))
 
 SRCS_LIST	= ft_printf.c
 SRCS_DIR		= ./
 SRCS			= $(addprefix $(SRCS_DIR), $(SRCS_LIST))
 
-OBJS_LIST		= $(LIBFT_SRCS_LIST:.c=.o) $(SRCS_LIST:.c=.o)
+OBJS_LIST		= $(LIBFT_LIST:.c=.o) $(SRCS_LIST:.c=.o)
 OBJS_DIR		= ./all_objs/
 OBJS			= $(addprefix $(OBJS_DIR), $(OBJS_LIST))
 
