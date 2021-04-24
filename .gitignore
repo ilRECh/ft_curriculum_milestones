@@ -1,5 +1,5 @@
-all_objs
+./all_objs
 CMakeLists.txt
 test.c
-cmake-build-debug
-.idea
+./cmake-build-debug
+./.idea

@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/vcobbler/Desktop/projects/ft_printf_/1234.c
+
+/Users/vcobbler/Desktop/projects/ft_printf_/main.c
+stdio.h
+-
+
