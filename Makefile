@@ -14,7 +14,7 @@ LIBFT_LIST	=
 LIBFT_DIR		= ./libft/
 LIBFT			= $(addprefix $(LIBFT_DIR), $(LIBFT_LIST))
 
-SRCS_LIST	= ft_printf.c
+SRCS_LIST	= 	ft_printf.c
 SRCS_DIR		= ./
 SRCS			= $(addprefix $(SRCS_DIR), $(SRCS_LIST))
 
@@ -28,16 +28,16 @@ GREEN = \033[0;32m
 RED = \033[0;31m
 RESET = \033[0m
 
+$(NAME): $(OBJS_DIR) $(OBJS)
+	$(AR) $(NAME) $(OBJS)
+	@echo "\n$(NAME): $(GREEN)object files were created$(RESET)"
+	@echo "$(NAME): $(GREEN)$(NAME) was created$(RESET)"
+
 all: $(NAME)
 
 $(OBJS_DIR)%.o : $(SRCS_DIR)%.c $(HDRS)
 	$(GCC) $(FLAGS) $(INCLUDES) $< -o $@
 	@echo "$(GREEN).$(RESET)\c"
-
-$(NAME): $(OBJS_DIR) $(OBJS)
-	$(AR) $(NAME) $(OBJS)
-	@echo "\n$(NAME): $(GREEN)object files were created$(RESET)"
-	@echo "$(NAME): $(GREEN)$(NAME) was created$(RESET)"
 
 $(OBJS_DIR):
 	@mkdir -p $(OBJS_DIR)
