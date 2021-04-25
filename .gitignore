@@ -1,3 +1,4 @@
+main.c
 all_objs
 CMakeLists.txt
 test.c
