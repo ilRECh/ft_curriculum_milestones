@@ -4,13 +4,21 @@
 CMakeFiles/ft_printf_clion.dir/ft_printf.c.o: ../includes/parser.h
 CMakeFiles/ft_printf_clion.dir/ft_printf.c.o: ../ft_printf.c
 
+CMakeFiles/ft_printf_clion.dir/libft/ft_strchr.c.o: ../includes/libft.h
+CMakeFiles/ft_printf_clion.dir/libft/ft_strchr.c.o: ../libft/ft_strchr.c
+
 CMakeFiles/ft_printf_clion.dir/main.c.o: ../includes/ft_stdio.h
 CMakeFiles/ft_printf_clion.dir/main.c.o: ../main.c
+
+CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.o: ../includes/parser.h
+CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.o: ../out_funcs/char_print.c
 
 CMakeFiles/ft_printf_clion.dir/parser/ft_vprintf.c.o: ../includes/libft.h
 CMakeFiles/ft_printf_clion.dir/parser/ft_vprintf.c.o: ../includes/parser.h
 CMakeFiles/ft_printf_clion.dir/parser/ft_vprintf.c.o: ../parser/ft_vprintf.c
 
+CMakeFiles/ft_printf_clion.dir/parser/parse_specifier.c.o: ../includes/libft.h
+CMakeFiles/ft_printf_clion.dir/parser/parse_specifier.c.o: ../includes/out_funcs.h
 CMakeFiles/ft_printf_clion.dir/parser/parse_specifier.c.o: ../includes/parser.h
 CMakeFiles/ft_printf_clion.dir/parser/parse_specifier.c.o: ../parser/parse_specifier.c
 

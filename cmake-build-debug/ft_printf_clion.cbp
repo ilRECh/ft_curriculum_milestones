@@ -91,6 +91,9 @@
 		<Unit filename="/home/name/Desktop/ft_printf_clion/includes/libft.h">
 			<Option target="ft_printf_clion"/>
 		</Unit>
+		<Unit filename="/home/name/Desktop/ft_printf_clion/includes/out_funcs.h">
+			<Option target="ft_printf_clion"/>
+		</Unit>
 		<Unit filename="/home/name/Desktop/ft_printf_clion/includes/parser.h">
 			<Option target="ft_printf_clion"/>
 		</Unit>
@@ -98,6 +101,15 @@
 			<Option target="ft_printf_clion"/>
 		</Unit>
 		<Unit filename="/home/name/Desktop/ft_printf_clion/main.c">
+			<Option target="ft_printf_clion"/>
+		</Unit>
+		<Unit filename="/home/name/Desktop/ft_printf_clion/out_funcs/char_print.c">
+			<Option target="ft_printf_clion"/>
+		</Unit>
+		<Unit filename="/home/name/Desktop/ft_printf_clion/parser/ft_vprintf.c">
+			<Option target="ft_printf_clion"/>
+		</Unit>
+		<Unit filename="/home/name/Desktop/ft_printf_clion/parser/parse_specifier.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
 		<Unit filename="/home/name/Desktop/ft_printf_clion/CMakeLists.txt">

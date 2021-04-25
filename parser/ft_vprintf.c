@@ -8,13 +8,14 @@ int	ft_vprintf(char *format, va_list vl)
 	total = 0;
 	while (*format)
 	{
-		total++;
 		if (*format == SPECIFIER)
+			format = parse_specifier(format + 1, vl, &total);
+		else
 		{
-			format += parse_specifier(format + 1, vl);
+			write(1, format, 1);
+			total++;
+			format++;
 		}
-		write(1, format, 1);
-		format++;
 	}
 	return (total);
 }

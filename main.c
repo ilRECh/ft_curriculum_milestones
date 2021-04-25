@@ -3,7 +3,10 @@
 
 int	main(void)
 {
-	printf("a\n");
-	ft_printf("a\n");
+	printf("printf out symbs: %d;\n",
+		printf("a %c\n", 'a'));
+
+	printf("ft_printf out symbs: %d;\n",
+		ft_printf("a %c\n", 'a'));
 	return (0);
 }

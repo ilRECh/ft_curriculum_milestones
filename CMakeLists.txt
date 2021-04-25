@@ -19,11 +19,16 @@ set(
 )
 
 set(
+        OUT_FUNCS
+        out_funcs/char_print.c
+)
+
+set(
         HDRS
         includes/parser.h
         includes/libft.h
         includes/ft_stdio.h
-)
+        includes/out_funcs.h)
 
 include_directories(${LIBFT_DIR})
 include_directories(${PRSR_DIR})
@@ -33,8 +38,10 @@ set (
         SRCS
         ft_printf.c
         main.c
-        ${PRSR}
+        ${PRSR_SRCS}
         ${HDRS}
-        ${LIBFT_SRCS})
+        ${LIBFT_SRCS}
+        ${OUT_FUNCS}
+)
 
 add_executable(ft_printf_clion ${SRCS})

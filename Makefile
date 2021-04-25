@@ -7,7 +7,8 @@ FLAGS			= -Wall -Wextra -Werror -c
 
 HDRS_LIST		= libft.h\
 			  parser.h\
-			  ft_stdio.h
+			  ft_stdio.h\
+			  out_funcs.h
 HDRS_DIR		= ./includes/
 HDRS			= $(addprefix $(HDRS_DIR), $(HDRS_LIST))
 INCLUDES 		= -I $(HDRS_DIR)
@@ -20,12 +21,16 @@ SRCS_LIST	= 	ft_printf.c
 SRCS_DIR		= ./
 SRCS			= $(addprefix $(SRCS_DIR), $(SRCS_LIST))
 
+OUT_LIST	=	char_print.c
+OUT_DIR			= ./out_funcs/
+OUT				= $(addprefix $(OUT_DIR), $(OUT_LIST))
+
 PRSR_LIST	=	ft_vprintf.c\
 				parse_specifier.c
 PRSR_DIR		= ./parser/
 PRSR			= $(addprefix $(PRSR_DIR), $(PRSR_LIST))
 
-OBJS_LIST		= $(PRSR_LIST:.c=.o) $(LIBFT_LIST:.c=.o) $(SRCS_LIST:.c=.o)
+OBJS_LIST		= $(OUT_LIST:.c=.o) $(PRSR_LIST:.c=.o) $(LIBFT_LIST:.c=.o) $(SRCS_LIST:.c=.o)
 OBJS_DIR		= ./all_objs/
 OBJS			= $(addprefix $(OBJS_DIR), $(OBJS_LIST))
 
@@ -42,7 +47,7 @@ $(NAME): $(OBJS_DIR) $(OBJS)
 
 all: $(NAME)
 
-$(OBJS_DIR)%.o : $(PRSR) $(SRCS) $(LIBFT) $(HDRS)
+$(OBJS_DIR)%.o : $(LIBFT) $(SRCS) $(OUT) $(PRSR) $(HDRS)
 	$(GCC) $(FLAGS) $(INCLUDES) $< -o $@
 	@echo "$(GREEN).$(RESET)\c"
 

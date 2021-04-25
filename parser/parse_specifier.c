@@ -1,21 +1,23 @@
 #include "parser.h"
+#include "out_funcs.h"
 #include "libft.h"
 
 //create array of pointers to parse_functions instead of if..else statements
 
-int	parse_specifier(char *spec, va_list arg)
+char	*parse_specifier(char *spec, va_list arg, int *total)
 {
-	int		offset;
 	char	*set;
 
-
-	offset = 0;
 	set = "cspdiuxX%";
 	//flags parse
 	//width parse
 	//precision parse
 	//type parse		<- in progress
 	if (ft_strchr(set, *spec))
-		(*output_funcs[ft_strchr(set, *spec) - set])(arg)
-	return (offset);
+	{
+		char_print(va_arg(arg, int), total);
+		spec++;
+		//(*output_funcs[ft_strchr(set, *spec) - set])(arg);
+	}
+	return (spec);
 }

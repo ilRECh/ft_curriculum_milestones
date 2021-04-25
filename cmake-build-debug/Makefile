@@ -223,6 +223,87 @@ main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/main.c.s
 .PHONY : main.c.s
 
+out_funcs/char_print.o: out_funcs/char_print.c.o
+
+.PHONY : out_funcs/char_print.o
+
+# target to build an object file
+out_funcs/char_print.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.o
+.PHONY : out_funcs/char_print.c.o
+
+out_funcs/char_print.i: out_funcs/char_print.c.i
+
+.PHONY : out_funcs/char_print.i
+
+# target to preprocess a source file
+out_funcs/char_print.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.i
+.PHONY : out_funcs/char_print.c.i
+
+out_funcs/char_print.s: out_funcs/char_print.c.s
+
+.PHONY : out_funcs/char_print.s
+
+# target to generate assembly for a file
+out_funcs/char_print.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.s
+.PHONY : out_funcs/char_print.c.s
+
+parser/ft_vprintf.o: parser/ft_vprintf.c.o
+
+.PHONY : parser/ft_vprintf.o
+
+# target to build an object file
+parser/ft_vprintf.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/parser/ft_vprintf.c.o
+.PHONY : parser/ft_vprintf.c.o
+
+parser/ft_vprintf.i: parser/ft_vprintf.c.i
+
+.PHONY : parser/ft_vprintf.i
+
+# target to preprocess a source file
+parser/ft_vprintf.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/parser/ft_vprintf.c.i
+.PHONY : parser/ft_vprintf.c.i
+
+parser/ft_vprintf.s: parser/ft_vprintf.c.s
+
+.PHONY : parser/ft_vprintf.s
+
+# target to generate assembly for a file
+parser/ft_vprintf.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/parser/ft_vprintf.c.s
+.PHONY : parser/ft_vprintf.c.s
+
+parser/parse_specifier.o: parser/parse_specifier.c.o
+
+.PHONY : parser/parse_specifier.o
+
+# target to build an object file
+parser/parse_specifier.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/parser/parse_specifier.c.o
+.PHONY : parser/parse_specifier.c.o
+
+parser/parse_specifier.i: parser/parse_specifier.c.i
+
+.PHONY : parser/parse_specifier.i
+
+# target to preprocess a source file
+parser/parse_specifier.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/parser/parse_specifier.c.i
+.PHONY : parser/parse_specifier.c.i
+
+parser/parse_specifier.s: parser/parse_specifier.c.s
+
+.PHONY : parser/parse_specifier.s
+
+# target to generate assembly for a file
+parser/parse_specifier.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/parser/parse_specifier.c.s
+.PHONY : parser/parse_specifier.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -241,6 +322,15 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... out_funcs/char_print.o"
+	@echo "... out_funcs/char_print.i"
+	@echo "... out_funcs/char_print.s"
+	@echo "... parser/ft_vprintf.o"
+	@echo "... parser/ft_vprintf.i"
+	@echo "... parser/ft_vprintf.s"
+	@echo "... parser/parse_specifier.o"
+	@echo "... parser/parse_specifier.i"
+	@echo "... parser/parse_specifier.s"
 .PHONY : help
 
 

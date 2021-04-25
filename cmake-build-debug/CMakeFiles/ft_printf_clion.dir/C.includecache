@@ -6,13 +6,41 @@
 
 #IncludeRegexTransform: 
 
-../includes/parser.h
-stdarg.h
+../includes/libft.h
+stdlib.h
 -
 unistd.h
 -
 
+../includes/out_funcs.h
+
+../includes/parser.h
+stdarg.h
+-
+stdint.h
+-
+unistd.h
+-
+
+/home/name/Desktop/ft_printf_clion/ft_printf.c
+parser.h
+/home/name/Desktop/ft_printf_clion/parser.h
+
+/home/name/Desktop/ft_printf_clion/out_funcs/char_print.c
+parser.h
+/home/name/Desktop/ft_printf_clion/out_funcs/parser.h
+
+/home/name/Desktop/ft_printf_clion/parser/ft_vprintf.c
+parser.h
+/home/name/Desktop/ft_printf_clion/parser/parser.h
+libft.h
+/home/name/Desktop/ft_printf_clion/parser/libft.h
+
 /home/name/Desktop/ft_printf_clion/parser/parse_specifier.c
 parser.h
 /home/name/Desktop/ft_printf_clion/parser/parser.h
+out_funcs.h
+/home/name/Desktop/ft_printf_clion/parser/out_funcs.h
+libft.h
+/home/name/Desktop/ft_printf_clion/parser/libft.h
 
