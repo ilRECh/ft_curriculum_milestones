@@ -20,7 +20,8 @@ SRCS_LIST	= 	ft_printf.c
 SRCS_DIR		= ./
 SRCS			= $(addprefix $(SRCS_DIR), $(SRCS_LIST))
 
-PRSR_LIST	=	ft_vprintf.c
+PRSR_LIST	=	ft_vprintf.c\
+				parse_specifier.c
 PRSR_DIR		= ./parser/
 PRSR			= $(addprefix $(PRSR_DIR), $(PRSR_LIST))
 
