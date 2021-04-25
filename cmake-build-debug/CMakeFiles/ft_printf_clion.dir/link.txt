@@ -1,0 +1,1 @@
+/usr/bin/cc -g CMakeFiles/ft_printf_clion.dir/ft_printf.c.o CMakeFiles/ft_printf_clion.dir/main.c.o CMakeFiles/ft_printf_clion.dir/libft/ft_strchr.c.o -o ft_printf_clion 

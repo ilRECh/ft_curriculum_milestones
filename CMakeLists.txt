@@ -1,0 +1,40 @@
+cmake_minimum_required(VERSION 3.19)
+project(ft_printf_clion C)
+
+set(CMAKE_C_STANDARD 99)
+
+set(LIBFT_DIR libft)
+set(PRSR_DIR parser)
+set(HDRS_DIR includes)
+
+set(
+        LIBFT_SRCS
+        libft/ft_strchr.c
+)
+
+set(
+        PRSR_SRCS
+        parser/ft_vprintf.c
+        parser/parse_specifier.c
+)
+
+set(
+        HDRS
+        includes/parser.h
+        includes/libft.h
+        includes/ft_stdio.h
+)
+
+include_directories(${LIBFT_DIR})
+include_directories(${PRSR_DIR})
+include_directories(${HDRS_DIR})
+
+set (
+        SRCS
+        ft_printf.c
+        main.c
+        ${PRSR}
+        ${HDRS}
+        ${LIBFT_SRCS})
+
+add_executable(ft_printf_clion ${SRCS})

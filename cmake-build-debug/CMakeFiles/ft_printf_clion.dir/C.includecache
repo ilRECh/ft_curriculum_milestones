@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../includes/parser.h
+stdarg.h
+-
+unistd.h
+-
+
+/home/name/Desktop/ft_printf_clion/parser/parse_specifier.c
+parser.h
+/home/name/Desktop/ft_printf_clion/parser/parser.h
+

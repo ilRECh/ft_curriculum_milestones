@@ -1,7 +1,0 @@
-main.c
-all_objs
-CMakeLists.txt
-test.c
-cmake-build-debug
-.idea
-libftprintf.a
