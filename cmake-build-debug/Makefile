@@ -250,6 +250,33 @@ out_funcs/char_print.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.s
 .PHONY : out_funcs/char_print.c.s
 
+parser/flags_parse.o: parser/flags_parse.c.o
+
+.PHONY : parser/flags_parse.o
+
+# target to build an object file
+parser/flags_parse.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/parser/flags_parse.c.o
+.PHONY : parser/flags_parse.c.o
+
+parser/flags_parse.i: parser/flags_parse.c.i
+
+.PHONY : parser/flags_parse.i
+
+# target to preprocess a source file
+parser/flags_parse.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/parser/flags_parse.c.i
+.PHONY : parser/flags_parse.c.i
+
+parser/flags_parse.s: parser/flags_parse.c.s
+
+.PHONY : parser/flags_parse.s
+
+# target to generate assembly for a file
+parser/flags_parse.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/parser/flags_parse.c.s
+.PHONY : parser/flags_parse.c.s
+
 parser/ft_vprintf.o: parser/ft_vprintf.c.o
 
 .PHONY : parser/ft_vprintf.o
@@ -277,32 +304,59 @@ parser/ft_vprintf.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/parser/ft_vprintf.c.s
 .PHONY : parser/ft_vprintf.c.s
 
-parser/parse_specifier.o: parser/parse_specifier.c.o
+parser/specifier_parse.o: parser/specifier_parse.c.o
 
-.PHONY : parser/parse_specifier.o
+.PHONY : parser/specifier_parse.o
 
 # target to build an object file
-parser/parse_specifier.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/parser/parse_specifier.c.o
-.PHONY : parser/parse_specifier.c.o
+parser/specifier_parse.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/parser/specifier_parse.c.o
+.PHONY : parser/specifier_parse.c.o
 
-parser/parse_specifier.i: parser/parse_specifier.c.i
+parser/specifier_parse.i: parser/specifier_parse.c.i
 
-.PHONY : parser/parse_specifier.i
+.PHONY : parser/specifier_parse.i
 
 # target to preprocess a source file
-parser/parse_specifier.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/parser/parse_specifier.c.i
-.PHONY : parser/parse_specifier.c.i
+parser/specifier_parse.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/parser/specifier_parse.c.i
+.PHONY : parser/specifier_parse.c.i
 
-parser/parse_specifier.s: parser/parse_specifier.c.s
+parser/specifier_parse.s: parser/specifier_parse.c.s
 
-.PHONY : parser/parse_specifier.s
+.PHONY : parser/specifier_parse.s
 
 # target to generate assembly for a file
-parser/parse_specifier.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/parser/parse_specifier.c.s
-.PHONY : parser/parse_specifier.c.s
+parser/specifier_parse.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/parser/specifier_parse.c.s
+.PHONY : parser/specifier_parse.c.s
+
+parser/width_parse.o: parser/width_parse.c.o
+
+.PHONY : parser/width_parse.o
+
+# target to build an object file
+parser/width_parse.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/parser/width_parse.c.o
+.PHONY : parser/width_parse.c.o
+
+parser/width_parse.i: parser/width_parse.c.i
+
+.PHONY : parser/width_parse.i
+
+# target to preprocess a source file
+parser/width_parse.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/parser/width_parse.c.i
+.PHONY : parser/width_parse.c.i
+
+parser/width_parse.s: parser/width_parse.c.s
+
+.PHONY : parser/width_parse.s
+
+# target to generate assembly for a file
+parser/width_parse.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/parser/width_parse.c.s
+.PHONY : parser/width_parse.c.s
 
 # Help Target
 help:
@@ -325,12 +379,18 @@ help:
 	@echo "... out_funcs/char_print.o"
 	@echo "... out_funcs/char_print.i"
 	@echo "... out_funcs/char_print.s"
+	@echo "... parser/flags_parse.o"
+	@echo "... parser/flags_parse.i"
+	@echo "... parser/flags_parse.s"
 	@echo "... parser/ft_vprintf.o"
 	@echo "... parser/ft_vprintf.i"
 	@echo "... parser/ft_vprintf.s"
-	@echo "... parser/parse_specifier.o"
-	@echo "... parser/parse_specifier.i"
-	@echo "... parser/parse_specifier.s"
+	@echo "... parser/specifier_parse.o"
+	@echo "... parser/specifier_parse.i"
+	@echo "... parser/specifier_parse.s"
+	@echo "... parser/width_parse.o"
+	@echo "... parser/width_parse.i"
+	@echo "... parser/width_parse.s"
 .PHONY : help
 
 

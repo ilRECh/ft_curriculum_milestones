@@ -106,10 +106,16 @@
 		<Unit filename="/home/name/Desktop/ft_printf_clion/out_funcs/char_print.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
+		<Unit filename="/home/name/Desktop/ft_printf_clion/parser/flags_parse.c">
+			<Option target="ft_printf_clion"/>
+		</Unit>
 		<Unit filename="/home/name/Desktop/ft_printf_clion/parser/ft_vprintf.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
-		<Unit filename="/home/name/Desktop/ft_printf_clion/parser/parse_specifier.c">
+		<Unit filename="/home/name/Desktop/ft_printf_clion/parser/specifier_parse.c">
+			<Option target="ft_printf_clion"/>
+		</Unit>
+		<Unit filename="/home/name/Desktop/ft_printf_clion/parser/width_parse.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
 		<Unit filename="/home/name/Desktop/ft_printf_clion/CMakeLists.txt">

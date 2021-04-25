@@ -4,16 +4,24 @@
 
 //create array of pointers to parse_functions instead of if..else statements
 
+
+
 char	*parse_specifier(char *spec, va_list arg, int *total)
 {
-	char	*set;
+	t_specifier	specifier;
 
-	set = "cspdiuxX%";
+	specifier.flags = 0;
 	//flags parse
+	spec = flags_parse(spec, &specifier);
+
 	//width parse
+	spec = width_parse(spec, &specifier, arg);
 	//precision parse
+
+	//size parse
+
 	//type parse		<- in progress
-	if (ft_strchr(set, *spec))
+	if (ft_strchr("cspdiuxX%", *spec))
 	{
 		char_print(va_arg(arg, int), total);
 		spec++;
