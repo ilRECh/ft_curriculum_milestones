@@ -16,7 +16,10 @@ char	*parse_specifier(char *spec, va_list arg, int *total)
 
 	//width parse
 	spec = width_parse(spec, &specifier, arg);
+
 	//precision parse
+	if (*spec == '.')
+		spec = precision_parse(++spec, &specifier, arg);
 
 	//size parse
 

@@ -5,6 +5,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.o"
   "CMakeFiles/ft_printf_clion.dir/parser/flags_parse.c.o"
   "CMakeFiles/ft_printf_clion.dir/parser/ft_vprintf.c.o"
+  "CMakeFiles/ft_printf_clion.dir/parser/presicion_parse.c.o"
   "CMakeFiles/ft_printf_clion.dir/parser/specifier_parse.c.o"
   "CMakeFiles/ft_printf_clion.dir/parser/width_parse.c.o"
   "ft_printf_clion"

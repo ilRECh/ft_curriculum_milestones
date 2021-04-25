@@ -16,7 +16,7 @@ set(
         PRSR_SRCS
         parser/ft_vprintf.c
         parser/specifier_parse.c
-        parser/flags_parse.c parser/width_parse.c)
+        parser/flags_parse.c parser/width_parse.c parser/presicion_parse.c)
 
 set(
         OUT_FUNCS

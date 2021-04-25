@@ -304,6 +304,33 @@ parser/ft_vprintf.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/parser/ft_vprintf.c.s
 .PHONY : parser/ft_vprintf.c.s
 
+parser/presicion_parse.o: parser/presicion_parse.c.o
+
+.PHONY : parser/presicion_parse.o
+
+# target to build an object file
+parser/presicion_parse.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/parser/presicion_parse.c.o
+.PHONY : parser/presicion_parse.c.o
+
+parser/presicion_parse.i: parser/presicion_parse.c.i
+
+.PHONY : parser/presicion_parse.i
+
+# target to preprocess a source file
+parser/presicion_parse.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/parser/presicion_parse.c.i
+.PHONY : parser/presicion_parse.c.i
+
+parser/presicion_parse.s: parser/presicion_parse.c.s
+
+.PHONY : parser/presicion_parse.s
+
+# target to generate assembly for a file
+parser/presicion_parse.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/parser/presicion_parse.c.s
+.PHONY : parser/presicion_parse.c.s
+
 parser/specifier_parse.o: parser/specifier_parse.c.o
 
 .PHONY : parser/specifier_parse.o
@@ -385,6 +412,9 @@ help:
 	@echo "... parser/ft_vprintf.o"
 	@echo "... parser/ft_vprintf.i"
 	@echo "... parser/ft_vprintf.s"
+	@echo "... parser/presicion_parse.o"
+	@echo "... parser/presicion_parse.i"
+	@echo "... parser/presicion_parse.s"
 	@echo "... parser/specifier_parse.o"
 	@echo "... parser/specifier_parse.i"
 	@echo "... parser/specifier_parse.s"

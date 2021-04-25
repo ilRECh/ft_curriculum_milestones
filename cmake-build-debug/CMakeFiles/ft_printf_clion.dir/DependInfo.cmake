@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/home/name/Desktop/ft_printf_clion/out_funcs/char_print.c" "/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.o"
   "/home/name/Desktop/ft_printf_clion/parser/flags_parse.c" "/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles/ft_printf_clion.dir/parser/flags_parse.c.o"
   "/home/name/Desktop/ft_printf_clion/parser/ft_vprintf.c" "/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles/ft_printf_clion.dir/parser/ft_vprintf.c.o"
+  "/home/name/Desktop/ft_printf_clion/parser/presicion_parse.c" "/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles/ft_printf_clion.dir/parser/presicion_parse.c.o"
   "/home/name/Desktop/ft_printf_clion/parser/specifier_parse.c" "/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles/ft_printf_clion.dir/parser/specifier_parse.c.o"
   "/home/name/Desktop/ft_printf_clion/parser/width_parse.c" "/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles/ft_printf_clion.dir/parser/width_parse.c.o"
   )

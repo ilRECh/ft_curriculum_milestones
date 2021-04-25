@@ -28,7 +28,8 @@ OUT				= $(addprefix $(OUT_DIR), $(OUT_LIST))
 PRSR_LIST	=	ft_vprintf.c\
 				specifier_parse.c\
 				flags_parse.c\
-				width_parse.c
+				width_parse.c\
+				precision_parse.c
 
 PRSR_DIR		= ./parser/
 PRSR			= $(addprefix $(PRSR_DIR), $(PRSR_LIST))

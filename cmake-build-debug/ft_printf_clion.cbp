@@ -112,6 +112,9 @@
 		<Unit filename="/home/name/Desktop/ft_printf_clion/parser/ft_vprintf.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
+		<Unit filename="/home/name/Desktop/ft_printf_clion/parser/presicion_parse.c">
+			<Option target="ft_printf_clion"/>
+		</Unit>
 		<Unit filename="/home/name/Desktop/ft_printf_clion/parser/specifier_parse.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
