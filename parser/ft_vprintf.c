@@ -11,7 +11,7 @@ int	ft_vprintf(char *format, va_list vl)
 		total++;
 		if (*format == SPECIFIER)
 		{
-			format += parse_specifier(format, vl);
+			format += parse_specifier(format + 1, vl);
 		}
 		write(1, format, 1);
 		format++;

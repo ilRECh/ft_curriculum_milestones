@@ -12,7 +12,7 @@ HDRS_DIR		= ./includes/
 HDRS			= $(addprefix $(HDRS_DIR), $(HDRS_LIST))
 INCLUDES 		= -I $(HDRS_DIR)
 
-LIBFT_LIST	=
+LIBFT_LIST	=	ft_strchr.c
 LIBFT_DIR		= ./libft/
 LIBFT			= $(addprefix $(LIBFT_DIR), $(LIBFT_LIST))
 
