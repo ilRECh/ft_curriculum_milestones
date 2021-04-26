@@ -17,7 +17,8 @@ LIBFT_LIST	=	ft_strchr.c\
 				ft_atoi.c\
 				ft_isdigit.c\
 				ft_isspace.c\
-				ft_strlen.c
+				ft_strlen.c\
+				fill_with.c
 LIBFT_DIR		= ./libft/
 LIBFT			= $(addprefix $(LIBFT_DIR), $(LIBFT_LIST))
 
@@ -48,12 +49,12 @@ GREEN = \033[0;32m
 RED = \033[0;31m
 RESET = \033[0m
 
-all: $(NAME)
-
 $(NAME): $(OBJS_DIR) $(OBJS)
 	$(AR) $(NAME) $(OBJS)
 	@echo "\n$(NAME): $(GREEN)object files were created$(RESET)"
 	@echo "$(NAME): $(GREEN)$(NAME) was created$(RESET)"
+
+all: $(NAME)
 
 %.o : %.c $(HDRS)
 	$(GCC) $(FLAGS) $(INCLUDES) $< -o $@

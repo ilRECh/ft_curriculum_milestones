@@ -169,6 +169,33 @@ ft_printf.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/ft_printf.c.s
 .PHONY : ft_printf.c.s
 
+libft/fill_with.o: libft/fill_with.c.o
+
+.PHONY : libft/fill_with.o
+
+# target to build an object file
+libft/fill_with.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/fill_with.c.o
+.PHONY : libft/fill_with.c.o
+
+libft/fill_with.i: libft/fill_with.c.i
+
+.PHONY : libft/fill_with.i
+
+# target to preprocess a source file
+libft/fill_with.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/fill_with.c.i
+.PHONY : libft/fill_with.c.i
+
+libft/fill_with.s: libft/fill_with.c.s
+
+.PHONY : libft/fill_with.s
+
+# target to generate assembly for a file
+libft/fill_with.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/fill_with.c.s
+.PHONY : libft/fill_with.c.s
+
 libft/ft_atoi.o: libft/ft_atoi.c.o
 
 .PHONY : libft/ft_atoi.o
@@ -586,6 +613,9 @@ help:
 	@echo "... ft_printf.o"
 	@echo "... ft_printf.i"
 	@echo "... ft_printf.s"
+	@echo "... libft/fill_with.o"
+	@echo "... libft/fill_with.i"
+	@echo "... libft/fill_with.s"
 	@echo "... libft/ft_atoi.o"
 	@echo "... libft/ft_atoi.i"
 	@echo "... libft/ft_atoi.s"

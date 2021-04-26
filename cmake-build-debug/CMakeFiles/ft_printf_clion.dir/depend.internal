@@ -23,8 +23,6 @@ CMakeFiles/ft_printf_clion.dir/main.c.o
  /home/name/Desktop/ft_printf_clion/includes/ft_stdio.h
  /home/name/Desktop/ft_printf_clion/main.c
 CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.o
- ../includes/libft.h
- ../includes/out_funcs.h
  ../includes/parser.h
  /home/name/Desktop/ft_printf_clion/out_funcs/char_print.c
 CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.o

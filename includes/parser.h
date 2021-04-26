@@ -19,8 +19,8 @@ enum
 typedef struct s_specifier
 {
 	uint8_t			flags;
-	unsigned int	width;
-	unsigned int	precision;
+	int				width;
+	int				precision;
 	uint8_t			size;
 	char			type;
 } t_specifier;

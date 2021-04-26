@@ -16,8 +16,7 @@ char	*parse_specifier(char *spec, va_list arg, int *total)
 	spec_copy = spec;
 	spec = flags_parse(spec, &specifier);
 	spec = width_parse(spec, &specifier, arg);
-	if (*spec == '.')
-		spec = precision_parse(++spec, &specifier, arg);
+	spec = precision_parse(spec, &specifier, arg);
 	spec = size_parse(spec, &specifier);
 	if (ft_strchr(types_set, *spec))
 	{

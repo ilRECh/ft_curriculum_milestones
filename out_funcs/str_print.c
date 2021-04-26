@@ -1,11 +1,5 @@
 #include "out_funcs.h"
 
-static void	fill_with(char c, unsigned int amount)
-{
-	while (amount--)
-		write(1, &c, 1);
-}
-
 static void	ft_putstr(const char *s, unsigned int length)
 {
 	while (length--)
@@ -15,11 +9,17 @@ static void	ft_putstr(const char *s, unsigned int length)
 void	str_print(char *str, int *total, t_specifier *specifier)
 {
 	if (!str)
-		return ;
-	if (specifier->precision > ft_strlen(str) || !specifier->precision)
+	{
+		if (specifier->precision > 0 && specifier->precision < 6)
+			return ;
+		str = "(null)";
+	}
+	if (specifier->precision > (int)ft_strlen(str) || specifier->precision < 0)
 		specifier->precision = ft_strlen(str);
 	if (specifier->width > specifier->precision)
 		specifier->width = specifier->width - specifier->precision;
+	else
+		specifier->width = 0;
 	if (specifier->flags & (1 << MINUS_FLAG))
 	{
 		ft_putstr(str, specifier->precision);

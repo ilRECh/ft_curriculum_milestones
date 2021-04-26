@@ -14,7 +14,7 @@ set(
         libft/ft_isdigit.c
         libft/ft_isspace.c
         libft/ft_strlen.c
-)
+        libft/fill_with.c)
 
 set(
         PRSR_SRCS

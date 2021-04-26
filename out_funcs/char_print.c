@@ -1,11 +1,5 @@
 #include "out_funcs.h"
 
-static void		fill_with(char c, unsigned int amount)
-{
-	while (amount--)
-		write(1, &c, 1);
-}
-
 void char_print(char c, int *total, t_specifier *specifier)
 {
 	if (specifier->width)
