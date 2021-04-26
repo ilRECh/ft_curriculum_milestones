@@ -14,7 +14,9 @@ HDRS_DIR		= ./includes/
 HDRS			= $(addprefix $(HDRS_DIR), $(HDRS_LIST))
 
 LIBFT_LIST	=	ft_strchr.c\
-				ft_atoi.c
+				ft_atoi.c\
+				ft_isdigit.c\
+				ft_isspace.c
 LIBFT_DIR		= ./libft/
 LIBFT			= $(addprefix $(LIBFT_DIR), $(LIBFT_LIST))
 
@@ -37,12 +39,9 @@ PRSR_LIST	=	ft_vprintf.c\
 PRSR_DIR		= ./parser/
 PRSR			= $(addprefix $(PRSR_DIR), $(PRSR_LIST))
 
-OBJS_LIST		= $(OUT_LIST:.c=.o) $(PRSR_LIST:.c=.o) $(LIBFT_LIST:.c=.o) $(SRCS_LIST:.c=.o)
-OBJS_DIR		= ./all_objs/
-OBJS			= $(addprefix $(OBJS_DIR), $(OBJS_LIST))
+OBJS			= $(OUT:.c=.o) $(PRSR:.c=.o) $(LIBFT:.c=.o) $(SRCS:.c=.o)
 
 # COLORS
-
 GREEN = \033[0;32m
 RED = \033[0;31m
 RESET = \033[0m
@@ -54,7 +53,7 @@ $(NAME): $(OBJS_DIR) $(OBJS)
 	@echo "\n$(NAME): $(GREEN)object files were created$(RESET)"
 	@echo "$(NAME): $(GREEN)$(NAME) was created$(RESET)"
 
-$(OBJS_DIR)%.o : $(LIBFT) $(SRCS) $(OUT) $(PRSR) $(HDRS)
+%.o : %.c $(HDRS)
 	$(GCC) $(FLAGS) $(INCLUDES) $< -o $@
 	@echo "$(GREEN).$(RESET)\c"
 

@@ -4,6 +4,15 @@
 CMakeFiles/ft_printf_clion.dir/ft_printf.c.o: ../includes/parser.h
 CMakeFiles/ft_printf_clion.dir/ft_printf.c.o: ../ft_printf.c
 
+CMakeFiles/ft_printf_clion.dir/libft/ft_atoi.c.o: ../includes/libft.h
+CMakeFiles/ft_printf_clion.dir/libft/ft_atoi.c.o: ../libft/ft_atoi.c
+
+CMakeFiles/ft_printf_clion.dir/libft/ft_isdigit.c.o: ../includes/libft.h
+CMakeFiles/ft_printf_clion.dir/libft/ft_isdigit.c.o: ../libft/ft_isdigit.c
+
+CMakeFiles/ft_printf_clion.dir/libft/ft_isspace.c.o: ../includes/libft.h
+CMakeFiles/ft_printf_clion.dir/libft/ft_isspace.c.o: ../libft/ft_isspace.c
+
 CMakeFiles/ft_printf_clion.dir/libft/ft_strchr.c.o: ../includes/libft.h
 CMakeFiles/ft_printf_clion.dir/libft/ft_strchr.c.o: ../libft/ft_strchr.c
 
@@ -14,6 +23,7 @@ CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.o: ../includes/parser.h
 CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.o: ../out_funcs/char_print.c
 
 CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.o: ../includes/libft.h
+CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.o: ../includes/out_funcs.h
 CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.o: ../includes/parser.h
 CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.o: ../out_funcs/out_funcs.c
 
@@ -25,9 +35,9 @@ CMakeFiles/ft_printf_clion.dir/parser/ft_vprintf.c.o: ../includes/libft.h
 CMakeFiles/ft_printf_clion.dir/parser/ft_vprintf.c.o: ../includes/parser.h
 CMakeFiles/ft_printf_clion.dir/parser/ft_vprintf.c.o: ../parser/ft_vprintf.c
 
-CMakeFiles/ft_printf_clion.dir/parser/presicion_parse.c.o: ../includes/libft.h
-CMakeFiles/ft_printf_clion.dir/parser/presicion_parse.c.o: ../includes/parser.h
-CMakeFiles/ft_printf_clion.dir/parser/presicion_parse.c.o: ../parser/presicion_parse.c
+CMakeFiles/ft_printf_clion.dir/parser/precision_parse.c.o: ../includes/libft.h
+CMakeFiles/ft_printf_clion.dir/parser/precision_parse.c.o: ../includes/parser.h
+CMakeFiles/ft_printf_clion.dir/parser/precision_parse.c.o: ../parser/precision_parse.c
 
 CMakeFiles/ft_printf_clion.dir/parser/size_parse.c.o: ../includes/libft.h
 CMakeFiles/ft_printf_clion.dir/parser/size_parse.c.o: ../includes/parser.h

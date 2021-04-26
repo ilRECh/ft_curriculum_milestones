@@ -2,6 +2,6 @@
 # define OUT_FUNCS_H
 
 void	out_funcs(va_list arg, int *total, t_specifier *specifier);
-void	char_print(char c, int *total);
+void	char_print(char c, int *total, t_specifier *specifier);
 
 #endif

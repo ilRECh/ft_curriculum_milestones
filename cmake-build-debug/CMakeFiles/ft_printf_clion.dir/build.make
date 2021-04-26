@@ -154,18 +154,18 @@ CMakeFiles/ft_printf_clion.dir/parser/width_parse.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_printf_clion.dir/parser/width_parse.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/name/Desktop/ft_printf_clion/parser/width_parse.c -o CMakeFiles/ft_printf_clion.dir/parser/width_parse.c.s
 
-CMakeFiles/ft_printf_clion.dir/parser/presicion_parse.c.o: CMakeFiles/ft_printf_clion.dir/flags.make
-CMakeFiles/ft_printf_clion.dir/parser/presicion_parse.c.o: ../parser/presicion_parse.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/ft_printf_clion.dir/parser/presicion_parse.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf_clion.dir/parser/presicion_parse.c.o -c /home/name/Desktop/ft_printf_clion/parser/presicion_parse.c
+CMakeFiles/ft_printf_clion.dir/parser/precision_parse.c.o: CMakeFiles/ft_printf_clion.dir/flags.make
+CMakeFiles/ft_printf_clion.dir/parser/precision_parse.c.o: ../parser/precision_parse.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/ft_printf_clion.dir/parser/precision_parse.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf_clion.dir/parser/precision_parse.c.o -c /home/name/Desktop/ft_printf_clion/parser/precision_parse.c
 
-CMakeFiles/ft_printf_clion.dir/parser/presicion_parse.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ft_printf_clion.dir/parser/presicion_parse.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/name/Desktop/ft_printf_clion/parser/presicion_parse.c > CMakeFiles/ft_printf_clion.dir/parser/presicion_parse.c.i
+CMakeFiles/ft_printf_clion.dir/parser/precision_parse.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ft_printf_clion.dir/parser/precision_parse.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/name/Desktop/ft_printf_clion/parser/precision_parse.c > CMakeFiles/ft_printf_clion.dir/parser/precision_parse.c.i
 
-CMakeFiles/ft_printf_clion.dir/parser/presicion_parse.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_printf_clion.dir/parser/presicion_parse.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/name/Desktop/ft_printf_clion/parser/presicion_parse.c -o CMakeFiles/ft_printf_clion.dir/parser/presicion_parse.c.s
+CMakeFiles/ft_printf_clion.dir/parser/precision_parse.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_printf_clion.dir/parser/precision_parse.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/name/Desktop/ft_printf_clion/parser/precision_parse.c -o CMakeFiles/ft_printf_clion.dir/parser/precision_parse.c.s
 
 CMakeFiles/ft_printf_clion.dir/parser/size_parse.c.o: CMakeFiles/ft_printf_clion.dir/flags.make
 CMakeFiles/ft_printf_clion.dir/parser/size_parse.c.o: ../parser/size_parse.c
@@ -206,9 +206,35 @@ CMakeFiles/ft_printf_clion.dir/libft/ft_atoi.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_printf_clion.dir/libft/ft_atoi.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/name/Desktop/ft_printf_clion/libft/ft_atoi.c -o CMakeFiles/ft_printf_clion.dir/libft/ft_atoi.c.s
 
+CMakeFiles/ft_printf_clion.dir/libft/ft_isdigit.c.o: CMakeFiles/ft_printf_clion.dir/flags.make
+CMakeFiles/ft_printf_clion.dir/libft/ft_isdigit.c.o: ../libft/ft_isdigit.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/ft_printf_clion.dir/libft/ft_isdigit.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf_clion.dir/libft/ft_isdigit.c.o -c /home/name/Desktop/ft_printf_clion/libft/ft_isdigit.c
+
+CMakeFiles/ft_printf_clion.dir/libft/ft_isdigit.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ft_printf_clion.dir/libft/ft_isdigit.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/name/Desktop/ft_printf_clion/libft/ft_isdigit.c > CMakeFiles/ft_printf_clion.dir/libft/ft_isdigit.c.i
+
+CMakeFiles/ft_printf_clion.dir/libft/ft_isdigit.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_printf_clion.dir/libft/ft_isdigit.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/name/Desktop/ft_printf_clion/libft/ft_isdigit.c -o CMakeFiles/ft_printf_clion.dir/libft/ft_isdigit.c.s
+
+CMakeFiles/ft_printf_clion.dir/libft/ft_isspace.c.o: CMakeFiles/ft_printf_clion.dir/flags.make
+CMakeFiles/ft_printf_clion.dir/libft/ft_isspace.c.o: ../libft/ft_isspace.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/ft_printf_clion.dir/libft/ft_isspace.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf_clion.dir/libft/ft_isspace.c.o -c /home/name/Desktop/ft_printf_clion/libft/ft_isspace.c
+
+CMakeFiles/ft_printf_clion.dir/libft/ft_isspace.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ft_printf_clion.dir/libft/ft_isspace.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/name/Desktop/ft_printf_clion/libft/ft_isspace.c > CMakeFiles/ft_printf_clion.dir/libft/ft_isspace.c.i
+
+CMakeFiles/ft_printf_clion.dir/libft/ft_isspace.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_printf_clion.dir/libft/ft_isspace.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/name/Desktop/ft_printf_clion/libft/ft_isspace.c -o CMakeFiles/ft_printf_clion.dir/libft/ft_isspace.c.s
+
 CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.o: CMakeFiles/ft_printf_clion.dir/flags.make
 CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.o: ../out_funcs/char_print.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.o -c /home/name/Desktop/ft_printf_clion/out_funcs/char_print.c
 
 CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.i: cmake_force
@@ -221,7 +247,7 @@ CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.s: cmake_force
 
 CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.o: CMakeFiles/ft_printf_clion.dir/flags.make
 CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.o: ../out_funcs/out_funcs.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.o -c /home/name/Desktop/ft_printf_clion/out_funcs/out_funcs.c
 
 CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.i: cmake_force
@@ -240,10 +266,12 @@ ft_printf_clion_OBJECTS = \
 "CMakeFiles/ft_printf_clion.dir/parser/specifier_parse.c.o" \
 "CMakeFiles/ft_printf_clion.dir/parser/flags_parse.c.o" \
 "CMakeFiles/ft_printf_clion.dir/parser/width_parse.c.o" \
-"CMakeFiles/ft_printf_clion.dir/parser/presicion_parse.c.o" \
+"CMakeFiles/ft_printf_clion.dir/parser/precision_parse.c.o" \
 "CMakeFiles/ft_printf_clion.dir/parser/size_parse.c.o" \
 "CMakeFiles/ft_printf_clion.dir/libft/ft_strchr.c.o" \
 "CMakeFiles/ft_printf_clion.dir/libft/ft_atoi.c.o" \
+"CMakeFiles/ft_printf_clion.dir/libft/ft_isdigit.c.o" \
+"CMakeFiles/ft_printf_clion.dir/libft/ft_isspace.c.o" \
 "CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.o" \
 "CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.o"
 
@@ -256,15 +284,17 @@ ft_printf_clion: CMakeFiles/ft_printf_clion.dir/parser/ft_vprintf.c.o
 ft_printf_clion: CMakeFiles/ft_printf_clion.dir/parser/specifier_parse.c.o
 ft_printf_clion: CMakeFiles/ft_printf_clion.dir/parser/flags_parse.c.o
 ft_printf_clion: CMakeFiles/ft_printf_clion.dir/parser/width_parse.c.o
-ft_printf_clion: CMakeFiles/ft_printf_clion.dir/parser/presicion_parse.c.o
+ft_printf_clion: CMakeFiles/ft_printf_clion.dir/parser/precision_parse.c.o
 ft_printf_clion: CMakeFiles/ft_printf_clion.dir/parser/size_parse.c.o
 ft_printf_clion: CMakeFiles/ft_printf_clion.dir/libft/ft_strchr.c.o
 ft_printf_clion: CMakeFiles/ft_printf_clion.dir/libft/ft_atoi.c.o
+ft_printf_clion: CMakeFiles/ft_printf_clion.dir/libft/ft_isdigit.c.o
+ft_printf_clion: CMakeFiles/ft_printf_clion.dir/libft/ft_isspace.c.o
 ft_printf_clion: CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.o
 ft_printf_clion: CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.o
 ft_printf_clion: CMakeFiles/ft_printf_clion.dir/build.make
 ft_printf_clion: CMakeFiles/ft_printf_clion.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking C executable ft_printf_clion"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Linking C executable ft_printf_clion"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ft_printf_clion.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

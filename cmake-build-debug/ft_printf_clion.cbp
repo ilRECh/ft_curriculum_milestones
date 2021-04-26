@@ -100,6 +100,12 @@
 		<Unit filename="/home/name/Desktop/ft_printf_clion/libft/ft_atoi.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
+		<Unit filename="/home/name/Desktop/ft_printf_clion/libft/ft_isdigit.c">
+			<Option target="ft_printf_clion"/>
+		</Unit>
+		<Unit filename="/home/name/Desktop/ft_printf_clion/libft/ft_isspace.c">
+			<Option target="ft_printf_clion"/>
+		</Unit>
 		<Unit filename="/home/name/Desktop/ft_printf_clion/libft/ft_strchr.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
@@ -118,7 +124,7 @@
 		<Unit filename="/home/name/Desktop/ft_printf_clion/parser/ft_vprintf.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
-		<Unit filename="/home/name/Desktop/ft_printf_clion/parser/presicion_parse.c">
+		<Unit filename="/home/name/Desktop/ft_printf_clion/parser/precision_parse.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
 		<Unit filename="/home/name/Desktop/ft_printf_clion/parser/size_parse.c">

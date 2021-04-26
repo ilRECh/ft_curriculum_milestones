@@ -196,6 +196,60 @@ libft/ft_atoi.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_atoi.c.s
 .PHONY : libft/ft_atoi.c.s
 
+libft/ft_isdigit.o: libft/ft_isdigit.c.o
+
+.PHONY : libft/ft_isdigit.o
+
+# target to build an object file
+libft/ft_isdigit.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_isdigit.c.o
+.PHONY : libft/ft_isdigit.c.o
+
+libft/ft_isdigit.i: libft/ft_isdigit.c.i
+
+.PHONY : libft/ft_isdigit.i
+
+# target to preprocess a source file
+libft/ft_isdigit.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_isdigit.c.i
+.PHONY : libft/ft_isdigit.c.i
+
+libft/ft_isdigit.s: libft/ft_isdigit.c.s
+
+.PHONY : libft/ft_isdigit.s
+
+# target to generate assembly for a file
+libft/ft_isdigit.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_isdigit.c.s
+.PHONY : libft/ft_isdigit.c.s
+
+libft/ft_isspace.o: libft/ft_isspace.c.o
+
+.PHONY : libft/ft_isspace.o
+
+# target to build an object file
+libft/ft_isspace.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_isspace.c.o
+.PHONY : libft/ft_isspace.c.o
+
+libft/ft_isspace.i: libft/ft_isspace.c.i
+
+.PHONY : libft/ft_isspace.i
+
+# target to preprocess a source file
+libft/ft_isspace.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_isspace.c.i
+.PHONY : libft/ft_isspace.c.i
+
+libft/ft_isspace.s: libft/ft_isspace.c.s
+
+.PHONY : libft/ft_isspace.s
+
+# target to generate assembly for a file
+libft/ft_isspace.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_isspace.c.s
+.PHONY : libft/ft_isspace.c.s
+
 libft/ft_strchr.o: libft/ft_strchr.c.o
 
 .PHONY : libft/ft_strchr.o
@@ -358,32 +412,32 @@ parser/ft_vprintf.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/parser/ft_vprintf.c.s
 .PHONY : parser/ft_vprintf.c.s
 
-parser/presicion_parse.o: parser/presicion_parse.c.o
+parser/precision_parse.o: parser/precision_parse.c.o
 
-.PHONY : parser/presicion_parse.o
+.PHONY : parser/precision_parse.o
 
 # target to build an object file
-parser/presicion_parse.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/parser/presicion_parse.c.o
-.PHONY : parser/presicion_parse.c.o
+parser/precision_parse.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/parser/precision_parse.c.o
+.PHONY : parser/precision_parse.c.o
 
-parser/presicion_parse.i: parser/presicion_parse.c.i
+parser/precision_parse.i: parser/precision_parse.c.i
 
-.PHONY : parser/presicion_parse.i
+.PHONY : parser/precision_parse.i
 
 # target to preprocess a source file
-parser/presicion_parse.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/parser/presicion_parse.c.i
-.PHONY : parser/presicion_parse.c.i
+parser/precision_parse.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/parser/precision_parse.c.i
+.PHONY : parser/precision_parse.c.i
 
-parser/presicion_parse.s: parser/presicion_parse.c.s
+parser/precision_parse.s: parser/precision_parse.c.s
 
-.PHONY : parser/presicion_parse.s
+.PHONY : parser/precision_parse.s
 
 # target to generate assembly for a file
-parser/presicion_parse.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/parser/presicion_parse.c.s
-.PHONY : parser/presicion_parse.c.s
+parser/precision_parse.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/parser/precision_parse.c.s
+.PHONY : parser/precision_parse.c.s
 
 parser/size_parse.o: parser/size_parse.c.o
 
@@ -481,6 +535,12 @@ help:
 	@echo "... libft/ft_atoi.o"
 	@echo "... libft/ft_atoi.i"
 	@echo "... libft/ft_atoi.s"
+	@echo "... libft/ft_isdigit.o"
+	@echo "... libft/ft_isdigit.i"
+	@echo "... libft/ft_isdigit.s"
+	@echo "... libft/ft_isspace.o"
+	@echo "... libft/ft_isspace.i"
+	@echo "... libft/ft_isspace.s"
 	@echo "... libft/ft_strchr.o"
 	@echo "... libft/ft_strchr.i"
 	@echo "... libft/ft_strchr.s"
@@ -499,9 +559,9 @@ help:
 	@echo "... parser/ft_vprintf.o"
 	@echo "... parser/ft_vprintf.i"
 	@echo "... parser/ft_vprintf.s"
-	@echo "... parser/presicion_parse.o"
-	@echo "... parser/presicion_parse.i"
-	@echo "... parser/presicion_parse.s"
+	@echo "... parser/precision_parse.o"
+	@echo "... parser/precision_parse.i"
+	@echo "... parser/precision_parse.s"
 	@echo "... parser/size_parse.o"
 	@echo "... parser/size_parse.i"
 	@echo "... parser/size_parse.s"

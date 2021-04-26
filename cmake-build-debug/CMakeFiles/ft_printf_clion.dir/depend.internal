@@ -4,6 +4,15 @@
 CMakeFiles/ft_printf_clion.dir/ft_printf.c.o
  ../includes/parser.h
  /home/name/Desktop/ft_printf_clion/ft_printf.c
+CMakeFiles/ft_printf_clion.dir/libft/ft_atoi.c.o
+ ../includes/libft.h
+ /home/name/Desktop/ft_printf_clion/libft/ft_atoi.c
+CMakeFiles/ft_printf_clion.dir/libft/ft_isdigit.c.o
+ ../includes/libft.h
+ /home/name/Desktop/ft_printf_clion/libft/ft_isdigit.c
+CMakeFiles/ft_printf_clion.dir/libft/ft_isspace.c.o
+ ../includes/libft.h
+ /home/name/Desktop/ft_printf_clion/libft/ft_isspace.c
 CMakeFiles/ft_printf_clion.dir/libft/ft_strchr.c.o
  ../includes/libft.h
  /home/name/Desktop/ft_printf_clion/libft/ft_strchr.c
@@ -15,6 +24,7 @@ CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.o
  /home/name/Desktop/ft_printf_clion/out_funcs/char_print.c
 CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.o
  ../includes/libft.h
+ ../includes/out_funcs.h
  ../includes/parser.h
  /home/name/Desktop/ft_printf_clion/out_funcs/out_funcs.c
 CMakeFiles/ft_printf_clion.dir/parser/flags_parse.c.o
@@ -25,10 +35,10 @@ CMakeFiles/ft_printf_clion.dir/parser/ft_vprintf.c.o
  ../includes/libft.h
  ../includes/parser.h
  /home/name/Desktop/ft_printf_clion/parser/ft_vprintf.c
-CMakeFiles/ft_printf_clion.dir/parser/presicion_parse.c.o
+CMakeFiles/ft_printf_clion.dir/parser/precision_parse.c.o
  ../includes/libft.h
  ../includes/parser.h
- /home/name/Desktop/ft_printf_clion/parser/presicion_parse.c
+ /home/name/Desktop/ft_printf_clion/parser/precision_parse.c
 CMakeFiles/ft_printf_clion.dir/parser/size_parse.c.o
  ../includes/libft.h
  ../includes/parser.h

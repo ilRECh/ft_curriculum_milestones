@@ -11,13 +11,15 @@ set(
         LIBFT_SRCS
         libft/ft_strchr.c
         libft/ft_atoi.c
+        libft/ft_isdigit.c
+        libft/ft_isspace.c
 )
 
 set(
         PRSR_SRCS
         parser/ft_vprintf.c
         parser/specifier_parse.c
-        parser/flags_parse.c parser/width_parse.c parser/presicion_parse.c parser/size_parse.c)
+        parser/flags_parse.c parser/width_parse.c parser/precision_parse.c parser/size_parse.c)
 
 set(
         OUT_FUNCS

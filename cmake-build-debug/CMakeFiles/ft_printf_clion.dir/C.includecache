@@ -6,27 +6,11 @@
 
 #IncludeRegexTransform: 
 
-../includes/libft.h
-stdlib.h
--
-unistd.h
--
+/home/name/Desktop/ft_printf_clion/includes/ft_stdio.h
 
-../includes/out_funcs.h
-
-../includes/parser.h
-stdarg.h
+/home/name/Desktop/ft_printf_clion/main.c
+stdio.h
 -
-stdint.h
--
-unistd.h
--
-
-/home/name/Desktop/ft_printf_clion/parser/specifier_parse.c
-parser.h
-/home/name/Desktop/ft_printf_clion/parser/parser.h
-out_funcs.h
-/home/name/Desktop/ft_printf_clion/parser/out_funcs.h
-libft.h
-/home/name/Desktop/ft_printf_clion/parser/libft.h
+includes/ft_stdio.h
+/home/name/Desktop/ft_printf_clion/includes/ft_stdio.h
 
