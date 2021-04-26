@@ -13,12 +13,32 @@ CMakeFiles/ft_printf_clion.dir/main.c.o: ../main.c
 CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.o: ../includes/parser.h
 CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.o: ../out_funcs/char_print.c
 
+CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.o: ../includes/libft.h
+CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.o: ../includes/parser.h
+CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.o: ../out_funcs/out_funcs.c
+
+CMakeFiles/ft_printf_clion.dir/parser/flags_parse.c.o: ../includes/libft.h
+CMakeFiles/ft_printf_clion.dir/parser/flags_parse.c.o: ../includes/parser.h
+CMakeFiles/ft_printf_clion.dir/parser/flags_parse.c.o: ../parser/flags_parse.c
+
 CMakeFiles/ft_printf_clion.dir/parser/ft_vprintf.c.o: ../includes/libft.h
 CMakeFiles/ft_printf_clion.dir/parser/ft_vprintf.c.o: ../includes/parser.h
 CMakeFiles/ft_printf_clion.dir/parser/ft_vprintf.c.o: ../parser/ft_vprintf.c
 
-CMakeFiles/ft_printf_clion.dir/parser/parse_specifier.c.o: ../includes/libft.h
-CMakeFiles/ft_printf_clion.dir/parser/parse_specifier.c.o: ../includes/out_funcs.h
-CMakeFiles/ft_printf_clion.dir/parser/parse_specifier.c.o: ../includes/parser.h
-CMakeFiles/ft_printf_clion.dir/parser/parse_specifier.c.o: ../parser/parse_specifier.c
+CMakeFiles/ft_printf_clion.dir/parser/presicion_parse.c.o: ../includes/libft.h
+CMakeFiles/ft_printf_clion.dir/parser/presicion_parse.c.o: ../includes/parser.h
+CMakeFiles/ft_printf_clion.dir/parser/presicion_parse.c.o: ../parser/presicion_parse.c
+
+CMakeFiles/ft_printf_clion.dir/parser/size_parse.c.o: ../includes/libft.h
+CMakeFiles/ft_printf_clion.dir/parser/size_parse.c.o: ../includes/parser.h
+CMakeFiles/ft_printf_clion.dir/parser/size_parse.c.o: ../parser/size_parse.c
+
+CMakeFiles/ft_printf_clion.dir/parser/specifier_parse.c.o: ../includes/libft.h
+CMakeFiles/ft_printf_clion.dir/parser/specifier_parse.c.o: ../includes/out_funcs.h
+CMakeFiles/ft_printf_clion.dir/parser/specifier_parse.c.o: ../includes/parser.h
+CMakeFiles/ft_printf_clion.dir/parser/specifier_parse.c.o: ../parser/specifier_parse.c
+
+CMakeFiles/ft_printf_clion.dir/parser/width_parse.c.o: ../includes/libft.h
+CMakeFiles/ft_printf_clion.dir/parser/width_parse.c.o: ../includes/parser.h
+CMakeFiles/ft_printf_clion.dir/parser/width_parse.c.o: ../parser/width_parse.c
 

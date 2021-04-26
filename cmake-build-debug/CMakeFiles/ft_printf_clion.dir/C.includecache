@@ -22,7 +22,7 @@ stdint.h
 unistd.h
 -
 
-/home/name/Desktop/ft_printf_clion/parser/parse_specifier.c
+/home/name/Desktop/ft_printf_clion/parser/specifier_parse.c
 parser.h
 /home/name/Desktop/ft_printf_clion/parser/parser.h
 out_funcs.h

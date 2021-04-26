@@ -3,6 +3,7 @@
 
 char	*precision_parse(char *spec, t_specifier *specifier, va_list arg)
 {
+	specifier->precision = 0;
 	if (*spec == '*')
 	{
 		specifier->precision = va_arg(arg, int);

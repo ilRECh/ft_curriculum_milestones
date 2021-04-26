@@ -97,6 +97,9 @@
 		<Unit filename="/home/name/Desktop/ft_printf_clion/includes/parser.h">
 			<Option target="ft_printf_clion"/>
 		</Unit>
+		<Unit filename="/home/name/Desktop/ft_printf_clion/libft/ft_atoi.c">
+			<Option target="ft_printf_clion"/>
+		</Unit>
 		<Unit filename="/home/name/Desktop/ft_printf_clion/libft/ft_strchr.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
@@ -106,6 +109,9 @@
 		<Unit filename="/home/name/Desktop/ft_printf_clion/out_funcs/char_print.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
+		<Unit filename="/home/name/Desktop/ft_printf_clion/out_funcs/out_funcs.c">
+			<Option target="ft_printf_clion"/>
+		</Unit>
 		<Unit filename="/home/name/Desktop/ft_printf_clion/parser/flags_parse.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
@@ -113,6 +119,9 @@
 			<Option target="ft_printf_clion"/>
 		</Unit>
 		<Unit filename="/home/name/Desktop/ft_printf_clion/parser/presicion_parse.c">
+			<Option target="ft_printf_clion"/>
+		</Unit>
+		<Unit filename="/home/name/Desktop/ft_printf_clion/parser/size_parse.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
 		<Unit filename="/home/name/Desktop/ft_printf_clion/parser/specifier_parse.c">

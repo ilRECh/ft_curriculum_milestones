@@ -3,6 +3,7 @@
 
 char	*width_parse(char *spec, t_specifier *specifier, va_list arg)
 {
+	specifier->width = 0;
 	if (*spec == '*')
 	{
 		specifier->width = va_arg(arg, int);

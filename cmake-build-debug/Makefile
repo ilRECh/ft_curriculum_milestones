@@ -169,6 +169,33 @@ ft_printf.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/ft_printf.c.s
 .PHONY : ft_printf.c.s
 
+libft/ft_atoi.o: libft/ft_atoi.c.o
+
+.PHONY : libft/ft_atoi.o
+
+# target to build an object file
+libft/ft_atoi.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_atoi.c.o
+.PHONY : libft/ft_atoi.c.o
+
+libft/ft_atoi.i: libft/ft_atoi.c.i
+
+.PHONY : libft/ft_atoi.i
+
+# target to preprocess a source file
+libft/ft_atoi.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_atoi.c.i
+.PHONY : libft/ft_atoi.c.i
+
+libft/ft_atoi.s: libft/ft_atoi.c.s
+
+.PHONY : libft/ft_atoi.s
+
+# target to generate assembly for a file
+libft/ft_atoi.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_atoi.c.s
+.PHONY : libft/ft_atoi.c.s
+
 libft/ft_strchr.o: libft/ft_strchr.c.o
 
 .PHONY : libft/ft_strchr.o
@@ -249,6 +276,33 @@ out_funcs/char_print.s: out_funcs/char_print.c.s
 out_funcs/char_print.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.s
 .PHONY : out_funcs/char_print.c.s
+
+out_funcs/out_funcs.o: out_funcs/out_funcs.c.o
+
+.PHONY : out_funcs/out_funcs.o
+
+# target to build an object file
+out_funcs/out_funcs.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.o
+.PHONY : out_funcs/out_funcs.c.o
+
+out_funcs/out_funcs.i: out_funcs/out_funcs.c.i
+
+.PHONY : out_funcs/out_funcs.i
+
+# target to preprocess a source file
+out_funcs/out_funcs.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.i
+.PHONY : out_funcs/out_funcs.c.i
+
+out_funcs/out_funcs.s: out_funcs/out_funcs.c.s
+
+.PHONY : out_funcs/out_funcs.s
+
+# target to generate assembly for a file
+out_funcs/out_funcs.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.s
+.PHONY : out_funcs/out_funcs.c.s
 
 parser/flags_parse.o: parser/flags_parse.c.o
 
@@ -331,6 +385,33 @@ parser/presicion_parse.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/parser/presicion_parse.c.s
 .PHONY : parser/presicion_parse.c.s
 
+parser/size_parse.o: parser/size_parse.c.o
+
+.PHONY : parser/size_parse.o
+
+# target to build an object file
+parser/size_parse.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/parser/size_parse.c.o
+.PHONY : parser/size_parse.c.o
+
+parser/size_parse.i: parser/size_parse.c.i
+
+.PHONY : parser/size_parse.i
+
+# target to preprocess a source file
+parser/size_parse.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/parser/size_parse.c.i
+.PHONY : parser/size_parse.c.i
+
+parser/size_parse.s: parser/size_parse.c.s
+
+.PHONY : parser/size_parse.s
+
+# target to generate assembly for a file
+parser/size_parse.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/parser/size_parse.c.s
+.PHONY : parser/size_parse.c.s
+
 parser/specifier_parse.o: parser/specifier_parse.c.o
 
 .PHONY : parser/specifier_parse.o
@@ -397,6 +478,9 @@ help:
 	@echo "... ft_printf.o"
 	@echo "... ft_printf.i"
 	@echo "... ft_printf.s"
+	@echo "... libft/ft_atoi.o"
+	@echo "... libft/ft_atoi.i"
+	@echo "... libft/ft_atoi.s"
 	@echo "... libft/ft_strchr.o"
 	@echo "... libft/ft_strchr.i"
 	@echo "... libft/ft_strchr.s"
@@ -406,6 +490,9 @@ help:
 	@echo "... out_funcs/char_print.o"
 	@echo "... out_funcs/char_print.i"
 	@echo "... out_funcs/char_print.s"
+	@echo "... out_funcs/out_funcs.o"
+	@echo "... out_funcs/out_funcs.i"
+	@echo "... out_funcs/out_funcs.s"
 	@echo "... parser/flags_parse.o"
 	@echo "... parser/flags_parse.i"
 	@echo "... parser/flags_parse.s"
@@ -415,6 +502,9 @@ help:
 	@echo "... parser/presicion_parse.o"
 	@echo "... parser/presicion_parse.i"
 	@echo "... parser/presicion_parse.s"
+	@echo "... parser/size_parse.o"
+	@echo "... parser/size_parse.i"
+	@echo "... parser/size_parse.s"
 	@echo "... parser/specifier_parse.o"
 	@echo "... parser/specifier_parse.i"
 	@echo "... parser/specifier_parse.s"

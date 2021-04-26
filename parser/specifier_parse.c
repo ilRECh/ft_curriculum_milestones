@@ -9,26 +9,23 @@
 char	*parse_specifier(char *spec, va_list arg, int *total)
 {
 	t_specifier	specifier;
+	char		*spec_copy;
+	char		*types_set;
 
-	specifier.flags = 0;
-	//flags parse
+	types_set = "cspdiuxXnfge%";
+	spec_copy = spec;
 	spec = flags_parse(spec, &specifier);
-
-	//width parse
 	spec = width_parse(spec, &specifier, arg);
-
-	//precision parse
 	if (*spec == '.')
 		spec = precision_parse(++spec, &specifier, arg);
-
-	//size parse
-
-	//type parse		<- in progress
-	if (ft_strchr("cspdiuxX%", *spec))
+	spec = size_parse(spec, &specifier);
+	if (ft_strchr(types_set, *spec))
 	{
-		char_print(va_arg(arg, int), total);
+		specifier.function = ft_strchr(types_set, *spec) - types_set;
+		out_funcs(arg, total, &specifier);
 		spec++;
-		//(*output_funcs[ft_strchr(set, *spec) - set])(arg);
 	}
+	else
+		return (spec_copy);
 	return (spec);
 }
