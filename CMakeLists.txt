@@ -13,18 +13,25 @@ set(
         libft/ft_atoi.c
         libft/ft_isdigit.c
         libft/ft_isspace.c
+        libft/ft_strlen.c
 )
 
 set(
         PRSR_SRCS
         parser/ft_vprintf.c
         parser/specifier_parse.c
-        parser/flags_parse.c parser/width_parse.c parser/precision_parse.c parser/size_parse.c)
+        parser/flags_parse.c
+        parser/width_parse.c
+        parser/precision_parse.c
+        parser/size_parse.c
+)
 
 set(
         OUT_FUNCS
         out_funcs/char_print.c
-        out_funcs/out_funcs.c)
+        out_funcs/out_funcs.c
+        out_funcs/str_print.c
+)
 
 set(
         HDRS

@@ -16,7 +16,8 @@ HDRS			= $(addprefix $(HDRS_DIR), $(HDRS_LIST))
 LIBFT_LIST	=	ft_strchr.c\
 				ft_atoi.c\
 				ft_isdigit.c\
-				ft_isspace.c
+				ft_isspace.c\
+				ft_strlen.c
 LIBFT_DIR		= ./libft/
 LIBFT			= $(addprefix $(LIBFT_DIR), $(LIBFT_LIST))
 
@@ -24,7 +25,8 @@ SRCS_LIST	= 	ft_printf.c
 SRCS_DIR		= ./
 SRCS			= $(addprefix $(SRCS_DIR), $(SRCS_LIST))
 
-OUT_LIST	=	char_print.c\
+OUT_LIST	=	str_print.c\
+				char_print.c\
 				out_funcs.c
 OUT_DIR			= ./out_funcs/
 OUT				= $(addprefix $(OUT_DIR), $(OUT_LIST))
@@ -62,7 +64,7 @@ $(OBJS_DIR):
 	@echo "$(NAME): $(GREEN)$(OBJS_DIR) was created$(RESET)"
 
 clean:
-	$(RM) $(OBJS_DIR)
+	$(RM) $(OBJS)
 	@echo "$(NAME): $(RED)$(OBJS_DIR) was deleted$(RESET)"
 	@echo "$(NAME): $(RED)object files were deleted$(RESET)"
 

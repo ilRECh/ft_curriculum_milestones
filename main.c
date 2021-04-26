@@ -4,9 +4,9 @@
 int	main(void)
 {
 	printf("printf out symbs: %d;\n",
-		printf("a %10c\n", 'a'));
+		printf("%.1s\n", NULL));
 
 	printf("ft_printf out symbs: %d;\n",
-		ft_printf("a %10c\n", 'a'));
+		ft_printf("%.1s\n", NULL));
 	return (0);
 }

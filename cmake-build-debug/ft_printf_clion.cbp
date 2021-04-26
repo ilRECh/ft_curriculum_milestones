@@ -109,6 +109,9 @@
 		<Unit filename="/home/name/Desktop/ft_printf_clion/libft/ft_strchr.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
+		<Unit filename="/home/name/Desktop/ft_printf_clion/libft/ft_strlen.c">
+			<Option target="ft_printf_clion"/>
+		</Unit>
 		<Unit filename="/home/name/Desktop/ft_printf_clion/main.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
@@ -116,6 +119,9 @@
 			<Option target="ft_printf_clion"/>
 		</Unit>
 		<Unit filename="/home/name/Desktop/ft_printf_clion/out_funcs/out_funcs.c">
+			<Option target="ft_printf_clion"/>
+		</Unit>
+		<Unit filename="/home/name/Desktop/ft_printf_clion/out_funcs/str_print.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
 		<Unit filename="/home/name/Desktop/ft_printf_clion/parser/flags_parse.c">

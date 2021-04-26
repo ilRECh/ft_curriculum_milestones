@@ -16,10 +16,15 @@ CMakeFiles/ft_printf_clion.dir/libft/ft_isspace.c.o
 CMakeFiles/ft_printf_clion.dir/libft/ft_strchr.c.o
  ../includes/libft.h
  /home/name/Desktop/ft_printf_clion/libft/ft_strchr.c
+CMakeFiles/ft_printf_clion.dir/libft/ft_strlen.c.o
+ ../includes/libft.h
+ /home/name/Desktop/ft_printf_clion/libft/ft_strlen.c
 CMakeFiles/ft_printf_clion.dir/main.c.o
  /home/name/Desktop/ft_printf_clion/includes/ft_stdio.h
  /home/name/Desktop/ft_printf_clion/main.c
 CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.o
+ ../includes/libft.h
+ ../includes/out_funcs.h
  ../includes/parser.h
  /home/name/Desktop/ft_printf_clion/out_funcs/char_print.c
 CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.o
@@ -27,6 +32,11 @@ CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.o
  ../includes/out_funcs.h
  ../includes/parser.h
  /home/name/Desktop/ft_printf_clion/out_funcs/out_funcs.c
+CMakeFiles/ft_printf_clion.dir/out_funcs/str_print.c.o
+ ../includes/libft.h
+ ../includes/out_funcs.h
+ ../includes/parser.h
+ /home/name/Desktop/ft_printf_clion/out_funcs/str_print.c
 CMakeFiles/ft_printf_clion.dir/parser/flags_parse.c.o
  ../includes/libft.h
  ../includes/parser.h

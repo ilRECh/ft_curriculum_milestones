@@ -277,6 +277,33 @@ libft/ft_strchr.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_strchr.c.s
 .PHONY : libft/ft_strchr.c.s
 
+libft/ft_strlen.o: libft/ft_strlen.c.o
+
+.PHONY : libft/ft_strlen.o
+
+# target to build an object file
+libft/ft_strlen.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_strlen.c.o
+.PHONY : libft/ft_strlen.c.o
+
+libft/ft_strlen.i: libft/ft_strlen.c.i
+
+.PHONY : libft/ft_strlen.i
+
+# target to preprocess a source file
+libft/ft_strlen.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_strlen.c.i
+.PHONY : libft/ft_strlen.c.i
+
+libft/ft_strlen.s: libft/ft_strlen.c.s
+
+.PHONY : libft/ft_strlen.s
+
+# target to generate assembly for a file
+libft/ft_strlen.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_strlen.c.s
+.PHONY : libft/ft_strlen.c.s
+
 main.o: main.c.o
 
 .PHONY : main.o
@@ -357,6 +384,33 @@ out_funcs/out_funcs.s: out_funcs/out_funcs.c.s
 out_funcs/out_funcs.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.s
 .PHONY : out_funcs/out_funcs.c.s
+
+out_funcs/str_print.o: out_funcs/str_print.c.o
+
+.PHONY : out_funcs/str_print.o
+
+# target to build an object file
+out_funcs/str_print.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/str_print.c.o
+.PHONY : out_funcs/str_print.c.o
+
+out_funcs/str_print.i: out_funcs/str_print.c.i
+
+.PHONY : out_funcs/str_print.i
+
+# target to preprocess a source file
+out_funcs/str_print.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/str_print.c.i
+.PHONY : out_funcs/str_print.c.i
+
+out_funcs/str_print.s: out_funcs/str_print.c.s
+
+.PHONY : out_funcs/str_print.s
+
+# target to generate assembly for a file
+out_funcs/str_print.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/str_print.c.s
+.PHONY : out_funcs/str_print.c.s
 
 parser/flags_parse.o: parser/flags_parse.c.o
 
@@ -544,6 +598,9 @@ help:
 	@echo "... libft/ft_strchr.o"
 	@echo "... libft/ft_strchr.i"
 	@echo "... libft/ft_strchr.s"
+	@echo "... libft/ft_strlen.o"
+	@echo "... libft/ft_strlen.i"
+	@echo "... libft/ft_strlen.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
@@ -553,6 +610,9 @@ help:
 	@echo "... out_funcs/out_funcs.o"
 	@echo "... out_funcs/out_funcs.i"
 	@echo "... out_funcs/out_funcs.s"
+	@echo "... out_funcs/str_print.o"
+	@echo "... out_funcs/str_print.i"
+	@echo "... out_funcs/str_print.s"
 	@echo "... parser/flags_parse.o"
 	@echo "... parser/flags_parse.i"
 	@echo "... parser/flags_parse.s"
