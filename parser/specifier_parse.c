@@ -2,10 +2,6 @@
 #include "out_funcs.h"
 #include "libft.h"
 
-//create array of pointers to parse_functions instead of if..else statements
-
-
-
 char	*parse_specifier(char *spec, va_list arg, int *total)
 {
 	t_specifier	specifier;

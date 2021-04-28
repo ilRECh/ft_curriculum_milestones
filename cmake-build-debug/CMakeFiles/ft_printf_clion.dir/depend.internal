@@ -4,6 +4,9 @@
 CMakeFiles/ft_printf_clion.dir/ft_printf.c.o
  ../includes/parser.h
  /home/name/Desktop/ft_printf_clion/ft_printf.c
+CMakeFiles/ft_printf_clion.dir/libft/fill_with.c.o
+ ../includes/libft.h
+ /home/name/Desktop/ft_printf_clion/libft/fill_with.c
 CMakeFiles/ft_printf_clion.dir/libft/ft_atoi.c.o
  ../includes/libft.h
  /home/name/Desktop/ft_printf_clion/libft/ft_atoi.c
@@ -23,6 +26,8 @@ CMakeFiles/ft_printf_clion.dir/main.c.o
  /home/name/Desktop/ft_printf_clion/includes/ft_stdio.h
  /home/name/Desktop/ft_printf_clion/main.c
 CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.o
+ ../includes/libft.h
+ ../includes/out_funcs.h
  ../includes/parser.h
  /home/name/Desktop/ft_printf_clion/out_funcs/char_print.c
 CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.o

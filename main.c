@@ -7,6 +7,6 @@ int	main(void)
 		printf("%.s\n", "hi"));
 
 	printf("ft_printf out symbs: %d;\n",
-		ft_printf("%.s\n", "hi"));
+		ft_printf("%s\n", "Hello World!"));
 	return (0);
 }
