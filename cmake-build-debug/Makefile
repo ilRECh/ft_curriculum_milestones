@@ -277,6 +277,33 @@ libft/ft_isspace.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_isspace.c.s
 .PHONY : libft/ft_isspace.c.s
 
+libft/ft_putnbr_base.o: libft/ft_putnbr_base.c.o
+
+.PHONY : libft/ft_putnbr_base.o
+
+# target to build an object file
+libft/ft_putnbr_base.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_putnbr_base.c.o
+.PHONY : libft/ft_putnbr_base.c.o
+
+libft/ft_putnbr_base.i: libft/ft_putnbr_base.c.i
+
+.PHONY : libft/ft_putnbr_base.i
+
+# target to preprocess a source file
+libft/ft_putnbr_base.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_putnbr_base.c.i
+.PHONY : libft/ft_putnbr_base.c.i
+
+libft/ft_putnbr_base.s: libft/ft_putnbr_base.c.s
+
+.PHONY : libft/ft_putnbr_base.s
+
+# target to generate assembly for a file
+libft/ft_putnbr_base.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_putnbr_base.c.s
+.PHONY : libft/ft_putnbr_base.c.s
+
 libft/ft_strchr.o: libft/ft_strchr.c.o
 
 .PHONY : libft/ft_strchr.o
@@ -411,6 +438,33 @@ out_funcs/out_funcs.s: out_funcs/out_funcs.c.s
 out_funcs/out_funcs.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.s
 .PHONY : out_funcs/out_funcs.c.s
+
+out_funcs/pointer_print.o: out_funcs/pointer_print.c.o
+
+.PHONY : out_funcs/pointer_print.o
+
+# target to build an object file
+out_funcs/pointer_print.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/pointer_print.c.o
+.PHONY : out_funcs/pointer_print.c.o
+
+out_funcs/pointer_print.i: out_funcs/pointer_print.c.i
+
+.PHONY : out_funcs/pointer_print.i
+
+# target to preprocess a source file
+out_funcs/pointer_print.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/pointer_print.c.i
+.PHONY : out_funcs/pointer_print.c.i
+
+out_funcs/pointer_print.s: out_funcs/pointer_print.c.s
+
+.PHONY : out_funcs/pointer_print.s
+
+# target to generate assembly for a file
+out_funcs/pointer_print.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/pointer_print.c.s
+.PHONY : out_funcs/pointer_print.c.s
 
 out_funcs/str_print.o: out_funcs/str_print.c.o
 
@@ -625,6 +679,9 @@ help:
 	@echo "... libft/ft_isspace.o"
 	@echo "... libft/ft_isspace.i"
 	@echo "... libft/ft_isspace.s"
+	@echo "... libft/ft_putnbr_base.o"
+	@echo "... libft/ft_putnbr_base.i"
+	@echo "... libft/ft_putnbr_base.s"
 	@echo "... libft/ft_strchr.o"
 	@echo "... libft/ft_strchr.i"
 	@echo "... libft/ft_strchr.s"
@@ -640,6 +697,9 @@ help:
 	@echo "... out_funcs/out_funcs.o"
 	@echo "... out_funcs/out_funcs.i"
 	@echo "... out_funcs/out_funcs.s"
+	@echo "... out_funcs/pointer_print.o"
+	@echo "... out_funcs/pointer_print.i"
+	@echo "... out_funcs/pointer_print.s"
 	@echo "... out_funcs/str_print.o"
 	@echo "... out_funcs/str_print.i"
 	@echo "... out_funcs/str_print.s"

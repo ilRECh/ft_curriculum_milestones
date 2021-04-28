@@ -18,7 +18,8 @@ LIBFT_LIST	=	ft_strchr.c\
 				ft_isdigit.c\
 				ft_isspace.c\
 				ft_strlen.c\
-				fill_with.c
+				fill_with.c\
+				ft_putnbr_base.c
 LIBFT_DIR		= ./libft/
 LIBFT			= $(addprefix $(LIBFT_DIR), $(LIBFT_LIST))
 

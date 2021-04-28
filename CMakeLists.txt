@@ -14,7 +14,8 @@ set(
         libft/ft_isdigit.c
         libft/ft_isspace.c
         libft/ft_strlen.c
-        libft/fill_with.c)
+        libft/fill_with.c
+        libft/ft_putnbr_base.c)
 
 set(
         PRSR_SRCS
@@ -31,7 +32,7 @@ set(
         out_funcs/char_print.c
         out_funcs/out_funcs.c
         out_funcs/str_print.c
-)
+        out_funcs/pointer_print.c)
 
 set(
         HDRS

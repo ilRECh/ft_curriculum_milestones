@@ -109,6 +109,9 @@
 		<Unit filename="/home/name/Desktop/ft_printf_clion/libft/ft_isspace.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
+		<Unit filename="/home/name/Desktop/ft_printf_clion/libft/ft_putnbr_base.c">
+			<Option target="ft_printf_clion"/>
+		</Unit>
 		<Unit filename="/home/name/Desktop/ft_printf_clion/libft/ft_strchr.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
@@ -122,6 +125,9 @@
 			<Option target="ft_printf_clion"/>
 		</Unit>
 		<Unit filename="/home/name/Desktop/ft_printf_clion/out_funcs/out_funcs.c">
+			<Option target="ft_printf_clion"/>
+		</Unit>
+		<Unit filename="/home/name/Desktop/ft_printf_clion/out_funcs/pointer_print.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
 		<Unit filename="/home/name/Desktop/ft_printf_clion/out_funcs/str_print.c">

@@ -3,6 +3,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdint.h>
 
 typedef struct s_list
 {
@@ -58,5 +59,6 @@ void			ft_lstiter(t_list *lst, void (*f)(void *));
 t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),
 					void (*del)(void *));
 void			fill_with(char c, unsigned int amount);
+void			ft_putnbr_base(unsigned long nbr, uint8_t base, char *symbs);
 
 #endif
