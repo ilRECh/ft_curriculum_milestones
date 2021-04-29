@@ -16,6 +16,9 @@ CMakeFiles/ft_printf_clion.dir/libft/ft_isdigit.c.o: ../libft/ft_isdigit.c
 CMakeFiles/ft_printf_clion.dir/libft/ft_isspace.c.o: ../includes/libft.h
 CMakeFiles/ft_printf_clion.dir/libft/ft_isspace.c.o: ../libft/ft_isspace.c
 
+CMakeFiles/ft_printf_clion.dir/libft/ft_putnbr_base.c.o: ../includes/libft.h
+CMakeFiles/ft_printf_clion.dir/libft/ft_putnbr_base.c.o: ../libft/ft_putnbr_base.c
+
 CMakeFiles/ft_printf_clion.dir/libft/ft_strchr.c.o: ../includes/libft.h
 CMakeFiles/ft_printf_clion.dir/libft/ft_strchr.c.o: ../libft/ft_strchr.c
 
@@ -34,6 +37,11 @@ CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.o: ../includes/libft.h
 CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.o: ../includes/out_funcs.h
 CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.o: ../includes/parser.h
 CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.o: ../out_funcs/out_funcs.c
+
+CMakeFiles/ft_printf_clion.dir/out_funcs/pointer_print.c.o: ../includes/libft.h
+CMakeFiles/ft_printf_clion.dir/out_funcs/pointer_print.c.o: ../includes/out_funcs.h
+CMakeFiles/ft_printf_clion.dir/out_funcs/pointer_print.c.o: ../includes/parser.h
+CMakeFiles/ft_printf_clion.dir/out_funcs/pointer_print.c.o: ../out_funcs/pointer_print.c
 
 CMakeFiles/ft_printf_clion.dir/out_funcs/str_print.c.o: ../includes/libft.h
 CMakeFiles/ft_printf_clion.dir/out_funcs/str_print.c.o: ../includes/out_funcs.h

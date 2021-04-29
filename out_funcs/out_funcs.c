@@ -7,5 +7,5 @@ void	out_funcs(va_list arg, int *total, t_specifier *specifier)
 	else if (specifier->type == 's')
 		str_print(va_arg(arg, char *), total, specifier);
 	else if (specifier->type == 'p')
-		pointer_print(va_arg(arg, long), total, specifier);
+		pointer_print(va_arg(arg, void *), total, specifier);
 }
