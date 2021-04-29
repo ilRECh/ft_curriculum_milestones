@@ -169,6 +169,33 @@ ft_printf.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/ft_printf.c.s
 .PHONY : ft_printf.c.s
 
+libft/count_symbs.o: libft/count_symbs.c.o
+
+.PHONY : libft/count_symbs.o
+
+# target to build an object file
+libft/count_symbs.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/count_symbs.c.o
+.PHONY : libft/count_symbs.c.o
+
+libft/count_symbs.i: libft/count_symbs.c.i
+
+.PHONY : libft/count_symbs.i
+
+# target to preprocess a source file
+libft/count_symbs.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/count_symbs.c.i
+.PHONY : libft/count_symbs.c.i
+
+libft/count_symbs.s: libft/count_symbs.c.s
+
+.PHONY : libft/count_symbs.s
+
+# target to generate assembly for a file
+libft/count_symbs.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/count_symbs.c.s
+.PHONY : libft/count_symbs.c.s
+
 libft/fill_with.o: libft/fill_with.c.o
 
 .PHONY : libft/fill_with.o
@@ -195,6 +222,33 @@ libft/fill_with.s: libft/fill_with.c.s
 libft/fill_with.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/fill_with.c.s
 .PHONY : libft/fill_with.c.s
+
+libft/ft_abs.o: libft/ft_abs.c.o
+
+.PHONY : libft/ft_abs.o
+
+# target to build an object file
+libft/ft_abs.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_abs.c.o
+.PHONY : libft/ft_abs.c.o
+
+libft/ft_abs.i: libft/ft_abs.c.i
+
+.PHONY : libft/ft_abs.i
+
+# target to preprocess a source file
+libft/ft_abs.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_abs.c.i
+.PHONY : libft/ft_abs.c.i
+
+libft/ft_abs.s: libft/ft_abs.c.s
+
+.PHONY : libft/ft_abs.s
+
+# target to generate assembly for a file
+libft/ft_abs.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_abs.c.s
+.PHONY : libft/ft_abs.c.s
 
 libft/ft_atoi.o: libft/ft_atoi.c.o
 
@@ -411,6 +465,33 @@ out_funcs/char_print.s: out_funcs/char_print.c.s
 out_funcs/char_print.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.s
 .PHONY : out_funcs/char_print.c.s
+
+out_funcs/digit_print.o: out_funcs/digit_print.c.o
+
+.PHONY : out_funcs/digit_print.o
+
+# target to build an object file
+out_funcs/digit_print.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/digit_print.c.o
+.PHONY : out_funcs/digit_print.c.o
+
+out_funcs/digit_print.i: out_funcs/digit_print.c.i
+
+.PHONY : out_funcs/digit_print.i
+
+# target to preprocess a source file
+out_funcs/digit_print.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/digit_print.c.i
+.PHONY : out_funcs/digit_print.c.i
+
+out_funcs/digit_print.s: out_funcs/digit_print.c.s
+
+.PHONY : out_funcs/digit_print.s
+
+# target to generate assembly for a file
+out_funcs/digit_print.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/digit_print.c.s
+.PHONY : out_funcs/digit_print.c.s
 
 out_funcs/out_funcs.o: out_funcs/out_funcs.c.o
 
@@ -667,9 +748,15 @@ help:
 	@echo "... ft_printf.o"
 	@echo "... ft_printf.i"
 	@echo "... ft_printf.s"
+	@echo "... libft/count_symbs.o"
+	@echo "... libft/count_symbs.i"
+	@echo "... libft/count_symbs.s"
 	@echo "... libft/fill_with.o"
 	@echo "... libft/fill_with.i"
 	@echo "... libft/fill_with.s"
+	@echo "... libft/ft_abs.o"
+	@echo "... libft/ft_abs.i"
+	@echo "... libft/ft_abs.s"
 	@echo "... libft/ft_atoi.o"
 	@echo "... libft/ft_atoi.i"
 	@echo "... libft/ft_atoi.s"
@@ -694,6 +781,9 @@ help:
 	@echo "... out_funcs/char_print.o"
 	@echo "... out_funcs/char_print.i"
 	@echo "... out_funcs/char_print.s"
+	@echo "... out_funcs/digit_print.o"
+	@echo "... out_funcs/digit_print.i"
+	@echo "... out_funcs/digit_print.s"
 	@echo "... out_funcs/out_funcs.o"
 	@echo "... out_funcs/out_funcs.i"
 	@echo "... out_funcs/out_funcs.s"

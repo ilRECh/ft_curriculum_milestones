@@ -4,8 +4,14 @@
 CMakeFiles/ft_printf_clion.dir/ft_printf.c.o: ../includes/parser.h
 CMakeFiles/ft_printf_clion.dir/ft_printf.c.o: ../ft_printf.c
 
+CMakeFiles/ft_printf_clion.dir/libft/count_symbs.c.o: ../includes/libft.h
+CMakeFiles/ft_printf_clion.dir/libft/count_symbs.c.o: ../libft/count_symbs.c
+
 CMakeFiles/ft_printf_clion.dir/libft/fill_with.c.o: ../includes/libft.h
 CMakeFiles/ft_printf_clion.dir/libft/fill_with.c.o: ../libft/fill_with.c
+
+CMakeFiles/ft_printf_clion.dir/libft/ft_abs.c.o: ../includes/libft.h
+CMakeFiles/ft_printf_clion.dir/libft/ft_abs.c.o: ../libft/ft_abs.c
 
 CMakeFiles/ft_printf_clion.dir/libft/ft_atoi.c.o: ../includes/libft.h
 CMakeFiles/ft_printf_clion.dir/libft/ft_atoi.c.o: ../libft/ft_atoi.c
@@ -32,6 +38,11 @@ CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.o: ../includes/libft.h
 CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.o: ../includes/out_funcs.h
 CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.o: ../includes/parser.h
 CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.o: ../out_funcs/char_print.c
+
+CMakeFiles/ft_printf_clion.dir/out_funcs/digit_print.c.o: ../includes/libft.h
+CMakeFiles/ft_printf_clion.dir/out_funcs/digit_print.c.o: ../includes/out_funcs.h
+CMakeFiles/ft_printf_clion.dir/out_funcs/digit_print.c.o: ../includes/parser.h
+CMakeFiles/ft_printf_clion.dir/out_funcs/digit_print.c.o: ../out_funcs/digit_print.c
 
 CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.o: ../includes/libft.h
 CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.o: ../includes/out_funcs.h

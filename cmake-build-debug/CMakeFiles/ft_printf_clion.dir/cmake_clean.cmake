@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/ft_printf_clion.dir/ft_printf.c.o"
+  "CMakeFiles/ft_printf_clion.dir/libft/count_symbs.c.o"
   "CMakeFiles/ft_printf_clion.dir/libft/fill_with.c.o"
+  "CMakeFiles/ft_printf_clion.dir/libft/ft_abs.c.o"
   "CMakeFiles/ft_printf_clion.dir/libft/ft_atoi.c.o"
   "CMakeFiles/ft_printf_clion.dir/libft/ft_isdigit.c.o"
   "CMakeFiles/ft_printf_clion.dir/libft/ft_isspace.c.o"
@@ -9,6 +11,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/ft_printf_clion.dir/libft/ft_strlen.c.o"
   "CMakeFiles/ft_printf_clion.dir/main.c.o"
   "CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.o"
+  "CMakeFiles/ft_printf_clion.dir/out_funcs/digit_print.c.o"
   "CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.o"
   "CMakeFiles/ft_printf_clion.dir/out_funcs/pointer_print.c.o"
   "CMakeFiles/ft_printf_clion.dir/out_funcs/str_print.c.o"

@@ -20,7 +20,7 @@ void	str_print(char *str, int *total, t_specifier *specifier)
 		specifier->width = specifier->width - specifier->precision;
 	else
 		specifier->width = 0;
-	if (specifier->flags & (1 << MINUS_FLAG))
+	if (specifier->flags & MINUS_FLAG)
 	{
 		ft_putstr(str, specifier->precision);
 		fill_with(' ', specifier->width);

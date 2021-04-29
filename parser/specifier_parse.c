@@ -21,6 +21,10 @@ char	*parse_specifier(char *spec, va_list arg, int *total)
 		spec++;
 	}
 	else
+	{
+		write(1, "%", 1);
+		*total += 1;
 		return (spec_copy);
+	}
 	return (spec);
 }

@@ -5,7 +5,7 @@ void char_print(char c, int *total, t_specifier *specifier)
 	if (specifier->width)
 	{
 		specifier->width--;
-		if (specifier->flags & (1 << MINUS_FLAG))
+		if (specifier->flags & MINUS_FLAG)
 		{
 			write(1, &c, 1);
 			fill_with(' ', specifier->width);

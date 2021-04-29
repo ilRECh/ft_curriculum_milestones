@@ -7,11 +7,11 @@
 
 enum
 {
-	MINUS_FLAG = 0,
-	PLUS_FLAG = 1,
-	SPACE_FLAG = 2,
-	OCTAL_FLAG = 3,
-	ZERO_FLAG = 4,
+	MINUS_FLAG = 0b00000001,
+	PLUS_FLAG = 0b00000010,
+	SPACE_FLAG = 0b00000100,
+	OCTAL_FLAG = 0b00001000,
+	ZERO_FLAG = 0b00010000,
 	SPECIFIER_SIGN = '%',
 	WE_EXIST = 1
 };
@@ -19,10 +19,10 @@ enum
 typedef struct s_specifier
 {
 	uint8_t			flags;
-	int				width;
-	int				precision;
+	int32_t 		width;
+	int32_t			precision;
 	uint8_t			size;
-	char			type;
+	char 			type;
 } t_specifier;
 
 int		ft_vprintf(char *format, va_list vl);

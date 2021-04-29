@@ -19,7 +19,9 @@ LIBFT_LIST	=	ft_strchr.c\
 				ft_isspace.c\
 				ft_strlen.c\
 				fill_with.c\
-				ft_putnbr_base.c
+				count_symbs.c\
+				ft_putnbr_base.c\
+				ft_abs.c
 LIBFT_DIR		= ./libft/
 LIBFT			= $(addprefix $(LIBFT_DIR), $(LIBFT_LIST))
 
@@ -29,6 +31,8 @@ SRCS			= $(addprefix $(SRCS_DIR), $(SRCS_LIST))
 
 OUT_LIST	=	str_print.c\
 				char_print.c\
+				pointer_print.c\
+				digit_print.c\
 				out_funcs.c
 OUT_DIR			= ./out_funcs/
 OUT				= $(addprefix $(OUT_DIR), $(OUT_LIST))

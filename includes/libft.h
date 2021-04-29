@@ -60,5 +60,6 @@ t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),
 					void (*del)(void *));
 void			fill_with(char c, unsigned int amount);
 void			ft_putnbr_base(unsigned long nbr, uint8_t base, char *symbs);
+size_t			count_symbs(uint64_t nbr, uint8_t base);
 
 #endif
