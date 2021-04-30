@@ -44,6 +44,11 @@ CMakeFiles/ft_printf_clion.dir/out_funcs/digit_print.c.o: ../includes/out_funcs.
 CMakeFiles/ft_printf_clion.dir/out_funcs/digit_print.c.o: ../includes/parser.h
 CMakeFiles/ft_printf_clion.dir/out_funcs/digit_print.c.o: ../out_funcs/digit_print.c
 
+CMakeFiles/ft_printf_clion.dir/out_funcs/hex_print.c.o: ../includes/libft.h
+CMakeFiles/ft_printf_clion.dir/out_funcs/hex_print.c.o: ../includes/out_funcs.h
+CMakeFiles/ft_printf_clion.dir/out_funcs/hex_print.c.o: ../includes/parser.h
+CMakeFiles/ft_printf_clion.dir/out_funcs/hex_print.c.o: ../out_funcs/hex_print.c
+
 CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.o: ../includes/libft.h
 CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.o: ../includes/out_funcs.h
 CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.o: ../includes/parser.h
@@ -58,6 +63,11 @@ CMakeFiles/ft_printf_clion.dir/out_funcs/str_print.c.o: ../includes/libft.h
 CMakeFiles/ft_printf_clion.dir/out_funcs/str_print.c.o: ../includes/out_funcs.h
 CMakeFiles/ft_printf_clion.dir/out_funcs/str_print.c.o: ../includes/parser.h
 CMakeFiles/ft_printf_clion.dir/out_funcs/str_print.c.o: ../out_funcs/str_print.c
+
+CMakeFiles/ft_printf_clion.dir/out_funcs/u_digit_print.c.o: ../includes/libft.h
+CMakeFiles/ft_printf_clion.dir/out_funcs/u_digit_print.c.o: ../includes/out_funcs.h
+CMakeFiles/ft_printf_clion.dir/out_funcs/u_digit_print.c.o: ../includes/parser.h
+CMakeFiles/ft_printf_clion.dir/out_funcs/u_digit_print.c.o: ../out_funcs/u_digit_print.c
 
 CMakeFiles/ft_printf_clion.dir/parser/flags_parse.c.o: ../includes/libft.h
 CMakeFiles/ft_printf_clion.dir/parser/flags_parse.c.o: ../includes/parser.h

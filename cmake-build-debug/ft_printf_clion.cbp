@@ -133,6 +133,9 @@
 		<Unit filename="/home/name/Desktop/ft_printf_clion/out_funcs/digit_print.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
+		<Unit filename="/home/name/Desktop/ft_printf_clion/out_funcs/hex_print.c">
+			<Option target="ft_printf_clion"/>
+		</Unit>
 		<Unit filename="/home/name/Desktop/ft_printf_clion/out_funcs/out_funcs.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
@@ -140,6 +143,9 @@
 			<Option target="ft_printf_clion"/>
 		</Unit>
 		<Unit filename="/home/name/Desktop/ft_printf_clion/out_funcs/str_print.c">
+			<Option target="ft_printf_clion"/>
+		</Unit>
+		<Unit filename="/home/name/Desktop/ft_printf_clion/out_funcs/u_digit_print.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
 		<Unit filename="/home/name/Desktop/ft_printf_clion/parser/flags_parse.c">

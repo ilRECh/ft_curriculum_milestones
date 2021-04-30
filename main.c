@@ -84,5 +84,23 @@ int	main(void)
 
 	printf("ft_printf out symbs: %d;\n",
 		   ft_printf("%.0i\n", 0));
+	printf("\n\nUNSIGNED INT PRINT-------------------------------------------\n");
+	printf("printf out symbs: %d;\n\n",
+		   printf("%10.1u\n", 5));
+
+	printf("ft_printf out symbs: %d;\n",
+		   ft_printf("%10.1i\n", 5));
+	printf("\n\nHEX PRINT-------------------------------------------\n");
+	printf("printf out symbs: %d;\n\n",
+		   printf("%x\n", 23454));
+
+	printf("ft_printf out symbs: %d;\n",
+		   ft_printf("%x\n", 23454));
+	printf("\n\n-------------------------------------------\n");
+	printf("printf out symbs: %d;\n\n",
+		   printf("%#x\n", 0));
+
+	printf("ft_printf out symbs: %d;\n",
+		   ft_printf("%#x\n", 0));
 	return (0);
 }

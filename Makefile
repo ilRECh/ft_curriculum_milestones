@@ -33,6 +33,8 @@ OUT_LIST	=	str_print.c\
 				char_print.c\
 				pointer_print.c\
 				digit_print.c\
+				u_digit_print.c\
+				hex_print.c\
 				out_funcs.c
 OUT_DIR			= ./out_funcs/
 OUT				= $(addprefix $(OUT_DIR), $(OUT_LIST))
@@ -60,6 +62,8 @@ $(NAME): $(OBJS_DIR) $(OBJS)
 	@echo "$(NAME): $(GREEN)$(NAME) was created$(RESET)"
 
 all: $(NAME)
+
+bonus: all
 
 %.o : %.c $(HDRS)
 	$(GCC) $(FLAGS) $(INCLUDES) $< -o $@

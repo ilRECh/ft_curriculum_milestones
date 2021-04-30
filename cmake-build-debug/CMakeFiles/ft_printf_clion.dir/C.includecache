@@ -28,11 +28,7 @@ stdint.h
 unistd.h
 -
 
-/home/name/Desktop/ft_printf_clion/parser/specifier_parse.c
-parser.h
-/home/name/Desktop/ft_printf_clion/parser/parser.h
+/home/name/Desktop/ft_printf_clion/out_funcs/hex_print.c
 out_funcs.h
-/home/name/Desktop/ft_printf_clion/parser/out_funcs.h
-libft.h
-/home/name/Desktop/ft_printf_clion/parser/libft.h
+/home/name/Desktop/ft_printf_clion/out_funcs/out_funcs.h
 

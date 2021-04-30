@@ -34,7 +34,7 @@ set(
         out_funcs/char_print.c
         out_funcs/out_funcs.c
         out_funcs/str_print.c
-        out_funcs/pointer_print.c out_funcs/digit_print.c)
+        out_funcs/pointer_print.c out_funcs/digit_print.c out_funcs/u_digit_print.c out_funcs/hex_print.c)
 
 set(
         HDRS

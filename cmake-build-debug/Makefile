@@ -493,6 +493,33 @@ out_funcs/digit_print.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/digit_print.c.s
 .PHONY : out_funcs/digit_print.c.s
 
+out_funcs/hex_print.o: out_funcs/hex_print.c.o
+
+.PHONY : out_funcs/hex_print.o
+
+# target to build an object file
+out_funcs/hex_print.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/hex_print.c.o
+.PHONY : out_funcs/hex_print.c.o
+
+out_funcs/hex_print.i: out_funcs/hex_print.c.i
+
+.PHONY : out_funcs/hex_print.i
+
+# target to preprocess a source file
+out_funcs/hex_print.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/hex_print.c.i
+.PHONY : out_funcs/hex_print.c.i
+
+out_funcs/hex_print.s: out_funcs/hex_print.c.s
+
+.PHONY : out_funcs/hex_print.s
+
+# target to generate assembly for a file
+out_funcs/hex_print.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/hex_print.c.s
+.PHONY : out_funcs/hex_print.c.s
+
 out_funcs/out_funcs.o: out_funcs/out_funcs.c.o
 
 .PHONY : out_funcs/out_funcs.o
@@ -573,6 +600,33 @@ out_funcs/str_print.s: out_funcs/str_print.c.s
 out_funcs/str_print.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/str_print.c.s
 .PHONY : out_funcs/str_print.c.s
+
+out_funcs/u_digit_print.o: out_funcs/u_digit_print.c.o
+
+.PHONY : out_funcs/u_digit_print.o
+
+# target to build an object file
+out_funcs/u_digit_print.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/u_digit_print.c.o
+.PHONY : out_funcs/u_digit_print.c.o
+
+out_funcs/u_digit_print.i: out_funcs/u_digit_print.c.i
+
+.PHONY : out_funcs/u_digit_print.i
+
+# target to preprocess a source file
+out_funcs/u_digit_print.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/u_digit_print.c.i
+.PHONY : out_funcs/u_digit_print.c.i
+
+out_funcs/u_digit_print.s: out_funcs/u_digit_print.c.s
+
+.PHONY : out_funcs/u_digit_print.s
+
+# target to generate assembly for a file
+out_funcs/u_digit_print.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/u_digit_print.c.s
+.PHONY : out_funcs/u_digit_print.c.s
 
 parser/flags_parse.o: parser/flags_parse.c.o
 
@@ -784,6 +838,9 @@ help:
 	@echo "... out_funcs/digit_print.o"
 	@echo "... out_funcs/digit_print.i"
 	@echo "... out_funcs/digit_print.s"
+	@echo "... out_funcs/hex_print.o"
+	@echo "... out_funcs/hex_print.i"
+	@echo "... out_funcs/hex_print.s"
 	@echo "... out_funcs/out_funcs.o"
 	@echo "... out_funcs/out_funcs.i"
 	@echo "... out_funcs/out_funcs.s"
@@ -793,6 +850,9 @@ help:
 	@echo "... out_funcs/str_print.o"
 	@echo "... out_funcs/str_print.i"
 	@echo "... out_funcs/str_print.s"
+	@echo "... out_funcs/u_digit_print.o"
+	@echo "... out_funcs/u_digit_print.i"
+	@echo "... out_funcs/u_digit_print.s"
 	@echo "... parser/flags_parse.o"
 	@echo "... parser/flags_parse.i"
 	@echo "... parser/flags_parse.s"
