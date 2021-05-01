@@ -19,10 +19,10 @@ void	pointer_print(void *ptr, int *total, t_specifier *specifier)
 	if (specifier->width - 2 < specifier->precision)
 		specifier->width = specifier->precision + 2;
 	if (!(specifier->flags & MINUS_FLAG))
-		fill_with(' ',specifier->width - 2 - specifier->precision);
+		fill_with(' ', specifier->width - 2 - specifier->precision);
 	write(1, "0x", 2);
 	fill_with('0', specifier->precision - symbs_amount);
-	ft_putnbr_base((uint64_t )ptr, 16, "0123456789abcdef");
+	ft_putnbr_base((uint64_t)ptr, 16, "0123456789abcdef");
 	if (specifier->flags & MINUS_FLAG)
 		fill_with(' ', specifier->width - 2 - specifier->precision);
 	*total += specifier->width;

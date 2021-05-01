@@ -6,29 +6,11 @@
 
 #IncludeRegexTransform: 
 
-../includes/libft.h
-stdlib.h
--
-unistd.h
--
-stdint.h
--
+/Users/vcobbler/Desktop/projects/ft_printf/includes/ft_stdio.h
 
-../includes/out_funcs.h
-parser.h
-../includes/parser.h
-libft.h
-../includes/libft.h
-
-../includes/parser.h
-stdarg.h
+/Users/vcobbler/Desktop/projects/ft_printf/main.c
+stdio.h
 -
-stdint.h
--
-unistd.h
--
-
-/home/name/Desktop/ft_printf_clion/out_funcs/hex_print.c
-out_funcs.h
-/home/name/Desktop/ft_printf_clion/out_funcs/out_funcs.h
+includes/ft_stdio.h
+/Users/vcobbler/Desktop/projects/ft_printf/includes/ft_stdio.h
 

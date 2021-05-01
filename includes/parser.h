@@ -19,11 +19,11 @@ enum
 typedef struct s_specifier
 {
 	uint8_t			flags;
-	int32_t 		width;
+	int32_t			width;
 	int32_t			precision;
 	uint8_t			size;
-	char 			type;
-} t_specifier;
+	char			type;
+}	t_specifier;
 
 int		ft_vprintf(char *format, va_list vl);
 char	*parse_specifier(char *spec, va_list arg, int *total);

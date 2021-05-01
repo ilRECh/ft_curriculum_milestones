@@ -14,9 +14,9 @@ void	u_digit_print(uint32_t nbr, int *total, t_specifier *specifier)
 	if (specifier->width < specifier->precision)
 		specifier->width = specifier->precision;
 	if (!(specifier->flags & MINUS_FLAG) && specifier->width > symbs_amount)
-		fill_with(' ',specifier->width - specifier->precision);
+		fill_with(' ', specifier->width - specifier->precision);
 	fill_with('0', (specifier->precision > symbs_amount)
-				   * (specifier->precision - symbs_amount));
+		* (specifier->precision - symbs_amount));
 	if (specifier->precision || nbr)
 		ft_putnbr_base(nbr, 10, "0123456789");
 	if (specifier->flags & MINUS_FLAG)

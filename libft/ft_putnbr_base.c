@@ -1,6 +1,6 @@
 #include "libft.h"
 
-void    ft_putnbr_base(unsigned long nbr, uint8_t base, char *symbs)
+void	ft_putnbr_base(unsigned long nbr, uint8_t base, char *symbs)
 {
 	if (nbr < base)
 		write(1, symbs + nbr, 1);

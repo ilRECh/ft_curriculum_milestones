@@ -1,6 +1,6 @@
 #include "out_funcs.h"
 
-void char_print(char c, int *total, t_specifier *specifier)
+void	char_print(char c, int *total, t_specifier *specifier)
 {
 	if (specifier->width)
 	{
