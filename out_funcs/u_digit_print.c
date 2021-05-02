@@ -1,6 +1,6 @@
 #include "out_funcs.h"
 
-void	u_digit_print(uint32_t nbr, int *total, t_specifier *specifier)
+void	u_digit_print(uint64_t nbr, int *total, t_specifier *specifier)
 {
 	uint8_t	symbs_amount;
 

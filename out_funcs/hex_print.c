@@ -1,7 +1,7 @@
 #include "out_funcs.h"
 
 static void	spec_init(t_specifier *specifier,
-					  uint32_t *nbr, uint8_t *symbs_amount)
+					  uint64_t const *nbr, uint8_t const *symbs_amount)
 {
 	uint8_t	oct_flag;
 
@@ -15,7 +15,7 @@ static void	spec_init(t_specifier *specifier,
 }
 
 static void	print_space(t_specifier *specifier,
-						uint32_t *nbr, uint8_t *symbs_amount)
+						uint64_t const *nbr, uint8_t const *symbs_amount)
 {
 	int32_t	correction;
 	uint8_t	flag_correction;
@@ -30,7 +30,7 @@ static void	print_space(t_specifier *specifier,
 			- correction * (specifier->precision != 0 || *nbr != 0));
 }
 
-void	hex_print(uint32_t nbr, int *total, t_specifier *specifier)
+void	hex_print(uint64_t nbr, int *total, t_specifier *specifier)
 {
 	uint8_t	symbs_amount;
 

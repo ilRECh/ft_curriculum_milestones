@@ -1,6 +1,7 @@
 #include "out_funcs.h"
 
-static void	put_flag_symbol(int *nbr, int *total, t_specifier *specifier)
+static void	put_flag_symbol(int64_t const *nbr,
+							int *total, t_specifier *specifier)
 {
 	char	c;
 
@@ -15,12 +16,12 @@ static void	put_flag_symbol(int *nbr, int *total, t_specifier *specifier)
 	}
 }
 
-void	digit_print(int nbr, int *total, t_specifier *specifier)
+void	digit_print(int64_t nbr, int *total, t_specifier *specifier)
 {
 	uint8_t		symbs_amount;
-	uint32_t	u_nbr;
+	uint64_t	u_nbr;
 
-	u_nbr = ft_abs((uint32_t)nbr);
+	u_nbr = nbr * (-1 * (nbr < 0)) + nbr * (nbr >= 0);
 	symbs_amount = count_symbs(u_nbr, 10);
 	if (specifier->width > specifier->precision && (nbr < 0
 			|| (specifier->flags & PLUS_FLAG) || (specifier->flags & SPACE_FLAG)))

@@ -56,8 +56,8 @@ GREEN = \033[0;32m
 RED = \033[0;31m
 RESET = \033[0m
 
-$(NAME): $(OBJS_DIR) $(OBJS)
-	$(AR) $(NAME) $(OBJS)
+$(NAME): $(OBJS)
+	@$(AR) $(NAME) $(OBJS)
 	@echo "\n$(NAME): $(GREEN)object files were created$(RESET)"
 	@echo "$(NAME): $(GREEN)$(NAME) was created$(RESET)"
 
@@ -66,20 +66,15 @@ all: $(NAME)
 bonus: all
 
 %.o : %.c $(HDRS)
-	$(GCC) $(FLAGS) $(INCLUDES) $< -o $@
+	@$(GCC) $(FLAGS) $(INCLUDES) $< -o $@
 	@echo "$(GREEN).$(RESET)\c"
 
-$(OBJS_DIR):
-	@mkdir -p $(OBJS_DIR)
-	@echo "$(NAME): $(GREEN)$(OBJS_DIR) was created$(RESET)"
-
 clean:
-	$(RM) $(OBJS)
-	@echo "$(NAME): $(RED)$(OBJS_DIR) was deleted$(RESET)"
+	@$(RM) $(OBJS)
 	@echo "$(NAME): $(RED)object files were deleted$(RESET)"
 
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME) $(OBJS_DIR)
 	@echo "$(NAME): $(RED)$(NAME) was deleted$(RESET)"
 
 re: fclean all

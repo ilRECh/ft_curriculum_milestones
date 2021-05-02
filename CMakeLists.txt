@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.17)
+cmake_minimum_required(VERSION 3.19)
 project(ft_printf_clion C)
 
 set(CMAKE_C_STANDARD 99)
@@ -34,7 +34,10 @@ set(
         out_funcs/char_print.c
         out_funcs/out_funcs.c
         out_funcs/str_print.c
-        out_funcs/pointer_print.c out_funcs/digit_print.c out_funcs/u_digit_print.c out_funcs/hex_print.c)
+        out_funcs/pointer_print.c
+        out_funcs/digit_print.c
+        out_funcs/u_digit_print.c
+        out_funcs/hex_print.c)
 
 set(
         HDRS

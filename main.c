@@ -3,7 +3,9 @@
 
 int	main(void)
 {
-	printf("printf:\t%d\n", printf("(null)\n", (char)0));
-	printf("ft_printf:\t%d\n", ft_printf("(null)\n"), (char)0);
+	printf("printf:\t%d\n",
+		printf("%--2.4s!\n",NULL));
+	printf("ft_printf:\t%d\n",
+		ft_printf("%--2.4s!\n",NULL));
 	return (0);
 }
