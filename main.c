@@ -38,13 +38,14 @@ int	main(void)
 		   ft_printf("%10.0f\n", n));
 
 
-	double b = 0.45234523451234125;
+	double b = 0.4523452999999;
 	printf("------------------------------------------\n");
-	printf("%.10g\n", b);
+	printf("%#.12g\n", b);
 	write(1,"0.",2);
 	int j = -1;
 	char c;
-	while (++j < 10)
+	b += 0.000000000001;
+	while (++j < 12)
 	{
 		c = (char)(b * 10) + '0';
 		write(1, &c, 1);
