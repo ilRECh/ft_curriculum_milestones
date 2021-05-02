@@ -1,6 +1,6 @@
 #include "out_funcs.h"
 
-void	pointer_print(void *ptr, int *total, t_specifier *specifier)
+void	pointer_print(uint64_t *ptr, int *total, t_specifier *specifier)
 {
 	uint8_t	symbs_amount;
 

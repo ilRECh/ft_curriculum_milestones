@@ -55,11 +55,11 @@ void	out_funcs(va_list arg, int *total, t_specifier *specifier)
 	else if (specifier->type == '%' && write(1, "%", 1))
 		*total += 1;
 	else if (specifier->type == 'n')
-		;
+		*va_arg(arg, int *) = *total;
 	else if (specifier->type == 'f')
 		;
 	else if (specifier->type == 'g')
 		;
 	else if (specifier->type == 'e')
-		;
+		(void)0;
 }
