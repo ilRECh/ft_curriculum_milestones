@@ -11,8 +11,9 @@ void	str_print(char *str, int *total, t_specifier *specifier)
 	if (!str)
 	{
 		if (specifier->precision > 0 && specifier->precision < 6)
-			return ;
-		str = "(null)";
+			str = "";
+		else
+			str = "(null)";
 	}
 	if (specifier->precision > (int)ft_strlen(str) || specifier->precision < 0)
 		specifier->precision = ft_strlen(str);

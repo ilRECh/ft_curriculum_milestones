@@ -35,7 +35,7 @@ static void	digit_out_func(va_list arg, int *total, t_specifier *specifier)
 	else if (specifier->size & H_TYPE)
 		digit_print((short int)va_arg(arg, int32_t), total, specifier);
 	else if (specifier->size & HH_TYPE)
-		digit_print((signed char) va_arg(arg, int32_t), total, specifier);
+		digit_print((char) va_arg(arg, int32_t), total, specifier);
 }
 
 void	out_funcs(va_list arg, int *total, t_specifier *specifier)
