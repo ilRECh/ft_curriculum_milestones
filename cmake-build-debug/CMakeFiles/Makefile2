@@ -93,12 +93,12 @@ clean: CMakeFiles/ft_printf_clion.dir/clean
 CMakeFiles/ft_printf_clion.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25 "Built target ft_printf_clion"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27 "Built target ft_printf_clion"
 .PHONY : CMakeFiles/ft_printf_clion.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/ft_printf_clion.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles 25
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles 27
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/ft_printf_clion.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/ft_printf_clion.dir/rule

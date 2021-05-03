@@ -493,6 +493,60 @@ out_funcs/digit_print.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/digit_print.c.s
 .PHONY : out_funcs/digit_print.c.s
 
+out_funcs/f_print.o: out_funcs/f_print.c.o
+
+.PHONY : out_funcs/f_print.o
+
+# target to build an object file
+out_funcs/f_print.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/f_print.c.o
+.PHONY : out_funcs/f_print.c.o
+
+out_funcs/f_print.i: out_funcs/f_print.c.i
+
+.PHONY : out_funcs/f_print.i
+
+# target to preprocess a source file
+out_funcs/f_print.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/f_print.c.i
+.PHONY : out_funcs/f_print.c.i
+
+out_funcs/f_print.s: out_funcs/f_print.c.s
+
+.PHONY : out_funcs/f_print.s
+
+# target to generate assembly for a file
+out_funcs/f_print.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/f_print.c.s
+.PHONY : out_funcs/f_print.c.s
+
+out_funcs/fge_special_cases.o: out_funcs/fge_special_cases.c.o
+
+.PHONY : out_funcs/fge_special_cases.o
+
+# target to build an object file
+out_funcs/fge_special_cases.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/fge_special_cases.c.o
+.PHONY : out_funcs/fge_special_cases.c.o
+
+out_funcs/fge_special_cases.i: out_funcs/fge_special_cases.c.i
+
+.PHONY : out_funcs/fge_special_cases.i
+
+# target to preprocess a source file
+out_funcs/fge_special_cases.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/fge_special_cases.c.i
+.PHONY : out_funcs/fge_special_cases.c.i
+
+out_funcs/fge_special_cases.s: out_funcs/fge_special_cases.c.s
+
+.PHONY : out_funcs/fge_special_cases.s
+
+# target to generate assembly for a file
+out_funcs/fge_special_cases.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/fge_special_cases.c.s
+.PHONY : out_funcs/fge_special_cases.c.s
+
 out_funcs/hex_print.o: out_funcs/hex_print.c.o
 
 .PHONY : out_funcs/hex_print.o
@@ -838,6 +892,12 @@ help:
 	@echo "... out_funcs/digit_print.o"
 	@echo "... out_funcs/digit_print.i"
 	@echo "... out_funcs/digit_print.s"
+	@echo "... out_funcs/f_print.o"
+	@echo "... out_funcs/f_print.i"
+	@echo "... out_funcs/f_print.s"
+	@echo "... out_funcs/fge_special_cases.o"
+	@echo "... out_funcs/fge_special_cases.i"
+	@echo "... out_funcs/fge_special_cases.s"
 	@echo "... out_funcs/hex_print.o"
 	@echo "... out_funcs/hex_print.i"
 	@echo "... out_funcs/hex_print.s"

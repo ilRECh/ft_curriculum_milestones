@@ -32,6 +32,9 @@ CMakeFiles/ft_printf_clion.dir/libft/ft_strlen.c.o
  ../includes/libft.h
  /home/name/Desktop/ft_printf_clion/libft/ft_strlen.c
 CMakeFiles/ft_printf_clion.dir/main.c.o
+ ../includes/libft.h
+ ../includes/out_funcs.h
+ ../includes/parser.h
  /home/name/Desktop/ft_printf_clion/includes/ft_stdio.h
  /home/name/Desktop/ft_printf_clion/main.c
 CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.o
@@ -44,6 +47,16 @@ CMakeFiles/ft_printf_clion.dir/out_funcs/digit_print.c.o
  ../includes/out_funcs.h
  ../includes/parser.h
  /home/name/Desktop/ft_printf_clion/out_funcs/digit_print.c
+CMakeFiles/ft_printf_clion.dir/out_funcs/f_print.c.o
+ ../includes/libft.h
+ ../includes/out_funcs.h
+ ../includes/parser.h
+ /home/name/Desktop/ft_printf_clion/out_funcs/f_print.c
+CMakeFiles/ft_printf_clion.dir/out_funcs/fge_special_cases.c.o
+ ../includes/libft.h
+ ../includes/out_funcs.h
+ ../includes/parser.h
+ /home/name/Desktop/ft_printf_clion/out_funcs/fge_special_cases.c
 CMakeFiles/ft_printf_clion.dir/out_funcs/hex_print.c.o
  ../includes/libft.h
  ../includes/out_funcs.h

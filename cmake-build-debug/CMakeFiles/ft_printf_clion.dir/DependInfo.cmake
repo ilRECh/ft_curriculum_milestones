@@ -17,6 +17,8 @@ set(CMAKE_DEPENDS_CHECK_C
   "/home/name/Desktop/ft_printf_clion/main.c" "/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles/ft_printf_clion.dir/main.c.o"
   "/home/name/Desktop/ft_printf_clion/out_funcs/char_print.c" "/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.o"
   "/home/name/Desktop/ft_printf_clion/out_funcs/digit_print.c" "/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles/ft_printf_clion.dir/out_funcs/digit_print.c.o"
+  "/home/name/Desktop/ft_printf_clion/out_funcs/f_print.c" "/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles/ft_printf_clion.dir/out_funcs/f_print.c.o"
+  "/home/name/Desktop/ft_printf_clion/out_funcs/fge_special_cases.c" "/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles/ft_printf_clion.dir/out_funcs/fge_special_cases.c.o"
   "/home/name/Desktop/ft_printf_clion/out_funcs/hex_print.c" "/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles/ft_printf_clion.dir/out_funcs/hex_print.c.o"
   "/home/name/Desktop/ft_printf_clion/out_funcs/out_funcs.c" "/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.o"
   "/home/name/Desktop/ft_printf_clion/out_funcs/pointer_print.c" "/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles/ft_printf_clion.dir/out_funcs/pointer_print.c.o"
