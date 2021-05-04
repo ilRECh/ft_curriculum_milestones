@@ -12,7 +12,10 @@ void	char_print(char c, int *total, t_specifier *specifier)
 		}
 		else
 		{
-			fill_with(' ', specifier->width);
+			if (specifier->type == '%' && (specifier->flags & ZERO_FLAG))
+				fill_with('0', specifier->width);
+			else
+				fill_with(' ', specifier->width);
 			write(1, &c, 1);
 		}
 	}

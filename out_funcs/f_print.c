@@ -58,7 +58,8 @@ void	print_prefix_space(t_specifier *specifier, uint8_t *symbs_amount,
 		fill_with(' ', specifier->width - *symbs_amount);
 		put_flag_symbol(nbr, specifier);
 	}
-	else if (!(specifier->flags & MINUS_FLAG) && (specifier->width > *symbs_amount))
+	else if (!(specifier->flags & MINUS_FLAG)
+		&& (specifier->width > *symbs_amount))
 	{
 		put_flag_symbol(nbr, specifier);
 		fill_with('0', specifier->width - *symbs_amount);

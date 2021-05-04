@@ -3,6 +3,13 @@
 static void	spec_init(t_specifier *specifier,
 					  int64_t const *nbr, uint8_t const *symbs_amount)
 {
+	if (specifier->width < 0)
+	{
+		specifier->width *= -1;
+		specifier->flags |= MINUS_FLAG;
+		if (specifier->flags & ZERO_FLAG)
+			specifier->flags ^= ZERO_FLAG;
+	}
 	if (specifier->width > specifier->precision && (*nbr < 0
 		|| (specifier->flags & PLUS_FLAG) || (specifier->flags & SPACE_FLAG)))
 		specifier->width--;

@@ -3,7 +3,7 @@
 int	ft_printf(char *format, ...)
 {
 	va_list	vl;
-	int	total;
+	int		total;
 
 	va_start(vl, format);
 	total = ft_vprintf(format, vl);

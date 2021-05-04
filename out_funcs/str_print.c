@@ -1,5 +1,20 @@
 #include "out_funcs.h"
 
+static void	spec_init(char *str, t_specifier *specifier)
+{
+	if (specifier->width < 0)
+	{
+		specifier->width *= -1;
+		specifier->flags |= MINUS_FLAG;
+	}
+	if (specifier->precision > (int)ft_strlen(str) || specifier->precision < 0)
+		specifier->precision = ft_strlen(str);
+	if (specifier->width > specifier->precision)
+		specifier->width = specifier->width - specifier->precision;
+	else
+		specifier->width = 0;
+}
+
 static void	ft_putstr(const char *s, unsigned int length)
 {
 	while (length--)
@@ -9,18 +24,8 @@ static void	ft_putstr(const char *s, unsigned int length)
 void	str_print(char *str, int *total, t_specifier *specifier)
 {
 	if (!str)
-	{
-		if (specifier->precision > 0 && specifier->precision < 6)
-			str = "";
-		else
-			str = "(null)";
-	}
-	if (specifier->precision > (int)ft_strlen(str) || specifier->precision < 0)
-		specifier->precision = ft_strlen(str);
-	if (specifier->width > specifier->precision)
-		specifier->width = specifier->width - specifier->precision;
-	else
-		specifier->width = 0;
+		str = "(null)";
+	spec_init(str, specifier);
 	if (specifier->flags & MINUS_FLAG)
 	{
 		ft_putstr(str, specifier->precision);
@@ -28,7 +33,8 @@ void	str_print(char *str, int *total, t_specifier *specifier)
 	}
 	else
 	{
-		fill_with(' ', specifier->width);
+		fill_with('0' * ((specifier->flags & ZERO_FLAG) != 0)
+				  + ' ' * ((specifier->flags & ZERO_FLAG) == 0), specifier->width);
 		ft_putstr(str, specifier->precision);
 	}
 	*total += specifier->precision + specifier->width;

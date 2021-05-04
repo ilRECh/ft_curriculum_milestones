@@ -14,7 +14,7 @@ char	*parse_specifier(char *spec, va_list arg, int *total)
 	spec = width_parse(spec, &specifier, arg);
 	spec = precision_parse(spec, &specifier, arg);
 	spec = size_parse(spec, &specifier);
-	if (ft_strchr(types_set, *spec))
+	if (*spec && ft_strchr(types_set, *spec))
 	{
 		specifier.type = *ft_strchr(types_set, *spec);
 		out_funcs(arg, total, &specifier);

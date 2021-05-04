@@ -26,6 +26,11 @@ int	main(void)
 		   ft_printf("%0.6f\n", n));
 	printf("------------------------------------------\n");
 	printf("printf:\t%d\n",
+		   printf("%0.6f\n", n));
+	printf("ft_printf:\t%d - %%0.6f\n",
+		   ft_printf("%0.6f\n", n));
+	printf("------------------------------------------\n");
+	printf("printf:\t%d\n",
 		   printf("%6.0f\n", n));
 	printf("ft_printf:\t%d - %%6.0f\n",
 		   ft_printf("%6.0f\n", n));
@@ -130,8 +135,14 @@ int	main(void)
 		   ft_printf("%.15g\n", n));
 	printf("------------------------------------------\n");
 	printf("printf:\t%d\n",
-		   printf("%10g\n", n));
-	printf("ft_printf:\t%d - %%10g, n = inf\n",
-		   ft_printf("%10g\n", n));
+		   printf("%+- 07.06s\n", "hi low"));
+	printf("ft_printf:\t%d - %%+- 07.06s, n = inf\n",
+		   ft_printf("%+- 07.06s\n", "hi low"));
+	printf("------------------------------------------\n");
+	printf("%hh", 82);
+	printf("printf:\t%d\n",
+		   printf("%hh"));
+	printf("ft_printf:\t%d - %%hh\n",
+		   ft_printf("%hh"));
 	return (0);
 }

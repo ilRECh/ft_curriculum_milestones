@@ -52,8 +52,8 @@ void	out_funcs(va_list arg, int *total, t_specifier *specifier)
 		u_digit_out_func(arg, total, specifier);
 	else if (specifier->type == 'x' || specifier->type == 'X')
 		hex_digit_out_func(arg, total, specifier);
-	else if (specifier->type == '%' && write(1, "%", 1))
-		*total += 1;
+	else if (specifier->type == '%')
+		char_print('%', total, specifier);
 	else if (specifier->type == 'n')
 		*va_arg(arg, int *) = *total;
 	else if (specifier->type == 'f')
