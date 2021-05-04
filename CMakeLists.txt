@@ -37,7 +37,7 @@ set(
         out_funcs/pointer_print.c
         out_funcs/digit_print.c
         out_funcs/u_digit_print.c
-        out_funcs/hex_print.c out_funcs/f_print.c out_funcs/fge_special_cases.c)
+        out_funcs/hex_print.c out_funcs/f_print.c out_funcs/fge_special_cases.c out_funcs/e_print.c out_funcs/g_print.c)
 
 set(
         HDRS

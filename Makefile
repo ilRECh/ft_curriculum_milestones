@@ -36,6 +36,8 @@ OUT_LIST	=	str_print.c\
 				u_digit_print.c\
 				hex_print.c\
 				f_print.c\
+				e_print.c\
+				g_print.c\
 				fge_special_cases.c\
 				out_funcs.c
 OUT_DIR			= ./out_funcs/

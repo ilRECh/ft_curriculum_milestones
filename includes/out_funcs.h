@@ -22,7 +22,11 @@ void	pointer_print(uint64_t *ptr, int32_t *total, t_specifier *specifier);
 void	digit_print(int64_t nbr, int32_t *total, t_specifier *specifier);
 void	u_digit_print(uint64_t nbr, int32_t *total, t_specifier *specifier);
 void	hex_print(uint64_t nbr, int32_t *total, t_specifier *specifier);
-void	f_print(double nbr, int32_t *total, t_specifier *specifier);
-uint8_t	fge_special_cases(double *nbr, int32_t *total, t_specifier *specifier);
+void	f_print(double nbr, int32_t *total, t_specifier *specifier,
+			 char *if_e_print);
+void	e_print(double nbr, int32_t *total, t_specifier *specifier);
+void	g_print(double nbr, int32_t *total, t_specifier *specifier);
+uint8_t	fge_special_cases(double const *nbr,
+						  int32_t *total, t_specifier *specifier);
 
 #endif

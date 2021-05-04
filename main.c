@@ -17,17 +17,8 @@ void in_bin(uint64_t d, unsigned int n)
 int	main(void)
 {
 	double n;
-	double m;
-	int l;
 
-	n = 3.1415;
-	l = (int)n;
-	m = n - (double)l;
-	printf("------------------------------------------\n");
-	printf("printf:\t%d\n",
-		printf("%f | %i | %f\n", n, l, m));
-	printf("ft_printf:\t%d\n",
-		ft_printf("%f | %i | %f\n", n, l, m));
+	n = 7523974.58347 / 0;
 	printf("------------------------------------------\n");
 	printf("printf:\t%d\n",
 		   printf("%0.6f\n", n));
@@ -87,7 +78,6 @@ int	main(void)
 		   printf("% .1f\n", n * (-1)));
 	printf("ft_printf:\t%d - %% .1f\n",
 		   ft_printf("% .1f\n", n * (-1)));
-	n = 3.1415 / 0;
 	printf("------------------------------------------\n");
 	printf("printf:\t%d\n",
 		   printf("%010.0f\n", n));
@@ -98,7 +88,50 @@ int	main(void)
 		   printf("% f\n", n));
 	printf("ft_printf:\t%d - %%010.0f, n = inf\n",
 		   ft_printf("% f\n", n));
+	printf("------------------------------------------\n");
+	printf("printf:\t%d\n",
+		   printf("%-10f\n", n));
+	printf("ft_printf:\t%d - %%-10f, n = inf\n",
+		   ft_printf("%-10f\n", n));
+	printf("------------------------------------------\n");
+	printf("printf:\t%d\n",
+		   printf("%e\n", n));
+	printf("ft_printf:\t%d - %%e, n = inf\n",
+		   ft_printf("%e\n", n));
+	printf("------------------------------------------\n");
+	printf("printf:\t%d\n",
+		   printf("%10e\n", n));
+	printf("ft_printf:\t%d - %%10e, n = inf\n",
+		   ft_printf("%10e\n", n));
+	printf("------------------------------------------\n");
+	printf("printf:\t%d\n",
+		   printf("%-40.10e\n", n));
+	printf("ft_printf:\t%d - %%-40.10e, n = inf\n",
+		   ft_printf("%-40.10e\n", n));
+	printf("------------------------------------------\n");
+	printf("printf:\t%d\n",
+		   printf("%-13e\n", n));
+	printf("ft_printf:\t%d - %%.2e, n = inf\n",
+		   ft_printf("%-13e\n", n));
+	printf("------------------------------------------\n");
+	printf("printf:\t%d\n",
+		   printf("%g\n", n));
+	printf("ft_printf:\t%d - %%g, n = inf\n",
+		   ft_printf("%g\n", n));
+	printf("------------------------------------------\n");
+	printf("printf:\t%d\n",
+		   printf("%.8g\n", n));
+	printf("ft_printf:\t%d - %%.8g, n = inf\n",
+		   ft_printf("%.8g\n", n));
+	printf("------------------------------------------\n");
+	printf("printf:\t%d\n",
+		   printf("%.15g\n", n));
+	printf("ft_printf:\t%d - %%.15g, n = inf\n",
+		   ft_printf("%.15g\n", n));
+	printf("------------------------------------------\n");
+	printf("printf:\t%d\n",
+		   printf("%10g\n", n));
+	printf("ft_printf:\t%d - %%10g, n = inf\n",
+		   ft_printf("%10g\n", n));
 	return (0);
 }
-//1100000010000011000100100110111111000000100000110001001001101111
-//1100000010000011000100100110111111000000100000110001001001101111

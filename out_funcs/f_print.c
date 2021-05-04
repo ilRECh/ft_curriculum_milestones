@@ -13,14 +13,14 @@ static void	spec_init(t_specifier *specifier,
 }
 
 static void	print_decimal(t_specifier *specifier,
-						   double const *u_nbr)
+						   double *u_nbr)
 {
 	double	decimal;
 	double	correction;
 	uint8_t iter_1;
 	char	c;
 
-	decimal = *u_nbr - (double)((int)*u_nbr);
+	decimal = *u_nbr - (double)((uint64_t)*u_nbr);
 	correction = 5.f;
 	specifier->precision++;
 	iter_1 = -1;
@@ -33,7 +33,7 @@ static void	print_decimal(t_specifier *specifier,
 	{
 		c = (char)(decimal * 10) + '0';
 		write(1, &c, 1);
-		decimal = decimal * 10 - (double)((int)(decimal * 10));
+		decimal = decimal * 10 - (double)((uint64_t)(decimal * 10));
 	}
 }
 
@@ -67,7 +67,8 @@ void	print_prefix_space(t_specifier *specifier, uint8_t *symbs_amount,
 		put_flag_symbol(nbr, specifier);
 }
 
-void	f_print(double nbr, int32_t *total, t_specifier *specifier)
+void	f_print(double nbr, int32_t *total, t_specifier *specifier,
+			 char *if_e_print)
 {
 	uint8_t	symbs_amount;
 	double	u_nbr;
@@ -83,6 +84,12 @@ void	f_print(double nbr, int32_t *total, t_specifier *specifier)
 	{
 		write(1, ".", 1);
 		print_decimal(specifier, &u_nbr);
+	}
+	if (if_e_print && write(1, if_e_print, 2))
+	{
+		if (if_e_print[3] < 10)
+			write(1, "0", 1);
+		ft_putnbr_base(if_e_print[3], 10, "0123456789");
 	}
 	if (specifier->flags & MINUS_FLAG && (specifier->width > symbs_amount))
 		fill_with(' ', specifier->width - symbs_amount);

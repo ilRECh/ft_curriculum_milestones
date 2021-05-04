@@ -414,6 +414,32 @@ CMakeFiles/ft_printf_clion.dir/out_funcs/fge_special_cases.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_printf_clion.dir/out_funcs/fge_special_cases.c.s"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/name/Desktop/ft_printf_clion/out_funcs/fge_special_cases.c -o CMakeFiles/ft_printf_clion.dir/out_funcs/fge_special_cases.c.s
 
+CMakeFiles/ft_printf_clion.dir/out_funcs/e_print.c.o: CMakeFiles/ft_printf_clion.dir/flags.make
+CMakeFiles/ft_printf_clion.dir/out_funcs/e_print.c.o: ../out_funcs/e_print.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/e_print.c.o"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf_clion.dir/out_funcs/e_print.c.o -c /home/name/Desktop/ft_printf_clion/out_funcs/e_print.c
+
+CMakeFiles/ft_printf_clion.dir/out_funcs/e_print.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ft_printf_clion.dir/out_funcs/e_print.c.i"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/name/Desktop/ft_printf_clion/out_funcs/e_print.c > CMakeFiles/ft_printf_clion.dir/out_funcs/e_print.c.i
+
+CMakeFiles/ft_printf_clion.dir/out_funcs/e_print.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_printf_clion.dir/out_funcs/e_print.c.s"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/name/Desktop/ft_printf_clion/out_funcs/e_print.c -o CMakeFiles/ft_printf_clion.dir/out_funcs/e_print.c.s
+
+CMakeFiles/ft_printf_clion.dir/out_funcs/g_print.c.o: CMakeFiles/ft_printf_clion.dir/flags.make
+CMakeFiles/ft_printf_clion.dir/out_funcs/g_print.c.o: ../out_funcs/g_print.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/g_print.c.o"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf_clion.dir/out_funcs/g_print.c.o -c /home/name/Desktop/ft_printf_clion/out_funcs/g_print.c
+
+CMakeFiles/ft_printf_clion.dir/out_funcs/g_print.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ft_printf_clion.dir/out_funcs/g_print.c.i"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/name/Desktop/ft_printf_clion/out_funcs/g_print.c > CMakeFiles/ft_printf_clion.dir/out_funcs/g_print.c.i
+
+CMakeFiles/ft_printf_clion.dir/out_funcs/g_print.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_printf_clion.dir/out_funcs/g_print.c.s"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/name/Desktop/ft_printf_clion/out_funcs/g_print.c -o CMakeFiles/ft_printf_clion.dir/out_funcs/g_print.c.s
+
 # Object files for target ft_printf_clion
 ft_printf_clion_OBJECTS = \
 "CMakeFiles/ft_printf_clion.dir/ft_printf.c.o" \
@@ -441,7 +467,9 @@ ft_printf_clion_OBJECTS = \
 "CMakeFiles/ft_printf_clion.dir/out_funcs/u_digit_print.c.o" \
 "CMakeFiles/ft_printf_clion.dir/out_funcs/hex_print.c.o" \
 "CMakeFiles/ft_printf_clion.dir/out_funcs/f_print.c.o" \
-"CMakeFiles/ft_printf_clion.dir/out_funcs/fge_special_cases.c.o"
+"CMakeFiles/ft_printf_clion.dir/out_funcs/fge_special_cases.c.o" \
+"CMakeFiles/ft_printf_clion.dir/out_funcs/e_print.c.o" \
+"CMakeFiles/ft_printf_clion.dir/out_funcs/g_print.c.o"
 
 # External object files for target ft_printf_clion
 ft_printf_clion_EXTERNAL_OBJECTS =
@@ -472,9 +500,11 @@ ft_printf_clion: CMakeFiles/ft_printf_clion.dir/out_funcs/u_digit_print.c.o
 ft_printf_clion: CMakeFiles/ft_printf_clion.dir/out_funcs/hex_print.c.o
 ft_printf_clion: CMakeFiles/ft_printf_clion.dir/out_funcs/f_print.c.o
 ft_printf_clion: CMakeFiles/ft_printf_clion.dir/out_funcs/fge_special_cases.c.o
+ft_printf_clion: CMakeFiles/ft_printf_clion.dir/out_funcs/e_print.c.o
+ft_printf_clion: CMakeFiles/ft_printf_clion.dir/out_funcs/g_print.c.o
 ft_printf_clion: CMakeFiles/ft_printf_clion.dir/build.make
 ft_printf_clion: CMakeFiles/ft_printf_clion.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Linking C executable ft_printf_clion"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Linking C executable ft_printf_clion"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ft_printf_clion.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
