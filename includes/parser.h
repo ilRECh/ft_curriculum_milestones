@@ -16,7 +16,8 @@ enum
 	H_TYPE = 0b00000010,
 	HH_TYPE = 0b00000100,
 	SPECIFIER_SIGN = '%',
-	WE_EXIST = 1
+	WE_EXIST = 1,
+	DOT = 1
 };
 
 typedef struct s_specifier

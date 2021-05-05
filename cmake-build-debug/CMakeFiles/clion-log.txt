@@ -1,10 +1,4 @@
 /snap/clion/151/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_C_COMPILER=/usr/bin/clang -G "CodeBlocks - Unix Makefiles" /home/name/Desktop/ft_printf_clion
--- The C compiler identification is Clang 10.0.0
--- Detecting C compiler ABI info
--- Detecting C compiler ABI info - done
--- Check for working C compiler: /usr/bin/clang - skipped
--- Detecting C compile features
--- Detecting C compile features - done
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /home/name/Desktop/ft_printf_clion/cmake-build-debug
