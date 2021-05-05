@@ -28,11 +28,15 @@ stdint.h
 unistd.h
 -
 
-/Users/vcobbler/Desktop/projects/ft_printf/parser/specifier_parse.c
-parser.h
-/Users/vcobbler/Desktop/projects/ft_printf/parser/parser.h
+/home/name/Desktop/ft_printf_clion/includes/ft_stdio.h
+
+/home/name/Desktop/ft_printf_clion/main.c
+stdio.h
+-
+unistd.h
+-
+includes/ft_stdio.h
+/home/name/Desktop/ft_printf_clion/includes/ft_stdio.h
 out_funcs.h
-/Users/vcobbler/Desktop/projects/ft_printf/parser/out_funcs.h
-libft.h
-/Users/vcobbler/Desktop/projects/ft_printf/parser/libft.h
+/home/name/Desktop/ft_printf_clion/out_funcs.h
 

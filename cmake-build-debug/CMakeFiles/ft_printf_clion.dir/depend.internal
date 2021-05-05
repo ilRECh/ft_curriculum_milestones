@@ -3,117 +3,117 @@
 
 CMakeFiles/ft_printf_clion.dir/ft_printf.c.o
  ../includes/parser.h
- /Users/vcobbler/Desktop/projects/ft_printf/ft_printf.c
+ /home/name/Desktop/ft_printf_clion/ft_printf.c
 CMakeFiles/ft_printf_clion.dir/libft/count_symbs.c.o
  ../includes/libft.h
- /Users/vcobbler/Desktop/projects/ft_printf/libft/count_symbs.c
+ /home/name/Desktop/ft_printf_clion/libft/count_symbs.c
 CMakeFiles/ft_printf_clion.dir/libft/fill_with.c.o
  ../includes/libft.h
- /Users/vcobbler/Desktop/projects/ft_printf/libft/fill_with.c
+ /home/name/Desktop/ft_printf_clion/libft/fill_with.c
 CMakeFiles/ft_printf_clion.dir/libft/ft_abs.c.o
  ../includes/libft.h
- /Users/vcobbler/Desktop/projects/ft_printf/libft/ft_abs.c
+ /home/name/Desktop/ft_printf_clion/libft/ft_abs.c
 CMakeFiles/ft_printf_clion.dir/libft/ft_atoi.c.o
  ../includes/libft.h
- /Users/vcobbler/Desktop/projects/ft_printf/libft/ft_atoi.c
+ /home/name/Desktop/ft_printf_clion/libft/ft_atoi.c
 CMakeFiles/ft_printf_clion.dir/libft/ft_isdigit.c.o
  ../includes/libft.h
- /Users/vcobbler/Desktop/projects/ft_printf/libft/ft_isdigit.c
+ /home/name/Desktop/ft_printf_clion/libft/ft_isdigit.c
 CMakeFiles/ft_printf_clion.dir/libft/ft_isspace.c.o
  ../includes/libft.h
- /Users/vcobbler/Desktop/projects/ft_printf/libft/ft_isspace.c
+ /home/name/Desktop/ft_printf_clion/libft/ft_isspace.c
 CMakeFiles/ft_printf_clion.dir/libft/ft_putnbr_base.c.o
  ../includes/libft.h
- /Users/vcobbler/Desktop/projects/ft_printf/libft/ft_putnbr_base.c
+ /home/name/Desktop/ft_printf_clion/libft/ft_putnbr_base.c
 CMakeFiles/ft_printf_clion.dir/libft/ft_strchr.c.o
  ../includes/libft.h
- /Users/vcobbler/Desktop/projects/ft_printf/libft/ft_strchr.c
+ /home/name/Desktop/ft_printf_clion/libft/ft_strchr.c
 CMakeFiles/ft_printf_clion.dir/libft/ft_strlen.c.o
  ../includes/libft.h
- /Users/vcobbler/Desktop/projects/ft_printf/libft/ft_strlen.c
+ /home/name/Desktop/ft_printf_clion/libft/ft_strlen.c
 CMakeFiles/ft_printf_clion.dir/main.c.o
  ../includes/libft.h
  ../includes/out_funcs.h
  ../includes/parser.h
- /Users/vcobbler/Desktop/projects/ft_printf/includes/ft_stdio.h
- /Users/vcobbler/Desktop/projects/ft_printf/main.c
+ /home/name/Desktop/ft_printf_clion/includes/ft_stdio.h
+ /home/name/Desktop/ft_printf_clion/main.c
 CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.o
  ../includes/libft.h
  ../includes/out_funcs.h
  ../includes/parser.h
- /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/char_print.c
+ /home/name/Desktop/ft_printf_clion/out_funcs/char_print.c
 CMakeFiles/ft_printf_clion.dir/out_funcs/digit_print.c.o
  ../includes/libft.h
  ../includes/out_funcs.h
  ../includes/parser.h
- /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/digit_print.c
+ /home/name/Desktop/ft_printf_clion/out_funcs/digit_print.c
 CMakeFiles/ft_printf_clion.dir/out_funcs/e_print.c.o
  ../includes/libft.h
  ../includes/out_funcs.h
  ../includes/parser.h
- /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/e_print.c
+ /home/name/Desktop/ft_printf_clion/out_funcs/e_print.c
 CMakeFiles/ft_printf_clion.dir/out_funcs/f_print.c.o
  ../includes/libft.h
  ../includes/out_funcs.h
  ../includes/parser.h
- /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/f_print.c
+ /home/name/Desktop/ft_printf_clion/out_funcs/f_print.c
 CMakeFiles/ft_printf_clion.dir/out_funcs/fge_special_cases.c.o
  ../includes/libft.h
  ../includes/out_funcs.h
  ../includes/parser.h
- /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/fge_special_cases.c
+ /home/name/Desktop/ft_printf_clion/out_funcs/fge_special_cases.c
 CMakeFiles/ft_printf_clion.dir/out_funcs/g_print.c.o
  ../includes/libft.h
  ../includes/out_funcs.h
  ../includes/parser.h
- /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/g_print.c
+ /home/name/Desktop/ft_printf_clion/out_funcs/g_print.c
 CMakeFiles/ft_printf_clion.dir/out_funcs/hex_print.c.o
  ../includes/libft.h
  ../includes/out_funcs.h
  ../includes/parser.h
- /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/hex_print.c
+ /home/name/Desktop/ft_printf_clion/out_funcs/hex_print.c
 CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.o
  ../includes/libft.h
  ../includes/out_funcs.h
  ../includes/parser.h
- /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/out_funcs.c
+ /home/name/Desktop/ft_printf_clion/out_funcs/out_funcs.c
 CMakeFiles/ft_printf_clion.dir/out_funcs/pointer_print.c.o
  ../includes/libft.h
  ../includes/out_funcs.h
  ../includes/parser.h
- /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/pointer_print.c
+ /home/name/Desktop/ft_printf_clion/out_funcs/pointer_print.c
 CMakeFiles/ft_printf_clion.dir/out_funcs/str_print.c.o
  ../includes/libft.h
  ../includes/out_funcs.h
  ../includes/parser.h
- /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/str_print.c
+ /home/name/Desktop/ft_printf_clion/out_funcs/str_print.c
 CMakeFiles/ft_printf_clion.dir/out_funcs/u_digit_print.c.o
  ../includes/libft.h
  ../includes/out_funcs.h
  ../includes/parser.h
- /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/u_digit_print.c
+ /home/name/Desktop/ft_printf_clion/out_funcs/u_digit_print.c
 CMakeFiles/ft_printf_clion.dir/parser/flags_parse.c.o
  ../includes/libft.h
  ../includes/parser.h
- /Users/vcobbler/Desktop/projects/ft_printf/parser/flags_parse.c
+ /home/name/Desktop/ft_printf_clion/parser/flags_parse.c
 CMakeFiles/ft_printf_clion.dir/parser/ft_vprintf.c.o
  ../includes/libft.h
  ../includes/parser.h
- /Users/vcobbler/Desktop/projects/ft_printf/parser/ft_vprintf.c
+ /home/name/Desktop/ft_printf_clion/parser/ft_vprintf.c
 CMakeFiles/ft_printf_clion.dir/parser/precision_parse.c.o
  ../includes/libft.h
  ../includes/parser.h
- /Users/vcobbler/Desktop/projects/ft_printf/parser/precision_parse.c
+ /home/name/Desktop/ft_printf_clion/parser/precision_parse.c
 CMakeFiles/ft_printf_clion.dir/parser/size_parse.c.o
  ../includes/libft.h
  ../includes/parser.h
- /Users/vcobbler/Desktop/projects/ft_printf/parser/size_parse.c
+ /home/name/Desktop/ft_printf_clion/parser/size_parse.c
 CMakeFiles/ft_printf_clion.dir/parser/specifier_parse.c.o
  ../includes/libft.h
  ../includes/out_funcs.h
  ../includes/parser.h
- /Users/vcobbler/Desktop/projects/ft_printf/parser/specifier_parse.c
+ /home/name/Desktop/ft_printf_clion/parser/specifier_parse.c
 CMakeFiles/ft_printf_clion.dir/parser/width_parse.c.o
  ../includes/libft.h
  ../includes/parser.h
- /Users/vcobbler/Desktop/projects/ft_printf/parser/width_parse.c
+ /home/name/Desktop/ft_printf_clion/parser/width_parse.c

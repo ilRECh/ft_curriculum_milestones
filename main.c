@@ -18,7 +18,7 @@ int	main(void)
 {
 	double n;
 
-	n = 7523974.58347 / 0;
+	n = 3.9999999;
 	printf("------------------------------------------\n");
 	printf("printf:\t%d\n",
 		   printf("%0.6f\n", n));
@@ -96,7 +96,7 @@ int	main(void)
 	printf("------------------------------------------\n");
 	printf("printf:\t%d\n",
 		   printf("%-10f\n", n));
-	printf("ft_printf:\t%d - %%-10f, n = inf\n",
+	printf("ft_printf:\t%d - %%-10f\n",
 		   ft_printf("%-10f\n", n));
 	printf("------------------------------------------\n");
 	printf("printf:\t%d\n",
@@ -139,10 +139,14 @@ int	main(void)
 	printf("ft_printf:\t%d - %%+- 07.06s, n = inf\n",
 		   ft_printf("%+- 07.06s\n", "hi low"));
 	printf("------------------------------------------\n");
-	printf("%hh", 82);
 	printf("printf:\t%d\n",
 		   printf("%hh"));
 	printf("ft_printf:\t%d - %%hh\n",
 		   ft_printf("%hh"));
+	printf("------------------------------------------\n");
+	printf("printf:\t%d\n",
+		   printf("%f\n", -0.0));
+	printf("ft_printf:\t%d - %%f, n = -0.0\n",
+		   ft_printf("%f\n", -0.0));
 	return (0);
 }

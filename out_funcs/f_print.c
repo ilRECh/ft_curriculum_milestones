@@ -39,12 +39,14 @@ static void	print_decimal(t_specifier *specifier,
 
 static void	put_flag_symbol(double const *nbr, t_specifier *specifier)
 {
-	char	c;
+	char		c;
+	t_double	t_nbr;
 
-	c = '+' * ((specifier->flags & PLUS_FLAG) != 0) * (*nbr >= 0)
+	t_nbr.value = *nbr;
+	c = '+' * ((specifier->flags & PLUS_FLAG) != 0) * (t_nbr.f_bits.sign == 0)
 		+ ' ' * ((specifier->flags & SPACE_FLAG) != 0
-				 && !(specifier->flags & PLUS_FLAG)) * (*nbr >= 0)
-		+ '-' * (*nbr < 0);
+				 && !(specifier->flags & PLUS_FLAG)) * (t_nbr.f_bits.sign == 0)
+		+ '-' * t_nbr.f_bits.sign;
 	if (c)
 		write(1, &c, 1);
 }
@@ -80,12 +82,9 @@ void	f_print(double nbr, int32_t *total, t_specifier *specifier,
 	symbs_amount = count_symbs((uint64_t)u_nbr, 10);
 	spec_init(specifier, &nbr, &symbs_amount);
 	print_prefix_space(specifier, &symbs_amount, &nbr);
-	ft_putnbr_base((uint64_t)u_nbr, 10, "0123456789");
+	write(1, ".", 1);
 	if (specifier->precision)
-	{
-		write(1, ".", 1);
 		print_decimal(specifier, &u_nbr);
-	}
 	if (if_e_print && write(1, if_e_print, 2))
 	{
 		if (if_e_print[3] < 10)
