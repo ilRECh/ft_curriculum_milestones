@@ -5,55 +5,30 @@ static void	spec_init(t_specifier *specifier,
 {
 	if (specifier->precision < 0)
 		specifier->precision = 6;
-	//*symbs_amount += specifier->precision + 1 * (specifier->precision != 0)
-	//		+ ((*nbr < 0) || ((specifier->flags & PLUS_FLAG) != 0)
-	//		|| ((specifier->flags & SPACE_FLAG) != 0));
-	//if (specifier->width < *symbs_amount)
-	//	specifier->width = *symbs_amount;
+	*symbs_amount += specifier->precision + 1 * (specifier->precision != 0)
+			+ ((*nbr < 0) || ((specifier->flags & PLUS_FLAG) != 0)
+			|| ((specifier->flags & SPACE_FLAG) != 0));
+	if (specifier->width < *symbs_amount)
+		specifier->width = *symbs_amount;
 }
 
-static void	print_decimal(t_specifier *specifier,
-						   double *u_nbr)
-{
-	double	decimal;
-	double	correction;
-	uint8_t iter_1;
-	char	c;
+//static void	put_flag_symbol(double const *nbr, t_specifier *specifier)
+//{
+//	char		c;
+//	t_double	t_nbr;
+//
+//	t_nbr.value = *nbr;
+//	c = '+' * ((specifier->flags & PLUS_FLAG) != 0) * (t_nbr.f_bits.sign == 0)
+//		+ ' ' * ((specifier->flags & SPACE_FLAG) != 0
+//				 && !(specifier->flags & PLUS_FLAG)) * (t_nbr.f_bits.sign == 0)
+//		+ '-' * t_nbr.f_bits.sign;
+//	if (c)
+//		;//write(1, &c, 1);
+//}
 
-	decimal = *u_nbr - (double)((uint64_t)*u_nbr);
-	correction = 5.f;
-	specifier->precision++;
-	iter_1 = -1;
-	while (++iter_1 < specifier->precision)
-		correction /= 10;
-	decimal += correction;
-	specifier->precision--;
-	iter_1 = -1;
-	while (++iter_1 < specifier->precision)
-	{
-		c = (char)(decimal * 10) + '0';
-		//write(1, &c, 1);
-		decimal = decimal * 10 - (double)((uint64_t)(decimal * 10));
-	}
-}
-
-static void	put_flag_symbol(double const *nbr, t_specifier *specifier)
-{
-	char		c;
-	t_double	t_nbr;
-
-	t_nbr.value = *nbr;
-	c = '+' * ((specifier->flags & PLUS_FLAG) != 0) * (t_nbr.f_bits.sign == 0)
-		+ ' ' * ((specifier->flags & SPACE_FLAG) != 0
-				 && !(specifier->flags & PLUS_FLAG)) * (t_nbr.f_bits.sign == 0)
-		+ '-' * t_nbr.f_bits.sign;
-	if (c)
-		;//write(1, &c, 1);
-}
-
-void	print_prefix_space(t_specifier *specifier, uint8_t *symbs_amount,
-						double const *nbr)
-{
+//void	print_prefix_space(t_specifier *specifier, uint8_t *symbs_amount,
+//						double const *nbr)
+//{
 //	if (!(specifier->flags & MINUS_FLAG) && (specifier->width > *symbs_amount)
 //		&& !(specifier->flags & ZERO_FLAG))
 //	{
@@ -68,48 +43,31 @@ void	print_prefix_space(t_specifier *specifier, uint8_t *symbs_amount,
 //	}
 //	else
 //		put_flag_symbol(nbr, specifier);
-}
-
-
-
-char	*ft_ftoa(t_double *nbr, t_specifier *specifier)
-{
-	char	*c_nbr;
-	//char	*copy_c_nbr;
-	//double	u_nbr;
-
-	//u_nbr = *nbr * ((-1) * (*nbr < 0)) + *nbr * (*nbr >= 0);
-	c_nbr = ft_calloc(180, sizeof(char));
-	if (!c_nbr)
-		return (NULL);
-	//copy_c_nbr = c_nbr;
-}
+//}
 
 void	f_print(double to_print, int32_t *total, t_specifier *specifier,
 			 char *if_e_print)
 {
-	char		*c_nbr;
-	t_double	nbr;
+	t_double	*nbr;
+	t_list		*integer;
+	t_list		*decimal;
 
-	nbr.value = to_print;
-	if (fge_special_cases(&nbr.value, total, specifier))
-		return ;
-	c_nbr = ft_ftoa(&nbr, specifier);
-	if (!c_nbr)
-		return ;
-//	symbs_amount = count_symbs((uint64_t)u_nbr, 10);
-//	spec_init(specifier, &nbr, &symbs_amount);
-//	print_prefix_space(specifier, &symbs_amount, &nbr);
-//	write(1, ".", 1);
-//	if (specifier->precision)
-//		print_decimal(specifier, &u_nbr);
-//	if (if_e_print && write(1, if_e_print, 2))
-//	{
-//		if (if_e_print[3] < 10)
-//			write(1, "0", 1);
-//		ft_putnbr_base(if_e_print[3], 10, "0123456789");
-//	}
-//	if (specifier->flags & MINUS_FLAG && (specifier->width > symbs_amount))
-//		fill_with(' ', specifier->width - symbs_amount);
-//	*total += specifier->width;
+	nbr = ft_calloc(1, sizeof(t_double));
+	nbr->number.value = to_print;
+	integer = NULL;
+	decimal = NULL;
+	if (fge_special_cases(nbr, total, specifier))
+		return;
+	nbr->true_mantissa = ((uint64_t)1 << 52)
+						 | nbr->number.s_bitfields.mantissa;
+	nbr->true_exponent = nbr->number.s_bitfields.exponent - 1023;
+	if (nbr->number.all_bits)
+		ft_int_dec(nbr, &integer, &decimal);
+	else
+	{
+		ft_lstadd_front(&integer, ft_lstnew(0));
+		ft_lstadd_front(&decimal, ft_lstnew(10));
+	}
+	nbr->true_exponent = nbr->number.s_bitfields.exponent - 1023;
+	ft_putdouble(&integer, &decimal, specifier);
 }

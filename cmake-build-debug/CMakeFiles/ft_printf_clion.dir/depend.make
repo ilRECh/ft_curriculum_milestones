@@ -16,11 +16,35 @@ CMakeFiles/ft_printf_clion.dir/libft/ft_abs.c.o: ../libft/ft_abs.c
 CMakeFiles/ft_printf_clion.dir/libft/ft_atoi.c.o: ../includes/libft.h
 CMakeFiles/ft_printf_clion.dir/libft/ft_atoi.c.o: ../libft/ft_atoi.c
 
+CMakeFiles/ft_printf_clion.dir/libft/ft_bzero.c.o: ../includes/libft.h
+CMakeFiles/ft_printf_clion.dir/libft/ft_bzero.c.o: ../libft/ft_bzero.c
+
+CMakeFiles/ft_printf_clion.dir/libft/ft_calloc.c.o: ../includes/libft.h
+CMakeFiles/ft_printf_clion.dir/libft/ft_calloc.c.o: ../libft/ft_calloc.c
+
 CMakeFiles/ft_printf_clion.dir/libft/ft_isdigit.c.o: ../includes/libft.h
 CMakeFiles/ft_printf_clion.dir/libft/ft_isdigit.c.o: ../libft/ft_isdigit.c
 
 CMakeFiles/ft_printf_clion.dir/libft/ft_isspace.c.o: ../includes/libft.h
 CMakeFiles/ft_printf_clion.dir/libft/ft_isspace.c.o: ../libft/ft_isspace.c
+
+CMakeFiles/ft_printf_clion.dir/libft/ft_lstadd_front.c.o: ../includes/libft.h
+CMakeFiles/ft_printf_clion.dir/libft/ft_lstadd_front.c.o: ../libft/ft_lstadd_front.c
+
+CMakeFiles/ft_printf_clion.dir/libft/ft_lstclear.c.o: ../includes/libft.h
+CMakeFiles/ft_printf_clion.dir/libft/ft_lstclear.c.o: ../libft/ft_lstclear.c
+
+CMakeFiles/ft_printf_clion.dir/libft/ft_lstlast.c.o: ../includes/libft.h
+CMakeFiles/ft_printf_clion.dir/libft/ft_lstlast.c.o: ../libft/ft_lstlast.c
+
+CMakeFiles/ft_printf_clion.dir/libft/ft_lstnew.c.o: ../includes/libft.h
+CMakeFiles/ft_printf_clion.dir/libft/ft_lstnew.c.o: ../libft/ft_lstnew.c
+
+CMakeFiles/ft_printf_clion.dir/libft/ft_lstnormalizer.c.o: ../includes/libft.h
+CMakeFiles/ft_printf_clion.dir/libft/ft_lstnormalizer.c.o: ../libft/ft_lstnormalizer.c
+
+CMakeFiles/ft_printf_clion.dir/libft/ft_power.c.o: ../includes/libft.h
+CMakeFiles/ft_printf_clion.dir/libft/ft_power.c.o: ../libft/ft_power.c
 
 CMakeFiles/ft_printf_clion.dir/libft/ft_putnbr_base.c.o: ../includes/libft.h
 CMakeFiles/ft_printf_clion.dir/libft/ft_putnbr_base.c.o: ../libft/ft_putnbr_base.c
@@ -61,6 +85,16 @@ CMakeFiles/ft_printf_clion.dir/out_funcs/fge_special_cases.c.o: ../includes/libf
 CMakeFiles/ft_printf_clion.dir/out_funcs/fge_special_cases.c.o: ../includes/out_funcs.h
 CMakeFiles/ft_printf_clion.dir/out_funcs/fge_special_cases.c.o: ../includes/parser.h
 CMakeFiles/ft_printf_clion.dir/out_funcs/fge_special_cases.c.o: ../out_funcs/fge_special_cases.c
+
+CMakeFiles/ft_printf_clion.dir/out_funcs/ft_double_as_bignum.c.o: ../includes/libft.h
+CMakeFiles/ft_printf_clion.dir/out_funcs/ft_double_as_bignum.c.o: ../includes/out_funcs.h
+CMakeFiles/ft_printf_clion.dir/out_funcs/ft_double_as_bignum.c.o: ../includes/parser.h
+CMakeFiles/ft_printf_clion.dir/out_funcs/ft_double_as_bignum.c.o: ../out_funcs/ft_double_as_bignum.c
+
+CMakeFiles/ft_printf_clion.dir/out_funcs/ft_putdouble.c.o: ../includes/libft.h
+CMakeFiles/ft_printf_clion.dir/out_funcs/ft_putdouble.c.o: ../includes/out_funcs.h
+CMakeFiles/ft_printf_clion.dir/out_funcs/ft_putdouble.c.o: ../includes/parser.h
+CMakeFiles/ft_printf_clion.dir/out_funcs/ft_putdouble.c.o: ../out_funcs/ft_putdouble.c
 
 CMakeFiles/ft_printf_clion.dir/out_funcs/g_print.c.o: ../includes/libft.h
 CMakeFiles/ft_printf_clion.dir/out_funcs/g_print.c.o: ../includes/out_funcs.h

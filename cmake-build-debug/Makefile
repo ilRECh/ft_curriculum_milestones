@@ -277,6 +277,60 @@ libft/ft_atoi.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_atoi.c.s
 .PHONY : libft/ft_atoi.c.s
 
+libft/ft_bzero.o: libft/ft_bzero.c.o
+
+.PHONY : libft/ft_bzero.o
+
+# target to build an object file
+libft/ft_bzero.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_bzero.c.o
+.PHONY : libft/ft_bzero.c.o
+
+libft/ft_bzero.i: libft/ft_bzero.c.i
+
+.PHONY : libft/ft_bzero.i
+
+# target to preprocess a source file
+libft/ft_bzero.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_bzero.c.i
+.PHONY : libft/ft_bzero.c.i
+
+libft/ft_bzero.s: libft/ft_bzero.c.s
+
+.PHONY : libft/ft_bzero.s
+
+# target to generate assembly for a file
+libft/ft_bzero.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_bzero.c.s
+.PHONY : libft/ft_bzero.c.s
+
+libft/ft_calloc.o: libft/ft_calloc.c.o
+
+.PHONY : libft/ft_calloc.o
+
+# target to build an object file
+libft/ft_calloc.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_calloc.c.o
+.PHONY : libft/ft_calloc.c.o
+
+libft/ft_calloc.i: libft/ft_calloc.c.i
+
+.PHONY : libft/ft_calloc.i
+
+# target to preprocess a source file
+libft/ft_calloc.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_calloc.c.i
+.PHONY : libft/ft_calloc.c.i
+
+libft/ft_calloc.s: libft/ft_calloc.c.s
+
+.PHONY : libft/ft_calloc.s
+
+# target to generate assembly for a file
+libft/ft_calloc.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_calloc.c.s
+.PHONY : libft/ft_calloc.c.s
+
 libft/ft_isdigit.o: libft/ft_isdigit.c.o
 
 .PHONY : libft/ft_isdigit.o
@@ -330,6 +384,168 @@ libft/ft_isspace.s: libft/ft_isspace.c.s
 libft/ft_isspace.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_isspace.c.s
 .PHONY : libft/ft_isspace.c.s
+
+libft/ft_lstadd_front.o: libft/ft_lstadd_front.c.o
+
+.PHONY : libft/ft_lstadd_front.o
+
+# target to build an object file
+libft/ft_lstadd_front.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_lstadd_front.c.o
+.PHONY : libft/ft_lstadd_front.c.o
+
+libft/ft_lstadd_front.i: libft/ft_lstadd_front.c.i
+
+.PHONY : libft/ft_lstadd_front.i
+
+# target to preprocess a source file
+libft/ft_lstadd_front.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_lstadd_front.c.i
+.PHONY : libft/ft_lstadd_front.c.i
+
+libft/ft_lstadd_front.s: libft/ft_lstadd_front.c.s
+
+.PHONY : libft/ft_lstadd_front.s
+
+# target to generate assembly for a file
+libft/ft_lstadd_front.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_lstadd_front.c.s
+.PHONY : libft/ft_lstadd_front.c.s
+
+libft/ft_lstclear.o: libft/ft_lstclear.c.o
+
+.PHONY : libft/ft_lstclear.o
+
+# target to build an object file
+libft/ft_lstclear.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_lstclear.c.o
+.PHONY : libft/ft_lstclear.c.o
+
+libft/ft_lstclear.i: libft/ft_lstclear.c.i
+
+.PHONY : libft/ft_lstclear.i
+
+# target to preprocess a source file
+libft/ft_lstclear.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_lstclear.c.i
+.PHONY : libft/ft_lstclear.c.i
+
+libft/ft_lstclear.s: libft/ft_lstclear.c.s
+
+.PHONY : libft/ft_lstclear.s
+
+# target to generate assembly for a file
+libft/ft_lstclear.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_lstclear.c.s
+.PHONY : libft/ft_lstclear.c.s
+
+libft/ft_lstlast.o: libft/ft_lstlast.c.o
+
+.PHONY : libft/ft_lstlast.o
+
+# target to build an object file
+libft/ft_lstlast.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_lstlast.c.o
+.PHONY : libft/ft_lstlast.c.o
+
+libft/ft_lstlast.i: libft/ft_lstlast.c.i
+
+.PHONY : libft/ft_lstlast.i
+
+# target to preprocess a source file
+libft/ft_lstlast.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_lstlast.c.i
+.PHONY : libft/ft_lstlast.c.i
+
+libft/ft_lstlast.s: libft/ft_lstlast.c.s
+
+.PHONY : libft/ft_lstlast.s
+
+# target to generate assembly for a file
+libft/ft_lstlast.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_lstlast.c.s
+.PHONY : libft/ft_lstlast.c.s
+
+libft/ft_lstnew.o: libft/ft_lstnew.c.o
+
+.PHONY : libft/ft_lstnew.o
+
+# target to build an object file
+libft/ft_lstnew.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_lstnew.c.o
+.PHONY : libft/ft_lstnew.c.o
+
+libft/ft_lstnew.i: libft/ft_lstnew.c.i
+
+.PHONY : libft/ft_lstnew.i
+
+# target to preprocess a source file
+libft/ft_lstnew.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_lstnew.c.i
+.PHONY : libft/ft_lstnew.c.i
+
+libft/ft_lstnew.s: libft/ft_lstnew.c.s
+
+.PHONY : libft/ft_lstnew.s
+
+# target to generate assembly for a file
+libft/ft_lstnew.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_lstnew.c.s
+.PHONY : libft/ft_lstnew.c.s
+
+libft/ft_lstnormalizer.o: libft/ft_lstnormalizer.c.o
+
+.PHONY : libft/ft_lstnormalizer.o
+
+# target to build an object file
+libft/ft_lstnormalizer.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_lstnormalizer.c.o
+.PHONY : libft/ft_lstnormalizer.c.o
+
+libft/ft_lstnormalizer.i: libft/ft_lstnormalizer.c.i
+
+.PHONY : libft/ft_lstnormalizer.i
+
+# target to preprocess a source file
+libft/ft_lstnormalizer.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_lstnormalizer.c.i
+.PHONY : libft/ft_lstnormalizer.c.i
+
+libft/ft_lstnormalizer.s: libft/ft_lstnormalizer.c.s
+
+.PHONY : libft/ft_lstnormalizer.s
+
+# target to generate assembly for a file
+libft/ft_lstnormalizer.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_lstnormalizer.c.s
+.PHONY : libft/ft_lstnormalizer.c.s
+
+libft/ft_power.o: libft/ft_power.c.o
+
+.PHONY : libft/ft_power.o
+
+# target to build an object file
+libft/ft_power.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_power.c.o
+.PHONY : libft/ft_power.c.o
+
+libft/ft_power.i: libft/ft_power.c.i
+
+.PHONY : libft/ft_power.i
+
+# target to preprocess a source file
+libft/ft_power.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_power.c.i
+.PHONY : libft/ft_power.c.i
+
+libft/ft_power.s: libft/ft_power.c.s
+
+.PHONY : libft/ft_power.s
+
+# target to generate assembly for a file
+libft/ft_power.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_power.c.s
+.PHONY : libft/ft_power.c.s
 
 libft/ft_putnbr_base.o: libft/ft_putnbr_base.c.o
 
@@ -573,6 +789,60 @@ out_funcs/fge_special_cases.s: out_funcs/fge_special_cases.c.s
 out_funcs/fge_special_cases.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/fge_special_cases.c.s
 .PHONY : out_funcs/fge_special_cases.c.s
+
+out_funcs/ft_double_as_bignum.o: out_funcs/ft_double_as_bignum.c.o
+
+.PHONY : out_funcs/ft_double_as_bignum.o
+
+# target to build an object file
+out_funcs/ft_double_as_bignum.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/ft_double_as_bignum.c.o
+.PHONY : out_funcs/ft_double_as_bignum.c.o
+
+out_funcs/ft_double_as_bignum.i: out_funcs/ft_double_as_bignum.c.i
+
+.PHONY : out_funcs/ft_double_as_bignum.i
+
+# target to preprocess a source file
+out_funcs/ft_double_as_bignum.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/ft_double_as_bignum.c.i
+.PHONY : out_funcs/ft_double_as_bignum.c.i
+
+out_funcs/ft_double_as_bignum.s: out_funcs/ft_double_as_bignum.c.s
+
+.PHONY : out_funcs/ft_double_as_bignum.s
+
+# target to generate assembly for a file
+out_funcs/ft_double_as_bignum.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/ft_double_as_bignum.c.s
+.PHONY : out_funcs/ft_double_as_bignum.c.s
+
+out_funcs/ft_putdouble.o: out_funcs/ft_putdouble.c.o
+
+.PHONY : out_funcs/ft_putdouble.o
+
+# target to build an object file
+out_funcs/ft_putdouble.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/ft_putdouble.c.o
+.PHONY : out_funcs/ft_putdouble.c.o
+
+out_funcs/ft_putdouble.i: out_funcs/ft_putdouble.c.i
+
+.PHONY : out_funcs/ft_putdouble.i
+
+# target to preprocess a source file
+out_funcs/ft_putdouble.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/ft_putdouble.c.i
+.PHONY : out_funcs/ft_putdouble.c.i
+
+out_funcs/ft_putdouble.s: out_funcs/ft_putdouble.c.s
+
+.PHONY : out_funcs/ft_putdouble.s
+
+# target to generate assembly for a file
+out_funcs/ft_putdouble.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/ft_putdouble.c.s
+.PHONY : out_funcs/ft_putdouble.c.s
 
 out_funcs/g_print.o: out_funcs/g_print.c.o
 
@@ -922,12 +1192,36 @@ help:
 	@echo "... libft/ft_atoi.o"
 	@echo "... libft/ft_atoi.i"
 	@echo "... libft/ft_atoi.s"
+	@echo "... libft/ft_bzero.o"
+	@echo "... libft/ft_bzero.i"
+	@echo "... libft/ft_bzero.s"
+	@echo "... libft/ft_calloc.o"
+	@echo "... libft/ft_calloc.i"
+	@echo "... libft/ft_calloc.s"
 	@echo "... libft/ft_isdigit.o"
 	@echo "... libft/ft_isdigit.i"
 	@echo "... libft/ft_isdigit.s"
 	@echo "... libft/ft_isspace.o"
 	@echo "... libft/ft_isspace.i"
 	@echo "... libft/ft_isspace.s"
+	@echo "... libft/ft_lstadd_front.o"
+	@echo "... libft/ft_lstadd_front.i"
+	@echo "... libft/ft_lstadd_front.s"
+	@echo "... libft/ft_lstclear.o"
+	@echo "... libft/ft_lstclear.i"
+	@echo "... libft/ft_lstclear.s"
+	@echo "... libft/ft_lstlast.o"
+	@echo "... libft/ft_lstlast.i"
+	@echo "... libft/ft_lstlast.s"
+	@echo "... libft/ft_lstnew.o"
+	@echo "... libft/ft_lstnew.i"
+	@echo "... libft/ft_lstnew.s"
+	@echo "... libft/ft_lstnormalizer.o"
+	@echo "... libft/ft_lstnormalizer.i"
+	@echo "... libft/ft_lstnormalizer.s"
+	@echo "... libft/ft_power.o"
+	@echo "... libft/ft_power.i"
+	@echo "... libft/ft_power.s"
 	@echo "... libft/ft_putnbr_base.o"
 	@echo "... libft/ft_putnbr_base.i"
 	@echo "... libft/ft_putnbr_base.s"
@@ -955,6 +1249,12 @@ help:
 	@echo "... out_funcs/fge_special_cases.o"
 	@echo "... out_funcs/fge_special_cases.i"
 	@echo "... out_funcs/fge_special_cases.s"
+	@echo "... out_funcs/ft_double_as_bignum.o"
+	@echo "... out_funcs/ft_double_as_bignum.i"
+	@echo "... out_funcs/ft_double_as_bignum.s"
+	@echo "... out_funcs/ft_putdouble.o"
+	@echo "... out_funcs/ft_putdouble.i"
+	@echo "... out_funcs/ft_putdouble.s"
 	@echo "... out_funcs/g_print.o"
 	@echo "... out_funcs/g_print.i"
 	@echo "... out_funcs/g_print.s"

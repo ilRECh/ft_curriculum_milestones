@@ -35,18 +35,15 @@ static void	ft_putstr(const char *s, int32_t *total, t_specifier *specifier,
 			+ specifier->precision * (specifier->width <= specifier->precision);
 }
 
-uint8_t	fge_special_cases(double const *nbr,
+uint8_t	fge_special_cases(t_double const *nbr,
 						  int32_t *total, t_specifier *specifier)
 {
-	t_double	union_nbr;
-
-	union_nbr.value = *nbr;
-	if (union_nbr.f_bits.exponent == 0b11111111111
-		&& union_nbr.f_bits.mantissa == 0)
-		ft_putstr("inf", total, specifier, union_nbr.f_bits.sign);
-	else if (union_nbr.f_bits.exponent == 0b11111111111
-		&& union_nbr.f_bits.mantissa == ((uint64_t)1 << 51))
-		ft_putstr("nan", total, specifier, union_nbr.f_bits.sign);
+	if (nbr->number.s_bitfields.exponent == 0b11111111111
+		&& nbr->number.s_bitfields.mantissa == 0)
+		ft_putstr("inf", total, specifier, nbr->number.s_bitfields.sign);
+	else if (nbr->number.s_bitfields.exponent == 0b11111111111
+		&& nbr->number.s_bitfields.mantissa == ((uint64_t)1 << 51))
+		ft_putstr("nan", total, specifier, nbr->number.s_bitfields.sign);
 	else
 		return (0);
 	return (1);
