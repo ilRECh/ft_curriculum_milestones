@@ -12,4 +12,5 @@ void	ft_lstclear(t_list **lst)
 		*lst = (*lst)->next;
 		free(tmp);
 	}
+	*lst = NULL;
 }

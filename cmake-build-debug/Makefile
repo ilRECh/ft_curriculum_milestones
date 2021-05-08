@@ -277,6 +277,60 @@ libft/ft_atoi.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_atoi.c.s
 .PHONY : libft/ft_atoi.c.s
 
+libft/ft_bignumaddition.o: libft/ft_bignumaddition.c.o
+
+.PHONY : libft/ft_bignumaddition.o
+
+# target to build an object file
+libft/ft_bignumaddition.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_bignumaddition.c.o
+.PHONY : libft/ft_bignumaddition.c.o
+
+libft/ft_bignumaddition.i: libft/ft_bignumaddition.c.i
+
+.PHONY : libft/ft_bignumaddition.i
+
+# target to preprocess a source file
+libft/ft_bignumaddition.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_bignumaddition.c.i
+.PHONY : libft/ft_bignumaddition.c.i
+
+libft/ft_bignumaddition.s: libft/ft_bignumaddition.c.s
+
+.PHONY : libft/ft_bignumaddition.s
+
+# target to generate assembly for a file
+libft/ft_bignumaddition.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_bignumaddition.c.s
+.PHONY : libft/ft_bignumaddition.c.s
+
+libft/ft_bignummultiply.o: libft/ft_bignummultiply.c.o
+
+.PHONY : libft/ft_bignummultiply.o
+
+# target to build an object file
+libft/ft_bignummultiply.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_bignummultiply.c.o
+.PHONY : libft/ft_bignummultiply.c.o
+
+libft/ft_bignummultiply.i: libft/ft_bignummultiply.c.i
+
+.PHONY : libft/ft_bignummultiply.i
+
+# target to preprocess a source file
+libft/ft_bignummultiply.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_bignummultiply.c.i
+.PHONY : libft/ft_bignummultiply.c.i
+
+libft/ft_bignummultiply.s: libft/ft_bignummultiply.c.s
+
+.PHONY : libft/ft_bignummultiply.s
+
+# target to generate assembly for a file
+libft/ft_bignummultiply.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_bignummultiply.c.s
+.PHONY : libft/ft_bignummultiply.c.s
+
 libft/ft_bzero.o: libft/ft_bzero.c.o
 
 .PHONY : libft/ft_bzero.o
@@ -438,6 +492,33 @@ libft/ft_lstclear.s: libft/ft_lstclear.c.s
 libft/ft_lstclear.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_lstclear.c.s
 .PHONY : libft/ft_lstclear.c.s
+
+libft/ft_lstfirst.o: libft/ft_lstfirst.c.o
+
+.PHONY : libft/ft_lstfirst.o
+
+# target to build an object file
+libft/ft_lstfirst.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_lstfirst.c.o
+.PHONY : libft/ft_lstfirst.c.o
+
+libft/ft_lstfirst.i: libft/ft_lstfirst.c.i
+
+.PHONY : libft/ft_lstfirst.i
+
+# target to preprocess a source file
+libft/ft_lstfirst.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_lstfirst.c.i
+.PHONY : libft/ft_lstfirst.c.i
+
+libft/ft_lstfirst.s: libft/ft_lstfirst.c.s
+
+.PHONY : libft/ft_lstfirst.s
+
+# target to generate assembly for a file
+libft/ft_lstfirst.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_lstfirst.c.s
+.PHONY : libft/ft_lstfirst.c.s
 
 libft/ft_lstlast.o: libft/ft_lstlast.c.o
 
@@ -1192,6 +1273,12 @@ help:
 	@echo "... libft/ft_atoi.o"
 	@echo "... libft/ft_atoi.i"
 	@echo "... libft/ft_atoi.s"
+	@echo "... libft/ft_bignumaddition.o"
+	@echo "... libft/ft_bignumaddition.i"
+	@echo "... libft/ft_bignumaddition.s"
+	@echo "... libft/ft_bignummultiply.o"
+	@echo "... libft/ft_bignummultiply.i"
+	@echo "... libft/ft_bignummultiply.s"
 	@echo "... libft/ft_bzero.o"
 	@echo "... libft/ft_bzero.i"
 	@echo "... libft/ft_bzero.s"
@@ -1210,6 +1297,9 @@ help:
 	@echo "... libft/ft_lstclear.o"
 	@echo "... libft/ft_lstclear.i"
 	@echo "... libft/ft_lstclear.s"
+	@echo "... libft/ft_lstfirst.o"
+	@echo "... libft/ft_lstfirst.i"
+	@echo "... libft/ft_lstfirst.s"
 	@echo "... libft/ft_lstlast.o"
 	@echo "... libft/ft_lstlast.i"
 	@echo "... libft/ft_lstlast.s"

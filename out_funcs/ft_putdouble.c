@@ -1,96 +1,83 @@
 #include "out_funcs.h"
 
-static void	ft_putnbr(uint64_t nbr)
+static void	loc_fill_with(char c, unsigned int amount, t_specifier *specifier,
+						  int32_t *total)
+{
+	while (amount-- && specifier->precision)
+	{
+		specifier->precision--;
+		*total += write(1, &c, 1);
+	}
+}
+
+static void	ft_putnbr(uint64_t nbr, t_specifier *specifier, int32_t *total)
 {
 	char	c;
 
-	if (nbr < 10)
+	if ((nbr < 10 && specifier && specifier->precision)
+		|| (nbr < 10 && !specifier))
 	{
 		c = '0' + nbr;
-		write(1, &c, 1);
+		if (specifier && specifier->precision)
+			specifier->precision--;
+		*total += write(1, &c, 1);
 	}
-	else
+	else if (!specifier || specifier->precision)
 	{
-		ft_putnbr(nbr / 10);
-		ft_putnbr(nbr % 10);
+		ft_putnbr(nbr / 10, specifier, total);
+		ft_putnbr(nbr % 10, specifier, total);
 	}
 }
 
-void	ft_putnbr_length(uint64_t nbr, uint8_t length, uint8_t is_dec)
+static void	ft_putnbr_length(t_list *element,
+							 t_specifier *specifier, int32_t *total)
 {
 	uint8_t		symbs_amount;
-	uint8_t		length_copy;
+	uint8_t		symbs_amount_copy;
 	uint64_t	coeff;
 
-	if (!length)
-		return ;
 	coeff = 1;
-	length_copy = length;
-	symbs_amount = count_symbs(nbr, 10);
-	if (length > symbs_amount)
-		fill_with('0', length - symbs_amount);
-	while (length--)
-		coeff *= 10;
-	if (is_dec)
-	{
-		symbs_amount = count_symbs(nbr % coeff, 10);
-		if (length_copy > symbs_amount)
-			fill_with('0', length_copy - symbs_amount);
-	}
-	ft_putnbr(nbr % coeff);
+	symbs_amount = count_symbs(element->value, 10);
+	symbs_amount_copy = symbs_amount;
+	if (symbs_amount < 9 && element->next)
+		loc_fill_with('0', 9 - symbs_amount, specifier, total);
+	while (symbs_amount_copy--)
+		if (specifier && symbs_amount_copy == 0 && !element->next)
+			break ;
+		else
+			coeff *= 10;
+	if (specifier && !element->next
+		&& (--symbs_amount > count_symbs(element->value % coeff, 10)))
+		loc_fill_with('0', symbs_amount - count_symbs(
+					element->value % coeff, 10), specifier, total);
+	if (coeff > 1)
+		ft_putnbr(element->value % coeff, specifier, total);
 }
 
-static void	ft_round_decimal(t_list **integer,
-						  t_list **decimal, t_specifier *specifier)
+
+void	ft_putdouble(t_list **integer, t_list **decimal,
+				  t_specifier *specifier, int32_t *total)
 {
-	t_list		*decimal_copy;
-	uint32_t	iter_1;
+	t_list *decimal_end;
+	t_list *integer_end;
 
-	decimal_copy = ft_lstlast(*decimal);
-	iter_1 = count_symbs(decimal_copy->value, 10) - 1;
-	while (decimal_copy)
-	{
-		if (iter_1 > specifier->precision || !decimal_copy->prev)
-			break;
-		decimal_copy = decimal_copy->prev;
-		iter_1 += 9;
-	}
-	if (iter_1 > specifier->precision && (decimal_copy->value /
-		ft_power(10, iter_1 - specifier->precision - 1)) % 10 >= 5)
-	{
-		decimal_copy->value += 5
-				* ft_power(10, iter_1 - specifier->precision - 1);
-		ft_lstnormalizer(*decimal);
-	}
-	decimal_copy = ft_lstlast(*decimal);
-	if ((decimal_copy->value
-		/ ft_power(10, count_symbs(decimal_copy->value, 10) - 1)) > 1)
-		(*integer)->value += 1;
-}
-
-void	ft_putdouble(t_list **integer, t_list **decimal, t_specifier *specifier)
-{
-	t_list *decimal_end = ft_lstlast(*decimal);
-	t_list *integer_end = ft_lstlast(*integer);
-
-	ft_round_decimal(integer, decimal, specifier);
-	ft_putnbr_length(integer_end->value,
-					 count_symbs(integer_end->value, 10), 0);
-	integer_end = integer_end->prev;
+	decimal_end = ft_lstlast(*decimal);
+	integer_end = ft_lstlast(*integer);
 	while (integer_end)
 	{
-		ft_putnbr_length(integer_end->value, 9, 0);
+		ft_putnbr_length(integer_end, NULL, total);
 		integer_end = integer_end->prev;
 	}
-	write(1, ".", 1);
-	ft_putnbr_length(decimal_end->value,
-					 count_symbs(decimal_end->value, 10) - 1, 1);
-	decimal_end = decimal_end->prev;
+	if (specifier->precision && write(1, ".", 1))
+		*total += 1;
 	while (decimal_end)
 	{
-		ft_putnbr_length(decimal_end->value, 9, 0);
+		ft_putnbr_length(decimal_end, specifier, total);
 		decimal_end = decimal_end->prev;
 	}
+	if (specifier->precision > 0)
+		while (specifier->precision--)
+			*total += write(1, "0", 1);
 	ft_lstclear(integer);
 	ft_lstclear(decimal);
 }

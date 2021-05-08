@@ -16,6 +16,12 @@ CMakeFiles/ft_printf_clion.dir/libft/ft_abs.c.o: ../libft/ft_abs.c
 CMakeFiles/ft_printf_clion.dir/libft/ft_atoi.c.o: ../includes/libft.h
 CMakeFiles/ft_printf_clion.dir/libft/ft_atoi.c.o: ../libft/ft_atoi.c
 
+CMakeFiles/ft_printf_clion.dir/libft/ft_bignumaddition.c.o: ../includes/libft.h
+CMakeFiles/ft_printf_clion.dir/libft/ft_bignumaddition.c.o: ../libft/ft_bignumaddition.c
+
+CMakeFiles/ft_printf_clion.dir/libft/ft_bignummultiply.c.o: ../includes/libft.h
+CMakeFiles/ft_printf_clion.dir/libft/ft_bignummultiply.c.o: ../libft/ft_bignummultiply.c
+
 CMakeFiles/ft_printf_clion.dir/libft/ft_bzero.c.o: ../includes/libft.h
 CMakeFiles/ft_printf_clion.dir/libft/ft_bzero.c.o: ../libft/ft_bzero.c
 
@@ -33,6 +39,9 @@ CMakeFiles/ft_printf_clion.dir/libft/ft_lstadd_front.c.o: ../libft/ft_lstadd_fro
 
 CMakeFiles/ft_printf_clion.dir/libft/ft_lstclear.c.o: ../includes/libft.h
 CMakeFiles/ft_printf_clion.dir/libft/ft_lstclear.c.o: ../libft/ft_lstclear.c
+
+CMakeFiles/ft_printf_clion.dir/libft/ft_lstfirst.c.o: ../includes/libft.h
+CMakeFiles/ft_printf_clion.dir/libft/ft_lstfirst.c.o: ../libft/ft_lstfirst.c
 
 CMakeFiles/ft_printf_clion.dir/libft/ft_lstlast.c.o: ../includes/libft.h
 CMakeFiles/ft_printf_clion.dir/libft/ft_lstlast.c.o: ../libft/ft_lstlast.c

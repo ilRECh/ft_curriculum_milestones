@@ -17,7 +17,8 @@ void in_bin(uint64_t d, unsigned int n)
 int	main(void)
 {
 	t_double nbr;
-	nbr.number.value = 0.544444444444444444444444444444444;
+
+	nbr.number.value = 729847398.111;
 	printf("a.value is: %f\n", nbr.number.value);
 	printf("sign is: %d\n", nbr.number.s_bitfields.sign);
 	printf("exponent is : %d\n", nbr.number.s_bitfields.exponent - 1023);
@@ -26,12 +27,14 @@ int	main(void)
 	in_bin(nbr.number.s_bitfields.sign, 1);
 	in_bin(nbr.number.s_bitfields.exponent, 11);
 	in_bin(((unsigned long)1 << 52) | nbr.number.s_bitfields.mantissa, 53);
-	ft_printf("%.0f\n", nbr.number.value);
-	printf("%.0f\n", nbr.number.value);
+	printf("my : %d\n", ft_printf("%.2f\n",
+							   521481209941628438084722096232800809229175908778479680162851955034721612739414196782949728256.));
+	printf("std: %d\n", printf("%.2f\n",
+							   521481209941628438084722096232800809229175908778479680162851955034721612739414196782949728256.));
 	return 0;
 
 //	double n;
-//
+
 //	n = 3.9999999;
 //	printf("------------------------------------------\n");
 //	printf("printf:\t%d\n",

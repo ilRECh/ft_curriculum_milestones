@@ -401,9 +401,48 @@ CMakeFiles/ft_printf_clion.dir/libft/ft_power.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_printf_clion.dir/libft/ft_power.c.s"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/name/Desktop/ft_printf_clion/libft/ft_power.c -o CMakeFiles/ft_printf_clion.dir/libft/ft_power.c.s
 
+CMakeFiles/ft_printf_clion.dir/libft/ft_bignummultiply.c.o: CMakeFiles/ft_printf_clion.dir/flags.make
+CMakeFiles/ft_printf_clion.dir/libft/ft_bignummultiply.c.o: ../libft/ft_bignummultiply.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building C object CMakeFiles/ft_printf_clion.dir/libft/ft_bignummultiply.c.o"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf_clion.dir/libft/ft_bignummultiply.c.o -c /home/name/Desktop/ft_printf_clion/libft/ft_bignummultiply.c
+
+CMakeFiles/ft_printf_clion.dir/libft/ft_bignummultiply.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ft_printf_clion.dir/libft/ft_bignummultiply.c.i"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/name/Desktop/ft_printf_clion/libft/ft_bignummultiply.c > CMakeFiles/ft_printf_clion.dir/libft/ft_bignummultiply.c.i
+
+CMakeFiles/ft_printf_clion.dir/libft/ft_bignummultiply.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_printf_clion.dir/libft/ft_bignummultiply.c.s"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/name/Desktop/ft_printf_clion/libft/ft_bignummultiply.c -o CMakeFiles/ft_printf_clion.dir/libft/ft_bignummultiply.c.s
+
+CMakeFiles/ft_printf_clion.dir/libft/ft_bignumaddition.c.o: CMakeFiles/ft_printf_clion.dir/flags.make
+CMakeFiles/ft_printf_clion.dir/libft/ft_bignumaddition.c.o: ../libft/ft_bignumaddition.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building C object CMakeFiles/ft_printf_clion.dir/libft/ft_bignumaddition.c.o"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf_clion.dir/libft/ft_bignumaddition.c.o -c /home/name/Desktop/ft_printf_clion/libft/ft_bignumaddition.c
+
+CMakeFiles/ft_printf_clion.dir/libft/ft_bignumaddition.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ft_printf_clion.dir/libft/ft_bignumaddition.c.i"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/name/Desktop/ft_printf_clion/libft/ft_bignumaddition.c > CMakeFiles/ft_printf_clion.dir/libft/ft_bignumaddition.c.i
+
+CMakeFiles/ft_printf_clion.dir/libft/ft_bignumaddition.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_printf_clion.dir/libft/ft_bignumaddition.c.s"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/name/Desktop/ft_printf_clion/libft/ft_bignumaddition.c -o CMakeFiles/ft_printf_clion.dir/libft/ft_bignumaddition.c.s
+
+CMakeFiles/ft_printf_clion.dir/libft/ft_lstfirst.c.o: CMakeFiles/ft_printf_clion.dir/flags.make
+CMakeFiles/ft_printf_clion.dir/libft/ft_lstfirst.c.o: ../libft/ft_lstfirst.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building C object CMakeFiles/ft_printf_clion.dir/libft/ft_lstfirst.c.o"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf_clion.dir/libft/ft_lstfirst.c.o -c /home/name/Desktop/ft_printf_clion/libft/ft_lstfirst.c
+
+CMakeFiles/ft_printf_clion.dir/libft/ft_lstfirst.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ft_printf_clion.dir/libft/ft_lstfirst.c.i"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/name/Desktop/ft_printf_clion/libft/ft_lstfirst.c > CMakeFiles/ft_printf_clion.dir/libft/ft_lstfirst.c.i
+
+CMakeFiles/ft_printf_clion.dir/libft/ft_lstfirst.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_printf_clion.dir/libft/ft_lstfirst.c.s"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/name/Desktop/ft_printf_clion/libft/ft_lstfirst.c -o CMakeFiles/ft_printf_clion.dir/libft/ft_lstfirst.c.s
+
 CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.o: CMakeFiles/ft_printf_clion.dir/flags.make
 CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.o: ../out_funcs/char_print.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.o -c /home/name/Desktop/ft_printf_clion/out_funcs/char_print.c
 
 CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.i: cmake_force
@@ -416,7 +455,7 @@ CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.s: cmake_force
 
 CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.o: CMakeFiles/ft_printf_clion.dir/flags.make
 CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.o: ../out_funcs/out_funcs.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.o -c /home/name/Desktop/ft_printf_clion/out_funcs/out_funcs.c
 
 CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.i: cmake_force
@@ -429,7 +468,7 @@ CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.s: cmake_force
 
 CMakeFiles/ft_printf_clion.dir/out_funcs/str_print.c.o: CMakeFiles/ft_printf_clion.dir/flags.make
 CMakeFiles/ft_printf_clion.dir/out_funcs/str_print.c.o: ../out_funcs/str_print.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/str_print.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/str_print.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf_clion.dir/out_funcs/str_print.c.o -c /home/name/Desktop/ft_printf_clion/out_funcs/str_print.c
 
 CMakeFiles/ft_printf_clion.dir/out_funcs/str_print.c.i: cmake_force
@@ -442,7 +481,7 @@ CMakeFiles/ft_printf_clion.dir/out_funcs/str_print.c.s: cmake_force
 
 CMakeFiles/ft_printf_clion.dir/out_funcs/pointer_print.c.o: CMakeFiles/ft_printf_clion.dir/flags.make
 CMakeFiles/ft_printf_clion.dir/out_funcs/pointer_print.c.o: ../out_funcs/pointer_print.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/pointer_print.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/pointer_print.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf_clion.dir/out_funcs/pointer_print.c.o -c /home/name/Desktop/ft_printf_clion/out_funcs/pointer_print.c
 
 CMakeFiles/ft_printf_clion.dir/out_funcs/pointer_print.c.i: cmake_force
@@ -455,7 +494,7 @@ CMakeFiles/ft_printf_clion.dir/out_funcs/pointer_print.c.s: cmake_force
 
 CMakeFiles/ft_printf_clion.dir/out_funcs/digit_print.c.o: CMakeFiles/ft_printf_clion.dir/flags.make
 CMakeFiles/ft_printf_clion.dir/out_funcs/digit_print.c.o: ../out_funcs/digit_print.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/digit_print.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/digit_print.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf_clion.dir/out_funcs/digit_print.c.o -c /home/name/Desktop/ft_printf_clion/out_funcs/digit_print.c
 
 CMakeFiles/ft_printf_clion.dir/out_funcs/digit_print.c.i: cmake_force
@@ -468,7 +507,7 @@ CMakeFiles/ft_printf_clion.dir/out_funcs/digit_print.c.s: cmake_force
 
 CMakeFiles/ft_printf_clion.dir/out_funcs/u_digit_print.c.o: CMakeFiles/ft_printf_clion.dir/flags.make
 CMakeFiles/ft_printf_clion.dir/out_funcs/u_digit_print.c.o: ../out_funcs/u_digit_print.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/u_digit_print.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/u_digit_print.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf_clion.dir/out_funcs/u_digit_print.c.o -c /home/name/Desktop/ft_printf_clion/out_funcs/u_digit_print.c
 
 CMakeFiles/ft_printf_clion.dir/out_funcs/u_digit_print.c.i: cmake_force
@@ -481,7 +520,7 @@ CMakeFiles/ft_printf_clion.dir/out_funcs/u_digit_print.c.s: cmake_force
 
 CMakeFiles/ft_printf_clion.dir/out_funcs/hex_print.c.o: CMakeFiles/ft_printf_clion.dir/flags.make
 CMakeFiles/ft_printf_clion.dir/out_funcs/hex_print.c.o: ../out_funcs/hex_print.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/hex_print.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/hex_print.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf_clion.dir/out_funcs/hex_print.c.o -c /home/name/Desktop/ft_printf_clion/out_funcs/hex_print.c
 
 CMakeFiles/ft_printf_clion.dir/out_funcs/hex_print.c.i: cmake_force
@@ -494,7 +533,7 @@ CMakeFiles/ft_printf_clion.dir/out_funcs/hex_print.c.s: cmake_force
 
 CMakeFiles/ft_printf_clion.dir/out_funcs/f_print.c.o: CMakeFiles/ft_printf_clion.dir/flags.make
 CMakeFiles/ft_printf_clion.dir/out_funcs/f_print.c.o: ../out_funcs/f_print.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/f_print.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/f_print.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf_clion.dir/out_funcs/f_print.c.o -c /home/name/Desktop/ft_printf_clion/out_funcs/f_print.c
 
 CMakeFiles/ft_printf_clion.dir/out_funcs/f_print.c.i: cmake_force
@@ -507,7 +546,7 @@ CMakeFiles/ft_printf_clion.dir/out_funcs/f_print.c.s: cmake_force
 
 CMakeFiles/ft_printf_clion.dir/out_funcs/fge_special_cases.c.o: CMakeFiles/ft_printf_clion.dir/flags.make
 CMakeFiles/ft_printf_clion.dir/out_funcs/fge_special_cases.c.o: ../out_funcs/fge_special_cases.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/fge_special_cases.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/fge_special_cases.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf_clion.dir/out_funcs/fge_special_cases.c.o -c /home/name/Desktop/ft_printf_clion/out_funcs/fge_special_cases.c
 
 CMakeFiles/ft_printf_clion.dir/out_funcs/fge_special_cases.c.i: cmake_force
@@ -520,7 +559,7 @@ CMakeFiles/ft_printf_clion.dir/out_funcs/fge_special_cases.c.s: cmake_force
 
 CMakeFiles/ft_printf_clion.dir/out_funcs/e_print.c.o: CMakeFiles/ft_printf_clion.dir/flags.make
 CMakeFiles/ft_printf_clion.dir/out_funcs/e_print.c.o: ../out_funcs/e_print.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/e_print.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/e_print.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf_clion.dir/out_funcs/e_print.c.o -c /home/name/Desktop/ft_printf_clion/out_funcs/e_print.c
 
 CMakeFiles/ft_printf_clion.dir/out_funcs/e_print.c.i: cmake_force
@@ -533,7 +572,7 @@ CMakeFiles/ft_printf_clion.dir/out_funcs/e_print.c.s: cmake_force
 
 CMakeFiles/ft_printf_clion.dir/out_funcs/g_print.c.o: CMakeFiles/ft_printf_clion.dir/flags.make
 CMakeFiles/ft_printf_clion.dir/out_funcs/g_print.c.o: ../out_funcs/g_print.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/g_print.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/g_print.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf_clion.dir/out_funcs/g_print.c.o -c /home/name/Desktop/ft_printf_clion/out_funcs/g_print.c
 
 CMakeFiles/ft_printf_clion.dir/out_funcs/g_print.c.i: cmake_force
@@ -546,7 +585,7 @@ CMakeFiles/ft_printf_clion.dir/out_funcs/g_print.c.s: cmake_force
 
 CMakeFiles/ft_printf_clion.dir/out_funcs/ft_putdouble.c.o: CMakeFiles/ft_printf_clion.dir/flags.make
 CMakeFiles/ft_printf_clion.dir/out_funcs/ft_putdouble.c.o: ../out_funcs/ft_putdouble.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/ft_putdouble.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/ft_putdouble.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf_clion.dir/out_funcs/ft_putdouble.c.o -c /home/name/Desktop/ft_printf_clion/out_funcs/ft_putdouble.c
 
 CMakeFiles/ft_printf_clion.dir/out_funcs/ft_putdouble.c.i: cmake_force
@@ -559,7 +598,7 @@ CMakeFiles/ft_printf_clion.dir/out_funcs/ft_putdouble.c.s: cmake_force
 
 CMakeFiles/ft_printf_clion.dir/out_funcs/ft_double_as_bignum.c.o: CMakeFiles/ft_printf_clion.dir/flags.make
 CMakeFiles/ft_printf_clion.dir/out_funcs/ft_double_as_bignum.c.o: ../out_funcs/ft_double_as_bignum.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/ft_double_as_bignum.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/ft_double_as_bignum.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf_clion.dir/out_funcs/ft_double_as_bignum.c.o -c /home/name/Desktop/ft_printf_clion/out_funcs/ft_double_as_bignum.c
 
 CMakeFiles/ft_printf_clion.dir/out_funcs/ft_double_as_bignum.c.i: cmake_force
@@ -597,6 +636,9 @@ ft_printf_clion_OBJECTS = \
 "CMakeFiles/ft_printf_clion.dir/libft/ft_lstclear.c.o" \
 "CMakeFiles/ft_printf_clion.dir/libft/ft_lstlast.c.o" \
 "CMakeFiles/ft_printf_clion.dir/libft/ft_power.c.o" \
+"CMakeFiles/ft_printf_clion.dir/libft/ft_bignummultiply.c.o" \
+"CMakeFiles/ft_printf_clion.dir/libft/ft_bignumaddition.c.o" \
+"CMakeFiles/ft_printf_clion.dir/libft/ft_lstfirst.c.o" \
 "CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.o" \
 "CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.o" \
 "CMakeFiles/ft_printf_clion.dir/out_funcs/str_print.c.o" \
@@ -639,6 +681,9 @@ ft_printf_clion: CMakeFiles/ft_printf_clion.dir/libft/ft_lstnormalizer.c.o
 ft_printf_clion: CMakeFiles/ft_printf_clion.dir/libft/ft_lstclear.c.o
 ft_printf_clion: CMakeFiles/ft_printf_clion.dir/libft/ft_lstlast.c.o
 ft_printf_clion: CMakeFiles/ft_printf_clion.dir/libft/ft_power.c.o
+ft_printf_clion: CMakeFiles/ft_printf_clion.dir/libft/ft_bignummultiply.c.o
+ft_printf_clion: CMakeFiles/ft_printf_clion.dir/libft/ft_bignumaddition.c.o
+ft_printf_clion: CMakeFiles/ft_printf_clion.dir/libft/ft_lstfirst.c.o
 ft_printf_clion: CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.o
 ft_printf_clion: CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.o
 ft_printf_clion: CMakeFiles/ft_printf_clion.dir/out_funcs/str_print.c.o
@@ -654,7 +699,7 @@ ft_printf_clion: CMakeFiles/ft_printf_clion.dir/out_funcs/ft_putdouble.c.o
 ft_printf_clion: CMakeFiles/ft_printf_clion.dir/out_funcs/ft_double_as_bignum.c.o
 ft_printf_clion: CMakeFiles/ft_printf_clion.dir/build.make
 ft_printf_clion: CMakeFiles/ft_printf_clion.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Linking C executable ft_printf_clion"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Linking C executable ft_printf_clion"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ft_printf_clion.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

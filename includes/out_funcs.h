@@ -18,7 +18,7 @@ typedef struct s_double
 		}	s_bitfields;
 	}	number;
 	uint64_t			true_mantissa: 53;
-	int64_t				true_exponent;
+	int16_t				true_exponent;
 	uint64_t			integer_part;
 	uint64_t			decimal_part;
 }	t_double;
@@ -37,9 +37,9 @@ void	e_print(double nbr, int32_t *total, t_specifier *specifier);
 void	g_print(double nbr, int32_t *total, t_specifier *specifier);
 uint8_t	fge_special_cases(t_double const *nbr,
 						  int32_t *total, t_specifier *specifier);
+void	ft_int_dec(t_double *nbr, t_list **integer,
+				t_list **decimal, t_specifier *specifier);
 void	ft_putdouble(t_list **integer, t_list **decimal,
-							 t_specifier *specifier);
-void	ft_int_dec(t_double *nbr, t_list **integer, t_list **decimal);
-
+					 t_specifier *specifier, int32_t *total);
 
 #endif

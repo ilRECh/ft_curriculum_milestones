@@ -58,6 +58,7 @@ t_list			*ft_lstnew(uint64_t value);
 void			ft_lstadd_front(t_list **lst, t_list *new);
 //int				ft_lstsize(t_list *lst);
 t_list			*ft_lstlast(t_list *lst);
+t_list			*ft_lstfirst(t_list *lst);
 //void			ft_lstadd_back(t_list **lst, t_list *new);
 //void			ft_lstdelone(t_list *lst, void (*del)(void *));
 void			ft_lstclear(t_list **lst);
@@ -68,5 +69,7 @@ void			fill_with(char c, unsigned int amount);
 void			ft_putnbr_base(uint64_t nbr, uint8_t base, char *symbs);
 size_t			count_symbs(uint64_t nbr, uint8_t base);
 int32_t			ft_power(int32_t nbr, uint8_t power);
+void			ft_bignummultiply(t_list **lst, uint64_t value, int16_t power);
+void			ft_bignumaddition(t_list *lst, t_list **extra);
 
 #endif

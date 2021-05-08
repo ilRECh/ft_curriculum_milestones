@@ -25,7 +25,9 @@ set(
         libft/ft_lstnormalizer.c
         libft/ft_lstclear.c
         libft/ft_lstlast.c
-        libft/ft_power.c)
+        libft/ft_power.c
+        libft/ft_bignummultiply.c
+        libft/ft_bignumaddition.c libft/ft_lstfirst.c)
 
 set(
         PRSR_SRCS
