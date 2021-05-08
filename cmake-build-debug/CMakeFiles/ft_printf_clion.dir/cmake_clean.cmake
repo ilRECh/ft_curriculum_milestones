@@ -28,6 +28,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/ft_printf_clion.dir/out_funcs/fge_special_cases.c.o"
   "CMakeFiles/ft_printf_clion.dir/out_funcs/ft_double_as_bignum.c.o"
   "CMakeFiles/ft_printf_clion.dir/out_funcs/ft_putdouble.c.o"
+  "CMakeFiles/ft_printf_clion.dir/out_funcs/ft_round_decimal.c.o"
   "CMakeFiles/ft_printf_clion.dir/out_funcs/g_print.c.o"
   "CMakeFiles/ft_printf_clion.dir/out_funcs/hex_print.c.o"
   "CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.o"

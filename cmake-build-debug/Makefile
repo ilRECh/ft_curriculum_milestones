@@ -58,38 +58,27 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /snap/clion/151/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake
 
 # The command to remove a file.
-RM = /snap/clion/151/bin/cmake/linux/bin/cmake -E rm -f
+RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/name/Desktop/ft_printf_clion
+CMAKE_SOURCE_DIR = /Users/vcobbler/Desktop/projects/ft_printf
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/name/Desktop/ft_printf_clion/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/snap/clion/151/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
-
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/snap/clion/151/bin/cmake/linux/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -97,11 +86,22 @@ rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
 
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
+
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles /home/name/Desktop/ft_printf_clion/cmake-build-debug//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/CMakeFiles /Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/name/Desktop/ft_printf_clion/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -925,6 +925,33 @@ out_funcs/ft_putdouble.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/ft_putdouble.c.s
 .PHONY : out_funcs/ft_putdouble.c.s
 
+out_funcs/ft_round_decimal.o: out_funcs/ft_round_decimal.c.o
+
+.PHONY : out_funcs/ft_round_decimal.o
+
+# target to build an object file
+out_funcs/ft_round_decimal.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/ft_round_decimal.c.o
+.PHONY : out_funcs/ft_round_decimal.c.o
+
+out_funcs/ft_round_decimal.i: out_funcs/ft_round_decimal.c.i
+
+.PHONY : out_funcs/ft_round_decimal.i
+
+# target to preprocess a source file
+out_funcs/ft_round_decimal.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/ft_round_decimal.c.i
+.PHONY : out_funcs/ft_round_decimal.c.i
+
+out_funcs/ft_round_decimal.s: out_funcs/ft_round_decimal.c.s
+
+.PHONY : out_funcs/ft_round_decimal.s
+
+# target to generate assembly for a file
+out_funcs/ft_round_decimal.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/ft_round_decimal.c.s
+.PHONY : out_funcs/ft_round_decimal.c.s
+
 out_funcs/g_print.o: out_funcs/g_print.c.o
 
 .PHONY : out_funcs/g_print.o
@@ -1345,6 +1372,9 @@ help:
 	@echo "... out_funcs/ft_putdouble.o"
 	@echo "... out_funcs/ft_putdouble.i"
 	@echo "... out_funcs/ft_putdouble.s"
+	@echo "... out_funcs/ft_round_decimal.o"
+	@echo "... out_funcs/ft_round_decimal.i"
+	@echo "... out_funcs/ft_round_decimal.s"
 	@echo "... out_funcs/g_print.o"
 	@echo "... out_funcs/g_print.i"
 	@echo "... out_funcs/g_print.s"

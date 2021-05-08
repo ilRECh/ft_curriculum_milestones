@@ -53,7 +53,7 @@ set(
         out_funcs/e_print.c
         out_funcs/g_print.c
         out_funcs/ft_putdouble.c
-        out_funcs/ft_double_as_bignum.c)
+        out_funcs/ft_double_as_bignum.c out_funcs/ft_round_decimal.c)
 
 set(
         HDRS

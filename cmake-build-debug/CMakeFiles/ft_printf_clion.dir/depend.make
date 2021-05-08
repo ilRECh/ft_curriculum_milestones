@@ -105,6 +105,11 @@ CMakeFiles/ft_printf_clion.dir/out_funcs/ft_putdouble.c.o: ../includes/out_funcs
 CMakeFiles/ft_printf_clion.dir/out_funcs/ft_putdouble.c.o: ../includes/parser.h
 CMakeFiles/ft_printf_clion.dir/out_funcs/ft_putdouble.c.o: ../out_funcs/ft_putdouble.c
 
+CMakeFiles/ft_printf_clion.dir/out_funcs/ft_round_decimal.c.o: ../includes/libft.h
+CMakeFiles/ft_printf_clion.dir/out_funcs/ft_round_decimal.c.o: ../includes/out_funcs.h
+CMakeFiles/ft_printf_clion.dir/out_funcs/ft_round_decimal.c.o: ../includes/parser.h
+CMakeFiles/ft_printf_clion.dir/out_funcs/ft_round_decimal.c.o: ../out_funcs/ft_round_decimal.c
+
 CMakeFiles/ft_printf_clion.dir/out_funcs/g_print.c.o: ../includes/libft.h
 CMakeFiles/ft_printf_clion.dir/out_funcs/g_print.c.o: ../includes/out_funcs.h
 CMakeFiles/ft_printf_clion.dir/out_funcs/g_print.c.o: ../includes/parser.h

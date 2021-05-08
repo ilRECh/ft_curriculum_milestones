@@ -8,7 +8,9 @@ static void	spec_init(t_specifier *specifier,
 	*symbs_amount += DOT * (specifier->precision > 0)
 		+ specifier->precision + ((nbr->number.s_bitfields.sign)
 		|| ((specifier->flags & PLUS_FLAG) != 0)
-		|| ((specifier->flags & SPACE_FLAG) != 0));
+		|| ((specifier->flags & SPACE_FLAG) != 0))
+		+ ((specifier->flags & OCTAL_FLAG) != 0
+		&& !specifier->precision);
 	if (specifier->width >= *symbs_amount)
 		specifier->width -= *symbs_amount;
 	else
@@ -63,8 +65,7 @@ static uint16_t	integer_symbs_count(t_list *integer)
 	return (symbs_amount);
 }
 
-void	f_print(double to_print, int32_t *total, t_specifier *specifier,
-			 char *if_e_print)
+void	f_print(double to_print, int32_t *total, t_specifier *specifier)
 {
 	t_double	*nbr;
 	t_list		*integer;
@@ -80,11 +81,13 @@ void	f_print(double to_print, int32_t *total, t_specifier *specifier,
 	nbr->true_mantissa = ((uint64_t)1 << 52)
 						 | nbr->number.s_bitfields.mantissa;
 	nbr->true_exponent = nbr->number.s_bitfields.exponent - 1023;
-	ft_int_dec(nbr, &integer, &decimal, specifier);
+	ft_int_dec(nbr, &integer, &decimal);
 	symbs_amount = integer_symbs_count(integer);
 	spec_init(specifier, nbr, &symbs_amount);
+	ft_round_decimal(&integer, &decimal, specifier);
 	print_prefix_space(nbr, total, specifier);
 	ft_putdouble(&integer, &decimal, specifier, total);
 	if (specifier->flags & MINUS_FLAG)
 		fill_with(' ', (*total += specifier->width, specifier->width));
+	free(nbr);
 }

@@ -72,7 +72,8 @@ void	ft_putdouble(t_list **integer, t_list **decimal,
 		ft_putnbr_length(integer_end, NULL, total);
 		integer_end = integer_end->prev;
 	}
-	if (specifier->precision && write(1, ".", 1))
+	if ((specifier->precision || (specifier->flags & OCTAL_FLAG))
+		&& write(1, ".", 1))
 		*total += 1;
 	while (decimal_end)
 	{

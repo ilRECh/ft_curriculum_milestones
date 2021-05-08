@@ -42,8 +42,14 @@ uint8_t	fge_special_cases(t_double const *nbr,
 		&& nbr->number.s_bitfields.mantissa == 0)
 		ft_putstr("inf", total, specifier, nbr->number.s_bitfields.sign);
 	else if (nbr->number.s_bitfields.exponent == 0b11111111111
-		&& nbr->number.s_bitfields.mantissa == ((uint64_t)1 << 51))
+		&& nbr->number.s_bitfields.mantissa != 0)
+	{
+		if (specifier->flags & PLUS_FLAG)
+			specifier->flags ^= PLUS_FLAG;
+		if (specifier->flags & SPACE_FLAG)
+			specifier->flags ^= SPACE_FLAG;
 		ft_putstr("nan", total, specifier, nbr->number.s_bitfields.sign);
+	}
 	else
 		return (0);
 	return (1);

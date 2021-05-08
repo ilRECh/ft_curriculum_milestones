@@ -21,7 +21,17 @@ LIBFT_LIST	=	ft_strchr.c\
 				fill_with.c\
 				count_symbs.c\
 				ft_putnbr_base.c\
-				ft_abs.c
+				ft_calloc.c\
+				ft_bzero.c\
+				ft_abs.c\
+				ft_lstadd_front.c\
+				ft_lstnew.c\
+				ft_lstnormalizer.c\
+				ft_lstclear.c\
+				ft_lstlast.c\
+				ft_power.c\
+				ft_bignummultiply.c\
+				ft_bignumaddition.c
 LIBFT_DIR		= ./libft/
 LIBFT			= $(addprefix $(LIBFT_DIR), $(LIBFT_LIST))
 
@@ -39,6 +49,9 @@ OUT_LIST	=	str_print.c\
 				e_print.c\
 				g_print.c\
 				fge_special_cases.c\
+				ft_double_as_bignum.c\
+				ft_putdouble.c\
+				ft_round_decimal.c\
 				out_funcs.c
 OUT_DIR			= ./out_funcs/
 OUT				= $(addprefix $(OUT_DIR), $(OUT_LIST))
