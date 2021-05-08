@@ -3,11 +3,15 @@
 static void	loc_fill_with(char c, unsigned int amount, t_specifier *specifier,
 						  int32_t *total)
 {
-	while (amount-- && specifier->precision)
-	{
-		specifier->precision--;
-		*total += write(1, &c, 1);
-	}
+	if (specifier)
+		while (amount-- && specifier->precision)
+		{
+			specifier->precision--;
+			*total += write(1, &c, 1);
+		}
+	else
+		while (amount--)
+			*total += write(1, &c, 1);
 }
 
 static void	ft_putnbr(uint64_t nbr, t_specifier *specifier, int32_t *total)
