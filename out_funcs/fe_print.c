@@ -54,9 +54,9 @@ static void	print_prefix_space(t_double const *nbr, int32_t *total,
 void	ft_outnum(t_list **integer, t_list **decimal, t_specifier *specifier,
 			   int32_t *total)
 {
-	e_print(, int32_t * total, t_specifier * specifier);
-
-	ft_putdouble(&integer, &decimal, specifier, total);
+	if (specifier->type == 'e')
+		ft_change_to_exp(integer, decimal, specifier);
+	ft_putdouble(integer, decimal, specifier, total);
 }
 
 void	fe_print(double to_print, int32_t *total, t_specifier *specifier)

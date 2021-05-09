@@ -59,7 +59,7 @@ void	out_funcs(va_list arg, int *total, t_specifier *specifier)
 	else if (specifier->type == 'f')
 		fe_print(va_arg(arg, double), total, specifier);
 	else if (specifier->type == 'e')
-		(void)0;//e_print(va_arg(arg, double), total, specifier);
+		fe_print(va_arg(arg, double), total, specifier);
 	else if (specifier->type == 'g')
 		(void)0;//g_print(va_arg(arg, double), total, specifier);
 }

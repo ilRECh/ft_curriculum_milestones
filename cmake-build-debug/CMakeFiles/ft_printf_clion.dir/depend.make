@@ -80,15 +80,10 @@ CMakeFiles/ft_printf_clion.dir/out_funcs/digit_print.c.o: ../includes/out_funcs.
 CMakeFiles/ft_printf_clion.dir/out_funcs/digit_print.c.o: ../includes/parser.h
 CMakeFiles/ft_printf_clion.dir/out_funcs/digit_print.c.o: ../out_funcs/digit_print.c
 
-CMakeFiles/ft_printf_clion.dir/out_funcs/e_print.c.o: ../includes/libft.h
-CMakeFiles/ft_printf_clion.dir/out_funcs/e_print.c.o: ../includes/out_funcs.h
-CMakeFiles/ft_printf_clion.dir/out_funcs/e_print.c.o: ../includes/parser.h
-CMakeFiles/ft_printf_clion.dir/out_funcs/e_print.c.o: ../out_funcs/e_print.c
-
-CMakeFiles/ft_printf_clion.dir/out_funcs/f_print.c.o: ../includes/libft.h
-CMakeFiles/ft_printf_clion.dir/out_funcs/f_print.c.o: ../includes/out_funcs.h
-CMakeFiles/ft_printf_clion.dir/out_funcs/f_print.c.o: ../includes/parser.h
-CMakeFiles/ft_printf_clion.dir/out_funcs/f_print.c.o: ../out_funcs/f_print.c
+CMakeFiles/ft_printf_clion.dir/out_funcs/fe_print.c.o: ../includes/libft.h
+CMakeFiles/ft_printf_clion.dir/out_funcs/fe_print.c.o: ../includes/out_funcs.h
+CMakeFiles/ft_printf_clion.dir/out_funcs/fe_print.c.o: ../includes/parser.h
+CMakeFiles/ft_printf_clion.dir/out_funcs/fe_print.c.o: ../out_funcs/fe_print.c
 
 CMakeFiles/ft_printf_clion.dir/out_funcs/fge_special_cases.c.o: ../includes/libft.h
 CMakeFiles/ft_printf_clion.dir/out_funcs/fge_special_cases.c.o: ../includes/out_funcs.h

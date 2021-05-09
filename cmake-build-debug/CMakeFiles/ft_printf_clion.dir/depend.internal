@@ -80,16 +80,11 @@ CMakeFiles/ft_printf_clion.dir/out_funcs/digit_print.c.o
  ../includes/out_funcs.h
  ../includes/parser.h
  /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/digit_print.c
-CMakeFiles/ft_printf_clion.dir/out_funcs/e_print.c.o
+CMakeFiles/ft_printf_clion.dir/out_funcs/fe_print.c.o
  ../includes/libft.h
  ../includes/out_funcs.h
  ../includes/parser.h
- /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/e_print.c
-CMakeFiles/ft_printf_clion.dir/out_funcs/f_print.c.o
- ../includes/libft.h
- ../includes/out_funcs.h
- ../includes/parser.h
- /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/f_print.c
+ /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/fe_print.c
 CMakeFiles/ft_printf_clion.dir/out_funcs/fge_special_cases.c.o
  ../includes/libft.h
  ../includes/out_funcs.h

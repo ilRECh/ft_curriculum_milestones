@@ -40,7 +40,9 @@ void		ft_putdouble(t_list **integer, t_list **decimal,
 void		ft_round_decimal(t_list **integer, t_list **decimal,
 				t_specifier *specifier);
 uint16_t	integer_symbs_count(t_list *integer);
-uint16_t	decimal_symbs_count(t_list *decimal);
+//uint16_t	decimal_symbs_count(t_list *decimal);
 uint16_t	decimal_zeros_count(t_list *decimal);
+uint16_t	ft_change_to_exp(t_list **integer,
+				t_list **decimal, t_specifier *specifier);
 
 #endif
