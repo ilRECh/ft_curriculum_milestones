@@ -11,7 +11,8 @@ static void	spec_init(t_specifier *specifier,
 			specifier->flags ^= ZERO_FLAG;
 	}
 	if (specifier->width > specifier->precision && (*nbr < 0
-		|| (specifier->flags & PLUS_FLAG) || (specifier->flags & SPACE_FLAG)))
+			|| (specifier->flags & PLUS_FLAG)
+			|| (specifier->flags & SPACE_FLAG)))
 		specifier->width--;
 	if (specifier->width < *symbs_amount)
 		specifier->width = *symbs_amount;
@@ -32,7 +33,7 @@ static void	print_space(t_specifier *specifier,
 		correction = specifier->precision;
 	if (specifier->width > correction)
 		fill_with(' ', specifier->width
-					   - correction * (specifier->precision != 0 || *nbr != 0));
+			- correction * (specifier->precision != 0 || *nbr != 0));
 }
 
 static void	put_flag_symbol(int64_t const *nbr,

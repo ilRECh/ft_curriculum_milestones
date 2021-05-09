@@ -168,10 +168,7 @@
 		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/out_funcs/digit_print.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
-		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/out_funcs/e_print.c">
-			<Option target="ft_printf_clion"/>
-		</Unit>
-		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/out_funcs/f_print.c">
+		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/out_funcs/fe_print.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
 		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/out_funcs/fge_special_cases.c">
@@ -180,7 +177,13 @@
 		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/out_funcs/ft_double_as_bignum.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
+		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/out_funcs/ft_int_dec_symbs_counter.c">
+			<Option target="ft_printf_clion"/>
+		</Unit>
 		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/out_funcs/ft_putdouble.c">
+			<Option target="ft_printf_clion"/>
+		</Unit>
+		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/out_funcs/ft_putexp.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
 		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/out_funcs/ft_round_decimal.c">

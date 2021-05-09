@@ -8,7 +8,7 @@ static void	hex_digit_out_func(va_list arg, int *total, t_specifier *specifier)
 		hex_print(va_arg(arg, uint64_t), total, specifier);
 	else if (specifier->size & H_TYPE)
 		hex_print((unsigned short int)va_arg(arg, uint32_t),
-				total, specifier);
+			total, specifier);
 	else if (specifier->size & HH_TYPE)
 		hex_print((unsigned char) va_arg(arg, uint32_t), total, specifier);
 }
@@ -21,7 +21,7 @@ static void	u_digit_out_func(va_list arg, int *total, t_specifier *specifier)
 		u_digit_print(va_arg(arg, uint64_t), total, specifier);
 	else if (specifier->size & H_TYPE)
 		u_digit_print((unsigned short int)va_arg(arg, uint32_t),
-				total, specifier);
+			total, specifier);
 	else if (specifier->size & HH_TYPE)
 		u_digit_print((unsigned char) va_arg(arg, uint32_t), total, specifier);
 }
@@ -57,7 +57,7 @@ void	out_funcs(va_list arg, int *total, t_specifier *specifier)
 	else if (specifier->type == 'n')
 		*va_arg(arg, int *) = *total;
 	else if (specifier->type == 'f')
-		f_print(va_arg(arg, double), total, specifier);
+		fe_print(va_arg(arg, double), total, specifier);
 	else if (specifier->type == 'e')
 		(void)0;//e_print(va_arg(arg, double), total, specifier);
 	else if (specifier->type == 'g')

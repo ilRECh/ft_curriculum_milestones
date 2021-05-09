@@ -34,7 +34,7 @@ void	str_print(char *str, int *total, t_specifier *specifier)
 	else
 	{
 		fill_with('0' * ((specifier->flags & ZERO_FLAG) != 0)
-				  + ' ' * ((specifier->flags & ZERO_FLAG) == 0), specifier->width);
+			+ ' ' * ((specifier->flags & ZERO_FLAG) == 0), specifier->width);
 		ft_putstr(str, specifier->precision);
 	}
 	*total += specifier->precision + specifier->width;

@@ -7,7 +7,7 @@ static void	put_flag_symbol(uint8_t const minus_sign,
 
 	c = '+' * ((specifier->flags & PLUS_FLAG) != 0) * (minus_sign == 0)
 		+ ' ' * ((specifier->flags & SPACE_FLAG) != 0
-				 && !(specifier->flags & PLUS_FLAG)) * (minus_sign == 0)
+			&& !(specifier->flags & PLUS_FLAG)) * (minus_sign == 0)
 		+ '-' * (minus_sign != 0);
 	if (c)
 	{
@@ -21,7 +21,8 @@ static void	ft_putstr(const char *s, int32_t *total, t_specifier *specifier,
 {
 	specifier->precision = 3;
 	if (specifier->width > specifier->precision && (sign == 1
-		|| (specifier->flags & SPACE_FLAG) || (specifier->flags & PLUS_FLAG)))
+			|| (specifier->flags & SPACE_FLAG)
+			|| (specifier->flags & PLUS_FLAG)))
 		specifier->width--;
 	if (!(specifier->flags & MINUS_FLAG)
 		&& specifier->width > specifier->precision)
@@ -32,23 +33,23 @@ static void	ft_putstr(const char *s, int32_t *total, t_specifier *specifier,
 		&& specifier->width > specifier->precision)
 		fill_with(' ', specifier->width - specifier->precision);
 	*total += specifier->width * (specifier->width > specifier->precision)
-			+ specifier->precision * (specifier->width <= specifier->precision);
+		+ specifier->precision * (specifier->width <= specifier->precision);
 }
 
 uint8_t	fge_special_cases(t_double const *nbr,
 						  int32_t *total, t_specifier *specifier)
 {
-	if (nbr->number.s_bitfields.exponent == 0b11111111111
-		&& nbr->number.s_bitfields.mantissa == 0)
-		ft_putstr("inf", total, specifier, nbr->number.s_bitfields.sign);
-	else if (nbr->number.s_bitfields.exponent == 0b11111111111
-		&& nbr->number.s_bitfields.mantissa != 0)
+	if (nbr->u_number.s_bitfields.exponent == 0b11111111111
+		&& nbr->u_number.s_bitfields.mantissa == 0)
+		ft_putstr("inf", total, specifier, nbr->u_number.s_bitfields.sign);
+	else if (nbr->u_number.s_bitfields.exponent == 0b11111111111
+		&& nbr->u_number.s_bitfields.mantissa != 0)
 	{
 		if (specifier->flags & PLUS_FLAG)
 			specifier->flags ^= PLUS_FLAG;
 		if (specifier->flags & SPACE_FLAG)
 			specifier->flags ^= SPACE_FLAG;
-		ft_putstr("nan", total, specifier, nbr->number.s_bitfields.sign);
+		ft_putstr("nan", total, specifier, nbr->u_number.s_bitfields.sign);
 	}
 	else
 		return (0);

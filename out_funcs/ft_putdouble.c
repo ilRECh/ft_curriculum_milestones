@@ -4,11 +4,13 @@ static void	loc_fill_with(char c, unsigned int amount, t_specifier *specifier,
 						  int32_t *total)
 {
 	if (specifier)
+	{
 		while (amount-- && specifier->precision)
 		{
 			specifier->precision--;
 			*total += write(1, &c, 1);
 		}
+	}
 	else
 		while (amount--)
 			*total += write(1, &c, 1);
@@ -46,24 +48,25 @@ static void	ft_putnbr_length(t_list *element,
 	if (symbs_amount < 9 && element->next)
 		loc_fill_with('0', 9 - symbs_amount, specifier, total);
 	while (symbs_amount_copy--)
+	{
 		if (specifier && symbs_amount_copy == 0 && !element->next)
 			break ;
 		else
 			coeff *= 10;
+	}
 	if (specifier && !element->next
 		&& (--symbs_amount > count_symbs(element->value % coeff, 10)))
 		loc_fill_with('0', symbs_amount - count_symbs(
-					element->value % coeff, 10), specifier, total);
+				element->value % coeff, 10), specifier, total);
 	if (coeff > 1)
 		ft_putnbr(element->value % coeff, specifier, total);
 }
 
-
 void	ft_putdouble(t_list **integer, t_list **decimal,
 				  t_specifier *specifier, int32_t *total)
 {
-	t_list *decimal_end;
-	t_list *integer_end;
+	t_list	*decimal_end;
+	t_list	*integer_end;
 
 	decimal_end = ft_lstlast(*decimal);
 	integer_end = ft_lstlast(*integer);

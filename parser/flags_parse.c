@@ -14,7 +14,7 @@ char	*flags_parse(char *spec, t_specifier *specifier)
 		if (search)
 			specifier->flags |= 1 << (search - set);
 		else
-			break;
+			break ;
 		spec++;
 	}
 	return (spec);

@@ -14,21 +14,17 @@ void in_bin(uint64_t d, unsigned int n)
 	printf("\n");
 }
 
-#include <float.h>
-
-const double lowest_double = DBL_MIN;
-
 int	main(void)
 {
 	t_double nbr;
 
 	double n;
 
-	n = 3.9999999;
+	n = 0.00000000742937492374927349273947239749274923749723948;
 	printf("------------------------------------------\n");
 	printf("printf:\t%d\n",
-		   printf("%f\n", n));
-	printf("ft_printf:\t%d - %%f, n = 3.9999999\n",
-		   ft_printf("%f\n", n));
+		   printf("%.100e\n", n));
+	printf("ft_printf:\t%d - %%f\n",
+		   ft_printf("%e\n", n));
 	return (0);
 }

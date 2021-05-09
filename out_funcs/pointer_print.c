@@ -21,7 +21,7 @@ void	pointer_print(uint64_t *ptr, int *total, t_specifier *specifier)
 		fill_with(' ', specifier->width - 2 - specifier->precision);
 	write(1, "0x", 2);
 	fill_with('0', (specifier->precision > symbs_amount)
-				   * (specifier->precision - symbs_amount));
+		* (specifier->precision - symbs_amount));
 	if (not_print || (uint64_t)ptr)
 		ft_putnbr_base((uint64_t)ptr, 16, "0123456789abcdef");
 	if (specifier->flags & MINUS_FLAG)
