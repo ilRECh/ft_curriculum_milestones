@@ -66,11 +66,15 @@ int16_t	ft_change_to_exp(t_list **integer, t_list **decimal, t_specifier *specif
 		&& (*decimal)->value)
 	{
 		ft_exclude_zeros(*integer, *decimal);
+		ft_round_decimal(integer, decimal, specifier);
+		while ((*integer)->value >= 10 && decimal_zeros--)
+			(*integer)->value /= 10;
 		return (decimal_zeros * (-1));
 	}
 	else
 	{
 		ft_offset_int(integer, decimal);
+		ft_round_decimal(integer, decimal, specifier);
 		return (integer_symbs - 1);
 	}
 }

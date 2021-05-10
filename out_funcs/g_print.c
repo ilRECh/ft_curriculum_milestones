@@ -1,5 +1,13 @@
 #include "out_funcs.h"
 
+static void	spec_init(t_specifier *specifier)
+{
+	if (specifier->precision < 0)
+		specifier->precision = 6;
+	else if (specifier->precision == 0)
+		specifier->precision = 1;
+}
+
 void	exclude_trailing_zeros(t_list *decimal, t_specifier *specifier)
 {
 	uint32_t	iter_1;
@@ -39,6 +47,7 @@ void	g_print(t_list *integer, t_list *decimal, t_specifier *specifier)
 	exp = (integer_symbs - 1) * (integer->value != 0)
 		+ (decimal_zeros + 1) * (-1) * (!integer->value);
 	specifier->flags |= G_FLAG;
+	spec_init(specifier);
 	if (specifier->precision == 0)
 		specifier->precision = 1;
 	if (specifier->precision > exp && exp >= -4)

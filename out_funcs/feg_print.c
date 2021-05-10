@@ -57,7 +57,8 @@ void	ft_outnum(t_list **integer, t_list **decimal, t_specifier *specifier,
 	exp = 0;
 	if (specifier->type == 'e')
 		exp = ft_change_to_exp(integer, decimal, specifier);
-	ft_round_decimal(integer, decimal, specifier);
+	else
+		ft_round_decimal(integer, decimal, specifier);
 	if ((specifier->flags & G_FLAG)
 		&& !(specifier->flags & OCTAL_FLAG))
 		exclude_trailing_zeros(*decimal, specifier);
