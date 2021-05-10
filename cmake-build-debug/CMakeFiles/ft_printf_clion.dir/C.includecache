@@ -28,7 +28,15 @@ stdint.h
 unistd.h
 -
 
-/Users/vcobbler/Desktop/projects/ft_printf/out_funcs/out_funcs.c
+/home/name/Desktop/ft_printf_clion/includes/ft_stdio.h
+
+/home/name/Desktop/ft_printf_clion/main.c
+stdio.h
+-
+unistd.h
+-
+includes/ft_stdio.h
+/home/name/Desktop/ft_printf_clion/includes/ft_stdio.h
 out_funcs.h
-/Users/vcobbler/Desktop/projects/ft_printf/out_funcs/out_funcs.h
+/home/name/Desktop/ft_printf_clion/out_funcs.h
 

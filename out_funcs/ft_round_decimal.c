@@ -7,6 +7,7 @@ void	ft_round_decimal(t_list **integer, t_list **decimal,
 	int32_t		iter_1;
 
 	decimal_copy = ft_lstlast(*decimal);
+	ft_bignummultiply(decimal, 10, 9 - count_symbs(decimal_copy->value, 10));
 	iter_1 = count_symbs(decimal_copy->value, 10) - 1;
 	while (decimal_copy)
 	{
@@ -22,8 +23,7 @@ void	ft_round_decimal(t_list **integer, t_list **decimal,
 	ft_lstnormalizer(*decimal);
 	decimal_copy = ft_lstlast(*decimal);
 	if (!(!specifier->precision && (*integer)->value % 2 == 0
-			  	 && !(decimal_copy->value
-				   	 / ft_power(10,
+			  	 && !(decimal_copy->value / ft_power(10,
 					count_symbs(decimal_copy->value, 10) - 2) % 10))
 		&& (decimal_copy->value
 			/ ft_power(10, count_symbs(decimal_copy->value, 10) - 1)) > 1)

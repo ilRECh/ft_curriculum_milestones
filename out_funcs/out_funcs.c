@@ -56,10 +56,7 @@ void	out_funcs(va_list arg, int *total, t_specifier *specifier)
 		char_print('%', total, specifier);
 	else if (specifier->type == 'n')
 		*va_arg(arg, int *) = *total;
-	else if (specifier->type == 'f')
-		fe_print(va_arg(arg, double), total, specifier);
-	else if (specifier->type == 'e')
-		fe_print(va_arg(arg, double), total, specifier);
-	else if (specifier->type == 'g')
-		(void)0;//g_print(va_arg(arg, double), total, specifier);
+	else if (specifier->type == 'f' || specifier->type == 'e'
+		|| specifier->type == 'g')
+		feg_print(va_arg(arg, double), total, specifier);
 }

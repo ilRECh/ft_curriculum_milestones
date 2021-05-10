@@ -20,11 +20,11 @@ int	main(void)
 
 	double n;
 
-	n = 0.00000000742937492374927349273947239749274923749723948;
+	n = 7294234789234972389484.749;
 	printf("------------------------------------------\n");
 	printf("printf:\t%d\n",
-		   printf("%.100e\n", n));
-	printf("ft_printf:\t%d - %%f\n",
-		   ft_printf("%e\n", n));
+		   printf("%1000.237g\n", n));
+	printf("ft_printf:\t%d - %%g\n",
+		   ft_printf("%1000.237g\n", n));
 	return (0);
 }

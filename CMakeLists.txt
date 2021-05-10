@@ -48,8 +48,8 @@ set(
         out_funcs/digit_print.c
         out_funcs/u_digit_print.c
         out_funcs/hex_print.c
-        out_funcs/fe_print.c
-        out_funcs/fge_special_cases.c
+        out_funcs/feg_print.c
+        out_funcs/feg_special_cases.c
         out_funcs/g_print.c
         out_funcs/ft_putdouble.c
         out_funcs/ft_double_as_bignum.c out_funcs/ft_round_decimal.c out_funcs/ft_int_dec_symbs_counter.c out_funcs/ft_putexp.c)

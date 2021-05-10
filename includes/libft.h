@@ -7,6 +7,7 @@
 
 enum
 {
+	TRUE = 1,
 	MAX_RANK = 1000000000,
 };
 
@@ -68,7 +69,7 @@ void			ft_lstnormalizer(t_list *lst);
 void			fill_with(char c, unsigned int amount);
 void			ft_putnbr_base(uint64_t nbr, uint8_t base, char *symbs);
 size_t			count_symbs(uint64_t nbr, uint8_t base);
-int32_t			ft_power(int32_t nbr, int8_t power);
+int32_t			ft_power(int32_t nbr, int32_t power);
 void			ft_bignummultiply(t_list **lst, uint64_t value, int16_t power);
 void			ft_bignumaddition(t_list *lst, t_list **extra);
 

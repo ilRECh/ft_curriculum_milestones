@@ -1,86 +1,54 @@
 #include "out_funcs.h"
 
-//static void	spec_init(t_specifier *specifier)
-//{
-//	if (specifier->precision < 0)
-//		specifier->precision = 6;
-//	else if (specifier->precision == 0)
-//		specifier->precision = 1;
-//}
-//
-//static int32_t	count_exp(double nbr)
-//{
-//	int	exp;
-//
-//	exp = 0;
-//	while ((nbr > 10 && nbr > 0) || (nbr < -10 && nbr < 0))
-//	{
-//		nbr /= 10;
-//		exp++;
-//	}
-//	while ((nbr < 1 && nbr > 0) || (nbr > -1 && nbr < 0))
-//	{
-//		nbr *= 10;
-//		exp--;
-//	}
-//	return (exp);
-//}
-//
-//static void	f_precision_setup(double const *nbr, t_specifier *specifier)
-//{
-//	double	decimal;
-//	double	correction;
-//	double	u_nbr;
-//	uint8_t iter_1;
-//
-//	u_nbr = *nbr * (-1 * (*nbr < 0)) + *nbr * (*nbr >= 0);
-//	decimal = u_nbr - (double)((uint64_t)u_nbr);
-//	correction = 5.f;
-//	specifier->precision++;
-//	iter_1 = -1;
-//	while (++iter_1 < specifier->precision)
-//		correction /= 10;
-//	decimal += correction;
-//	correction = decimal;
-//	while (--specifier->precision)
-//	{
-//		iter_1 = -1;
-//		while (++iter_1 < specifier->precision)
-//			correction = correction * 10;
-//		if ((uint64_t)correction % 10 != 0)
-//			break ;
-//		correction = decimal;
-//	}
-//}
-//
-//static void	e_precision_setup(double const *nbr, t_specifier *specifier)
-//{
-//	double	nbr_copy;
-//
-//	nbr_copy = *nbr;
-//	while ((nbr_copy > 10 && nbr_copy > 0) || (nbr_copy < -10 && nbr_copy < 0))
-//		nbr_copy /= 10;
-//	f_precision_setup(&nbr_copy, specifier);
-//}
-//
-//void	g_print(double nbr, int32_t *total, t_specifier *specifier)
-//{
-//	int32_t	exp;
-//
-//	if (fge_special_cases(&nbr, total, specifier))
-//		return ;
-//	spec_init(specifier);
-//	exp = count_exp(nbr);
-//	if (specifier->precision > exp && exp >= -4)
-//	{
-//		specifier->precision -= exp + 1;
-//		f_precision_setup(&nbr, specifier);
-//		f_print(nbr, total, specifier, NULL);
-//	}
-//	else
-//	{
-//		specifier->precision--;
-//		e_precision_setup(&nbr, specifier);
-//		e_print(nbr, total, specifier);
-//	}
-//}
+void	exclude_trailing_zeros(t_list *decimal, t_specifier *specifier)
+{
+	uint32_t	iter_1;
+
+	decimal = ft_lstlast(decimal);
+	iter_1 = count_symbs(decimal->value, 10) - 1;
+	while (iter_1 < specifier->precision && decimal->prev)
+	{
+		iter_1 += 9;
+		decimal = decimal->prev;
+	}
+	iter_1 -= specifier->precision;
+	while (specifier->precision)
+	{
+		if (decimal->value / ft_power(10, iter_1++) % 10 == 0)
+		{
+			specifier->precision--;
+			if (iter_1 == 9)
+			{
+				decimal = decimal->next;
+				iter_1 = 0;
+			}
+		}
+		else
+			break;
+	}
+}
+
+void	g_print(t_list *integer, t_list *decimal, t_specifier *specifier)
+{
+	uint16_t	integer_symbs;
+	uint16_t	decimal_zeros;
+	int16_t		exp;
+
+	integer_symbs = integer_symbs_count(integer);
+	decimal_zeros = decimal_zeros_count(decimal);
+	exp = (integer_symbs - 1) * (integer->value != 0)
+		+ (decimal_zeros + 1) * (-1) * (!integer->value);
+	specifier->flags |= G_FLAG;
+	if (specifier->precision == 0)
+		specifier->precision = 1;
+	if (specifier->precision > exp && exp >= -4)
+	{
+		specifier->type = 'f';
+		specifier->precision -= exp + 1;
+	}
+	else
+	{
+		specifier->type = 'e';
+		specifier->precision -= 1;
+	}
+}

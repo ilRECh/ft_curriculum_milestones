@@ -35,6 +35,8 @@ uint16_t	decimal_zeros_count(t_list *decimal)
 
 	decimal = ft_lstlast(decimal);
 	zeros_amount = 0;
+	if (decimal->value == 0)
+		return (zeros_amount);
 	cur_zeros = count_symbs(decimal->value, 10) - 1;
 	while (WE_EXIST)
 	{

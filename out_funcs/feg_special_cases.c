@@ -36,8 +36,8 @@ static void	ft_putstr(const char *s, int32_t *total, t_specifier *specifier,
 		+ specifier->precision * (specifier->width <= specifier->precision);
 }
 
-uint8_t	fge_special_cases(t_double const *nbr,
-						  int32_t *total, t_specifier *specifier)
+uint8_t	feg_special_cases(t_double const *nbr,
+							 int32_t *total, t_specifier *specifier)
 {
 	if (nbr->u_number.s_bitfields.exponent == 0b11111111111
 		&& nbr->u_number.s_bitfields.mantissa == 0)
