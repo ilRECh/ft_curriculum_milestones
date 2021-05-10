@@ -10,7 +10,7 @@ static void	spec_init(t_specifier *specifier)
 
 void	exclude_trailing_zeros(t_list *decimal, t_specifier *specifier)
 {
-	uint32_t	iter_1;
+	int32_t	iter_1;
 
 	decimal = ft_lstlast(decimal);
 	iter_1 = count_symbs(decimal->value, 10) - 1;

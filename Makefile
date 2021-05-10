@@ -45,13 +45,13 @@ OUT_LIST	=	str_print.c\
 				digit_print.c\
 				u_digit_print.c\
 				hex_print.c\
-				f_print.c\
-				e_print.c\
+				feg_print.c\
+				feg_special_cases.c\
 				g_print.c\
-				fge_special_cases.c\
 				ft_double_as_bignum.c\
 				ft_putdouble.c\
 				ft_round_decimal.c\
+				ft_int_dec_symbs_counter.c\
 				out_funcs.c
 OUT_DIR			= ./out_funcs/
 OUT				= $(addprefix $(OUT_DIR), $(OUT_LIST))
