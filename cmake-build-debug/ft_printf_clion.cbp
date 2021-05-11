@@ -4,226 +4,228 @@
 	<Project>
 		<Option title="ft_printf_clion"/>
 		<Option makefile_is_custom="1"/>
-		<Option compiler="clang"/>
+		<Option compiler="gcc"/>
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/name/Desktop/ft_printf_clion/cmake-build-debug"/>
+				<Option working_dir="/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j12 -f &quot;/home/name/Desktop/ft_printf_clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/name/Desktop/ft_printf_clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j12 -f &quot;/home/name/Desktop/ft_printf_clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j12 -f &quot;/home/name/Desktop/ft_printf_clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="edit_cache">
-				<Option working_dir="/home/name/Desktop/ft_printf_clion/cmake-build-debug"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j12 -f &quot;/home/name/Desktop/ft_printf_clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/name/Desktop/ft_printf_clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j12 -f &quot;/home/name/Desktop/ft_printf_clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j12 -f &quot;/home/name/Desktop/ft_printf_clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j6 -f &quot;/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/name/Desktop/ft_printf_clion/cmake-build-debug"/>
+				<Option working_dir="/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j12 -f &quot;/home/name/Desktop/ft_printf_clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/name/Desktop/ft_printf_clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j12 -f &quot;/home/name/Desktop/ft_printf_clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j12 -f &quot;/home/name/Desktop/ft_printf_clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j6 -f &quot;/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j6 -f &quot;/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="ft_printf_clion">
-				<Option output="/home/name/Desktop/ft_printf_clion/cmake-build-debug/ft_printf_clion" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/name/Desktop/ft_printf_clion/cmake-build-debug"/>
+				<Option output="/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/ft_printf_clion" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
-				<Option compiler="clang"/>
+				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/name/Desktop/ft_printf_clion/libft"/>
-					<Add directory="/home/name/Desktop/ft_printf_clion/parser"/>
-					<Add directory="/home/name/Desktop/ft_printf_clion/includes"/>
+					<Add directory="/Users/vcobbler/Desktop/projects/ft_printf/libft"/>
+					<Add directory="/Users/vcobbler/Desktop/projects/ft_printf/parser"/>
+					<Add directory="/Users/vcobbler/Desktop/projects/ft_printf/includes"/>
 					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/lib/llvm-10/lib/clang/10.0.0/include"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j12 -f &quot;/home/name/Desktop/ft_printf_clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 ft_printf_clion"/>
-					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/name/Desktop/ft_printf_clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j12 -f &quot;/home/name/Desktop/ft_printf_clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j12 -f &quot;/home/name/Desktop/ft_printf_clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j6 -f &quot;/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/Makefile&quot;  VERBOSE=1 ft_printf_clion"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="ft_printf_clion/fast">
-				<Option output="/home/name/Desktop/ft_printf_clion/cmake-build-debug/ft_printf_clion" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/name/Desktop/ft_printf_clion/cmake-build-debug"/>
+				<Option output="/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/ft_printf_clion" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
-				<Option compiler="clang"/>
+				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/name/Desktop/ft_printf_clion/libft"/>
-					<Add directory="/home/name/Desktop/ft_printf_clion/parser"/>
-					<Add directory="/home/name/Desktop/ft_printf_clion/includes"/>
+					<Add directory="/Users/vcobbler/Desktop/projects/ft_printf/libft"/>
+					<Add directory="/Users/vcobbler/Desktop/projects/ft_printf/parser"/>
+					<Add directory="/Users/vcobbler/Desktop/projects/ft_printf/includes"/>
 					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/lib/llvm-10/lib/clang/10.0.0/include"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j12 -f &quot;/home/name/Desktop/ft_printf_clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 ft_printf_clion/fast"/>
-					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/name/Desktop/ft_printf_clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j12 -f &quot;/home/name/Desktop/ft_printf_clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j12 -f &quot;/home/name/Desktop/ft_printf_clion/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j6 -f &quot;/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/Makefile&quot;  VERBOSE=1 ft_printf_clion/fast"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/name/Desktop/ft_printf_clion/ft_printf.c">
+		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/ft_printf.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
-		<Unit filename="/home/name/Desktop/ft_printf_clion/includes/ft_stdio.h">
+		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/includes/ft_stdio.h">
 			<Option target="ft_printf_clion"/>
 		</Unit>
-		<Unit filename="/home/name/Desktop/ft_printf_clion/includes/libft.h">
+		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/includes/libft.h">
 			<Option target="ft_printf_clion"/>
 		</Unit>
-		<Unit filename="/home/name/Desktop/ft_printf_clion/includes/out_funcs.h">
+		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/includes/out_funcs.h">
 			<Option target="ft_printf_clion"/>
 		</Unit>
-		<Unit filename="/home/name/Desktop/ft_printf_clion/includes/parser.h">
+		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/includes/parser.h">
 			<Option target="ft_printf_clion"/>
 		</Unit>
-		<Unit filename="/home/name/Desktop/ft_printf_clion/libft/count_symbs.c">
+		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/libft/count_symbs.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
-		<Unit filename="/home/name/Desktop/ft_printf_clion/libft/fill_with.c">
+		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/libft/fill_with.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
-		<Unit filename="/home/name/Desktop/ft_printf_clion/libft/ft_abs.c">
+		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/libft/ft_abs.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
-		<Unit filename="/home/name/Desktop/ft_printf_clion/libft/ft_atoi.c">
+		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/libft/ft_atoi.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
-		<Unit filename="/home/name/Desktop/ft_printf_clion/libft/ft_bignumaddition.c">
+		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/libft/ft_bignumaddition.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
-		<Unit filename="/home/name/Desktop/ft_printf_clion/libft/ft_bignummultiply.c">
+		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/libft/ft_bignummultiply.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
-		<Unit filename="/home/name/Desktop/ft_printf_clion/libft/ft_bzero.c">
+		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/libft/ft_bzero.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
-		<Unit filename="/home/name/Desktop/ft_printf_clion/libft/ft_calloc.c">
+		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/libft/ft_calloc.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
-		<Unit filename="/home/name/Desktop/ft_printf_clion/libft/ft_isdigit.c">
+		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/libft/ft_isdigit.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
-		<Unit filename="/home/name/Desktop/ft_printf_clion/libft/ft_isspace.c">
+		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/libft/ft_isspace.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
-		<Unit filename="/home/name/Desktop/ft_printf_clion/libft/ft_lstadd_front.c">
+		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/libft/ft_lstadd_front.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
-		<Unit filename="/home/name/Desktop/ft_printf_clion/libft/ft_lstclear.c">
+		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/libft/ft_lstclear.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
-		<Unit filename="/home/name/Desktop/ft_printf_clion/libft/ft_lstfirst.c">
+		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/libft/ft_lstfirst.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
-		<Unit filename="/home/name/Desktop/ft_printf_clion/libft/ft_lstlast.c">
+		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/libft/ft_lstlast.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
-		<Unit filename="/home/name/Desktop/ft_printf_clion/libft/ft_lstnew.c">
+		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/libft/ft_lstnew.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
-		<Unit filename="/home/name/Desktop/ft_printf_clion/libft/ft_lstnormalizer.c">
+		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/libft/ft_lstnormalizer.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
-		<Unit filename="/home/name/Desktop/ft_printf_clion/libft/ft_power.c">
+		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/libft/ft_power.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
-		<Unit filename="/home/name/Desktop/ft_printf_clion/libft/ft_putnbr_base.c">
+		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/libft/ft_putnbr_base.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
-		<Unit filename="/home/name/Desktop/ft_printf_clion/libft/ft_strchr.c">
+		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/libft/ft_strchr.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
-		<Unit filename="/home/name/Desktop/ft_printf_clion/libft/ft_strlen.c">
+		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/libft/ft_strlen.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
-		<Unit filename="/home/name/Desktop/ft_printf_clion/main.c">
+		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/main.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
-		<Unit filename="/home/name/Desktop/ft_printf_clion/out_funcs/char_print.c">
+		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/out_funcs/char_print.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
-		<Unit filename="/home/name/Desktop/ft_printf_clion/out_funcs/digit_print.c">
+		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/out_funcs/digit_print.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
-		<Unit filename="/home/name/Desktop/ft_printf_clion/out_funcs/feg_print.c">
+		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/out_funcs/feg_print.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
-		<Unit filename="/home/name/Desktop/ft_printf_clion/out_funcs/feg_special_cases.c">
+		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/out_funcs/feg_special_cases.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
-		<Unit filename="/home/name/Desktop/ft_printf_clion/out_funcs/ft_double_as_bignum.c">
+		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/out_funcs/ft_double_as_bignum.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
-		<Unit filename="/home/name/Desktop/ft_printf_clion/out_funcs/ft_int_dec_symbs_counter.c">
+		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/out_funcs/ft_int_dec_symbs_counter.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
-		<Unit filename="/home/name/Desktop/ft_printf_clion/out_funcs/ft_putdouble.c">
+		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/out_funcs/ft_putdouble.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
-		<Unit filename="/home/name/Desktop/ft_printf_clion/out_funcs/ft_putexp.c">
+		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/out_funcs/ft_putexp.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
-		<Unit filename="/home/name/Desktop/ft_printf_clion/out_funcs/ft_round_decimal.c">
+		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/out_funcs/ft_round_decimal.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
-		<Unit filename="/home/name/Desktop/ft_printf_clion/out_funcs/g_print.c">
+		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/out_funcs/g_print.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
-		<Unit filename="/home/name/Desktop/ft_printf_clion/out_funcs/hex_print.c">
+		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/out_funcs/hex_print.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
-		<Unit filename="/home/name/Desktop/ft_printf_clion/out_funcs/out_funcs.c">
+		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/out_funcs/out_funcs.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
-		<Unit filename="/home/name/Desktop/ft_printf_clion/out_funcs/pointer_print.c">
+		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/out_funcs/pointer_print.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
-		<Unit filename="/home/name/Desktop/ft_printf_clion/out_funcs/str_print.c">
+		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/out_funcs/str_print.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
-		<Unit filename="/home/name/Desktop/ft_printf_clion/out_funcs/u_digit_print.c">
+		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/out_funcs/u_digit_print.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
-		<Unit filename="/home/name/Desktop/ft_printf_clion/parser/flags_parse.c">
+		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/parser/flags_parse.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
-		<Unit filename="/home/name/Desktop/ft_printf_clion/parser/ft_vprintf.c">
+		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/parser/ft_vprintf.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
-		<Unit filename="/home/name/Desktop/ft_printf_clion/parser/precision_parse.c">
+		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/parser/precision_parse.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
-		<Unit filename="/home/name/Desktop/ft_printf_clion/parser/size_parse.c">
+		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/parser/size_parse.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
-		<Unit filename="/home/name/Desktop/ft_printf_clion/parser/specifier_parse.c">
+		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/parser/specifier_parse.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
-		<Unit filename="/home/name/Desktop/ft_printf_clion/parser/width_parse.c">
+		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/parser/width_parse.c">
 			<Option target="ft_printf_clion"/>
 		</Unit>
-		<Unit filename="/home/name/Desktop/ft_printf_clion/CMakeLists.txt">
+		<Unit filename="/Users/vcobbler/Desktop/projects/ft_printf/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

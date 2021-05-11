@@ -20,20 +20,19 @@ void	exclude_trailing_zeros(t_list *decimal, t_specifier *specifier)
 		decimal = decimal->prev;
 	}
 	iter_1 -= specifier->precision;
-	while (specifier->precision)
+	while (decimal && specifier->precision
+		&& (decimal->value / ft_power(10, iter_1++) % 10 == 0))
 	{
-		if (decimal->value / ft_power(10, iter_1++) % 10 == 0)
+		specifier->precision--;
+		specifier->width++;
+		if (iter_1 == 9 || (iter_1 < 0 && (specifier->flags & OCTAL_FLAG)))
 		{
-			specifier->precision--;
-			if (iter_1 == 9)
-			{
-				decimal = decimal->next;
-				iter_1 = 0;
-			}
+			decimal = decimal->next;
+			iter_1 = 0;
 		}
-		else
-			break;
 	}
+	if (decimal && decimal->value == 0 && !(specifier->flags & OCTAL_FLAG))
+		specifier->width += 1;
 }
 
 void	g_print(t_list *integer, t_list *decimal, t_specifier *specifier)

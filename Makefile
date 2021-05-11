@@ -52,6 +52,7 @@ OUT_LIST	=	str_print.c\
 				ft_putdouble.c\
 				ft_round_decimal.c\
 				ft_int_dec_symbs_counter.c\
+				ft_putexp.c\
 				out_funcs.c
 OUT_DIR			= ./out_funcs/
 OUT				= $(addprefix $(OUT_DIR), $(OUT_LIST))

@@ -75,6 +75,8 @@ int16_t	ft_change_to_exp(t_list **integer, t_list **decimal, t_specifier *specif
 	{
 		ft_offset_int(integer, decimal);
 		ft_round_decimal(integer, decimal, specifier);
+		while ((*integer)->value >= 10 && integer_symbs++)
+			(*integer)->value /= 10;
 		return (integer_symbs - 1);
 	}
 }

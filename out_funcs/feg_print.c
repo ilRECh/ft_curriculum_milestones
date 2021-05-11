@@ -11,7 +11,7 @@ static void	spec_init(t_specifier *specifier, uint16_t symbs_amount)
 		+ ((specifier->flags & OCTAL_FLAG) != 0
 			&& !specifier->precision)
 		+ 4 * (specifier->type == 'e');
-	if (specifier->width >= symbs_amount)
+	if (specifier->width >= symbs_amount || (specifier->flags & G_FLAG))
 		specifier->width -= symbs_amount;
 	else
 		specifier->width = 0;
@@ -26,13 +26,15 @@ static void	put_flag_symbol(t_specifier *specifier, int32_t *total)
 		+ ' ' * ((specifier->flags & SPACE_FLAG) != 0
 			&& !(specifier->flags & PLUS_FLAG))
 		* ((specifier->flags & NEGATIVE_NUMBER) == 0)
-		+ '-' * (specifier->flags & NEGATIVE_NUMBER);
+		+ '-' * ((specifier->flags & NEGATIVE_NUMBER) != 0);
 	if (c)
 		*total += write(1, &c, 1);
 }
 
 static void	print_prefix_space(int32_t *total, t_specifier *specifier)
 {
+	if ((specifier->flags & G_FLAG) && specifier->width < 0)
+		specifier->width = 0;
 	if (!(specifier->flags & MINUS_FLAG) && specifier->width
 		&& !(specifier->flags & ZERO_FLAG))
 	{
@@ -55,14 +57,14 @@ void	ft_outnum(t_list **integer, t_list **decimal, t_specifier *specifier,
 	int16_t	exp;
 
 	exp = 0;
+	spec_init(specifier, integer_symbs_count(*integer));
 	if (specifier->type == 'e')
 		exp = ft_change_to_exp(integer, decimal, specifier);
-	else
+	if (specifier->type != 'e')
 		ft_round_decimal(integer, decimal, specifier);
-	if ((specifier->flags & G_FLAG)
-		&& !(specifier->flags & OCTAL_FLAG))
+	if ((specifier->flags & G_FLAG) && (!(specifier->flags & OCTAL_FLAG)
+		|| (*decimal)->value == 0))
 		exclude_trailing_zeros(*decimal, specifier);
-	spec_init(specifier, integer_symbs_count(*integer));
 	print_prefix_space(total, specifier);
 	ft_putdouble(integer, decimal, specifier, total);
 	if (specifier->type == 'e')
