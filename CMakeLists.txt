@@ -27,7 +27,8 @@ set(
         libft/ft_lstlast.c
         libft/ft_power.c
         libft/ft_bignummultiply.c
-        libft/ft_bignumaddition.c libft/ft_lstfirst.c)
+        libft/ft_bignumaddition.c
+)
 
 set(
         PRSR_SRCS
@@ -41,24 +42,27 @@ set(
 
 set(
         OUT_FUNCS
-        out_funcs/char_print.c
+        out_funcs/c_print.c
         out_funcs/out_funcs.c
-        out_funcs/str_print.c
-        out_funcs/pointer_print.c
-        out_funcs/digit_print.c
-        out_funcs/u_digit_print.c
-        out_funcs/hex_print.c
+        out_funcs/s_print.c
+        out_funcs/p_print.c
+        out_funcs/di_print.c
+        out_funcs/u_d_print.c
+        out_funcs/xX_print.c
         out_funcs/feg_print.c
         out_funcs/feg_special_cases.c
         out_funcs/g_print.c
         out_funcs/ft_putdouble.c
-        out_funcs/ft_double_as_bignum.c out_funcs/ft_round_decimal.c out_funcs/ft_int_dec_symbs_counter.c out_funcs/ft_putexp.c)
+        out_funcs/ft_double_as_bignum.c
+        out_funcs/ft_round_decimal.c
+        out_funcs/ft_int_dec_symbs_counter.c
+        out_funcs/ft_putexp.c)
 
 set(
         HDRS
+        ft_printf.h
         includes/parser.h
         includes/libft.h
-        includes/ft_stdio.h
         includes/out_funcs.h)
 
 include_directories(${LIBFT_DIR})

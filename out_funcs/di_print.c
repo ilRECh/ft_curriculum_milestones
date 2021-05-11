@@ -59,6 +59,8 @@ void	digit_print(int64_t nbr, int *total, t_specifier *specifier)
 
 	u_nbr = nbr * (-1 * (nbr < 0)) + nbr * (nbr >= 0);
 	symbs_amount = count_symbs(u_nbr, 10);
+	if (!specifier->precision && !nbr)
+		symbs_amount = 0;
 	spec_init(specifier, &nbr, &symbs_amount);
 	if (!(specifier->flags & MINUS_FLAG))
 		print_space(specifier, &u_nbr, &symbs_amount);
@@ -69,5 +71,5 @@ void	digit_print(int64_t nbr, int *total, t_specifier *specifier)
 		ft_putnbr_base(u_nbr, 10, "0123456789");
 	if (specifier->flags & MINUS_FLAG)
 		print_space(specifier, &u_nbr, &symbs_amount);
-	*total += specifier->width - !(specifier->precision || u_nbr);
+	*total += specifier->width;
 }

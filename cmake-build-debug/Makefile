@@ -494,33 +494,6 @@ libft/ft_lstclear.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_lstclear.c.s
 .PHONY : libft/ft_lstclear.c.s
 
-libft/ft_lstfirst.o: libft/ft_lstfirst.c.o
-
-.PHONY : libft/ft_lstfirst.o
-
-# target to build an object file
-libft/ft_lstfirst.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_lstfirst.c.o
-.PHONY : libft/ft_lstfirst.c.o
-
-libft/ft_lstfirst.i: libft/ft_lstfirst.c.i
-
-.PHONY : libft/ft_lstfirst.i
-
-# target to preprocess a source file
-libft/ft_lstfirst.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_lstfirst.c.i
-.PHONY : libft/ft_lstfirst.c.i
-
-libft/ft_lstfirst.s: libft/ft_lstfirst.c.s
-
-.PHONY : libft/ft_lstfirst.s
-
-# target to generate assembly for a file
-libft/ft_lstfirst.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/libft/ft_lstfirst.c.s
-.PHONY : libft/ft_lstfirst.c.s
-
 libft/ft_lstlast.o: libft/ft_lstlast.c.o
 
 .PHONY : libft/ft_lstlast.o
@@ -737,59 +710,59 @@ main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/main.c.s
 .PHONY : main.c.s
 
-out_funcs/char_print.o: out_funcs/char_print.c.o
+out_funcs/c_print.o: out_funcs/c_print.c.o
 
-.PHONY : out_funcs/char_print.o
-
-# target to build an object file
-out_funcs/char_print.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.o
-.PHONY : out_funcs/char_print.c.o
-
-out_funcs/char_print.i: out_funcs/char_print.c.i
-
-.PHONY : out_funcs/char_print.i
-
-# target to preprocess a source file
-out_funcs/char_print.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.i
-.PHONY : out_funcs/char_print.c.i
-
-out_funcs/char_print.s: out_funcs/char_print.c.s
-
-.PHONY : out_funcs/char_print.s
-
-# target to generate assembly for a file
-out_funcs/char_print.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.s
-.PHONY : out_funcs/char_print.c.s
-
-out_funcs/digit_print.o: out_funcs/digit_print.c.o
-
-.PHONY : out_funcs/digit_print.o
+.PHONY : out_funcs/c_print.o
 
 # target to build an object file
-out_funcs/digit_print.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/digit_print.c.o
-.PHONY : out_funcs/digit_print.c.o
+out_funcs/c_print.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/c_print.c.o
+.PHONY : out_funcs/c_print.c.o
 
-out_funcs/digit_print.i: out_funcs/digit_print.c.i
+out_funcs/c_print.i: out_funcs/c_print.c.i
 
-.PHONY : out_funcs/digit_print.i
+.PHONY : out_funcs/c_print.i
 
 # target to preprocess a source file
-out_funcs/digit_print.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/digit_print.c.i
-.PHONY : out_funcs/digit_print.c.i
+out_funcs/c_print.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/c_print.c.i
+.PHONY : out_funcs/c_print.c.i
 
-out_funcs/digit_print.s: out_funcs/digit_print.c.s
+out_funcs/c_print.s: out_funcs/c_print.c.s
 
-.PHONY : out_funcs/digit_print.s
+.PHONY : out_funcs/c_print.s
 
 # target to generate assembly for a file
-out_funcs/digit_print.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/digit_print.c.s
-.PHONY : out_funcs/digit_print.c.s
+out_funcs/c_print.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/c_print.c.s
+.PHONY : out_funcs/c_print.c.s
+
+out_funcs/di_print.o: out_funcs/di_print.c.o
+
+.PHONY : out_funcs/di_print.o
+
+# target to build an object file
+out_funcs/di_print.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/di_print.c.o
+.PHONY : out_funcs/di_print.c.o
+
+out_funcs/di_print.i: out_funcs/di_print.c.i
+
+.PHONY : out_funcs/di_print.i
+
+# target to preprocess a source file
+out_funcs/di_print.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/di_print.c.i
+.PHONY : out_funcs/di_print.c.i
+
+out_funcs/di_print.s: out_funcs/di_print.c.s
+
+.PHONY : out_funcs/di_print.s
+
+# target to generate assembly for a file
+out_funcs/di_print.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/di_print.c.s
+.PHONY : out_funcs/di_print.c.s
 
 out_funcs/feg_print.o: out_funcs/feg_print.c.o
 
@@ -1007,33 +980,6 @@ out_funcs/g_print.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/g_print.c.s
 .PHONY : out_funcs/g_print.c.s
 
-out_funcs/hex_print.o: out_funcs/hex_print.c.o
-
-.PHONY : out_funcs/hex_print.o
-
-# target to build an object file
-out_funcs/hex_print.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/hex_print.c.o
-.PHONY : out_funcs/hex_print.c.o
-
-out_funcs/hex_print.i: out_funcs/hex_print.c.i
-
-.PHONY : out_funcs/hex_print.i
-
-# target to preprocess a source file
-out_funcs/hex_print.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/hex_print.c.i
-.PHONY : out_funcs/hex_print.c.i
-
-out_funcs/hex_print.s: out_funcs/hex_print.c.s
-
-.PHONY : out_funcs/hex_print.s
-
-# target to generate assembly for a file
-out_funcs/hex_print.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/hex_print.c.s
-.PHONY : out_funcs/hex_print.c.s
-
 out_funcs/out_funcs.o: out_funcs/out_funcs.c.o
 
 .PHONY : out_funcs/out_funcs.o
@@ -1061,86 +1007,113 @@ out_funcs/out_funcs.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.s
 .PHONY : out_funcs/out_funcs.c.s
 
-out_funcs/pointer_print.o: out_funcs/pointer_print.c.o
+out_funcs/p_print.o: out_funcs/p_print.c.o
 
-.PHONY : out_funcs/pointer_print.o
-
-# target to build an object file
-out_funcs/pointer_print.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/pointer_print.c.o
-.PHONY : out_funcs/pointer_print.c.o
-
-out_funcs/pointer_print.i: out_funcs/pointer_print.c.i
-
-.PHONY : out_funcs/pointer_print.i
-
-# target to preprocess a source file
-out_funcs/pointer_print.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/pointer_print.c.i
-.PHONY : out_funcs/pointer_print.c.i
-
-out_funcs/pointer_print.s: out_funcs/pointer_print.c.s
-
-.PHONY : out_funcs/pointer_print.s
-
-# target to generate assembly for a file
-out_funcs/pointer_print.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/pointer_print.c.s
-.PHONY : out_funcs/pointer_print.c.s
-
-out_funcs/str_print.o: out_funcs/str_print.c.o
-
-.PHONY : out_funcs/str_print.o
+.PHONY : out_funcs/p_print.o
 
 # target to build an object file
-out_funcs/str_print.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/str_print.c.o
-.PHONY : out_funcs/str_print.c.o
+out_funcs/p_print.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/p_print.c.o
+.PHONY : out_funcs/p_print.c.o
 
-out_funcs/str_print.i: out_funcs/str_print.c.i
+out_funcs/p_print.i: out_funcs/p_print.c.i
 
-.PHONY : out_funcs/str_print.i
+.PHONY : out_funcs/p_print.i
 
 # target to preprocess a source file
-out_funcs/str_print.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/str_print.c.i
-.PHONY : out_funcs/str_print.c.i
+out_funcs/p_print.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/p_print.c.i
+.PHONY : out_funcs/p_print.c.i
 
-out_funcs/str_print.s: out_funcs/str_print.c.s
+out_funcs/p_print.s: out_funcs/p_print.c.s
 
-.PHONY : out_funcs/str_print.s
+.PHONY : out_funcs/p_print.s
 
 # target to generate assembly for a file
-out_funcs/str_print.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/str_print.c.s
-.PHONY : out_funcs/str_print.c.s
+out_funcs/p_print.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/p_print.c.s
+.PHONY : out_funcs/p_print.c.s
 
-out_funcs/u_digit_print.o: out_funcs/u_digit_print.c.o
+out_funcs/s_print.o: out_funcs/s_print.c.o
 
-.PHONY : out_funcs/u_digit_print.o
+.PHONY : out_funcs/s_print.o
 
 # target to build an object file
-out_funcs/u_digit_print.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/u_digit_print.c.o
-.PHONY : out_funcs/u_digit_print.c.o
+out_funcs/s_print.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/s_print.c.o
+.PHONY : out_funcs/s_print.c.o
 
-out_funcs/u_digit_print.i: out_funcs/u_digit_print.c.i
+out_funcs/s_print.i: out_funcs/s_print.c.i
 
-.PHONY : out_funcs/u_digit_print.i
+.PHONY : out_funcs/s_print.i
 
 # target to preprocess a source file
-out_funcs/u_digit_print.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/u_digit_print.c.i
-.PHONY : out_funcs/u_digit_print.c.i
+out_funcs/s_print.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/s_print.c.i
+.PHONY : out_funcs/s_print.c.i
 
-out_funcs/u_digit_print.s: out_funcs/u_digit_print.c.s
+out_funcs/s_print.s: out_funcs/s_print.c.s
 
-.PHONY : out_funcs/u_digit_print.s
+.PHONY : out_funcs/s_print.s
 
 # target to generate assembly for a file
-out_funcs/u_digit_print.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/u_digit_print.c.s
-.PHONY : out_funcs/u_digit_print.c.s
+out_funcs/s_print.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/s_print.c.s
+.PHONY : out_funcs/s_print.c.s
+
+out_funcs/u_d_print.o: out_funcs/u_d_print.c.o
+
+.PHONY : out_funcs/u_d_print.o
+
+# target to build an object file
+out_funcs/u_d_print.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/u_d_print.c.o
+.PHONY : out_funcs/u_d_print.c.o
+
+out_funcs/u_d_print.i: out_funcs/u_d_print.c.i
+
+.PHONY : out_funcs/u_d_print.i
+
+# target to preprocess a source file
+out_funcs/u_d_print.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/u_d_print.c.i
+.PHONY : out_funcs/u_d_print.c.i
+
+out_funcs/u_d_print.s: out_funcs/u_d_print.c.s
+
+.PHONY : out_funcs/u_d_print.s
+
+# target to generate assembly for a file
+out_funcs/u_d_print.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/u_d_print.c.s
+.PHONY : out_funcs/u_d_print.c.s
+
+out_funcs/xX_print.o: out_funcs/xX_print.c.o
+
+.PHONY : out_funcs/xX_print.o
+
+# target to build an object file
+out_funcs/xX_print.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/xX_print.c.o
+.PHONY : out_funcs/xX_print.c.o
+
+out_funcs/xX_print.i: out_funcs/xX_print.c.i
+
+.PHONY : out_funcs/xX_print.i
+
+# target to preprocess a source file
+out_funcs/xX_print.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/xX_print.c.i
+.PHONY : out_funcs/xX_print.c.i
+
+out_funcs/xX_print.s: out_funcs/xX_print.c.s
+
+.PHONY : out_funcs/xX_print.s
+
+# target to generate assembly for a file
+out_funcs/xX_print.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ft_printf_clion.dir/build.make CMakeFiles/ft_printf_clion.dir/out_funcs/xX_print.c.s
+.PHONY : out_funcs/xX_print.c.s
 
 parser/flags_parse.o: parser/flags_parse.c.o
 
@@ -1352,9 +1325,6 @@ help:
 	@echo "... libft/ft_lstclear.o"
 	@echo "... libft/ft_lstclear.i"
 	@echo "... libft/ft_lstclear.s"
-	@echo "... libft/ft_lstfirst.o"
-	@echo "... libft/ft_lstfirst.i"
-	@echo "... libft/ft_lstfirst.s"
 	@echo "... libft/ft_lstlast.o"
 	@echo "... libft/ft_lstlast.i"
 	@echo "... libft/ft_lstlast.s"
@@ -1379,12 +1349,12 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... out_funcs/char_print.o"
-	@echo "... out_funcs/char_print.i"
-	@echo "... out_funcs/char_print.s"
-	@echo "... out_funcs/digit_print.o"
-	@echo "... out_funcs/digit_print.i"
-	@echo "... out_funcs/digit_print.s"
+	@echo "... out_funcs/c_print.o"
+	@echo "... out_funcs/c_print.i"
+	@echo "... out_funcs/c_print.s"
+	@echo "... out_funcs/di_print.o"
+	@echo "... out_funcs/di_print.i"
+	@echo "... out_funcs/di_print.s"
 	@echo "... out_funcs/feg_print.o"
 	@echo "... out_funcs/feg_print.i"
 	@echo "... out_funcs/feg_print.s"
@@ -1409,21 +1379,21 @@ help:
 	@echo "... out_funcs/g_print.o"
 	@echo "... out_funcs/g_print.i"
 	@echo "... out_funcs/g_print.s"
-	@echo "... out_funcs/hex_print.o"
-	@echo "... out_funcs/hex_print.i"
-	@echo "... out_funcs/hex_print.s"
 	@echo "... out_funcs/out_funcs.o"
 	@echo "... out_funcs/out_funcs.i"
 	@echo "... out_funcs/out_funcs.s"
-	@echo "... out_funcs/pointer_print.o"
-	@echo "... out_funcs/pointer_print.i"
-	@echo "... out_funcs/pointer_print.s"
-	@echo "... out_funcs/str_print.o"
-	@echo "... out_funcs/str_print.i"
-	@echo "... out_funcs/str_print.s"
-	@echo "... out_funcs/u_digit_print.o"
-	@echo "... out_funcs/u_digit_print.i"
-	@echo "... out_funcs/u_digit_print.s"
+	@echo "... out_funcs/p_print.o"
+	@echo "... out_funcs/p_print.i"
+	@echo "... out_funcs/p_print.s"
+	@echo "... out_funcs/s_print.o"
+	@echo "... out_funcs/s_print.i"
+	@echo "... out_funcs/s_print.s"
+	@echo "... out_funcs/u_d_print.o"
+	@echo "... out_funcs/u_d_print.i"
+	@echo "... out_funcs/u_d_print.s"
+	@echo "... out_funcs/xX_print.o"
+	@echo "... out_funcs/xX_print.i"
+	@echo "... out_funcs/xX_print.s"
 	@echo "... parser/flags_parse.o"
 	@echo "... parser/flags_parse.i"
 	@echo "... parser/flags_parse.s"

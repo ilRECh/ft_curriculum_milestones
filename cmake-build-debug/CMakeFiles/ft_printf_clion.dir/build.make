@@ -428,35 +428,22 @@ CMakeFiles/ft_printf_clion.dir/libft/ft_bignumaddition.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_printf_clion.dir/libft/ft_bignumaddition.c.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/vcobbler/Desktop/projects/ft_printf/libft/ft_bignumaddition.c -o CMakeFiles/ft_printf_clion.dir/libft/ft_bignumaddition.c.s
 
-CMakeFiles/ft_printf_clion.dir/libft/ft_lstfirst.c.o: CMakeFiles/ft_printf_clion.dir/flags.make
-CMakeFiles/ft_printf_clion.dir/libft/ft_lstfirst.c.o: ../libft/ft_lstfirst.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building C object CMakeFiles/ft_printf_clion.dir/libft/ft_lstfirst.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf_clion.dir/libft/ft_lstfirst.c.o   -c /Users/vcobbler/Desktop/projects/ft_printf/libft/ft_lstfirst.c
+CMakeFiles/ft_printf_clion.dir/out_funcs/c_print.c.o: CMakeFiles/ft_printf_clion.dir/flags.make
+CMakeFiles/ft_printf_clion.dir/out_funcs/c_print.c.o: ../out_funcs/c_print.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/c_print.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf_clion.dir/out_funcs/c_print.c.o   -c /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/c_print.c
 
-CMakeFiles/ft_printf_clion.dir/libft/ft_lstfirst.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ft_printf_clion.dir/libft/ft_lstfirst.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/vcobbler/Desktop/projects/ft_printf/libft/ft_lstfirst.c > CMakeFiles/ft_printf_clion.dir/libft/ft_lstfirst.c.i
+CMakeFiles/ft_printf_clion.dir/out_funcs/c_print.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ft_printf_clion.dir/out_funcs/c_print.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/c_print.c > CMakeFiles/ft_printf_clion.dir/out_funcs/c_print.c.i
 
-CMakeFiles/ft_printf_clion.dir/libft/ft_lstfirst.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_printf_clion.dir/libft/ft_lstfirst.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/vcobbler/Desktop/projects/ft_printf/libft/ft_lstfirst.c -o CMakeFiles/ft_printf_clion.dir/libft/ft_lstfirst.c.s
-
-CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.o: CMakeFiles/ft_printf_clion.dir/flags.make
-CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.o: ../out_funcs/char_print.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.o   -c /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/char_print.c
-
-CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/char_print.c > CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.i
-
-CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/char_print.c -o CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.s
+CMakeFiles/ft_printf_clion.dir/out_funcs/c_print.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_printf_clion.dir/out_funcs/c_print.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/c_print.c -o CMakeFiles/ft_printf_clion.dir/out_funcs/c_print.c.s
 
 CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.o: CMakeFiles/ft_printf_clion.dir/flags.make
 CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.o: ../out_funcs/out_funcs.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.o   -c /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/out_funcs.c
 
 CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.i: cmake_force
@@ -467,74 +454,74 @@ CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/out_funcs.c -o CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.s
 
-CMakeFiles/ft_printf_clion.dir/out_funcs/str_print.c.o: CMakeFiles/ft_printf_clion.dir/flags.make
-CMakeFiles/ft_printf_clion.dir/out_funcs/str_print.c.o: ../out_funcs/str_print.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/str_print.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf_clion.dir/out_funcs/str_print.c.o   -c /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/str_print.c
+CMakeFiles/ft_printf_clion.dir/out_funcs/s_print.c.o: CMakeFiles/ft_printf_clion.dir/flags.make
+CMakeFiles/ft_printf_clion.dir/out_funcs/s_print.c.o: ../out_funcs/s_print.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/s_print.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf_clion.dir/out_funcs/s_print.c.o   -c /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/s_print.c
 
-CMakeFiles/ft_printf_clion.dir/out_funcs/str_print.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ft_printf_clion.dir/out_funcs/str_print.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/str_print.c > CMakeFiles/ft_printf_clion.dir/out_funcs/str_print.c.i
+CMakeFiles/ft_printf_clion.dir/out_funcs/s_print.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ft_printf_clion.dir/out_funcs/s_print.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/s_print.c > CMakeFiles/ft_printf_clion.dir/out_funcs/s_print.c.i
 
-CMakeFiles/ft_printf_clion.dir/out_funcs/str_print.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_printf_clion.dir/out_funcs/str_print.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/str_print.c -o CMakeFiles/ft_printf_clion.dir/out_funcs/str_print.c.s
+CMakeFiles/ft_printf_clion.dir/out_funcs/s_print.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_printf_clion.dir/out_funcs/s_print.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/s_print.c -o CMakeFiles/ft_printf_clion.dir/out_funcs/s_print.c.s
 
-CMakeFiles/ft_printf_clion.dir/out_funcs/pointer_print.c.o: CMakeFiles/ft_printf_clion.dir/flags.make
-CMakeFiles/ft_printf_clion.dir/out_funcs/pointer_print.c.o: ../out_funcs/pointer_print.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/pointer_print.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf_clion.dir/out_funcs/pointer_print.c.o   -c /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/pointer_print.c
+CMakeFiles/ft_printf_clion.dir/out_funcs/p_print.c.o: CMakeFiles/ft_printf_clion.dir/flags.make
+CMakeFiles/ft_printf_clion.dir/out_funcs/p_print.c.o: ../out_funcs/p_print.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/p_print.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf_clion.dir/out_funcs/p_print.c.o   -c /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/p_print.c
 
-CMakeFiles/ft_printf_clion.dir/out_funcs/pointer_print.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ft_printf_clion.dir/out_funcs/pointer_print.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/pointer_print.c > CMakeFiles/ft_printf_clion.dir/out_funcs/pointer_print.c.i
+CMakeFiles/ft_printf_clion.dir/out_funcs/p_print.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ft_printf_clion.dir/out_funcs/p_print.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/p_print.c > CMakeFiles/ft_printf_clion.dir/out_funcs/p_print.c.i
 
-CMakeFiles/ft_printf_clion.dir/out_funcs/pointer_print.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_printf_clion.dir/out_funcs/pointer_print.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/pointer_print.c -o CMakeFiles/ft_printf_clion.dir/out_funcs/pointer_print.c.s
+CMakeFiles/ft_printf_clion.dir/out_funcs/p_print.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_printf_clion.dir/out_funcs/p_print.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/p_print.c -o CMakeFiles/ft_printf_clion.dir/out_funcs/p_print.c.s
 
-CMakeFiles/ft_printf_clion.dir/out_funcs/digit_print.c.o: CMakeFiles/ft_printf_clion.dir/flags.make
-CMakeFiles/ft_printf_clion.dir/out_funcs/digit_print.c.o: ../out_funcs/digit_print.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/digit_print.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf_clion.dir/out_funcs/digit_print.c.o   -c /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/digit_print.c
+CMakeFiles/ft_printf_clion.dir/out_funcs/di_print.c.o: CMakeFiles/ft_printf_clion.dir/flags.make
+CMakeFiles/ft_printf_clion.dir/out_funcs/di_print.c.o: ../out_funcs/di_print.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/di_print.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf_clion.dir/out_funcs/di_print.c.o   -c /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/di_print.c
 
-CMakeFiles/ft_printf_clion.dir/out_funcs/digit_print.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ft_printf_clion.dir/out_funcs/digit_print.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/digit_print.c > CMakeFiles/ft_printf_clion.dir/out_funcs/digit_print.c.i
+CMakeFiles/ft_printf_clion.dir/out_funcs/di_print.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ft_printf_clion.dir/out_funcs/di_print.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/di_print.c > CMakeFiles/ft_printf_clion.dir/out_funcs/di_print.c.i
 
-CMakeFiles/ft_printf_clion.dir/out_funcs/digit_print.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_printf_clion.dir/out_funcs/digit_print.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/digit_print.c -o CMakeFiles/ft_printf_clion.dir/out_funcs/digit_print.c.s
+CMakeFiles/ft_printf_clion.dir/out_funcs/di_print.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_printf_clion.dir/out_funcs/di_print.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/di_print.c -o CMakeFiles/ft_printf_clion.dir/out_funcs/di_print.c.s
 
-CMakeFiles/ft_printf_clion.dir/out_funcs/u_digit_print.c.o: CMakeFiles/ft_printf_clion.dir/flags.make
-CMakeFiles/ft_printf_clion.dir/out_funcs/u_digit_print.c.o: ../out_funcs/u_digit_print.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/u_digit_print.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf_clion.dir/out_funcs/u_digit_print.c.o   -c /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/u_digit_print.c
+CMakeFiles/ft_printf_clion.dir/out_funcs/u_d_print.c.o: CMakeFiles/ft_printf_clion.dir/flags.make
+CMakeFiles/ft_printf_clion.dir/out_funcs/u_d_print.c.o: ../out_funcs/u_d_print.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/u_d_print.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf_clion.dir/out_funcs/u_d_print.c.o   -c /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/u_d_print.c
 
-CMakeFiles/ft_printf_clion.dir/out_funcs/u_digit_print.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ft_printf_clion.dir/out_funcs/u_digit_print.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/u_digit_print.c > CMakeFiles/ft_printf_clion.dir/out_funcs/u_digit_print.c.i
+CMakeFiles/ft_printf_clion.dir/out_funcs/u_d_print.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ft_printf_clion.dir/out_funcs/u_d_print.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/u_d_print.c > CMakeFiles/ft_printf_clion.dir/out_funcs/u_d_print.c.i
 
-CMakeFiles/ft_printf_clion.dir/out_funcs/u_digit_print.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_printf_clion.dir/out_funcs/u_digit_print.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/u_digit_print.c -o CMakeFiles/ft_printf_clion.dir/out_funcs/u_digit_print.c.s
+CMakeFiles/ft_printf_clion.dir/out_funcs/u_d_print.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_printf_clion.dir/out_funcs/u_d_print.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/u_d_print.c -o CMakeFiles/ft_printf_clion.dir/out_funcs/u_d_print.c.s
 
-CMakeFiles/ft_printf_clion.dir/out_funcs/hex_print.c.o: CMakeFiles/ft_printf_clion.dir/flags.make
-CMakeFiles/ft_printf_clion.dir/out_funcs/hex_print.c.o: ../out_funcs/hex_print.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/hex_print.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf_clion.dir/out_funcs/hex_print.c.o   -c /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/hex_print.c
+CMakeFiles/ft_printf_clion.dir/out_funcs/xX_print.c.o: CMakeFiles/ft_printf_clion.dir/flags.make
+CMakeFiles/ft_printf_clion.dir/out_funcs/xX_print.c.o: ../out_funcs/xX_print.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/xX_print.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf_clion.dir/out_funcs/xX_print.c.o   -c /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/xX_print.c
 
-CMakeFiles/ft_printf_clion.dir/out_funcs/hex_print.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ft_printf_clion.dir/out_funcs/hex_print.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/hex_print.c > CMakeFiles/ft_printf_clion.dir/out_funcs/hex_print.c.i
+CMakeFiles/ft_printf_clion.dir/out_funcs/xX_print.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ft_printf_clion.dir/out_funcs/xX_print.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/xX_print.c > CMakeFiles/ft_printf_clion.dir/out_funcs/xX_print.c.i
 
-CMakeFiles/ft_printf_clion.dir/out_funcs/hex_print.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_printf_clion.dir/out_funcs/hex_print.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/hex_print.c -o CMakeFiles/ft_printf_clion.dir/out_funcs/hex_print.c.s
+CMakeFiles/ft_printf_clion.dir/out_funcs/xX_print.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ft_printf_clion.dir/out_funcs/xX_print.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/xX_print.c -o CMakeFiles/ft_printf_clion.dir/out_funcs/xX_print.c.s
 
 CMakeFiles/ft_printf_clion.dir/out_funcs/feg_print.c.o: CMakeFiles/ft_printf_clion.dir/flags.make
 CMakeFiles/ft_printf_clion.dir/out_funcs/feg_print.c.o: ../out_funcs/feg_print.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/feg_print.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/feg_print.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf_clion.dir/out_funcs/feg_print.c.o   -c /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/feg_print.c
 
 CMakeFiles/ft_printf_clion.dir/out_funcs/feg_print.c.i: cmake_force
@@ -547,7 +534,7 @@ CMakeFiles/ft_printf_clion.dir/out_funcs/feg_print.c.s: cmake_force
 
 CMakeFiles/ft_printf_clion.dir/out_funcs/feg_special_cases.c.o: CMakeFiles/ft_printf_clion.dir/flags.make
 CMakeFiles/ft_printf_clion.dir/out_funcs/feg_special_cases.c.o: ../out_funcs/feg_special_cases.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/feg_special_cases.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/feg_special_cases.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf_clion.dir/out_funcs/feg_special_cases.c.o   -c /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/feg_special_cases.c
 
 CMakeFiles/ft_printf_clion.dir/out_funcs/feg_special_cases.c.i: cmake_force
@@ -560,7 +547,7 @@ CMakeFiles/ft_printf_clion.dir/out_funcs/feg_special_cases.c.s: cmake_force
 
 CMakeFiles/ft_printf_clion.dir/out_funcs/g_print.c.o: CMakeFiles/ft_printf_clion.dir/flags.make
 CMakeFiles/ft_printf_clion.dir/out_funcs/g_print.c.o: ../out_funcs/g_print.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/g_print.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/g_print.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf_clion.dir/out_funcs/g_print.c.o   -c /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/g_print.c
 
 CMakeFiles/ft_printf_clion.dir/out_funcs/g_print.c.i: cmake_force
@@ -573,7 +560,7 @@ CMakeFiles/ft_printf_clion.dir/out_funcs/g_print.c.s: cmake_force
 
 CMakeFiles/ft_printf_clion.dir/out_funcs/ft_putdouble.c.o: CMakeFiles/ft_printf_clion.dir/flags.make
 CMakeFiles/ft_printf_clion.dir/out_funcs/ft_putdouble.c.o: ../out_funcs/ft_putdouble.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/ft_putdouble.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/ft_putdouble.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf_clion.dir/out_funcs/ft_putdouble.c.o   -c /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/ft_putdouble.c
 
 CMakeFiles/ft_printf_clion.dir/out_funcs/ft_putdouble.c.i: cmake_force
@@ -586,7 +573,7 @@ CMakeFiles/ft_printf_clion.dir/out_funcs/ft_putdouble.c.s: cmake_force
 
 CMakeFiles/ft_printf_clion.dir/out_funcs/ft_double_as_bignum.c.o: CMakeFiles/ft_printf_clion.dir/flags.make
 CMakeFiles/ft_printf_clion.dir/out_funcs/ft_double_as_bignum.c.o: ../out_funcs/ft_double_as_bignum.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/ft_double_as_bignum.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/ft_double_as_bignum.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf_clion.dir/out_funcs/ft_double_as_bignum.c.o   -c /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/ft_double_as_bignum.c
 
 CMakeFiles/ft_printf_clion.dir/out_funcs/ft_double_as_bignum.c.i: cmake_force
@@ -599,7 +586,7 @@ CMakeFiles/ft_printf_clion.dir/out_funcs/ft_double_as_bignum.c.s: cmake_force
 
 CMakeFiles/ft_printf_clion.dir/out_funcs/ft_round_decimal.c.o: CMakeFiles/ft_printf_clion.dir/flags.make
 CMakeFiles/ft_printf_clion.dir/out_funcs/ft_round_decimal.c.o: ../out_funcs/ft_round_decimal.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/ft_round_decimal.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/ft_round_decimal.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf_clion.dir/out_funcs/ft_round_decimal.c.o   -c /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/ft_round_decimal.c
 
 CMakeFiles/ft_printf_clion.dir/out_funcs/ft_round_decimal.c.i: cmake_force
@@ -612,7 +599,7 @@ CMakeFiles/ft_printf_clion.dir/out_funcs/ft_round_decimal.c.s: cmake_force
 
 CMakeFiles/ft_printf_clion.dir/out_funcs/ft_int_dec_symbs_counter.c.o: CMakeFiles/ft_printf_clion.dir/flags.make
 CMakeFiles/ft_printf_clion.dir/out_funcs/ft_int_dec_symbs_counter.c.o: ../out_funcs/ft_int_dec_symbs_counter.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/ft_int_dec_symbs_counter.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/ft_int_dec_symbs_counter.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf_clion.dir/out_funcs/ft_int_dec_symbs_counter.c.o   -c /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/ft_int_dec_symbs_counter.c
 
 CMakeFiles/ft_printf_clion.dir/out_funcs/ft_int_dec_symbs_counter.c.i: cmake_force
@@ -625,7 +612,7 @@ CMakeFiles/ft_printf_clion.dir/out_funcs/ft_int_dec_symbs_counter.c.s: cmake_for
 
 CMakeFiles/ft_printf_clion.dir/out_funcs/ft_putexp.c.o: CMakeFiles/ft_printf_clion.dir/flags.make
 CMakeFiles/ft_printf_clion.dir/out_funcs/ft_putexp.c.o: ../out_funcs/ft_putexp.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/ft_putexp.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building C object CMakeFiles/ft_printf_clion.dir/out_funcs/ft_putexp.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ft_printf_clion.dir/out_funcs/ft_putexp.c.o   -c /Users/vcobbler/Desktop/projects/ft_printf/out_funcs/ft_putexp.c
 
 CMakeFiles/ft_printf_clion.dir/out_funcs/ft_putexp.c.i: cmake_force
@@ -665,14 +652,13 @@ ft_printf_clion_OBJECTS = \
 "CMakeFiles/ft_printf_clion.dir/libft/ft_power.c.o" \
 "CMakeFiles/ft_printf_clion.dir/libft/ft_bignummultiply.c.o" \
 "CMakeFiles/ft_printf_clion.dir/libft/ft_bignumaddition.c.o" \
-"CMakeFiles/ft_printf_clion.dir/libft/ft_lstfirst.c.o" \
-"CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.o" \
+"CMakeFiles/ft_printf_clion.dir/out_funcs/c_print.c.o" \
 "CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.o" \
-"CMakeFiles/ft_printf_clion.dir/out_funcs/str_print.c.o" \
-"CMakeFiles/ft_printf_clion.dir/out_funcs/pointer_print.c.o" \
-"CMakeFiles/ft_printf_clion.dir/out_funcs/digit_print.c.o" \
-"CMakeFiles/ft_printf_clion.dir/out_funcs/u_digit_print.c.o" \
-"CMakeFiles/ft_printf_clion.dir/out_funcs/hex_print.c.o" \
+"CMakeFiles/ft_printf_clion.dir/out_funcs/s_print.c.o" \
+"CMakeFiles/ft_printf_clion.dir/out_funcs/p_print.c.o" \
+"CMakeFiles/ft_printf_clion.dir/out_funcs/di_print.c.o" \
+"CMakeFiles/ft_printf_clion.dir/out_funcs/u_d_print.c.o" \
+"CMakeFiles/ft_printf_clion.dir/out_funcs/xX_print.c.o" \
 "CMakeFiles/ft_printf_clion.dir/out_funcs/feg_print.c.o" \
 "CMakeFiles/ft_printf_clion.dir/out_funcs/feg_special_cases.c.o" \
 "CMakeFiles/ft_printf_clion.dir/out_funcs/g_print.c.o" \
@@ -712,14 +698,13 @@ ft_printf_clion: CMakeFiles/ft_printf_clion.dir/libft/ft_lstlast.c.o
 ft_printf_clion: CMakeFiles/ft_printf_clion.dir/libft/ft_power.c.o
 ft_printf_clion: CMakeFiles/ft_printf_clion.dir/libft/ft_bignummultiply.c.o
 ft_printf_clion: CMakeFiles/ft_printf_clion.dir/libft/ft_bignumaddition.c.o
-ft_printf_clion: CMakeFiles/ft_printf_clion.dir/libft/ft_lstfirst.c.o
-ft_printf_clion: CMakeFiles/ft_printf_clion.dir/out_funcs/char_print.c.o
+ft_printf_clion: CMakeFiles/ft_printf_clion.dir/out_funcs/c_print.c.o
 ft_printf_clion: CMakeFiles/ft_printf_clion.dir/out_funcs/out_funcs.c.o
-ft_printf_clion: CMakeFiles/ft_printf_clion.dir/out_funcs/str_print.c.o
-ft_printf_clion: CMakeFiles/ft_printf_clion.dir/out_funcs/pointer_print.c.o
-ft_printf_clion: CMakeFiles/ft_printf_clion.dir/out_funcs/digit_print.c.o
-ft_printf_clion: CMakeFiles/ft_printf_clion.dir/out_funcs/u_digit_print.c.o
-ft_printf_clion: CMakeFiles/ft_printf_clion.dir/out_funcs/hex_print.c.o
+ft_printf_clion: CMakeFiles/ft_printf_clion.dir/out_funcs/s_print.c.o
+ft_printf_clion: CMakeFiles/ft_printf_clion.dir/out_funcs/p_print.c.o
+ft_printf_clion: CMakeFiles/ft_printf_clion.dir/out_funcs/di_print.c.o
+ft_printf_clion: CMakeFiles/ft_printf_clion.dir/out_funcs/u_d_print.c.o
+ft_printf_clion: CMakeFiles/ft_printf_clion.dir/out_funcs/xX_print.c.o
 ft_printf_clion: CMakeFiles/ft_printf_clion.dir/out_funcs/feg_print.c.o
 ft_printf_clion: CMakeFiles/ft_printf_clion.dir/out_funcs/feg_special_cases.c.o
 ft_printf_clion: CMakeFiles/ft_printf_clion.dir/out_funcs/g_print.c.o
@@ -730,7 +715,7 @@ ft_printf_clion: CMakeFiles/ft_printf_clion.dir/out_funcs/ft_int_dec_symbs_count
 ft_printf_clion: CMakeFiles/ft_printf_clion.dir/out_funcs/ft_putexp.c.o
 ft_printf_clion: CMakeFiles/ft_printf_clion.dir/build.make
 ft_printf_clion: CMakeFiles/ft_printf_clion.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Linking C executable ft_printf_clion"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/vcobbler/Desktop/projects/ft_printf/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Linking C executable ft_printf_clion"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ft_printf_clion.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

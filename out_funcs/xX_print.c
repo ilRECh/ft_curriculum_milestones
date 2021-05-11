@@ -5,6 +5,13 @@ static void	spec_init(t_specifier *specifier,
 {
 	uint8_t	oct_flag;
 
+	if (specifier->width < 0)
+	{
+		specifier->width *= -1;
+		specifier->flags |= MINUS_FLAG;
+		if (specifier->flags & ZERO_FLAG)
+			specifier->flags ^= ZERO_FLAG;
+	}
 	oct_flag = 2 * ((specifier->flags & OCTAL_FLAG) > 0) * (*nbr > 0);
 	if (specifier->width < *symbs_amount + oct_flag)
 		specifier->width = *symbs_amount + oct_flag;

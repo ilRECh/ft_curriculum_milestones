@@ -8,10 +8,9 @@ INCLUDES 		= -I $(HDRS_DIR)
 
 HDRS_LIST		= libft.h\
 			  parser.h\
-			  ft_stdio.h\
 			  out_funcs.h
 HDRS_DIR		= ./includes/
-HDRS			= $(addprefix $(HDRS_DIR), $(HDRS_LIST))
+HDRS			= $(addprefix $(HDRS_DIR), $(HDRS_LIST)) ft_printf.h
 
 LIBFT_LIST	=	ft_strchr.c\
 				ft_atoi.c\
@@ -39,12 +38,12 @@ SRCS_LIST	= 	ft_printf.c
 SRCS_DIR		= ./
 SRCS			= $(addprefix $(SRCS_DIR), $(SRCS_LIST))
 
-OUT_LIST	=	str_print.c\
-				char_print.c\
-				pointer_print.c\
-				digit_print.c\
-				u_digit_print.c\
-				hex_print.c\
+OUT_LIST	=	s_print.c\
+				c_print.c\
+				p_print.c\
+				di_print.c\
+				u_d_print.c\
+				xX_print.c\
 				feg_print.c\
 				feg_special_cases.c\
 				g_print.c\

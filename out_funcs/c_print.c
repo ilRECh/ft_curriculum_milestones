@@ -2,6 +2,11 @@
 
 void	char_print(char c, int *total, t_specifier *specifier)
 {
+	if (specifier->width < 0)
+	{
+		specifier->width *= -1;
+		specifier->flags |= MINUS_FLAG;
+	}
 	if (specifier->width)
 	{
 		specifier->width--;

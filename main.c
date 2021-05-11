@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <unistd.h>
-#include "includes/ft_stdio.h"
+#include "ft_printf.h"
 #include "out_funcs.h"
 
 void in_bin(uint64_t d, unsigned int n)
@@ -16,15 +16,9 @@ void in_bin(uint64_t d, unsigned int n)
 
 int	main(void)
 {
-	t_double nbr;
-
-	double n;
-
-	n = 573.924;
-	printf("------------------------------------------\n");
 	printf("printf:\t%d\n",
-		   printf("%e\n", n));
-	printf("ft_printf:\t%d - %%e\n",
-		   ft_printf("%e\n", n));
+		printf("%5.0i", 0));
+	printf("ft_printf:\t%d\n",
+		ft_printf("%5.0i", 0));
 	return (0);
 }
