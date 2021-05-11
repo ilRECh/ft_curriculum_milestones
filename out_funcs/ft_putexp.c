@@ -1,6 +1,6 @@
 #include "out_funcs.h"
 
-static void ft_offset_int(t_list **integer, t_list **decimal)
+static void	ft_offset_int(t_list **integer, t_list **decimal)
 {
 	t_list	*decimal_end;
 	uint8_t	symbs_amount;
@@ -20,9 +20,9 @@ static void ft_offset_int(t_list **integer, t_list **decimal)
 	ft_lstadd_front(integer,
 		ft_lstnew(decimal_end->value / ft_power(10, symbs_amount)));
 	first_int_symb = decimal_end->value
-			/ ft_power(10, count_symbs(decimal_end->value, 10) - 1);
+		/ ft_power(10, count_symbs(decimal_end->value, 10) - 1);
 	decimal_end->value -= ft_power(10, count_symbs(decimal_end->value, 10) - 1)
-			* (first_int_symb - 1);
+		* (first_int_symb - 1);
 }
 
 static void	ft_exclude_zeros(t_list *integer, t_list *decimal)
@@ -41,20 +41,21 @@ static void	ft_exclude_zeros(t_list *integer, t_list *decimal)
 			decimal->next = NULL;
 		}
 		else
-			break;
+			break ;
 		cur_zeros = 9;
 	}
 	if (cur_zeros < count_symbs(decimal->value, 10) && cur_zeros--)
 		decimal->value -= ft_power(10, cur_zeros + 1);
 	first_int_symb = decimal->value
-			/ ft_power(10, count_symbs(decimal->value, 10) - 1);
+		/ ft_power(10, count_symbs(decimal->value, 10) - 1);
 	decimal->value = decimal->value - ft_power(10,
-		count_symbs(decimal->value, 10) - 1) * (first_int_symb - 1);
+			count_symbs(decimal->value, 10) - 1) * (first_int_symb - 1);
 	integer->value = first_int_symb;
 	ft_lstnormalizer(decimal);
 }
 
-int16_t	ft_change_to_exp(t_list **integer, t_list **decimal, t_specifier *specifier)
+int16_t	ft_change_to_exp(t_list **integer,
+			t_list **decimal, t_specifier *specifier)
 {
 	uint16_t	integer_symbs;
 	uint16_t	decimal_zeros;

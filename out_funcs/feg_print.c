@@ -63,7 +63,7 @@ void	ft_outnum(t_list **integer, t_list **decimal, t_specifier *specifier,
 	if (specifier->type != 'e')
 		ft_round_decimal(integer, decimal, specifier);
 	if ((specifier->flags & G_FLAG) && (!(specifier->flags & OCTAL_FLAG)
-		|| (*decimal)->value == 0))
+			|| (*decimal)->value == 0))
 		exclude_trailing_zeros(*decimal, specifier);
 	print_prefix_space(total, specifier);
 	ft_putdouble(integer, decimal, specifier, total);

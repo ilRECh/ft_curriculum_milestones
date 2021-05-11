@@ -1,6 +1,6 @@
 #include "libft.h"
 
-static void bignummultiply(t_list **lst, uint64_t value, int16_t power)
+static void	bignummultiply(t_list **lst, uint64_t value, int16_t power)
 {
 	t_list		*start;
 	uint64_t	multiplier;

@@ -28,7 +28,7 @@ static void	print_space(t_specifier *specifier,
 		correction = specifier->precision;
 	if (specifier->width > correction)
 		fill_with(' ', specifier->width
-					   - correction * (specifier->precision != 0 || *nbr != 0));
+			- correction * (specifier->precision != 0 || *nbr != 0));
 }
 
 void	u_digit_print(uint64_t u_nbr, int *total, t_specifier *specifier)
@@ -42,7 +42,7 @@ void	u_digit_print(uint64_t u_nbr, int *total, t_specifier *specifier)
 	if (!(specifier->flags & MINUS_FLAG))
 		print_space(specifier, &u_nbr, &symbs_amount);
 	fill_with('0', (specifier->precision > symbs_amount)
-				   * (specifier->precision - symbs_amount));
+		* (specifier->precision - symbs_amount));
 	if (specifier->precision || u_nbr)
 		ft_putnbr_base(u_nbr, 10, "0123456789");
 	if (specifier->flags & MINUS_FLAG)

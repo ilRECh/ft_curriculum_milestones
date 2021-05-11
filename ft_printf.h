@@ -1,6 +1,6 @@
-#ifndef FT_STDIO_H
-# define FT_STDIO_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-int	ft_printf(char const *, ...);
+int	ft_printf(char const *format, ...);
 
 #endif
