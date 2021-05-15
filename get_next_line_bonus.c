@@ -103,7 +103,8 @@ int	get_next_line(int fd, char **line)
 		cur_elem->str = ft_strjoin(cur_elem->str, lst_head->str);
 	}
 	del_elem(&lst_head, BUF);
-	if ((br < 0 && !del_elem(&lst_head, fd)) || ft_retline(&cur_elem->str, line))
+	if ((br < 0 && !del_elem(&lst_head, fd))
+		|| ft_retline(&cur_elem->str, line))
 		return (-1);
 	else if (br == 0 && !cur_elem->str)
 		return (del_elem(&lst_head, fd));
