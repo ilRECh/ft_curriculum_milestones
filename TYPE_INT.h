@@ -4,7 +4,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-static int	int_compare(void *A_array,
+static int	INT_COMPARE(void *A_array,
 					   void *B_array, size_t offset_A, size_t offset_B)
 {
 	int	*A;
@@ -17,7 +17,7 @@ static int	int_compare(void *A_array,
 	return (A[offset_A] - B[offset_B]);
 }
 
-static int	int_assign(void *A_array,
+static int	INT_ASSIGN(void *A_array,
 					  void *B_array, size_t offset_A, size_t offset_B)
 {
 	int	*A;

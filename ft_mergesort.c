@@ -1,11 +1,11 @@
-#include "sort_configure.h"
 #include "libft.h"
+#include "sort_conf.h"
 
 static void	Merge(int *A, t_index index, int *B, t_function function)
 {
-	int	i;
-	int	j;
-	int	k;
+	size_t	i;
+	size_t	j;
+	size_t	k;
 
 	i = index.First;
 	j = index.Middle;
@@ -14,15 +14,9 @@ static void	Merge(int *A, t_index index, int *B, t_function function)
 	{
 		if (i < index.Middle && (j >= index.Last
 				|| function.compare(A, A, i, j) <= 0))
-		{
-			function.assign(B, A, k, i);
-			i++;
-		}
+			function.assign(B, A, k, i++);
 		else
-		{
-			function.assign(B, A, k, j);
-			j++;
-		}
+			function.assign(B, A, k, j++);
 		k++;
 	}
 }
@@ -52,7 +46,7 @@ void	ft_mergesort(void *to_sort, size_t len, t_DATA_TYPE type)
 	t_function	function;
 
 	i = -1;
-	B = (int *)malloc(type * len);
+	B = (int *)malloc((type % 10) * len);
 	if ((!B || function_by_data_type(&function, type))
 		&& write(1, "MERGESORT FAIL!", 15))
 		return ;

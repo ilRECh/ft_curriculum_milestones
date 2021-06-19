@@ -23,14 +23,14 @@ typedef struct s_function
 
 typedef enum e_DATA_TYPE
 {
-	CHAR_ = 1,
-	UCHAR_ = 1,
-	INT_ = 4,
-	UINT_ = 4,
-	LONG_ = 8,
-	ULONG_ = 8,
-	FLOAT_ = 4,
-	DOUBLE_ = 8
+	CHAR = 1,
+	UCHAR = 11,
+	INT = 14,
+	UINT = 24,
+	LONG = 28,
+	ULONG = 38,
+	FLOAT = 34,
+	DOUBLE = 18
 }	t_DATA_TYPE;
 
 void			ft_mergesort(void *to_sort, size_t len, t_DATA_TYPE type);
@@ -123,7 +123,6 @@ typedef struct s_slist
 t_slist			*ft_lstnew(void *content);
 void			ft_lstadd_front(t_slist **lst, t_slist *new);
 int				ft_lstsize(t_slist *lst);
-t_slist			*ft_lstfirst(t_slist *lst);
 t_slist			*ft_lstlast(t_slist *lst);
 void			ft_lstadd_back(t_slist **lst, t_slist *new);
 void			ft_lstdelone(t_slist *lst, void (*del)(void *));
@@ -141,5 +140,7 @@ typedef struct s_dlist
 	struct s_dlist	*next;
 	struct s_dlist	*prev;
 }	t_dlist;
+
+t_dlist			*ft_lstfirst(t_dlist *lst);
 
 #endif

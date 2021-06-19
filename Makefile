@@ -44,6 +44,7 @@ SRCS	= ft_bzero.c\
 		  ft_lstclear.c\
 		  ft_lstiter.c\
 		  ft_lstmap.c\
+		  ft_mergesort.c
 
 OBJS	= $(SRCS:.c=.o)
 
@@ -52,28 +53,40 @@ HDRS	= libft.h
 NAME	= libft.a
 
 RM	= rm -rf
-
 GCC	= gcc
-
 AR	= ar -crs
+FLAGS	= -Wall -Wextra -Werror -c
 
-FLAGS	= -Wall -Wextra -Werror
+# COLORS
+BLACK	=	\033[0;30m
+RED		=	\033[0;31m
+GREEN	=	\033[0;32m
+YELLOW	=	\033[0;33m
+BLUE	=	\033[0;34m
+MAGENTA	=	\033[0;35m
+CYAN	=	\033[0;36m
+RESET	=	\033[0m
 
-%.o : %.c  $(HDRS)
-			$(GCC) $(FLAGS) -I includes -c $< -o $(<:.c=.o)
+%.o : %.c $(HDRS)
+	@$(GCC) $(FLAGS) $< -o $@
+	@echo  "$(GREEN).$(RESET)\c"
 
 $(NAME):	$(OBJS)
-			$(AR) $(NAME) $(OBJS)
+	@$(AR) $(NAME) $(OBJS)
+	@echo "\n$(NAME): $(GREEN)object files were created$(RESET)"
+	@echo "$(NAME): $(GREEN)$(NAME) was created$(RESET)"
 
 all:		$(NAME)
 
 re:			fclean all
 
 clean:
-			$(RM) $(OBJS) $(BONUS_OBJS)
+	@$(RM) $(OBJS)
+	@echo "$(NAME): $(RED)object files were deleted$(RESET)"
 
 fclean: 	clean
-			$(RM) $(NAME)
-
+	@$(RM) $(NAME)
+	@echo "$(NAME): $(RED)$(NAME) was deleted$(RESET)"
+	
 .PHONY:	
 			all clean fclean re 

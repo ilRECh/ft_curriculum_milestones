@@ -1,6 +1,6 @@
 #include "libft.h"
 
-t_list	*ft_lstfirst(t_list *lst)
+t_dlist	*ft_lstfirst(t_dlist *lst)
 {
 	if (!lst)
 		return (NULL);
