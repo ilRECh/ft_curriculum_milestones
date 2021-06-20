@@ -5,11 +5,11 @@
 			"label": "run",
 			"type": "shell",
 			"command": "${workspaceFolder}/push_swap",
-			// "args": [
-			// 	"1",
-			// 	"2",
-			// 	"3"
-			// ],
+			"args": [
+				"1 2 3",
+				"4",
+				"5"
+			],
 			"dependsOn": [ "build" ]
 		},
 		{
