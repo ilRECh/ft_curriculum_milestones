@@ -19,4 +19,6 @@
 # define MAGENTA_BOLD "\033[0;35;1m"
 # define CYAN_BOLD "\033[0;36;1m"
 
+void	args_check(t_dlist **args);
+
 #endif

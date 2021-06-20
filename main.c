@@ -1,8 +1,8 @@
 #include "push_swap.h"
 
-static void show_usage(void)
+static void	show_usage(void)
 {
-	ft_printf(
+	ft_printf("\n"
 		BLUE "usage: " RESET
 		"./push_swap [-v[c]] [<args>]\n\n"
 		"The following options are available:\n\n"
@@ -14,17 +14,12 @@ static void show_usage(void)
 		"with stack_A filling bigger than 10.\n\n"
 		GREEN_BOLD "\t-vc\t" RESET
 		"Verbose mode colored.\n\n"
-		CYAN "Anyways, have a nice day!" RESET);
+		CYAN "Anyways, have a nice day!\n\n" RESET);
 }
 
-static void	args_check(t_slist *args)
+static void	push_swap(int argc, char **argv)
 {
-	
-}
-	
-static void push_swap(int argc, char **argv)
-{
-	t_slist	*args;
+	t_list	*args;
 	char	**cur_arg;
 	int		iter_1;
 
@@ -33,18 +28,22 @@ static void push_swap(int argc, char **argv)
 	while (argc--)
 	{
 		if (!ft_strchr(*argv, ' '))
-			ft_lstadd_back(&args, ft_lstnew(ft_strdup(*argv)));
+			ft_dlstadd_back(&args, ft_dlstnew(ft_strdup(*argv)));
 		else
 		{
 			cur_arg = ft_split(*argv, ' ');
 			while (cur_arg[++iter_1])
-				ft_lstadd_back(&args, ft_lstnew(cur_arg[iter_1]));
+				ft_dlstadd_back(&args, ft_dlstnew(cur_arg[iter_1]));
 		}
 		argv++;
 	}
+	args_check(&args);
+	//divide
+	//merge
+	//align
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	(void)argv;
 	if (argc == 1)

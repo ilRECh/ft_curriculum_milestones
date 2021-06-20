@@ -6,8 +6,8 @@
 			"type": "shell",
 			"command": "${workspaceFolder}/push_swap",
 			"args": [
-				"1 2 3",
-				"4",
+				"1",
+				"one",
 				"5"
 			],
 			"dependsOn": [ "build" ]

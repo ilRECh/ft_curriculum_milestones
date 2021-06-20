@@ -29,7 +29,7 @@ SRCS_LIST	=	main.c
 SRCS_DIR		= ./
 SRCS			= $(addprefix $(SRCS_DIR), $(SRCS_LIST))
 
-PRSR_LIST	=	
+PRSR_LIST	=	args_check.c
 PRSR_DIR		= ./parser/
 PRSR			= $(addprefix $(PRSR_DIR), $(PRSR_LIST))
 
@@ -45,7 +45,7 @@ MERGE_LIST	=
 MERGE_DIR		= ./merge/
 MERGE			= $(addprefix $(PRSR_DIR), $(PRSR_LIST))
 
-OBJS			= $(SRCS:.c=.o) # $(PRSR:.c=.o)  $(ACTIONS:.c=.o) $(DIVIDE:.c=.o) $(MERGE:.c=.o) 
+OBJS			= $(SRCS:.c=.o) $(PRSR:.c=.o) # $(ACTIONS:.c=.o) $(DIVIDE:.c=.o) $(MERGE:.c=.o) 
 
 # COLORS
 BLACK	=	\033[0;30m
