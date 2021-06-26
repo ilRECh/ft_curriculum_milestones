@@ -41,13 +41,14 @@ static void	no_dups(t_list lst)
 	lst.cur = lst.head;
 	while (TRUE)
 	{
-		if (lst.cur != cur_elem && *((int *)lst.cur->content) == *((int *)(cur_elem)->content))
+		if (lst.cur != cur_elem
+			&& *((int *)lst.cur->content) == *((int *)(cur_elem)->content))
 		{
 			error_handle(3, lst);
 			exit(3);
 		}
 		lst.cur = lst.cur->next;
-		if (lst.cur->prev == lst.end) //How to use single condition in while?
+		if (lst.cur->prev == lst.end)
 			break ;
 	}
 }

@@ -49,7 +49,7 @@ int		not_keep_elem_count(t_list lst);
 uint8_t	is_sort(t_list stack);
 void	clear_keep(t_list to_clear);
 void	find_smaller_and_bigger(int *index_smaller, int *index_bigger,
-				int order, t_list to_search);
+			int order, t_list to_search);
 void	index_check(int smaller, int bigger,
 			t_list to_check, t_merge_conf *cur);
 void	show_stacks(t_list stack_a, t_list stack_b);

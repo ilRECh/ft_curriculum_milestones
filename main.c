@@ -24,15 +24,14 @@ static void	push_swap(int argc, char **argv)
 	char	**cur_arg;
 	int		iter_1;
 
-	iter_1 = -1;
-	ft_lst_init(&stack_a);
-	ft_lst_init(&stack_b);
+	ft_lst_init(2, &stack_a, &stack_b);
 	while (argc--)
 	{
 		if (!ft_strchr(*argv, ' '))
 			ft_lstadd_back(&stack_a, ft_strdup(*argv));
 		else
 		{
+			iter_1 = -1;
 			cur_arg = ft_split(*argv, ' ');
 			while (cur_arg[++iter_1])
 				ft_lstadd_back(&stack_a, cur_arg[iter_1]);
@@ -44,7 +43,6 @@ static void	push_swap(int argc, char **argv)
 	divide(&stack_a, &stack_b);
 	merge(&stack_a, &stack_b);
 	align(&stack_a);
-	// show_stacks(stack_a, stack_b);
 }
 
 int	main(int argc, char **argv)

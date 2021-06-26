@@ -2,7 +2,7 @@
 
 void	ft_lstclear(t_list *lst, void (*del)(void *))
 {
-	if (!lst || !del)
+	if (!lst || !del || !lst->head || !lst->end)
 		return ;
 	lst->cur = lst->head;
 	lst->end->next = NULL;

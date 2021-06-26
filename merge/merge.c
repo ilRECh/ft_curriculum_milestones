@@ -69,7 +69,8 @@ static void	proceed(t_list *stack_a, t_list *stack_b, t_merge_conf total)
 		{
 			if (total.dir_b == ROTATE && total.steps_a-- && total.steps_b--)
 				rotate('&', stack_a, stack_b);
-			else if (total.dir_b == REVERSE_ROTATE && total.steps_a-- && total.steps_b--)
+			else if (total.dir_b == REVERSE_ROTATE
+				&& total.steps_a-- && total.steps_b--)
 				reverse_rotate('&', stack_a, stack_b);
 		}
 		else if (total.dir_b == ROTATE && total.steps_b--)
@@ -89,7 +90,7 @@ static void	proceed(t_list *stack_a, t_list *stack_b, t_merge_conf total)
 
 void	merge(t_list *stack_a, t_list *stack_b)
 {
-	t_merge_conf total;
+	t_merge_conf	total;
 
 	while (ft_lstsize(*stack_b))
 	{
@@ -100,4 +101,5 @@ void	merge(t_list *stack_a, t_list *stack_b)
 		prepare(*stack_a, *stack_b, &total);
 		proceed(stack_a, stack_b, total);
 	}
+	ft_lstclear(stack_b, free);
 }

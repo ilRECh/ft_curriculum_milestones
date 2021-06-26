@@ -24,7 +24,8 @@ static uint8_t	sort_small(t_list *stack_a)
 		{
 			mark_greater_than(*stack_a);
 			stack_a->cur = stack_a->cur->next;
-			if (stack_a->cur->prev == stack_a->end || !not_keep_elem_count(*stack_a))
+			if (stack_a->cur->prev == stack_a->end
+				|| !not_keep_elem_count(*stack_a))
 				break ;
 		}
 		if (!not_keep_elem_count(*stack_a))
@@ -42,13 +43,15 @@ static void	find_nearest_false(t_list to_look, int *steps, int *rot_dir)
 	to_look.cur = to_look.head;
 	while (TRUE)
 	{
-		if (ft_lstindex(to_look) < ft_lstsize(to_look) / 2 && !((t_content *)to_look.cur->content)->keep
+		if (ft_lstindex(to_look) < ft_lstsize(to_look) / 2
+			&& !((t_content *)to_look.cur->content)->keep
 			&& ft_lstindex(to_look) < *steps)
 		{
 			*steps = ft_lstindex(to_look);
 			*rot_dir = ROTATE;
 		}
-		else if (ft_lstindex(to_look) >= ft_lstsize(to_look) / 2 && !((t_content *)to_look.cur->content)->keep
+		else if (ft_lstindex(to_look) >= ft_lstsize(to_look) / 2
+			&& !((t_content *)to_look.cur->content)->keep
 			&& ft_lstsize(to_look) - ft_lstindex(to_look) < *steps)
 		{
 			*steps = ft_lstsize(to_look) - ft_lstindex(to_look);
@@ -63,7 +66,7 @@ static void	find_nearest_false(t_list to_look, int *steps, int *rot_dir)
 void	divide(t_list *stack_a, t_list *stack_b)
 {
 	int	steps;
-	int rot_dir;
+	int	rot_dir;
 
 	if (is_sort(*stack_a))
 		return ;

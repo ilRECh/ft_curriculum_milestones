@@ -13,9 +13,11 @@ static void	searching(t_search search)
 {
 	while (TRUE)
 	{
-		if (((t_content *)search.to_search.cur->content)->order == search.smaller)
+		if (((t_content *)search.to_search.cur->content)->order
+			== search.smaller)
 			*search.index_smaller = ft_lstindex(search.to_search);
-		else if (((t_content *)search.to_search.cur->content)->order == search.bigger)
+		else if (((t_content *)search.to_search.cur->content)->order
+			== search.bigger)
 			*search.index_bigger = ft_lstindex(search.to_search);
 		search.to_search.cur = search.to_search.cur->next;
 		if (search.to_search.cur->prev == search.to_search.end)

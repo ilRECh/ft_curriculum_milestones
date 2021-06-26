@@ -12,7 +12,7 @@ static void	print_a(t_list stack_a)
 		else
 			keep_value = "FALSE";
 		ft_printf("%12d %12d %14s|", ((t_content *)stack_a.cur->content)->order,
-		((t_content *)stack_a.cur->content)->value, keep_value);
+			((t_content *)stack_a.cur->content)->value, keep_value);
 	}
 	else
 		ft_printf("                                        |");
@@ -29,7 +29,7 @@ static void	print_b(t_list stack_b)
 		else
 			keep_value = "FALSE";
 		ft_printf("%12d %12d %14s\n", ((t_content *)stack_b.cur->content)->order,
-		((t_content *)stack_b.cur->content)->value, keep_value);
+			((t_content *)stack_b.cur->content)->value, keep_value);
 	}
 	else
 		ft_printf("                                        \n");
@@ -38,8 +38,8 @@ static void	print_b(t_list stack_b)
 void	show_stacks(t_list stack_a, t_list stack_b)
 {
 	ft_printf(CYAN "\t\tStack A:\t\t|\t\tStack_B:\n"
-					"ORDER:\t\tVALUE:\t\tKEEP:\t|"
-					"ORDER:\t\tVALUE:\t\tKEEP:\n" RESET);
+		"ORDER:\t\tVALUE:\t\tKEEP:\t|"
+		"ORDER:\t\tVALUE:\t\tKEEP:\n" RESET);
 	stack_a.cur = stack_a.head;
 	stack_b.cur = stack_b.head;
 	while (TRUE)

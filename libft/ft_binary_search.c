@@ -3,7 +3,7 @@
 size_t	ft_bin_search(int *arr, size_t left, size_t right, int to_find)
 {
 	size_t	middle;
-	
+
 	if (right >= left)
 	{
 		middle = left + (right - left) / 2;

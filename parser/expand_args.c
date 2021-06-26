@@ -42,4 +42,5 @@ void	expand_args(t_list *stack_a)
 	}
 	ft_mergesort(args, stack_a_size, INT);
 	convertation(args, stack_a_size, stack_a);
+	free(args);
 }

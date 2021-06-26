@@ -4,6 +4,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdint.h>
+# include <stdarg.h>
 # include "ft_printf.h"
 
 # define TRUE 1
@@ -166,7 +167,7 @@ typedef struct s_list
 	t_dlist	*end;
 }	t_list;
 
-void			ft_lst_init(t_list *lst);
+void			ft_lst_init(int args, ...);
 t_dlist			*ft_lstnew(void *content);
 void			ft_lstadd_front(t_list *lst, void *content);
 int				ft_lstsize(t_list lst);
