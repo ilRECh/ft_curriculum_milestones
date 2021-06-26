@@ -58,7 +58,7 @@ static void	push_swap(int argc, char **argv, uint8_t is_verbose)
 
 int	main(int argc, char **argv)
 {
-	if (argc == 1)
+	if (argc == 1 || (argc == 2 && !ft_strncmp(argv[1], "-v", 2)))
 		show_usage();
 	else if (!ft_strncmp(argv[1], "-v", 2))
 		push_swap(argc - 2, argv + 2, TRUE);
