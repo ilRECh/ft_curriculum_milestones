@@ -33,5 +33,4 @@ void	align(t_list *stack_a)
 			break ;
 	}
 	make_align(stack_a, index_of_min, min_order);
-	ft_lstclear(stack_a, free);
 }
