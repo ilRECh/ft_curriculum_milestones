@@ -62,14 +62,7 @@ def prepare_merge_(stack_A, stack_B):
             if stack_A_rot_needed < max_stack_A_rot_needed:
                 max_stack_A_rot_needed = stack_A_rot_needed
                 actual_rot_dir_A = rot_dir_A
-        # print(total_B + total_A > max_stack_B_rot_needed + max_stack_A_rot_needed,
-        #       total_A, total_B, max_stack_A_rot_needed, max_stack_B_rot_needed,
-        #       actual_rot_dir_A, actual_rot_dir_B)
-        if actual_rot_dir_B == actual_rot_dir_A \
-                and actual_rot_dir_B != NO_DIR \
-                and total_A + total_B > (max_stack_B_rot_needed
-                if (max_stack_B_rot_needed >= max_stack_A_rot_needed) else max_stack_A_rot_needed) \
-            or total_B + total_A > max_stack_B_rot_needed + max_stack_A_rot_needed:
+        if total_B + total_A > max_stack_B_rot_needed + max_stack_A_rot_needed:
             total_B = max_stack_B_rot_needed
             total_rot_dir_B = actual_rot_dir_B
             total_A = max_stack_A_rot_needed

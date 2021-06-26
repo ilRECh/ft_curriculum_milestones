@@ -19,33 +19,36 @@ static void	show_usage(void)
 
 static void	push_swap(int argc, char **argv)
 {
-	t_list	*args;
+	t_list	stack_a;
+	t_list	stack_b;
 	char	**cur_arg;
 	int		iter_1;
 
 	iter_1 = -1;
-	args = NULL;
+	ft_lst_init(&stack_a);
+	ft_lst_init(&stack_b);
 	while (argc--)
 	{
 		if (!ft_strchr(*argv, ' '))
-			ft_dlstadd_back(&args, ft_dlstnew(ft_strdup(*argv)));
+			ft_lstadd_back(&stack_a, ft_strdup(*argv));
 		else
 		{
 			cur_arg = ft_split(*argv, ' ');
 			while (cur_arg[++iter_1])
-				ft_dlstadd_back(&args, ft_dlstnew(cur_arg[iter_1]));
+				ft_lstadd_back(&stack_a, cur_arg[iter_1]);
+			free(cur_arg);
 		}
 		argv++;
 	}
-	args_check(&args);
-	//divide
-	//merge
-	//align
+	args_check(&stack_a);
+	divide(&stack_a, &stack_b);
+	merge(&stack_a, &stack_b);
+	align(&stack_a);
+	// show_stacks(stack_a, stack_b);
 }
 
 int	main(int argc, char **argv)
 {
-	(void)argv;
 	if (argc == 1)
 		show_usage();
 	else

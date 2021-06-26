@@ -25,27 +25,35 @@ LIBFT				= ./libft/libft.a
 FT_PRINTF_MAKE		= ./ft_printf/
 FT_PRINTF		= ./ft_printf/libftprintf.a
 
-SRCS_LIST	=	main.c
-SRCS_DIR		= ./
-SRCS			= $(addprefix $(SRCS_DIR), $(SRCS_LIST))
+SRCS_LIST	=	print_stacks.c\
+				not_keep_elem_count.c\
+				is_sort.c\
+				clear_keep.c\
+				find_smaller_and_bigger.c\
+				index_check.c
+SRCS_DIR		= ./srcs/
+SRCS			= $(addprefix $(SRCS_DIR), $(SRCS_LIST)) main.c
 
-PRSR_LIST	=	args_check.c
+PRSR_LIST	=	args_check.c\
+				expand_args.c
 PRSR_DIR		= ./parser/
 PRSR			= $(addprefix $(PRSR_DIR), $(PRSR_LIST))
 
-ACTIONS_LIST	=	
+ACTIONS_LIST	=	actions.c\
+					align.c
 ACTIONS_DIR		= ./actions/
-ACTIONS			= $(addprefix $(PRSR_DIR), $(PRSR_LIST))
+ACTIONS			= $(addprefix $(ACTIONS_DIR), $(ACTIONS_LIST))
 
-DIVIDE_LIST	=	
+DIVIDE_LIST	=	divide.c\
+				mark.c
 DIVIDE_DIR		= ./divide/
-DIVIDE			= $(addprefix $(PRSR_DIR), $(PRSR_LIST))
+DIVIDE			= $(addprefix $(DIVIDE_DIR), $(DIVIDE_LIST))
 
-MERGE_LIST	=	
+MERGE_LIST	=	merge.c
 MERGE_DIR		= ./merge/
-MERGE			= $(addprefix $(PRSR_DIR), $(PRSR_LIST))
+MERGE			= $(addprefix $(MERGE_DIR), $(MERGE_LIST))
 
-OBJS			= $(SRCS:.c=.o) $(PRSR:.c=.o) # $(ACTIONS:.c=.o) $(DIVIDE:.c=.o) $(MERGE:.c=.o) 
+OBJS			= $(SRCS:.c=.o) $(PRSR:.c=.o) $(ACTIONS:.c=.o) $(DIVIDE:.c=.o) $(MERGE:.c=.o) 
 
 # COLORS
 BLACK	=	\033[0;30m
@@ -80,9 +88,11 @@ clean:
 	@make -C $(FT_PRINTF_MAKE) clean
 	@echo "$(NAME): $(RED)object files were deleted$(RESET)"
 
-fclean: clean
+fclean:
 	@make -C $(LIBFT_MAKE) fclean
 	@make -C $(FT_PRINTF_MAKE) fclean
+	@$(RM) $(OBJS) $(LIBFT) $(FT_PRINTF)
+	@echo "$(NAME): $(RED)object files were deleted$(RESET)"
 	@$(RM) $(NAME)
 	@echo "$(NAME): $(RED)$(NAME) was deleted$(RESET)"
 

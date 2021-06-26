@@ -16,7 +16,7 @@ while amount < 700:
     ##
     ## argv
     ##
-    numbers_array = random.sample(range(-1000, 1000), 100)
+    numbers_array = [1, 2, 3, 4]#random.sample(range(-1000, 1000), 100)
     # numbers_array = [-289, 609, 564, -665, -795, 597, -81, -616, 910, 21]
     numbers_array_sorted = numbers_array.copy()
     numbers_array_sorted.sort()  # replace .sort method with merging sort

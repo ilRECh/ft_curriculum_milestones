@@ -72,28 +72,9 @@ def align_(stack_A, stack_B):
             if elem.order < min_order:
                 index_of_min = stack_A.arr.index(elem)
                 min_order = elem.order
-
-    index_of_max = len(stack_B.arr) + 1
-    if len(stack_B.arr) > 0:
-        max_order = stack_B.arr[0].order
-        for elem in stack_B.arr:
-            if elem.order > max_order:
-                index_of_max = stack_B.arr.index(elem)
-                max_order = elem.order
-
     if index_of_min <= len(stack_A.arr) / 2:
-        if len(stack_B.arr) > 0 \
-                and index_of_max <= len(stack_B.arr) / 2:
-            while stack_A.arr[0].order != min_order \
-                    and stack_B.arr[0].order != max_order:
-                reverse_rotate_('&', stack_A, stack_B)
         while stack_A.arr[0].order != min_order:
             reverse_rotate_('a', stack_A, stack_B)
     else:
-        if len(stack_B.arr) > 0 \
-                and index_of_max > len(stack_B.arr) / 2:
-            while stack_A.arr[0].order != min_order \
-                    and stack_B.arr[0].order != max_order:
-                rotate_('&', stack_A, stack_B)
         while stack_A.arr[0].order != min_order:
             rotate_('a', stack_A, stack_B)
