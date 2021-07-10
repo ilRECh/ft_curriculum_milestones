@@ -81,6 +81,7 @@ static void	check_file_access(t_list args)
 		ft_lstclear(&args, clean_content);
 		exit(1);
 	}
+	close(open(((t_content *)args.end->content)->arg[0], O_TRUNC | O_WRONLY));
 }
 
 void	pipex(int argc, char **argv, char **envp)
