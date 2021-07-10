@@ -74,7 +74,8 @@ static void	check_file_access(t_list args)
 		ft_lstclear(&args, clean_content);
 		exit(1);
 	}
-	if (access(((t_content *)args.end->content)->arg[0], W_OK))
+	if (!access(((t_content *)args.end->content)->arg[0], F_OK)
+		&& (access(((t_content *)args.end->content)->arg[0], W_OK)))
 	{
 		ft_printf(RED "ERROR: %s: %s\n" RESET,
 			((t_content *)args.end->content)->arg[0], strerror(errno));
