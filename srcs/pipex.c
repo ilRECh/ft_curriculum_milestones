@@ -8,13 +8,16 @@ static void	paths_check(t_list arg, char **paths)
 	paths_copy = paths;
 	while (paths_copy && *paths_copy)
 	{
-		tmp = ft_strjoin(*paths_copy++, ((t_content *)arg.cur->content)->arg[0]);
+		tmp = ft_strjoin(*paths_copy++,
+				((t_content *)arg.cur->content)->arg[0]);
 		if (!access(tmp, X_OK))
 		{
-			((t_content *)arg.cur->content)->arg[0] = ft_strdup(tmp);
+			free(((t_content *)arg.cur->content)->arg[0]);
+			((t_content *)arg.cur->content)->arg[0] = tmp;
 			clean_paths(paths);
 			return ;
 		}
+		free(tmp);
 	}
 	ft_printf(RED "ERROR: %s: %s\n" RESET,
 		((t_content *)arg.cur->content)->arg[0], strerror(errno));
@@ -31,7 +34,8 @@ static void	check_cmd_path(t_list arg, char **envp)
 
 	while (ft_strncmp("PATH=", *envp, 4))
 		envp++;
-	paths_copy = paths = ft_split(*envp + 5, ':');
+	paths = ft_split(*envp + 5, ':');
+	paths_copy = paths;
 	while (paths_copy && *paths_copy)
 	{
 		tmp = *paths_copy;

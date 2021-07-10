@@ -2,7 +2,7 @@
 
 void	clean_content(void *content)
 {
-	char **arg;
+	char	**arg;
 
 	arg = ((t_content *)content)->arg;
 	while (arg && *arg)

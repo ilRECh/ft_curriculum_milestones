@@ -14,7 +14,7 @@
 
 typedef struct s_content
 {
-	char **arg;
+	char	**arg;
 }	t_content;
 
 int		get_next_line(int fd, char **line);
