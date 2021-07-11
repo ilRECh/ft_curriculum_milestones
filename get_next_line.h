@@ -5,6 +5,8 @@
 # include <stdint.h>
 # include <stdlib.h>
 
+# define BUFFER_SIZE 100
+
 enum
 {
 	BUF = -42,
