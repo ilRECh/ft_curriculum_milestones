@@ -1,18 +1,38 @@
 #include "fdf.h"
 #include "put_pixel.h"
 
-static inline void	error(void)
+static void	free_split(char **split)
 {
-	ft_printf(RED "ERROR: %s\n" RESET, strerror(errno));
-	exit(1);
+	char **split_copy;
+
+	split_copy = split;
+	while (split_copy && *split_copy)
+		free(*split_copy++);
+	free(split);
 }
 
 static void	parse_values(t_list *map)
 {
-	t_list	*arr;
+	char	**cont;
+	char	**cont_copy;
+	char	**vals;
+
 	map->cur = map->head;
 	while (TRUE)
 	{
+		cont = CUR_CONTENT;
+		cont_copy = cont;
+		map->cur->content = ft_calloc(1, sizeof(t_list));
+		while (cont && *cont)
+		{
+			vals = ft_split(*cont, ',');
+			ft_lstadd_back(CUR_EL, ft_calloc(2, sizeof(int)));
+			*((int *)CUR_EL->end->content) = ft_atoi(*vals);
+			*((int *)CUR_EL->end->content + 1) = ft_atoi_base(*(vals + 1), 16);
+			free_split(vals);
+			cont++;
+		}
+		free_split(cont_copy);
 		map->cur = map->cur->next;
 		if (map->cur->prev == map->end)
 			break ;
@@ -22,9 +42,7 @@ static void	parse_values(t_list *map)
 static void	parse_map(char *map_name, t_list *map)
 {
 	int		fd;
-	int		ret;
 	char	*line;
-	char	**tmp;
 
 	fd = open(map_name, O_RDONLY);
 	if (fd < 0)
@@ -33,11 +51,13 @@ static void	parse_map(char *map_name, t_list *map)
 		error();
 	while (TRUE)
 	{
-		ret = get_next_line(fd, &line);
-		ft_lstadd_back(&map, ft_split(line, ' '));
-		free(line);
-		if (!ret)
+		if (!get_next_line(fd, &line))
+		{
+			free(line);
 			break ;
+		}
+		ft_lstadd_back(map, ft_split(line, ' '));
+		free(line);
 	}
 	parse_values(map);
 }

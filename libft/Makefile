@@ -16,6 +16,7 @@ SRCS	= ft_bzero.c\
 		  ft_isspace.c\
 		  ft_isdigit.c\
 		  ft_atoi.c\
+		  ft_atoi_base.c\
 		  ft_isalpha.c\
 		  ft_isalnum.c\
 		  ft_isascii.c\
@@ -30,6 +31,7 @@ SRCS	= ft_bzero.c\
 		  ft_strtrim.c\
 		  ft_split.c\
 		  ft_abs.c\
+		  ft_pow.c\
 		  ft_itoa.c\
 		  ft_strmapi.c\
 		  ft_putchar_fd.c\

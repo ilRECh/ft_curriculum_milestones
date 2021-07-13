@@ -97,6 +97,7 @@ int				ft_toupper(int c);
 /// CONVERTIONs
 ///
 int				ft_atoi(const char *nptr);
+int				ft_atoi_base(const char *nptr, uint8_t base);
 char			*ft_itoa(int n);
 
 ///
@@ -138,6 +139,7 @@ void			ft_putnbr_fd(int n, int fd);
 ///	MATHs
 ///
 unsigned int	ft_abs(int n);
+unsigned long	ft_pow(int n, uint8_t pow);
 
 ///
 ///	Single-linked list element

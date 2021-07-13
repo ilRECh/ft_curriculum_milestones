@@ -11,6 +11,9 @@
 # define HEAD_CONTENT ((char **)map->head->content)
 # define CUR_CONTENT ((char **)map->cur->content)
 # define END_CONTENT ((char **)map->end->content)
+# define HEAD_EL ((t_list *)map->head->content)
+# define CUR_EL ((t_list *)map->cur->content)
+# define END_EL ((t_list *)map->cur->content)
 
 typedef struct s_data
 {
@@ -34,5 +37,11 @@ typedef struct s_cont
 }	t_cont;
 
 void	fdf(char *map_name);
+
+static inline void	error(void)
+{
+	ft_printf(RED "ERROR: %s\n" RESET, strerror(errno));
+	exit(1);
+}
 
 #endif

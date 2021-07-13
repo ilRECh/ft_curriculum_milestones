@@ -12,18 +12,18 @@ enum
 	BUF = -42,
 };
 
-typedef struct s_list
+typedef struct s_list_gnl
 {
-	int32_t			fd;
-	char			*str;
-	struct s_list	*next;
-}	t_list;
+	int32_t				fd;
+	char				*str;
+	struct s_list_gnl	*next;
+}	t_list_gnl;
 
 int		get_next_line(int fd, char **line);
-char	*ft_strchr(const char *s, int c);
-char	*ft_strndup(const char *s, size_t len);
-size_t	ft_strlen(const char *s);
-size_t	ft_strlcpy(char *dst, const char *src, size_t dst_size);
-char	*ft_strjoin(char *s1, char *s2);
+char	*gnl_strchr(const char *s, int c);
+char	*gnl_strndup(const char *s, size_t len);
+size_t	gnl_strlen(const char *s);
+size_t	gnl_strlcpy(char *dst, const char *src, size_t dst_size);
+char	*gnl_strjoin(char *s1, char *s2);
 
 #endif

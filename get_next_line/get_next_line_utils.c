@@ -1,6 +1,6 @@
 #include "get_next_line.h"
 
-char	*ft_strchr(const char *s, int c)
+char	*gnl_strchr(const char *s, int c)
 {
 	unsigned char	character;
 
@@ -14,7 +14,7 @@ char	*ft_strchr(const char *s, int c)
 	return ((char *)s);
 }
 
-char	*ft_strndup(const char *s, size_t len)
+char	*gnl_strndup(const char *s, size_t len)
 {
 	char	*dst;
 	char	*dst_copy;
@@ -31,7 +31,7 @@ char	*ft_strndup(const char *s, size_t len)
 	return (dst);
 }
 
-size_t	ft_strlen(const char *s)
+size_t	gnl_strlen(const char *s)
 {
 	char	*end;
 
@@ -43,13 +43,13 @@ size_t	ft_strlen(const char *s)
 	return (end - s);
 }
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dst_size)
+size_t	gnl_strlcpy(char *dst, const char *src, size_t dst_size)
 {
 	size_t	source_len;
 
 	if (!dst || !src)
 		return (0);
-	source_len = ft_strlen(src);
+	source_len = gnl_strlen(src);
 	if (dst_size)
 	{
 		dst_size--;
@@ -60,22 +60,22 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dst_size)
 	return (source_len);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*gnl_strjoin(char *s1, char *s2)
 {
 	size_t	result_size;
 	char	*dst;
 
 	if (!s1)
-		s1 = ft_strndup("", 0);
+		s1 = gnl_strndup("", 0);
 	if (!s1)
 		return (NULL);
-	result_size = ft_strlen(s1) + ft_strlen(s2);
+	result_size = gnl_strlen(s1) + gnl_strlen(s2);
 	dst = (char *)malloc((result_size + 1) * sizeof(char));
 	if (!dst)
 		return (NULL);
 	dst[result_size] = 0;
-	ft_strlcpy(dst + ft_strlcpy(dst, s1, result_size + 1),
-		s2, ft_strlen(s2) + 1);
+	gnl_strlcpy(dst + gnl_strlcpy(dst, s1, result_size + 1),
+		s2, gnl_strlen(s2) + 1);
 	free(s1);
 	return (dst);
 }
