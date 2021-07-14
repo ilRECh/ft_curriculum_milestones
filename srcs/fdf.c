@@ -37,6 +37,22 @@ static void	parse_values(t_list *map)
 		if (map->cur->prev == map->end)
 			break ;
 	}
+	// map->cur = map->head;
+	// while (TRUE)
+	// {
+	// 	CUR_EL->cur = CUR_EL->head;
+	// 	while (TRUE)
+	// 	{
+	// 		ft_printf("%14d %14d | ", *((int *)CUR_EL->cur->content), *((int *)CUR_EL->cur->content + 1));
+	// 		CUR_EL->cur = CUR_EL->cur->next;
+	// 		if (CUR_EL->cur->prev == CUR_EL->end)
+	// 			break ;
+	// 	}
+	// 	ft_printf("\n");
+	// 	map->cur = map->cur->next;
+	// 	if (map->cur->prev == map->end)
+	// 		break ;
+	// }
 }
 
 static void	parse_map(char *map_name, t_list *map)
@@ -60,6 +76,7 @@ static void	parse_map(char *map_name, t_list *map)
 		free(line);
 	}
 	parse_values(map);
+	close(fd);
 }
 
 void	fdf(char *map_name)
