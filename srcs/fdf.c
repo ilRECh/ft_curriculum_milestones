@@ -26,9 +26,9 @@ static void	parse_values(t_list *map)
 		while (cont && *cont)
 		{
 			vals = ft_split(*cont, ',');
-			ft_lstadd_back(CUR_EL, ft_calloc(2, sizeof(int)));
-			*((int *)CUR_EL->end->content) = ft_atoi(*vals);
-			*((int *)CUR_EL->end->content + 1) = ft_atoi_base(*(vals + 1), 16);
+			ft_lstadd_back(CUR_EL, ft_calloc(4, sizeof(int)));
+			*((int *)CUR_EL->end->content + 2) = ft_atoi(*vals);
+			*((int *)CUR_EL->end->content + 3) = ft_atoi_base(*(vals + 1), 16);
 			free_split(vals);
 			cont++;
 		}
