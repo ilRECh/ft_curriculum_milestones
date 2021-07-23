@@ -9,7 +9,8 @@
 ///
 /// CONFIGURE DEFINES
 ///
-# define INT_
+
+//# define INT_
 
 # ifdef CHAR_
 #  include "TYPE_CHAR.h"

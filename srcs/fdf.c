@@ -1,5 +1,4 @@
 #include "fdf.h"
-#include "put_pixel.h"
 
 static void	free_split(char **split)
 {
@@ -26,9 +25,9 @@ static void	parse_values(t_list *map)
 		while (cont && *cont)
 		{
 			vals = ft_split(*cont, ',');
-			ft_lstadd_back(CUR_EL, ft_calloc(4, sizeof(int)));
-			*((int *)CUR_EL->end->content + 2) = ft_atoi(*vals);
-			*((int *)CUR_EL->end->content + 3) = ft_atoi_base(*(vals + 1), 16);
+			ft_lstadd_back(CUR_EL_arrow, ft_calloc(5, sizeof(int)));
+			*((int *)CUR_EL_arrow->end->content + 3) = ft_atoi(*vals);
+			*((int *)CUR_EL_arrow->end->content + 4) = ft_atoi_base(*(vals + 1), 16);
 			free_split(vals);
 			cont++;
 		}
@@ -37,22 +36,6 @@ static void	parse_values(t_list *map)
 		if (map->cur->prev == map->end)
 			break ;
 	}
-	// map->cur = map->head;
-	// while (TRUE)
-	// {
-	// 	CUR_EL->cur = CUR_EL->head;
-	// 	while (TRUE)
-	// 	{
-	// 		ft_printf("%14d %14d | ", *((int *)CUR_EL->cur->content), *((int *)CUR_EL->cur->content + 1));
-	// 		CUR_EL->cur = CUR_EL->cur->next;
-	// 		if (CUR_EL->cur->prev == CUR_EL->end)
-	// 			break ;
-	// 	}
-	// 	ft_printf("\n");
-	// 	map->cur = map->cur->next;
-	// 	if (map->cur->prev == map->end)
-	// 		break ;
-	// }
 }
 
 static void	parse_map(char *map_name, t_list *map)
@@ -82,25 +65,18 @@ static void	parse_map(char *map_name, t_list *map)
 void	fdf(char *map_name)
 {
 	t_list	map;
+	t_conf	mlx;
+	t_mouse	mouse;
 
 	ft_lst_init(1, &map);
 	parse_map(map_name, &map);
+	// parallel(map, &mlx);
+	isometric(map, &mlx);
+	mlx.instance = mlx_init();
+	mlx.window = mlx_new_window(mlx.instance, LENGTH, WIDTH, "FDF");
+	mouse.mlx = mlx;
+	mouse.map = map;
+	hooks_setup(&mouse);
+	draw(map, mlx);
+	mlx_loop(mlx.instance);
 }
-// (void)map;
-// t_conf	mlx;
-// int a = 10;
-// int b = 10;
-
-// mlx.instance = mlx_init();
-// mlx.window = mlx_new_window(mlx.instance, 1920, 1080, "FDF");
-// mlx.img.img = mlx_new_image(mlx.instance, 1920, 1080);
-// mlx.img.addr = mlx_get_data_addr(mlx.img.img, &mlx.img.bits_per_pixel, &mlx.img.line_length,
-// 		&mlx.img.endian);
-// while (a--)
-// {
-// 	while (b--)
-// 		my_mlx_pixel_put(&mlx.img, 5 + a, 5 + b, 0x00FF0000);
-// 	b = 10;
-// }
-// mlx_put_image_to_window(mlx.instance, mlx.window, mlx.img.img, 0, 0);
-// mlx_loop(mlx.instance);

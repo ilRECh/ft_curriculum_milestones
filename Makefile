@@ -1,13 +1,23 @@
+OS 				= $(shell uname)
 NAME			= fdf
-
 RM				= rm -rf
-GCC				= gcc
+GCC				= clang
 AR				= ar -crs
 FLAGS			= -Wall -Wextra -Werror -c -g
 
+ifeq ($(OS), Linux)
+	MLX_DIR = minilibx/minilibx_linux/
+	OPENGL = -lm -lbsd -lX11 -lXext
+endif
+ifeq ($(OS), Darwin)
+	MLX_DIR = minilibx/minilibx_mac/
+	OPENGL = -lz -framework OpenGL -framework AppKit
+endif
+
 HDRS_FDF			=	fdf.h\
 						color.h\
-						put_pixel.h
+						put_pixel.h\
+						mouse.h
 HDRS_FDF_DIR		=	./includes/
 
 HDRS_LIBFT				=	libft.h
@@ -17,28 +27,32 @@ HDRS_FT_PRINTF			=	ft_printf.h
 HDRS_FT_PRINTF_DIR		=	./ft_printf/
 
 HDRS_MLX				= mlx.h 
-HDRS_MLX_DIR			= ./minilibx/
+HDRS_MLX_DIR			= $(MLX_DIR)
 
 HDRS			=	$(addprefix $(HDRS_FDF_DIR), $(HDRS_FDF)) \
 					$(addprefix $(HDRS_LIBFT_DIR), $(HDRS_LIBFT)) \
 					$(addprefix $(HDRS_FT_PRINTF_DIR), $(HDRS_FT_PRINTF))\
 					$(addprefix $(HDRS_MLX_DIR), $(HDRS_MLX))
-INCLUDES 		= -I$(HDRS_FDF_DIR)\
-					-I$(HDRS_LIBFT_DIR)\
-					-I$(HDRS_FT_PRINTF_DIR)\
-					-I$(HDRS_MLX_DIR)
+INCLUDES 		= -I $(HDRS_FDF_DIR)\
+					-I $(HDRS_LIBFT_DIR)\
+					-I $(HDRS_FT_PRINTF_DIR)\
+					-I $(HDRS_MLX_DIR)
 
 
 LIBFT_MAKE			= ./libft/
 LIBFT				= ./libft/libft.a
 FT_PRINTF_MAKE		= ./ft_printf/
 FT_PRINTF			= ./ft_printf/libftprintf.a
-MLX_MAKE			= ./minilibx/
-MLX					= ./minilibx/libmlx.a
+MLX_MAKE			= $(MLX_DIR)
+MLX					= $(addprefix $(MLX_DIR), libmlx.a)
 GNL_MAKE			= ./get_next_line/
 GNL					= ./get_next_line/gnl.a
 
-SRCS_LIST		= fdf.c
+SRCS_LIST		= fdf.c\
+					draw.c\
+					projections.c\
+					hooks_setup.c\
+					translate.c
 SRCS_DIR		= ./srcs/
 SRCS			= $(addprefix $(SRCS_DIR), $(SRCS_LIST)) main.c
 
@@ -60,7 +74,7 @@ RESET	=	\033[0m
 
 $(NAME): $(LIBFT) $(FT_PRINTF) $(OBJS)
 	@$(GCC) $(OBJS) $(LIBFT) $(FT_PRINTF) $(MLX) $(GNL) \
-	-framework OpenGL -framework AppKit -o $(NAME)
+	$(OPENGL) -o $(NAME)
 	@echo "\n$(NAME): $(GREEN)object files were created$(RESET)"
 	@echo "$(NAME): $(GREEN)$(NAME) was created$(RESET)"
 
