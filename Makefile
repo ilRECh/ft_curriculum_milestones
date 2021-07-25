@@ -52,7 +52,9 @@ SRCS_LIST		= fdf.c\
 					draw.c\
 					projections.c\
 					hooks_setup.c\
-					translate.c
+					translate.c\
+					scale.c\
+					central_point.c
 SRCS_DIR		= ./srcs/
 SRCS			= $(addprefix $(SRCS_DIR), $(SRCS_LIST)) main.c
 

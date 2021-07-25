@@ -11,25 +11,18 @@ static int	mouse_move(int x, int y, t_mouse *mouse)
 		|| abs(abs(mouse->y) - abs(y)) >= DRAW_STEP;
 	if (mouse->is_pressed == 1 && condition)
 	{
-		translate((x - mouse->x) * 0.14, (y - mouse->y) * 0.14, mouse->map, mouse->mlx);
+		translate((x - mouse->x) * 0.14, (y - mouse->y) * 0.14,
+			mouse->map);
+		draw(mouse->map, mouse->mlx);
 		mouse->x = x;
 		mouse->y = y;
 	}
-	else if (mouse->is_pressed == 2 && condition
-		&& mouse->mlx.projection != PARALLEL)
-	{
-		//rotate();
-		mouse->x = x;
-		mouse->y = y;
-	}
-	else if (mouse->is_pressed == 4 || mouse->is_pressed == 5)
-		(void)0;//scale()
 	return (0);
 }
 
 static int mouse_press(int button, int x, int y, t_mouse *mouse)
 {
-	if (button != 3)
+	if (button != 3 && button != 4 && button != 5)
 	{
 		mouse->x = x;
 		mouse->y = y;
@@ -40,11 +33,15 @@ static int mouse_press(int button, int x, int y, t_mouse *mouse)
 		parallel(mouse->map, &mouse->mlx);
 	else if (button == 3 && mouse->mlx.projection == PARALLEL)
 		isometric(mouse->map, &mouse->mlx);
+	else if (button == 4)
+		scale(2, mouse->map);
+	else if (button == 5)
+		scale(0.5, mouse->map);
 	draw(mouse->map, mouse->mlx);
 	return (0);
 }
 
-static int mouse_release(int button, int x, int y, t_mouse *mouse)
+static inline int mouse_release(int button, int x, int y, t_mouse *mouse)
 {
 	(void)button;
 	(void)x;

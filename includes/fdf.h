@@ -15,8 +15,8 @@
 # define CUR_EL_arrow ((t_list *)map->cur->content)
 # define CUR_EL_dot ((t_list *)map.cur->content)
 # define CUR_EL_NEXT_dot ((t_list *)map.cur->next->content)
-# define CUR_EL_arrow_cont ((int *)((t_list *)map->cur->content)->cur->content)
-# define CUR_EL_dot_cont ((int *)((t_list *)map.cur->content)->cur->content)
+# define CUR_EL_arrow_cont ((double *)((t_list *)map->cur->content)->cur->content)
+# define CUR_EL_dot_cont ((double *)((t_list *)map.cur->content)->cur->content)
 # define END_EL ((t_list *)map->cur->content)
 
 # define WIDTH 1080
@@ -56,8 +56,10 @@ void	draw(t_list map, t_conf mlx);
 void	parallel(t_list map, t_conf *mlx);
 void	isometric(t_list map, t_conf *mlx);
 void	hooks_setup(t_mouse *mouse);
-void	translate(int tx, int ty, t_list map, t_conf mlx);
-
+void	translate(int tx, int ty, t_list map);
+void	scale(double coeff, t_list map);
+void	rotate(int rx, int ry, t_list map);
+void	find_cp(int	*t, t_list map, double *main_mm);
 
 static inline void	error(void)
 {

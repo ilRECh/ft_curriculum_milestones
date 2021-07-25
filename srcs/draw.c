@@ -3,24 +3,24 @@
 
 typedef struct s_xy
 {
-	int	dx;
-	int	sx;
-	int	dy;
-	int	sy;
-	int	err;
+	double	dx;
+	double	sx;
+	double	dy;
+	double	sy;
+	double	err;
 }	t_xy;
 
-static inline void	init_xy(t_xy *xy, int *p0,
-	int const *p1, int const *p0_main)
+static inline void	init_xy(t_xy *xy, double *p0,
+	double const *p1, double const *p0_main)
 {
 	p0[0] = p0_main[0];
 	p0[1] = p0_main[1];
-	xy->dx = abs(p1[0] - p0[0]);
+	xy->dx = fabs(p1[0] - p0[0]);
 	if (p1[0] > p0[0])
 		xy->sx = 1;
 	else
 		xy->sx = -1;
-	xy->dy = -abs(p1[1] - p0[1]);
+	xy->dy = -fabs(p1[1] - p0[1]);
 	if (p1[1] > p0[1])
 		xy->sy = 1;
 	else
@@ -28,18 +28,18 @@ static inline void	init_xy(t_xy *xy, int *p0,
 	xy->err = xy->dx + xy->dy;
 }
 
-static void	draw_line(int const *p0_main, int const *p1, t_conf mlx)
+static void	draw_line(double const *p0_main, double const *p1, t_conf mlx)
 {
 	t_xy	xy;
-	int		p0[2];
+	double	p0[2];
 
 	init_xy(&xy, p0, p1, p0_main);
 	while (TRUE)
 	{
 		if (p0[0] >= 50 && p0[0] <= 1870 && p0[1] >= 50 && p0[1] <= 1030)
 			put_pixel(&mlx.img, p0[0], p0[1], 0x00ff00ff);
-		if (abs(abs(p0[0]) - abs(p1[0])) <= 1
-			&& abs(abs(p0[1]) - abs(p1[1])) <= 1)
+		if (fabs(fabs(p0[0]) - fabs(p1[0])) <= 1
+			&& fabs(fabs(p0[1]) - fabs(p1[1])) <= 1)
 			break;
 		if (2 * xy.err >= xy.dy)
 		{

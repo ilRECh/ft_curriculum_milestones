@@ -58,6 +58,27 @@ void	parallel(t_list map, t_conf *mlx)
 	}
 }
 
+static inline void	setup_isometric(t_ixy ixy, double *arr)
+{
+	arr[2] = arr[3];
+	arr[0] = (ixy.x - ixy.y) * 0.866025;
+	arr[1] = -(arr[2] * ixy.step)
+		+ (ixy.x + ixy.y) * 0.5;
+}
+
+static void	centralize_isometric(t_list map)
+{
+	double	max_min[4];
+	int		t[2];
+
+	find_cp(t, map, max_min);
+	if (1820 / (max_min[2] - max_min[0]) < 980 / (max_min[3] - max_min[1]))
+		scale(1820 / (max_min[2] - max_min[0]), map);
+	else
+		scale(980 / (max_min[3] - max_min[1]), map);
+	translate(960 - t[0], 540 - t[1], map);
+}
+
 void	isometric(t_list map, t_conf *mlx)
 {
 	t_ixy	ixy;
@@ -71,10 +92,7 @@ void	isometric(t_list map, t_conf *mlx)
 		CUR_EL_dot->cur = CUR_EL_dot->head;
 		while (TRUE)
 		{
-			CUR_EL_dot_cont[2] = CUR_EL_dot_cont[3];
-			CUR_EL_dot_cont[0] = (ixy.x - ixy.y) * 0.866025;
-			CUR_EL_dot_cont[1] = -(CUR_EL_dot_cont[2] * 2)
-				+ (ixy.x + ixy.y) * 0.5;
+			setup_isometric(ixy, CUR_EL_dot_cont);
 			ixy.x += ixy.step;
 			CUR_EL_dot->cur = CUR_EL_dot->cur->next;
 			if (CUR_EL_dot->cur->prev == CUR_EL_dot->end)
@@ -85,4 +103,5 @@ void	isometric(t_list map, t_conf *mlx)
 		if (map.cur->prev == map.end)
 			break ;
 	}
+	centralize_isometric(map);
 }
