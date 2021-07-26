@@ -7,7 +7,7 @@ void	ft_lstadd_front(t_list *lst, void *content)
 	if (!lst)
 		return ;
 	new = ft_lstnew(content);
-	if (!new && ft_printf(RED "ERROR: " RESET "FT_LSTADD_FRONT.\n"))
+	if (!new && write(1, RED "ERROR: " RESET "FT_LSTADD_FRONT.\n", 35))
 	{
 		ft_lstclear(lst, free);
 		exit(1);

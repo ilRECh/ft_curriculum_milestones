@@ -9,14 +9,16 @@ void	scale(double coeff, t_list map)
 	map.cur = map.head;
 	while (TRUE)
 	{
-		CUR_EL_dot->cur = CUR_EL_dot->head;
+		((t_list *)map.cur->content)->cur = ((t_list *)map.cur->content)->head;
 		while (TRUE)
 		{
-			CUR_EL_dot_cont[0] *= coeff;
-			CUR_EL_dot_cont[1] *= coeff;
-			CUR_EL_dot_cont[2] *= coeff;
-			CUR_EL_dot->cur = CUR_EL_dot->cur->next;
-			if (CUR_EL_dot->cur->prev == CUR_EL_dot->end)
+			((double *)((t_list *)map.cur->content)->cur->content)[0] *= coeff;
+			((double *)((t_list *)map.cur->content)->cur->content)[1] *= coeff;
+			((double *)((t_list *)map.cur->content)->cur->content)[2] *= coeff;
+			((t_list *)map.cur->content)->cur
+				= ((t_list *)map.cur->content)->cur->next;
+			if (((t_list *)map.cur->content)->cur->prev
+				== ((t_list *)map.cur->content)->end)
 				break ;
 		}
 		map.cur = map.cur->next;

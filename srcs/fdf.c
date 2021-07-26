@@ -2,12 +2,28 @@
 
 static void	free_split(char **split)
 {
-	char **split_copy;
+	char	**split_copy;
 
 	split_copy = split;
 	while (split_copy && *split_copy)
 		free(*split_copy++);
 	free(split);
+}
+
+static inline void	setup_elem(t_list *map, char **vals)
+{
+	ft_lstadd_back(((t_list *)map->cur->content),
+		ft_calloc(5, sizeof(double)));
+	*((double *)((t_list *)map->cur->content)->end->content + 2)
+		= ft_atoi(*vals);
+	*((double *)((t_list *)map->cur->content)->end->content + 4)
+		= *((double *)((t_list *)map->cur->content)->end->content + 2);
+	*((double *)((t_list *)map->cur->content)->end->content + 3)
+		= ft_atoi_base(*(vals + 1), 16);
+	if (!(*((double *)((t_list *)map->cur->content)->end->content + 3)))
+		*((double *)((t_list *)map->cur->content)->end->content + 3)
+			= 0x00ffffff;
+	free_split(vals);
 }
 
 static void	parse_values(t_list *map)
@@ -19,16 +35,13 @@ static void	parse_values(t_list *map)
 	map->cur = map->head;
 	while (TRUE)
 	{
-		cont = CUR_CONTENT;
+		cont = ((char **)map->cur->content);
 		cont_copy = cont;
 		map->cur->content = ft_calloc(1, sizeof(t_list));
 		while (cont && *cont)
 		{
 			vals = ft_split(*cont, ',');
-			ft_lstadd_back(CUR_EL_arrow, ft_calloc(5, sizeof(double)));
-			*((double *)CUR_EL_arrow->end->content + 3) = ft_atoi(*vals);
-			*((double *)CUR_EL_arrow->end->content + 4) = ft_atoi_base(*(vals + 1), 16);
-			free_split(vals);
+			setup_elem(map, vals);
 			cont++;
 		}
 		free_split(cont_copy);
@@ -70,8 +83,7 @@ void	fdf(char *map_name)
 
 	ft_lst_init(1, &map);
 	parse_map(map_name, &map);
-	// parallel(map, &mlx);
-	isometric(map, &mlx);
+	parallel(map, &mlx);
 	mlx.instance = mlx_init();
 	mlx.window = mlx_new_window(mlx.instance, LENGTH, WIDTH, "FDF");
 	mouse.mlx = mlx;

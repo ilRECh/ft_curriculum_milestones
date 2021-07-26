@@ -6,7 +6,7 @@
 # include <stdint.h>
 # include <stdarg.h>
 # include <fcntl.h>
-# include "ft_printf.h"
+// # include "ft_printf.h"
 
 # define TRUE 1
 # define FALSE 0

@@ -20,18 +20,18 @@ static int	mouse_move(int x, int y, t_mouse *mouse)
 	return (0);
 }
 
-static int mouse_press(int button, int x, int y, t_mouse *mouse)
+static int	mouse_press(int button, int x, int y, t_mouse *mouse)
 {
-	if (button != 3 && button != 4 && button != 5)
+	if (button != 2 && button != 4 && button != 5)
 	{
 		mouse->x = x;
 		mouse->y = y;
 		mouse->is_pressed = button;
 		return (0);
 	}
-	else if (button == 3 && mouse->mlx.projection == ISOMETRIC)
+	else if (button == 2 && mouse->mlx.projection == ISOMETRIC)
 		parallel(mouse->map, &mouse->mlx);
-	else if (button == 3 && mouse->mlx.projection == PARALLEL)
+	else if (button == 2 && mouse->mlx.projection == PARALLEL)
 		isometric(mouse->map, &mouse->mlx);
 	else if (button == 4)
 		scale(2, mouse->map);
@@ -41,7 +41,7 @@ static int mouse_press(int button, int x, int y, t_mouse *mouse)
 	return (0);
 }
 
-static inline int mouse_release(int button, int x, int y, t_mouse *mouse)
+static inline int	mouse_release(int button, int x, int y, t_mouse *mouse)
 {
 	(void)button;
 	(void)x;

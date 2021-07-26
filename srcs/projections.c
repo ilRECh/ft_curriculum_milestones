@@ -16,8 +16,8 @@ static void	init_xy(t_list map, t_ixy *ixy)
 	map.cur = map.head;
 	while (TRUE)
 	{
-		if (ft_lstsize(*CUR_EL_dot) > ixy->ox)
-			ixy->ox = ft_lstsize(*CUR_EL_dot);
+		if (ft_lstsize(*((t_list *)map.cur->content)) > ixy->ox)
+			ixy->ox = ft_lstsize(*((t_list *)map.cur->content));
 		map.cur = map.cur->next;
 		if (map.cur->prev == map.end)
 			break ;
@@ -41,14 +41,16 @@ void	parallel(t_list map, t_conf *mlx)
 	while (TRUE)
 	{
 		ixy.x = ixy.ox;
-		CUR_EL_dot->cur = CUR_EL_dot->head;
+		((t_list *)map.cur->content)->cur = ((t_list *)map.cur->content)->head;
 		while (TRUE)
 		{
-			CUR_EL_dot_cont[0] = ixy.x;
-			CUR_EL_dot_cont[1] = ixy.y;
+			((double *)((t_list *)map.cur->content)->cur->content)[0] = ixy.x;
+			((double *)((t_list *)map.cur->content)->cur->content)[1] = ixy.y;
 			ixy.x += ixy.step;
-			CUR_EL_dot->cur = CUR_EL_dot->cur->next;
-			if (CUR_EL_dot->cur->prev == CUR_EL_dot->end)
+			((t_list *)map.cur->content)->cur
+				= ((t_list *)map.cur->content)->cur->next;
+			if (((t_list *)map.cur->content)->cur->prev
+				== ((t_list *)map.cur->content)->end)
 				break ;
 		}
 		ixy.y += ixy.step;
@@ -58,12 +60,13 @@ void	parallel(t_list map, t_conf *mlx)
 	}
 }
 
-static inline void	setup_isometric(t_ixy ixy, double *arr)
+static void	setup_isometric(t_ixy *ixy, double *arr)
 {
-	arr[2] = arr[3];
-	arr[0] = (ixy.x - ixy.y) * 0.866025;
-	arr[1] = -(arr[2] * ixy.step)
-		+ (ixy.x + ixy.y) * 0.5;
+	arr[2] = arr[4];
+	arr[0] = (ixy->x - ixy->y) * 0.866025;
+	arr[1] = -(arr[2] * 3)
+		+ (ixy->x + ixy->y) * 0.5;
+	ixy->x += ixy->step;
 }
 
 static void	centralize_isometric(t_list map)
@@ -89,13 +92,15 @@ void	isometric(t_list map, t_conf *mlx)
 	while (TRUE)
 	{
 		ixy.x = ixy.ox;
-		CUR_EL_dot->cur = CUR_EL_dot->head;
+		((t_list *)map.cur->content)->cur = ((t_list *)map.cur->content)->head;
 		while (TRUE)
 		{
-			setup_isometric(ixy, CUR_EL_dot_cont);
-			ixy.x += ixy.step;
-			CUR_EL_dot->cur = CUR_EL_dot->cur->next;
-			if (CUR_EL_dot->cur->prev == CUR_EL_dot->end)
+			setup_isometric(&ixy,
+				((double *)((t_list *)map.cur->content)->cur->content));
+			((t_list *)map.cur->content)->cur
+				= ((t_list *)map.cur->content)->cur->next;
+			if (((t_list *)map.cur->content)->cur->prev
+				== ((t_list *)map.cur->content)->end)
 				break ;
 		}
 		ixy.y += ixy.step;

@@ -4,13 +4,15 @@ void	translate(int tx, int ty, t_list map)
 {
 	while (TRUE)
 	{
-		CUR_EL_dot->cur = CUR_EL_dot->head;
+		((t_list *)map.cur->content)->cur = ((t_list *)map.cur->content)->head;
 		while (TRUE)
 		{
-			CUR_EL_dot_cont[0] += tx;
-			CUR_EL_dot_cont[1] += ty;
-			CUR_EL_dot->cur = CUR_EL_dot->cur->next;
-			if (CUR_EL_dot->cur->prev == CUR_EL_dot->end)
+			((double *)((t_list *)map.cur->content)->cur->content)[0] += tx;
+			((double *)((t_list *)map.cur->content)->cur->content)[1] += ty;
+			((t_list *)map.cur->content)->cur
+				= ((t_list *)map.cur->content)->cur->next;
+			if (((t_list *)map.cur->content)->cur->prev
+				== ((t_list *)map.cur->content)->end)
 				break ;
 		}
 		map.cur = map.cur->next;

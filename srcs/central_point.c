@@ -25,25 +25,34 @@ static inline void	setup_mm(int *t, double *max_min, double *main_mm)
 	}
 }
 
+static inline void	presetup_mm(double *max_min, double *head)
+{
+	max_min[0] = head[0];
+	max_min[1] = head[1];
+	max_min[2] = head[0];
+	max_min[3] = head[1];
+}
+
 // min_x: 0, min_y: 1, max_x: 2, max_y: 3
 void	find_cp(int	*t, t_list map, double *main_mm)
 {
-	double max_min[4];
+	double	max_min[4];
 
 	map.cur = map.head;
-	CUR_EL_dot->cur = CUR_EL_dot->head;
-	max_min[0] = CUR_EL_dot_cont[0];
-	max_min[1] = CUR_EL_dot_cont[1];
-	max_min[2] = CUR_EL_dot_cont[0];
-	max_min[3] = CUR_EL_dot_cont[1];
+	((t_list *)map.cur->content)->cur = ((t_list *)map.cur->content)->head;
+	presetup_mm(max_min,
+		((double *)((t_list *)map.cur->content)->cur->content));
 	while (TRUE)
 	{
-		CUR_EL_dot->cur = CUR_EL_dot->head;
+		((t_list *)map.cur->content)->cur = ((t_list *)map.cur->content)->head;
 		while (TRUE)
 		{
-			compare(max_min, CUR_EL_dot_cont);
-			CUR_EL_dot->cur = CUR_EL_dot->cur->next;
-			if (CUR_EL_dot->cur->prev == CUR_EL_dot->end)
+			compare(max_min,
+				((double *)((t_list *)map.cur->content)->cur->content));
+			((t_list *)map.cur->content)->cur
+				= ((t_list *)map.cur->content)->cur->next;
+			if (((t_list *)map.cur->content)->cur->prev
+				== ((t_list *)map.cur->content)->end)
 				break ;
 		}
 		map.cur = map.cur->next;

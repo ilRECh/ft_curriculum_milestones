@@ -2,22 +2,10 @@
 # define FDF_H
 
 # include "libft.h"
-# include "ft_printf.h"
 # include "mlx.h"
 # include <errno.h>
 # include <string.h>
 # include <math.h>
-
-# define HEAD_CONTENT ((char **)map->head->content)
-# define CUR_CONTENT ((char **)map->cur->content)
-# define END_CONTENT ((char **)map->end->content)
-# define HEAD_EL ((t_list *)map->head->content)
-# define CUR_EL_arrow ((t_list *)map->cur->content)
-# define CUR_EL_dot ((t_list *)map.cur->content)
-# define CUR_EL_NEXT_dot ((t_list *)map.cur->next->content)
-# define CUR_EL_arrow_cont ((double *)((t_list *)map->cur->content)->cur->content)
-# define CUR_EL_dot_cont ((double *)((t_list *)map.cur->content)->cur->content)
-# define END_EL ((t_list *)map->cur->content)
 
 # define WIDTH 1080
 # define LENGTH 1920
@@ -45,8 +33,8 @@ typedef struct s_conf
 typedef struct s_mouse
 {
 	uint8_t	is_pressed;
-	int 	x;
-	int 	y;
+	int		x;
+	int		y;
 	t_conf	mlx;
 	t_list	map;
 }	t_mouse;
@@ -63,7 +51,9 @@ void	find_cp(int	*t, t_list map, double *main_mm);
 
 static inline void	error(void)
 {
-	ft_printf(RED "ERROR: %s\n" RESET, strerror(errno));
+	write(1, RED "ERROR: " RESET, 18);
+	write(1, strerror(errno), ft_strlen(strerror(errno)));
+	write(1, "\n", 1);
 	exit(1);
 }
 

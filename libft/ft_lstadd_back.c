@@ -7,7 +7,7 @@ void	ft_lstadd_back(t_list *lst, void *content)
 	if (!lst)
 		return ;
 	new = ft_lstnew(content);
-	if (!new && ft_printf(RED "ERROR: " RESET "FT_LSTADD_BACK.\n"))
+	if (!new && write(1, RED "ERROR: " RESET "FT_LSTADD_BACK.\n", 34))
 	{
 		ft_lstclear(lst, free);
 		exit(1);

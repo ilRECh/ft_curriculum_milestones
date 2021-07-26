@@ -3,3 +3,8 @@
 fdf
 *.a
 */*.a
+*/libmlx.dylib
+libmlx.dylib
+*.swiftdoc
+*.swiftmodule
+*/*.swift*
