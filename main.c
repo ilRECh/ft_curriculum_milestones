@@ -6,8 +6,9 @@ int	main(int argc, char **argv, char **env)
 	char	*line;
 	while (get_next_line(0, &line) > 0)
 	{
-		printf("%s\n", line);
-		free(line);
+		// Лови возвращаемое значение !!!
+		// t_parse которая в листах t_list
+		get_command_line(line);
 	}
 	//* END TEST
 	return (0);
