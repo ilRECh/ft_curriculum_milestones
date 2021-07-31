@@ -1,41 +1,70 @@
 #include "parse.h"
+#include "libft.h"
 
-// Найдет первое совпадение одного из символов в лайне,
-// и вернет указатель на этот символ в лайне
-char	*find_one_sym(char *symbols, char *line)
+/*
+	(& ;) конец каждой команды... так же & отображает кол-во процессов и их pid
+	"" в этих скобках текст остается неизменным, кроме _$_ и в некоторых случаях _\_
+	'' в этих скобках все остается неизменным, служебные символы теряют силу
+	\ экранирование обрабатывает следующий символ после себя, делая его НЕ служебным
+	$ доллар распарсивает окружение и вытаскивает оттуда некотрую переменную
+	; Разделяет команды, 1 2 3
+	| пайп, козделение команды попайпа
+	< > << >> Редиректы 
+*/
+
+_Bool	preparse(char *str)
+{
+	int	i;
+
+	i = 0;	
+	if (str[i] == ';')
+		return (FALSE);
+	while(str[i])
+	{
+		while (ft_strchr(" ", str[i]))
+			i++;
+	}
+}
+
+int	split_len(char **tab)
 {
 	int	i;
 
 	i = 0;
-	while(*line)
-	{
-		while(symbols[i])
-		{
-			if (*line == symbols[i])
-				return (line);
-			i++;
-		}
-		line++;
-		i = 0;
-	}
-	return (0);
+	while(tab[i])
+		i++;
+	return (i);
 }
 
-t_list	*get_command_line(char *line)
+int	split_assign_tree(char ***res, char ***tab, char c)
 {
-	t_list	*lst;
-	t_parse	*prs;
-	char	*tmp;
+	int	i;
 
-	lst = NULL;
-	prs = (t_parse *)malloc(sizeof(t_parse));
-	if (!prs)
+	i = -1;
+	while(tab[0][++i])
 	{
-		/*Тут планируется ошибка для malloc*/
-		return (NULL);
+		res[i] = ft_split(tab[0][i], c);
+		free(tab[0][i]);
 	}
-	tmp = ft_strchr(line, ' ');
+	free(*tab);
+	res[i] = (*tab = NULL);
+	return (0);
+}
+char	***get_command_line(char *line)
+{
+	t_list	*lst = NULL;
+	t_parse	*prs = NULL;
+	char	***res;
+	char	**tab;
+	int		tablen;
+
+	tab = ft_split(line, ';');
+	tablen = split_len(tab);
+	res = (char ***)malloc(sizeof(char **) * (tablen + 1));
+	res[tablen] = NULL;
+	split_assign_tree(res, &tab, ' ');
 
 
-	return (lst);
+
+	return (NULL);
 }
