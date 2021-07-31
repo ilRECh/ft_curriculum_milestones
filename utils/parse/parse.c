@@ -1,70 +1,62 @@
 #include "parse.h"
+#include <stdio.h>
 #include "libft.h"
 
 /*
-	(& ;) конец каждой команды... так же & отображает кол-во процессов и их pid
-	"" в этих скобках текст остается неизменным, кроме _$_ и в некоторых случаях _\_
-	'' в этих скобках все остается неизменным, служебные символы теряют силу
-	\ экранирование обрабатывает следующий символ после себя, делая его НЕ служебным
-	$ доллар распарсивает окружение и вытаскивает оттуда некотрую переменную
-	; Разделяет команды, 1 2 3
-	| пайп, козделение команды попайпа
+	' '		в этих скобках все остается неизменным, служебные символы теряют силу
+	& ;		конец каждой команды... так же & отображает кол-во процессов и их pid
+	" "		в этих скобках текст остается неизменным, кроме _$_ и в некоторых случаях _\_
+	\		экранирование обрабатывает следующий символ после себя, делая его НЕ служебным
+	$		доллар распарсивает окружение и вытаскивает оттуда некотрую переменную
+	;		Разделяет команды, 1 2 3
+	|		пайп, козделение команды попайпа
 	< > << >> Редиректы 
 */
 
-_Bool	preparse(char *str)
-{
-	int	i;
+//			\\	\+
+//			echo \s \' "hello\;" '
 
-	i = 0;	
-	while(str[i])
-	{
-		while (ft_strchr(" ", str[i]))
-			i++;
-	}
+
+char	*quotation_uno(char *line, int *i)
+{
+	int	j;
+	int	lenj;
+	int	leni;
+
+	j = *i;
+	while(line[++(*i)] && line[(*i)] != '\'')
+		;
+	if (!line[(*i)])
+		return (NULL);
+	lenj = ft_strlen(&line[j]);
+	ft_memmove(&line[j], &line[*i], lenj + 1);
+	leni = ft_strlen(&line[--(*i)]);
+	ft_memmove(&line[(*i)], &line[(*i) + 1], leni + 1);
+	return (&line[(*i)]);
 }
 
-int	split_len(char **tab)
-{
-	int	i;
-
-	i = 0;
-	while(tab[i])
-		i++;
-	return (i);
-}
-
-int	split_assign_tree(char ***res, char ***tab, char c)
+char	*parsing_line(char *line)
 {
 	int	i;
 
 	i = -1;
-	while(tab[0][++i])
+	while(line[++i])
 	{
-		res[i] = ft_split(tab[0][i], c);
-		free(tab[0][i]);
+		if ((i && line[i] == '\\' && (line[++i] == ';' || line[i] == '+')) || !i)
+			continue ;
+		if (line[i] == '\'')
+			line = quotation_uno(line, &i);
 	}
-	free(*tab);
-	res[i] = (*tab = NULL);
-	return (0);
+	return (NULL);
 }
-char	***get_command_line(char *line)
+
+t_list	*get_command_line(char *line)
 {
-	t_list	*lst = NULL;
-	t_parse	*prs = NULL;
-	char	***res;
-	char	**tab;
-	int		tablen;
+	t_parse	*parse;
 
-	if (*line == ';')
-		return (NULL);
-	tab = ft_split(line, ';');
-	tablen = split_len(tab);
-	res = (char ***)malloc(sizeof(char **) * (tablen + 1));
-	res[tablen] = NULL;
-	split_assign_tree(res, &tab, ' ');
-
-
-
+	parse->argv = NULL;
+	parse->pipe = FALSE;
+	parse->utils_to_run = NULL;
+	printf("%s\n", parsing_line(line));
 	return (NULL);
 }
