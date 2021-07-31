@@ -17,8 +17,6 @@ _Bool	preparse(char *str)
 	int	i;
 
 	i = 0;	
-	if (str[i] == ';')
-		return (FALSE);
 	while(str[i])
 	{
 		while (ft_strchr(" ", str[i]))
@@ -58,6 +56,8 @@ char	***get_command_line(char *line)
 	char	**tab;
 	int		tablen;
 
+	if (*line == ';')
+		return (NULL);
 	tab = ft_split(line, ';');
 	tablen = split_len(tab);
 	res = (char ***)malloc(sizeof(char **) * (tablen + 1));
