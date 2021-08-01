@@ -26,5 +26,16 @@ int	main(int argc, char **argv, char **env)
 	(void)argv;
 	(void)env;
 	environ = setup_env(environ);
+
+	int iter_1 = 0;
+
+	char *vars[] = {"HI=hi", "HELLO=THERE", NULL};
+
+	while (environ[iter_1])
+		printf("%s\n", environ[iter_1++]);
+	ft_export(vars);
+	iter_1 = 0;
+	while (environ[iter_1])
+		printf("%s\n", environ[iter_1++]);	
 	return (0);
 }
