@@ -6,6 +6,8 @@
 # include <stdio.h>
 # include <string.h>
 
+extern	char	**environ;
+
 static inline uint8_t	error(void)
 {
 	printf(RED "ERROR: " RESET "%s\n", strerror(errno));
