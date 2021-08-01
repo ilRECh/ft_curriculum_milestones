@@ -25,9 +25,8 @@ char	*quotation(char *line, int *i, char c)
 
 	j = (*i);
 	while ((++(*i) && line[*i] != c) || (line[*i] == c && line[(*i) - 1] == '\\'))
-		;
-	if (!line[(*i)])
-		return (NULL);
+		if (!line[(*i)])
+			return (NULL);
 	lenj = ft_strlen(&line[j]);
 	ft_memmove(&line[j], &line[j + 1], lenj);
 	leni = ft_strlen(&line[--(*i)]);
