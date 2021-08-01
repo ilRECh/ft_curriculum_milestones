@@ -55,17 +55,16 @@ $(NAME): $(LIBFT) $(OBJS)
 	@echo "\n$(NAME): $(GREEN)object files were created$(RESET)"
 	@echo "$(NAME): $(GREEN)$(NAME) was created$(RESET)"
 
-all: $(NAME)
+all: libs $(NAME)
 
 libs: 
 	@make -C $(LIBFT_MAKE)
 
-clean:
+clean: libs_clean
 	@$(RM) $(OBJS)
 	@echo "$(NAME): $(RED)object files were deleted$(RESET)"
 
-fclean:
-	@say -v Yuri 'I guess I die'
+fclean: libs_fclean
 	@$(RM) $(OBJS)
 	@echo "$(NAME): $(RED)object files were deleted$(RESET)"
 	@$(RM) $(NAME)
