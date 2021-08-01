@@ -12,7 +12,7 @@ int main(int argc, char const *argv[], char *env[])
 	a = b = -1;
 	//	\\	\+
 	//			echo \s \' "hello\;" '
-	char *str = "echo \\s \\\' \"hello\\;\" \'";
+	char *str = ft_strdup("\'\\\'echo \\s \\\' \' \"hello\\;\" \'");
 	printf("%s\n\n", str);
 	get_command_line(str);
 	return (0);

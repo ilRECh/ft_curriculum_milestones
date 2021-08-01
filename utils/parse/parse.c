@@ -17,22 +17,22 @@
 //			echo \s \' "hello\;" '
 
 
-char	*quotation_uno(char *line, int *i)
+char	*quotation(char *line, int *i, char c)
 {
 	int	j;
 	int	lenj;
 	int	leni;
 
-	j = *i;
-	while(line[++(*i)] && line[(*i)] != '\'')
+	j = (*i);
+	while ((++(*i) && line[*i] != c) || (line[*i] == c && line[(*i) - 1] == '\\'))
 		;
 	if (!line[(*i)])
 		return (NULL);
 	lenj = ft_strlen(&line[j]);
-	ft_memmove(&line[j], &line[*i], lenj + 1);
+	ft_memmove(&line[j], &line[j + 1], lenj);
 	leni = ft_strlen(&line[--(*i)]);
 	ft_memmove(&line[(*i)], &line[(*i) + 1], leni + 1);
-	return (&line[(*i)]);
+	return (line);
 }
 
 char	*parsing_line(char *line)
@@ -42,10 +42,12 @@ char	*parsing_line(char *line)
 	i = -1;
 	while(line[++i])
 	{
-		if ((i && line[i] == '\\' && (line[++i] == ';' || line[i] == '+')) || !i)
+		if ((i && line[i] == '\\' && (line[i + 1] == ';' || line[i + 1] == '+')))
 			continue ;
-		if (line[i] == '\'')
-			line = quotation_uno(line, &i);
+		if (!((i && line[i] != '\'') || (line[i] == '\'' && line[i - 1] == '\\')))
+			line = quotation(line, &i, '\'');
+		if (!((i && line[i] != '\"') || (line[i] == '\"' && line[i - 1] == '\\')))
+			line = quotation(line, &i, '\"');
 	}
 	return (NULL);
 }
