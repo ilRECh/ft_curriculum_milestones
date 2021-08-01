@@ -50,12 +50,12 @@ RESET					=	\033[0m
 	@$(GCC) $(FLAGS) $(INCLUDES)  $< -o $@
 	@echo "$(GREEN).$(RESET)\c"
 
+all: libs $(NAME)
+
 $(NAME): $(LIBFT) $(OBJS)
 	@$(GCC) $(OBJS) $(LIBFT) -o $(NAME)
 	@echo "\n$(NAME): $(GREEN)object files were created$(RESET)"
 	@echo "$(NAME): $(GREEN)$(NAME) was created$(RESET)"
-
-all: libs $(NAME)
 
 libs: 
 	@make -C $(LIBFT_MAKE)

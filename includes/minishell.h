@@ -6,7 +6,7 @@
 # include <stdio.h>
 # include <string.h>
 
-extern	char	**environ;
+extern char	**environ;
 
 static inline uint8_t	error(void)
 {
