@@ -30,15 +30,19 @@ INCLUDES 				=	-I $(HDRS_MINISHELL_DIR)\
 LIBFT_MAKE				=	./libft/
 LIBFT					=	./libft/libft.a
 
-DEF_UTILS_LIST			=	export.c
-DEF_UTILS_DIR			=	./def_utils/
-DEF_UTILS				=	$(addprefix $(DEF_UTILS_DIR), $(DEF_UTILS_LIST))
+BUILTIN_LIST			=	cd/cd.c
+# export/export.c\
+# echo/echo.c\
+# pwd/pwd.c\
+# unset/unset.c
+BUILTIN_DIR				=	./src/builtin/
+BUILTIN					=	$(addprefix $(BUILTIN_DIR), $(BUILTIN_LIST))
 
-SRCS_LIST				= 
-SRCS_DIR				=	./srcs/
-SRCS					=	$(addprefix $(SRCS_DIR), $(SRCS_LIST)) main.c
+ENVIRON_LIST			=	getvalue.c
+ENVIRON_DIR				=	./src/environ/
+ENVIRON					=	$(addprefix $(ENVIRON_DIR), $(ENVIRON_LIST))
 
-OBJS					=	$(SRCS:.c=.o) $(DEF_UTILS:.c=.o)
+OBJS					=	$(BUILTIN:.c=.o) $(ENVIRON:.c=.o) main.o
 
 # COLORS
 BLACK					=	\033[0;30m

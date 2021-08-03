@@ -5,10 +5,13 @@
 # include <errno.h>
 # include <stdio.h>
 # include <string.h>
+# include <dirent.h>
 
-extern char	**environ;
+extern char	**environment;
 
-int	ft_export(char **vars);
+int		ft_cd(char *path);
+int		ft_export(char **vars);
+char	*getvalue(char *word);
 
 static inline uint8_t	error(void)
 {
