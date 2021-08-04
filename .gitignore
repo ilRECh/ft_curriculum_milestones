@@ -1,4 +1,3 @@
 .DS_Store
-utils/parse/.vscode/
-utils/parse/a.out
-utils/parse/a.out.dSYM/
+.vscode
+**a.ou*
