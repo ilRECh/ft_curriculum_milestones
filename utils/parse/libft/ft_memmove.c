@@ -11,7 +11,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	source = (unsigned char *) src;
 	if (destination < source)
 		while (n--)
-			*(destination++) = *(source++);
+			*destination++ = *source++;
 	else
 	{
 		destination += n;

@@ -73,7 +73,8 @@ static int	function_by_data_type(t_function *function, t_DATA_TYPE type)
 	if (!function)
 		return (1);
 	if (type == INT)
-		(function->assign = INT_ASSIGN) && (function->compare = INT_COMPARE);
+		(void)((function->assign = INT_ASSIGN)
+				&& (function->compare = INT_COMPARE));
 	return (0);
 }
 
