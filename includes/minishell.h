@@ -14,6 +14,7 @@ extern char	**environment;
 int		ft_cd(char *path);
 int		ft_export(char **vars);
 char	*getvalue(char *word);
+int		setvalue(char *word, char *new_value);
 
 static inline uint8_t	error(void)
 {

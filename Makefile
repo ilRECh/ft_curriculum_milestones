@@ -38,7 +38,8 @@ BUILTIN_LIST			=	cd/cd.c
 BUILTIN_DIR				=	./src/builtin/
 BUILTIN					=	$(addprefix $(BUILTIN_DIR), $(BUILTIN_LIST))
 
-ENVIRON_LIST			=	getvalue.c
+ENVIRON_LIST			=	getvalue.c\
+							setvalue.c
 ENVIRON_DIR				=	./src/environ/
 ENVIRON					=	$(addprefix $(ENVIRON_DIR), $(ENVIRON_LIST))
 
