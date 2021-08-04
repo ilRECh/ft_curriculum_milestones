@@ -27,11 +27,12 @@ char	*get_env(char *line, char *ln, char **env)
 
 	k = 0;
     tmp = line;
-	s1 = ft_strndup(line, ln - line);
+	s1 = ft_strndup(line, ln - line - 1);
 	while (ln[k] && !ft_strchr(" \"\'$", ln[k]))
 		k++;
 	s2 = ft_strdup(ln + k);
-	line = ft_strjoin_free(s1, find_env_value(ft_strndup(ln, k + 1), env), 1);
+	line = ft_strjoin_free(s1, find_env_value(ft_strndup(ln, k), env), 1);
+	line = ft_strjoin_free(line, " ", 1);
 	line = ft_strjoin_free(line, s2, 3);
     free(tmp);
 	return(line);

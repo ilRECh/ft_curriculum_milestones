@@ -3,19 +3,29 @@
 #include "libft.h"
 // #define MAX_CMDS 128
 
+t_parse	*get_from_void(t_dlist *el)
+{
+	t_parse	*parse;
+
+	parse = (t_parse *)el->content;
+	return(parse);
+}
+
 void	test_print_tab(char **split_dots)
 {
 	if (split_dots && *split_dots)
 		while (*split_dots)
-			printf("res = \"%s\"\n", *split_dots++);
+			printf("%s\n", *split_dots++);
 }
 
 void	test_print_lst(t_list *lst)
 {
+	t_parse	*pr;
+
 	lst->cur = lst->head;
-	while (lst->end)
+	while (lst->cur)
 	{
-		printf("res = \"%s\"\n", ((t_parse *)lst->cur->content)->util);
+		printf("%s\n", ((t_parse *)(lst->cur->content))->util);
 		lst->cur = lst->cur->next;
 	}
 }
@@ -81,30 +91,66 @@ t_list	*split_ignore_caps(char *line)
 	short	sp;
 
 	ln = line;
-	ft_lst_init(1, lst);
+	// ft_lst_init(1, lst);
+	lst = ft_calloc(1, sizeof(t_list));
+	printf(RED "значение rоторые отправляю:\n" RESET);
 	while (*ln)
 	{
 		if (ft_strchr("\'\"", *ln))
 		{
-			while (*++ln && (!ft_strchr("\'\"", *ln) || (ft_strchr("\'\"", *ln) && *(ln - 1) != '\\')))
-				if (!*ln)
-					return (NULL); //ERR message about open case " or '
+			while (*++ln && 
+				(!ft_strchr("\'\"", *ln) || (ft_strchr("\'\"", *ln) && *(ln - 1) == '\\')))
+					if (!*ln)
+						return (NULL); //ERR message about open case " or '
 		}
-		else
-			ln++;
+		ln++;
 		sp = is_split(ln);
 		if (!*ln || sp)
 		{
 			pars = (t_parse *)malloc(sizeof(t_parse));
-			pars->util = (char *)malloc(sizeof(char) * (ln - line + 2));
+			pars->util = ft_strndup(line, ln - line);
+			printf("%s\n", pars->util);
 			pars->differ = sp;
-			ft_strlcpy(pars->util, line, ln - line + 1);
 			ft_lstadd_back(lst, pars);
 			line = ln + 1;
 		}
 	}
+	printf(RED "\n\nзначение rоторые листах:\n" RESET);
 	return (lst);
 }
+
+// t_list	*split_ignore_caps(char *line)
+// {
+// 	t_list	*lst;
+// 	t_parse	*pars;
+// 	char	*ln;
+// 	short	sp;
+
+// 	ln = line;
+// 	ft_lst_init(1, lst);
+// 	while (*ln)
+// 	{
+// 		if (ft_strchr("\'\"", *ln))
+// 		{
+// 			while (*++ln && (!ft_strchr("\'\"", *ln) || (ft_strchr("\'\"", *ln) && *(ln - 1) != '\\')))
+// 				if (!*ln)
+// 					return (NULL); //ERR message about open case " or '
+// 		}
+// 		else
+// 			ln++;
+// 		sp = is_split(ln);
+// 		if (!*ln || sp)
+// 		{
+// 			pars = (t_parse *)malloc(sizeof(t_parse));
+// 			// pars->util = (char *)malloc(sizeof(char) * (ln - line + 2));
+// 			pars->util = ft_strndup(line, ln - line);
+// 			pars->differ = sp;
+// 			ft_lstadd_back(lst, pars);
+// 			line = ln + 1;
+// 		}
+// 	}
+// 	return (lst);
+// }
 
 		// if (*ln == '\'' && (!iter || ln[iter - 1] != '\\'))
 		// 	ln = quotation(ln, '\'');

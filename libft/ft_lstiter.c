@@ -3,11 +3,9 @@
 void	ft_lstiter(t_list lst, void (*f)(t_list))
 {
 	lst.cur = lst.head;
-	while (TRUE)
+	while (lst.cur)
 	{
 		(*f)(lst);
 		lst.cur = lst.cur->next;
-		if (lst.cur == lst.head)
-			break ;
 	}
 }

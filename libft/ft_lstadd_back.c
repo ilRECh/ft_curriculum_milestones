@@ -1,5 +1,14 @@
 #include "libft.h"
 
+static inline void	error(t_dlist *new, t_list *lst)
+{
+	if (!new && write(1, RED "ERROR: " RESET "FT_LSTADD_BACK.\n", 34))
+	{
+		ft_lstclear(lst, free);
+		exit(1);
+	}
+}
+
 void	ft_lstadd_back(t_list *lst, void *content)
 {
 	t_dlist	*new;
@@ -7,13 +16,10 @@ void	ft_lstadd_back(t_list *lst, void *content)
 	if (!lst)
 		return ;
 	new = ft_lstnew(content);
-	if (!new && write(1, RED "ERROR: " RESET "FT_LSTADD_BACK.\n", 34))
-	{
-		ft_lstclear(lst, free);
-		exit(1);
-	}
+	error(new, lst);
 	if (ft_lstsize(*lst) > 0)
 	{
+		lst->end->next = lst->head;
 		new->next = lst->head;
 		new->prev = lst->end;
 		lst->end->next = new;
@@ -27,4 +33,5 @@ void	ft_lstadd_back(t_list *lst, void *content)
 		lst->head = new;
 		lst->end = new;
 	}
+	lst->end->next = NULL;
 }

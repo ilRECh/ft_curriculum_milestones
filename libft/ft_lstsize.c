@@ -10,8 +10,6 @@ int	ft_lstsize(t_list lst)
 	{
 		count++;
 		lst.cur = lst.cur->next;
-		if (lst.cur->prev == lst.end)
-			break ;
 	}
 	return (count);
 }
