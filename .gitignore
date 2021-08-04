@@ -3,3 +3,6 @@
 *.a
 */*.a
 minishell
+.DS_Store
+.vscode
+**a.ou*

@@ -24,11 +24,24 @@ static char	**setup_env(char **env)
 
 int	main(int argc, char **argv, char **env)
 {
-	(void)argc;
-	(void)argv;
-	(void)env;
-	environment = setup_env(env);
-	printf("%s\n", getcwd(NULL, 0));
-	ft_cd(argv[1]);
-	printf("%s\n", getcwd(NULL, 0));
+	// (void)argc;
+	// (void)argv;
+	// (void)env;
+	// environment = setup_env(env);
+	// printf("%s\n", getcwd(NULL, 0));
+	// ft_cd(argv[1]);
+	// printf("%s\n", getcwd(NULL, 0));
+
+	
+	t_list	*list_of_lists;
+	//* START TEST
+	// char *str = ft_strdup("echo \"$PWD kkk00;00\" > a > b;echo \"00;00\" > a > b");
+	char *str = ft_strdup(*++argv);	//for testing
+	char	*line;
+	if (argc > 1)
+		list_of_lists = get_command_line(&str, env);
+	else if (get_next_line(0, &line))
+		list_of_lists = get_command_line(&line, env);
+	//* END TEST
+	return (0);
 }

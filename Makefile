@@ -88,3 +88,9 @@ re: fclean all
 
 .PHONY:	
 			all clean fclean re
+
+pars:
+	clear
+	gcc -g -Iincludes main.c -Ilibft libft/*.c -Isrc/parse/ src/parse/*.c
+pars2: pars
+	./a.out "echo \"$PWD kkk00;00\" > a > b;echo \"00;00\" > a > b"

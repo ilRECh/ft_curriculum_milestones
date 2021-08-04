@@ -2,9 +2,11 @@
 # define MINISHELL_H
 
 # include "libft.h"
+# include "parse.h"
 # include <errno.h>
 # include <stdio.h>
 # include <string.h>
+# include <stdbool.h>
 # include <dirent.h>
 
 extern char	**environment;

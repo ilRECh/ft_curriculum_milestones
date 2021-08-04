@@ -15,7 +15,7 @@
 			"cwd": "${fileDirname}",
 			"environment": [],
 			"externalConsole": false,
-			"MIMode": "lldb",
+			"MIMode": "gdb",
 			"setupCommands": [
 				{
 					"description": "Enable pretty-printing for gdb",
@@ -23,15 +23,6 @@
                     "ignoreFailures": true
 				}
 			]
-		},
-        {
-            "type": "lldb",
-            "request": "launch",
-            "name": "Debug",
-            "program": "${workspaceFolder}/a.out",
-            // "args": ["echo \"$PWD kkk00;00\" > a > b;echo \"00;00\" > a > b"],
-            "args": [],
-            "cwd": "${workspaceFolder}"
-        }
+		}
 	]
 }
