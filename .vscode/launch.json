@@ -10,7 +10,7 @@
 			"request": "launch",
 			"program": "${workspaceFolder}/minishell",
 			"args": [
-				"~"
+				"SHIT=SHIT"
 			],
 			"stopAtEntry": false,
 			"cwd": "${fileDirname}",
@@ -21,7 +21,7 @@
 				}
 			],
 			"externalConsole": false,
-			"MIMode": "lldb",
+			"MIMode": "gdb",
 			"setupCommands": [
 				{
 					"description": "Enable pretty-printing for gdb",

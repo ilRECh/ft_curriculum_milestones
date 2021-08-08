@@ -30,9 +30,10 @@ INCLUDES 				=	-I $(HDRS_MINISHELL_DIR)\
 LIBFT_MAKE				=	./libft/
 LIBFT					=	./libft/libft.a
 
-BUILTIN_LIST			=	cd/cd.c
-# export/export.c\
-# echo/echo.c\
+BUILTIN_LIST			=	cd/cd.c \
+							echo/echo.c\
+							export/export.c\
+							env/env.c
 # pwd/pwd.c\
 # unset/unset.c
 BUILTIN_DIR				=	./src/builtin/

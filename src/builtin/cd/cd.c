@@ -3,82 +3,73 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: name <name@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 22:03:09 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/08/04 20:27:00 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/08/07 10:59:17 by name             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static int	relative(char *path)
+static void	update_env(char *newpath)
 {
 	char	*tmp;
 
-	if (chdir(path) < 0 && error())
-		return (1);
-	tmp = getcwd(NULL, 0);
-	setvalue("PWD", tmp);
-	free(tmp);
-	return (0);
+	if (newpath[0] != '/')
+	{
+		tmp = newpath;
+		newpath = ft_strjoin("/", newpath);
+		free(tmp);
+	}
+	setvalue("PWD", newpath);
+	free(newpath);
 }
 
-static int	absolute(char *new_path)
+static int	chpath(char *newpath, char *oldpath, char *start_with)
 {
 	char	*path;
-	char	*old_path;
 
-	old_path = getcwd(NULL, 0);
 	while (TRUE)
 	{
 		path = getcwd(NULL, 0);
-		if(ft_strlen(path) == 1)
+		if (ft_strlen(path) == 1)
 			break ;
 		free(path);
 		chdir("..");
 	}
 	free(path);
-	path = ft_strjoin(getvalue("HOME"), new_path);
+	path = ft_strjoin(start_with, newpath);
 	if (chdir(path) < 0 && error())
 	{
-		chdir(old_path);
-		free(old_path);
+		chdir(oldpath);
 		free(path);
 		return (1);
 	}
-	setvalue("PWD", path);
-	free(old_path);
+	update_env(getcwd(NULL, 0));
 	free(path);
-	return (0);
-}
-
-int	back(char *oldpwd)
-{
-	char	*tmp;
-
-	while (TRUE)
-	{
-		tmp = getcwd(NULL, 0);
-		if(ft_strlen(tmp) == 1)
-			break ;
-		free(tmp);
-		chdir("..");
-	}
-	chdir(getvalue("OLDPWD"));
-	setvalue("OLDPWD", oldpwd);
-	tmp = getcwd(NULL, 0);
-	setvalue("PWD", tmp);
-	free(tmp);
 	return (0);
 }
 
 int	ft_cd(char *path)
 {
+	char	*oldpath;
+	bool	res;
+
+	oldpath = getcwd(NULL, 0);
 	if (path[0] == '~')
-		return (absolute(++path));
-	else if (!(path[0] == '-' && path[1] == 0))
-		return (relative(path));
+		res = chpath(++path, oldpath, getvalue("HOME"));
+	else if (path[0] == '/')
+		res = chpath(++path, oldpath, "");
+	else if (path[0] == '-' && path[1] == 0)
+		res = chpath("", oldpath, getvalue("OLDPWD"));
 	else
-		return (back(getvalue("PWD")));
+	{
+		res = chpath(path = ft_strjoin("/", path), oldpath, oldpath);
+		free(path);
+	}
+	if (!res)
+		setvalue("OLDPWD", oldpath);
+	free(oldpath);
+	return (res);
 }

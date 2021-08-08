@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   getvalue.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: name <name@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 22:01:57 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/08/04 19:38:59 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/08/07 10:54:13 by name             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ char	*getvalue(char *word)
 	iter_1 = 0;
 	while (TRUE)
 	{
-		res = ft_strncmp(word, environment[iter_1], ft_strlen(word));
-		if ((environment[iter_1] && res)
-			|| (environment[iter_1]
-			&& environment[iter_1][ft_strlen(word)] != '='))
+		res = ft_strncmp(word, g_env[iter_1], ft_strlen(word));
+		if ((g_env[iter_1] && res)
+			|| (g_env[iter_1]
+			&& g_env[iter_1][ft_strlen(word)] != '='))
 			iter_1++;
-		else if (environment[iter_1]
-			&& environment[iter_1][ft_strlen(word)] == '=')
-			return (environment[iter_1] + ft_strlen(word) + 1);
+		else if (g_env[iter_1]
+			&& g_env[iter_1][ft_strlen(word)] == '=')
+			return (g_env[iter_1] + ft_strlen(word) + 1);
 		else
 			break ;
 	}

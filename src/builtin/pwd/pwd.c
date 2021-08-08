@@ -2,13 +2,6 @@
 
 int	ft_pwd(void)
 {
-	char	*buf;
-
-	buf = getcwd(NULL, 0);
-	if (!buf && error())
-		return (1);
-	else
-		printf("%s\n", buf);
-	free(buf);
+	printf("%s\n", getvalue("PWD"));
 	return (0);
 }

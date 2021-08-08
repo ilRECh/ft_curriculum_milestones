@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-char	**environment;
+char	**g_env;
 
 static char	**setup_env(char **env)
 {
@@ -24,17 +24,13 @@ static char	**setup_env(char **env)
 
 int	main(int argc, char **argv, char **env)
 {
-	printf("hi%d%p%p\n", argc, argv, env);
-	environment = setup_env(env);
-	printf("%s\n", getcwd(NULL, 0));
-	printf("%s\n", getvalue("PWD"));
-	ft_cd(argv[1]);
-	printf("%s\n", getcwd(NULL, 0));
-	printf("%s\n", getvalue("PWD"));
-	ft_cd(argv[1]);
-	printf("%s\n", getcwd(NULL, 0));
-	printf("%s\n", getvalue("PWD"));
+	(void)argc;
+	(void)argv;
+	(void)env;
+	g_env = setup_env(env);
 	
+	ft_export(argv + 1);
+	ft_env();
 	// t_list	*list_of_lists;
 	// //* START TEST
 	// // char *str = ft_strdup("echo \"$PWD kkk00;00\" > a > b;echo \"00;00\" > a > b");
