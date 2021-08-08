@@ -4,7 +4,7 @@ void	test_print_tab(char **split_dots)
 {
 	if (split_dots && *split_dots)
 		while (*split_dots)
-			printf("|%s|", *split_dots++);
+			printf(YELLOW "|%s|" RESET, *split_dots++);
 }
 
 void	test_print_lst(t_list *lst)
@@ -15,9 +15,9 @@ void	test_print_lst(t_list *lst)
 	while (lst->cur)
 	{
 		par = (t_parse *)(lst->cur->content);
-		printf("|%d| ", par->oper);
-		printf("|%-11s| ", par->util);
+		printf(BLUE "|%-11s| " RESET, par->util);
 		test_print_tab(par->argv);
+		printf(RED "| oper |%d| " RESET, par->oper);
 		lst->cur = lst->cur->next;
 		printf("\n");
 	}
@@ -64,7 +64,10 @@ t_list	*split_ignore_caps(char *line)
 		if (ft_strchr("\'\"", *ln))
 			while (*++ln && (!ft_strchr("\'\"", *ln) || (ft_strchr("\'\"", *ln) && *(ln - 1) == '\\')))
 				if (!*ln)
+				{
+					printf("error, case is open\n");
 					return (NULL); //ERR message about open case " or '
+				}
 		sp = is_split(++ln);
 		if (!*ln || sp)
 		{
@@ -85,13 +88,13 @@ t_list	*get_command_line(char **line)
 
 	*line = dollar_get_env(*line);		//раскрываем переменную из \$
 	if (!line)
-		return (NULL);
+		return ((void *)ret_perr("malloc err, dollar"));
 	lst = split_ignore_caps(*line);			//Делим по листам (&& = AND), (|| == OR), (; == END)
 	if (!lst)
-		return (NULL);
+		return (void *)(ret_perr("malloc err, lst"));
 	lst = split_sub_argutils(lst);				//Инициализация сырых значений
 	if (!lst)
-		return (NULL);
+		return (void *)(ret_perr("malloc err, lst_sub"));
 	test_print_lst(lst);						//смотрим результат
 
 
