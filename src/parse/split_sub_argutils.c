@@ -60,7 +60,7 @@ void    to_separate_util_args(t_parse *parse, char **tmp)
     free(parse->util);
     parse->util = NULL;
     beg = tmp;
-    if (*beg && is_file_exists(*beg))
+    if (*beg && is_util_exists(*beg))
         parse->util = *beg++;
     remove_quotation_tab(beg);
     parse->argv = beg;

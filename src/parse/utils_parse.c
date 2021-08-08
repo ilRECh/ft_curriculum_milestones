@@ -9,10 +9,12 @@ char *ft_strjoin_free(char *s1, char *s2, short fr)
     if (s1 && s2)
         res = ft_strjoin(s1, s2);
     else if (s1)
-        res = ft_strjoin(s1, "");
-    if (fr == 1 || fr == 3)
+        res = ft_strdup(s1);
+    else if (s2)
+        res = ft_strdup(s2);
+    if ((s1 && fr == 1) || (fr == 3 && s1 && s2))
         free(s1);
-    if(fr == 2 || fr == 3)
+    if ((s2 && fr == 2) || (fr == 3 && s1 && s2))
         free(s2);
     return(res);
 }

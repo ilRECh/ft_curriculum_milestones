@@ -84,8 +84,14 @@ t_list	*get_command_line(char **line)
 	t_list	*lst;
 
 	*line = dollar_get_env(*line);		//раскрываем переменную из \$
+	if (!line)
+		return (NULL);
 	lst = split_ignore_caps(*line);			//Делим по листам (&& = AND), (|| == OR), (; == END)
+	if (!lst)
+		return (NULL);
 	lst = split_sub_argutils(lst);				//Инициализация сырых значений
+	if (!lst)
+		return (NULL);
 	test_print_lst(lst);						//смотрим результат
 
 
