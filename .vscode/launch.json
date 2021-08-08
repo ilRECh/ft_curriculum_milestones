@@ -27,10 +27,10 @@
         {
             "type": "lldb",
             "request": "launch",
-            "name": "Debug",
-            "program": "${workspaceFolder}/a.out",
+            "name": "rasul_debug",
+            "program": "${workspaceFolder}/minishell",
             // "args": ["echo \"$PWD kkk00;00\" > a > b;echo \"00;00\" > a > b"],
-            "args": [],
+            "args": ["test"],
             "cwd": "${workspaceFolder}"
         }
 	]

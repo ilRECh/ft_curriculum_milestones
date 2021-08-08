@@ -1,5 +1,5 @@
 #include "libft.h"
-#define BUFFER_SIZE 256
+#define BUFFER_SIZE 1
 
 int	to_short(char *np, char *tail)
 {

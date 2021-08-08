@@ -14,6 +14,8 @@ extern char	**environment;
 int		ft_cd(char *path);
 int		ft_export(char **vars);
 char	*getvalue(char *word);
+_Bool	is_file_exists(char *str);	//	Проверка, существует ли файл
+void	free_tabs(char **tab);		//	Фришит двухмерный массив
 
 static inline uint8_t	error(void)
 {

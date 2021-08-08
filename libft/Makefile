@@ -48,7 +48,8 @@ SRCS	= ft_bzero.c\
 		  ft_lstiter.c\
 		  ft_lstmap.c\
 		  ft_lst_init.c\
-		  ft_mergesort.c
+		  ft_mergesort.c\
+		  get_next_line.c
 #		ft_lstlast.c
 #		ft_lstfirst.c
 

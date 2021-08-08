@@ -4,59 +4,50 @@ void	test_print_tab(char **split_dots)
 {
 	if (split_dots && *split_dots)
 		while (*split_dots)
-			printf("%s\n", *split_dots++);
+			printf("|%s|", *split_dots++);
 }
 
 void	test_print_lst(t_list *lst)
 {
-	t_parse	*pr;
+	t_parse	*par;
 
 	lst->cur = lst->head;
 	while (lst->cur)
 	{
-		printf("%s\n", ((t_parse *)(lst->cur->content))->util);
+		par = (t_parse *)(lst->cur->content);
+		printf("|%d| ", par->oper);
+		printf("|%-11s| ", par->util);
+		test_print_tab(par->argv);
 		lst->cur = lst->cur->next;
+		printf("\n");
 	}
-}
-
-char	*quotation(char *ln, char c)
-{
-	int	lenj;
-	int	leni;
-	int	k;
-
-	k = 0;
-	while ((ln[++k] != c) || (ln[k] == c && ln[k - 1] == '\\'))
-		if (!ln[k])
-			return (NULL); //ERR message about open case " or '
-	lenj = ft_strlen(ln);
-	ft_memmove(ln, &ln[1], lenj);
-	leni = ft_strlen(&ln[--k]);
-	ft_memmove(&ln[k], &ln[k + 1], leni + 1);
-	return (&ln[k]);
+	printf("\n");
 }
 
 short	is_split(char *str)
 {
-	unsigned short	iter;
-
-	iter = 0;
-	if (*str == ';')
-		return(END);
-	while (iter < 2 && str[iter] == "&&"[iter])
-		iter++;
-	if(iter == 2)
-		return(AND);
-	else
-		iter = 0;
-	while (iter < 2 && str[iter] == "||"[iter])
-		iter++;
-	if(iter == 2)
-		return(OR);
-	if(*str == '|')
+	if (!str || !*(str) || *(str - 1) == '\\')
+		return (0);
+	if (*(str) == *(str + 1))
+	{
+		if (*(str) == '&')
+			return (AND);
+		if (*(str) == '|')
+			return(OR);
+		if (*(str) == '<')
+			return(RDCT_L2);
+		if (*(str) == '>')
+			return(RDCT_R2);
+	}
+	if (*(str) == ';')
+		return (END);
+	if(*(str) == '|')
 		return (PIPE);
+	if (*(str) == '<')
+		return(RDCT_L);
+	if (*(str) == '>')
+		return(RDCT_R);
 	return(FALSE);
-	
 }
 
 t_list	*split_ignore_caps(char *line)
@@ -71,33 +62,31 @@ t_list	*split_ignore_caps(char *line)
 	while (*ln)
 	{
 		if (ft_strchr("\'\"", *ln))
-		{
-			while (*++ln && 
-				(!ft_strchr("\'\"", *ln) || (ft_strchr("\'\"", *ln) && *(ln - 1) == '\\')))
-					if (!*ln)
-						return (NULL); //ERR message about open case " or '
-		}
-		ln++;
-		sp = is_split(ln);
+			while (*++ln && (!ft_strchr("\'\"", *ln) || (ft_strchr("\'\"", *ln) && *(ln - 1) == '\\')))
+				if (!*ln)
+					return (NULL); //ERR message about open case " or '
+		sp = is_split(++ln);
 		if (!*ln || sp)
 		{
-			pars = (t_parse *)malloc(sizeof(t_parse));
-			pars->util = ft_strndup(line, ln - line);
-			pars->differ = sp;
+			(pars = (t_parse *)malloc(sizeof(t_parse)))->util = trimmer(ft_strndup(line, ln - line), ' ');
+			pars->oper = sp;
 			ft_lstadd_back(lst, pars);
+			if (pars->oper == RDCT_L2 || pars->oper == RDCT_R2 || pars->oper == AND || pars->oper == OR)
+				ln++;
 			line = ln + 1;
 		}
 	}
 	return (lst);
 }
 
-t_list	*get_command_line(char **line, char **env)
+t_list	*get_command_line(char **line)
 {
 	t_list	*lst;
 
-	*line = dollar_get_env(*line, env);		//раскрываем переменную из \$
+	*line = dollar_get_env(*line);		//раскрываем переменную из \$
 	lst = split_ignore_caps(*line);			//Делим по листам (&& = AND), (|| == OR), (; == END)
-	test_print_lst(lst);					//смотрим результат
+	lst = split_sub_argutils(lst);				//Инициализация сырых значений
+	test_print_lst(lst);						//смотрим результат
 
 
 

@@ -16,7 +16,9 @@ FLAGS					=	-Wall -Wextra -Werror -c -g
 # 	OPENGL = -lz -framework OpenGL -framework AppKit
 # endif
 
-HDRS_MINISHELL			=	minishell.h
+HDRS_MINISHELL			=	minishell.h \
+							parse.h
+
 HDRS_MINISHELL_DIR		=	./includes/
 
 HDRS_LIBFT				=	libft.h
@@ -42,7 +44,17 @@ ENVIRON_LIST			=	getvalue.c
 ENVIRON_DIR				=	./src/environ/
 ENVIRON					=	$(addprefix $(ENVIRON_DIR), $(ENVIRON_LIST))
 
-OBJS					=	$(BUILTIN:.c=.o) $(ENVIRON:.c=.o) main.o
+
+PARSE_LIST				=	dollar_get_env.c \
+							parse.c \
+							utils_parse.c \
+							trimmer.c \
+							split_sub_argutils.c \
+							is_file_exists.c
+PARSE_DIR				=	./src/parse/
+PARSE					=	$(addprefix $(PARSE_DIR), $(PARSE_LIST))
+
+OBJS					=	$(BUILTIN:.c=.o) $(ENVIRON:.c=.o) $(PARSE:.c=.o) main.o
 
 # COLORS
 BLACK					=	\033[0;30m
@@ -88,9 +100,3 @@ re: fclean all
 
 .PHONY:	
 			all clean fclean re
-
-pars:
-	clear
-	gcc -g -Iincludes main.c -Ilibft libft/*.c -Isrc/parse/ src/parse/*.c
-pars2: pars
-	./a.out "echo \"$PWD kkk00;00\" > a > b;echo \"00;00\" > a > b"

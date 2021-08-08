@@ -15,14 +15,17 @@
 char	*getvalue(char *word)
 {
 	int	iter_1;
+	int	res;
 
 	iter_1 = 0;
 	while (TRUE)
 	{
-		if (environment[iter_1]
-			&& ft_strncmp(word, environment[iter_1], ft_strlen(word)))
+		res = ft_strncmp(word, environment[iter_1], ft_strlen(word));
+		if ((environment[iter_1] && res)
+			|| (environment[iter_1] && environment[iter_1][ft_strlen(word)] != '='))
 			iter_1++;
-		else if (environment[iter_1])
+		else if (environment[iter_1]
+			&& environment[iter_1][ft_strlen(word)] == '=')
 			return (environment[iter_1] + ft_strlen(word) + 1);
 		else
 			break ;
