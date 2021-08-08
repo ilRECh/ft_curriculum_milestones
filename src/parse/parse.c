@@ -15,13 +15,12 @@ void	test_print_lst(t_list *lst)
 	while (lst->cur)
 	{
 		par = (t_parse *)(lst->cur->content);
-		printf(BLUE "|%-11s| " RESET, par->util);
+		printf(BLUE "  |%-11s| " RESET, par->util);
 		test_print_tab(par->argv);
 		printf(RED "| oper |%d| " RESET, par->oper);
 		lst->cur = lst->cur->next;
 		printf("\n");
 	}
-	printf("\n");
 }
 
 short	is_split(char *str)
@@ -86,6 +85,11 @@ t_list	*get_command_line(char **line)
 {
 	t_list	*lst;
 
+	static int i = 1;
+
+	printf("%s\n", *line);
+	printf(CYAN "{" RESET);
+	printf(MAGENTA "  lst_el: %d\n" RESET, i++);
 	*line = dollar_get_env(*line);		//раскрываем переменную из \$
 	if (!line)
 		return ((void *)ret_perr("malloc err, dollar"));
@@ -96,6 +100,8 @@ t_list	*get_command_line(char **line)
 	if (!lst)
 		return (void *)(ret_perr("malloc err, lst_sub"));
 	test_print_lst(lst);						//смотрим результат
+	printf(CYAN "}\n\n" RESET);
+	printf(RESET);
 
 
 
