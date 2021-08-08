@@ -18,10 +18,8 @@ static int	check_var(char *var)
 	if (ft_strlen(var) == 0 || var[0] == '=')
 		return (1);
 	while (var[++iter_1] && var[iter_1] != '=')
-	{
 		if (var[iter_1 + 1] == 0 || ft_isspace(var[iter_1]))
 			return (1);
-	}
 	return (0);
 }
 

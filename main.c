@@ -29,8 +29,15 @@ int	main(int argc, char **argv, char **env)
 	(void)env;
 	g_env = setup_env(env);
 	
-	ft_export(argv + 1);
+	char	**tmp = ft_calloc(2, sizeof(char *));
+	tmp[0] = ft_strdup("SHIT=SHIT");
+	ft_export(tmp);
 	ft_env();
+	tmp[0] = ft_strdup("SHIT");
+	ft_unset(tmp);
+	ft_env();
+	// ft_unset(argv + 2);
+	// ft_env();
 	// t_list	*list_of_lists;
 	// //* START TEST
 	// // char *str = ft_strdup("echo \"$PWD kkk00;00\" > a > b;echo \"00;00\" > a > b");
