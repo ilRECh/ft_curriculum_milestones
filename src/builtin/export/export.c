@@ -52,21 +52,21 @@ static void	copy_to_env(char **environ_, char **vars,
 	environ_[iter_1] = tmp;
 }
 
-int	ft_export(char **vars)
+int	ft_export(char **args)
 {
 	int		vars_cnt;
 	int		iter_1;
 	char	**environ_;
 
-	vars_cnt = ft_count(vars);
+	vars_cnt = ft_count(args);
 	iter_1 = -1;
 	environ_ = ft_calloc(ft_count(g_env) + vars_cnt + 1, sizeof(char *));
 	if (!environ_)
 		return (1);
 	while (g_env[++iter_1])
 		environ_[iter_1] = ft_strdup(g_env[iter_1]);
-	copy_to_env(environ_ , vars, iter_1, vars_cnt);
-	clean_(vars);
+	copy_to_env(environ_ , args, iter_1, vars_cnt);
+	clean_(args);
 	clean_(g_env);
 	g_env = environ_;
 	return (0);
