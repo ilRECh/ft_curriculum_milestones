@@ -1,5 +1,11 @@
 #include "minishell.h"
 
+struct s_counters
+{
+	int	iter_1;
+	int	vars_cnt;
+};
+
 static void	clean_(char **env)
 {
 	int	iter_1;
@@ -47,50 +53,49 @@ static int	ft_count(char **var, bool set_to_exp)
 }
 
 static void	copy_to_env(char **environ_, char **vars,
-		int iter_1, int vars_cnt)
+		struct s_counters cnt, bool set_to_exp)
 {
 	char	*tmp;
 
-	while (vars && *vars && vars_cnt--)
+	if (cnt.iter_1 < 0)
+		++cnt.iter_1;
+	while (vars && *vars && cnt.vars_cnt--)
 	{
 		tmp = ft_strndup(*vars, ft_strchr(*vars, '=') - *vars);
-		if (getvalue(tmp))
+		if (set_to_exp && g_param->env && getvalue(tmp))
 		{
 			setvalue(tmp, ft_strchr(*vars, '=') + 1);
 			vars++;
 		}
+		else if (!set_to_exp && g_param->exprt && getvalue_exprt(tmp))
+		{
+			setvalue_exprt(tmp, ft_strchr(*vars, '=') + 1);
+			vars++;
+		}
 		else
-			environ_[++iter_1] = ft_strdup(*vars++);
+			environ_[cnt.iter_1++] = ft_strdup(*vars++);
 		free(tmp);
 	}
 }
 
-static int	ft_export_proceed(char **args, char ***env, bool set_to_exp)
+int	ft_export(char **args, char ***env, bool set_to_exp)
 {
-	int		vars_cnt;
-	int		iter_1;
-	char	**environ_;
+	struct s_counters	cnt;
+	char				**environ_;
 
-	vars_cnt = ft_count(args, set_to_exp);
-	iter_1 = -1;
-	environ_ = ft_calloc(ft_count(*env, FALSE) + vars_cnt + 1, sizeof(char *));
-	if (!environ_)
-		return (1);
-	while (env && *env && (*env)[++iter_1])
-		environ_[iter_1] = ft_strdup((*env)[iter_1]);
-	copy_to_env(environ_ , args, iter_1, vars_cnt);
-	clean_(*env);
-	*env = environ_;
-	// if (set_to_exp)
-	// 	ft_export(args, &g_param.exprt, FALSE);
-	return (0);
-}
-
-int	ft_export(char **args)
-{
 	if (!args[0])
 		return (print_exp());
-	ft_export_proceed(args, &g_param.env, TRUE);
-	ft_export_proceed(args, &g_param.exprt, FALSE);
+	cnt.vars_cnt = ft_count(args, set_to_exp);
+	cnt.iter_1 = -1;
+	environ_ = ft_calloc(ft_count(*env, FALSE) + cnt.vars_cnt + 1, sizeof(char *));
+	if (!environ_)
+		return (1);
+	while (env && *env && (*env)[++cnt.iter_1])
+		environ_[cnt.iter_1] = ft_strdup((*env)[cnt.iter_1]);
+	copy_to_env(environ_ , args, cnt, set_to_exp);
+	clean_(*env);
+	*env = environ_;
+	if (set_to_exp)
+		ft_export(args, &g_param->exprt, FALSE);
 	return (0);
 }

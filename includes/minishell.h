@@ -37,7 +37,7 @@ extern t_param	*g_param;
 ///	Builtins
 ///
 int		ft_cd(char **args);
-int		ft_export(char **args);
+int		ft_export(char **args, char ***env, bool set_to_exp);
 int		print_exp(void);
 int		ft_echo(char **args);
 int		ft_env(char **args);
@@ -49,6 +49,8 @@ int		ft_exit(char **args);
 ///
 char	*getvalue(char *word);
 int		setvalue(char *word, char *new_value);
+char	*getvalue_exprt(char *word);
+int		setvalue_exprt(char *word, char *new_value);
 
 ///
 ///	ERROR output funcs

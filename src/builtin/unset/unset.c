@@ -30,7 +30,7 @@ static char	**ft_index(char *var)
 	if (tmp)
 	{
 		tmp = tmp - ft_strlen(var) - 1;
-		tmp_env = g_param.env;
+		tmp_env = g_param->env;
 		while (tmp_env && *tmp_env && *tmp_env != tmp)
 			tmp_env++;
 		return (tmp_env);
