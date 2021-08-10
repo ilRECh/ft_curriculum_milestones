@@ -1,13 +1,13 @@
 #include "parse.h"
 
-char	*trimmer(char *str, char c)
+char	*trimmer(char *str, char *c)
 {
 	short	x;
 
-	while(*str == c)
+	while(ft_strchr(c, *str))
 		ft_memmove(str, &str[1], ft_strlen(str));
 	x = ft_strlen(str) - 1;
-	while (str[x] == c)
+	while (ft_strchr(c, str[x]))
 	{
 		str[x] = 0;
 		x = ft_strlen(str) - 1;

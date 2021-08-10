@@ -53,23 +53,26 @@ void    remove_quotation_tab(char **tabs)
 
 void    to_separate_util_args(t_parse *parse, char **tmp)
 {
-    char    **beg;
+    char    *beg;
     int     i;
 
     i = 0;
     free(parse->util);
     parse->util = NULL;
-    beg = tmp;
-    if (*beg && is_util_exists(*beg))
-        parse->util = *beg++;
-    remove_quotation_tab(beg);
-    parse->argv = beg;
+    beg = is_util_exists(*tmp);
+    if (beg)
+    {
+        parse->util = *tmp;
+        // free(*tmp);
+        *tmp = beg;
+    }
+    remove_quotation_tab(tmp + 1);
+    parse->argv = tmp;
 
 }
 
 t_parse  *sub_parse(t_parse *tosub_pars)
 {
-    t_list  *lst;
     char    **tmp;
     char    *str;
     int     t;
@@ -77,7 +80,6 @@ t_parse  *sub_parse(t_parse *tosub_pars)
 
     t = 0;
     i = -1;
-    lst = ft_calloc(sizeof(t_list), 1);
     str = tosub_pars->util;
     tmp = (char **)malloc(sizeof(char *) * 1000);   // малочу с запасом (0-й пойдет на util)
     while (TRUE)
@@ -110,7 +112,10 @@ t_list	*split_sub_argutils(t_list *lst)
 
     while (lst->cur)
     {
-        lst->cur->content = sub_parse((t_parse *)lst->cur->content);
+        if (!ft_strncmp(CASE, ((t_parse *)lst->cur->content)->util, ft_strlen(CASE)))
+            ((t_parse *)lst->cur->content)->argv = (char **)split_sub_argutils((t_list *)((t_parse *)lst->cur->content)->argv);
+        else
+            lst->cur->content = sub_parse((t_parse *)lst->cur->content);
         lst->cur = lst->cur->next;
     }
     return (lst);

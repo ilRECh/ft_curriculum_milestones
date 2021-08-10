@@ -2,14 +2,17 @@
 # define PARSE_H
 #include "minishell.h"
 
-# define RDCT_R 1
-# define RDCT_L 2
-	# define RDCT_L2 3
-	# define RDCT_R2 4
-# define END 1
-	# define AND 2
-	# define OR 3
-# define PIPE 4
+/*open_case	*/	# define CASE	"\n\t{\ncase\n}\n\t"
+/*		>	*/	# define RDCT_R		1
+/*		<	*/	# define RDCT_L		2
+/*		<<	*/	# define RDCT_L2	3
+/*		>>	*/	# define RDCT_R2	4
+/*		;	*/	# define END		5
+/*		&&	*/	# define AND		6
+/*		||	*/	# define OR			7
+/*		|	*/	# define PIPE		8
+/*		(	*/	# define CASE_OPEN	9
+/*		)	*/	# define CASE_CLOSE	10
 
 void	test_print_tab(char **split_dots);
 
@@ -21,7 +24,7 @@ void	test_print_tab(char **split_dots);
 //* Удалить!
 typedef struct  s_parse
 {
-	//  Название запускаемой утилиты
+	//  имя утилиты
 	char			*util;
 	//  Аргументы для утилиты || или если утилита не задана, то это название файла
 	char    		**argv;
@@ -29,12 +32,20 @@ typedef struct  s_parse
 	//	Редиректы > < >> << RDCT_R, RDCT_L, RDCT_R2, RDCT_L
 	unsigned short	oper;
 }   t_parse;
+
+typedef struct  s_void
+{
+	//  имя утилиты
+	void	*data;
+	int		open;
+}   t_void;
 //* это
 char	*dollar_get_env(char *line);
 char	*ft_strjoin_free(char *s1, char *s2, short fr);
 t_list	*get_command_line(char **line);
-char	*trimmer(char *str, char c);
+char	*trimmer(char *str, char *c);
 t_list	*split_sub_argutils(t_list *lst);
 _Bool	ret_perr(const char *mess);
+char	*is_util_exists(char *file_path);	// Существует ли утилита, во всех путях
 
 #endif

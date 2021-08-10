@@ -10,7 +10,7 @@ void	free_tabs(char **tab)
 	free(tab);
 }
 
-_Bool	is_util_exists(char *file_path)
+char	*is_util_exists(char *file_path)
 {
 	char	*str_concat;
 	char	**paths;
@@ -19,7 +19,7 @@ _Bool	is_util_exists(char *file_path)
 
 	paths = ft_split(getvalue("PATH"), ':');
 	if (!paths)
-		return(ret_perr("malloc ft_split error"));
+		return((void *)ret_perr("malloc ft_split error"));
 	if (*file_path == '\\')
 		ft_memmove(file_path, &file_path[1], ft_strlen(file_path));
 	str_concat = ft_strdup(file_path);
@@ -38,10 +38,12 @@ _Bool	is_util_exists(char *file_path)
 				break ;
 		}
 	}
-	free(str_concat);
 	free_tabs(paths);
 	if (fd < 3)
-		return (FALSE);
+	{
+		free(str_concat);
+		return (NULL);
+	}
 	close(fd);
-	return (TRUE);
+	return (str_concat);
 }

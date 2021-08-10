@@ -14,7 +14,6 @@ extern char	**environment;
 int		ft_cd(char *path);
 int		ft_export(char **vars);
 char	*getvalue(char *word);
-_Bool	is_util_exists(char *file_path);	//	Проверка, существует ли утилита
 void	free_tabs(char **tab);		//	Фришит двухмерный массив
 
 static inline uint8_t	error(void)
