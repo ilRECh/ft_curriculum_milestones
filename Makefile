@@ -33,10 +33,11 @@ LIBFT					=	./libft/libft.a
 BUILTIN_LIST			=	cd/cd.c \
 							echo/echo.c \
 							export/export.c \
+							export/print_exp.c \
 							env/env.c \
 							pwd/pwd.c \
-							unset/unset.c
-# unset/unset.c
+							unset/unset.c \
+							exit/exit.c
 BUILTIN_DIR				=	./src/builtin/
 BUILTIN					=	$(addprefix $(BUILTIN_DIR), $(BUILTIN_LIST))
 

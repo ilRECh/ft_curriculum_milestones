@@ -51,11 +51,16 @@ static int	chpath(char *newpath, char *oldpath, char *start_with)
 	return (0);
 }
 
-int	ft_cd(char *path)
+int	ft_cd(char **args)
 {
 	char	*oldpath;
+	char	*path;
 	bool	res;
 
+	if (args[2]
+		&& error_str("cd: too many arguments"))
+		return (1);
+	path = args[1];
 	oldpath = getcwd(NULL, 0);
 	if (path[0] == '~')
 		res = chpath(++path, oldpath, getvalue("HOME"));

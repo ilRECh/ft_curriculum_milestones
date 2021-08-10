@@ -3,8 +3,8 @@
 static inline void	copy_to_env(char **environ_, char **vars)
 {
 	free(*environ_);
-	while (vars && environ_ && *vars && *environ_)
-		*environ_ = ft_strdup(*vars++), ++environ_;
+	while (vars && *vars)
+		(*environ_ = ft_strdup(*vars++)), ++environ_;
 	*environ_ = NULL;
 }
 
@@ -23,14 +23,14 @@ static int	check_var(char *var)
 
 static char	**ft_index(char *var)
 {
-	char	*tmp;
 	char	**tmp_env;
+	char	*tmp;
 
 	tmp = getvalue(var);
 	if (tmp)
 	{
 		tmp = tmp - ft_strlen(var) - 1;
-		tmp_env = g_env;
+		tmp_env = g_param.env;
 		while (tmp_env && *tmp_env && *tmp_env != tmp)
 			tmp_env++;
 		return (tmp_env);
