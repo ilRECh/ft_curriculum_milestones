@@ -58,7 +58,7 @@ int	ft_cd(char **args)
 	bool	res;
 
 	if (args[2]
-		&& error_str("cd: too many arguments")
+		&& error_str("cd: too many arguments"))
 		return (1);
 	path = args[1];
 	oldpath = getcwd(NULL, 0);

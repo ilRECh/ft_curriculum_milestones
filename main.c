@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-char	**g_env;
+t_param	*g_param = ft_calloc(1, sizeof(g_param));
 
 static char	**setup_env(char **env)
 {
@@ -27,15 +27,25 @@ int	main(int argc, char **argv, char **env)
 	(void)argc;
 	(void)argv;
 	(void)env;
-	g_env = setup_env(env);
+	g_param.env = setup_env(env);
+
+	
+	char	*env_args[] = {"/usr/bin/env", NULL};
 	
 	char	**tmp = ft_calloc(2, sizeof(char *));
-	tmp[0] = ft_strdup("SHIT=SHIT");
+	tmp[0] = ft_strdup("FUCKFUCK=FUCK_YOU");
+	tmp[1] = NULL;
 	ft_export(tmp);
-	ft_env();
+	tmp[0] = NULL;
+	ft_env(env_args);
+	// ft_export(tmp);
+	exit(1);
+	ft_env(env_args);
+	tmp = ft_calloc(2, sizeof(char *));
 	tmp[0] = ft_strdup("SHIT");
+	tmp[1] = NULL;
 	ft_unset(tmp);
-	ft_env();
+	ft_env(env_args);
 	// ft_unset(argv + 2);
 	// ft_env();
 	// t_list	*list_of_lists;

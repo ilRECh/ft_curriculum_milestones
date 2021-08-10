@@ -7,7 +7,7 @@ int	ft_env(char	**args)
 	if (args[1]
 		&& error_str("env: too many arguments"))
 		return (1);
-	tmp = g_env;
+	tmp = g_param.env;
 	while (tmp && *tmp)
 		printf("%s\n", *tmp++);
 	return (0);

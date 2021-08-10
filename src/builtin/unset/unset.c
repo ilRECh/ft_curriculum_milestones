@@ -3,8 +3,8 @@
 static inline void	copy_to_env(char **environ_, char **vars)
 {
 	free(*environ_);
-	while (vars && environ_ && *vars && *environ_)
-		*environ_ = ft_strdup(*vars++), ++environ_;
+	while (vars && *vars)
+		(*environ_ = ft_strdup(*vars++)), ++environ_;
 	*environ_ = NULL;
 }
 
@@ -23,14 +23,14 @@ static int	check_var(char *var)
 
 static char	**ft_index(char *var)
 {
-	char	*tmp;
 	char	**tmp_env;
+	char	*tmp;
 
 	tmp = getvalue(var);
 	if (tmp)
 	{
 		tmp = tmp - ft_strlen(var) - 1;
-		tmp_env = g_env;
+		tmp_env = g_param.env;
 		while (tmp_env && *tmp_env && *tmp_env != tmp)
 			tmp_env++;
 		return (tmp_env);
@@ -47,8 +47,8 @@ int	ft_unset(char **vars)
 	while (vars && vars[++iter_1])
 		if (check_var(vars[iter_1])
 			&& error_str("unset: ")
-			&& error_str(vars[iter_1])
-			&& error_str(" :invalid parameter or name"))
+			&& printf("%s", vars[iter_1])
+			&& printf(" :invalid parameter or name\n"))
 			return (1);
 	while (vars && *vars)
 	{

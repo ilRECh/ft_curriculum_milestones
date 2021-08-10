@@ -21,19 +21,28 @@
 # include <stdbool.h>
 # include <dirent.h>
 
+typedef struct s_param
+{
+	char	**env;
+	char	**exprt;
+	int		ret;
+}	t_param;
+
 ///
 ///	Legit single global variable
 ///
-extern char	**g_env;
+extern t_param	*g_param;
 
 ///
-///	Builtins	
+///	Builtins
 ///
-int		ft_cd(char *path);
-int		ft_export(char **vars);
-int		ft_echo(char **argv);
-int		ft_env(void);
-int		ft_unset(char **vars);
+int		ft_cd(char **args);
+int		ft_export(char **args);
+int		print_exp(void);
+int		ft_echo(char **args);
+int		ft_env(char **args);
+int		ft_unset(char **args);
+int		ft_exit(char **args);
 
 ///
 ///	ENV utils
