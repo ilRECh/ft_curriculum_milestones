@@ -47,8 +47,8 @@ int	ft_unset(char **vars)
 	while (vars && vars[++iter_1])
 		if (check_var(vars[iter_1])
 			&& error_str("unset: ")
-			&& error_str(vars[iter_1])
-			&& error_str(" :invalid parameter or name"))
+			&& printf("%s", vars[iter_1])
+			&& printf(" :invalid parameter or name\n"))
 			return (1);
 	while (vars && *vars)
 	{

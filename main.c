@@ -31,9 +31,12 @@ int	main(int argc, char **argv, char **env)
 	
 	char	**tmp = ft_calloc(2, sizeof(char *));
 	tmp[0] = ft_strdup("SHIT=SHIT");
+	tmp[1] = NULL;
 	ft_export(tmp);
 	ft_env();
+	printf("-------------THIS IS A NEW SHIT-------------");
 	tmp[0] = ft_strdup("SHIT");
+	tmp[1] = NULL;
 	ft_unset(tmp);
 	ft_env();
 	// ft_unset(argv + 2);
