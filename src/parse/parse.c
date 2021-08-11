@@ -7,7 +7,7 @@ void	test_print_tab(char **split_dots)
 			printf(YELLOW " %s " RESET, *split_dots++);
 }
 
-char	*opers(unsigned short oper)
+char	*test_opers(unsigned short oper)
 {
 	if (oper == 1)
 		return(ft_strdup(">"));
@@ -44,8 +44,8 @@ void	test_print_lst(t_list *lst, int i)
 		{
 			printf(MAGENTA_BOLD "\n|%*s( sub_lst %d" RESET,(i) * 4, " ", i + 1);
 			test_print_lst((t_list *)par->argv, i + 1);
-			// printf(MAGENTA_BOLD "\n|%*s*s" RESET, (i + 1) * 4, " ", opers(par->oper));
-			printf(MAGENTA_BOLD "\n|%*s) %s" RESET, (i) * 4, " ", opers(par->oper));
+			// printf(MAGENTA_BOLD "\n|%*s*s" RESET, (i + 1) * 4, " ", test_opers(par->oper));
+			printf(MAGENTA_BOLD "\n|%*s) %s" RESET, (i) * 4, " ", test_opers(par->oper));
 		}
 		else
 		{
@@ -53,7 +53,7 @@ void	test_print_lst(t_list *lst, int i)
 				par->util = " ";
 			printf(BLUE "\n|%*s%-11s" RESET, i * 4, " ", par->util);
 			test_print_tab(par->argv);
-			printf(RED " %s " RESET, opers(par->oper));
+			printf(RED " %s " RESET, test_opers(par->oper));
 		}
 		lst->cur = lst->cur->next;
 	}
