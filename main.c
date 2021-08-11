@@ -52,8 +52,18 @@ int	main(int argc, char **argv, char **env)
 		if (fd < 3)
 			return (ret_perr(*argv));
 	}
-	while (get_next_line(fd, &line) > 0)
-		list_of_parses = get_command_line(&line);
+	line = (char *)0xFF;
+	if (!fd)
+	{
+		while (line)
+		{
+			line = readline("Hello ->");
+			list_of_parses = get_command_line(&line);
+		}
+	}
+	else
+		while (get_next_line(fd, &line) > 0)
+			list_of_parses = get_command_line(&line);
 	list_of_parses = get_command_line(&line);
 	//* END TEST
 	return (0);

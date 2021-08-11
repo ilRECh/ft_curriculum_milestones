@@ -42,9 +42,10 @@ void	test_print_lst(t_list *lst, int i)
 		par = (t_parse *)(lst->cur->content);
 		if (par->util && !ft_strncmp(CASE, par->util, ft_strlen(CASE)))
 		{
-			printf(MAGENTA_BOLD "\n %*ssub_array %d" RESET,(i + 1) * 4, " ", i + 1);
+			printf(MAGENTA_BOLD "\n|%*s( sub_lst %d" RESET,(i) * 4, " ", i + 1);
 			test_print_lst((t_list *)par->argv, i + 1);
-			printf(MAGENTA_BOLD "%*s%s" RESET,(i + 1), " ", opers(par->oper));
+			// printf(MAGENTA_BOLD "\n|%*s*s" RESET, (i + 1) * 4, " ", opers(par->oper));
+			printf(MAGENTA_BOLD "\n|%*s) %s" RESET, (i) * 4, " ", opers(par->oper));
 		}
 		else
 		{
@@ -184,7 +185,7 @@ t_list	*get_command_line(char **line)
 	if (!lst)
 		return (void *)(ret_perr("malloc err, lst_sub"));
 	test_print_lst(lst, 0);						//смотрим результат
-	printf(CYAN "}\n\n" RESET);
+	printf(CYAN "\n}\n\n" RESET);
 	printf(RESET);
 
 

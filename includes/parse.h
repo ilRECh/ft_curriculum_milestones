@@ -1,6 +1,8 @@
 #ifndef PARSE_H
 # define PARSE_H
 #include "minishell.h"
+#include <readline/readline.h>
+#include <readline/history.h>
 
 /*open_case	*/	# define CASE	"\n\t{\ncase\n}\n\t"
 /*		>	*/	# define RDCT_R		1

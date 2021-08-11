@@ -3,7 +3,10 @@ NAME					=	minishell
 RM						=	rm -rf
 GCC						=	clang
 AR						=	ar -crs
-FLAGS					=	-Wall -Wextra -Werror -c -g
+READ_LINE_FLAGS			=	-L/Users/$(USER)/.brew/Cellar/readline/8.1/lib/ -lreadline
+FLAGS					=	-Wall -Wextra -Werror -c -g #$(READ_LINE_FLAGS)
+# FLAGS					=	-Wall -Wextra -Werror -c -g $(READ_LINE_FLAGS)
+# FLAGS					=	-Wall -Wextra -Werror -c -g -L/Users/$(USER)/.brew/opt/readline/lib -lreadline
 
 # ifeq ($(OS), Linux)
 # 	MLX_ARC = libmlx.a
@@ -75,7 +78,7 @@ RESET					=	\033[0m
 all: libs $(NAME)
 
 $(NAME): $(LIBFT) $(OBJS)
-	@$(GCC) $(OBJS) $(LIBFT) -o $(NAME)
+	@$(GCC) $(OBJS) $(LIBFT) $(READ_LINE_FLAGS) -o $(NAME)
 	@echo "\n$(NAME): $(GREEN)object files were created$(RESET)"
 	@echo "$(NAME): $(GREEN)$(NAME) was created$(RESET)"
 
