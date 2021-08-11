@@ -104,7 +104,7 @@ int	ft_export(char **args)
 	cnt.iter_exprt = -1;
 	environ_ = ft_calloc(ft_count(g_param->env).env
 		+ cnt.env + 1, sizeof(char *));
-	exprt = ft_calloc(ft_count(g_param->exprt).exprt
+	exprt = ft_calloc(ft_count(g_param->exprt).exprt + ft_count(g_param->exprt).env
 		+ cnt.exprt + 1, sizeof(char *));
 	if ((!environ_ || !exprt) && clean_(environ_) && clean_(exprt))
 		return (1);

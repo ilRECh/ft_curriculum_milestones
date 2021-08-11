@@ -6,9 +6,6 @@ int	print_exp(void)
 
 	iter_1 = -1;
 	while (g_param->exprt && g_param->exprt[++iter_1])
-	{
-		write(1, g_param->exprt[iter_1], ft_strlen(g_param->exprt[iter_1]));
-		write(1, "\n", 1);
-	}
+		printf("%s\n", g_param->exprt[iter_1]);
 	return (0);
 }

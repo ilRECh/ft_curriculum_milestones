@@ -1,6 +1,12 @@
 #include "minishell.h"
 
-static inline void	copy_to_env(char **environ_, char **vars)
+struct s_var
+{
+	char	**env;
+	char	**exprt;
+};
+
+static inline void	copy(char **environ_, char **vars)
 {
 	free(*environ_);
 	while (vars && *vars)
@@ -21,40 +27,52 @@ static int	check_var(char *var)
 	return (0);
 }
 
-static char	**ft_index(char *var)
+static struct s_var	ft_index(char *word)
 {
-	char	**tmp_env;
-	char	*tmp;
+	struct s_var	var;
+	char			*env;
+	char			*exprt;
 
-	tmp = getvalue(var);
-	if (tmp)
+	var.env = NULL;
+	var.exprt = NULL;
+	env = getvalue(word);
+	exprt = getvalue_exprt(word);
+	if (env)
 	{
-		tmp = tmp - ft_strlen(var) - 1;
-		tmp_env = g_param->env;
-		while (tmp_env && *tmp_env && *tmp_env != tmp)
-			tmp_env++;
-		return (tmp_env);
+		env = env - ft_strlen(word) - 1;
+		var.env = g_param->env;
+		while (var.env && *var.env && *var.env != env)
+			var.env++;
 	}
-	return (NULL);	
+	if (exprt)
+	{
+		exprt = exprt - ft_strlen(word) - 1;
+		var.exprt = g_param->exprt;
+		while (var.exprt && *var.exprt && *var.exprt != exprt)
+			var.exprt++;
+	}
+	return (var);	
 }
 
-int	ft_unset(char **vars)
+int	ft_unset(char **args)
 {
-	int		iter_1;
-	char	**tmp;
+	int				iter_1;
+	struct s_var	var;
 
 	iter_1 = -1;
-	while (vars && vars[++iter_1])
-		if (check_var(vars[iter_1])
+	while (args && args[++iter_1])
+		if (check_var(args[iter_1])
 			&& error_str("unset: ")
-			&& printf("%s", vars[iter_1])
+			&& printf("%s", args[iter_1])
 			&& printf(" :invalid parameter or name\n"))
 			return (1);
-	while (vars && *vars)
+	while (args && *args)
 	{
-		tmp = ft_index(*vars++);
-		if (tmp)
-			copy_to_env(tmp, tmp + 1);
+		var = ft_index(*args++);
+		if (var.env)
+			copy(var.env, var.env + 1);
+		if (var.exprt)
+			copy(var.exprt, var.exprt + 1);
 	}
 	return (0);
 }

@@ -42,10 +42,16 @@ int	main(int argc, char **argv, char **env)
 	tmp[0] = "FANTASY";
 	ft_export(tmp);
 	ft_env(env_args);
+	printf("----------------------\n");
 	ft_export(tmp_NULL);
-	exit(1);
+	printf("----------------------\n");
 	ft_unset(tmp);
 	ft_env(env_args);
+	ft_export(tmp_NULL);
+	tmp[0] = "FUCKFUK";
+	ft_unset(tmp);
+	ft_env(env_args);
+	ft_export(tmp_NULL);
 	// ft_unset(argv + 2);
 	// ft_env();
 	// t_list	*list_of_lists;
