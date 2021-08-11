@@ -17,6 +17,8 @@ char	*getvalue(char *word)
 	int	iter_1;
 	int	res;
 
+	if (!g_param->env)
+		return (NULL);
 	iter_1 = 0;
 	while (TRUE)
 	{
@@ -39,6 +41,8 @@ char	*getvalue_exprt(char *word)
 	int	iter_1;
 	int	res;
 
+	if (!g_param->exprt)
+		return (NULL);
 	iter_1 = 0;
 	while (TRUE)
 	{

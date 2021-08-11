@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-t_param	*g_param;
+t_param	*g_param = NULL;
 
 static char	**setup_env(char **env)
 {
@@ -27,24 +27,23 @@ int	main(int argc, char **argv, char **env)
 	(void)argc;
 	(void)argv;
 	(void)env;
-	g_param = ft_calloc(1, sizeof(g_param));
+	int a;
+	a = 5;
+	char	*env_args[] = {"/usr/bin/env", NULL};
+	char	*tmp[] = {"FUCKFUCK=FUCK_YOU", NULL};
+	char	*tmp_NULL[] = {NULL};
+	g_param = ft_calloc(1, sizeof(t_param));
 	g_param->env = setup_env(env);
 
-	
-	char	*env_args[] = {"/usr/bin/env", NULL};
-	
-	char	**tmp = ft_calloc(2, sizeof(char *));
-	tmp[0] = ft_strdup("FUCKFUCK=FUCK_YOU");
-	tmp[1] = NULL;
-	ft_export(tmp, &g_param->env, TRUE);
-	tmp[0] = NULL;
+
+	ft_export(tmp);
 	ft_env(env_args);
-	ft_export(tmp, NULL, 0);
+	ft_export(tmp_NULL);
+	tmp[0] = "FANTASY";
+	ft_export(tmp);
+	ft_env(env_args);
+	ft_export(tmp_NULL);
 	exit(1);
-	ft_env(env_args);
-	tmp = ft_calloc(2, sizeof(char *));
-	tmp[0] = ft_strdup("SHIT");
-	tmp[1] = NULL;
 	ft_unset(tmp);
 	ft_env(env_args);
 	// ft_unset(argv + 2);
