@@ -1,4 +1,4 @@
-#include "pipex.h"
+#include "minishell.h"
 
 static void	close_fds(int *fds, int amount)
 {

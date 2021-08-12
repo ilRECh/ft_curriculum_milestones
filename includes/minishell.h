@@ -18,6 +18,10 @@
 # include <errno.h>
 # include <stdio.h>
 # include <string.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <sys/wait.h>
+# include <fcntl.h>
 # include <stdbool.h>
 # include <dirent.h>
 
@@ -28,14 +32,18 @@ typedef struct s_param
 	int		ret;
 }	t_param;
 
-///
-///	Legit single global variable
-///
+/*\
+ *
+ *	SINGLE LEGIT GLOBAL VARIABLE
+ * 
+\*/
 extern t_param	*g_param;
 
-///
-///	Builtins
-///
+/*\
+ *
+ *	BUILTINS
+ * 
+\*/
 int		ft_cd(char **args);
 int		ft_export(char **args);
 int		print_exp(void);
@@ -44,18 +52,31 @@ int		ft_env(char **args);
 int		ft_unset(char **args);
 int		ft_exit(char **args);
 
-///
-///	ENV utils
-///
+/*\
+ *
+ *	ENV UTILS
+ * 
+\*/
 char	*getvalue(char *word);
 int		setvalue(char *word, char *new_value);
 char	*getvalue_exprt(char *word);
 int		setvalue_exprt(char *word, char *new_value);
 void	free_tabs(char **tab);
 
-///
-///	ERROR output funcs
-///
+/*\
+ *
+ *	EXECUTION
+ * 
+\*/
+int		exec(t_list *lst);
+void	exec_cmd(t_list args, char **envp);
+
+
+/*\
+ *
+ *	ERROR output funcs
+ *
+\*/
 static inline uint8_t	error(void)
 {
 	printf(RED "ERROR: " RESET "%s\n", strerror(errno));

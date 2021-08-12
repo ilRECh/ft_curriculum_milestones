@@ -3,21 +3,15 @@ NAME					=	minishell
 RM						=	rm -rf
 GCC						=	clang
 AR						=	ar -crs
-READ_LINE_FLAGS			=	-L/Users/$(USER)/.brew/Cellar/readline/8.1/lib/ -lreadline
-FLAGS					=	-Wall -Wextra -Werror -c -g #$(READ_LINE_FLAGS)
-# FLAGS					=	-Wall -Wextra -Werror -c -g $(READ_LINE_FLAGS)
-# FLAGS					=	-Wall -Wextra -Werror -c -g -L/Users/$(USER)/.brew/opt/readline/lib -lreadline
 
-# ifeq ($(OS), Linux)
-# 	MLX_ARC = libmlx.a
-# 	MLX_DIR = minilibx/minilibx_linux/
-# 	OPENGL = -lm -lbsd -lX11 -lXext
-# endif
-# ifeq ($(OS), Darwin)
-# 	MLX_ARC = libmlx.dylib
-# 	MLX_DIR = minilibx/minilibx_mac/
-# 	OPENGL = -lz -framework OpenGL -framework AppKit
-# endif
+FLAGS					=	-Wall -Wextra -Werror -c -g
+
+ifeq ($(OS), Linux)
+READ_LINE_FLAGS			=	-lreadline
+endif
+ifeq ($(OS), Darwin)
+READ_LINE_FLAGS			=	-L/Users/$(USER)/.brew/Cellar/readline/8.1/lib/ -lreadline
+endif
 
 HDRS_MINISHELL			=	minishell.h \
 							parse.h
@@ -46,6 +40,11 @@ BUILTIN_LIST			=	cd/cd.c \
 BUILTIN_DIR				=	./src/builtin/
 BUILTIN					=	$(addprefix $(BUILTIN_DIR), $(BUILTIN_LIST))
 
+EXEC_LIST				=	exec.c
+							
+EXEC_DIR				=	./src/exec/
+EXEC					=	$(addprefix $(EXEC_DIR), $(EXEC_LIST))
+
 ENVIRON_LIST			=	getvalue.c\
 							setvalue.c
 ENVIRON_DIR				=	./src/environ/
@@ -63,7 +62,7 @@ PARSE_LIST				=	dollar_get_env.c \
 PARSE_DIR				=	./src/parse/
 PARSE					=	$(addprefix $(PARSE_DIR), $(PARSE_LIST))
 
-OBJS					=	$(BUILTIN:.c=.o) $(ENVIRON:.c=.o) $(PARSE:.c=.o) main.o
+OBJS					=	$(BUILTIN:.c=.o) $(ENVIRON:.c=.o) $(PARSE:.c=.o) $(EXEC:.c=.o) main.o
 
 # COLORS
 BLACK					=	\033[0;30m

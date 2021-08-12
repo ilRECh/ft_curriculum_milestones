@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-t_param	*g_param = NULL;
+t_param	*g_param;
 
 static char	**setup_env(char **env)
 {
@@ -27,37 +27,8 @@ int	main(int argc, char **argv, char **env)
 	(void)argc;
 	(void)argv;
 	(void)env;
-	int a;
-	a = 5;
-	char	*env_args[] = {"/usr/bin/env", NULL};
-	char	*tmp[] = {"FUCKFUCK=FUCK_YOU", NULL};
-	char	*tmp_NULL[] = {NULL};
 	g_param = ft_calloc(1, sizeof(t_param));
 	g_param->env = setup_env(env);
-
-
-	ft_export(tmp);
-	ft_env(env_args);
-	ft_export(tmp_NULL);
-	tmp[0] = "FANTASY";
-	ft_export(tmp);
-	ft_env(env_args);
-	printf("----------------------\n");
-	ft_export(tmp_NULL);
-	printf("----------------------\n");
-	ft_unset(tmp);
-	ft_env(env_args);
-	ft_export(tmp_NULL);
-	tmp[0] = "FUCKFUK";
-	ft_unset(tmp);
-	ft_env(env_args);
-	ft_export(tmp_NULL);
-
-
-	// while (*env)
-	// {
-	// 	printf("%s\n", *env++);
-	// }	
 	t_list	*list_of_parses;
 	//* START TEST
 	// char *str = ft_strdup("echo \"$PWD kkk00;00\" > a > b;echo \"00;00\" > a > b");
@@ -75,8 +46,10 @@ int	main(int argc, char **argv, char **env)
 	{
 		while (line)
 		{
-			line = readline("Hello ->");
+			line = readline("Hello -> ");
 			list_of_parses = get_command_line(&line);
+			//it's show time
+			exec(list_of_parses);
 		}
 	}
 	else
@@ -84,5 +57,7 @@ int	main(int argc, char **argv, char **env)
 			list_of_parses = get_command_line(&line);
 	list_of_parses = get_command_line(&line);
 	//* END TEST
+	//it's show time
+	exec(list_of_parses);
 	return (0);
 }
