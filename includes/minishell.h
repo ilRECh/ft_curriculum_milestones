@@ -51,6 +51,7 @@ char	*getvalue(char *word);
 int		setvalue(char *word, char *new_value);
 char	*getvalue_exprt(char *word);
 int		setvalue_exprt(char *word, char *new_value);
+void	free_tabs(char **tab);
 
 ///
 ///	ERROR output funcs

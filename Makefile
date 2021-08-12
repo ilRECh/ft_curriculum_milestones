@@ -3,7 +3,10 @@ NAME					=	minishell
 RM						=	rm -rf
 GCC						=	clang
 AR						=	ar -crs
-FLAGS					=	-Wall -Wextra -Werror -c -g
+READ_LINE_FLAGS			=	-L/Users/$(USER)/.brew/Cellar/readline/8.1/lib/ -lreadline
+FLAGS					=	-Wall -Wextra -Werror -c -g #$(READ_LINE_FLAGS)
+# FLAGS					=	-Wall -Wextra -Werror -c -g $(READ_LINE_FLAGS)
+# FLAGS					=	-Wall -Wextra -Werror -c -g -L/Users/$(USER)/.brew/opt/readline/lib -lreadline
 
 # ifeq ($(OS), Linux)
 # 	MLX_ARC = libmlx.a
@@ -16,7 +19,9 @@ FLAGS					=	-Wall -Wextra -Werror -c -g
 # 	OPENGL = -lz -framework OpenGL -framework AppKit
 # endif
 
-HDRS_MINISHELL			=	minishell.h
+HDRS_MINISHELL			=	minishell.h \
+							parse.h
+
 HDRS_MINISHELL_DIR		=	./includes/
 
 HDRS_LIBFT				=	libft.h
@@ -37,16 +42,27 @@ BUILTIN_LIST			=	cd/cd.c \
 							env/env.c \
 							pwd/pwd.c \
 							unset/unset.c \
-							exit/exit.c
+							exit/exit.c	
 BUILTIN_DIR				=	./src/builtin/
 BUILTIN					=	$(addprefix $(BUILTIN_DIR), $(BUILTIN_LIST))
 
-ENVIRON_LIST			=	getvalue.c\
-							setvalue.c
+ENVIRON_LIST			=	getvalue.c
 ENVIRON_DIR				=	./src/environ/
 ENVIRON					=	$(addprefix $(ENVIRON_DIR), $(ENVIRON_LIST))
 
-OBJS					=	$(BUILTIN:.c=.o) $(ENVIRON:.c=.o) main.o
+
+PARSE_LIST				=	dollar_get_env.c \
+							parse.c \
+							utils_parse.c \
+							trimmer.c \
+							split_sub_argutils.c \
+							is_file_exists.c \
+							ret_perr.c
+
+PARSE_DIR				=	./src/parse/
+PARSE					=	$(addprefix $(PARSE_DIR), $(PARSE_LIST))
+
+OBJS					=	$(BUILTIN:.c=.o) $(ENVIRON:.c=.o) $(PARSE:.c=.o) main.o
 
 # COLORS
 BLACK					=	\033[0;30m
@@ -65,7 +81,7 @@ RESET					=	\033[0m
 all: libs $(NAME)
 
 $(NAME): $(LIBFT) $(OBJS)
-	@$(GCC) $(OBJS) $(LIBFT) -o $(NAME)
+	@$(GCC) $(OBJS) $(LIBFT) $(READ_LINE_FLAGS) -o $(NAME)
 	@echo "\n$(NAME): $(GREEN)object files were created$(RESET)"
 	@echo "$(NAME): $(GREEN)$(NAME) was created$(RESET)"
 
@@ -92,9 +108,3 @@ re: fclean all
 
 .PHONY:	
 			all clean fclean re
-
-pars:
-	clear
-	gcc -g -Iincludes main.c -Ilibft libft/*.c -Isrc/parse/ src/parse/*.c
-pars2: pars
-	./a.out "echo \"$PWD kkk00;00\" > a > b;echo \"00;00\" > a > b"
