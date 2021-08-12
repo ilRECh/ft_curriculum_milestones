@@ -52,12 +52,13 @@ int	main(int argc, char **argv, char **env)
 		if (fd < 3)
 			return (ret_perr(*argv));
 	}
-	line = (char *)0xFF;
 	if (!fd)
 	{
+		line = (char *)0xFF;
 		while (line)
 		{
-			line = readline("Hello ->");
+			line = readline(RED "super " CYAN "shell " RESET "> ");
+			add_history(line);
 			list_of_parses = get_command_line(&line);
 		}
 	}

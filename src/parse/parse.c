@@ -51,7 +51,7 @@ void	test_print_lst(t_list *lst, int i)
 		{
 			if (!par->util)
 				par->util = " ";
-			printf(BLUE "\n|%*s%-11s" RESET, i * 4, " ", par->util);
+			printf(BLUE "\n|%*s%-5s" RESET, i * 4, " ", par->util);
 			test_print_tab(par->argv);
 			printf(RED " %s " RESET, test_opers(par->oper));
 		}
@@ -172,9 +172,12 @@ t_list	*get_command_line(char **line)
 {
 	t_list	*lst;
 
+	// printf("%s\n", *line);
+	printf("%s\n", *line);
+	pre_parser(*line);
 	printf("%s\n", *line);
 	printf(CYAN "{" RESET);
-	printf(MAGENTA "  lst\n" RESET);
+	printf(MAGENTA "  lst" RESET);
 	*line = dollar_get_env(*line);		//раскрываем переменную из \$
 	if (!line)
 		return ((void *)ret_perr("malloc err, dollar"));

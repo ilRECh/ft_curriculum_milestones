@@ -4,7 +4,7 @@ char	*ft_strchr(const char *s, int c)
 {
 	unsigned char	character;
 
-	if (!s)
+	if (!s || !c)
 		return (NULL);
 	character = (unsigned char)c;
 	while (*s != character && *s)
