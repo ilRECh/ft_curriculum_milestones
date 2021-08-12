@@ -67,12 +67,45 @@
 // 	}
 // }
 
+typedef struct s_rdrct
+{
+	struct s_inall
+	{
+		bool	isrdr;
+		int		pipefd[2];
+	}			inall;
+	struct s_outall
+	{
+		bool	isrdr;
+		int		pipefd[2];
+	}			outall;
+}	t_rdrct;
+
+int	ft_rdct(char to, t_rdrct *rdrct, t_parse *from)
+{
+	(void)to;
+	(void)rdrct;
+	(void)from;
+	return (0);
+}
+
 int	exec(t_list *lst)
 {
+	t_rdrct	rdrct;
+
+	rdrct.inall.isrdr = false;
+	rdrct.outall.isrdr = false;
 	lst->cur = lst->head;
 	while (lst->cur)
 	{
-		printf("%p\n", lst->cur->content);
+		if (((t_parse *)lst->cur->content)->oper == RDCT_L)
+			ft_rdrct(RDCT_L, &rdrct, lst->cur->content);
+		else if (((t_parse *)lst->cur->content)->oper == RDCT_L2)
+			ft_rdrct(RDCT_L2, &rdrct, lst->cur->content);
+		else if (((t_parse *)lst->cur->content)->oper == RDCT_R)
+			ft_rdrct(RDCT_R, &rdrct, lst->cur->content);
+		else if (((t_parse *)lst->cur->content)->oper == RDCT_R2)
+			ft_rdrct(RDCT_R2, &rdrct, lst->cur->content);
 		lst->cur = lst->cur->next;
 	}
 	// exec_cmd(args, envp);
