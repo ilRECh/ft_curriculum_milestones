@@ -57,12 +57,12 @@ void    to_separate_util_args(t_parse *parse, char **tmp)
     int     i;
 
     i = 0;
-    beg = is_util_exists(*tmp);
+    beg = is_util_exists(trimmer(*tmp, "\"\'"));
     // parse->util = *tmp;
     if (beg)
     {
-        *tmp = beg;
         free(*tmp);
+        *tmp = beg;
     }
     else
     {

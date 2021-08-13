@@ -108,11 +108,17 @@ t_parse	*pars_gen_fill(char **argv, unsigned short oper)
 void	skip_quotation(char **ln)
 {
 	if (**ln == '\"' && *(*ln - 1) != '\\')
+	{
 		while (*++(*ln) != '\"' || *(*ln - 1) == '\\')
 			;
+		++(*ln);
+	}
 	if (**ln == '\'' && *(*ln - 1) != '\\')
+	{
 		while (*++(*ln) != '\'' || *(*ln - 1) == '\\')
 			;
+		++(*ln);
+	}
 }
 
 _Bool	skip_open_case(char **ln)
