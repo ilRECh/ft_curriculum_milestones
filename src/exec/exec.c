@@ -96,7 +96,8 @@ int	exec(t_list *lst)
 	rdrct.inall.isrdr = false;
 	rdrct.outall.isrdr = false;
 	lst->cur = lst->head;
-	while (lst->cur)
+	while (lst->curc
+		&& )
 	{
 		if (((t_parse *)lst->cur->content)->oper == RDCT_L)
 			ft_rdrct(RDCT_L, &rdrct, lst->cur->content);
