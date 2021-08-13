@@ -19,8 +19,7 @@ int	ft_rdrct(char to, t_rdrct *rdrct, t_parse *file)
 		rdrct->inall.isrdr = true;
 		pipe(rdrct->inall.pipefd);
 	}
-	else if ((to == RDCT_R || to == RDCT_R2)
-		&& !rdrct->outall.isrdr)
+	if (!rdrct->outall.isrdr)
 	{
 		rdrct->outall.isrdr = true;
 		pipe(rdrct->outall.pipefd);
@@ -33,6 +32,7 @@ int	ft_rdrct(char to, t_rdrct *rdrct, t_parse *file)
 		ft_lstadd_back(rdrct->out, (void *)open(file->argv[1], O_WRONLY | O_TRUNC));
 	else if (to == RDCT_R2)
 		ft_lstadd_back(rdrct->out, (void *)open(file->argv[1], O_WRONLY | O_APPEND));
+	return (0);
 }
 
 /*\
@@ -79,3 +79,23 @@ int	exec(t_list *lst, int exitcode)
 	// exec_cmd(args, envp);
 	return (0);
 }
+//---------------------------------------------------------------
+// ╭─name@name in ~/Desktop/minishell on master ✘ (origin/master)
+// ╰$ ls | grep a | (echo || cat -e)  
+
+// ╭─name@name in ~/Desktop/minishell on master ✘ (origin/master)
+// ╰$ ls | grep a | (echo && cat -e)
+
+// main.c$
+// main.o$
+// Makefile$
+// ╭─name@name in ~/Desktop/minishell on master ✘ (origin/master)
+// ╰$ ls | grep a | (echo && (echo && cat -e))
+
+
+// main.c$
+// main.o$
+// Makefile$
+// ╭─name@name in ~/Desktop/minishell on master ✘ (origin/master)
+// ╰$ 
+//---------------------------------------------------------------
