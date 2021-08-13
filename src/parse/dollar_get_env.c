@@ -75,8 +75,8 @@ char	*set_env(char *line, char *ln)
 char *dollar_get_env(char *line)
 {
 	char	*ln;
-	char	len;
-	char	len2;
+	int		len;
+	int		len2;
 
 	ln = line;
 	len = ft_strlen(line);
@@ -89,9 +89,9 @@ char *dollar_get_env(char *line)
 		{
 			line = set_env(line, ++ln);
 			if (!line)
-				return(NULL);
+				exit((short)ret_perr("malloc err, dollar") + 1);
 			len2 = ft_strlen(line);
-			ln = line + len2 - len;
+			ln = line;
 			len = len2;
 		}
 		ln++;

@@ -42,30 +42,17 @@ int	main(int argc, char **argv, char **env)
 	// }	
 	t_list	*list_of_parses;
 	//* START TEST
-	// char *str = ft_strdup("echo \"$PWD kkk00;00\" > a > b;echo \"00;00\" > a > b");
-	int	fd = 0;
 	char	*line;
 
-	if (argc > 1)
+	line = (char *)0xFF;
+	while (line)
 	{
-		fd = open((*++argv), O_RDONLY);
-		if (fd < 3)
-			return (ret_perr(*argv));
+		line = readline(RED "super " CYAN "shell " RESET "> ");
+		add_history(line);
+		list_of_parses = get_command_line(&line);
 	}
-	if (!fd)
-	{
-		line = (char *)0xFF;
-		while (line)
-		{
-			line = readline(RED "super " CYAN "shell " RESET "> ");
-			add_history(line);
-			list_of_parses = get_command_line(&line);
-		}
-	}
-	else
-		while (get_next_line(fd, &line) > 0)
-			list_of_parses = get_command_line(&line);
-	list_of_parses = get_command_line(&line);
+	// line = ft_strdup("cat < filename || (echo hello > file1)");
+	// list_of_parses = get_command_line(&line);
 	//* END TEST
 	return (0);
 }

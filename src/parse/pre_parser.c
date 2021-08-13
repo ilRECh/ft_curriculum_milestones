@@ -1,5 +1,4 @@
 #include "parse.h"
-
 /*
 for find zone
 ->	yes	| || &&
@@ -7,11 +6,7 @@ for find zone
 
 skip "" ''
 not skip \" \'
-
-
-
 */
-// void	find_utils(char *line, unsigned int *segmt);
 
 unsigned int	skip_quote_byindex(char *line, unsigned int iter)
 {
@@ -87,8 +82,9 @@ _Bool	search_util(char *line, unsigned int a, unsigned int b)
 		find_zone(line, &this_b, " ");
 		word = ft_strndup(&line[this_a], this_b - this_a);
 		trimmer(word, "\"\'");
+		if (ft_strncmp(word, "cat", 3))
+			fullname = is_util_exists(word);
 		free(word);
-		fullname = is_util_exists(word);
 		if (fullname)
 		{
 			free(fullname);
