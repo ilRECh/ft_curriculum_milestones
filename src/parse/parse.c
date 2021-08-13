@@ -227,5 +227,5 @@ t_list	*get_command_line(char **line)
 
 
 
-	return (NULL);
+	return (lst);
 }

@@ -4,7 +4,8 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 
-/*open_case	*/	# define CASE	"\n\t{\ncase\n}\n\t"
+/*open_case	*/	# define NO_UTIL	"\n\t{\nNot_util\n}\n\t"
+/*open_case	*/	# define CASE		"\n\t{\ncase\n}\n\t"
 /*		>	*/	# define RDCT_R		1
 /*		<	*/	# define RDCT_L		2
 /*		<<	*/	# define RDCT_L2	3
@@ -28,12 +29,17 @@ typedef struct  s_parse
 {
 	//  имя утилиты
 	char			*util;
-	//  Аргументы для утилиты || или если утилита не задана, то это название файла
 	char    		**argv;
+	//  Аргументы для утилиты || или если утилита не задана, то это название файла
+	unsigned short	oper;
+
+//	(; | || &&)	отдельным элементом
+//	(< > << >>) File1 2 3 ... отнести к файлам, а не утилитам.
+
 	//	разделитель	(&& = AND), (|| == OR), (; == END) (| == PIPE)
 	//	Редиректы > < >> << RDCT_R, RDCT_L, RDCT_R2, RDCT_L
-	unsigned short	oper;
 }   t_parse;
+
 
 typedef struct  s_void
 {
