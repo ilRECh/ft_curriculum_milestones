@@ -34,6 +34,28 @@ typedef struct s_param
 
 /*\
  *
+ * @copy - 2 descriptors for copy the original main threads: stdin and stdout
+ *
+\*/  
+typedef struct s_rdrct
+{
+	int			copy[2];
+	t_list		*in;
+	t_list		*out;
+	struct s_inall
+	{
+		bool	isrdr;
+		int		pipefd[2];
+	}			inall;
+	struct s_outall
+	{
+		bool	isrdr;
+		int		pipefd[2];
+	}			outall;
+}	t_rdrct;
+
+/*\
+ *
  *	SINGLE LEGIT GLOBAL VARIABLE
  * 
 \*/
@@ -68,8 +90,8 @@ void	free_tabs(char **tab);
  *	EXECUTION
  * 
 \*/
-int		exec(t_list *lst);
-void	exec_cmd(t_list args, char **envp);
+// int		exec(t_list *lst);
+// void	exec_cmd(t_list args, char **envp);
 
 
 /*\

@@ -1,114 +1,81 @@
 #include "minishell.h"
 
-/*Do I have to check bin existing again?*/
-// static void	paths_check(t_list arg, char **paths)
-// {
-// 	char	*tmp;
-// 	char	**paths_copy;
-
-// 	paths_copy = paths;
-// 	while (paths_copy && *paths_copy)
-// 	{
-// 		tmp = ft_strjoin(*paths_copy++,
-// 				((t_content *)arg.cur->content)->arg[0]);
-// 		if (!access(tmp, X_OK))
-// 		{
-// 			free(((t_content *)arg.cur->content)->arg[0]);
-// 			((t_content *)arg.cur->content)->arg[0] = tmp;
-// 			clean_paths(paths);
-// 			return ;
-// 		}
-// 		free(tmp);
-// 	}
-// 	ft_printf(RED "ERROR: %s: %s\n" RESET,
-// 		((t_content *)arg.cur->content)->arg[0], strerror(errno));
-// 	clean_paths(paths);
-// 	ft_lstclear(&arg, clean_content);
-// 	exit(1);
-// }
-
-/* I think Rasul has done it himself */
-// static void	check_cmd_path(t_list arg, char **envp)
-// {
-// 	char	**paths;
-// 	char	**paths_copy;
-// 	char	*tmp;
-
-// 	while (ft_strncmp("PATH=", *envp, 4))
-// 		envp++;
-// 	paths = ft_split(*envp + 5, ':');
-// 	paths_copy = paths;
-// 	while (paths_copy && *paths_copy)
-// 	{
-// 		tmp = *paths_copy;
-// 		*paths_copy = ft_strjoin(*paths_copy, "/");
-// 		free(tmp);
-// 		paths_copy++;
-// 	}
-// 	paths_check(arg, paths);
-// }
-
-// static void	check_cmd_access(t_list args, char **envp)
-// {
-// 	args.cur = args.head->next;
-// 	while (args.cur != args.end)
-// 	{
-// 		if (((t_content *)args.cur->content)->arg[0][0] == '/'
-// 			&& access(((t_content *)args.cur->content)->arg[0], X_OK))
-// 		{
-// 			ft_printf(RED "ERROR: %s %s\n" RESET,
-// 				((t_content *)args.cur->content)->arg[0], strerror(errno));
-// 			ft_lstclear(&args, clean_content);
-// 			exit(1);
-// 		}
-// 		else if (((t_content *)args.cur->content)->arg[0][0] != '/')
-// 			check_cmd_path(args, envp);
-// 		args.cur = args.cur->next;
-// 	}
-// }
-
-typedef struct s_rdrct
+/*\
+ *
+ *		Should this function be safe? 
+ *	Should we resolve situation, when pipe returns -1?
+ *	Should we resolve open -1 return?
+ *	Don't forget to make a 'heredoc' analog here.
+ *		@to - char either RDCT_L, or RDCT_L2, or RDCT_R, or RDCT_R2
+ *	@rdrct - structure s_rdrct, multiple meanings
+ *	@file - redirect input from, or redirect output to
+ * 
+\*/
+int	ft_rdrct(char to, t_rdrct *rdrct, t_parse *file)
 {
-	struct s_inall
+	if ((to == RDCT_L || to == RDCT_L2)
+		&& !rdrct->inall.isrdr)
 	{
-		bool	isrdr;
-		int		pipefd[2];
-	}			inall;
-	struct s_outall
+		rdrct->inall.isrdr = true;
+		pipe(rdrct->inall.pipefd);
+	}
+	else if ((to == RDCT_R || to == RDCT_R2)
+		&& !rdrct->outall.isrdr)
 	{
-		bool	isrdr;
-		int		pipefd[2];
-	}			outall;
-}	t_rdrct;
-
-int	ft_rdct(char to, t_rdrct *rdrct, t_parse *from)
-{
-	(void)to;
-	(void)rdrct;
-	(void)from;
-	return (0);
+		rdrct->outall.isrdr = true;
+		pipe(rdrct->outall.pipefd);
+	}
+	if (to == RDCT_L)
+		ft_lstadd_back(rdrct->in, (void *)open(file->argv[1], O_RDONLY));
+	else if (to == RDCT_L2)
+		(void)0; //make whatsupdoc?> here
+	else if (to == RDCT_R)
+		ft_lstadd_back(rdrct->out, (void *)open(file->argv[1], O_WRONLY | O_TRUNC));
+	else if (to == RDCT_R2)
+		ft_lstadd_back(rdrct->out, (void *)open(file->argv[1], O_WRONLY | O_APPEND));
 }
 
-int	exec(t_list *lst)
+/*\
+ *
+ *		Checking all the redirects in a lst, in a current sublst. 'Sublst' is every sublst,
+ *	that starts from an and ends at an element, related to ONE single command.
+ *	Braces are count as a single command.
+ *		@lst -  list with all parsed commands. .cur field points either at the start, or special symbol.
+ * 
+\*/
+t_list	ft_all_rdrcts(t_list *lst)
 {
-	t_rdrct	rdrct;
+	t_rdrct	*rdrct;
+	t_list	sublst;
 
-	rdrct.inall.isrdr = false;
-	rdrct.outall.isrdr = false;
-	lst->cur = lst->head;
-	while (lst->curc
-		&& )
+	rdrct = ft_calloc(1, sizeof(t_rdrct));
+	sublst.head = lst->cur;
+	while (lst->cur
+		&& ((t_parse *)lst->cur->content)->oper != END
+		&& ((t_parse *)lst->cur->content)->oper != AND
+		&& ((t_parse *)lst->cur->content)->oper != OR
+		&& ((t_parse *)lst->cur->content)->oper != PIPE)
 	{
 		if (((t_parse *)lst->cur->content)->oper == RDCT_L)
-			ft_rdrct(RDCT_L, &rdrct, lst->cur->content);
+			ft_rdrct(RDCT_L, rdrct, lst->cur->content);
 		else if (((t_parse *)lst->cur->content)->oper == RDCT_L2)
-			ft_rdrct(RDCT_L2, &rdrct, lst->cur->content);
+			ft_rdrct(RDCT_L2, rdrct, lst->cur->content);
 		else if (((t_parse *)lst->cur->content)->oper == RDCT_R)
-			ft_rdrct(RDCT_R, &rdrct, lst->cur->content);
+			ft_rdrct(RDCT_R, rdrct, lst->cur->content);
 		else if (((t_parse *)lst->cur->content)->oper == RDCT_R2)
-			ft_rdrct(RDCT_R2, &rdrct, lst->cur->content);
+			ft_rdrct(RDCT_R2, rdrct, lst->cur->content);
 		lst->cur = lst->cur->next;
 	}
+	sublst.end = lst->cur;
+	return (sublst);
+}
+
+int	exec(t_list *lst, int exitcode)
+{
+	t_list	sublst;
+
+	sublst = ft_all_rdrcts(lst);
+
 	// exec_cmd(args, envp);
 	return (0);
 }

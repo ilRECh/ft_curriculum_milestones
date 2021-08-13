@@ -48,8 +48,6 @@ int	main(int argc, char **argv, char **env)
 		{
 			line = readline("Hello -> ");
 			list_of_parses = get_command_line(&line);
-			//it's show time
-			exec(list_of_parses);
 		}
 	}
 	else
@@ -58,6 +56,6 @@ int	main(int argc, char **argv, char **env)
 	list_of_parses = get_command_line(&line);
 	//* END TEST
 	//it's show time
-	exec(list_of_parses);
+	// exec(list_of_parses);
 	return (0);
 }
