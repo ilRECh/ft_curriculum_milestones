@@ -54,6 +54,6 @@ char	*trimmer(char *str, char *c);
 t_list	*split_sub_argutils(t_list *lst);
 _Bool	ret_perr(const char *mess);
 char	*is_util_exists(char *file_path);	// Существует ли утилита, во всех путях
-void	pre_parser(char *line);
+_Bool	pre_parser(char *line);
 
 #endif

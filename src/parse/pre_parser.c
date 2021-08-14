@@ -7,7 +7,7 @@ for find zone
 skip "" ''
 not skip \" \'
 */
-
+/*
 unsigned int	skip_quote_byindex(char *line, unsigned int iter)
 {
 	if (line[iter] == '\"' && line[iter - 1] != '\\')
@@ -106,4 +106,64 @@ void	pre_parser(char *line)
 	{
 		find_zone(line, &search_zone, "|&");
 	}
+}
+*/
+
+_Bool	error_handler(int num, int parentheses)
+{
+	if (num > 0 && num < 4)
+	{
+		if (num == 1)
+			printf("error, mistake to close: \'\n");
+		else if (num == 2)
+			printf("error, mistake to close: \"\n");
+		return (TRUE);
+	}
+	if (parentheses)
+	{
+		if (parentheses > 0)
+			printf("error, mistake: )\n");
+		else if (parentheses < 0)
+			printf("error, mistake: (\n");
+		return (TRUE);
+	}
+	return (FALSE);
+}
+
+_Bool	pre_parser(char *line)
+{
+	unsigned int	i;
+	int				parentheses;
+	int				quotes_single;
+
+	if (!line)
+		return (TRUE);
+	i = 0;
+	parentheses = 0;
+	quotes_single = 0;
+	while(line[i])
+	{
+		if (line[i] == '\"' && (!i || line[i - 1] != '\\'))
+		{
+			i++;
+			while (line[i] && (line[i] != '\"' || line[i - 1] == '\\'))
+				i++;
+			if (!line[i])
+				return(error_handler(2, 0));
+		}
+		if (line[i] == '\'' && (!i || line[i - 1] != '\\'))
+		{
+			i++;
+			while (line[i] && (line[i] != '\''))
+				i++;
+			if (!line[i])
+				return(error_handler(1, 0));
+		}
+		if (line[i] == '(')
+			parentheses++;
+		else if (line[i] == ')')
+			parentheses--;
+		i++;
+	}
+	return (error_handler(0, parentheses));
 }
