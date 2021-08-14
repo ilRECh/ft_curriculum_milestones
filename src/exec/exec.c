@@ -43,12 +43,11 @@ int	ft_rdrct(char to, t_rdrct *rdrct, t_parse *file)
  *		@lst -  list with all parsed commands. .cur field points either at the start, or special symbol.
  * 
 \*/
-t_list	ft_all_rdrcts(t_list *lst)
+t_list	ft_all_rdrcts(t_list *lst, t_rdrct **rdrct)
 {
-	t_rdrct	*rdrct;
 	t_list	sublst;
 
-	rdrct = ft_calloc(1, sizeof(t_rdrct));
+	*rdrct = ft_calloc(1, sizeof(t_rdrct));
 	sublst.head = lst->cur;
 	while (lst->cur
 		&& ((t_parse *)lst->cur->content)->oper != END
@@ -57,13 +56,13 @@ t_list	ft_all_rdrcts(t_list *lst)
 		&& ((t_parse *)lst->cur->content)->oper != PIPE)
 	{
 		if (((t_parse *)lst->cur->content)->oper == RDCT_L)
-			ft_rdrct(RDCT_L, rdrct, lst->cur->content);
+			ft_rdrct(RDCT_L, *rdrct, lst->cur->content);
 		else if (((t_parse *)lst->cur->content)->oper == RDCT_L2)
-			ft_rdrct(RDCT_L2, rdrct, lst->cur->content);
+			ft_rdrct(RDCT_L2, *rdrct, lst->cur->content);
 		else if (((t_parse *)lst->cur->content)->oper == RDCT_R)
-			ft_rdrct(RDCT_R, rdrct, lst->cur->content);
+			ft_rdrct(RDCT_R, *rdrct, lst->cur->content);
 		else if (((t_parse *)lst->cur->content)->oper == RDCT_R2)
-			ft_rdrct(RDCT_R2, rdrct, lst->cur->content);
+			ft_rdrct(RDCT_R2, *rdrct, lst->cur->content);
 		lst->cur = lst->cur->next;
 	}
 	sublst.end = lst->cur;
@@ -73,10 +72,32 @@ t_list	ft_all_rdrcts(t_list *lst)
 int	exec(t_list *lst, int exitcode)
 {
 	t_list	sublst;
+	t_rdrct	*rdrct;
 
-	sublst = ft_all_rdrcts(lst);
-
-	// exec_cmd(args, envp);
+	//sublst.end = (t_dlist *)1;
+	//while (sublst.end)
+	//{
+		//sublst = ft_all_rdrcts(lst, &rdrct);
+		// 
+		/* 
+		if (sublst.end)
+		{
+			exec_cmd(sublst, rdrct);
+			if ((t_parse *)sublst.end->content)->oper == |
+				rdrct out -> rdrct in
+			if ((t_parse *)sublst.end->content)->oper == &&
+				if okay -> then:
+				output
+				sublst = ft_all_rdrcts
+			if ((t_parse *)sublst.end->content)->oper == ||
+				if not okay -> then?
+				output
+				sublst = ft_all_rdrcts
+			if ((t_parse *)sublst.end->content)->oper == ;
+				does not mean anything, just continue
+		}
+	//}
+		*/
 	return (0);
 }
 //---------------------------------------------------------------
