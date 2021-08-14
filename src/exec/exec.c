@@ -69,11 +69,16 @@ t_list	ft_all_rdrcts(t_list *lst, t_rdrct **rdrct)
 	return (sublst);
 }
 
-int	exec(t_list *lst, int exitcode)
+int	exec(t_list *lst, t_rdrct *rdrct)
 {
 	t_list	sublst;
-	t_rdrct	*rdrct;
+	int 	exitcode;
 
+	if (rdrct && rdrct->inall.isrdr)
+	{
+		rdrct->copy[0] = dup(0);
+		dup2(rdrct->inall.pipefd[0], 0);
+	}
 	//sublst.end = (t_dlist *)1;
 	//while (sublst.end)
 	//{
@@ -97,6 +102,9 @@ int	exec(t_list *lst, int exitcode)
 				does not mean anything, just continue
 		}
 	//}
+	
+	dup2(0, rdrct->copy[0]);
+	dup2(1, rdrct->copy[1]);
 		*/
 	return (0);
 }
