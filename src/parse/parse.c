@@ -40,7 +40,7 @@ void	test_print_lst(t_list *lst, int i)
 	while (lst->cur)
 	{
 		par = (t_parse *)(lst->cur->content);
-		if (*par->argv && !(par->oper > 4 && par->oper < 9) && !ft_strncmp(CASE, (*par->argv), ft_strlen(CASE)))
+		if (par->argv && *par->argv && !(par->oper > 4 && par->oper < 9) && !ft_strncmp(CASE, (*par->argv), ft_strlen(CASE)))
 		{
 			printf(MAGENTA_BOLD "\n|%*s( sub_lst %d" RESET,(i) * 4, " ", i + 1);
 			test_print_lst((t_list *)par->argv[1], i + 1);
@@ -148,6 +148,8 @@ t_list	*split_ignore_caps(char *line, short sp_prev)
 	short	sp;
 
 	sp = 0;
+	while (*line == ' ')
+		line++;
 	ln = line;
 	lst = ft_calloc(1, sizeof(t_list));
 	while (*ln)
@@ -164,21 +166,28 @@ t_list	*split_ignore_caps(char *line, short sp_prev)
 		}
 		if (!*ln || (sp > 0 && sp < 5))	// если редиректы
 		{
-			argv = (char **)malloc(sizeof(char *) * 2);
-			argv[0] = trimmer(ft_strndup(line, ln - line ), " ");
-			argv[1] = NULL;
-			ft_lstadd_back(lst, pars_gen_fill(argv, sp_prev));
-			while (*++ln && ft_strchr("<> ", *ln));
+			if (ln != line )
+			{
+				argv = (char **)malloc(sizeof(char *) * 2);
+				argv[0] = trimmer(ft_strndup(line, ln - line ), " ");
+				argv[1] = NULL;
+				ft_lstadd_back(lst, pars_gen_fill(argv, sp_prev));
+			}
+			while (*++ln && ft_strchr("<> ", *ln))
+
 			sp_prev = sp;
 			line = ln;
 		}
 		else if (sp > 4 && sp < 9)	// если пайпы, операторы или конец (в отдельный элементос)
 		{
-			argv = (char **)malloc(sizeof(char *) * 2);
-			argv[0] = trimmer(ft_strndup(line, ln - line), " ");	//////////////// -1
-			argv[1] = NULL;
-			ft_lstadd_back(lst, pars_gen_fill(argv, sp_prev));
-			ft_lstadd_back(lst, pars_gen_fill(argv + 1, sp));
+			if (ln != line )
+			{
+				argv = (char **)malloc(sizeof(char *) * 2);
+				argv[0] = trimmer(ft_strndup(line, ln - line), " ");	//////////////// -1
+				argv[1] = NULL;
+				ft_lstadd_back(lst, pars_gen_fill(argv, sp_prev));
+			}
+				ft_lstadd_back(lst, pars_gen_fill((char **)NULL, sp));
 			while (*++ln && ft_strchr(";&| ", *ln));
 			sp_prev = sp = 0;
 			line = ln;
@@ -186,6 +195,13 @@ t_list	*split_ignore_caps(char *line, short sp_prev)
 		else if (sp == 9)	// если скобки, (субмассив, рекурсия) и скипнуть скобки нах для текущей операции
 		{
 			cases = 1;
+			if (ln != line )
+			{
+				argv = (char **)malloc(sizeof(char *) * 2);
+				argv[0] = trimmer(ft_strndup(line, ln - line), " ");	//////////////// -1
+				argv[1] = NULL;
+				ft_lstadd_back(lst, pars_gen_fill(argv, sp_prev));
+			}
 			argv = (char **)malloc(sizeof(char *) * 3);
 			argv[0] = ft_strdup(CASE);
 			argv[1] = (char *)split_ignore_caps(ln + 1, 0);
@@ -198,6 +214,8 @@ t_list	*split_ignore_caps(char *line, short sp_prev)
 				if (*ln == ')')
 					cases--;
 			}
+			while(*ln == ' ')
+				ln++;
 			sp_prev = sp;
 			line = ln;
 		}

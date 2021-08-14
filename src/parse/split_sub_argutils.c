@@ -58,7 +58,6 @@ void    to_separate_util_args(t_parse *parse, char **tmp)
 
     i = 0;
     beg = is_util_exists(trimmer(*tmp, "\"\'"));
-    // parse->util = *tmp;
     if (beg)
     {
         free(*tmp);
@@ -122,9 +121,9 @@ t_list	*split_sub_argutils(t_list *lst)
     while (lst->cur)
     {
         parse = (t_parse *)lst->cur->content;
-        if (*parse->argv && !(parse->oper > 4 && parse->oper < 9) && !ft_strncmp(CASE, *parse->argv, ft_strlen(CASE)))
+        if (parse->argv && *parse->argv && !(parse->oper > 4 && parse->oper < 9) && !ft_strncmp(CASE, *parse->argv, ft_strlen(CASE)))
             split_sub_argutils(((t_list *)((t_parse *)lst->cur->content)->argv[1]));
-        else if (*parse->argv && !(parse->oper > 4 && parse->oper < 9))
+        else if (parse->argv && *parse->argv/* && **parse->argv*/ && !(parse->oper > 4 && parse->oper < 9))
             lst->cur->content = sub_parse(parse);
 
         // tmp = parse->argv;

@@ -28,7 +28,6 @@ void	test_print_tab(char **split_dots);
 typedef struct  s_parse
 {
 	//  имя утилиты
-	char			*util;
 	char    		**argv;
 	//  Аргументы для утилиты || или если утилита не задана, то это название файла
 	unsigned short	oper;
