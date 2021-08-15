@@ -82,6 +82,12 @@ int	exec(t_list *lst, t_rdrct *rdrct)
 	//sublst.end = (t_dlist *)1;
 	//while (sublst.end)
 	//{
+		/*	if rdrct->inall no empty? 
+		
+		if name is BRACE
+			and oper is BRACE
+			open argv as (t_list *)
+			exitcode = exec(sublst.end->content)
 		//sublst = ft_all_rdrcts(lst, &rdrct);
 		// 
 		/* 
