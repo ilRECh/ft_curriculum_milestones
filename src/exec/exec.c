@@ -2,32 +2,66 @@
 
 /*\
  *
- *		Should this function be safe? 
- *	Should we resolve situation, when pipe returns -1?
- *	Should we resolve open -1 return?
- *	Don't forget to make a 'heredoc' analog here.
+ *	heredoc analog. Takes place in the ft_rdrct func
+ *
+\*/
+static void	whatsupdoc(int fd, char *stopword)
+{
+	char	*line;
+	int		copy_cur_stdin;
+
+	copy_cur_stdin = dup(0);
+	dup2(0, g_param->stdin_copy);
+	while (true)
+	{
+		line = readline("whatsupdoc?> ");
+		if (ft_strncmp(line, stopword, ft_strlen(stopword)))
+			write(fd, line, ft_strlen(line));
+		else
+		{
+			free(line);
+			break ;
+		}
+		free(line);
+	}
+	dup2(copy_cur_stdin, 0);
+	close(copy_cur_stdin);
+}
+
+/*\
+ *
  *		@to - char either RDCT_L, or RDCT_L2, or RDCT_R, or RDCT_R2
  *	@rdrct - structure s_rdrct, multiple meanings
  *	@file - redirect input from, or redirect output to
+ *		Should this function be safe? 
+ *	Should we resolve situation, when pipe returns -1?
+ *	Should we resolve open -1 return?
  * 
 \*/
-int	ft_rdrct(char to, t_rdrct *rdrct, t_parse *file)
+static int	ft_rdrct(char to, t_rdrct *rdrct, t_parse *file)
 {
 	if ((to == RDCT_L || to == RDCT_L2)
-		&& !rdrct->inall.is)
+		&& (!rdrct->inall.is && !rdrct->pipe.is))
 	{
 		rdrct->inall.is = true;
 		pipe(rdrct->inall.pipefd);
 	}
-	if (!rdrct->outall.is)
+	else if ((to == RDCT_L || to == RDCT_L2)
+		&& (rdrct->pipe.is && !rdrct->inall.is))
 	{
-		rdrct->outall.is = true;
-		pipe(rdrct->outall.pipefd);
+		rdrct->inall.is = true;
+		rdrct->inall.pipefd[0] = rdrct->pipe.pipefd[0];
 	}
 	if (to == RDCT_L)
 		ft_lstadd_back(rdrct->in, (void *)open(file->argv[1], O_RDONLY));
 	else if (to == RDCT_L2)
-		(void)0; //make whatsupdoc?> here
+	{
+		int pipefd[2];
+		pipe(pipefd);
+		ft_lstadd_back(rdrct->in, (void *)pipefd[0]);
+		whatsupdoc(pipefd[1], file->argv[1]);
+		close(pipefd[1]);
+	}
 	else if (to == RDCT_R)
 		ft_lstadd_back(rdrct->out, (void *)open(file->argv[1], O_WRONLY | O_TRUNC));
 	else if (to == RDCT_R2)
@@ -43,10 +77,15 @@ int	ft_rdrct(char to, t_rdrct *rdrct, t_parse *file)
  *		@lst -  list with all parsed commands. .cur field points either at the start, or special symbol.
  * 
 \*/
-t_list	ft_all_rdrcts(t_list *lst, t_rdrct *rdrct)
+static t_list	ft_all_rdrcts(t_list *lst, t_rdrct *rdrct)
 {
 	t_list	sublst;
 
+	if (!rdrct->outall.is)
+	{
+		rdrct->outall.is = true;
+		pipe(rdrct->outall.pipefd);
+	}
 	sublst.head = lst->cur;
 	while (lst->cur
 		&& ((t_parse *)lst->cur->content)->oper != END
@@ -68,49 +107,206 @@ t_list	ft_all_rdrcts(t_list *lst, t_rdrct *rdrct)
 	return (sublst);
 }
 
+/*\
+ *
+ *		read from all descriptors stored in the out list,
+ *	write the read stuff to the infd descriptor. Close these descriptors.
+ *	The infd descriptor will be passed to a program as input further.
+ *
+\*/
+static void	in(t_list *in, int infd)
+{
+	int		rd;
+	char	buf[1000];
+
+	rd = 1;
+	in->cur = in->head;
+	while (in->cur)
+	{
+		while (rd > 0)
+		{
+			rd = read((int)in->cur->content, buf, 1000);
+			write(infd, buf, rd);
+		}
+		close((int)in->cur->content);
+		in->cur = in->cur->next;
+	}
+	//close(infd);
+	ft_lstclear(in, NULL);
+}
+
+/*\
+ *
+ *		Fucntion for a child writer, who will read from outfd,
+ *	and put everything in fds in the out list.
+ *
+\*/
+static void	out(t_list *out, int outfd)
+{
+	int		rd;
+	char	buf[1000];
+
+	rd = 0;
+	while (rd >= 0)
+	{
+		out->cur = out->head;
+		rd = read(outfd, buf, 1000);
+		while (out->cur)
+		{
+			write((int)out->cur->content, buf, 1000);
+			out->cur = out->cur->next;
+		}
+	}
+}
+
+/*\
+ *
+ *		Looks for either braces sublst, or command to execute.
+ *	sublst->cur will point to the element with above containings at the end
+ *	of the func execution.
+ *
+\*/
+static void	find_sublst_or_command(t_list *sublst)
+{
+	sublst->cur = sublst->head;
+	while (!((t_parse *)sublst->cur->content)->argv[0]
+		|| ft_strncmp(((t_parse *)sublst->cur->content)->argv[0], CASE, 12))
+		sublst->cur = sublst->cur->next;
+}
+
+static int	exec_cmd(char **args, t_rdrct *rdrct)
+{
+	int	pid;
+	int	child_writer_pid;
+
+	if (rdrct->inall.is)
+		in(rdrct->in, rdrct->inall.pipefd[1]);
+	pid = fork();
+	if (!pid)
+	{
+		if (rdrct->inall.is)
+			dup2(rdrct->inall.pipefd[0], 0);
+		dup2(rdrct->outall.pipefd[1], 1);
+		execve(args[0], args, g_param->env);
+	}
+	else
+	{
+		if (rdrct->inall.is)
+		{
+			rdrct->inall.is = false;
+			close(rdrct->inall.pipefd[0]);
+		}
+		child_writer_pid = fork();
+		if (!child_writer_pid)
+		{
+			out(rdrct->out, rdrct->outall.pipefd[0]);
+			//clean_all!!!!!!!!!!!!!!!
+			exit(1);
+		}
+	}
+	return (pid);
+}
+
+/*\
+ *
+ *		Executes braces sublst alongsiede with braces sublst writer child
+ *
+\*/
+static int	exec_braces(t_list sublst, t_rdrct *rdrct, int *exitcode)
+{
+	if (rdrct->pipe.is)
+	{
+		rdrct->copy[0] = dup(0);
+		dup2(rdrct->inall.pipefd[0], 0);//read from rdrct->pipe.pipefd[0]
+	}
+	rdrct->copy[1] = dup(1);
+	dup2(rdrct->sublst.pipefd[1], 1);//where to write?
+	*exitcode = exec(((t_parse *)sublst.cur->content)->argv[1]);
+	if (rdrct->pipe.is)
+	{
+		dup2(0, rdrct->copy[0]);
+		close(rdrct->copy[0]);
+	}
+	dup2(1, rdrct->copy[1]);
+	close(rdrct->copy[1]);
+	return (-1);
+}
+
+/*\
+ *
+ *		Either executes a command, which first has to be found in the sublst,
+ *	or, if occurs, calls exec on braces sublst detection.
+ *
+\*/
+static int	exec_cmd_or_braces(t_list sublst, t_rdrct *rdrct, int *exitcode)
+{
+	int	pid;
+
+	pid = 0;
+	find_sublst_or_command(&sublst);
+	if (!ft_strncmp(((t_parse *)sublst.cur->content)->argv[0], CASE, ft_strlen(CASE)))
+		pid = exec_braces(sublst, rdrct, exitcode);
+	else
+		pid = exec_cmd(((t_parse *)sublst.cur->content)->argv, rdrct);
+	rdrct->outall.is = false;
+	close(rdrct->outall.pipefd[0]);
+	close(rdrct->outall.pipefd[1]);
+	ft_lstclear(rdrct->out, NULL);
+	return (pid);
+}
+
+/*\
+ *
+ *		Opens pipe if direction is true, and assigns rdrct->pipe.pipefd[1] to
+ *	out list for the child writer to write. If the direction is false, then
+ *	assigns rdrct->pipe values to rdrct->inall. 
+ *
+\*/
+static int	openpipe(t_rdrct *rdrct, int direction)
+{
+	if (direction)
+	{
+		rdrct->pipe.is = true;
+		pipe(rdrct->pipe.pipefd);
+		ft_lstadd_back(rdrct->out, rdrct->pipe.pipefd[1]);
+	}
+	else
+	{
+		rdrct->pipe.is = false;
+		rdrct->inall.is = true;
+		rdrct->inall.pipefd[0] = rdrct->pipe.pipefd[0];
+		rdrct->inall.pipefd[1] = rdrct->pipe.pipefd[1];
+	}
+}
+
+/*\
+ *
+ *		
+ *
+\*/
 int	exec(t_list *lst)
 {
 	t_rdrct	*rdrct;
 	t_list	sublst;
 	int 	exitcode;
+	int		pid;
 
+	pid = 0;
 	exitcode = 0;
 	rdrct = ft_calloc(1, sizeof(t_rdrct));
 	lst->cur = lst->head;
 	while (lst->cur)
-	{		
-		if (!ft_strncmp((t_parse *)lst->cur->content, CASE, ft_strlen(CASE)))
-		{
-			if (rdrct->pipe.is)
-			{
-				rdrct->copy[0] = dup(0);
-				rdrct->copy[1] = dup(1);
-				dup2(0, rdrct->pipe.pipefd[0]);//read from rdrct->pipe.pipefd[0]
-				//where to write?
-			}
-			exitcode = exec(((t_parse *)sublst.end->content)->argv[1]);
-			if (rdrct->pipe.is)
-			{
-				dup2(0, rdrct->copy[0]);
-				dup2(1, rdrct->copy[1]);
-				close(rdrct->copy[0]);
-				close(rdrct->copy[1]);
-			}
-			lst->cur = lst->cur->next;
-		}
-		else
-			sublst = ft_all_rdrcts(lst, rdrct);
-
+	{
+		sublst = ft_all_rdrcts(lst, rdrct);
 		if (lst->cur && ((t_parse *)lst->cur->content)->oper == PIPE)
-		{
-			rdrct->pipe.is = true;
-			pipe(rdrct->pipe.pipefd);
-		}
-
-		exec_cmd(sublst, rdrct, &exitcode);
-
+			openpipe(rdrct, true);
+		pid = exec_cmd_or_braces(sublst, rdrct, &exitcode);
+		if (lst->cur && ((t_parse *)lst->cur->content)->oper == PIPE)
+			openpipe(rdrct, false);
 		if (lst->cur && ((t_parse *)lst->cur->content)->oper == AND)
 		{
+			if (pid > 0)
+				waitpid(pid, &exitcode, NULL);
 			if (exitcode)
 			{
 				while (lst->cur
@@ -125,6 +321,8 @@ int	exec(t_list *lst)
 		}
 		else if (lst->cur && ((t_parse *)lst->cur->content)->oper == OR)
 		{
+			if (pid > 0)
+				waitpid(pid, &exitcode, NULL);
 			if (!exitcode)
 			{
 				while (lst->cur
@@ -137,10 +335,10 @@ int	exec(t_list *lst)
 			else
 				lst->cur = lst->cur->next;
 		}
-		else if (lst->cur && ((t_parse *)lst->cur->content)->oper == PIPE)
+		else if (lst->cur && (((t_parse *)lst->cur->content)->oper == PIPE
+			|| ((t_parse *)lst->cur->content)->oper == END))
 			lst->cur = lst->cur->next;
 	}
-
 	//free(rdrct);
 	return (exitcode);
 }

@@ -30,12 +30,16 @@ typedef struct s_param
 	char	**env;
 	char	**exprt;
 	int		ret;
+	int		stdin_copy;
 }	t_param;
 
 /*\
  *
- * @copy - 2 descriptors for copy the original main threads: stdin and stdout
- *
+ *	@copy - 2 descriptors for copy the original main threads: stdin and stdout
+ * 	@pipe -> pipein - 
+ *	@pipeout - 
+ *	@inall -
+ *	@outall - 
 \*/  
 typedef struct s_rdrct
 {
