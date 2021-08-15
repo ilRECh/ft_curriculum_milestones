@@ -14,14 +14,14 @@
 int	ft_rdrct(char to, t_rdrct *rdrct, t_parse *file)
 {
 	if ((to == RDCT_L || to == RDCT_L2)
-		&& !rdrct->inall.isrdr)
+		&& !rdrct->inall.is)
 	{
-		rdrct->inall.isrdr = true;
+		rdrct->inall.is = true;
 		pipe(rdrct->inall.pipefd);
 	}
-	if (!rdrct->outall.isrdr)
+	if (!rdrct->outall.is)
 	{
-		rdrct->outall.isrdr = true;
+		rdrct->outall.is = true;
 		pipe(rdrct->outall.pipefd);
 	}
 	if (to == RDCT_L)
@@ -43,11 +43,10 @@ int	ft_rdrct(char to, t_rdrct *rdrct, t_parse *file)
  *		@lst -  list with all parsed commands. .cur field points either at the start, or special symbol.
  * 
 \*/
-t_list	ft_all_rdrcts(t_list *lst, t_rdrct **rdrct)
+t_list	ft_all_rdrcts(t_list *lst, t_rdrct *rdrct)
 {
 	t_list	sublst;
 
-	*rdrct = ft_calloc(1, sizeof(t_rdrct));
 	sublst.head = lst->cur;
 	while (lst->cur
 		&& ((t_parse *)lst->cur->content)->oper != END
@@ -56,81 +55,92 @@ t_list	ft_all_rdrcts(t_list *lst, t_rdrct **rdrct)
 		&& ((t_parse *)lst->cur->content)->oper != PIPE)
 	{
 		if (((t_parse *)lst->cur->content)->oper == RDCT_L)
-			ft_rdrct(RDCT_L, *rdrct, lst->cur->content);
+			ft_rdrct(RDCT_L, rdrct, lst->cur->content);
 		else if (((t_parse *)lst->cur->content)->oper == RDCT_L2)
-			ft_rdrct(RDCT_L2, *rdrct, lst->cur->content);
+			ft_rdrct(RDCT_L2, rdrct, lst->cur->content);
 		else if (((t_parse *)lst->cur->content)->oper == RDCT_R)
-			ft_rdrct(RDCT_R, *rdrct, lst->cur->content);
+			ft_rdrct(RDCT_R, rdrct, lst->cur->content);
 		else if (((t_parse *)lst->cur->content)->oper == RDCT_R2)
-			ft_rdrct(RDCT_R2, *rdrct, lst->cur->content);
+			ft_rdrct(RDCT_R2, rdrct, lst->cur->content);
 		lst->cur = lst->cur->next;
 	}
 	sublst.end = lst->cur;
 	return (sublst);
 }
 
-int	exec(t_list *lst, t_rdrct *rdrct)
+int	exec(t_list *lst)
 {
+	t_rdrct	*rdrct;
 	t_list	sublst;
 	int 	exitcode;
 
-	if (rdrct && rdrct->inall.isrdr)
-	{
-		rdrct->copy[0] = dup(0);
-		dup2(rdrct->inall.pipefd[0], 0);
-	}
-	//sublst.end = (t_dlist *)1;
-	//while (sublst.end)
-	//{
-		/*	if rdrct->inall no empty? 
-		
-		if name is BRACE
-			and oper is BRACE
-			open argv as (t_list *)
-			exitcode = exec(sublst.end->content)
-		//sublst = ft_all_rdrcts(lst, &rdrct);
-		// 
-		/* 
-		if (sublst.end)
+	exitcode = 0;
+	rdrct = ft_calloc(1, sizeof(t_rdrct));
+	lst->cur = lst->head;
+	while (lst->cur)
+	{		
+		if (!ft_strncmp((t_parse *)lst->cur->content, CASE, ft_strlen(CASE)))
 		{
-			exec_cmd(sublst, rdrct);
-			if ((t_parse *)sublst.end->content)->oper == |
-				rdrct out -> rdrct in
-			if ((t_parse *)sublst.end->content)->oper == &&
-				if okay -> then:
-				output
-				sublst = ft_all_rdrcts
-			if ((t_parse *)sublst.end->content)->oper == ||
-				if not okay -> then?
-				output
-				sublst = ft_all_rdrcts
-			if ((t_parse *)sublst.end->content)->oper == ;
-				does not mean anything, just continue
+			if (rdrct->pipe.is)
+			{
+				rdrct->copy[0] = dup(0);
+				rdrct->copy[1] = dup(1);
+				dup2(0, rdrct->pipe.pipefd[0]);//read from rdrct->pipe.pipefd[0]
+				//where to write?
+			}
+			exitcode = exec(((t_parse *)sublst.end->content)->argv[1]);
+			if (rdrct->pipe.is)
+			{
+				dup2(0, rdrct->copy[0]);
+				dup2(1, rdrct->copy[1]);
+				close(rdrct->copy[0]);
+				close(rdrct->copy[1]);
+			}
+			lst->cur = lst->cur->next;
 		}
-	//}
-	
-	dup2(0, rdrct->copy[0]);
-	dup2(1, rdrct->copy[1]);
-		*/
-	return (0);
+		else
+			sublst = ft_all_rdrcts(lst, rdrct);
+
+		if (lst->cur && ((t_parse *)lst->cur->content)->oper == PIPE)
+		{
+			rdrct->pipe.is = true;
+			pipe(rdrct->pipe.pipefd);
+		}
+
+		exec_cmd(sublst, rdrct, &exitcode);
+
+		if (lst->cur && ((t_parse *)lst->cur->content)->oper == AND)
+		{
+			if (exitcode)
+			{
+				while (lst->cur
+					&& ((t_parse *)lst->cur->content)->oper != END
+					&& ((t_parse *)lst->cur->content)->oper != AND
+					&& ((t_parse *)lst->cur->content)->oper != OR
+					&& ((t_parse *)lst->cur->content)->oper != PIPE)
+						lst->cur = lst->cur->next;
+			}
+			else
+				lst->cur = lst->cur->next;
+		}
+		else if (lst->cur && ((t_parse *)lst->cur->content)->oper == OR)
+		{
+			if (!exitcode)
+			{
+				while (lst->cur
+					&& ((t_parse *)lst->cur->content)->oper != END
+					&& ((t_parse *)lst->cur->content)->oper != AND
+					&& ((t_parse *)lst->cur->content)->oper != OR
+					&& ((t_parse *)lst->cur->content)->oper != PIPE)
+						lst->cur = lst->cur->next;
+			}
+			else
+				lst->cur = lst->cur->next;
+		}
+		else if (lst->cur && ((t_parse *)lst->cur->content)->oper == PIPE)
+			lst->cur = lst->cur->next;
+	}
+
+	//free(rdrct);
+	return (exitcode);
 }
-//---------------------------------------------------------------
-// ╭─name@name in ~/Desktop/minishell on master ✘ (origin/master)
-// ╰$ ls | grep a | (echo || cat -e)  
-
-// ╭─name@name in ~/Desktop/minishell on master ✘ (origin/master)
-// ╰$ ls | grep a | (echo && cat -e)
-
-// main.c$
-// main.o$
-// Makefile$
-// ╭─name@name in ~/Desktop/minishell on master ✘ (origin/master)
-// ╰$ ls | grep a | (echo && (echo && cat -e))
-
-
-// main.c$
-// main.o$
-// Makefile$
-// ╭─name@name in ~/Desktop/minishell on master ✘ (origin/master)
-// ╰$ 
-//---------------------------------------------------------------

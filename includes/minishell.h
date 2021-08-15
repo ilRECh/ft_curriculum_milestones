@@ -39,17 +39,22 @@ typedef struct s_param
 \*/  
 typedef struct s_rdrct
 {
-	int			copy[2];
 	t_list		*in;
 	t_list		*out;
+	int			copy[2];
+	struct s_pipe
+	{
+		bool	is;
+		int		pipefd[2];
+	}			pipe;
 	struct s_inall
 	{
-		bool	isrdr;
+		bool	is;
 		int		pipefd[2];
 	}			inall;
 	struct s_outall
 	{
-		bool	isrdr;
+		bool	is;
 		int		pipefd[2];
 	}			outall;
 }	t_rdrct;

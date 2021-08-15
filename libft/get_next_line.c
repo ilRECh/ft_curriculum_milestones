@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#define BUFFER_SIZE 1
+#define BUFFER_SIZE 100000
 
 int	to_short(char *np, char *tail)
 {
