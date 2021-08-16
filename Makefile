@@ -12,6 +12,20 @@ endif
 ifeq ($(OS), Darwin)
 READ_LINE_FLAGS			=	-L/Users/$(USER)/.brew/Cellar/readline/8.1/lib/ -lreadline
 endif
+FLAGS					=	-g -Wall -Wextra -Werror -c #$(READ_LINE_FLAGS)
+# FLAGS					=	-Wall -Wextra -Werror -c -g $(READ_LINE_FLAGS)
+# FLAGS					=	-Wall -Wextra -Werror -c -g -L/Users/$(USER)/.brew/opt/readline/lib -lreadline
+
+# ifeq ($(OS), Linux)
+# 	MLX_ARC = libmlx.a
+# 	MLX_DIR = minilibx/minilibx_linux/
+# 	OPENGL = -lm -lbsd -lX11 -lXext
+# endif
+# ifeq ($(OS), Darwin)
+# 	MLX_ARC = libmlx.dylib
+# 	MLX_DIR = minilibx/minilibx_mac/
+# 	OPENGL = -lz -framework OpenGL -framework AppKit
+# endif
 
 HDRS_MINISHELL			=	minishell.h \
 							parse.h
@@ -57,7 +71,8 @@ PARSE_LIST				=	dollar_get_env.c \
 							trimmer.c \
 							split_sub_argutils.c \
 							is_file_exists.c \
-							ret_perr.c
+							ret_perr.c \
+							pre_parser.c
 
 PARSE_DIR				=	./src/parse/
 PARSE					=	$(addprefix $(PARSE_DIR), $(PARSE_LIST))

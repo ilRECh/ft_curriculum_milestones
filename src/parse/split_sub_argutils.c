@@ -57,14 +57,16 @@ void    to_separate_util_args(t_parse *parse, char **tmp)
     int     i;
 
     i = 0;
-    free(parse->util);
-    parse->util = NULL;
-    beg = is_util_exists(*tmp);
+    beg = is_util_exists(trimmer(*tmp, "\"\'"));
     if (beg)
     {
-        parse->util = *tmp;
-        // free(*tmp);
+        free(*tmp);
         *tmp = beg;
+    }
+    else
+    {
+        tmp[1] = tmp[0];
+        tmp[0] = NULL;
     }
     remove_quotation_tab(tmp + 1);
     parse->argv = tmp;
@@ -80,7 +82,7 @@ t_parse  *sub_parse(t_parse *tosub_pars)
 
     t = 0;
     i = -1;
-    str = tosub_pars->util;
+    str = *(tosub_pars->argv);
     tmp = (char **)malloc(sizeof(char *) * 1000);   // малочу с запасом (0-й пойдет на util)
     while (TRUE)
     {
@@ -101,6 +103,8 @@ t_parse  *sub_parse(t_parse *tosub_pars)
         }
     }
     tmp[t] = NULL;
+    free(*(tosub_pars->argv));
+    free((tosub_pars->argv));
     to_separate_util_args(tosub_pars, tmp);
     return (tosub_pars);
 }
@@ -108,14 +112,28 @@ t_parse  *sub_parse(t_parse *tosub_pars)
 
 t_list	*split_sub_argutils(t_list *lst)
 {
-    lst->cur = lst->head;
+    t_parse *parse;
 
+    // char **tmp;
+    // t_parse *p;
+
+    lst->cur = lst->head;
     while (lst->cur)
     {
-        if (!ft_strncmp(CASE, ((t_parse *)lst->cur->content)->util, ft_strlen(CASE)))
-            ((t_parse *)lst->cur->content)->argv = (char **)split_sub_argutils((t_list *)((t_parse *)lst->cur->content)->argv);
-        else
-            lst->cur->content = sub_parse((t_parse *)lst->cur->content);
+        parse = (t_parse *)lst->cur->content;
+        if (parse->argv && *parse->argv && !(parse->oper > 4 && parse->oper < 9) && !ft_strncmp(CASE, *parse->argv, ft_strlen(CASE)))
+            split_sub_argutils(((t_list *)((t_parse *)lst->cur->content)->argv[1]));
+        else if (parse->argv && *parse->argv/* && **parse->argv*/ && !(parse->oper > 4 && parse->oper < 9))
+            lst->cur->content = sub_parse(parse);
+
+        // tmp = parse->argv;
+        // if (parse->oper < 5)
+        // {
+        //     write(1, tmp[0], ft_strlen(tmp[0]));
+        //     write(1, "\n", 1);
+        //     write(1, tmp[1], ft_strlen(tmp[1]));
+        //     write(1, "\n", 1);
+        // }
         lst->cur = lst->cur->next;
     }
     return (lst);
