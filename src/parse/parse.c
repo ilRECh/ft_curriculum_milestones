@@ -178,8 +178,8 @@ t_list	*split_ignore_caps(char *line, short sp_prev)
 		{
 			if (ln != line )
 				ft_lstadd_back(lst, add_data_tolst(sp_prev, line, ln));
-			while (*++ln && ft_strchr("<> ", *ln))
-
+			while (*ln && *++ln && ft_strchr("<> ", *ln))
+				;
 			sp_prev = sp;
 			line = ln;
 		}
@@ -188,7 +188,8 @@ t_list	*split_ignore_caps(char *line, short sp_prev)
 			if (ln != line )
 				ft_lstadd_back(lst, add_data_tolst(sp_prev, line, ln));
 			ft_lstadd_back(lst, pars_gen_fill((char **)NULL, sp));
-			while (*++ln && ft_strchr(";&| ", *ln));
+			while (*ln && *++ln && ft_strchr(";&| ", *ln))
+				;
 			sp_prev = sp = 0;
 			line = ln;
 		}
@@ -202,7 +203,7 @@ t_list	*split_ignore_caps(char *line, short sp_prev)
 			argv[1] = (char *)split_ignore_caps(ln + 1, 0);
 			argv[2] = NULL;
 			ft_lstadd_back(lst, pars_gen_fill(argv, 0));
-			while (*++ln && cases)
+			while (*ln && *++ln && cases)
 			{
 				if (*ln == '(')
 					cases++;
