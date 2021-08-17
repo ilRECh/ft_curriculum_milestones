@@ -67,5 +67,13 @@ t_list	*split_sub_argutils(t_list *lst);
 _Bool	ret_perr(const char *mess);
 char	*is_util_exists(char *file_path);	// Существует ли утилита, во всех путях
 _Bool	pre_parser(char *line);
+t_parse	*pars_gen_fill(char **argv, unsigned short oper);
+short	is_split(char *str);
+void	skip_quotation(char **ln);
+_Bool	skip_open_case(char **ln);
+
+void	test_print_tab(char **split_dots);
+char	*test_opers(unsigned short oper);
+void	test_print_lst(t_list *lst, int i);
 
 #endif

@@ -72,7 +72,11 @@ PARSE_LIST				=	dollar_get_env.c \
 							split_sub_argutils.c \
 							is_file_exists.c \
 							ret_perr.c \
-							pre_parser.c
+							pre_parser.c \
+							is_split.c \
+							parse_gen_fill.c \
+							skiper.c \
+							test_and_debug.c 
 
 PARSE_DIR				=	./src/parse/
 PARSE					=	$(addprefix $(PARSE_DIR), $(PARSE_LIST))

@@ -1,144 +1,5 @@
 #include "parse.h"
 
-void	test_print_tab(char **split_dots)
-{
-	if (split_dots && *split_dots)
-		while (*split_dots)
-			printf(YELLOW " %s " RESET, *split_dots++);
-}
-
-char	*test_opers(unsigned short oper)
-{
-	if (oper == 1)
-		return(ft_strdup(">"));
-	if (oper == 2)
-		return(ft_strdup("<"));
-	if (oper == 3)
-		return(ft_strdup("<<"));
-	if (oper == 4)
-		return(ft_strdup(">>"));
-	if (oper == 5)
-		return(ft_strdup(";"));
-	if (oper == 6)
-		return(ft_strdup("&&"));
-	if (oper == 7)
-		return(ft_strdup("||"));
-	if (oper == 8)
-		return(ft_strdup("|"));
-	// if (oper == 9)
-	// 	return(ft_strdup("("));
-	// if (oper == 10)
-	// 	return(ft_strdup(")"));
-	return(ft_strdup("0"));
-}
-
-void	test_print_lst(t_list *lst, int i)
-{
-	t_parse	*par;
-
-	lst->cur = lst->head;
-	while (lst->cur)
-	{
-		par = (t_parse *)(lst->cur->content);
-		if (par->argv && *par->argv && !(par->oper > 4 && par->oper < 9) && !ft_strncmp(CASE, (*par->argv), ft_strlen(CASE)))
-		{
-			printf(MAGENTA_BOLD "\n|%*s( sub_lst %d" RESET,(i) * 4, " ", i + 1);
-			test_print_lst((t_list *)par->argv[1], i + 1);
-			printf(MAGENTA_BOLD "\n|%*s) %s" RESET, (i) * 4, " ", test_opers(par->oper));
-		}
-		else
-		{
-			if (!(par->oper > 4 && par->oper < 9))
-			{
-				printf(BLUE "\n|%*s" RESET, i * 4, " ");
-				printf(RED " %s " RESET, test_opers(par->oper));
-				printf(BLUE "%-5s" RESET, *(par->argv));
-				test_print_tab(&(par->argv)[1]);
-			}
-			else
-				printf(MAGENTA_BOLD "\n| %*s" RED "%s " RESET, (i + 1) * 4, " ", test_opers(par->oper));
-		}
-		lst->cur = lst->cur->next;
-	}
-}
-
-short	is_split(char *str)
-{
-	if (!str || !*(str) || *(str - 1) == '\\')
-		return (0);
-	if (*(str) == '(' && *(str - 2) != '\\')
-		return (CASE_OPEN);
-	if (*(str) == ')' && *(str - 2) != '\\')
-		return (CASE_CLOSE);
-	if (*(str) == *(str + 1))
-	{
-		if (*(str) == '&')
-			return (AND);
-		if (*(str) == '|')
-			return(OR);
-		if (*(str) == '<')
-			return(RDCT_L2);
-		if (*(str) == '>')
-			return(RDCT_R2);
-	}
-	if (*(str) == ';')
-		return (END);
-	if(*(str) == '|')
-		return (PIPE);
-	if (*(str) == '<')
-		return(RDCT_L);
-	if (*(str) == '>')
-		return(RDCT_R);
-	return(FALSE);
-}
-
-t_parse	*pars_gen_fill(char **argv, unsigned short oper)
-{
-	t_parse	*pars;
-
-	pars = (t_parse *)malloc(sizeof(t_parse));
-	if(!pars)
-		exit((short)ret_perr("malloc err -> pars") + 1);
-	pars->argv = (char **)malloc(sizeof(char *));
-	pars->argv = argv;
-	pars->oper = oper;
-	return (pars);
-}
-
-void	skip_quotation(char **ln)
-{
-	if (**ln == '\"' && *(*ln - 1) != '\\')
-	{
-		while (*++(*ln) != '\"' || *(*ln - 1) == '\\')
-			;
-		++(*ln);
-	}
-	if (**ln == '\'' && *(*ln - 1) != '\\')
-	{
-		while (*++(*ln) != '\'' || *(*ln - 1) == '\\')
-			;
-		++(*ln);
-	}
-}
-
-_Bool	skip_open_case(char **ln)
-{
-	int	cnt_case;
-
-	cnt_case = 1;
-	while (*++(*ln) && cnt_case)
-	{
-		skip_quotation(ln);
-		if (**ln == ')')
-			cnt_case--;
-		else if (**ln == '(')
-			cnt_case++;
-	}
-	if (cnt_case)
-		return (FALSE);
-	return (TRUE);
-}
-
 t_parse	*add_data_tolst(short sp_prev, char *line, char *ln)
 {
 	char	**argv;
@@ -178,7 +39,7 @@ t_list	*split_ignore_caps(char *line, short sp_prev)
 		{
 			if (ln != line )
 				ft_lstadd_back(lst, add_data_tolst(sp_prev, line, ln));
-			while (*ln && *++ln && ft_strchr("<> ", *ln))
+			while (*ln && ft_strchr("<> ", *++ln))
 				;
 			sp_prev = sp;
 			line = ln;
@@ -188,7 +49,7 @@ t_list	*split_ignore_caps(char *line, short sp_prev)
 			if (ln != line )
 				ft_lstadd_back(lst, add_data_tolst(sp_prev, line, ln));
 			ft_lstadd_back(lst, pars_gen_fill((char **)NULL, sp));
-			while (*ln && *++ln && ft_strchr(";&| ", *ln))
+			while (*ln && ft_strchr(";&| ", *++ln))
 				;
 			sp_prev = sp = 0;
 			line = ln;
