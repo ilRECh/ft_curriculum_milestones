@@ -38,10 +38,11 @@ int	main(int argc, char **argv, char **env)
 	line = (char *)0xFF;
 	while (line)
 	{
-		line = readline(RED "super " CYAN "shell " RESET "> ");
+		(line == (char *)0xFF) ? (line = readline(RED "super " CYAN "shell " RESET "> "))
+			: (free(line), line = readline(RED "super " CYAN "shell " RESET "> "));
 		add_history(line);
 		list_of_parses = get_command_line(&line);
-		//exec
+		exec(list_of_parses);
 	}
 	// line = ft_strdup("cat < filename || (echo hello > file1)");
 	// list_of_parses = get_command_line(&line);

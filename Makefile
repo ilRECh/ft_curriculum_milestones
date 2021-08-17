@@ -54,7 +54,7 @@ BUILTIN_LIST			=	cd/cd.c \
 BUILTIN_DIR				=	./src/builtin/
 BUILTIN					=	$(addprefix $(BUILTIN_DIR), $(BUILTIN_LIST))
 
-EXEC_LIST				=	#exec.c
+EXEC_LIST				=	exec.c
 							
 EXEC_DIR				=	./src/exec/
 EXEC					=	$(addprefix $(EXEC_DIR), $(EXEC_LIST))

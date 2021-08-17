@@ -45,7 +45,12 @@ typedef struct s_rdrct
 {
 	t_list		*in;
 	t_list		*out;
-	int			copy[2];
+	struct s_copy
+	{
+		bool	is0;
+		bool	is1;
+		int		fd[2];
+	}			copy;
 	struct s_pipe
 	{
 		bool	is;
@@ -99,7 +104,7 @@ void	free_tabs(char **tab);
  *	EXECUTION
  * 
 \*/
-// int		exec(t_list *lst);
+int		exec(t_list *lst);
 // void	exec_cmd(t_list args, char **envp);
 
 
