@@ -139,6 +139,7 @@ static void	in(t_list *in, int infd)
 		}
 		close((int)in->cur->content);
 		in->cur = in->cur->next;
+		rd = 1;
 	}
 	ft_lstclear(in, NULL);
 }
