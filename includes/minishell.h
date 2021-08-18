@@ -43,8 +43,8 @@ typedef struct s_param
 \*/  
 typedef struct s_rdrct
 {
-	t_list		*in;
-	t_list		*out;
+	t_list		in;
+	t_list		out;
 	struct s_copy
 	{
 		bool	is0;

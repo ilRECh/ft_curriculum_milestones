@@ -47,19 +47,19 @@ static int	ft_rdrct(char to, t_rdrct *rdrct, t_parse *file)
 		pipe(rdrct->inall.pipefd);
 	}
 	if (to == RDCT_L)
-		ft_lstadd_back(rdrct->in, (void *)((long long)open(file->argv[1], O_RDONLY)));
+		ft_lstadd_back(&rdrct->in, (void *)((long long)open(file->argv[1], O_RDONLY)));
 	else if (to == RDCT_L2)
 	{
 		int pipefd[2];
 		pipe(pipefd);
-		ft_lstadd_back(rdrct->in, (void *)((long long)pipefd[0]));
+		ft_lstadd_back(&rdrct->in, (void *)((long long)pipefd[0]));
 		whatsupdoc(pipefd[1], file->argv[1]);
 		close(pipefd[1]);
 	}
 	else if (to == RDCT_R)
-		ft_lstadd_back(rdrct->out, (void *)((long long)open(file->argv[1], O_WRONLY | O_TRUNC)));
+		ft_lstadd_back(&rdrct->out, (void *)((long long)open(file->argv[1], O_WRONLY | O_CREAT | O_TRUNC)));
 	else if (to == RDCT_R2)
-		ft_lstadd_back(rdrct->out, (void *)((long long)open(file->argv[1], O_WRONLY | O_APPEND)));
+		ft_lstadd_back(&rdrct->out, (void *)((long long)open(file->argv[1], O_WRONLY | O_CREAT | O_APPEND)));
 	return (0);
 }
 
@@ -103,6 +103,21 @@ static t_list	ft_all_rdrcts(t_list *lst, t_rdrct *rdrct)
 
 /*\
  *
+ *		Looks for either braces sublst, or command to execute.
+ *	sublst->cur will point to the element with above containings at the end
+ *	of the func execution.
+ *
+\*/
+static void	find_sublst_or_command(t_list *sublst)
+{
+	sublst->cur = sublst->head;
+	while (!((t_parse *)sublst->cur->content)->argv[0]
+		&& ft_strncmp(((t_parse *)sublst->cur->content)->argv[0], CASE, 12))
+		sublst->cur = sublst->cur->next;
+}
+
+/*\
+ *
  *		read from all descriptors stored in the out list,
  *	write the read stuff to the infd descriptor. Close these descriptors.
  *	The infd descriptor will be passed to a program as input further.
@@ -139,10 +154,12 @@ static void	out(t_list *out, int outfd)
 	int		rd;
 	char	buf[1000];
 
-	rd = 0;
-	if (ft_lstsize(*out) > 0)
+	rd = 1;
+	write(1, "OKAY!\n", 6);
+	printf("printfokay\n%p\n", out);
+	if (out && ft_lstsize(*out))
 	{
-		while (rd >= 0)
+		while (rd > 0)
 		{
 			out->cur = out->head;
 			rd = read(outfd, buf, 1000);
@@ -155,67 +172,28 @@ static void	out(t_list *out, int outfd)
 	}
 	else
 	{
-		while (rd >= 0)
+		while (rd > 0)
 		{
-			write(1, buf, rd);
 			rd = read(outfd, buf, 1000);
+			write(1, buf, rd);
 		}
 	}
-}
-
-/*\
- *
- *		Looks for either braces sublst, or command to execute.
- *	sublst->cur will point to the element with above containings at the end
- *	of the func execution.
- *
-\*/
-static void	find_sublst_or_command(t_list *sublst)
-{
-	sublst->cur = sublst->head;
-	while (!((t_parse *)sublst->cur->content)->argv[0]
-		&& ft_strncmp(((t_parse *)sublst->cur->content)->argv[0], CASE, 12))
-		sublst->cur = sublst->cur->next;
 }
 
 static int	exec_cmd(char **args, t_rdrct *rdrct)
 {
-	int	pid;
+	int	pid = 0;
 	int	writer_pid;
 
+	(void)args;
+	(void)rdrct;
 	if (rdrct->inall.is)
-		in(rdrct->in, rdrct->inall.pipefd[1]);
-	writer_pid = fork();
-	if (!writer_pid)
-	{
-		if (rdrct->pipe.is)
-			close(rdrct->pipe.pipefd[0]);
-		if (rdrct->copy.is0)
-			close(rdrct->copy.fd[0]);
-		if (rdrct->copy.is1)
-			close(rdrct->copy.fd[1]);
-		if (rdrct->inall.is)
-		{
-			close(rdrct->inall.pipefd[0]);
-			close(rdrct->inall.pipefd[1]);
-		}
-		// test if we've written to writer
-		// char	buf[1000];
-		// write(1, buf, read(rdrct->outall.pipefd[0], buf, 1000));
-		// exit(1);
-		close(rdrct->outall.pipefd[1]);
-		//out(rdrct->out, rdrct->outall.pipefd[0]);
-		close(rdrct->outall.pipefd[0]);
-		ft_lstclear(rdrct->in, NULL);
-		ft_lstclear(rdrct->out, NULL);
-		exit(1);
-	}
-	//close(rdrct->outall.pipefd[1]);
+		in(&rdrct->in, rdrct->inall.pipefd[1]);
 	pid = fork();
 	if (!pid)
 	{
-		ft_lstclear(rdrct->in, NULL);
-		ft_lstclear(rdrct->out, NULL);
+		ft_lstclear(&rdrct->in, NULL);
+		ft_lstclear(&rdrct->out, NULL);
 		if (rdrct->copy.is0)
 			close(rdrct->copy.fd[0]);
 		if (rdrct->copy.is1)
@@ -228,11 +206,36 @@ static int	exec_cmd(char **args, t_rdrct *rdrct)
 		dup2(rdrct->outall.pipefd[1], 1);
 		execve(args[0], args, g_param->env);
 	}
-	//else
-	//{
-		write(rdrct->outall.pipefd[1], "Hello from parent!\n", 19);
+	else
+	{
+		// test if we've written to writer
+		// char	buf[1000];
+		// write(1, buf, read(rdrct->outall.pipefd[0], buf, 1000));
+		// exit(1);
+		// write(rdrct->outall.pipefd[1], "Hello from parent!\n", 19);
 		//exit(1);
 		//Do I need to close copy[] ?
+			writer_pid = fork();
+			if (!writer_pid)
+			{
+				if (rdrct->pipe.is)
+					close(rdrct->pipe.pipefd[0]);
+				if (rdrct->copy.is0)
+					close(rdrct->copy.fd[0]);
+				if (rdrct->copy.is1)
+					close(rdrct->copy.fd[1]);
+				if (rdrct->inall.is)
+				{
+					close(rdrct->inall.pipefd[0]);
+					close(rdrct->inall.pipefd[1]);
+				}
+				close(rdrct->outall.pipefd[1]);
+				out(&rdrct->out, rdrct->outall.pipefd[0]);
+				close(rdrct->outall.pipefd[0]);
+				ft_lstclear(&rdrct->in, NULL);
+				ft_lstclear(&rdrct->out, NULL);
+				exit(1);
+			}
 		if (rdrct->inall.is)
 		{
 			close(rdrct->inall.pipefd[0]);
@@ -242,15 +245,19 @@ static int	exec_cmd(char **args, t_rdrct *rdrct)
 		close(rdrct->outall.pipefd[1]);
 		rdrct->outall.is = false;
 		rdrct->inall.is = false;
-		ft_lstclear(rdrct->out, NULL);
-		ft_lstclear(rdrct->in, NULL);
-	//}
+		ft_lstclear(&rdrct->out, NULL);
+		ft_lstclear(&rdrct->in, NULL);
+	}
+
+	// waitpid(pid, NULL, 0);
+	// wait(NULL);
 	return (pid);
 }
 
 /*\
  *
  *		Executes braces sublst alongsiede with braces sublst writer child
+ *	ATTENTION! DANGEROUS FUNC! NOT YET DEBUGGED!
  *
 \*/
 static int	exec_braces(t_list sublst, t_rdrct *rdrct, int *exitcode)
@@ -258,7 +265,7 @@ static int	exec_braces(t_list sublst, t_rdrct *rdrct, int *exitcode)
 	int	writer_pid;
 
 	if (rdrct->inall.is)
-		in(rdrct->in, rdrct->inall.pipefd[1]);
+		in(&rdrct->in, rdrct->inall.pipefd[1]);
 	writer_pid = fork();
 	if (!writer_pid)
 	{
@@ -274,10 +281,10 @@ static int	exec_braces(t_list sublst, t_rdrct *rdrct, int *exitcode)
 			close(rdrct->inall.pipefd[1]);
 		}
 		close(rdrct->outall.pipefd[1]);
-		out(rdrct->out, rdrct->outall.pipefd[0]);
+		out(&rdrct->out, rdrct->outall.pipefd[0]); //need to remade this func
 		close(rdrct->outall.pipefd[0]);
-		ft_lstclear(rdrct->in, NULL);
-		ft_lstclear(rdrct->out, NULL);
+		ft_lstclear(&rdrct->in, NULL);
+		ft_lstclear(&rdrct->out, NULL);
 		exit(1);
 	}
 	if (rdrct->inall.is)
@@ -338,7 +345,7 @@ static int	openpipe(t_rdrct *rdrct, int direction)
 	{
 		rdrct->pipe.is = true;
 		pipe(rdrct->pipe.pipefd);
-		ft_lstadd_back(rdrct->out, (void *)((long long)rdrct->pipe.pipefd[1]));
+		ft_lstadd_back(&rdrct->out, (void *)((long long)rdrct->pipe.pipefd[1]));
 	}
 	else
 	{
