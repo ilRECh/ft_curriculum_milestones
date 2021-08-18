@@ -57,9 +57,9 @@ static int	ft_rdrct(char to, t_rdrct *rdrct, t_parse *file)
 		close(pipefd[1]);
 	}
 	else if (to == RDCT_R)
-		ft_lstadd_back(&rdrct->out, (void *)((long long)open(file->argv[1], O_WRONLY | O_CREAT | O_TRUNC)));
+		ft_lstadd_back(&rdrct->out, (void *)((long long)open(file->argv[1], O_WRONLY | O_CREAT | O_TRUNC, 00777)));
 	else if (to == RDCT_R2)
-		ft_lstadd_back(&rdrct->out, (void *)((long long)open(file->argv[1], O_WRONLY | O_CREAT | O_APPEND)));
+		ft_lstadd_back(&rdrct->out, (void *)((long long)open(file->argv[1], O_WRONLY | O_CREAT | O_APPEND, 00777)));
 	return (0);
 }
 
@@ -155,8 +155,6 @@ static void	out(t_list *out, int outfd)
 	char	buf[1000];
 
 	rd = 1;
-	write(1, "OKAY!\n", 6);
-	printf("printfokay\n%p\n", out);
 	if (out && ft_lstsize(*out))
 	{
 		while (rd > 0)
