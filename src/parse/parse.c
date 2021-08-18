@@ -1,111 +1,105 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: csamuro <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/18 06:20:48 by csamuro           #+#    #+#             */
+/*   Updated: 2021/08/18 06:20:49 by csamuro          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "parse.h"
 
-t_parse	*add_data_tolst(short sp_prev, char *line, char *ln)
+void	if_redir(t_wheel *w)
+{
+	if (w->ln != w->line)
+		ft_lstadd_back(
+			w->lst,
+			pars_gen_fill(
+				argv_fill_1(
+					trimmer(
+						ft_strndup(w->line, w->ln - w->line), " ")),
+				w->sp_prev));
+	while (*w->ln && ft_strchr("<> ", *++w->ln))
+		;
+	w->sp_prev = w->sp;
+	w->line = w->ln;
+}
+
+void	if_pipe_oper_end(t_wheel *w)
+{
+	if (w->ln != w->line)
+		ft_lstadd_back(w->lst,
+			pars_gen_fill(
+				argv_fill_1(
+					trimmer(
+						ft_strndup(w->line, w->ln - w->line), " ")),
+				w->sp_prev));
+	ft_lstadd_back(w->lst, pars_gen_fill((char **) NULL, w->sp));
+	while (*w->ln && ft_strchr(";&| ", *++w->ln))
+		;
+	w->sp_prev = (w->sp = 0);
+	w->line = w->ln;
+}
+
+void	if_sub_lst(t_wheel *w)
 {
 	char	**argv;
 
-	argv = (char **)malloc(sizeof(char *) * 2);
-	argv[0] = trimmer(ft_strndup(line, ln - line), " ");
-	argv[1] = NULL;
-	return (pars_gen_fill(argv, sp_prev));
+	if (w->ln != w->line)
+		ft_lstadd_back(w->lst,
+			pars_gen_fill(
+				argv_fill_1(
+					trimmer(
+						ft_strndup(w->line, w->ln - w->line), " ")),
+				w->sp_prev));
+	argv = argv_fill_2(ft_strdup(CASE),
+			(char *)split_ignore_caps(w->ln + 1, 0));
+	ft_lstadd_back(w->lst, pars_gen_fill(argv, 0));
+	case_skip(&w->ln);
+	while (*w->ln == ' ')
+		w->ln++;
+	w->sp_prev = w->sp;
+	w->line = w->ln;
+}
+
+t_list	*if_close_bracket(t_wheel *w)
+{
+	if (w->ln != w->line)
+		ft_lstadd_back(w->lst,
+			pars_gen_fill(
+				argv_fill_1(
+					trimmer(
+						ft_strndup(w->line, w->ln - w->line), " ")),
+				w->sp_prev));
+	return (w->lst);
 }
 
 t_list	*split_ignore_caps(char *line, short sp_prev)
 {
-	int		cases;
-	char	**argv;
-	t_list	*lst;
-	char	*ln;
-	short	sp;
+	t_wheel	w;
 
-	sp = 0;
+	w.sp = 0;
+	w.sp_prev = sp_prev;
 	while (*line == ' ')
 		line++;
-	ln = line;
-	lst = ft_calloc(1, sizeof(t_list));
-	while (*ln)
+	w.ln = line;
+	w.line = line;
+	w.lst = ft_calloc(1, sizeof(t_list));
+	while (*w.ln)
 	{
-		skip_quotation(&ln);
-		sp = is_split(ln);
-		while (*ln && !sp)
-		{
-			if (ft_strchr("\"\'", *ln) && *(ln - 1) != '\\')
-				skip_quotation(&ln);
-			else
-				ln++;
-			sp = is_split(ln);
-		}
-		if (!*ln || (sp > 0 && sp < 5))	// если редиректы
-		{
-			if (ln != line )
-				ft_lstadd_back(lst, add_data_tolst(sp_prev, line, ln));
-			while (*ln && ft_strchr("<> ", *++ln))
-				;
-			sp_prev = sp;
-			line = ln;
-		}
-		else if (sp > 4 && sp < 9)	// если пайпы, операторы или конец (в отдельный элементос)
-		{
-			if (ln != line )
-				ft_lstadd_back(lst, add_data_tolst(sp_prev, line, ln));
-			ft_lstadd_back(lst, pars_gen_fill((char **)NULL, sp));
-			while (*ln && ft_strchr(";&| ", *++ln))
-				;
-			sp_prev = sp = 0;
-			line = ln;
-		}
-		else if (sp == 9)	// если скобки, (субмассив, рекурсия) и скипнуть скобки нах для текущей операции
-		{
-			cases = 1;
-			if (ln != line )
-				ft_lstadd_back(lst, add_data_tolst(sp_prev, line, ln));
-			argv = (char **)malloc(sizeof(char *) * 3);
-			argv[0] = ft_strdup(CASE);
-			argv[1] = (char *)split_ignore_caps(ln + 1, 0);
-			argv[2] = NULL;
-			ft_lstadd_back(lst, pars_gen_fill(argv, 0));
-			while (*ln && *++ln && cases)
-			{
-				if (*ln == '(')
-					cases++;
-				if (*ln == ')')
-					cases--;
-			}
-			while(*ln == ' ')
-				ln++;
-			sp_prev = sp;
-			line = ln;
-		}
-		else if (sp == 10)
-		{
-			if (ln != line )
-				ft_lstadd_back(lst, add_data_tolst(sp_prev, line, ln));
-			return (lst);
-		}
+		skip_quotation(&w.ln);
+		get_next_sp(&w.ln, &w.sp);
+		if (!*w.ln || (w.sp > 0 && w.sp < 5))
+			if_redir(&w);
+		else if (w.sp > 4 && w.sp < 9)
+			if_pipe_oper_end(&w);
+		else if (w.sp == 9)
+			if_sub_lst(&w);
+		else if (w.sp == 10)
+			return (if_close_bracket(&w));
 	}
-	return (lst);
-}
-
-t_list	*get_command_line(char **line)
-{
-	t_list	*lst;
-
-	// printf("%s\n", *line);
-	// printf("%s\n", *line);
-	if (pre_parser(*line))
-		return(NULL);
-	// printf("%s\n", *line);
-	// printf(CYAN "{" RESET);
-	// printf(MAGENTA "  lst" RESET);
-	*line = dollar_get_env(*line);		//раскрываем переменную из \$
-	lst = split_ignore_caps(*line, 0);			//Делим по листам (&& = AND), (|| == OR), (; == END)
-	lst = split_sub_argutils(lst);				//Инициализация сырых значений
-	test_print_lst(lst, 0);						//смотрим результат
-	// printf(CYAN "\n}\n\n" RESET);
-	printf(RESET);
-	printf("\n");
-
-
-
-	return (lst);
+	return (w.lst);
 }

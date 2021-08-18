@@ -1,4 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   is_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: csamuro <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/18 06:20:32 by csamuro           #+#    #+#             */
+/*   Updated: 2021/08/18 06:20:34 by csamuro          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "parse.h"
+
+short	sub_is_split(char *str)
+{
+	if (*(str) == '&')
+		return (AND);
+	if (*(str) == '|')
+		return (OR);
+	if (*(str) == '<')
+		return (RDCT_L2);
+	if (*(str) == '>')
+		return (RDCT_R2);
+	return (0);
+}
 
 short	is_split(char *str)
 {
@@ -9,23 +34,14 @@ short	is_split(char *str)
 	if (*(str) == ')' && *(str - 2) != '\\')
 		return (CASE_CLOSE);
 	if (*(str) == *(str + 1))
-	{
-		if (*(str) == '&')
-			return (AND);
-		if (*(str) == '|')
-			return(OR);
-		if (*(str) == '<')
-			return(RDCT_L2);
-		if (*(str) == '>')
-			return(RDCT_R2);
-	}
+		return (sub_is_split(str));
 	if (*(str) == ';')
 		return (END);
-	if(*(str) == '|')
+	if (*(str) == '|')
 		return (PIPE);
 	if (*(str) == '<')
-		return(RDCT_L);
+		return (RDCT_L);
 	if (*(str) == '>')
-		return(RDCT_R);
-	return(FALSE);
+		return (RDCT_R);
+	return (FALSE);
 }

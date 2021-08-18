@@ -29,48 +29,49 @@
 /*		(	*/	# define CASE_OPEN	9
 /*		)	*/	# define CASE_CLOSE	10
 
-void	test_print_tab(char **split_dots);
-
-// 
-// case 1:
-//	 echo "hello world" > file1 | cat file1 && ./a.out 5 4 3 2 1 | checker 5 4 3 2 1
-//
-
-//* Удалить!
 typedef struct  s_parse
 {
-	//  имя утилиты
-	char    		**argv;
 	//  Аргументы для утилиты || или если утилита не задана, то это название файла
+	char    		**argv;
 	unsigned short	oper;
-
-//	(; | || &&)	отдельным элементом
-//	(< > << >>) File1 2 3 ... отнести к файлам, а не утилитам.
-
+	//	(; | || &&)	отдельным элементом
+	//	(< > << >>) File1 2 3 ... отнести к файлам, а не утилитам.
 	//	разделитель	(&& = AND), (|| == OR), (; == END) (| == PIPE)
 	//	Редиректы > < >> << RDCT_R, RDCT_L, RDCT_R2, RDCT_L
 }   t_parse;
 
-
-typedef struct  s_void
+typedef struct	s_wheel
 {
-	//  имя утилиты
-	void	*data;
-	int		open;
-}   t_void;
-//* это
+	t_list	*lst;
+	char	*line;
+	char	*ln;
+	short	sp_prev;
+	short	sp;
+}	t_wheel;
+
 char	*dollar_get_env(char *line);
 char	*ft_strjoin_free(char *s1, char *s2, short fr);
 t_list	*get_command_line(char **line);
 char	*trimmer(char *str, char *c);
 t_list	*split_sub_argutils(t_list *lst);
 _Bool	ret_perr(const char *mess);
-char	*is_util_exists(char *file_path);	// Существует ли утилита, во всех путях
+char	*is_util_exists(char *file_path);
 _Bool	pre_parser(char *line);
 t_parse	*pars_gen_fill(char **argv, unsigned short oper);
 short	is_split(char *str);
+int		skip_quote(char *str, int *k, char quote, char is_slash);
 void	skip_quotation(char **ln);
 _Bool	skip_open_case(char **ln);
+void	case_skip(char **ln);
+
+char	**argv_fill_1(char *str1);
+char	**argv_fill_2(char *str1, char *str2);
+
+void	get_next_sp(char **ln, short *sp);
+t_list	*split_ignore_caps(char *line, short sp_prev);
+
+char	**list_to_char2(t_list *lst);
+void	lst_trimmer(t_list *lst);
 
 void	test_print_tab(char **split_dots);
 char	*test_opers(unsigned short oper);

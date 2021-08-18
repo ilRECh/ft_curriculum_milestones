@@ -1,21 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   dollar_get_env.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: csamuro <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/18 06:19:57 by csamuro           #+#    #+#             */
+/*   Updated: 2021/08/18 06:19:59 by csamuro          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "parse.h"
-
-// char	*find_env_value(char *needle, char **env)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (*env)
-// 	{
-// 		while (needle[i] && env[0][i] && needle[i] == env[0][i])
-// 			i++;
-// 		if(!needle[i])
-// 			return(ft_strdup(&env[0][++i]));
-// 		env++;
-// 	}
-//     free(needle);
-// 	return (ft_strdup(" "));
-// }
 
 int	min_border(int num)
 {
@@ -32,7 +27,7 @@ char	*set_env(char *line, char *ln)
 	int		len;
 
 	klen = 0;
-    tmp_fr = line;
+	tmp_fr = line;
 	while (ln[klen] && !ft_strchr(" \"\'$", ln[klen]))
 		klen++;
 	needle = ft_strndup(ln, klen);
@@ -49,30 +44,11 @@ char	*set_env(char *line, char *ln)
 	free(needle);
 	if (!line)
 		return (NULL);
-    free(tmp_fr);
-	return(line);
+	free(tmp_fr);
+	return (line);
 }
 
-// char	*set_env(char *line, char *ln)
-// {
-// 	char	*first_part;
-// 	char	*needle;
-// 	char	*tmp_fr;
-// 	int		k;
-
-// 	k = 0;
-//     tmp_fr = line;
-// 	first_part = ft_strndup(line, min_border(ln - line - 1));
-// 	while (ln[k] && !ft_strchr(" \"\'$", ln[k]))
-// 		k++;
-// 	needle = ft_strndup(ln, k);
-// 	line = ft_strjoin_free(first_part, getvalue(needle), 1);
-// 	line = ft_strjoin_free(line, ft_strdup(ln + k), 3);
-//     free(tmp_fr);
-// 	return(line);
-// }
-
-char *dollar_get_env(char *line)
+char	*dollar_get_env(char *line)
 {
 	char	*ln;
 	int		len;
@@ -80,9 +56,9 @@ char *dollar_get_env(char *line)
 
 	ln = line;
 	len = ft_strlen(line);
-	while(*ln)
+	while (*ln)
 	{
-		if(*ln == '\'' && (ln == line || *(ln - 1) != '\\'))
+		if (*ln == '\'' && (ln == line || *(ln - 1) != '\\'))
 			while (*++ln && *ln != '\'')
 				;
 		if (*ln == '$' && (line == ln || *(ln - 1) != '\\'))

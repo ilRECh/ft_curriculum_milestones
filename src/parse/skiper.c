@@ -1,4 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   skiper.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: csamuro <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/18 06:21:22 by csamuro           #+#    #+#             */
+/*   Updated: 2021/08/18 06:21:23 by csamuro          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "panel.h"
+
+void	case_skip(char **ln)
+{
+	int	cases;
+
+	cases = 1;
+	while (*(*ln) && *++(*ln) && cases)
+	{
+		if (*(*ln) == '(')
+			cases++;
+		if (*(*ln) == ')')
+			cases--;
+	}
+}
 
 void	skip_quotation(char **ln)
 {
@@ -32,4 +58,21 @@ _Bool	skip_open_case(char **ln)
 	if (cnt_case)
 		return (FALSE);
 	return (TRUE);
+}
+
+int	skip_quote(char *str, int *k, char quote, char is_slash)
+{
+	int	i;
+
+	i = (*k) + 1;
+	if (is_slash)
+	{
+		while ((str[++i] && str[i] != quote)
+			|| (str[i] == quote && str[i - 1] == is_slash))
+			;
+	}
+	else
+		while ((str[++i] && str[i] != quote))
+			;
+	return (*k = i + 1);
 }
