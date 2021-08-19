@@ -38,10 +38,17 @@ int	main(int argc, char **argv, char **env)
 	line = (char *)0xFF;
 	while (line)
 	{
+<<<<<<< HEAD
 		line = readline(RED "super " CYAN "shell " RESET);
+=======
+		(line == (char *)0xFF) ? (line = readline(RED "super " CYAN "shell " RESET "> "))
+			: (free(line), line = readline(RED "super " CYAN "shell " RESET "> "));
+>>>>>>> 9bc1f793107326d5c245c9ce2dd2d5e5dd82ed24
 		add_history(line);
 		list_of_parses = get_command_line(&line);
-		//exec
+		exec(list_of_parses);
+		while (wait(NULL) >= 0)
+			;
 	}
 	return (0);
 }
