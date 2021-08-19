@@ -207,13 +207,6 @@ static int	exec_cmd(char **args, t_rdrct *rdrct)
 	}
 	else
 	{
-		// test if we've written to writer
-		// char	buf[1000];
-		// write(1, buf, read(rdrct->outall.pipefd[0], buf, 1000));
-		// exit(1);
-		// write(rdrct->outall.pipefd[1], "Hello from parent!\n", 19);
-		//exit(1);
-		//Do I need to close copy[] ?
 			writer_pid = fork();
 			if (!writer_pid)
 			{
