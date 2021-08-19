@@ -16,7 +16,7 @@ void	test_print_tab(char **split_dots)
 {
 	if (split_dots && *split_dots)
 		while (*split_dots)
-			printf(YELLOW " %s " RESET, *split_dots++);
+			printf(YELLOW " |%s| " RESET, *split_dots++);
 }
 
 char	*test_opers(unsigned short oper)

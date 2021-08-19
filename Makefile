@@ -80,7 +80,8 @@ PARSE_LIST				=	dollar_get_env.c \
 							get_command_line.c \
 							args_fill.c \
 							get_next_sp.c \
-							lst_helper.c
+							lst_helper.c \
+							is_builtins.c
 
 PARSE_DIR				=	./src/parse/
 PARSE					=	$(addprefix $(PARSE_DIR), $(PARSE_LIST))

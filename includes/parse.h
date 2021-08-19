@@ -56,6 +56,7 @@ char	*trimmer(char *str, char *c);
 t_list	*split_sub_argutils(t_list *lst);
 _Bool	ret_perr(const char *mess);
 char	*is_util_exists(char *file_path);
+_Bool	is_builtins(char *str);
 _Bool	pre_parser(char *line);
 t_parse	*pars_gen_fill(char **argv, unsigned short oper);
 short	is_split(char *str);

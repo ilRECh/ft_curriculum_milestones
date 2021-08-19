@@ -17,12 +17,10 @@ void	if_redir(t_wheel *w)
 	if (w->ln == w->line)
 	{
 		w->sp_prev = w->sp;
-		while (*w->ln && ft_isspace(*w->ln))
+		w->sp = 0;
+		while (*w->ln && (ft_strchr("<>", *w->ln) || ft_isspace(*w->ln)))
 			w->ln++;
-		while (*w->ln && !ft_isspace(*w->ln))
-			w->ln++;
-		while (*w->ln && ft_isspace(*w->ln))
-			w->ln++;
+		w->line = w->ln;
 		w->line = w->ln;
 		while (*w->ln && !ft_isspace(*w->ln))
 			w->ln++;
@@ -34,8 +32,8 @@ void	if_redir(t_wheel *w)
 				trimmer(
 					ft_strndup(w->line, w->ln - w->line), " ")),
 			w->sp_prev));
-	while (*w->ln && ft_strchr("<> ", *++w->ln))
-		;
+	while (*w->ln && (ft_strchr("<>", *w->ln) || ft_isspace(*w->ln)))
+		w->ln++;
 	w->sp_prev = w->sp;
 	w->line = w->ln;
 }
