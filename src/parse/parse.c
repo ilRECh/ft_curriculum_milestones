@@ -14,14 +14,26 @@
 
 void	if_redir(t_wheel *w)
 {
-	if (w->ln != w->line)
-		ft_lstadd_back(
-			w->lst,
-			pars_gen_fill(
-				argv_fill_1(
-					trimmer(
-						ft_strndup(w->line, w->ln - w->line), " ")),
-				w->sp_prev));
+	if (w->ln == w->line)
+	{
+		w->sp_prev = w->sp;
+		while (*w->ln && ft_isspace(*w->ln))
+			w->ln++;
+		while (*w->ln && !ft_isspace(*w->ln))
+			w->ln++;
+		while (*w->ln && ft_isspace(*w->ln))
+			w->ln++;
+		w->line = w->ln;
+		while (*w->ln && !ft_isspace(*w->ln))
+			w->ln++;
+	}
+	ft_lstadd_back(
+		w->lst,
+		pars_gen_fill(
+			argv_fill_1(
+				trimmer(
+					ft_strndup(w->line, w->ln - w->line), " ")),
+			w->sp_prev));
 	while (*w->ln && ft_strchr("<> ", *++w->ln))
 		;
 	w->sp_prev = w->sp;
