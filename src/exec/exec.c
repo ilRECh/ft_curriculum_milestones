@@ -240,9 +240,6 @@ static int	exec_cmd(char **args, t_rdrct *rdrct)
 		ft_lstclear(&rdrct->out, NULL);
 		ft_lstclear(&rdrct->in, NULL);
 	}
-
-	// waitpid(pid, NULL, 0);
-	// wait(NULL);
 	return (pid);
 }
 
@@ -381,9 +378,9 @@ int	exec(t_list *lst)
 				waitpid(pid, &exitcode, 0);
 			if (exitcode)
 			{
+				lst->cur = lst->cur->next;
 				while (lst->cur
 					&& ((t_parse *)lst->cur->content)->oper != END
-					&& ((t_parse *)lst->cur->content)->oper != AND
 					&& ((t_parse *)lst->cur->content)->oper != OR
 					&& ((t_parse *)lst->cur->content)->oper != PIPE)
 						lst->cur = lst->cur->next;
@@ -397,10 +394,10 @@ int	exec(t_list *lst)
 				waitpid(pid, &exitcode, 0);
 			if (!exitcode)
 			{
+				lst->cur = lst->cur->next;
 				while (lst->cur
 					&& ((t_parse *)lst->cur->content)->oper != END
 					&& ((t_parse *)lst->cur->content)->oper != AND
-					&& ((t_parse *)lst->cur->content)->oper != OR
 					&& ((t_parse *)lst->cur->content)->oper != PIPE)
 						lst->cur = lst->cur->next;
 			}
