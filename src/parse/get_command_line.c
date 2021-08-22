@@ -21,6 +21,8 @@ t_list	*get_command_line(char **line)
 	*line = dollar_get_env(*line);
 	lst = split_ignore_caps(*line, 0);
 	lst = split_sub_argutils(lst);
+	if (post_parser(lst))
+		return (NULL);
 	test_print_lst(lst, 0);
 	printf(RESET);
 	printf("\n");
