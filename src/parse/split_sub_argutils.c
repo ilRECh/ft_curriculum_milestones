@@ -70,6 +70,7 @@ void	to_separate_util_args(t_parse *parse, t_list *lst)
 	lst_trimmer(lst);
 	parse->argv = list_to_char2(lst);
 	ft_lstclear(lst, NULL);
+	free(lst);
 }
 
 void	sub_repetat(char **str, int *i)

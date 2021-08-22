@@ -114,5 +114,8 @@ t_list	*split_ignore_caps(char *line, short sp_prev)
 		else if (w.sp == 10)
 			return (if_close_bracket(&w));
 	}
+	free(line);
+	w.line = NULL;
+	w.ln = NULL;
 	return (w.lst);
 }

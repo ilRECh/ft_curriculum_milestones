@@ -27,14 +27,15 @@ char	*set_env(char *line, char *ln)
 	int		len;
 
 	klen = 0;
-	tmp_fr = line;
-	while (ln[klen] && !ft_strchr(" \"\'$", ln[klen]))
+	while (ln[klen] && !ft_strchr(" /\"\'$", ln[klen]))
 		klen++;
 	needle = ft_strndup(ln, klen);
 	if (!needle)
 		return (NULL);
 	len = min_border(ln - line - 1);
+	tmp_fr = line;
 	line = ft_strjoin_free(ft_strndup(line, len), getvalue(needle), 1);
+	free(tmp_fr);
 	if (!line)
 	{
 		free(needle);
@@ -42,9 +43,6 @@ char	*set_env(char *line, char *ln)
 	}
 	line = ft_strjoin_free(line, ft_strdup(ln + klen), 3);
 	free(needle);
-	if (!line)
-		return (NULL);
-	free(tmp_fr);
 	return (line);
 }
 

@@ -42,6 +42,9 @@ int	main(int argc, char **argv, char **env)
 		add_history(line);
 		list_of_parses = get_command_line(&line);
 		//exec
+		if (list_of_parses)
+			ft_lstclear(list_of_parses, free_parse);
+		free(list_of_parses);
 	}
 	return (0);
 }
