@@ -11,3 +11,5 @@ minishell
 .vscode/settings.json
 case
 file1
+*/file*
+file*

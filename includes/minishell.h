@@ -19,6 +19,8 @@
 # include <stdio.h>
 # include <string.h>
 # include <sys/types.h>
+# include <sys/time.h>
+# include <sys/resource.h>
 # include <sys/stat.h>
 # include <sys/wait.h>
 # include <fcntl.h>
@@ -43,9 +45,14 @@ typedef struct s_param
 \*/  
 typedef struct s_rdrct
 {
-	t_list		*in;
-	t_list		*out;
-	int			copy[2];
+	t_list		in;
+	t_list		out;
+	struct s_copy
+	{
+		bool	is0;
+		bool	is1;
+		int		fd[2];
+	}			copy;
 	struct s_pipe
 	{
 		bool	is;
@@ -99,7 +106,7 @@ void	free_tabs(char **tab);
  *	EXECUTION
  * 
 \*/
-// int		exec(t_list *lst);
+int		exec(t_list *lst);
 // void	exec_cmd(t_list args, char **envp);
 
 
