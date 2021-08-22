@@ -5,29 +5,12 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
-			"name": "Debugger",
-			"type": "cppdbg",
+			"type": "lldb",
 			"request": "launch",
+			"name": "Debug",
 			"program": "${workspaceFolder}/minishell",
-			"args": [
-			],
-			"stopAtEntry": false,
-			"cwd": "${fileDirname}",
-			"environment": [
-				{
-					"name": "PWD",
-					"value": "Hello therer bitch"
-				}
-			],
-			"externalConsole": false,
-			"MIMode": "gdb",
-			"setupCommands": [
-				{
-					"description": "Enable pretty-printing for gdb",
-                    "text": "-enable-pretty-printing",
-                    "ignoreFailures": true
-				}
-			]
+			"args": [],
+			"cwd": "${workspaceFolder}"
 		}
 	]
 }
