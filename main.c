@@ -34,6 +34,7 @@ int	main(int argc, char **argv, char **env)
 	(void)list_of_parses;
 	//* START TEST
 	char	*line;
+
 	line = (char *)0xFF;
 	while (line)
 	{
@@ -42,7 +43,7 @@ int	main(int argc, char **argv, char **env)
 		add_history(line);
 		list_of_parses = get_command_line(&line);
 		exec(list_of_parses);
-		while (wait(&g_param->ret) >= 0)
+		while (wait(NULL) >= 0)
 			;
 	}
 	return (0);

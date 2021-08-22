@@ -165,7 +165,7 @@ static void	out(t_list *out, int outfd)
 			rd = read(outfd, buf, 1000);
 			while (out->cur)
 			{
-				printf("%zd\n", write((int)out->cur->content, buf, rd));
+				write((int)out->cur->content, buf, rd);
 				out->cur = out->cur->next;
 			}
 		}
