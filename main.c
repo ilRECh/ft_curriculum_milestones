@@ -39,9 +39,9 @@ int	main(int argc, char **argv, char **env)
 	(void)argc;
 	(void)argv;
 	(void)env;
+// control + c
 	struct sigaction	control_c;
 
-// control + c
 	ft_memset(&control_c, 0, sizeof(control_c));
 	control_c.sa_sigaction = ctrl_c;
 	control_c.sa_flags = SA_SIGINFO;
