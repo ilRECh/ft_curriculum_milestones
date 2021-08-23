@@ -1,4 +1,5 @@
 #include "minishell.h"
+#include "signal.h"
 
 t_param	*g_param;
 
@@ -22,11 +23,31 @@ static char	**setup_env(char **env)
 	return (environ_);
 }
 
+// control + c
+void	ctrl_c(int signum, siginfo_t *siginfo, void *code)
+{
+	(void)signum;
+	(void)siginfo;
+	(void)code;
+	printf("\n");
+	execve("minishell", NULL, g_param->env);
+}
+// control + c; end
+
 int	main(int argc, char **argv, char **env)
 {
 	(void)argc;
 	(void)argv;
 	(void)env;
+	struct sigaction	control_c;
+
+// control + c
+	ft_memset(&control_c, 0, sizeof(control_c));
+	control_c.sa_sigaction = ctrl_c;
+	control_c.sa_flags = SA_SIGINFO;
+	sigaction(SIGINT, &control_c, NULL);
+// control + c; end
+
 	g_param = ft_calloc(1, sizeof(t_param));
 	g_param->env = setup_env(env);
 	g_param->stdin_copy = dup(0);
