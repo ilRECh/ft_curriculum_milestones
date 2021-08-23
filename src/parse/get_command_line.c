@@ -28,7 +28,7 @@ t_list	*get_command_line(char **line)
 	lst = split_sub_argutils(lst);
 	if (post_parser(lst))
 		return (NULL);
-	// test_print_lst(lst, 0);
+	test_print_lst(lst, 0);
 	// printf(RESET);
 	// printf("\n");
 	return (lst);
