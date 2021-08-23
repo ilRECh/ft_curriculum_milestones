@@ -41,7 +41,7 @@ int	main(int argc, char **argv, char **env)
 		line = readline(RED "super " CYAN "shell " RESET "$> ");
 		add_history(line);
 		list_of_parses = get_command_line(&line);
-		//exec
+		// exec
 		exec(list_of_parses);
 		while (wait(NULL) >= 0)
 			;
