@@ -86,8 +86,10 @@ t_parse	*sub_parse(t_parse *tosub_pars)
 			ft_lstadd_back(lst, ft_strndup(str, i));
 			sub_repetat(&str, &i);
 		}
-		else if (!str[i] || str[i] == ' ')
+		else if (!str[i] || str[i] == ' ' || ft_strchr("\"\'", str[i + 1]))
 		{
+			if (!(!str[i] || str[i] == ' ') && ft_strchr("\"\'", str[i + 1]))
+				i++;
 			ft_lstadd_back(lst, ft_strndup(str, i));
 			sub_repetat(&str, &i);
 		}

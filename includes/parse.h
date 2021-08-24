@@ -60,6 +60,7 @@ _Bool	ret_perr(const char *mess);
 char	*is_util_exists(char *file_path);
 _Bool	is_builtins(char *str);
 _Bool	pre_parser(char *line);
+char	*slash_parse(char *str);
 _Bool	post_parser(t_list *lst);
 t_parse	*pars_gen_fill(char **argv, unsigned short oper);
 short	is_split(char *str);

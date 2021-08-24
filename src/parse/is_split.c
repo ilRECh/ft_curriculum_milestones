@@ -29,9 +29,9 @@ short	is_split(char *str)
 {
 	if (!str || !*(str) || *(str - 1) == '\\')
 		return (0);
-	if (*(str) == '(' && *(str - 2) != '\\')
+	if (*(str) == '(' && *(str - 1) != '\\')
 		return (CASE_OPEN);
-	if (*(str) == ')' && *(str - 2) != '\\')
+	if (*(str) == ')' && *(str - 1) != '\\')
 		return (CASE_CLOSE);
 	if (*(str) == *(str + 1))
 		return (sub_is_split(str));
