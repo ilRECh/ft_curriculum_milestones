@@ -30,7 +30,7 @@ char	*set_env(char *line, char *ln)
 	while (ln[klen] && !ft_strchr(" /\"\'$", ln[klen]))
 		klen++;
 	if (!klen)
-		return (line);
+		return (NULL);
 	needle = ft_strndup(ln, klen);
 	if (!needle)
 		return (NULL);
@@ -51,11 +51,9 @@ char	*set_env(char *line, char *ln)
 char	*dollar_get_env(char *line)
 {
 	char	*ln;
-	int		len;
-	int		len2;
+	char	*tmp;
 
 	ln = line;
-	len = ft_strlen(line);
 	while (*ln)
 	{
 		if (*ln == '\'' && (ln == line || *(ln - 1) != '\\'))
@@ -63,14 +61,12 @@ char	*dollar_get_env(char *line)
 				;
 		if (*ln == '$' && (line == ln || *(ln - 1) != '\\'))
 		{
-			line = set_env(line, ++ln);
-			if (!line)
-				exit((short)ret_perr("malloc err, dollar") + 1);
-			len2 = ft_strlen(line);
-			if (!*ln)
-				break ;
-			ln = line;
-			len = len2;
+			tmp = set_env(line, ++ln);
+			if (tmp)
+			{
+				line = tmp;
+				ln = line;
+			}
 		}
 		ln++;
 	}
