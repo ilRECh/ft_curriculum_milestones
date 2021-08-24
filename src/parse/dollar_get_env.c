@@ -29,6 +29,8 @@ char	*set_env(char *line, char *ln)
 	klen = 0;
 	while (ln[klen] && !ft_strchr(" /\"\'$", ln[klen]))
 		klen++;
+	if (!klen)
+		return (line);
 	needle = ft_strndup(ln, klen);
 	if (!needle)
 		return (NULL);
@@ -65,6 +67,8 @@ char	*dollar_get_env(char *line)
 			if (!line)
 				exit((short)ret_perr("malloc err, dollar") + 1);
 			len2 = ft_strlen(line);
+			if (!*ln)
+				break ;
 			ln = line;
 			len = len2;
 		}

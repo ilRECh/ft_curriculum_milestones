@@ -22,7 +22,10 @@ _Bool	post_parser(t_list *lst)
 	}
 	if (is_was_file_redir)
 	{
-		printf("Error: not found %s\n", ((t_parse *)lst->cur)->argv[1]);
+		if (lst->cur)
+			printf("Error: not found %s\n", ((t_parse *)lst->cur)->argv[1]);
+		else
+			printf("Error: not valid \n");
 		ft_lstclear(lst, free_parse);
 	}
 	return (is_was_file_redir);
