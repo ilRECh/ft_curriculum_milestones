@@ -14,6 +14,10 @@
 
 static inline int	isaln(char *par)
 {
+	if (par && *par == '-')
+		par += 1;
+	else
+		return (0);
 	while (par && *par)
 		if (*par++ != 'n')
 			return (0);
@@ -24,7 +28,7 @@ int	ft_echo(char **argv)
 {
 	uint8_t	flag_nl;
 
-	if (!ft_strncmp(argv[1], "-n", 2) && isaln(argv[1] + 1))
+	if (!ft_strncmp(argv[1], "-n", 2) && isaln(argv[1]))
 	{
 		argv += 1;
 		flag_nl = 0;

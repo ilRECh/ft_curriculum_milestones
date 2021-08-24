@@ -83,12 +83,13 @@ extern t_param	*g_param;
  * 
 \*/
 int		ft_cd(char **args);
-int		ft_export(char **args);
-int		print_exp(void);
 int		ft_echo(char **args);
 int		ft_env(char **args);
-int		ft_unset(char **args);
 int		ft_exit(char **args);
+int		ft_export(char **args);
+int		print_exp(void); //for the ft_export func
+int		ft_pwd(char **args);
+int		ft_unset(char **args);
 
 /*\
  *
@@ -107,7 +108,6 @@ void	free_tabs(char **tab);
  * 
 \*/
 int		exec(t_list *lst);
-// void	exec_cmd(t_list args, char **envp);
 
 
 /*\
