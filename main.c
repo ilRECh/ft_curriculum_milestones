@@ -29,8 +29,8 @@ void	ctrl_c(int signum, siginfo_t *siginfo, void *code)
 	(void)signum;
 	(void)siginfo;
 	(void)code;
-	printf("\n");
-	execve("minishell", NULL, g_param->env);
+	printf("\n" RED "super " CYAN "shell " RESET "$> ");
+	// execve("minishell", NULL, g_param->env);
 }
 // control + c; end
 
