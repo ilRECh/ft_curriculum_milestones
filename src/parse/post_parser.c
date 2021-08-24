@@ -1,9 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   post_parser.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: csamuro <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/24 21:28:20 by csamuro           #+#    #+#             */
+/*   Updated: 2021/08/24 21:28:22 by csamuro          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "parse.h"
 
 static _Bool	check_cmp(t_dlist *dlst)
 {
 	if ((((t_parse *)dlst)->argv && !((t_parse *)dlst)->argv[0]) && \
-	(!(t_parse *)dlst->prev || !((t_parse *)dlst->prev)->argv || !((t_parse *)dlst->prev)->argv[0]) && \
+	(!(t_parse *)dlst->prev || \
+	!((t_parse *)dlst->prev)->argv || !((t_parse *)dlst->prev)->argv[0]) && \
 	!((t_parse *)dlst)->oper)
 		return (TRUE);
 	return (FALSE);
@@ -15,7 +28,7 @@ _Bool	post_parser(t_list *lst)
 
 	lst->cur = lst->head;
 	is_was_file_redir = FALSE;
-	while(lst->cur && !is_was_file_redir)
+	while (lst->cur && !is_was_file_redir)
 	{
 		is_was_file_redir = check_cmp(lst->cur);
 		lst->cur = lst->cur->next;
