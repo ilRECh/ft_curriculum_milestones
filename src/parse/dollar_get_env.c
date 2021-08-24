@@ -61,7 +61,14 @@ char	*dollar_get_env(char *line)
 				;
 		if (*ln == '$' && (line == ln || *(ln - 1) != '\\'))
 		{
-			tmp = set_env(line, ++ln);
+			if (*(ln + 1) == '?')
+			{
+				tmp = ft_strndup(line, ln - line);
+				tmp = ft_strjoin_free(tmp, ft_itoa(g_param->ret), 3);
+				tmp = ft_strjoin_free(tmp, ln + 2, 1);
+			}
+			else
+				tmp = set_env(line, ++ln);
 			if (tmp)
 			{
 				line = tmp;
