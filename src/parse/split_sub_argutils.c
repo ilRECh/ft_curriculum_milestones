@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   split_sub_argutils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csamuro <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 06:21:27 by csamuro           #+#    #+#             */
-/*   Updated: 2021/08/18 06:21:29 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/08/24 21:42:40 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parse.h"
+#include "minishell.h"
 
 int	ft_strlenspace(char *str)
 {

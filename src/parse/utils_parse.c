@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils_parse.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csamuro <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 06:21:44 by csamuro           #+#    #+#             */
-/*   Updated: 2021/08/18 06:21:45 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/08/24 21:42:59 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "minishell.h"
 
 //  0 = no free, 1 = s1 free, 2 = s2 free, 3 = s1 & s2 free;
 char	*ft_strjoin_free(char *s1, char *s2, short fr)

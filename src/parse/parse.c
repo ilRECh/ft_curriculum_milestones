@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csamuro <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 06:20:48 by csamuro           #+#    #+#             */
-/*   Updated: 2021/08/18 06:20:49 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/08/24 21:42:28 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parse.h"
+#include "minishell.h"
 
 void	if_redir(t_wheel *w)
 {

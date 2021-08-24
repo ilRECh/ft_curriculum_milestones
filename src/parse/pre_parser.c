@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   pre_parser.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csamuro <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 06:20:59 by csamuro           #+#    #+#             */
-/*   Updated: 2021/08/18 06:21:02 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/08/24 21:42:30 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parse.h"
+#include "minishell.h"
 
 _Bool	error_handler(int num, int parentheses)
 {

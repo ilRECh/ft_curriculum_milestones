@@ -1,6 +1,7 @@
 {
 	"C_Cpp.dimInactiveRegions": false,
 	"files.associations": {
-		"cstring": "cpp"
+		"cstring": "cpp",
+		"minishell.h": "c"
 	}
 }

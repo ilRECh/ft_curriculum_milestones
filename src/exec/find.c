@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   args_fill.c                                        :+:      :+:    :+:   */
+/*   find.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/18 06:19:43 by csamuro           #+#    #+#             */
-/*   Updated: 2021/08/24 21:42:03 by vcobbler         ###   ########.fr       */
+/*   Created: 2021/08/24 21:19:49 by vcobbler          #+#    #+#             */
+/*   Updated: 2021/08/24 21:40:21 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	**argv_fill_1(char *str1)
+/*\
+ *
+ *		Looks for either braces sublst, or command to execute.
+ *	sublst->cur will point to the element with above containings at the end
+ *	of the func execution.
+ *
+\*/
+void	find_sublst_or_command(t_list *sublst)
 {
-	char	**argv;
-
-	argv = (char **) malloc(sizeof(char *) * 2);
-	argv[0] = str1;
-	argv[1] = NULL;
-	return (argv);
-}
-
-char	**argv_fill_2(char *str1, char *str2)
-{
-	char	**argv;
-
-	argv = (char **) malloc(sizeof(char *) * 3);
-	argv[0] = str1;
-	argv[1] = str2;
-	argv[2] = NULL;
-	return (argv);
+	sublst->cur = sublst->head;
+	while (sublst->cur && sublst->cur != sublst->end && !((t_parse *)sublst->cur->content)->argv[0])
+		sublst->cur = sublst->cur->next;
+	//if ()
 }

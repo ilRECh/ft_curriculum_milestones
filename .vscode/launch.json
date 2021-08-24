@@ -5,44 +5,16 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
-			"name": "(gdb) Attach",
-			"type": "cppdbg",
-			"request": "attach",
-			"program": "${workspaceFolder}/minishell",
-			"processId": "${command:pickProcess}",
-			"MIMode": "gdb",
-			"setupCommands": [
-				{
-					"description": "Enable pretty-printing for gdb",
-					"text": "-enable-pretty-printing",
-					"ignoreFailures": true
-				}
-			]
-		},
-		{
-			"name": "Debugger",
+			"name": "(lldb) Launch",
 			"type": "cppdbg",
 			"request": "launch",
 			"program": "${workspaceFolder}/minishell",
-			"args": [
-			],
+			"args": [],
 			"stopAtEntry": false,
 			"cwd": "${fileDirname}",
-			"environment": [
-				{
-					"name": "PWD",
-					"value": "Hello therer bitch"
-				}
-			],
-			"externalConsole": false,
-			"MIMode": "gdb",
-			"setupCommands": [
-				{
-					"description": "Enable pretty-printing for gdb",
-                    "text": "-enable-pretty-printing",
-                    "ignoreFailures": true
-				}
-			]
+			"environment": [],
+			"externalConsole": true,
+			"MIMode": "lldb"
 		}
 	]
 }

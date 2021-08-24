@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   lst_helper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csamuro <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 06:20:40 by csamuro           #+#    #+#             */
-/*   Updated: 2021/08/18 06:20:41 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/08/24 21:42:21 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parse.h"
+#include "minishell.h"
 
 char	**list_to_char2(t_list *lst)
 {

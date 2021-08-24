@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_gen_fill.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csamuro <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 06:20:52 by csamuro           #+#    #+#             */
-/*   Updated: 2021/08/18 06:20:55 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/08/24 21:42:24 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parse.h"
+#include "minishell.h"
 
 t_parse	*pars_gen_fill(char **argv, unsigned short oper)
 {
