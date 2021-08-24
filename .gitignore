@@ -7,5 +7,9 @@ minishell
 ./.vscode/*
 **a.ou*
 .vscode
+.vscode/launch.json
+.vscode/settings.json
+case
+file1
 */file*
 file*

@@ -27,14 +27,17 @@ char	*set_env(char *line, char *ln)
 	int		len;
 
 	klen = 0;
-	tmp_fr = line;
-	while (ln[klen] && !ft_strchr(" \"\'$", ln[klen]))
+	while (ln[klen] && !ft_strchr(" /\"\'$", ln[klen]))
 		klen++;
+	if (!klen)
+		return (NULL);
 	needle = ft_strndup(ln, klen);
 	if (!needle)
 		return (NULL);
 	len = min_border(ln - line - 1);
+	tmp_fr = line;
 	line = ft_strjoin_free(ft_strndup(line, len), getvalue(needle), 1);
+	free(tmp_fr);
 	if (!line)
 	{
 		free(needle);
@@ -42,20 +45,15 @@ char	*set_env(char *line, char *ln)
 	}
 	line = ft_strjoin_free(line, ft_strdup(ln + klen), 3);
 	free(needle);
-	if (!line)
-		return (NULL);
-	free(tmp_fr);
 	return (line);
 }
 
 char	*dollar_get_env(char *line)
 {
 	char	*ln;
-	int		len;
-	int		len2;
+	char	*tmp;
 
 	ln = line;
-	len = ft_strlen(line);
 	while (*ln)
 	{
 		if (*ln == '\'' && (ln == line || *(ln - 1) != '\\'))
@@ -63,12 +61,12 @@ char	*dollar_get_env(char *line)
 				;
 		if (*ln == '$' && (line == ln || *(ln - 1) != '\\'))
 		{
-			line = set_env(line, ++ln);
-			if (!line)
-				exit((short)ret_perr("malloc err, dollar") + 1);
-			len2 = ft_strlen(line);
-			ln = line;
-			len = len2;
+			tmp = set_env(line, ++ln);
+			if (tmp)
+			{
+				line = tmp;
+				ln = line;
+			}
 		}
 		ln++;
 	}

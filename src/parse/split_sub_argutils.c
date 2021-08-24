@@ -12,22 +12,6 @@
 
 #include "minishell.h"
 
-int	ft_strlenspace(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] && str[i] != ' ')
-	{
-		i++;
-		if (str[i] == '\"')
-			skip_quote(str, &i, '\"', '\\');
-		if (str[i] == '\'')
-			skip_quote(str, &i, '\'', FALSE);
-	}
-	return (i);
-}
-
 void	remove_quotation(t_list *lst)
 {
 	t_list	*tmp;
@@ -48,7 +32,7 @@ void	remove_quotation(t_list *lst)
 	}
 }
 
-void	to_separate_util_args(t_parse *parse, t_list *lst)
+t_parse	*to_separate_util_args(t_parse *parse, t_list *lst)
 {
 	char	*beg;
 	int		i;
@@ -70,6 +54,8 @@ void	to_separate_util_args(t_parse *parse, t_list *lst)
 	lst_trimmer(lst);
 	parse->argv = list_to_char2(lst);
 	ft_lstclear(lst, NULL);
+	free(lst);
+	return (parse);
 }
 
 void	sub_repetat(char **str, int *i)
@@ -106,8 +92,7 @@ t_parse	*sub_parse(t_parse *tosub_pars)
 			sub_repetat(&str, &i);
 		}
 	}
-	to_separate_util_args(tosub_pars, lst);
-	return (tosub_pars);
+	return (to_separate_util_args(tosub_pars, lst));
 }
 
 t_list	*split_sub_argutils(t_list *lst)
