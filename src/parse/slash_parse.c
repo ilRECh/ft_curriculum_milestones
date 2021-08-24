@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   slash_parse.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: csamuro <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/25 01:49:29 by csamuro           #+#    #+#             */
+/*   Updated: 2021/08/25 01:49:31 by csamuro          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 static	void	set_char(char *str, char set)
 {
@@ -24,7 +36,7 @@ static void	apply_slash_mini(char *str)
 	ft_memmove(str, &str[1], ft_strlen(str));
 }
 
-char *slash_parse(char *str)
+char	*slash_parse(char *str)
 {
 	int	i;
 
@@ -38,7 +50,6 @@ char *slash_parse(char *str)
 				apply_slash_full(&str[i]);
 		if (str[i] == '\\')
 			apply_slash_mini(&str[i]);
-
 	}
 	return (str);
 }
