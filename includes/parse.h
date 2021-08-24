@@ -6,12 +6,13 @@
 /*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 23:58:51 by name              #+#    #+#             */
-/*   Updated: 2021/08/24 21:41:37 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/08/24 22:31:11 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSE_H
 # define PARSE_H
+# include "minishell.h"
 # include <readline/readline.h>
 # include <readline/history.h>
 

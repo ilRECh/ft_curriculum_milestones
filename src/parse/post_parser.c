@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   post_parser.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csamuro <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 21:28:20 by csamuro           #+#    #+#             */
-/*   Updated: 2021/08/24 21:28:22 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/08/24 22:33:43 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parse.h"
+#include "minishell.h"
 
 static _Bool	check_cmp(t_dlist *dlst)
 {
