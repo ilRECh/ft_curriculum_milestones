@@ -82,7 +82,6 @@ PARSE_LIST				=	dollar_get_env.c \
 							is_split.c \
 							parse_gen_fill.c \
 							skiper.c \
-							test_and_debug.c \
 							get_command_line.c \
 							args_fill.c \
 							get_next_sp.c \
