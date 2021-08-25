@@ -30,3 +30,17 @@ char	*ft_strjoin_free(char *s1, char *s2, short fr)
 		free(s2);
 	return (res);
 }
+
+_Bool	sub_sub_quote(char *str, int *i)
+{
+	if ((str[(*i)] == '\"' || str[(*i)] == '\'') && str[(*i) - 1] != '\\')
+		ft_memmove(&str[(*i)], &str[(*i) + 1], ft_strlen(&str[(*i)]));
+	while (str[++(*i)] && (!(str[(*i)] == '\"' || str[(*i)] == '\'')
+			|| ((str[(*i)] == '\"' || str[(*i)] == '\'') && \
+			str[(*i) - 1] == '\\')));
+	if (str[(*i)])
+		ft_memmove(&str[(*i)], &str[(*i) + 1], ft_strlen(&str[(*i)]));
+	else if (!str[(*i)] || ft_isspace(str[(*i) + 2]))
+		return (TRUE);
+	return (FALSE);
+}

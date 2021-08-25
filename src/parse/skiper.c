@@ -68,7 +68,7 @@ int	skip_quote(char *str, int *k, char quote, char is_slash)
 	if (is_slash)
 	{
 		while ((str[++i] && str[i] != quote)
-			|| (str[i] == quote && str[i - 1] == is_slash))
+			|| (str[i] == quote && str[i - 1] == '\\'))
 			;
 	}
 	else
