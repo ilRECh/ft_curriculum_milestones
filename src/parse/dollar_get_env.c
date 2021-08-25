@@ -48,6 +48,22 @@ char	*set_env(char *line, char *ln)
 	return (line);
 }
 
+static	char	*set_last_exit_app(char *s1, char *s2)
+{
+	char	*tmp;
+
+	tmp = ft_strndup(s1, s2 - s1);
+	if (!tmp)
+		exit (ret_perr("malloc"));
+	tmp = ft_strjoin_free(tmp, ft_itoa(g_param->ret), 3);
+	if (!tmp)
+		exit (ret_perr("malloc"));
+	tmp = ft_strjoin_free(tmp, s2 + 2, 1);
+	if (!tmp)
+		exit (ret_perr("malloc"));
+	return (tmp);
+}
+
 char	*dollar_get_env(char *line)
 {
 	char	*ln;
@@ -61,13 +77,17 @@ char	*dollar_get_env(char *line)
 				;
 		if (*ln == '$' && (line == ln || *(ln - 1) != '\\'))
 		{
-			tmp = set_env(line, ++ln);
+			if (*(ln + 1) == '?')
+				tmp = set_last_exit_app(line, ln);
+			else
+				tmp = set_env(line, ++ln);
 			if (tmp)
 			{
 				line = tmp;
 				ln = line;
 			}
 		}
+		tmp = NULL;
 		ln++;
 	}
 	return (line);

@@ -58,8 +58,9 @@ t_parse	*to_separate_util_args(t_parse *parse, t_list *lst)
 	return (parse);
 }
 
-void	sub_repetat(char **str, int *i)
+void	sub_repetat(t_list *lst, char **str, int *i)
 {
+	ft_lstadd_back(lst, ft_strndup(*str, *i));
 	(*str) += (*i);
 	while (*(*str) && *(*str) == ' ')
 		(*str)++;
@@ -83,13 +84,13 @@ t_parse	*sub_parse(t_parse *tosub_pars)
 				skip_quote(str, &i, '\"', '\\');
 			else
 				skip_quote(str, &i, '\'', FALSE);
-			ft_lstadd_back(lst, ft_strndup(str, i));
-			sub_repetat(&str, &i);
+			sub_repetat(lst, &str, &i);
 		}
-		else if (!str[i] || str[i] == ' ')
+		else if (!str[i] || str[i] == ' ' || ft_strchr("\"\'", str[i + 1]))
 		{
-			ft_lstadd_back(lst, ft_strndup(str, i));
-			sub_repetat(&str, &i);
+			if (!(!str[i] || str[i] == ' ') && ft_strchr("\"\'", str[i + 1]))
+				i++;
+			sub_repetat(lst, &str, &i);
 		}
 	}
 	return (to_separate_util_args(tosub_pars, lst));

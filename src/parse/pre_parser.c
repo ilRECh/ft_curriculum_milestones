@@ -54,9 +54,9 @@ _Bool	pre_parser(char *line)
 				;
 		if (!line[i])
 			return (error_handler(1, 0));
-		if (line[i] == '(')
+		if (line[i] == '(' && (!i || line[i - 1] != '\\'))
 			parentheses++;
-		else if (line[i] == ')')
+		else if (line[i] == ')' && (!i || line[i - 1] != '\\'))
 			parentheses--;
 	}
 	return (error_handler(0, parentheses));
