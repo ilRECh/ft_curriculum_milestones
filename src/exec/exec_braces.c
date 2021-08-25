@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_braces.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sip <sip@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 21:23:15 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/08/24 21:39:55 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/08/25 13:50:31 by sip              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ int	exec_braces(t_list sublst, t_rdrct *rdrct)
 		close(rdrct->outall.pipefd[1]);
 		out(&rdrct->out, rdrct->outall.pipefd[0]);
 		close(rdrct->outall.pipefd[0]);
-		ft_lstclear(&rdrct->in, ft_close);
-		ft_lstclear(&rdrct->out, ft_close);
+		ft_lstclear(&rdrct->in, NULL);
+		ft_lstclear(&rdrct->out, NULL);
 		exit(0);
 	}
 	if (rdrct->inall.is)
@@ -78,8 +78,8 @@ int	exec_braces(t_list sublst, t_rdrct *rdrct)
 		close(rdrct->outall.pipefd[1]);
 		rdrct->outall.is = false;
 		rdrct->inall.is = false;
-		ft_lstclear(&rdrct->out, ft_close);
-		ft_lstclear(&rdrct->in, ft_close);
+		ft_lstclear(&rdrct->out, NULL);
+		ft_lstclear(&rdrct->in, NULL);
 
 	return (pid);
 }

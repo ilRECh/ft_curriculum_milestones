@@ -6,7 +6,7 @@
 /*   By: sip <sip@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 21:17:34 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/08/25 11:25:50 by sip              ###   ########.fr       */
+/*   Updated: 2021/08/25 13:50:59 by sip              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,8 @@ int	exec(t_list *lst)
 			close(rdrct->outall.pipefd[1]);
 			rdrct->outall.is = false;
 			rdrct->inall.is = false;
-			ft_lstclear(&rdrct->out, ft_close);
-			ft_lstclear(&rdrct->in, ft_close);
+			ft_lstclear(&rdrct->out, NULL);
+			ft_lstclear(&rdrct->in, NULL);
 		}
 		if (lst->cur && ((t_parse *)lst->cur->content)->oper == PIPE)
 			openpipe(rdrct, false);

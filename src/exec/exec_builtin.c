@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_builtin.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sip <sip@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 21:23:41 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/08/24 21:40:04 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/08/25 13:50:15 by sip              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,12 @@ int	exec_builtin(t_list sublst, t_rdrct *rdrct, int *exitcode)
 		close(rdrct->outall.pipefd[1]);
 		out(&rdrct->out, rdrct->outall.pipefd[0]);
 		close(rdrct->outall.pipefd[0]);
-		ft_lstclear(&rdrct->in, ft_close);
-		ft_lstclear(&rdrct->out, ft_close);
+		ft_lstclear(&rdrct->in, NULL);
+		ft_lstclear(&rdrct->out, NULL);
 		exit(0);
 	}
-	ft_lstclear(&rdrct->in, ft_close);
-	ft_lstclear(&rdrct->out, ft_close);
+	ft_lstclear(&rdrct->in, NULL);
+	ft_lstclear(&rdrct->out, NULL);
 	if (rdrct->copy.is0)
 		close(rdrct->copy.fd[0]);
 	if (rdrct->copy.is1)
@@ -101,8 +101,8 @@ int	exec_builtin(t_list sublst, t_rdrct *rdrct, int *exitcode)
 		close(rdrct->outall.pipefd[1]);
 		rdrct->outall.is = false;
 		rdrct->inall.is = false;
-		ft_lstclear(&rdrct->out, ft_close);
-		ft_lstclear(&rdrct->in, ft_close);
+		ft_lstclear(&rdrct->out, NULL);
+		ft_lstclear(&rdrct->in, NULL);
 
 	return (-1);
 }
