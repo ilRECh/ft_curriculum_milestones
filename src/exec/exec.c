@@ -12,6 +12,11 @@
 
 #include "minishell.h"
 
+void	ft_close(void *fd)
+{
+	close((int)fd);
+}
+
 /*\
  *
  *		Either executes a command, which first has to be found in the sublst, or builtin,
@@ -24,13 +29,15 @@ static int	exec_cmd_or_braces(t_list sublst, t_rdrct *rdrct, int *exitcode)
 
 	pid = 0;
 	find_sublst_or_command(&sublst);
-	if (sublst.cur && ((t_parse *)sublst.cur->content)->argv[0]
+	if (sublst.cur && sublst.cur != sublst.end && ((t_parse *)sublst.cur->content)->argv[0]
 		&& !ft_strncmp(((t_parse *)sublst.cur->content)->argv[0], CASE, ft_strlen(CASE)))
 		pid = exec_braces(sublst, rdrct);
-	else if (check_builtin(((t_parse *)sublst.cur->content)->argv[0]))
+	else if (sublst.cur && sublst.cur != sublst.end && check_builtin(((t_parse *)sublst.cur->content)->argv[0]))
 		pid = exec_builtin(sublst, rdrct, exitcode);
-	else
+	else if (sublst.cur && sublst.cur != sublst.end)
 		pid = exec_cmd(((t_parse *)sublst.cur->content)->argv, rdrct);
+	else
+		pid = -42;
 	return (pid);
 }
 
@@ -58,19 +65,26 @@ int	exec(t_list *lst)
 		if (lst->cur && ((t_parse *)lst->cur->content)->oper == PIPE)
 			openpipe(rdrct, true);
 		pid = exec_cmd_or_braces(sublst, rdrct, &exitcode);
+		if (pid == -42)
+		{
+			printf("command not found\n");
+			exitcode = 1;
+		}
 		if (lst->cur && ((t_parse *)lst->cur->content)->oper == PIPE)
 			openpipe(rdrct, false);
 		if (lst->cur && ((t_parse *)lst->cur->content)->oper == AND)
 		{
 			if (pid > 0)
-				waitpid(pid, &exitcode, 0);
+			{
+				if (waitpid(pid, &exitcode, 0) < 0)
+					exitcode = g_param->ret;
+			}
 			if (exitcode)
 			{
 				lst->cur = lst->cur->next;
 				while (lst->cur
 					&& ((t_parse *)lst->cur->content)->oper != END
-					&& ((t_parse *)lst->cur->content)->oper != OR
-					&& ((t_parse *)lst->cur->content)->oper != PIPE)
+					&& ((t_parse *)lst->cur->content)->oper != OR)
 						lst->cur = lst->cur->next;
 				if (lst->cur)
 					lst->cur = lst->cur->next;
@@ -81,14 +95,16 @@ int	exec(t_list *lst)
 		else if (lst->cur && ((t_parse *)lst->cur->content)->oper == OR)
 		{
 			if (pid > 0)
-				waitpid(pid, &exitcode, 0);
+			{
+				if (waitpid(pid, &exitcode, 0) < 0)
+					exitcode = g_param->ret;
+			}
 			if (!exitcode)
 			{
 				lst->cur = lst->cur->next;
 				while (lst->cur
 					&& ((t_parse *)lst->cur->content)->oper != END
-					&& ((t_parse *)lst->cur->content)->oper != AND
-					&& ((t_parse *)lst->cur->content)->oper != PIPE)
+					&& ((t_parse *)lst->cur->content)->oper != AND)
 						lst->cur = lst->cur->next;
 				if (lst->cur)
 					lst->cur = lst->cur->next;
@@ -101,5 +117,6 @@ int	exec(t_list *lst)
 			lst->cur = lst->cur->next;
 	}
 	free(rdrct);
+	g_param->ret = exitcode;
 	return (pid);
 }

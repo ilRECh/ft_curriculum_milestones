@@ -68,12 +68,12 @@ int	exec_builtin(t_list sublst, t_rdrct *rdrct, int *exitcode)
 		close(rdrct->outall.pipefd[1]);
 		out(&rdrct->out, rdrct->outall.pipefd[0]);
 		close(rdrct->outall.pipefd[0]);
-		ft_lstclear(&rdrct->in, NULL);
-		ft_lstclear(&rdrct->out, NULL);
+		ft_lstclear(&rdrct->in, ft_close);
+		ft_lstclear(&rdrct->out, ft_close);
 		exit(0);
 	}
-	ft_lstclear(&rdrct->in, NULL);
-	ft_lstclear(&rdrct->out, NULL);
+	ft_lstclear(&rdrct->in, ft_close);
+	ft_lstclear(&rdrct->out, ft_close);
 	if (rdrct->copy.is0)
 		close(rdrct->copy.fd[0]);
 	if (rdrct->copy.is1)
@@ -101,8 +101,8 @@ int	exec_builtin(t_list sublst, t_rdrct *rdrct, int *exitcode)
 		close(rdrct->outall.pipefd[1]);
 		rdrct->outall.is = false;
 		rdrct->inall.is = false;
-		ft_lstclear(&rdrct->out, NULL);
-		ft_lstclear(&rdrct->in, NULL);
+		ft_lstclear(&rdrct->out, ft_close);
+		ft_lstclear(&rdrct->in, ft_close);
 
 	return (-1);
 }

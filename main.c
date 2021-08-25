@@ -1,5 +1,4 @@
 #include "minishell.h"
-#include "signal.h"
 
 t_param	*g_param;
 
@@ -68,10 +67,7 @@ int	main(int argc, char **argv, char **env)
 			continue ;
 		add_history(line);
 		list_of_parses = get_command_line(&line);
-		// exec
-		exec(list_of_parses);
-		while (wait(NULL) >= 0)
-			;
+		go_on_I_will_wait(exec(list_of_parses));
 		if (list_of_parses)
 			ft_lstclear(list_of_parses, free_parse);
 		free(list_of_parses);
