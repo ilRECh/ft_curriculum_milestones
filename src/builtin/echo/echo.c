@@ -35,9 +35,9 @@ int	ft_echo(char **argv)
 	}
 	else
 		flag_nl = 1;
-	while (++argv && *argv)
+	while (++argv && *(argv + 1))
 		write(1, *argv, ft_strlen(*argv)), write(1, " ", 1);
-	write(1, "\b", 1);
+	write(1, *argv, ft_strlen(*argv));
 	if (flag_nl)
 		write(1, "\n", 1);
 	return (0);

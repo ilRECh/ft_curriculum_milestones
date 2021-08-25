@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_cmd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sip <sip@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 21:22:41 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/08/25 13:49:43 by sip              ###   ########.fr       */
+/*   Updated: 2021/08/25 20:12:09 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ int	exec_cmd(char **args, t_rdrct *rdrct)
 	int	pid = 0;
 	int	writer_pid;
 
-	if (rdrct->inall.is)
-		in(&rdrct->in, rdrct->inall.pipefd[1]);
 	pid = fork();
 	if (!pid)
 	{
@@ -59,6 +57,8 @@ int	exec_cmd(char **args, t_rdrct *rdrct)
 				ft_lstclear(&rdrct->out, NULL);
 				exit(0);
 			}
+		if (rdrct->inall.is)
+		in(&rdrct->in, rdrct->inall.pipefd[1]);
 		if (rdrct->inall.is)
 		{
 			close(rdrct->inall.pipefd[0]);

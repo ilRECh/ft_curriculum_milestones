@@ -28,7 +28,7 @@ FLAGS					=	-g -Wall -Wextra -Werror -c #$(READ_LINE_FLAGS)
 # endif
 
 HDRS_MINISHELL			=	minishell.h \
-							parse.h
+							parse.h 							
 
 HDRS_MINISHELL_DIR		=	./includes/
 
@@ -37,8 +37,9 @@ HDRS_LIBFT_DIR			=	./libft/
 
 HDRS					=	$(addprefix $(HDRS_MINISHELL_DIR), $(HDRS_MINISHELL)) \
 							$(addprefix $(HDRS_LIBFT_DIR), $(HDRS_LIBFT))
+							
 INCLUDES 				=	-I $(HDRS_MINISHELL_DIR)\
-							-I $(HDRS_LIBFT_DIR)
+							-I $(HDRS_LIBFT_DIR) 
 
 LIBFT_MAKE				=	./libft/
 LIBFT					=	./libft/libft.a

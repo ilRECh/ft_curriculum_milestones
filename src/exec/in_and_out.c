@@ -6,7 +6,7 @@
 /*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 21:20:51 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/08/24 21:40:27 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/08/25 20:14:54 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,26 @@
 \*/
 void	in(t_list *in, int infd)
 {
-	int		rd;
-	char	buf[1000];
+	long	rd;
+	char	*buf;
 
 	rd = 1;
 	in->cur = in->head;
+	buf = malloc(sizeof(char) * 1000000000);
+	if (!buf && error_str("fuck i'ma DEADBEEF"))
+		exit(1);
 	while (in->cur)
 	{
 		while (rd > 0)
 		{
-			rd = read((int)in->cur->content, buf, 1000);
-			write(infd, buf, rd);
+			rd = read((int)in->cur->content, buf, 1000000000);
+			rd = write(infd, buf, rd);
 		}
 		close((int)in->cur->content);
 		in->cur = in->cur->next;
 		rd = 1;
 	}
+	free(buf);
 	ft_lstclear(in, ft_close);
 }
 
