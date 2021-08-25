@@ -87,8 +87,7 @@ t_parse	*sub_parse(t_parse *tosub_pars)
 					break ;
 			sub_repetat(lst, &str, &i);
 		}
-		else if (!str[i] || str[i] == ' '/* || (ft_strchr("\"\'", str[i + 1]) \
-		&& ++i)*/)
+		else if (!str[i] || ft_isspace(str[i]))
 			sub_repetat(lst, &str, &i);
 	}
 	return (to_separate_util_args(tosub_pars, lst));

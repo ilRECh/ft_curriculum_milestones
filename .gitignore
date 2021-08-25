@@ -2,6 +2,7 @@
 */*.o
 *.a
 */*.a
+!readline/lib/*.a
 minishell
 .DS_Store
 ./.vscode/*
