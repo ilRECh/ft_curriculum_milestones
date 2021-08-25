@@ -19,16 +19,29 @@ static	void	set_char(char *str, char set)
 
 static void	apply_slash_full(char *str)
 {
-	if (ft_strnstr(str, "\\t", 2))
-		set_char(str, '\t');
-	else if (ft_strnstr(str, "\\v", 2))
-		set_char(str, '\v');
-	else if (ft_strnstr(str, "\\n", 2))
-		set_char(str, '\n');
-	else if (ft_strnstr(str, "\\s", 2))
-		set_char(str, ' ');
-	else if (*str == '\\')
-		ft_memmove(str, &str[1], ft_strlen(str));
+	if (*str == '\\')
+	{
+		if (*++str == 'f')
+			set_char(str - 1, '\f');
+		else if (*str == '0')
+			set_char(str - 1, '\0');
+		else if (*str == 'a')
+			set_char(str - 1, '\a');
+		else if (*str == 'b')
+			set_char(str - 1, '\b');
+		else if (*str == 'r')
+			set_char(str - 1, '\r');
+		else if (*str == 'v')
+			set_char(str - 1, '\v');
+		else if (*str == 'n')
+			set_char(str - 1, '\n');
+		else if (*str == 't')
+			set_char(str - 1, '\t');
+		else if (*str == 's')
+			set_char(str - 1, ' ');
+		else if (*str == '\\')
+			ft_memmove(str - 1, str, ft_strlen(str - 1));
+	}
 }
 
 static void	apply_slash_mini(char *str)

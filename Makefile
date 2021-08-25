@@ -4,17 +4,13 @@ RM						=	rm -rf
 GCC						=	clang
 AR						=	ar -crs
 
-FLAGS					=	-Wall -Wextra -Werror -c -g
-
 ifeq ($(OS), Linux)
-READ_LINE_FLAGS			=	-lreadline
 endif
 ifeq ($(OS), Darwin)
-READ_LINE_FLAGS			=	-L/Users/$(USER)/.brew/Cellar/readline/8.1/lib/ -lreadline
+# READ_LINE_FLAGS			=	-L/Users/$(USER)/.brew/Cellar/readline/8.1/lib/ -lreadline
+READ_LINE_FLAGS			=	-L./readline/lib/ -lreadline
 endif
-FLAGS					=	-g -Wall -Wextra -Werror -c #$(READ_LINE_FLAGS)
-# FLAGS					=	-Wall -Wextra -Werror -c -g $(READ_LINE_FLAGS)
-# FLAGS					=	-Wall -Wextra -Werror -c -g -L/Users/$(USER)/.brew/opt/readline/lib -lreadline
+FLAGS					=	-g -Wall -Wextra -Werror -c
 
 # ifeq ($(OS), Linux)
 # 	MLX_ARC = libmlx.a
@@ -36,9 +32,10 @@ HDRS_LIBFT				=	libft.h
 HDRS_LIBFT_DIR			=	./libft/
 
 HDRS					=	$(addprefix $(HDRS_MINISHELL_DIR), $(HDRS_MINISHELL)) \
-							$(addprefix $(HDRS_LIBFT_DIR), $(HDRS_LIBFT))
+							$(addprefix $(HDRS_LIBFT_DIR), $(HDRS_LIBFT)) 
 INCLUDES 				=	-I $(HDRS_MINISHELL_DIR)\
-							-I $(HDRS_LIBFT_DIR)
+							-I $(HDRS_LIBFT_DIR) \
+							-I./readline/include/readline/
 
 LIBFT_MAKE				=	./libft/
 LIBFT					=	./libft/libft.a

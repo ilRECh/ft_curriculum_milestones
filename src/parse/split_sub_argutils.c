@@ -62,7 +62,7 @@ void	sub_repetat(t_list *lst, char **str, int *i)
 {
 	ft_lstadd_back(lst, ft_strndup(*str, *i));
 	(*str) += (*i);
-	while (*(*str) && *(*str) == ' ')
+	while (*(*str) && ft_isspace(*(*str)))
 		(*str)++;
 	(*i) = -1;
 }
@@ -71,27 +71,33 @@ t_parse	*sub_parse(t_parse *tosub_pars)
 {
 	t_list	*lst;
 	char	*str;
+	_Bool	chk;
 	int		i;
 
 	i = -1;
+	chk = FALSE;
 	str = *(tosub_pars->argv);
 	lst = (t_list *)ft_calloc(sizeof(t_list), 1);
 	while (*str)
 	{
 		if (ft_strchr("\"\'", str[++i]) && (!i || str[i - 1] != '\\'))
 		{
-			if (str[i] == '\"')
-				skip_quote(str, &i, '\"', '\\');
-			else
-				skip_quote(str, &i, '\'', FALSE);
+			while (str[i] && !ft_isspace(str[i]))
+			{
+				if (str[i] == '\"' && str[i - 1] != '\\')
+					ft_memmove(&str[i], &str[i + 1], ft_strlen(&str[i]));
+				while (str[++i] && (str[i] != '\"'
+						|| (str[i] == '\"' && str[i - 1] == '\\')));
+				if (str[i])
+					ft_memmove(&str[i], &str[i + 1], ft_strlen(&str[i]));
+				else if (!str[i] || ft_isspace(str[i]))
+					break ;
+			}
 			sub_repetat(lst, &str, &i);
 		}
-		else if (!str[i] || str[i] == ' ' || ft_strchr("\"\'", str[i + 1]))
-		{
-			if (!(!str[i] || str[i] == ' ') && ft_strchr("\"\'", str[i + 1]))
-				i++;
+		else if (!str[i] || str[i] == ' ' || (ft_strchr("\"\'", str[i + 1]) \
+		&& ++i))
 			sub_repetat(lst, &str, &i);
-		}
 	}
 	return (to_separate_util_args(tosub_pars, lst));
 }

@@ -29,27 +29,27 @@ void	ctrl_c(int signum, siginfo_t *siginfo, void *code)
 	(void)signum;
 	(void)siginfo;
 	(void)code;
-	printf("\n" RED "super " CYAN "shell " RESET "$> ");
-	// execve("minishell", NULL, g_param->env);
+
+	g_param->ret = 130;
+	rl_replace_line("", 0);
+	rl_on_new_line();
+	rl_redisplay();
+	write(1,RED "\nsuper " CYAN "shell " RESET "$> ", 35);
 }
 
 int	main(int argc, char **argv, char **env)
 {
 	(void)argc;
 	(void)argv;
-	(void)env;
 // control + c
+//{
 	struct sigaction	control_c;
-	// struct sigaction	control_d;
 
 	ft_memset(&control_c, 0, sizeof(control_c));
-	// ft_memset(&control_d, 0, sizeof(control_d));
 	control_c.sa_sigaction = ctrl_c;
-	// control_d.sa_sigaction = ctrl_d;
 	control_c.sa_flags = SA_SIGINFO;
-	// control_d.sa_flags = SA_SIGINFO;
 	sigaction(SIGINT, &control_c, NULL);
-	// sigaction(????, &control_d, NULL);
+//}
 // control + c; end
 
 	g_param = ft_calloc(1, sizeof(t_param));

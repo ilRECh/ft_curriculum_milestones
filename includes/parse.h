@@ -13,8 +13,11 @@
 #ifndef PARSE_H
 # define PARSE_H
 # include "minishell.h"
-# include <readline/readline.h>
-# include <readline/history.h>
+// # include <readline/readline.h>
+// # include <readline/history.h>
+
+# include "readline.h"
+# include "history.h"
 
 /*open_case	*/	# define NO_UTIL	"\n\t{\nNot_util\n}\n\t"
 /*open_case	*/	# define CASE		"\n\t{\ncase\n}\n\t"
