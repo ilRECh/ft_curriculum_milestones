@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sip <sip@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 21:17:34 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/08/24 21:40:16 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/08/25 11:25:50 by sip              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,18 @@ int	exec(t_list *lst)
 		{
 			printf("command not found\n");
 			exitcode = 1;
+			g_param->ret = 1;
+			if (rdrct->inall.is)
+			{
+				close(rdrct->inall.pipefd[0]);
+				close(rdrct->inall.pipefd[1]);
+			}
+			close(rdrct->outall.pipefd[0]);
+			close(rdrct->outall.pipefd[1]);
+			rdrct->outall.is = false;
+			rdrct->inall.is = false;
+			ft_lstclear(&rdrct->out, ft_close);
+			ft_lstclear(&rdrct->in, ft_close);
 		}
 		if (lst->cur && ((t_parse *)lst->cur->content)->oper == PIPE)
 			openpipe(rdrct, false);
