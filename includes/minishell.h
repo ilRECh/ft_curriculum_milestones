@@ -36,14 +36,13 @@ typedef struct s_param
 	int		stdin_copy;
 }	t_param;
 
-/*\
- *
- *	@copy - 2 descriptors for copy the original main threads: stdin and stdout
- * 	@pipe -> pipein - 
- *	@pipeout - 
- *	@inall -
- *	@outall - 
-\*/  
+//
+//	@copy - 2 descriptors for copy the original main threads: stdin and stdout
+// 	@pipe -> pipein - 
+//	@pipeout - 
+//	@inall -
+//	@outall -
+//   
 typedef struct s_rdrct
 {
 	t_list		in;
@@ -71,18 +70,14 @@ typedef struct s_rdrct
 	}			outall;
 }	t_rdrct;
 
-/*\
- *
- *	SINGLE LEGIT GLOBAL VARIABLE
- * 
-\*/
+//
+//	SINGLE LEGIT GLOBAL VARIABLE
+// 
 extern t_param	*g_param;
 
-/*\
- *
- *	BUILTINS
- * 
-\*/
+//
+//	BUILTINS
+//
 int		ft_cd(char **args);
 int		ft_echo(char **args);
 int		ft_env(char **args);
@@ -92,22 +87,18 @@ int		print_exp(void); //for the ft_export func
 int		ft_pwd(char **args);
 int		ft_unset(char **args);
 
-/*\
- *
- *	ENV UTILS
- * 
-\*/
+//
+//	ENV UTILS
+// 
 char	*getvalue(char *word);
 int		setvalue(char *word, char *new_value);
 char	*getvalue_exprt(char *word);
 int		setvalue_exprt(char *word, char *new_value);
 void	free_tabs(char **tab);
 
-/*\
- *
- *	EXECUTION
- * 
-\*/
+//
+//	EXECUTION
+// 
 int		exec(t_list *lst);
 void	whatsupdoc(int fd, char *stopword);
 int		ft_rdrct(char to, t_rdrct *rdrct, t_parse *file);
@@ -121,14 +112,12 @@ int		exec_braces(t_list sublst, t_rdrct *rdrct);
 int		exec_builtin(t_list sublst, t_rdrct *rdrct, int *exitcode);
 int		check_builtin(char *name);
 void	ft_close(void *fd);
-int 	go_on_I_will_wait(int pid);
+int		go_on_I_will_wait(int pid);
+int		exec_minishell(char **argv, t_rdrct *rdrct, int *exitcode);
 
-
-/*\
- *
- *	ERROR output funcs
- *
-\*/
+//
+//	ERROR output funcs
+//
 static inline uint8_t	error(void)
 {
 	printf(RED "ERROR: " RESET "%s\n", strerror(errno));

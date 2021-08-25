@@ -6,7 +6,7 @@
 /*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 21:17:34 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/08/25 22:41:20 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/08/25 23:08:52 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,11 @@ static int	exec_cmd_or_braces(t_list sublst, t_rdrct *rdrct, int *exitcode)
 	else if (sublst.cur && sublst.cur != sublst.end
 		&& check_builtin(((t_parse *)sublst.cur->content)->argv[0]))
 		pid = exec_builtin(sublst, rdrct, exitcode);
+	else if (sublst.cur && sublst.cur != sublst.end
+		&& ft_strnstr(((t_parse *)sublst.cur->content)->argv[0],
+			"minishell", ft_strlen(((t_parse *)sublst.cur->content)->argv[0])))
+		pid = exec_minishell(((t_parse *)sublst.cur->content)->argv,
+				rdrct, exitcode);
 	else if (sublst.cur && sublst.cur != sublst.end)
 		pid = exec_cmd(((t_parse *)sublst.cur->content)->argv, rdrct);
 	else

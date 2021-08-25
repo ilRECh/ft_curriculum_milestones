@@ -56,6 +56,7 @@ EXEC_LIST				=	exec.c\
 							exec_braces.c\
 							exec_builtin.c\
 							exec_cmd.c\
+							exec_minishell.c\
 							find.c\
 							ft_rdrct.c\
 							in_and_out.c\
