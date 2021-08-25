@@ -57,6 +57,7 @@ char	*ft_strjoin_free(char *s1, char *s2, short fr);
 t_list	*get_command_line(char **line);
 char	*trimmer(char *str, char *c);
 t_list	*split_sub_argutils(t_list *lst);
+_Bool	sub_sub_quote(char *str, int *i);
 int		ft_strlenspace(char *str);
 void	free_parse(void *p);
 _Bool	ret_perr(const char *mess);

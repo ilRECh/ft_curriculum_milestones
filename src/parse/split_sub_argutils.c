@@ -83,20 +83,12 @@ t_parse	*sub_parse(t_parse *tosub_pars)
 		if (ft_strchr("\"\'", str[++i]) && (!i || str[i - 1] != '\\'))
 		{
 			while (str[i] && !ft_isspace(str[i]))
-			{
-				if (str[i] == '\"' && str[i - 1] != '\\')
-					ft_memmove(&str[i], &str[i + 1], ft_strlen(&str[i]));
-				while (str[++i] && (str[i] != '\"'
-						|| (str[i] == '\"' && str[i - 1] == '\\')));
-				if (str[i])
-					ft_memmove(&str[i], &str[i + 1], ft_strlen(&str[i]));
-				else if (!str[i] || ft_isspace(str[i]))
+				if (sub_sub_quote(str, &i))
 					break ;
-			}
 			sub_repetat(lst, &str, &i);
 		}
-		else if (!str[i] || str[i] == ' ' || (ft_strchr("\"\'", str[i + 1]) \
-		&& ++i))
+		else if (!str[i] || str[i] == ' '/* || (ft_strchr("\"\'", str[i + 1]) \
+		&& ++i)*/)
 			sub_repetat(lst, &str, &i);
 	}
 	return (to_separate_util_args(tosub_pars, lst));
