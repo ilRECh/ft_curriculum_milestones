@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   test_and_debug.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csamuro <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 06:23:17 by csamuro           #+#    #+#             */
-/*   Updated: 2021/08/18 06:23:18 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/08/24 22:33:26 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parse.h"
+#include "minishell.h"
 
 void	test_print_tab(char **split_dots)
 {

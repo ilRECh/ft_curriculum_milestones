@@ -108,6 +108,17 @@ void	free_tabs(char **tab);
  * 
 \*/
 int		exec(t_list *lst);
+void	whatsupdoc(int fd, char *stopword);
+int		ft_rdrct(char to, t_rdrct *rdrct, t_parse *file);
+t_list	ft_all_rdrcts(t_list *lst, t_rdrct *rdrct);
+void	find_sublst_or_command(t_list *sublst);
+void	in(t_list *in, int infd);
+void	out(t_list *out, int outfd);
+int		openpipe(t_rdrct *rdrct, int direction);
+int		exec_cmd(char **args, t_rdrct *rdrct);
+int		exec_braces(t_list sublst, t_rdrct *rdrct);
+int		exec_builtin(t_list sublst, t_rdrct *rdrct, int *exitcode);
+int		check_builtin(char *name);
 
 
 /*\
@@ -127,4 +138,4 @@ static inline uint8_t	error_str(char *str)
 	return (1);
 }
 
-#endif
+#endif // MINISHELL_H

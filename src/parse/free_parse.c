@@ -1,25 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_gen_fill.c                                   :+:      :+:    :+:   */
+/*   free_parse.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/18 06:20:52 by csamuro           #+#    #+#             */
-/*   Updated: 2021/08/24 22:33:50 by vcobbler         ###   ########.fr       */
+/*   Created: 2021/08/24 21:25:52 by csamuro           #+#    #+#             */
+/*   Updated: 2021/08/24 22:34:05 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_parse	*pars_gen_fill(char **argv, unsigned short oper)
+void	free_parse(void *p)
 {
-	t_parse	*pars;
+	t_parse	*parse;
+	int		i;
 
-	pars = (t_parse *)malloc(sizeof(t_parse));
-	if (!pars)
-		exit ((short)ret_perr("malloc err -> pars") + 1);
-	pars->argv = argv;
-	pars->oper = oper;
-	return (pars);
+	i = 0;
+	parse = (t_parse *)p;
+	if (parse->argv)
+	{
+		if (parse->argv[i] && \
+		!ft_strncmp(parse->argv[i], CASE, ft_strlen(CASE)))
+			ft_lstclear((t_list *)parse->argv[1], free_parse);
+		else
+		{
+			if (parse->argv[i])
+				free(parse->argv[i]);
+			while (parse->argv[++i])
+				free(parse->argv[i]);
+			free(parse->argv);
+		}
+	}
+	free(parse);
 }

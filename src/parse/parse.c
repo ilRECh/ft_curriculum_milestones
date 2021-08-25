@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csamuro <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 06:20:48 by csamuro           #+#    #+#             */
-/*   Updated: 2021/08/18 06:20:49 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/08/24 22:33:46 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parse.h"
+#include "minishell.h"
 
 void	if_redir(t_wheel *w)
 {
@@ -22,7 +22,9 @@ void	if_redir(t_wheel *w)
 			w->ln++;
 		w->line = w->ln;
 		w->line = w->ln;
-		while (*w->ln && !ft_isspace(*w->ln))
+		while (*w->ln && !ft_isspace(*w->ln) && !ft_strchr("<>", *w->ln))
+			w->ln++;
+		while (ft_isspace(*w->ln))
 			w->ln++;
 	}
 	ft_lstadd_back(
@@ -32,8 +34,9 @@ void	if_redir(t_wheel *w)
 				trimmer(
 					ft_strndup(w->line, w->ln - w->line), " ")),
 			w->sp_prev));
-	while (*w->ln && (ft_strchr("<>", *w->ln) || ft_isspace(*w->ln)))
-		w->ln++;
+	if (w->sp)
+		while (*w->ln && (ft_strchr("<>", *w->ln) || ft_isspace(*w->ln)))
+			w->ln++;
 	w->sp_prev = w->sp;
 	w->line = w->ln;
 }
@@ -111,5 +114,6 @@ t_list	*split_ignore_caps(char *line, short sp_prev)
 		else if (w.sp == 10)
 			return (if_close_bracket(&w));
 	}
+	free(line);
 	return (w.lst);
 }

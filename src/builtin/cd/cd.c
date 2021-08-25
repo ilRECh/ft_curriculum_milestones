@@ -57,7 +57,7 @@ int	ft_cd(char **args)
 	char	*path;
 	bool	res;
 
-	if (args[2]
+	if (args[1] && args[2]
 		&& error_str("cd: too many arguments"))
 		return (1);
 	path = args[1];

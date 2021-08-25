@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_gen_fill.c                                   :+:      :+:    :+:   */
+/*   find.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/18 06:20:52 by csamuro           #+#    #+#             */
-/*   Updated: 2021/08/24 22:33:50 by vcobbler         ###   ########.fr       */
+/*   Created: 2021/08/24 21:19:49 by vcobbler          #+#    #+#             */
+/*   Updated: 2021/08/24 21:40:21 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_parse	*pars_gen_fill(char **argv, unsigned short oper)
+/*\
+ *
+ *		Looks for either braces sublst, or command to execute.
+ *	sublst->cur will point to the element with above containings at the end
+ *	of the func execution.
+ *
+\*/
+void	find_sublst_or_command(t_list *sublst)
 {
-	t_parse	*pars;
-
-	pars = (t_parse *)malloc(sizeof(t_parse));
-	if (!pars)
-		exit ((short)ret_perr("malloc err -> pars") + 1);
-	pars->argv = argv;
-	pars->oper = oper;
-	return (pars);
+	sublst->cur = sublst->head;
+	while (sublst->cur && sublst->cur != sublst->end && !((t_parse *)sublst->cur->content)->argv[0])
+		sublst->cur = sublst->cur->next;
+	//if ()
 }

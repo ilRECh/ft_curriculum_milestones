@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   is_builtins.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csamuro <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 12:37:03 by csamuro           #+#    #+#             */
-/*   Updated: 2021/08/19 12:37:06 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/08/24 22:33:59 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parse.h"
+#include "minishell.h"
 
 _Bool	is_builtins(char *str)
 {

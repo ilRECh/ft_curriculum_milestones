@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   skiper.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csamuro <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 06:21:22 by csamuro           #+#    #+#             */
-/*   Updated: 2021/08/18 06:21:23 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/08/24 22:33:32 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "panel.h"
+#include "minishell.h"
 
 void	case_skip(char **ln)
 {

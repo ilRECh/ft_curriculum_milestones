@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   is_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csamuro <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 06:20:32 by csamuro           #+#    #+#             */
-/*   Updated: 2021/08/18 06:20:34 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/08/24 22:33:55 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parse.h"
+#include "minishell.h"
 
 short	sub_is_split(char *str)
 {

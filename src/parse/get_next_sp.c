@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_sp.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csamuro <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 06:20:15 by csamuro           #+#    #+#             */
-/*   Updated: 2021/08/18 06:20:17 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/08/24 22:34:01 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parse.h"
+#include "minishell.h"
 
 void	get_next_sp(char **ln, short *sp)
 {
