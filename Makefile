@@ -7,8 +7,8 @@ AR						=	ar -crs
 ifeq ($(OS), Linux)
 endif
 ifeq ($(OS), Darwin)
-# READ_LINE_FLAGS			=	-L/Users/$(USER)/.brew/Cellar/readline/8.1/lib/ -lreadline
-READ_LINE_FLAGS			=	-L./readline/lib/ -lreadline
+READ_LINE_FLAGS			=	-L/Users/$(USER)/.brew/Cellar/readline/8.1/lib/ -lreadline
+# READ_LINE_FLAGS			=	-L./readline/lib/ -lreadline
 endif
 FLAGS					=	-g -Wall -Wextra -Werror -c
 
