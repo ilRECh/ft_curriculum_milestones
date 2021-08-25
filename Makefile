@@ -59,7 +59,8 @@ EXEC_LIST				=	exec.c\
 							ft_rdrct.c\
 							in_and_out.c\
 							openpipe.c\
-							whatsupdoc.c
+							whatsupdoc.c\
+							go_on_I_will_wait.c
 							
 EXEC_DIR				=	./src/exec/
 EXEC					=	$(addprefix $(EXEC_DIR), $(EXEC_LIST))

@@ -26,6 +26,7 @@
 # include <fcntl.h>
 # include <stdbool.h>
 # include <dirent.h>
+# include <signal.h>
 
 typedef struct s_param
 {
@@ -119,6 +120,8 @@ int		exec_cmd(char **args, t_rdrct *rdrct);
 int		exec_braces(t_list sublst, t_rdrct *rdrct);
 int		exec_builtin(t_list sublst, t_rdrct *rdrct, int *exitcode);
 int		check_builtin(char *name);
+void	ft_close(void *fd);
+int 	go_on_I_will_wait(int pid);
 
 
 /*\

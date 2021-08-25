@@ -61,6 +61,8 @@ int	ft_cd(char **args)
 		&& error_str("cd: too many arguments"))
 		return (1);
 	path = args[1];
+	if (!path || (path[0] == '/' && !path[1]))
+		path = "/.";
 	oldpath = getcwd(NULL, 0);
 	if (path[0] == '~')
 		res = chpath(++path, oldpath, getvalue("HOME"));
@@ -69,10 +71,7 @@ int	ft_cd(char **args)
 	else if (path[0] == '-' && path[1] == 0)
 		res = chpath("", oldpath, getvalue("OLDPWD"));
 	else
-	{
-		res = chpath(path = ft_strjoin("/", path), oldpath, oldpath);
-		free(path);
-	}
+		res = chpath(path = ft_strjoin("/", path), oldpath, oldpath), free(path);
 	if (!res)
 		setvalue("OLDPWD", oldpath);
 	free(oldpath);

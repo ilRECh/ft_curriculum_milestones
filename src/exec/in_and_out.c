@@ -37,7 +37,7 @@ void	in(t_list *in, int infd)
 		in->cur = in->cur->next;
 		rd = 1;
 	}
-	ft_lstclear(in, NULL);
+	ft_lstclear(in, ft_close);
 }
 
 /*\
