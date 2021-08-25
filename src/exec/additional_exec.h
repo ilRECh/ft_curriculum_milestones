@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   go_on_I_will_wait.c                                :+:      :+:    :+:   */
+/*   additional_exec.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/25 10:52:46 by sip               #+#    #+#             */
-/*   Updated: 2021/08/25 22:45:25 by vcobbler         ###   ########.fr       */
+/*   Created: 2021/08/25 22:42:22 by vcobbler          #+#    #+#             */
+/*   Updated: 2021/08/25 22:42:23 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#ifndef ADDITIONAL_EXEC_H
+# define ADDITIONAL_EXEC_H
 
-int	go_on_I_will_wait(int pid)
+static inline void	init(int *pid, int *exitcode, t_rdrct **rdrct, t_list *lst)
 {
-	int	exitcode;
-	int	wpid;
-
-	if (pid == -1)
-		pid--;
-	while (true)
-	{
-		wpid = wait(&exitcode);
-		if (wpid == pid)
-			g_param->ret = exitcode;
-		else if (wpid <= 0)
-			break ;
-	}
-	return (0);
+	*pid = 0;
+	*exitcode = 0;
+	*rdrct = ft_calloc(1, sizeof(t_rdrct));
+	lst->cur = lst->head;
 }
+
+#endif // ADD_EXEC_H

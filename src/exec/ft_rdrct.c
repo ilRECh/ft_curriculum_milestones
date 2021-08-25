@@ -6,22 +6,20 @@
 /*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 21:17:49 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/08/24 21:19:23 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/08/25 22:45:09 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/*\
- *
- *		@to - char either RDCT_L, or RDCT_L2, or RDCT_R, or RDCT_R2
- *	@rdrct - structure s_rdrct, multiple meanings
- *	@file - redirect input from, or redirect output to
- * 
-\*/
+//
+//		@to - char either RDCT_L, or RDCT_L2, or RDCT_R, or RDCT_R2
+//	@rdrct - structure s_rdrct, multiple meanings
+//	@file - redirect input from, or redirect output to
+//
 int	ft_rdrct(char to, t_rdrct *rdrct, t_parse *file)
 {
-	int pipefd[2];
+	int	pipefd[2];
 
 	if ((to == RDCT_L || to == RDCT_L2)
 		&& !rdrct->inall.is)
@@ -30,7 +28,8 @@ int	ft_rdrct(char to, t_rdrct *rdrct, t_parse *file)
 		pipe(rdrct->inall.pipefd);
 	}
 	if (to == RDCT_L)
-		ft_lstadd_back(&rdrct->in, (void *)((long long)open(file->argv[1], O_RDONLY)));
+		ft_lstadd_back(&rdrct->in,
+			(void *)((long long)open(file->argv[1], O_RDONLY)));
 	else if (to == RDCT_L2)
 	{
 		pipe(pipefd);
@@ -39,20 +38,22 @@ int	ft_rdrct(char to, t_rdrct *rdrct, t_parse *file)
 		close(pipefd[1]);
 	}
 	else if (to == RDCT_R)
-		ft_lstadd_back(&rdrct->out, (void *)((long long)open(file->argv[1], O_WRONLY | O_CREAT | O_TRUNC, 00777)));
+		ft_lstadd_back(&rdrct->out, (void *)((long long)open(file->argv[1],
+					O_WRONLY | O_CREAT | O_TRUNC, 00777)));
 	else if (to == RDCT_R2)
-		ft_lstadd_back(&rdrct->out, (void *)((long long)open(file->argv[1], O_WRONLY | O_CREAT | O_APPEND, 00777)));
+		ft_lstadd_back(&rdrct->out, (void *)((long long)open(file->argv[1],
+					O_WRONLY | O_CREAT | O_APPEND, 00777)));
 	return (0);
 }
 
-/*\
- *
- *		Checking all the redirects in a lst, in a current sublst. 'Sublst' is every sublst,
- *	that starts from an and ends at an element, related to ONE single command.
- *	Braces are count as a single command.
- *		@lst -  list with all parsed commands. .cur field points either at the start, or special symbol.
- * 
-\*/
+//
+//		Checking all the redirects in a lst,
+//			in a current sublst. 'Sublst' is every sublst,
+//	that starts from an and ends at an element, related to ONE single command.
+//	Braces are count as a single command.
+//		@lst -  list with all parsed commands.
+//			cur field points either at the start, or special symbol.
+//
 t_list	ft_all_rdrcts(t_list *lst, t_rdrct *rdrct)
 {
 	t_list	sublst;

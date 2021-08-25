@@ -6,19 +6,17 @@
 /*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 21:20:51 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/08/25 20:14:54 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/08/25 22:46:16 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/*\
- *
- *		read from all descriptors stored in the out list,
- *	write the read stuff to the infd descriptor. Close these descriptors.
- *	The infd descriptor will be passed to a program as input further.
- *
-\*/
+//
+//		read from all descriptors stored in the out list,
+//	write the read stuff to the infd descriptor. Close these descriptors.
+//	The infd descriptor will be passed to a program as input further.
+//
 void	in(t_list *in, int infd)
 {
 	long	rd;
@@ -41,15 +39,13 @@ void	in(t_list *in, int infd)
 		rd = 1;
 	}
 	free(buf);
-	ft_lstclear(in, ft_close);
+	ft_lstclear(in, NULL);
 }
 
-/*\
- *
- *		Fucntion for a child writer, who will read from outfd,
- *	and put everything in fds in the out list.
- *
-\*/
+//
+//		Fucntion for a child writer, who will read from outfd,
+//	and put everything in fds in the out list.
+//
 void	out(t_list *out, int outfd)
 {
 	int		rd;

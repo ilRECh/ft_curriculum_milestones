@@ -1,5 +1,5 @@
 #include "minishell.h"
-
+int	main(int argc, char **argv, char **env);
 t_param	*g_param;
 
 static char	**setup_env(char **env)
@@ -35,13 +35,20 @@ void	ctrl_c(int signum, siginfo_t *siginfo, void *code)
 	rl_redisplay();
 	write(1,RED "\nsuper " CYAN "shell " RESET "$> ", 35);
 }
+void	ctrl_c2(int signum, siginfo_t *siginfo, void *code)
+{
+	(void)signum;
+	(void)siginfo;
+	(void)code;
+
+	g_param->ret = 130;
+	rl_replace_line("", 0);
+	rl_on_new_line();
+	rl_redisplay();
+}
 
 int	main(int argc, char **argv, char **env)
 {
-	(void)argc;
-	(void)argv;
-// control + c
-//{
 	struct sigaction	control_c;
 
 	ft_memset(&control_c, 0, sizeof(control_c));
@@ -56,6 +63,9 @@ int	main(int argc, char **argv, char **env)
 	g_param->stdin_copy = dup(0);
 	t_list	*list_of_parses;
 	(void)list_of_parses;
+	(void)argv;
+	(void)env;
+	(void)argc;
 	//* START TEST
 	char	*line;
 
@@ -67,6 +77,8 @@ int	main(int argc, char **argv, char **env)
 			continue ;
 		add_history(line);
 		list_of_parses = get_command_line(&line);
+		control_c.sa_sigaction = ctrl_c2;
+		sigaction(SIGINT, &control_c, NULL);
 		go_on_I_will_wait(exec(list_of_parses));
 		if (list_of_parses)
 			ft_lstclear(list_of_parses, free_parse);

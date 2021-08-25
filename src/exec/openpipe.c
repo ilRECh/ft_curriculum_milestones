@@ -6,20 +6,17 @@
 /*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 21:31:14 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/08/24 21:40:28 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/08/25 22:46:33 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-
-/*\
- *
- *		Opens pipe if direction is true, and assigns rdrct->pipe.pipefd[1] to
- *	out list for the child writer to write. If the direction is false, then
- *	assigns rdrct->pipe values to rdrct->inall. 
- *
-\*/
+//
+//		Opens pipe if direction is true, and assigns rdrct->pipe.pipefd[1] to
+//	out list for the child writer to write. If the direction is false, then
+//	assigns rdrct->pipe values to rdrct->inall. 
+//
 int	openpipe(t_rdrct *rdrct, int direction)
 {
 	if (direction)

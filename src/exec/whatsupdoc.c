@@ -6,17 +6,15 @@
 /*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 21:16:21 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/08/24 21:40:30 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/08/25 22:46:54 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/*\
- *
- *	heredoc analog. Takes place in the ft_rdrct func
- *
-\*/
+//
+//	heredoc analog. Takes place in the ft_rdrct func
+//
 void	whatsupdoc(int fd, char *stopword)
 {
 	char	*line;
