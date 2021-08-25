@@ -13,37 +13,29 @@
 #ifndef PARSE_H
 # define PARSE_H
 # include "minishell.h"
-// # include <readline/readline.h>
-// # include <readline/history.h>
-
 # include "readline.h"
 # include "history.h"
 
-/*open_case	*/	# define NO_UTIL	"\n\t{\nNot_util\n}\n\t"
-/*open_case	*/	# define CASE		"\n\t{\ncase\n}\n\t"
-/*		>	*/	# define RDCT_R		1
-/*		<	*/	# define RDCT_L		2
-/*		<<	*/	# define RDCT_L2	3
-/*		>>	*/	# define RDCT_R2	4
-/*		;	*/	# define END		5
-/*		&&	*/	# define AND		6
-/*		||	*/	# define OR			7
-/*		|	*/	# define PIPE		8
-/*		(	*/	# define CASE_OPEN	9
-/*		)	*/	# define CASE_CLOSE	10
+# define NO_UTIL	"\n\t{\nNot_util\n}\n\t"
+# define CASE		"\n\t{\ncase\n}\n\t"
+# define RDCT_R		1
+# define RDCT_L		2
+# define RDCT_L2	3
+# define RDCT_R2	4
+# define END		5
+# define AND		6
+# define OR			7
+# define PIPE		8
+# define CASE_OPEN	9
+# define CASE_CLOSE	10
 
-typedef struct  s_parse
+typedef struct s_parse
 {
-	//  Аргументы для утилиты || или если утилита не задана, то это название файла
-	char    		**argv;
+	char			**argv;
 	unsigned short	oper;
-	//	(; | || &&)	отдельным элементом
-	//	(< > << >>) File1 2 3 ... отнести к файлам, а не утилитам.
-	//	разделитель	(&& = AND), (|| == OR), (; == END) (| == PIPE)
-	//	Редиректы > < >> << RDCT_R, RDCT_L, RDCT_R2, RDCT_L
-}   t_parse;
+}	t_parse;
 
-typedef struct	s_wheel
+typedef struct s_wheel
 {
 	t_list	*lst;
 	char	*line;
