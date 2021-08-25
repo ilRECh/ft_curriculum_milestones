@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   export.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/25 22:53:53 by vcobbler          #+#    #+#             */
+/*   Updated: 2021/08/25 22:53:53 by vcobbler         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 struct s_counters
@@ -103,9 +115,9 @@ int	ft_export(char **args)
 	cnt.iter_env = -1;
 	cnt.iter_exprt = -1;
 	environ_ = ft_calloc(ft_count(g_param->env).env
-		+ cnt.env + 1, sizeof(char *));
-	exprt = ft_calloc(ft_count(g_param->exprt).exprt + ft_count(g_param->exprt).env
-		+ cnt.exprt + 1, sizeof(char *));
+			+ cnt.env + 1, sizeof(char *));
+	exprt = ft_calloc(ft_count(g_param->exprt).exprt
+			+ ft_count(g_param->exprt).env + cnt.exprt + 1, sizeof(char *));
 	if ((!environ_ || !exprt) && clean_(environ_) && clean_(exprt))
 		return (1);
 	while (g_param->env && g_param->env[++cnt.iter_env])

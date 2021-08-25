@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   unset.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/25 22:54:55 by vcobbler          #+#    #+#             */
+/*   Updated: 2021/08/25 22:55:35 by vcobbler         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 struct s_var
@@ -51,7 +63,7 @@ static struct s_var	ft_index(char *word)
 		while (var.exprt && *var.exprt && *var.exprt != exprt)
 			var.exprt++;
 	}
-	return (var);	
+	return (var);
 }
 
 int	ft_unset(char **args)

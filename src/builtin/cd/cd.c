@@ -71,7 +71,8 @@ int	ft_cd(char **args)
 	else if (path[0] == '-' && path[1] == 0)
 		res = chpath("", oldpath, getvalue("OLDPWD"));
 	else
-		res = chpath(path = ft_strjoin("/", path), oldpath, oldpath), free(path);
+		res = chpath(path = ft_strjoin("/",
+					path), oldpath, oldpath), free(path);
 	if (!res)
 		setvalue("OLDPWD", oldpath);
 	free(oldpath);
