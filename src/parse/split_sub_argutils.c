@@ -6,7 +6,7 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 06:21:27 by csamuro           #+#    #+#             */
-/*   Updated: 2021/08/26 22:27:47 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/08/26 22:35:33 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,8 @@ t_list	*split_sub_argutils(t_list *lst)
 	while (lst->cur)
 	{
 		parse = (t_parse *)lst->cur->content;
-		if (!**parse->argv && parse->oper > 0 && parse->oper < 5)
+		if ((!parse->argv || !*parse->argv || !**parse->argv) && \
+		parse->oper > 0 && parse->oper < 5)
 			return ((t_list *)ret_perr("redirection from/to is empty"));
 		if (parse->argv && *parse->argv \
 		&& !(parse->oper > 4 && parse->oper < 9) \
