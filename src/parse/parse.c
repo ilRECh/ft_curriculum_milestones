@@ -6,7 +6,7 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 06:20:48 by csamuro           #+#    #+#             */
-/*   Updated: 2021/08/26 17:04:45 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/08/26 20:10:23 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,5 @@ t_list	*split_ignore_caps(char *line, short sp_prev)
 		else if (w.sp == 10)
 			return (if_close_bracket(&w));
 	}
-	free(line);
 	return (w.lst);
 }

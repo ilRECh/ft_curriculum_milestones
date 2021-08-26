@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_parse.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 21:25:52 by csamuro           #+#    #+#             */
-/*   Updated: 2021/08/24 22:34:05 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/08/26 20:53:13 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,11 @@ void	free_parse(void *p)
 		if (parse->argv[i] && \
 		!ft_strncmp(parse->argv[i], CASE, ft_strlen(CASE)))
 			ft_lstclear((t_list *)parse->argv[1], free_parse);
-		else
-		{
-			if (parse->argv[i])
-				free(parse->argv[i]);
-			while (parse->argv[++i])
-				free(parse->argv[i]);
-			free(parse->argv);
-		}
+		if (parse->argv[i])
+			free(parse->argv[i]);
+		while (parse->argv[++i])
+			free(parse->argv[i]);
+		free(parse->argv);
 	}
 	free(parse);
 }
