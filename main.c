@@ -50,7 +50,7 @@ int	main(int argc, char **argv, char **env)
 		list_of_parses = get_command_line(&line);
 		if (!list_of_parses)
 		{
-			free(line);
+			// free(line);
 			continue ;
 		}
 		sig_set(&control_c, FALSE);

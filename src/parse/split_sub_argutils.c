@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   split_sub_argutils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 06:21:27 by csamuro           #+#    #+#             */
-/*   Updated: 2021/08/24 22:33:30 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/08/26 15:26:22 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,15 +101,20 @@ t_list	*split_sub_argutils(t_list *lst)
 	while (lst->cur)
 	{
 		parse = (t_parse *)lst->cur->content;
-		if (parse->argv && *parse->argv
-			&& !(parse->oper > 4 && parse->oper < 9)
-			&& !ft_strncmp(CASE, *parse->argv, ft_strlen(CASE)))
-			split_sub_argutils(((t_list *)((t_parse *)
-						lst->cur->content)->argv[1]));
+		if (parse->argv && *parse->argv \
+		&& !(parse->oper > 4 && parse->oper < 9) \
+		&& !ft_strncmp(CASE, *parse->argv, ft_strlen(CASE)))
+		{
+			if (!split_sub_argutils((\
+			(t_list *)((t_parse *)lst->cur->content)->argv[1])))
+				return (NULL);
+		}
 		else if (parse->argv && *parse->argv
 			&& !(parse->oper > 4 && parse->oper < 9))
 			lst->cur->content = sub_parse(parse);
 		lst->cur = lst->cur->next;
 	}
+	if (!check_line_lst(lst))
+		return (NULL);
 	return (lst);
 }

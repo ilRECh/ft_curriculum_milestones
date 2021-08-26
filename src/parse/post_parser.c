@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   post_parser.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 21:28:20 by csamuro           #+#    #+#             */
-/*   Updated: 2021/08/24 22:33:43 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/08/26 19:27:15 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,30 @@ static _Bool	check_cmp(t_dlist *dlst)
 	return (FALSE);
 }
 
+// _Bool	must_be_next(t_dlist *el)
+// {
+// 	t_parse	**plst;
+// 	uint8_t	x;
+
+// 	x = 4;
+// 	plst = ft_calloc(x, sizeof(t_parse *));
+// 	while (x-- && el)
+// 	{
+// 		plst[3 - x] = ((t_parse *)el->content);
+// 		el = el->next;
+// 	}
+// 	if ((!ft_strncmp(plst[0]->argv[0], CASE, ft_strlen(CASE))) && \
+// 		plst[1] && plst[1]->argv && \
+// 		((!plst[1]->argv[0] && plst[1]->argv[1]) || (plst[1]->argv[0] && plst[1]->oper))
+// 	)
+// 	{
+// 		free(plst);
+// 		return (TRUE);
+// 	}
+// 	free(plst);
+// 	return(FALSE);
+// }
+
 _Bool	post_parser(t_list *lst)
 {
 	_Bool	is_was_file_redir;
@@ -30,7 +54,7 @@ _Bool	post_parser(t_list *lst)
 	is_was_file_redir = FALSE;
 	while (lst->cur && !is_was_file_redir)
 	{
-		is_was_file_redir = check_cmp(lst->cur);
+		is_was_file_redir = check_cmp(lst->cur)/* | must_be_next(lst->cur)*/;
 		lst->cur = lst->cur->next;
 	}
 	if (is_was_file_redir)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_parse.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 06:21:44 by csamuro           #+#    #+#             */
-/*   Updated: 2021/08/24 22:33:20 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/08/26 15:11:22 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,22 @@ _Bool	sub_sub_quote(char *str, int *i)
 	else if (!str[(*i)] || ft_isspace(str[(*i) + 2]))
 		return (TRUE);
 	return (FALSE);
+}
+
+_Bool	check_line_lst(t_list *lst)
+{
+	t_dlist	*tmp;
+	_Bool	b_last_one;
+
+	tmp = lst->head;
+	b_last_one = FALSE;
+	while (tmp && !b_last_one)
+	{
+		if (tmp->content && \
+		((t_parse *)(tmp->content))->argv && \
+		((t_parse *)(tmp->content))->argv[0])
+			b_last_one++;
+		tmp = tmp->next;
+	}
+	return (b_last_one);
 }

@@ -6,7 +6,7 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 23:58:51 by name              #+#    #+#             */
-/*   Updated: 2021/08/26 14:40:30 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/08/26 17:04:10 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct s_wheel
 	short	sp;
 }	t_wheel;
 
+_Bool	check_line_lst(t_list *lst);
 void	sig_set(struct sigaction *action, _Bool b);
 char	*dollar_get_env(char *line);
 char	*ft_strjoin_free(char *s1, char *s2, short fr);
