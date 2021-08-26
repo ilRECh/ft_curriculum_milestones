@@ -109,7 +109,7 @@ int	ft_export(char **args)
 	char				**environ_;
 	char				**exprt;
 
-	if (!args[1])
+	if (!*(++args))
 		return (print_exp());
 	cnt = ft_count(args);
 	cnt.iter_env = -1;
