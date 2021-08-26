@@ -41,10 +41,11 @@ void	ctrl_c2(int signum, siginfo_t *siginfo, void *code)
 	(void)siginfo;
 	(void)code;
 
-	g_param->ret = 130;
-	rl_replace_line("", 0);
-	rl_on_new_line();
-	rl_redisplay();
+	exit(0);
+	// g_param->ret = 130;
+	// rl_replace_line("", 0);
+	// rl_on_new_line();
+	// rl_redisplay();
 }
 
 int	main(int argc, char **argv, char **env)
@@ -52,11 +53,6 @@ int	main(int argc, char **argv, char **env)
 	struct sigaction	control_c;
 
 	ft_memset(&control_c, 0, sizeof(control_c));
-	control_c.sa_sigaction = ctrl_c;
-	control_c.sa_flags = SA_SIGINFO;
-	sigaction(SIGINT, &control_c, NULL);
-//}
-// control + c; end
 
 	g_param = ft_calloc(1, sizeof(t_param));
 	g_param->env = setup_env(env);
@@ -72,13 +68,18 @@ int	main(int argc, char **argv, char **env)
 	line = (char *)0xFF;
 	while (line)
 	{
+		sig_set(&control_c, &ctrl_c);
 		line = readline(RED "super " CYAN "shell " RESET "$> ");
 		if (!line)
 			continue ;
 		add_history(line);
 		list_of_parses = get_command_line(&line);
-		control_c.sa_sigaction = ctrl_c2;
-		sigaction(SIGINT, &control_c, NULL);
+		if (!list_of_parses)
+		{
+			free(line);
+			continue ;
+		}
+		sig_set(&control_c, &ctrl_c2);
 		go_on_I_will_wait(exec(list_of_parses));
 		if (list_of_parses)
 			ft_lstclear(list_of_parses, free_parse);

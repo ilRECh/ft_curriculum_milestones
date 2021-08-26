@@ -44,6 +44,8 @@ typedef struct s_wheel
 	short	sp;
 }	t_wheel;
 
+void	sig_set(struct sigaction *action, \
+	void (f)(int signum, siginfo_t *siginfo, void *code));
 char	*dollar_get_env(char *line);
 char	*ft_strjoin_free(char *s1, char *s2, short fr);
 t_list	*get_command_line(char **line);

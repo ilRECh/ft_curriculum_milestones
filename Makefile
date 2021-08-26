@@ -92,7 +92,8 @@ PARSE_LIST				=	dollar_get_env.c \
 							free_parse.c \
 							post_parser.c \
 							short_utils.c \
-							slash_parse.c
+							slash_parse.c \
+							signal_action.c
 
 PARSE_DIR				=	./src/parse/
 PARSE					=	$(addprefix $(PARSE_DIR), $(PARSE_LIST))

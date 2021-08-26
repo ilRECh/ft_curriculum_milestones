@@ -42,7 +42,7 @@ _Bool	pre_parser(char *line)
 	i = -1;
 	parentheses = 0;
 	quotes_single = 0;
-	while (line[++i])
+	while (line[++i] && parentheses >= 0)
 	{
 		if (line[i] == '\"' && (!i || line[i - 1] != '\\'))
 			while (line[++i] && (line[i] != '\"' || line[i - 1] == '\\'))
