@@ -32,6 +32,7 @@ static void	copy_args(char **environ_, char **args)
 				setvalue(tmp, ft_strchr(args[iter_1], '=') + 1);
 			else
 				(*environ_ = ft_strdup(args[iter_1])), environ_++;
+			free(tmp);
 		}
 		else
 		{
@@ -55,7 +56,7 @@ int	ft_export(char **args)
 	environ_ = ft_calloc(env_count + 1, sizeof(char *));
 	iter_1 = -1;
 	while (g_param->env[++iter_1])
-		(environ_[iter_1] = g_param->env[iter_1]), free(g_param->env[iter_1]);
+		(environ_[iter_1] = g_param->env[iter_1]);//, free(g_param->env[iter_1]);
 	free(g_param->env);
 	copy_args(environ_ + iter_1, args);
 	g_param->env = environ_;

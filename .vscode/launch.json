@@ -9,7 +9,6 @@
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
-            "environment": [],
             "externalConsole": false,
 			"console": "integratedTerminal",
             "MIMode": "lldb",
