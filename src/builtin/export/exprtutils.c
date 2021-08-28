@@ -5,107 +5,39 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/27 20:54:52 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/08/27 21:26:53 by vcobbler         ###   ########.fr       */
+/*   Created: 2021/08/28 16:14:59 by vcobbler          #+#    #+#             */
+/*   Updated: 2021/08/28 19:16:26 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	env_counter(void)
+int	var_count(char **vars)
 {
 	int	iter_1;
 
 	iter_1 = -1;
-	while (g_param->env[++iter_1])
+	while (vars && vars[++iter_1])
 		;
+	if (iter_1 < 0)
+		return (0);
 	return (iter_1);
 }
 
-int	count_args(char **args)
+int	check_var(char *var)
 {
-	int		iter_1;
-	int		additional;
-	char	*tmp;
-
-	iter_1 = -1;
-	additional = 0;
-	while (args[++iter_1])
-	{
-		tmp = ft_strchr(args[iter_1], '=');
-		if (tmp)
-		{
-			tmp = ft_strndup(args[iter_1], tmp - args[iter_1]);
-			if (!getvalue(tmp))
-				additional++;
-			free(tmp);
-		}
-	}
-	return (additional);
+	while (var && *var)
+		if (!ft_isalpha(*var++))
+			return (0);
+	return (1);
 }
 
-int	check_args(char **args)
+void	free_split(char **split)
 {
-	int	iter_1;
-	int	iter_2;
-
-	iter_1 = -1;
-	while (args[++iter_1])
+	if (split)
 	{
-		iter_2 = -1;
-		while (args[iter_1][++iter_2])
-			if (isspace(args[iter_1][iter_2]))
-				return (error_str("not allowed: "),
-					printf("%s\n", args[iter_1]), 1);
-	}
-	return (0);
-}
-
-int	check_arg_in_exprt(char *arg, bool iseqsign)
-{
-	char	*cont;
-	bool	found;
-	bool	ret;
-
-	ret = false;
-	g_param->exprt.cur = g_param->exprt.head;
-	while (g_param->exprt.cur)
-	{
-		cont = g_param->exprt.cur->content;
-		if (iseqsign)
-			arg = ft_strndup(arg, ft_strchr(arg, '=') - arg);
-		found = !ft_strncmp(arg, cont, ft_strlen(arg));
-		if (found && *(cont + ft_strlen(arg)) == 0)
-		{
-			g_param->exprt.cur->content = ft_strjoin(cont, "=");
-			free(cont);
-			ret = true;
-		}
-		else if (found && *(cont + ft_strlen(arg)) == '=')
-			ret = true;
-		g_param->exprt.cur = g_param->exprt.cur->next;
-	}
-	if (iseqsign)
-		free(arg);
-	return (ret);
-}
-
-void	set_arg_value(char *word, char *new_value)
-{
-	char	*cont;
-
-	g_param->exprt.cur = g_param->exprt.head;
-	while (g_param->exprt.cur)
-	{
-		cont = g_param->exprt.cur->content;
-		if (!ft_strncmp(word, cont, ft_strlen(word))
-			&& ((*(cont + ft_strlen(word)) == 0)
-				|| ((*(cont + ft_strlen(word)) == '='))))
-		{
-			g_param->exprt.cur->content = ft_strdup(new_value);
-			free(cont);
-			return ;
-		}
-		g_param->exprt.cur = g_param->exprt.cur->next;
+		free(split[0]);
+		free(split[1]);
+		free(split);
 	}
 }

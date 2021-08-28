@@ -6,7 +6,7 @@
 /*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 21:22:41 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/08/25 22:16:00 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/08/28 18:38:20 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 static void	child(char **args, t_rdrct *rdrct)
 {
+	// struct sigaction	control_c;
+	// ft_memset(&control_c, 0, sizeof(control_c));
+	// sig_set(&control_c, FALSE);
 	ft_lstclear(&rdrct->in, NULL);
 	ft_lstclear(&rdrct->out, NULL);
 	if (rdrct->copy.is0)

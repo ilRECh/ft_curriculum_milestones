@@ -35,3 +35,27 @@ char	*getvalue(char *word)
 	}
 	return (NULL);
 }
+
+char	*getvalue_exprt(char *word)
+{
+	int	iter_1;
+	int	res;
+
+	if (!g_param->exprt)
+		return (NULL);
+	iter_1 = 0;
+	while (TRUE)
+	{
+		res = ft_strncmp(word, g_param->exprt[iter_1], ft_strlen(word));
+		if ((g_param->exprt[iter_1] && res)
+			|| (g_param->exprt[iter_1]
+				&& g_param->exprt[iter_1][ft_strlen(word)] != '='))
+			iter_1++;
+		else if (g_param->exprt[iter_1]
+			&& g_param->exprt[iter_1][ft_strlen(word)] == '=')
+			return (g_param->exprt[iter_1] + ft_strlen(word) + 1);
+		else
+			break ;
+	}
+	return (NULL);
+}

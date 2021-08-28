@@ -6,7 +6,7 @@
 /*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 22:54:39 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/08/27 21:02:55 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/08/28 18:44:27 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,10 @@
 
 int	print_exp(void)
 {
-	g_param->exprt.cur = g_param->exprt.head;
-	while (g_param->exprt.cur)
-	{
-		printf("%s\n", g_param->exprt.cur->content);
-		g_param->exprt.cur = g_param->exprt.cur->next;
-	}
+	int	iter_1;
+
+	iter_1 = -1;
+	while (g_param->exprt && g_param->exprt[++iter_1])
+		printf("declare -x %s\n", g_param->exprt[iter_1]);
 	return (0);
 }

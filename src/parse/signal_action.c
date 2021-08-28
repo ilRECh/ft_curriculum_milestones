@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signal_action.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 14:37:24 by csamuro           #+#    #+#             */
-/*   Updated: 2021/08/26 14:43:37 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/08/28 18:20:42 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ctrl_c2(int signum, siginfo_t *siginfo, void *code)
 	(void)signum;
 	(void)siginfo;
 	(void)code;
-	exit(0);
+	// exit(0);
 }
 
 void	sig_set(struct sigaction *action, _Bool b)

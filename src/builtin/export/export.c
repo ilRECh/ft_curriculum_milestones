@@ -12,53 +12,69 @@
 
 #include "minishell.h"
 
-static void	copy_args(char **environ_, char **args)
+static char	**split_by_eq(char *arg)
 {
-	int		iter_1;
+	char	*tmp;
+	char	**result;
+
+	tmp = ft_strchr(arg, '=');
+	result = ft_calloc(2, sizeof(char *));
+	if (!result)
+		ft_exit(NULL);
+	if (tmp)
+	{
+		result[0] = ft_strndup(arg, tmp - arg);
+		result[1] = ft_strndup(tmp + 1, ft_strlen(tmp + 1));
+	}
+	else
+	{
+		result[0] = ft_strdup(arg);
+		result[1] = NULL;
+	}
+	return (result);
+}
+
+static int	check_plus(char **split)
+{
 	char	*tmp;
 
-	iter_1 = -1;
-	while (args[++iter_1])
+	if (split[0][ft_strlen(split[0]) - 1] == '+')
 	{
-		tmp = ft_strchr(args[iter_1], '=');
-		if (tmp)
+		if (getvalue(split[0]))
 		{
-			tmp = ft_strndup(args[iter_1], tmp - args[iter_1]);
-			if (check_arg_in_exprt(args[iter_1], true))
-				set_arg_value(tmp, args[iter_1]);
-			else
-				ft_lstadd_back(&g_param->exprt, ft_strdup(args[iter_1]));
-			if (getvalue(tmp))
-				setvalue(tmp, ft_strchr(args[iter_1], '=') + 1);
-			else
-				(*environ_ = ft_strdup(args[iter_1])), environ_++;
+			tmp = split[1];
+			split[1] = ft_strjoin(getvalue(split[0]), split[1]);
 			free(tmp);
 		}
-		else
-		{
-			if (!check_arg_in_exprt(args[iter_1], false))
-				ft_lstadd_back(&g_param->exprt, ft_strdup(args[iter_1]));
-		}
+		split[0][ft_strlen(split[0]) - 1] = 0;
 	}
+	return (1);
 }
 
 int	ft_export(char **args)
 {
-	int				env_count;
-	int				iter_1;
-	char			**environ_;
+	int		iter_1;
+	char	**split;
 
 	if (!*(++args))
 		return (print_exp());
-	if (check_args(args))
-		return (1);
-	env_count = env_counter() + count_args(args);
-	environ_ = ft_calloc(env_count + 1, sizeof(char *));
 	iter_1 = -1;
-	while (g_param->env[++iter_1])
-		(environ_[iter_1] = g_param->env[iter_1]);//, free(g_param->env[iter_1]);
-	free(g_param->env);
-	copy_args(environ_ + iter_1, args);
-	g_param->env = environ_;
+	while (args[++iter_1])
+	{
+		split = split_by_eq(args[iter_1]);
+		if (check_plus(split) && check_var(split[0]))
+		{
+			add_to_env(split);
+			add_to_exprt(split);
+			free(split);
+		}
+		else
+		{
+			error_str("export: "
+				"not valid in this case: "), printf("%s\n", split[0]);
+			free_split(split);
+			break ;
+		}
+	}	
 	return (0);
 }
