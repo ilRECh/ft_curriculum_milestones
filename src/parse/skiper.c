@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   skiper.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 06:21:22 by csamuro           #+#    #+#             */
-/*   Updated: 2021/08/24 22:33:32 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/08/29 02:13:40 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,15 @@ _Bool	skip_open_case(char **ln)
 	return (TRUE);
 }
 
-int	skip_quote(char *str, int *k, char quote, char is_slash)
+int	skip_quote(char *str, int *k, char quote)
 {
 	int	i;
 
-	i = (*k) + 1;
-	if (is_slash)
+	if (k)
+		i = (*k) + 1;
+	else
+		i = 0;
+	if (quote == '\"')
 	{
 		while ((str[++i] && str[i] != quote)
 			|| (str[i] == quote && str[i - 1] == '\\'))
@@ -74,5 +77,8 @@ int	skip_quote(char *str, int *k, char quote, char is_slash)
 	else
 		while ((str[++i] && str[i] != quote))
 			;
-	return (*k = i + 1);
+	if (k)
+		return (*k = i + 1);
+	else
+		return (i + 1);
 }

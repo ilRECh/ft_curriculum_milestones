@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   slash_parse.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csamuro <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 01:49:29 by csamuro           #+#    #+#             */
-/*   Updated: 2021/08/25 01:49:31 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/08/28 23:18:37 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ char	*slash_parse(char *str)
 	while (str[++i])
 	{
 		if (str[i] == '\'')
-			skip_quote(str, &i, '\'', 0);
+			skip_quote(str, &i, '\'');
 		if (str[i] == '\"' && (!i || str[i - 1] != '\\'))
 			while (str[++i] != '\"')
 				apply_slash_full(&str[i]);

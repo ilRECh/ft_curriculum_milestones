@@ -34,6 +34,7 @@ int	main(int argc, char **argv, char **env)
 	g_param = ft_calloc(1, sizeof(t_param));
 	g_param->env = setup_env(env);
 	g_param->stdin_copy = dup(0);
+	g_param->locals = NULL;
 	line = (char *)0xFF;
 	while (line)
 	{

@@ -6,7 +6,7 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 23:58:51 by name              #+#    #+#             */
-/*   Updated: 2021/08/26 17:04:10 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/08/28 23:17:15 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ char	*slash_parse(char *str);
 _Bool	post_parser(t_list *lst);
 t_parse	*pars_gen_fill(char **argv, unsigned short oper);
 short	is_split(char *str);
-int		skip_quote(char *str, int *k, char quote, char is_slash);
+int		skip_quote(char *str, int *k, char quote);
 void	skip_quotation(char **ln);
 _Bool	skip_open_case(char **ln);
 void	case_skip(char **ln);

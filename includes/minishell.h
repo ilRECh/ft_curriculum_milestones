@@ -31,6 +31,7 @@
 typedef struct s_param
 {
 	char	**env;
+	char	**locals;
 	t_list	exprt;
 	int		ret;
 	int		stdin_copy;
@@ -96,7 +97,9 @@ int		ft_unset(char **args);
 //	ENV UTILS
 // 
 char	*getvalue(char *word);
+char	*getval_local(char *word);
 int		setvalue(char *word, char *new_value);
+int		setval_local(char *word, char *new_value);
 char	*getvalue_exprt(char *word);
 int		setvalue_exprt(char *word, char *new_value);
 void	free_tabs(char **tab);
