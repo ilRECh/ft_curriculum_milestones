@@ -31,7 +31,7 @@
 typedef struct s_param
 {
 	char	**env;
-	char	**exprt;
+	t_list	exprt;
 	int		ret;
 	int		stdin_copy;
 }	t_param;
@@ -83,6 +83,11 @@ int		ft_echo(char **args);
 int		ft_env(char **args);
 int		ft_exit(char **args);
 int		ft_export(char **args);
+int		check_arg_in_exprt(char *arg, bool iseqsign); //for the ft_export func
+void	set_arg_value(char *word, char *new_value); //for the ft_export func
+int		check_args(char **args); //for the ft_export func
+int		count_args(char **args); //for the ft_export func
+int		env_counter(void); //for the ft_export func
 int		print_exp(void); //for the ft_export func
 int		ft_pwd(char **args);
 int		ft_unset(char **args);

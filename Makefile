@@ -10,7 +10,7 @@ ifeq ($(OS), Darwin)
 READ_LINE_FLAGS			=	-L/Users/$(USER)/.brew/Cellar/readline/8.1/lib/ -lreadline
 # READ_LINE_FLAGS			=	-L./readline/lib/ -lreadline
 endif
-FLAGS					=	-g -Wall -Wextra -Werror -c
+FLAGS					=	-Wall -Wextra -Werror -c -g
 
 # ifeq ($(OS), Linux)
 # 	MLX_ARC = libmlx.a
@@ -44,6 +44,7 @@ LIBFT					=	./libft/libft.a
 BUILTIN_LIST			=	cd/cd.c \
 							echo/echo.c \
 							export/export.c \
+							export/exprtutils.c \
 							export/print_exp.c \
 							env/env.c \
 							pwd/pwd.c \

@@ -14,7 +14,7 @@
 
 int	ft_exit(char **args)
 {
-	if (args[1] && args[2]
+	if (args && args[1] && args[2]
 		&& error_str("exit: too many arguments"))
 		return (1);
 	else if (args[1])
