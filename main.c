@@ -47,6 +47,7 @@ int	main(int argc, char **argv, char **env)
 			continue ;
 		sig_set(&control_c, FALSE);
 		go_on_I_will_wait(exec(list_of_parses));
+		rl_replace_line("", 0);
 		if (list_of_parses)
 			ft_lstclear(list_of_parses, free_parse);
 		free(list_of_parses);
