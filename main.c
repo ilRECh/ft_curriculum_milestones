@@ -27,6 +27,8 @@ int	main(int argc, char **argv, char **env)
 	struct sigaction	control_c;
 	t_list	*list_of_parses;
 	char	*line;
+	(void)argc;
+	(void)argv;
 
 	ft_memset(&control_c, 0, sizeof(control_c));
 	g_param = ft_calloc(1, sizeof(t_param));

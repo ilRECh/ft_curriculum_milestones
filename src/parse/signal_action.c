@@ -6,11 +6,12 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 14:37:24 by csamuro           #+#    #+#             */
-/*   Updated: 2021/08/27 15:59:08 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/08/28 19:01:15 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include <stdio.h>
 
 void	ctrl_c(int signum, siginfo_t *siginfo, void *code)
 {
@@ -29,7 +30,9 @@ void	ctrl_c2(int signum, siginfo_t *siginfo, void *code)
 	(void)signum;
 	(void)siginfo;
 	(void)code;
-	// exit(0);
+
+	if (!ft_strncmp("cat", rl_line_buffer, ft_strlen(rl_line_buffer)))
+		write(1, "\n", 1);
 }
 
 void	sig_set(struct sigaction *action, _Bool b)
