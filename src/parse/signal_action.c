@@ -6,7 +6,7 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 14:37:24 by csamuro           #+#    #+#             */
-/*   Updated: 2021/08/28 19:04:07 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/08/28 19:08:49 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	ctrl_c2(int signum, siginfo_t *siginfo, void *code)
 	(void)signum;
 	(void)siginfo;
 	(void)code;
-
 	if (*rl_line_buffer)
 		write(1, "\n", 1);
 }
