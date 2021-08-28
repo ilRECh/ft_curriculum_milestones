@@ -25,26 +25,19 @@ static char	**setup_env(char **env)
 int	main(int argc, char **argv, char **env)
 {
 	struct sigaction	control_c;
+	t_list	*list_of_parses;
+	char	*line;
 
 	ft_memset(&control_c, 0, sizeof(control_c));
-
 	g_param = ft_calloc(1, sizeof(t_param));
 	g_param->env = setup_env(env);
 	g_param->stdin_copy = dup(0);
-	t_list	*list_of_parses;
-	(void)list_of_parses;
-	(void)argv;
-	(void)env;
-	(void)argc;
-	//* START TEST
-	char	*line;
-
 	line = (char *)0xFF;
 	while (line)
 	{
 		sig_set(&control_c, TRUE);
-		//line = readline(RED "super " CYAN "shell " RESET "$> ");
-		line = ft_strdup("export \"           HUI\"");
+		line = readline(RED "super " CYAN "shell " RESET "$> ");
+		// line = ft_strdup("export \"           HUI\"");
 		if (!line)
 			break ;
 		add_history(line);
@@ -59,7 +52,7 @@ int	main(int argc, char **argv, char **env)
 		if (list_of_parses)
 			ft_lstclear(list_of_parses, free_parse);
 		free(list_of_parses);
-		exit(1);
+		// exit(1);
 	}
 	return (0);
 }
