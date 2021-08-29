@@ -6,7 +6,7 @@
 /*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 14:37:24 by csamuro           #+#    #+#             */
-/*   Updated: 2021/08/28 18:20:42 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/08/29 16:35:36 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,12 @@ void	ctrl_c2(int signum, siginfo_t *siginfo, void *code)
 	(void)signum;
 	(void)siginfo;
 	(void)code;
-	// exit(0);
 }
 
-void	sig_set(struct sigaction *action, _Bool b)
+void	sig_set(struct sigaction *action,
+	void (*f)(int, siginfo_t *, void *))
 {
-	if (b)
-		action->sa_sigaction = ctrl_c;
-	else
-		action->sa_sigaction = ctrl_c2;
+	action->sa_sigaction = (*f);
 	action->sa_flags = SA_SIGINFO;
 	sigaction(SIGINT, action, NULL);
 }

@@ -42,6 +42,7 @@ LIBFT_MAKE				=	./libft/
 LIBFT					=	./libft/libft.a
 
 BUILTIN_LIST			=	cd/cd.c \
+							cd/cdutils.c \
 							echo/echo.c \
 							export/export.c \
 							export/add_to_env.c \

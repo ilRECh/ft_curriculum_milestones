@@ -12,43 +12,27 @@
 
 #include "minishell.h"
 
-static void	update_env(char *newpath)
+static void	home(char *path, bool *res)
 {
-	char	*tmp;
-
-	if (newpath[0] != '/')
+	if (getvalue("HOME"))
 	{
-		tmp = newpath;
-		newpath = ft_strjoin("/", newpath);
-		free(tmp);
+		path = ft_strjoin(getvalue("HOME"), path);
+		*res = chpath(path);
+		free(path);
 	}
-	setvalue("PWD", newpath);
-	free(newpath);
+	else
+	{
+		*res = false;
+		error_str("HOME not set");
+	}
 }
 
-static int	chpath(char *newpath, char *oldpath, char *start_with)
+static void	back(bool *res)
 {
-	char	*path;
-
-	while (TRUE)
-	{
-		path = getcwd(NULL, 0);
-		if (ft_strlen(path) == 1)
-			break ;
-		free(path);
-		chdir("..");
-	}
-	free(path);
-	path = ft_strjoin(start_with, newpath);
-	if (chdir(path) < 0 && error())
-	{
-		chdir(oldpath);
-		free(path);
-		return (1);
-	}
-	update_env(getcwd(NULL, 0));
-	free(path);
-	return (0);
+	if (getvalue("OLDPWD"))
+		*res = chpath(getvalue("OLDPWD"));
+	else
+		error_str("cd: OLDPWD not set");
 }
 
 int	ft_cd(char **args)
@@ -60,21 +44,18 @@ int	ft_cd(char **args)
 	if (args[1] && args[2]
 		&& error_str("cd: too many arguments"))
 		return (1);
+	res = false;
 	path = args[1];
-	if (!path || (path[0] == '/' && !path[1]))
-		path = "/.";
-	oldpath = getcwd(NULL, 0);
-	if (path[0] == '~')
-		res = chpath(++path, oldpath, getvalue("HOME"));
-	else if (path[0] == '/')
-		res = chpath(++path, oldpath, "");
+	if (!path)
+		path = "/";
+	oldpath = oldpwd();
+	if (path[0] == '~'
+		|| (path[0] == '-' && path[1] == '-' && !path[2] && path++))
+		home(path + 1, &res);
 	else if (path[0] == '-' && path[1] == 0)
-		res = chpath("", oldpath, getvalue("OLDPWD"));
+		back(&res);
 	else
-		res = chpath(path = ft_strjoin("/",
-					path), oldpath, oldpath), free(path);
-	if (!res)
-		setvalue("OLDPWD", oldpath);
-	free(oldpath);
+		res = chpath(path);
+	update_oldpwd(res, oldpath);
 	return (res);
 }

@@ -6,37 +6,58 @@
 /*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 21:16:21 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/08/25 22:46:54 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/08/29 16:30:43 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-//
-//	heredoc analog. Takes place in the ft_rdrct func
-//
+static inline void	writing(int fd, char **line)
+{
+	*line = dollar_get_env(*line);
+	write(fd, *line, ft_strlen(*line));
+	write(fd, "\n", 1);
+}
+
+static void	ctrl_c_wd(int signum, siginfo_t *siginfo, void *code)
+{
+	(void)signum;
+	(void)siginfo;
+	(void)code;
+	g_param->ret = 130;
+	rl_replace_line("", 0);
+	rl_on_new_line();
+	rl_redisplay();
+	write(1, CYAN "\nwhatsupdoc?> " RESET, 26);
+}
+
 void	whatsupdoc(int fd, char *stopword)
 {
-	char	*line;
-	int		copy_cur_stdin;
+	char				*line;
+	int					copy_cur_stdin;
+	bool				loop;
+	struct sigaction	control_c;
 
+	loop = true;
 	copy_cur_stdin = dup(0);
 	dup2(0, g_param->stdin_copy);
+	ft_memset(&control_c, 0, sizeof(control_c));
+	sig_set(&control_c, ctrl_c_wd);
 	while (true)
 	{
-		line = readline("\033[2K\rwhatsupdoc?> ");
+		line = readline(CYAN "\033[2K\rwhatsupdoc?> " RESET);
 		if (line && ft_strncmp(line, stopword, ft_strlen(stopword)))
-		{
-			write(fd, line, ft_strlen(line));
-			write(fd, "\n", 1);
-		}
-		else if (line)
+			writing(fd, &line);
+		else if (line && !ft_strncmp(line, stopword, ft_strlen(stopword)))
 		{
 			free(line);
 			break ;
 		}
+		else
+			break ;
 		free(line);
 	}
+	sig_set(&control_c, ctrl_c);
 	dup2(copy_cur_stdin, 0);
 	close(copy_cur_stdin);
 }

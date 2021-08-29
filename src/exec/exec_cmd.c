@@ -6,7 +6,7 @@
 /*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 21:22:41 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/08/28 18:38:20 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/08/29 16:37:12 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 static void	child(char **args, t_rdrct *rdrct)
 {
 	// struct sigaction	control_c;
+
 	// ft_memset(&control_c, 0, sizeof(control_c));
-	// sig_set(&control_c, FALSE);
+	// sig_set(&control_c, ctrl_c2);
 	ft_lstclear(&rdrct->in, NULL);
 	ft_lstclear(&rdrct->out, NULL);
 	if (rdrct->copy.is0)
@@ -34,8 +35,12 @@ static void	child(char **args, t_rdrct *rdrct)
 
 static void	writer(int writer_pid, t_rdrct *rdrct)
 {
+	struct sigaction	control_c;
+
 	if (!writer_pid)
 	{
+		ft_memset(&control_c, 0, sizeof(control_c));
+		sig_set(&control_c, ctrl_c2);
 		if (rdrct->pipe.is)
 			close(rdrct->pipe.pipefd[0]);
 		if (rdrct->copy.is0)

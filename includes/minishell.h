@@ -80,6 +80,12 @@ extern t_param	*g_param;
 //	BUILTINS
 //
 int		ft_cd(char **args);
+void	update_env(char *newpath);
+int		is_way_exist(char *path);
+int		is_way_exist(char *path);
+int		chpath(char *newpath);
+char	*oldpwd(void);
+void	update_oldpwd(bool res, char *oldpath);
 int		ft_echo(char **args);
 int		ft_env(char **args);
 int		ft_exit(char **args);

@@ -40,13 +40,13 @@ static int	check_plus(char **split)
 
 	if (split[0][ft_strlen(split[0]) - 1] == '+')
 	{
+		split[0][ft_strlen(split[0]) - 1] = 0;
 		if (getvalue(split[0]))
 		{
 			tmp = split[1];
 			split[1] = ft_strjoin(getvalue(split[0]), split[1]);
 			free(tmp);
 		}
-		split[0][ft_strlen(split[0]) - 1] = 0;
 	}
 	return (1);
 }
