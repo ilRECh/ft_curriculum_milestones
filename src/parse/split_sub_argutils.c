@@ -6,7 +6,7 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 06:21:27 by csamuro           #+#    #+#             */
-/*   Updated: 2021/08/29 15:05:49 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/08/29 15:10:50 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,23 @@ t_parse	*to_separate_util_args(t_parse *parse, t_list *lst)
 	int		i;
 
 	i = 0;
+	beg = NULL;
 	free(*(parse->argv));
 	free((parse->argv));
-	if (is_builtins(trimmer(((char *)lst->head->content), "\"\'")))
-		beg = ft_strdup(trimmer(((char *)lst->head->content), "\"\'"));
-	else
-		beg = is_util_exists(trimmer(((char *)lst->head->content), "\"\'"));
-	if (beg)
+	if (!parse->oper)
 	{
-		free(lst->head->content);
-		lst->head->content = beg;
+		if (is_builtins(trimmer(((char *)lst->head->content), "\"\'")))
+			beg = ft_strdup(trimmer(((char *)lst->head->content), "\"\'"));
+		else
+			beg = is_util_exists(trimmer(((char *)lst->head->content), "\"\'"));
+		if (beg)
+		{
+			free(lst->head->content);
+			lst->head->content = beg;
+		}
+		else
+			ft_lstadd_front(lst, NULL);
 	}
-	else
-		ft_lstadd_front(lst, NULL);
 	trimmer(lst->head->content, "\"\'");
 	// lst_trimmer(lst);
 	parse->argv = list_to_char2(lst);
