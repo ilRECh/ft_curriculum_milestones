@@ -6,7 +6,7 @@
 /*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 23:58:51 by name              #+#    #+#             */
-/*   Updated: 2021/08/29 16:23:30 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/08/29 16:47:23 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ char	*slash_parse(char *str);
 _Bool	post_parser(t_list *lst);
 t_parse	*pars_gen_fill(char **argv, unsigned short oper);
 short	is_split(char *str);
-int		skip_quote(char *str, int *k, char quote, char is_slash);
+int		skip_quote(char *str, int *k, char quote);
 void	skip_quotation(char **ln);
 _Bool	skip_open_case(char **ln);
 void	case_skip(char **ln);

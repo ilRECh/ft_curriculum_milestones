@@ -6,7 +6,7 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 06:21:44 by csamuro           #+#    #+#             */
-/*   Updated: 2021/08/26 15:11:22 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/08/29 14:58:52 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,25 @@ char	*ft_strjoin_free(char *s1, char *s2, short fr)
 
 _Bool	sub_sub_quote(char *str, int *i)
 {
-	if ((str[(*i)] == '\"' || str[(*i)] == '\'') && str[(*i) - 1] != '\\')
-		ft_memmove(&str[(*i)], &str[(*i) + 1], ft_strlen(&str[(*i)]));
-	while (str[++(*i)] && (!(str[(*i)] == '\"' || str[(*i)] == '\'')
-			|| ((str[(*i)] == '\"' || str[(*i)] == '\'') && \
-			str[(*i) - 1] == '\\')));
-	if (str[(*i)])
-		ft_memmove(&str[(*i)], &str[(*i) + 1], ft_strlen(&str[(*i)]));
-	else if (!str[(*i)] || ft_isspace(str[(*i) + 2]))
+	int		k;
+	char	c;
+
+	k = *i;
+	c = str[k];
+	if ((str[k] == '\"' || str[k] == '\'') && str[k - 1] != '\\')
+	{
+		ft_memmove(&str[k], &str[k + 1], ft_strlen(&str[k]));
+		if (c == '\"')
+			while (str[++k] && (!((str[k] == '\"')
+						|| (str[k] == '\"' && str[k - 1] == '\\'))));
+		else if (c == '\'')
+			while (str[++k] && (!((str[k] == '\''))))
+				;
+	}
+	*i = k;
+	if (str[k])
+		ft_memmove(&str[k], &str[k + 1], ft_strlen(&str[k]));
+	else if (!str[k] || ft_isspace(str[k + 2]))
 		return (TRUE);
 	return (FALSE);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_file_exists.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 06:20:25 by csamuro           #+#    #+#             */
-/*   Updated: 2021/08/24 22:33:57 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/08/28 17:42:31 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,18 @@ void	run_compare(char **paths, int *fd,
 	}
 }
 
+_Bool	is_from_path(char **paths, char *str)
+{
+	unsigned int	iter;
+
+	iter = -1;
+	while (paths[++iter])
+		if (!ft_strncmp(paths[iter], str, \
+		ft_strlen(paths[iter])))
+			return (TRUE);
+	return (FALSE);
+}
+
 char	*is_util_exists(char *file_path)
 {
 	char	*str_concat;
@@ -52,7 +64,8 @@ char	*is_util_exists(char *file_path)
 		ft_memmove(file_path, &file_path[1], ft_strlen(file_path));
 	str_concat = ft_strdup(file_path);
 	fd = 0;
-	if (str_concat[0] == '.' && str_concat[1] == '/')
+	if ((str_concat[0] == '.' && str_concat[1] == '/') \
+	|| is_from_path(paths, str_concat))
 		fd = open(str_concat, O_RDONLY);
 	else
 		run_compare(paths, &fd, &str_concat, file_path);

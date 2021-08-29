@@ -6,7 +6,7 @@
 /*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 21:16:21 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/08/29 16:30:43 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/08/29 16:55:26 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,6 @@ void	whatsupdoc(int fd, char *stopword)
 			free(line);
 			break ;
 		}
-		else
-			break ;
 		free(line);
 	}
 	sig_set(&control_c, ctrl_c);

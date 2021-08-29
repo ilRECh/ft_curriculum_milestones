@@ -6,7 +6,7 @@
 /*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 22:46:08 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/08/29 16:37:57 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/08/29 16:46:15 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ int	main(int argc, char **argv, char **env)
 			continue ;
 		sig_set(&control_c, ctrl_c2);
 		go_on_I_will_wait(exec(list_of_parses));
+		rl_replace_line("", 0);
 		if (list_of_parses)
 			ft_lstclear(list_of_parses, free_parse);
 		free(list_of_parses);

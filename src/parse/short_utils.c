@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   short_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 21:30:23 by csamuro           #+#    #+#             */
-/*   Updated: 2021/08/24 22:33:34 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/08/28 23:17:51 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int	ft_strlenspace(char *str)
 	{
 		i++;
 		if (str[i] == '\"')
-			skip_quote(str, &i, '\"', '\\');
+			skip_quote(str, &i, '\"');
 		if (str[i] == '\'')
-			skip_quote(str, &i, '\'', FALSE);
+			skip_quote(str, &i, '\'');
 	}
 	return (i);
 }

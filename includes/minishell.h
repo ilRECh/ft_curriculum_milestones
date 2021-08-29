@@ -103,7 +103,9 @@ int		ft_unset(char **args);
 //	ENV UTILS
 // 
 char	*getvalue(char *word);
+char	*getval_local(char *word);
 int		setvalue(char *word, char *new_value);
+int		setval_local(char *word, char *new_value);
 char	*getvalue_exprt(char *word);
 int		setvalue_exprt(char *word, char *new_value);
 void	free_tabs(char **tab);
@@ -128,9 +130,6 @@ void	ft_close(void *fd);
 int		go_on_I_will_wait(int pid);
 int		exec_minishell(char **argv, t_rdrct *rdrct, int *exitcode);
 
-//
-//	ERROR output funcs
-//
 static inline uint8_t	error(void)
 {
 	printf(RED "ERROR: " RESET "%s\n", strerror(errno));
