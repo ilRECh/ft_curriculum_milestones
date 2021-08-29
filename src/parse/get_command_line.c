@@ -6,7 +6,7 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 06:20:05 by csamuro           #+#    #+#             */
-/*   Updated: 2021/08/29 15:50:56 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/08/29 20:54:45 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,16 @@ t_list	*get_command_line(char **line)
 {
 	t_list	*lst;
 
+	if (!**line)
+	{
+		free(*line);
+		return (NULL);
+	}
 	if (pre_parser(*line))
 		return (NULL);
-	// *line = dollar_get_env(*line);
-	*line = slash_parse(*line);
 	lst = split_ignore_caps(*line, 0);
 	free (*line);
-	if (!split_sub_argutils(lst))
+	if (!split_args(lst))
 	{
 		ft_lstclear(lst, free_parse);
 		return ((t_list *)ret_perr("utils"));
