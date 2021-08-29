@@ -40,7 +40,6 @@ t_parse	*to_separate_util_args(t_parse *parse, t_list *lst)
 	beg = NULL;
 	free(*(parse->argv));
 	free((parse->argv));
-	slash_parse((char *)lst->head->content);
 	if (!parse->oper)
 	{
 		if (is_builtins(trimmer(((char *)lst->head->content), "\"\'")))
