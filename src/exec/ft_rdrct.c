@@ -6,7 +6,7 @@
 /*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 21:17:49 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/08/29 22:47:39 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/08/29 22:49:43 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,15 +100,7 @@ t_list	ft_all_rdrcts(t_list *lst, t_rdrct *rdrct)
 			}
 		}
 		else if (((t_parse *)lst->cur->content)->oper == RDCT_L2)
-		{
-			if (ft_rdrct(RDCT_L2, rdrct, lst->cur->content))
-			{
-				sublst.head = NULL;
-				sublst.cur = NULL;
-				sublst.end = NULL;
-				return (sublst);
-			}
-		}
+			ft_rdrct(RDCT_L2, rdrct, lst->cur->content);
 		else if (((t_parse *)lst->cur->content)->oper == RDCT_R)
 		{
 			if (ft_rdrct(RDCT_R, rdrct, lst->cur->content))
