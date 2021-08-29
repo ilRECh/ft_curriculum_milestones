@@ -6,7 +6,7 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 06:21:27 by csamuro           #+#    #+#             */
-/*   Updated: 2021/08/29 15:10:50 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/08/29 17:05:23 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ t_parse	*to_separate_util_args(t_parse *parse, t_list *lst)
 		else
 			ft_lstadd_front(lst, NULL);
 	}
+	else
+		ft_lstadd_front(lst, NULL);
 	trimmer(lst->head->content, "\"\'");
 	// lst_trimmer(lst);
 	parse->argv = list_to_char2(lst);
