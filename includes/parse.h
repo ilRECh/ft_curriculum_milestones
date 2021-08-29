@@ -6,7 +6,7 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 23:58:51 by name              #+#    #+#             */
-/*   Updated: 2021/08/29 20:05:39 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/08/29 21:31:32 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct s_wheel
 t_list			*check_line_lst(t_list *lst);
 void			sig_set(struct sigaction *action, _Bool b);
 unsigned int	dollr(t_parse *parse);
+char			*dollar_get_env(char *line);
 char			*ft_strjoin_free(char *s1, char *s2, short fr);
 t_list			*get_command_line(char **line);
 char			*trimmer(char *str, char *c);
@@ -67,16 +68,16 @@ void			skip_quotation(char **ln);
 _Bool			skip_open_case(char **ln);
 void			case_skip(char **ln);
 
-char	**argv_fill_1(char *str1);
-char	**argv_fill_2(char *str1, char *str2);
+char			**argv_fill_1(char *str1);
+char			**argv_fill_2(char *str1, char *str2);
 
-void	get_next_sp(char **ln, short *sp);
-t_list	*split_ignore_caps(char *line, short sp_prev);
+void			get_next_sp(char **ln, short *sp);
+t_list			*split_ignore_caps(char *line, short sp_prev);
 
-char	**list_to_char2(t_list *lst);
+char			**list_to_char2(t_list *lst);
 
-void	test_print_tab(char **split_dots);
-char	*test_opers(unsigned short oper);
-void	test_print_lst(t_list *lst, int i);
+void			test_print_tab(char **split_dots);
+char			*test_opers(unsigned short oper);
+void			test_print_lst(t_list *lst, int i);
 
 #endif
