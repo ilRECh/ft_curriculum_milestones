@@ -95,8 +95,6 @@ t_parse	*sub_parse(t_parse *tosub_pars)
 	return (to_separate_util_args(tosub_pars, lst));
 }
 
-		// if ((!p->argv || !*p->argv || !**p->argv) && p->oper > 0 && p->oper < 5)
-		// 	return ((t_list *)ret_perr("redirection from/to is empty"));
 t_list	*split_args(t_list *l)
 {
 	t_parse	*p;
@@ -106,11 +104,9 @@ t_list	*split_args(t_list *l)
 	{
 		p = (t_parse *)l->cur->content;
 		if (p->argv && *p->argv && !ft_strncmp(CASE, *p->argv, 13))
-		{
 			if (!split_args(((t_list *)((t_parse *)l->cur->content)->argv[1])))
 				return (NULL);
-		}
-		else if (p->argv && *p->argv)
+		if (p->argv && *p->argv && ft_strncmp(CASE, *p->argv, 13))
 		{
 			if (dollr(p))
 			{

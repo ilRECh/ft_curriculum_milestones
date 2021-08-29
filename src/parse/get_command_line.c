@@ -6,7 +6,7 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 06:20:05 by csamuro           #+#    #+#             */
-/*   Updated: 2021/08/29 20:36:37 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/08/29 20:54:45 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@ t_list	*get_command_line(char **line)
 {
 	t_list	*lst;
 
+	if (!**line)
+	{
+		free(*line);
+		return (NULL);
+	}
 	if (pre_parser(*line))
 		return (NULL);
 	lst = split_ignore_caps(*line, 0);
