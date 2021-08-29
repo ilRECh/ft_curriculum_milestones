@@ -31,8 +31,8 @@
 typedef struct s_param
 {
 	char	**env;
+	char	**exprt;
 	char	**locals;
-	t_list	exprt;
 	int		ret;
 	int		stdin_copy;
 }	t_param;
@@ -80,15 +80,21 @@ extern t_param	*g_param;
 //	BUILTINS
 //
 int		ft_cd(char **args);
+void	update_env(char *newpath);
+int		is_way_exist(char *path);
+int		is_way_exist(char *path);
+int		chpath(char *newpath);
+char	*oldpwd(void);
+void	update_oldpwd(bool res, char *oldpath);
 int		ft_echo(char **args);
 int		ft_env(char **args);
 int		ft_exit(char **args);
 int		ft_export(char **args);
-int		check_arg_in_exprt(char *arg, bool iseqsign); //for the ft_export func
-void	set_arg_value(char *word, char *new_value); //for the ft_export func
-int		check_args(char **args); //for the ft_export func
-int		count_args(char **args); //for the ft_export func
-int		env_counter(void); //for the ft_export func
+void	add_to_env(char **split);
+void	add_to_exprt(char **split);
+int		var_count(char **vars);
+void	free_split(char **split);
+int		check_var(char *var);
 int		print_exp(void); //for the ft_export func
 int		ft_pwd(char **args);
 int		ft_unset(char **args);
@@ -115,6 +121,7 @@ void	find_sublst_or_command(t_list *sublst);
 void	in(t_list *in, int infd);
 void	out(t_list *out, int outfd);
 int		openpipe(t_rdrct *rdrct, int direction);
+int		exec_cmd_or_braces(t_list sublst, t_rdrct *rdrct, int *exitcode);
 int		exec_cmd(char **args, t_rdrct *rdrct);
 int		exec_braces(t_list sublst, t_rdrct *rdrct);
 int		exec_builtin(t_list sublst, t_rdrct *rdrct, int *exitcode);
@@ -123,9 +130,6 @@ void	ft_close(void *fd);
 int		go_on_I_will_wait(int pid);
 int		exec_minishell(char **argv, t_rdrct *rdrct, int *exitcode);
 
-//
-//	ERROR output funcs
-//
 static inline uint8_t	error(void)
 {
 	printf(RED "ERROR: " RESET "%s\n", strerror(errno));

@@ -6,38 +6,12 @@
 /*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 21:17:34 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/08/26 20:23:59 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/08/28 22:26:10 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "additional_exec.h"
-
-static int	exec_cmd_or_braces(t_list sublst, t_rdrct *rdrct, int *exitcode)
-{
-	int	pid;
-
-	pid = 0;
-	find_sublst_or_command(&sublst);
-	if (sublst.cur && sublst.cur != sublst.end
-		&& ((t_parse *)sublst.cur->content)->argv[0]
-		&& !ft_strncmp(((t_parse *)sublst.cur->content)->argv[0],
-			CASE, ft_strlen(CASE)))
-		pid = exec_braces(sublst, rdrct);
-	else if (sublst.cur && sublst.cur != sublst.end
-		&& check_builtin(((t_parse *)sublst.cur->content)->argv[0]))
-		pid = exec_builtin(sublst, rdrct, exitcode);
-	else if (sublst.cur && sublst.cur != sublst.end
-		&& ft_strnstr(((t_parse *)sublst.cur->content)->argv[0],
-			"minishell", ft_strlen(((t_parse *)sublst.cur->content)->argv[0])))
-		pid = exec_minishell(((t_parse *)sublst.cur->content)->argv,
-				rdrct, exitcode);
-	else if (sublst.cur && sublst.cur != sublst.end)
-		pid = exec_cmd(((t_parse *)sublst.cur->content)->argv, rdrct);
-	else
-		pid = -42;
-	return (pid);
-}
 
 static void	errr(int pid, int *exitcode, t_rdrct *rdrct)
 {
@@ -98,6 +72,14 @@ static void	and(int pid, int *exitcode, t_list *lst)
 		lst->cur = lst->cur->next;
 }
 
+static void	end(int pid, int *exitcode, t_list *lst)
+{
+	if (pid > 0)
+		if (waitpid(pid, exitcode, 0) < 0)
+			*exitcode = g_param->ret;
+	lst->cur = lst->cur->next;
+}
+
 int	exec(t_list *lst)
 {
 	t_rdrct	*rdrct;
@@ -119,10 +101,10 @@ int	exec(t_list *lst)
 			and(pid, &exitcode, lst);
 		else if (lst->cur && ((t_parse *)lst->cur->content)->oper == OR)
 			or(pid, &exitcode, lst);
-		else if (lst->cur && (((t_parse *)lst->cur->content)->oper == PIPE
-				|| ((t_parse *)lst->cur->content)->oper == END))
+		else if (lst->cur && ((t_parse *)lst->cur->content)->oper == END)
+			end(pid, &exitcode, lst);
+		else if (lst->cur && ((t_parse *)lst->cur->content)->oper == PIPE)
 			lst->cur = lst->cur->next;
 	}
-	free(rdrct), g_param->ret = exitcode;
-	return (pid);
+	return (free(rdrct), (g_param->ret = exitcode), pid);
 }

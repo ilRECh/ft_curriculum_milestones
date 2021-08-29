@@ -26,17 +26,14 @@ static inline int	isaln(char *par)
 
 int	ft_echo(char **argv)
 {
-	uint8_t	flag_nl;
+	bool	flag_nl;
 
-	if (!ft_strncmp(argv[1], "-n", 2) && isaln(argv[1]))
-	{
-		argv += 1;
-		flag_nl = 0;
-	}
-	else
-		flag_nl = 1;
-	while (++argv && *argv && *(argv + 1))
-		write(1, *argv, ft_strlen(*argv)), write(1, " ", 1);
+	flag_nl = true;
+	while (argv && *++argv
+		&& !ft_strncmp(*argv, "-n", 2) && isaln(*argv))
+		flag_nl = false;
+	while (argv && *argv && *(argv + 1))
+		write(1, *argv, ft_strlen(*argv)), write(1, " ", 1), argv++;
 	if (argv && *argv)
 		write(1, *argv, ft_strlen(*argv));
 	if (flag_nl)

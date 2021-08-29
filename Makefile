@@ -42,8 +42,11 @@ LIBFT_MAKE				=	./libft/
 LIBFT					=	./libft/libft.a
 
 BUILTIN_LIST			=	cd/cd.c \
+							cd/cdutils.c \
 							echo/echo.c \
 							export/export.c \
+							export/add_to_env.c \
+							export/add_to_exprt.c \
 							export/exprtutils.c \
 							export/print_exp.c \
 							env/env.c \
@@ -53,16 +56,17 @@ BUILTIN_LIST			=	cd/cd.c \
 BUILTIN_DIR				=	./src/builtin/
 BUILTIN					=	$(addprefix $(BUILTIN_DIR), $(BUILTIN_LIST))
 
-EXEC_LIST				=	exec.c\
-							exec_braces.c\
-							exec_builtin.c\
-							exec_cmd.c\
-							exec_minishell.c\
-							find.c\
-							ft_rdrct.c\
-							in_and_out.c\
-							openpipe.c\
-							whatsupdoc.c\
+EXEC_LIST				=	exec.c \
+							exec_cmd_or_braces.c \
+							exec_braces.c \
+							exec_builtin.c \
+							exec_cmd.c \
+							exec_minishell.c \
+							find.c \
+							ft_rdrct.c \
+							in_and_out.c \
+							openpipe.c \
+							whatsupdoc.c \
 							go_on_I_will_wait.c
 							
 EXEC_DIR				=	./src/exec/
