@@ -78,7 +78,7 @@ PARSE_LIST				=	dollar_get_env.c \
 							parse.c \
 							utils_parse.c \
 							trimmer.c \
-							split_sub_argutils.c \
+							split_args.c \
 							is_file_exists.c \
 							ret_perr.c \
 							pre_parser.c \
