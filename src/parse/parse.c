@@ -6,7 +6,7 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 06:20:48 by csamuro           #+#    #+#             */
-/*   Updated: 2021/08/26 20:10:23 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/08/29 14:38:03 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,13 @@ t_list	*split_ignore_caps(char *line, short sp_prev)
 	w.lst = ft_calloc(1, sizeof(t_list));
 	while (*w.ln)
 	{
-		skip_quotation(&w.ln);
-		get_next_sp(&w.ln, &w.sp);
+		if (ft_strchr("\'\"", *w.ln) && (w.ln == w.line || *(w.ln - 1) != '\\'))
+			w.ln += skip_quote(w.ln, NULL, *w.ln);
+		// skip_quotation(&w.ln);w
+		// get_next_sp(&w.ln, &w.sp);
+		w.sp = is_split(w.ln);
+		if (!w.sp)
+			w.ln++;
 		if (!*w.ln || (w.sp > 0 && w.sp < 5))
 			if_redir(&w);
 		else if (w.sp > 4 && w.sp < 9)

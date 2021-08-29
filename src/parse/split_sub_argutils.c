@@ -6,7 +6,7 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 06:21:27 by csamuro           #+#    #+#             */
-/*   Updated: 2021/08/29 02:09:45 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/08/29 14:39:07 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,8 +180,8 @@ t_list	*split_sub_argutils(t_list *lst)
 			(t_list *)((t_parse *)lst->cur->content)->argv[1])))
 				return (NULL);
 		}
-		else if (parse->argv && *parse->argv
-			&& !(parse->oper > 4 && parse->oper < 9))
+		else if (parse->argv && *parse->argv)
+			//&& !(parse->oper > 4 && parse->oper < 9))
 		{
 			if (dollr(parse))
 			{
