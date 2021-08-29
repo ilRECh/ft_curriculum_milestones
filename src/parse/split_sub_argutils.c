@@ -6,7 +6,7 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 06:21:27 by csamuro           #+#    #+#             */
-/*   Updated: 2021/08/29 14:39:07 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/08/29 15:05:49 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,16 +127,20 @@ unsigned int	dollr(t_parse *parse)
 	char			*tmp;
 	char			*str;
 	char			*base_str;
+	_Bool			was_space;
 
 	i = -1;
 	tmp = NULL;
+	was_space = FALSE;
 	while (parse->argv[++i])
 	{
 		str = parse->argv[i];
 		base_str = parse->argv[i];
 		while (*str)
 		{
-			if (*str == '=')
+			if (ft_isspace(*str))
+				was_space = TRUE;
+			if (*str == '=' && !was_space)
 			{
 				set_local(str, base_str);
 				return (1);
