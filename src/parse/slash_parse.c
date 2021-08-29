@@ -6,7 +6,7 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 01:49:29 by csamuro           #+#    #+#             */
-/*   Updated: 2021/08/28 23:18:37 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/08/29 15:46:02 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,6 @@ static void	apply_slash_full(char *str)
 	}
 }
 
-static void	apply_slash_mini(char *str)
-{
-	ft_memmove(str, &str[1], ft_strlen(str));
-}
-
 char	*slash_parse(char *str)
 {
 	int	i;
@@ -62,7 +57,7 @@ char	*slash_parse(char *str)
 			while (str[++i] != '\"')
 				apply_slash_full(&str[i]);
 		if (str[i] == '\\')
-			apply_slash_mini(&str[i]);
+			ft_memmove(&str[i], &str[i + 1], ft_strlen(&str[i]));
 	}
 	return (str);
 }
