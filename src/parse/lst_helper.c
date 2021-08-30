@@ -6,7 +6,7 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 06:20:40 by csamuro           #+#    #+#             */
-/*   Updated: 2021/08/29 20:46:19 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/08/30 16:11:24 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ char	**list_to_char2(t_list *lst)
 	lst->cur = lst->end;
 	while (len--)
 	{
-		tabs[len] = slash_parse(lst->cur->content);
+		if (lst->cur->content)
+			tabs[len] = slash_parse(lst->cur->content);
 		lst->cur = lst->cur->prev;
 	}
 	return (tabs);
