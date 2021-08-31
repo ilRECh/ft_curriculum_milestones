@@ -6,7 +6,7 @@
 /*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 22:54:39 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/08/29 17:09:43 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/08/31 19:02:41 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	print_exp(void)
 	while (g_param->env && g_param->env[++iter_1])
 	{
 		if (!(g_param->env[iter_1][0] == '_'
-				&& g_param->env[iter_1][1] == '='))
+			&& g_param->env[iter_1][1] == '='))
 			print_with_quotes(g_param->env[iter_1]);
 	}
 	iter_1 = -1;

@@ -6,7 +6,7 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 22:46:08 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/08/31 19:47:43 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/08/31 19:50:46 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,7 @@ int	main(int argc, char **argv, char **env)
 		list_of_parses = get_command_line(&line);
 		if (!list_of_parses)
 			continue ;
-		sig_set(&control_c, ctrl_c2);
-		go_on_I_will_wait(exec(list_of_parses));
+		sig_set(&control_c, ctrl_c2), go_on_I_will_wait(exec(list_of_parses));
 		rl_replace_line("", 0);
 		if (list_of_parses)
 			ft_lstclear(list_of_parses, free_parse);
