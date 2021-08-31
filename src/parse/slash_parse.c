@@ -6,7 +6,7 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 01:49:29 by csamuro           #+#    #+#             */
-/*   Updated: 2021/08/31 19:46:22 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/08/31 20:29:33 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,11 @@ char	*slash_parse(char *str)
 	{
 		if (str[i] == '\'')
 			skip_quote(str, &i, '\'');
+		if (str[i] == '\"' && (!i || str[i - 1] != '\\'))
+			while (str[++i] != '\"')
+				apply_slash_full(&str[i]);
 		if (str[i] == '\\')
-			apply_slash_full(&str[i]);
+			ft_memmove(&str[i], &str[i + 1], ft_strlen(&str[i]));
 	}
 	return (str);
 }

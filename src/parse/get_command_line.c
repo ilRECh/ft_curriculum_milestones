@@ -6,7 +6,7 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 06:20:05 by csamuro           #+#    #+#             */
-/*   Updated: 2021/08/31 19:51:36 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/08/31 20:02:04 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ t_list	*get_command_line(char **line)
 		ft_lstclear(lst, free_parse);
 		return ((t_list *)ret_perr("utils"));
 	}
+	test_print_lst(lst, 0);
 	if (post_parser(lst))
 		return (NULL);
 	return (lst);
