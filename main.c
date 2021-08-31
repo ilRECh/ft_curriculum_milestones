@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 22:46:08 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/08/29 16:46:15 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/08/31 19:47:43 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,13 @@ int	main(int argc, char **argv, char **env)
 	ft_memset(&control_c, 0, sizeof(control_c));
 	setup_env(argv, env);
 	line = (char *) 0xFF;
+	// char *eee[] = {"HELLO=THERE", "PATH=/Users/csamuro/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:/usr/local/munki:~/.dotnet/tools:/Users/csamuro/.brew/bin", NULL};
+	// ft_export(eee);
 	while (line)
 	{
 		sig_set(&control_c, ctrl_c);
 		line = readline(RED "\033[2K\rsuper " CYAN "shell " RESET "$> ");
+		// line = ft_strdup("echo \"hello \\n world\"");
 		if (!line)
 			break ;
 		add_history(line);
@@ -87,6 +90,7 @@ int	main(int argc, char **argv, char **env)
 		if (list_of_parses)
 			ft_lstclear(list_of_parses, free_parse);
 		free(list_of_parses);
+		// exit(1);
 	}
 	return (0);
 }

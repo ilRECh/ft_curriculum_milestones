@@ -6,7 +6,7 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 06:20:40 by csamuro           #+#    #+#             */
-/*   Updated: 2021/08/30 16:11:24 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/08/31 19:31:17 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	**list_to_char2(t_list *lst)
 	int		len;
 
 	len = ft_lstsize(*lst);
-	tabs = (char **)malloc(sizeof(char *) * (len + 1));
+	tabs = (char **)ft_calloc(sizeof(char *), (len + 1));
 	tabs[len] = NULL;
 	lst->cur = lst->end;
 	while (len--)

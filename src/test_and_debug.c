@@ -6,7 +6,7 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 06:23:17 by csamuro           #+#    #+#             */
-/*   Updated: 2021/08/29 01:21:43 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/08/31 19:31:59 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	test_print_lst(t_list *lst, int i)
 	{
 		par = (t_parse *)(lst->cur->content);
 		if (par->argv && *par->argv && !(par->oper > 4 && par->oper < 9)
-			&& !ft_strncmp(CASE, (*par->argv), ft_strlen(CASE)))
+			&&!ft_strncmp(CASE, (*par->argv), ft_strlen(CASE)))
 		{
 			printf(MAGENTA_BOLD "\n|%*s( sub_lst %d" RESET,(i) * 4, " ", i + 1);
 			test_print_lst((t_list *)par->argv[1], i + 1);
@@ -57,7 +57,7 @@ void	test_print_lst(t_list *lst, int i)
 		}
 		else
 		{
-			if (!(par->oper > 4 && par->oper < 9))
+			if (par->argv && !(par->oper > 4 && par->oper < 9))
 			{
 				printf(BLUE "\n|%*s" RESET, i * 4, " ");
 				printf(RED " %s " RESET, test_opers(par->oper));
