@@ -6,7 +6,7 @@
 /*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 21:17:49 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/08/31 18:55:44 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/08/31 19:56:17 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	add(int fd, t_rdrct *rdrct, t_parse *file)
 {
 	if (fd > 0)
 		ft_lstadd_back(&rdrct->in, (void *)((long long)fd));
-	else if (error_str("no such file or dir"), printf("%s\n", file->argv[1]))
+	else if (error_str("no such file or dir"), printf(" %s\n", file->argv[1]))
 		return (1);
 	return (0);
 }
