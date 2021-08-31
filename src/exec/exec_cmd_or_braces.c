@@ -6,7 +6,7 @@
 /*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 22:19:19 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/08/28 22:20:06 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/08/31 18:38:11 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@ int	exec_cmd_or_braces(t_list sublst, t_rdrct *rdrct, int *exitcode)
 				rdrct, exitcode);
 	else if (sublst.cur && sublst.cur != sublst.end)
 		pid = exec_cmd(((t_parse *)sublst.cur->content)->argv, rdrct);
-	else
+	else if (sublst.head)
 		pid = -42;
+	else
+		pid = -21;
 	return (pid);
 }

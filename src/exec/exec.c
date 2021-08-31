@@ -6,7 +6,7 @@
 /*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 21:17:34 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/08/28 22:26:10 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/08/31 18:39:21 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 
 static void	errr(int pid, int *exitcode, t_rdrct *rdrct)
 {
-	if (pid == -42)
+	if (pid == -42 || pid == -21)
 	{
-		printf("command not found\n");
+		if (pid == -42)
+			printf("command not found\n");
 		*exitcode = 1;
 		g_param->ret = 1;
 		if (rdrct->inall.is)
