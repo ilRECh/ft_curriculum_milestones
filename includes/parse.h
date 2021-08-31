@@ -6,7 +6,7 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 23:58:51 by name              #+#    #+#             */
-/*   Updated: 2021/08/29 21:37:22 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/08/31 19:52:04 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ char			**argv_fill_2(char *str1, char *str2);
 void			get_next_sp(char **ln, short *sp);
 t_list			*split_ignore_caps(char *line, short sp_prev);
 char			**list_to_char2(t_list *lst);
-void			test_print_tab(char **split_dots);
-char			*test_opers(unsigned short oper);
-void			test_print_lst(t_list *lst, int i);
+// void			test_print_tab(char **split_dots);
+// char			*test_opers(unsigned short oper);
+// void			test_print_lst(t_list *lst, int i);
 
 #endif
