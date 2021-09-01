@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 22:46:08 by vcobbler          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2021/09/01 17:27:08 by vcobbler         ###   ########.fr       */
+=======
+/*   Updated: 2021/08/31 22:21:27 by csamuro          ###   ########.fr       */
+>>>>>>> 238cfaed1f3536e0c6495c42d80bc6fd073c72f7
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +75,13 @@ int	main(int argc, char **argv, char **env)
 	ft_memset(&control_c, 0, sizeof(control_c));
 	setup_env(argv, env);
 	line = (char *) 0xFF;
-	// char *eee[] = {"HELLO=THERE", "PATH=/Users/csamuro/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:/usr/local/munki:~/.dotnet/tools:/Users/csamuro/.brew/bin", NULL};
-	// ft_export(eee);
+	char *eee[] = {"HELLO=THERE", "PATH=/Users/csamuro/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:/usr/local/munki:~/.dotnet/tools:/Users/csamuro/.brew/bin", ft_strjoin("PWD=", *argv), NULL};
+	ft_export(eee);
 	while (line)
 	{
 		sig_set(&control_c, ctrl_c);
 		line = readline(RED "\033[2K\rsuper " CYAN "shell " RESET "$> ");
+		// line = ft_strdup("echo \"123\\ng\"");
 		if (!line)
 			break ;
 		add_history(line);

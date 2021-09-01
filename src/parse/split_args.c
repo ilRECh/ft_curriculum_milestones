@@ -42,17 +42,22 @@ t_parse	*to_separate_util_args(t_parse *parse, t_list *lst)
 	free((parse->argv));
 	if (!parse->oper)
 	{
-		if (is_builtins(trimmer(((char *)lst->head->content), "\"\'")))
-			beg = ft_strdup(trimmer(((char *)lst->head->content), "\"\'"));
+		if (is_builtins(((char *)lst->head->content)))
+			beg = ft_strdup(((char *)lst->head->content));
 		else
-			beg = is_util_exists(trimmer(((char *)lst->head->content), "\"\'"));
+			beg = is_util_exists(((char *)lst->head->content));
 		free(lst->head->content);
 		lst->head->content = beg;
 	}
 	else
 		ft_lstadd_front(lst, NULL);
-	trimmer(lst->head->content, "\"\'");
 	parse->argv = list_to_char2(lst);
+	while (parse->argv[i])
+	{
+		trimmer(parse->argv[i], "\"\'");
+		i++;
+	}
+	// trimmer(lst->head->content, "\"\'");
 	ft_lstclear(lst, NULL);
 	free(lst);
 	return (parse);

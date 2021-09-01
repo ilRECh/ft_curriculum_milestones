@@ -99,10 +99,10 @@ PARSE_LIST				=	dollar_get_env.c \
 							short_utils.c \
 							slash_parse.c \
 							signal_action.c \
-							dollar_old.c
+							dollar_old.c \
 
 PARSE_DIR				=	./src/parse/
-PARSE					=	$(addprefix $(PARSE_DIR), $(PARSE_LIST)) ./src/test_and_debug.c
+PARSE					=	$(addprefix $(PARSE_DIR), $(PARSE_LIST)) src/test_and_debug.c
 
 OBJS					=	$(BUILTIN:.c=.o) $(ENVIRON:.c=.o) $(PARSE:.c=.o) $(EXEC:.c=.o) main.o
 
