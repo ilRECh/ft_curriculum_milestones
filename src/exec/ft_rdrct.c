@@ -6,16 +6,18 @@
 /*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 21:17:49 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/08/31 19:56:17 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/09/01 17:26:47 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static int	add(int fd, t_rdrct *rdrct, t_parse *file)
+static int	add(int fd, t_rdrct *rdrct, t_parse *file, int to)
 {
-	if (fd > 0)
+	if (fd > 0 && to == RDCT_L)
 		ft_lstadd_back(&rdrct->in, (void *)((long long)fd));
+	else if (fd > 0)
+		ft_lstadd_back(&rdrct->out, (void *)((long long)fd));
 	else if (error_str("no such file or dir"), printf(" %s\n", file->argv[1]))
 		return (1);
 	return (0);
@@ -37,7 +39,7 @@ int	ft_rdrct(char to, t_rdrct *rdrct, t_parse *file)
 		rdrct->inall.is = true;
 		pipe(rdrct->inall.pipefd);
 	}
-	if (to == RDCT_L && add(open(file->argv[1], O_RDONLY), rdrct, file))
+	if (to == RDCT_L && add(open(file->argv[1], O_RDONLY), rdrct, file, to))
 		return (1);
 	else if (to == RDCT_L2)
 	{
@@ -47,10 +49,10 @@ int	ft_rdrct(char to, t_rdrct *rdrct, t_parse *file)
 		close(pipefd[1]);
 	}
 	else if (to == RDCT_R && add(open(file->argv[1],
-				O_WRONLY | O_CREAT | O_TRUNC, 00777), rdrct, file))
+				O_WRONLY | O_CREAT | O_TRUNC, 00777), rdrct, file, to))
 		return (1);
 	else if (to == RDCT_R2 && add(open(file->argv[1],
-				O_WRONLY | O_CREAT | O_APPEND, 00777), rdrct, file))
+				O_WRONLY | O_CREAT | O_APPEND, 00777), rdrct, file, to))
 		return (1);
 	return (0);
 }
