@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 22:46:08 by vcobbler          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2021/08/31 22:52:47 by csamuro          ###   ########.fr       */
-=======
-/*   Updated: 2021/09/01 17:28:40 by vcobbler         ###   ########.fr       */
->>>>>>> 62b2b18bce16c70ec9644a6d24a9f7f63cf285db
+/*   Updated: 2021/09/02 06:55:13 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +61,14 @@ static void	setup_env(char **argv, char **env)
 	pre_env();
 }
 
+void	print_bits(void *bits, unsigned short size)
+{
+	if (!size)
+		return ;
+	print_bits(bits, size - 1);
+	printf("%d", (unsigned short)(bool)(bits) >> size--);
+}
+
 int	main(int argc, char **argv, char **env)
 {
 	struct sigaction	control_c;
@@ -74,14 +78,18 @@ int	main(int argc, char **argv, char **env)
 	(void)argc;
 	ft_memset(&control_c, 0, sizeof(control_c));
 	setup_env(argv, env);
+	// char	*env2[3];
+	// env[0] = "PATH=/Users/csamuro/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki:/Users/csamuro/.brew/bin";
+	// env[1] = "USER=csamuro";
+	// env[2] = NULL;
+	// setup_env(argv, env2);
+
 	line = (char *) 0xFF;
-	// char *eee[] = {"HELLO=THERE", "PATH=/Users/csamuro/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:/usr/local/munki:~/.dotnet/tools:/Users/csamuro/.brew/bin", ft_strjoin("PWD=", *argv), NULL};
-	// ft_export(eee);
 	while (line)
 	{
 		sig_set(&control_c, ctrl_c);
 		line = readline(RED "\033[2K\rsuper " CYAN "shell " RESET "$> ");
-		// line = ft_strdup("echo \'\\'\'");
+		// line = ft_strdup("ARG=100; ARG=200; ARGG=300; echo $ARG");
 		if (!line)
 			break ;
 		add_history(line);
@@ -90,10 +98,10 @@ int	main(int argc, char **argv, char **env)
 			continue ;
 		sig_set(&control_c, ctrl_c2), go_on_I_will_wait(exec(list_of_parses));
 		rl_replace_line("", 0);
+		print_bits(list_of_parses, 32);
 		if (list_of_parses)
 			ft_lstclear(list_of_parses, free_parse);
 		free(list_of_parses);
-		// exit(1);
 	}
 	return (0);
 }

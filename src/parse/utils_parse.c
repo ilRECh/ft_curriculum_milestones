@@ -6,7 +6,7 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 06:21:44 by csamuro           #+#    #+#             */
-/*   Updated: 2021/08/31 22:36:34 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/09/02 00:54:00 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,10 @@ _Bool	sub_sub_quote(char *str, int *i)
 			while (str[++k] && (!((str[k] == '\''))))
 				;
 	}
-	*i = k;
+	*i = k + 1;
 	// if (str[k])
 		// ft_memmove(&str[k], &str[k + 1], ft_strlen(&str[k]));
-	/*else */if (!str[k] || (ft_isspace(str[k + 2]) && str[k + 1] != '\\'))
+	/*else */if (!str[k] || !str[k + 1] || (ft_isspace(str[k + 2]) && str[k + 1] != '\\'))
 		return (TRUE);
 	return (FALSE);
 }

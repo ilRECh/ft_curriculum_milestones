@@ -6,7 +6,7 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 06:21:22 by csamuro           #+#    #+#             */
-/*   Updated: 2021/08/29 02:13:40 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/09/02 02:33:34 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,9 @@ int	skip_quote(char *str, int *k, char quote)
 {
 	int	i;
 
+	i = 0;
 	if (k)
 		i = (*k) + 1;
-	else
-		i = 0;
 	if (quote == '\"')
 	{
 		while ((str[++i] && str[i] != quote)

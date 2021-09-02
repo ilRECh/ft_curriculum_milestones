@@ -54,5 +54,7 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *))
 		lst->end = NULL;
 	}
 	lst->cur = tmp;
-	lst->end = NULL;
+	while (tmp && tmp->next)
+		tmp = tmp->next;
+	lst->end = tmp;
 }

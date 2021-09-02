@@ -6,12 +6,23 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 06:19:57 by csamuro           #+#    #+#             */
-/*   Updated: 2021/08/29 19:44:04 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/09/02 06:54:04 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+char	*rm_dollar_variable(char *line)
+{
+	char	*tmp;
+
+	tmp = line;
+	while (*tmp && *tmp != '$')
+		tmp++;
+	while (*tmp && ft_isascii(*tmp))
+		memset(tmp++, ' ', 1);
+	return (tmp);
+}
 char	*set_env(char *line, char *ln)
 {
 	char	*needle;
@@ -33,6 +44,11 @@ char	*set_env(char *line, char *ln)
 		res = ft_strjoin_free(ft_strndup(line, len), getvalue(needle), 1);
 	else if (getval_local(needle))
 		res = ft_strjoin_free(ft_strndup(line, len), getval_local(needle), 1);
+	else
+	{
+		free(needle);
+		return (rm_dollar_variable(line));
+	}
 	free(needle);
 	return (ft_strjoin_free(res, ft_strdup(ln + klen), 3));
 }
@@ -80,8 +96,10 @@ static void	seb_str_dollr(t_parse *parse, char **str, int i)
 	if (*((*str) + 1) == '?')
 		tmp = set_last_exit_app(parse->argv[i], (*str));
 	else
+	{
 		tmp = set_env(parse->argv[i], (*str) + 1);
-	if (tmp)
+	}
+	if (tmp && *tmp)
 	{
 		free (parse->argv[i]);
 		(*str) = tmp + ((*str) - parse->argv[i]);

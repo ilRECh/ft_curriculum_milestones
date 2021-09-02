@@ -106,6 +106,7 @@ char	*getvalue(char *word);
 char	*getval_local(char *word);
 int		setvalue(char *word, char *new_value);
 int		setval_local(char *word, char *new_value);
+void	remove_local(char *str);
 char	*getvalue_exprt(char *word);
 int		setvalue_exprt(char *word, char *new_value);
 void	free_tabs(char **tab);

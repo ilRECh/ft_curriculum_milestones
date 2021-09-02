@@ -52,7 +52,7 @@ t_parse	*to_separate_util_args(t_parse *parse, t_list *lst)
 	else
 		ft_lstadd_front(lst, NULL);
 	parse->argv = list_to_char2(lst);
-	while (parse->argv[i])
+	while (parse->argv && (parse->argv[i] || (!i && parse->argv[++i])))
 	{
 		trimmer(parse->argv[i], "\"\'");
 		i++;
@@ -67,7 +67,7 @@ void	sub_repetat(t_list *lst, char **str, int *i)
 {
 	ft_lstadd_back(lst, ft_strndup(*str, *i));
 	(*str) += (*i);
-	while (*(*str) && ft_isspace(*(*str)))
+	while (*(*str) && (ft_isspace(*(*str))))
 		(*str)++;
 	(*i) = -1;
 }
@@ -124,6 +124,11 @@ t_list	*split_args(t_list *l)
 			l->cur->content = sub_parse(p);
 		}
 		l->cur = l->cur->next;
+	}
+	if (!l->head)
+	{
+		free(l);
+		return ((void *)1);
 	}
 	return (check_line_lst(l));
 }
