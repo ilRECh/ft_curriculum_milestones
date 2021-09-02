@@ -6,7 +6,7 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 23:58:51 by name              #+#    #+#             */
-/*   Updated: 2021/09/02 10:45:47 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/09/03 01:51:55 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void			ctrl_c2(int signum, siginfo_t *siginfo, void *code);
 t_list			*check_line_lst(t_list *lst);
 void			sig_set(struct sigaction *action,
 					void (*f)(int, siginfo_t *, void *));
-unsigned int	dollr(t_parse *parse);
+unsigned int	dollr(t_parse *parse, t_list *l);
 char			*dollar_get_env(char *line);
 char			*ft_strjoin_free(char *s1, char *s2, short fr);
 t_list			*get_command_line(char **line);

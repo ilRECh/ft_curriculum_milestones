@@ -6,7 +6,7 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 10:54:59 by csamuro           #+#    #+#             */
-/*   Updated: 2021/09/02 11:16:55 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/09/03 01:45:22 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ t_list	*split_args(t_list *l)
 				return (NULL);
 		if (p->argv && *p->argv && ft_strncmp(CASE, *p->argv, 13))
 		{
-			if (dollr(p))
+			if (dollr(p, l))
 			{
 				ft_lstdelone(l, free_parse);
 				if (l->cur && (((t_parse *)(l->cur->content))->oper != 5
