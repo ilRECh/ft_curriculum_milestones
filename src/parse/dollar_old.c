@@ -1,4 +1,16 @@
-# include "minishell.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   dollar_old.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/02 10:47:19 by csamuro           #+#    #+#             */
+/*   Updated: 2021/09/02 10:51:05 by csamuro          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "minishell.h"
 
 static	char	*set_last_exit_app_old(char *s1, char *s2)
 {
@@ -33,16 +45,12 @@ char	*set_env_old(char *line, char *ln)
 	if (!needle)
 		return (NULL);
 	if (ln > line)
-	len = ln - line - 1;
+		len = ln - line - 1;
 	tmp_fr = line;
 	line = ft_strjoin_free(ft_strndup(line, len), getvalue(needle), 1);
 	free(tmp_fr);
-	if (!line)
-	{
-		free(needle);
-		return (NULL);
-	}
-	line = ft_strjoin_free(line, ft_strdup(ln + klen), 3);
+	if (line)
+		line = ft_strjoin_free(line, ft_strdup(ln + klen), 3);
 	free(needle);
 	return (line);
 }

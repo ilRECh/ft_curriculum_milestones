@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   split_args.c                               :+:      :+:    :+:   */
+/*   split_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/18 06:21:27 by csamuro           #+#    #+#             */
-/*   Updated: 2021/08/29 20:00:08 by csamuro          ###   ########.fr       */
+/*   Created: 2021/09/02 10:54:59 by csamuro           #+#    #+#             */
+/*   Updated: 2021/09/02 11:16:55 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
 void	remove_quotation(t_list *lst)
 {
 	t_list	*tmp;
@@ -112,7 +113,6 @@ t_list	*split_args(t_list *l)
 			if (dollr(p))
 			{
 				ft_lstdelone(l, free_parse);
-				p = (t_parse *)l->cur->content;
 				if (l->cur && (((t_parse *)(l->cur->content))->oper != 5
 					&& ((t_parse *)(l->cur->content))->oper != 0))
 					return ((void *)2);

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/18 06:19:57 by csamuro           #+#    #+#             */
-/*   Updated: 2021/09/02 10:37:24 by csamuro          ###   ########.fr       */
+/*   Created: 2021/09/02 10:47:41 by csamuro           #+#    #+#             */
+/*   Updated: 2021/09/02 10:47:42 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char	*set_env(char *line, char *ln)
 	if (!klen)
 		return (NULL);
 	needle = ft_strndup(ln, klen);
-	// if (ln > line)
+	if (ln > line)
 		len = ln - line - 1;
 	needle = get_some_var(needle);
 	if (needle)
@@ -58,16 +58,6 @@ char	*set_env(char *line, char *ln)
 	else
 		return (ft_strdup(rm_dollar_variable(ln, line)));
 	return (ft_strjoin_free(res, ft_strdup(ln + klen), 3));
-}
-
-char	*set_last_exit_app(char *s1, char *s2)
-{
-	char	*tmp;
-
-	tmp = ft_strndup(s1, s2 - s1);
-	tmp = ft_strjoin_free(tmp, ft_itoa(g_param->ret), 3);
-	tmp = ft_strjoin_free(tmp, s2 + 2, 1);
-	return (tmp);
 }
 
 static void	seb_str_dollr(t_parse *parse, char **str, int i)

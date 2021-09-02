@@ -6,7 +6,7 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 06:21:44 by csamuro           #+#    #+#             */
-/*   Updated: 2021/09/02 00:54:00 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/09/02 10:45:30 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,3 +71,14 @@ t_list	*check_line_lst(t_list *lst)
 	}
 	return (NULL);
 }
+
+char	*set_last_exit_app(char *s1, char *s2)
+{
+	char	*tmp;
+
+	tmp = ft_strndup(s1, s2 - s1);
+	tmp = ft_strjoin_free(tmp, ft_itoa(g_param->ret), 3);
+	tmp = ft_strjoin_free(tmp, s2 + 2, 1);
+	return (tmp);
+}
+
