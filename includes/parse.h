@@ -6,14 +6,14 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 23:58:51 by name              #+#    #+#             */
-/*   Updated: 2021/08/31 20:01:07 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/09/02 07:10:24 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #ifndef PARSE_H
 # define PARSE_H
-# include "minishell.h"
+// # include "minishell.h"
 # include "readline.h"
 # include "history.h"
 
@@ -44,7 +44,6 @@ typedef struct s_wheel
 	short	sp_prev;
 	short	sp;
 }	t_wheel;
-
 
 void			ctrl_c(int signum, siginfo_t *siginfo, void *code);
 void			ctrl_c2(int signum, siginfo_t *siginfo, void *code);
@@ -77,6 +76,7 @@ char			**argv_fill_2(char *str1, char *str2);
 void			get_next_sp(char **ln, short *sp);
 t_list			*split_ignore_caps(char *line, short sp_prev);
 char			**list_to_char2(t_list *lst);
+char			*set_local(char *str, char *base_str);
 void			test_print_tab(char **split_dots);
 char			*test_opers(unsigned short oper);
 void			test_print_lst(t_list *lst, int i);

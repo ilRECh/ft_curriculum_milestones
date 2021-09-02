@@ -100,6 +100,7 @@ PARSE_LIST				=	dollar_get_env.c \
 							slash_parse.c \
 							signal_action.c \
 							dollar_old.c \
+							local_var.c
 
 PARSE_DIR				=	./src/parse/
 PARSE					=	$(addprefix $(PARSE_DIR), $(PARSE_LIST)) src/test_and_debug.c

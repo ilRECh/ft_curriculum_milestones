@@ -83,7 +83,7 @@ void	remove_local(char *str)
 		free (g_param->locals[i]);
 		if (i < len_local)
 			ft_memmove(&g_param->locals[i], \
-			&g_param->locals[i + 1], sizeof(char **) * (len_local - i));
+			&g_param->locals[i + 1], sizeof(char **) * (len_local));
 	}
 		
 }

@@ -6,23 +6,36 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 06:19:57 by csamuro           #+#    #+#             */
-/*   Updated: 2021/09/02 06:54:04 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/09/02 10:37:24 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*rm_dollar_variable(char *line)
+char	*rm_dollar_variable(char *ln, char *line)
+{
+	char	*tmp;
+	int		len;
+
+	tmp = ln - 1;
+	len = ft_strlen(tmp);
+	ft_memmove(tmp, tmp + 1, len--);
+	while (len && !ft_strchr(" \"\'\\$", *tmp))
+		ft_memmove(tmp, tmp + 1, len--);
+	return (line);
+}
+
+char	*get_some_var(char *str)
 {
 	char	*tmp;
 
-	tmp = line;
-	while (*tmp && *tmp != '$')
-		tmp++;
-	while (*tmp && ft_isascii(*tmp))
-		memset(tmp++, ' ', 1);
+	tmp = getvalue(str);
+	if (!tmp)
+		tmp = getval_local(str);
+	free (str);
 	return (tmp);
 }
+
 char	*set_env(char *line, char *ln)
 {
 	char	*needle;
@@ -30,26 +43,20 @@ char	*set_env(char *line, char *ln)
 	int		klen;
 	int		len;
 
-	len = 0;
-	klen = 0;
 	res = NULL;
-	while (ln[klen] && !ft_strchr(" /\"\'$", ln[klen]))
+	len = (klen = 0);
+	while (ln[klen] && !ft_strchr(" /\\\"\'$", ln[klen]))
 		klen++;
 	if (!klen)
 		return (NULL);
 	needle = ft_strndup(ln, klen);
-	if (ln > line)
+	// if (ln > line)
 		len = ln - line - 1;
-	if (getvalue(needle))
-		res = ft_strjoin_free(ft_strndup(line, len), getvalue(needle), 1);
-	else if (getval_local(needle))
-		res = ft_strjoin_free(ft_strndup(line, len), getval_local(needle), 1);
+	needle = get_some_var(needle);
+	if (needle)
+		res = ft_strjoin_free(ft_strndup(line, len), needle, 1);
 	else
-	{
-		free(needle);
-		return (rm_dollar_variable(line));
-	}
-	free(needle);
+		return (ft_strdup(rm_dollar_variable(ln, line)));
 	return (ft_strjoin_free(res, ft_strdup(ln + klen), 3));
 }
 
@@ -63,31 +70,6 @@ char	*set_last_exit_app(char *s1, char *s2)
 	return (tmp);
 }
 
-char	*set_local(char *str, char *base_str)
-{
-	char	*start;
-	char	*end;
-	char	*word;
-	char	*new_value;
-
-	(void)base_str;
-	word = NULL;
-	new_value = NULL;
-	start = (end = str);
-	while (start > base_str && !ft_isspace(*start - 1))
-		start--;
-	while (*end && !ft_isspace(*end + 1) && end++)
-		if (ft_strchr("\'\"", *end) && *(end - 1) != '\\')
-			end += skip_quote(end, 0, *end);
-	if (start != str && end != str)
-	{
-		word = ft_strndup(start, str - start);
-		new_value = ft_strndup(str + 1, end - str);
-		setval_local(word, new_value);
-	}
-	return (NULL);
-}
-
 static void	seb_str_dollr(t_parse *parse, char **str, int i)
 {
 	char	*tmp;
@@ -96,13 +78,11 @@ static void	seb_str_dollr(t_parse *parse, char **str, int i)
 	if (*((*str) + 1) == '?')
 		tmp = set_last_exit_app(parse->argv[i], (*str));
 	else
-	{
 		tmp = set_env(parse->argv[i], (*str) + 1);
-	}
 	if (tmp && *tmp)
 	{
 		free (parse->argv[i]);
-		(*str) = tmp + ((*str) - parse->argv[i]);
+		(*str) = tmp + ((*str) - parse->argv[i]) - 1;
 		parse->argv[i] = tmp;
 	}
 }

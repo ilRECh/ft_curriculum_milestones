@@ -53,11 +53,7 @@ t_parse	*to_separate_util_args(t_parse *parse, t_list *lst)
 		ft_lstadd_front(lst, NULL);
 	parse->argv = list_to_char2(lst);
 	while (parse->argv && (parse->argv[i] || (!i && parse->argv[++i])))
-	{
-		trimmer(parse->argv[i], "\"\'");
-		i++;
-	}
-	// trimmer(lst->head->content, "\"\'");
+		trimmer(parse->argv[i++], "\"\'");
 	ft_lstclear(lst, NULL);
 	free(lst);
 	return (parse);
@@ -116,8 +112,11 @@ t_list	*split_args(t_list *l)
 			if (dollr(p))
 			{
 				ft_lstdelone(l, free_parse);
-				if (l->cur && l->cur->content
-					&& !((t_parse *)(l->cur->content))->argv)
+				p = (t_parse *)l->cur->content;
+				if (l->cur && (((t_parse *)(l->cur->content))->oper != 5
+					&& ((t_parse *)(l->cur->content))->oper != 0))
+					return ((void *)2);
+				if (l->cur && !((t_parse *)(l->cur->content))->argv)
 					ft_lstdelone(l, free_parse);
 				continue ;
 			}
@@ -125,10 +124,7 @@ t_list	*split_args(t_list *l)
 		}
 		l->cur = l->cur->next;
 	}
-	if (!l->head)
-	{
-		free(l);
-		return ((void *)1);
-	}
-	return (check_line_lst(l));
+	if (l->head)
+		return (check_line_lst(l));
+	return ((void *)1);
 }

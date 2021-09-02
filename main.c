@@ -6,7 +6,7 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 22:46:08 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/09/02 06:55:13 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/09/02 09:25:37 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int	main(int argc, char **argv, char **env)
 	{
 		sig_set(&control_c, ctrl_c);
 		line = readline(RED "\033[2K\rsuper " CYAN "shell " RESET "$> ");
-		// line = ft_strdup("ARG=100; ARG=200; ARGG=300; echo $ARG");
+		// line = ft_strdup("AR=100; ARG=200; ARGG=300; echo $ARG; echo \"$ARG$ARGG\\$A\"");
 		if (!line)
 			break ;
 		add_history(line);
