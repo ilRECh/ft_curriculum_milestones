@@ -66,9 +66,7 @@ void	remove_local(char *str)
 	unsigned int	l;
 	unsigned int	len_local;
 
-	i = 0;
-	l = 0;
-	len_local = 0;
+	len_local = (i = (l = 0));
 	while (g_param->locals && g_param->locals[len_local])
 		len_local++;
 	if (!len_local)
@@ -76,16 +74,18 @@ void	remove_local(char *str)
 	while (str[l] && !ft_isspace(str[l]))
 		l++;
 	while (g_param->locals && g_param->locals[i]
-		&& (ft_strncmp(g_param->locals[i], str, l) && g_param->locals[i][l] != '='))
+		&& (ft_strncmp(g_param->locals[i], str, l)
+			&& g_param->locals[i][l] != '='))
 		i++;
-	if (g_param->locals && g_param->locals[i] && !ft_strncmp(g_param->locals[i], str, l) && g_param->locals[i][l] == '=')
+	if (g_param->locals && g_param->locals[i]
+		&& !ft_strncmp(g_param->locals[i], str, l)
+		&& g_param->locals[i][l] == '=')
 	{
 		free (g_param->locals[i]);
 		if (i < len_local)
 			ft_memmove(&g_param->locals[i], \
 			&g_param->locals[i + 1], sizeof(char **) * (len_local));
 	}
-		
 }
 
 char	*getvalue_exprt(char *word)

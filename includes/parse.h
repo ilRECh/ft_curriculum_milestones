@@ -6,10 +6,9 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 23:58:51 by name              #+#    #+#             */
-/*   Updated: 2021/09/03 23:02:41 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/09/03 23:22:15 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef PARSE_H
 # define PARSE_H
@@ -81,8 +80,5 @@ char			**list_to_char2(t_list *lst);
 char			*set_local(char *str, char *base_str);
 char			*set_last_exit_app(char *s1, char *s2);
 char			*get_some_var(char *str);
-void			test_print_tab(char **split_dots);
-char			*test_opers(unsigned short oper);
-void			test_print_lst(t_list *lst, int i);
 
 #endif

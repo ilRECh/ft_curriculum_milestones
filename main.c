@@ -6,7 +6,7 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 22:46:08 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/09/03 23:03:03 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/09/03 23:28:23 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,40 +67,29 @@ static void	setup_env(char **argv, char **env)
 
 int	main(int argc, char **argv, char **env)
 {
-	struct sigaction	control_c;
+	struct sigaction	cotrl_c;
 	t_list				*list_of_parses;
 	char				*line;
 
-	(void)env;
-	(void)argv;
 	(void)argc;
-	ft_memset(&control_c, 0, sizeof(control_c));
-	setup_env(argv, env);
-	// char	*env2[3];
-	// env2[0] = "PATH=/Users/csamuro/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki:/Users/csamuro/.brew/bin";
-	// env2[1] = "USER=csamuro";
-	// env2[2] = NULL;
-	// setup_env(argv, env2);
-
+	ft_memset(&cotrl_c, 0, sizeof(cotrl_c)), setup_env(argv, env);
 	line = (char *) 0xFF;
 	while (line)
 	{
-		sig_set(SIGINT, &control_c, ctrl_c);
-		sig_set(SIGQUIT, &control_c, ctrl_sl);
+		sig_set(SIGINT, &cotrl_c, ctrl_c), sig_set(SIGQUIT, &cotrl_c, ctrl_sl);
 		line = readline(RED "\033[2K\rsuper " CYAN "shell " RESET "$> ");
-		// line = ft_strdup("expo");
 		if (!line)
 			break ;
 		add_history(line);
 		list_of_parses = get_command_line(&line);
 		if (!list_of_parses)
 			continue ;
-		sig_set(SIGINT, &control_c, ctrl_c2), go_on_I_will_wait(exec(list_of_parses));
+		sig_set(SIGINT, &cotrl_c, ctrl_c2);
+		go_on_I_will_wait(exec(list_of_parses));
 		rl_replace_line("", 0);
 		if (list_of_parses)
 			ft_lstclear(list_of_parses, free_parse);
 		free(list_of_parses);
-		// exit(0);
 	}
 	return (0);
 }
