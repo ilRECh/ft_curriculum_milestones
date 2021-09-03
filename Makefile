@@ -103,7 +103,7 @@ PARSE_LIST				=	dollar_get_env.c \
 							local_var.c
 
 PARSE_DIR				=	./src/parse/
-PARSE					=	$(addprefix $(PARSE_DIR), $(PARSE_LIST)) src/test_and_debug.c
+PARSE					=	$(addprefix $(PARSE_DIR), $(PARSE_LIST))
 
 OBJS					=	$(BUILTIN:.c=.o) $(ENVIRON:.c=.o) $(PARSE:.c=.o) $(EXEC:.c=.o) main.o
 
