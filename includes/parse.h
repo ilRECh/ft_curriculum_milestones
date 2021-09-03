@@ -6,7 +6,7 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 23:58:51 by name              #+#    #+#             */
-/*   Updated: 2021/09/03 01:51:55 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/09/03 02:16:26 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ short			is_split(char *str);
 int				skip_quote(char *str, int *k, char quote);
 void			skip_quotation(char **ln);
 _Bool			skip_open_case(char **ln);
+void			remove_quotation(t_list *lst);
 void			case_skip(char **ln);
 char			**argv_fill_1(char *str1);
 char			**argv_fill_2(char *str1, char *str2);
@@ -78,6 +79,7 @@ t_list			*split_ignore_caps(char *line, short sp_prev);
 char			**list_to_char2(t_list *lst);
 char			*set_local(char *str, char *base_str);
 char			*set_last_exit_app(char *s1, char *s2);
+char			*get_some_var(char *str);
 void			test_print_tab(char **split_dots);
 char			*test_opers(unsigned short oper);
 void			test_print_lst(t_list *lst, int i);

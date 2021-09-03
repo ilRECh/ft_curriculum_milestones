@@ -6,7 +6,7 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 01:49:29 by csamuro           #+#    #+#             */
-/*   Updated: 2021/09/02 07:11:49 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/09/03 20:09:06 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ char	*slash_parse(char *str)
 	int	i;
 
 	i = -1;
+	if (!str)
+		return (NULL);
 	while (str[++i])
 	{
 		if (str[i] == '\'')

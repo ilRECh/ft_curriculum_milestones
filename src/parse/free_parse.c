@@ -6,7 +6,7 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 21:25:52 by csamuro           #+#    #+#             */
-/*   Updated: 2021/09/02 07:04:35 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/09/03 03:16:13 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	free_parse(void *p)
 	int		i;
 
 	i = 0;
+	if (!p)
+		return ;
 	parse = (t_parse *)p;
 	if (parse->argv)
 	{

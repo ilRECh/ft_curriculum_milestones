@@ -6,7 +6,7 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 06:21:44 by csamuro           #+#    #+#             */
-/*   Updated: 2021/09/02 10:45:30 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/09/03 02:17:59 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ _Bool	sub_sub_quote(char *str, int *i)
 	c = str[k];
 	if ((str[k] == '\"' || str[k] == '\'') && str[k - 1] != '\\')
 	{
-		// ft_memmove(&str[k], &str[k + 1], ft_strlen(&str[k]));
 		if (c == '\"')
 			while (str[++k] && (!((str[k] == '\"')
 						|| (str[k] == '\"' && str[k - 1] == '\\'))));
@@ -49,9 +48,8 @@ _Bool	sub_sub_quote(char *str, int *i)
 				;
 	}
 	*i = k + 1;
-	// if (str[k])
-		// ft_memmove(&str[k], &str[k + 1], ft_strlen(&str[k]));
-	/*else */if (!str[k] || !str[k + 1] || (ft_isspace(str[k + 2]) && str[k + 1] != '\\'))
+	if (!str[k] || !str[k + 1] || (ft_isspace(str[k + 2])
+			&& str[k + 1] != '\\'))
 		return (TRUE);
 	return (FALSE);
 }
@@ -82,3 +80,13 @@ char	*set_last_exit_app(char *s1, char *s2)
 	return (tmp);
 }
 
+char	*get_some_var(char *str)
+{
+	char	*tmp;
+
+	tmp = getvalue(str);
+	if (!tmp)
+		tmp = getval_local(str);
+	free (str);
+	return (tmp);
+}

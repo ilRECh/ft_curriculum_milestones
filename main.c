@@ -6,7 +6,7 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 22:46:08 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/09/02 09:25:37 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/09/03 22:17:41 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_param	*g_param;
 static void	pre_env(void)
 {
 	char		*new_value;
-	static char	*new_env[] = {NULL, "SHLVL=1", NULL, NULL};
+	static char	*new_env[] = {NULL, "SHLVL=1", NULL};
 	char		*tmp;
 
 	if (getvalue("SHLVL"))
@@ -32,7 +32,11 @@ static void	pre_env(void)
 	{
 		tmp = getcwd(NULL, 0);
 		if (tmp)
-			new_env[2] = ft_strjoin("PWD=", tmp);
+		{
+			new_env[1] = ft_strjoin("PWD=", tmp);
+			ft_export((char **)new_env);
+			free(new_env[1]);
+		}
 		else
 			error_str("cannot retrieve current directory\n");
 		free(tmp);
@@ -61,27 +65,21 @@ static void	setup_env(char **argv, char **env)
 	pre_env();
 }
 
-void	print_bits(void *bits, unsigned short size)
-{
-	if (!size)
-		return ;
-	print_bits(bits, size - 1);
-	printf("%d", (unsigned short)(bool)(bits) >> size--);
-}
-
 int	main(int argc, char **argv, char **env)
 {
 	struct sigaction	control_c;
 	t_list				*list_of_parses;
 	char				*line;
 
+	(void)env;
+	(void)argv;
 	(void)argc;
 	ft_memset(&control_c, 0, sizeof(control_c));
 	setup_env(argv, env);
 	// char	*env2[3];
-	// env[0] = "PATH=/Users/csamuro/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki:/Users/csamuro/.brew/bin";
-	// env[1] = "USER=csamuro";
-	// env[2] = NULL;
+	// env2[0] = "PATH=/Users/csamuro/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki:/Users/csamuro/.brew/bin";
+	// env2[1] = "USER=csamuro";
+	// env2[2] = NULL;
 	// setup_env(argv, env2);
 
 	line = (char *) 0xFF;
@@ -89,7 +87,7 @@ int	main(int argc, char **argv, char **env)
 	{
 		sig_set(&control_c, ctrl_c);
 		line = readline(RED "\033[2K\rsuper " CYAN "shell " RESET "$> ");
-		// line = ft_strdup("AR=100; ARG=200; ARGG=300; echo $ARG; echo \"$ARG$ARGG\\$A\"");
+		// line = ft_strdup("expo");
 		if (!line)
 			break ;
 		add_history(line);
@@ -98,10 +96,10 @@ int	main(int argc, char **argv, char **env)
 			continue ;
 		sig_set(&control_c, ctrl_c2), go_on_I_will_wait(exec(list_of_parses));
 		rl_replace_line("", 0);
-		print_bits(list_of_parses, 32);
 		if (list_of_parses)
 			ft_lstclear(list_of_parses, free_parse);
 		free(list_of_parses);
+		// exit(0);
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 12:37:03 by csamuro           #+#    #+#             */
-/*   Updated: 2021/09/02 07:05:24 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/09/03 21:19:10 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ _Bool	is_builtins(char *str)
 	x = ft_strlen(str);
 	if (x < 1)
 		return (FALSE);
+	x++;
 	if (!ft_strncmp("cd", str, x)
 		|| !ft_strncmp("echo", str, x)
 		|| !ft_strncmp("env", str, x)

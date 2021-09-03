@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_cmd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 21:22:41 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/08/29 21:20:31 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/09/03 21:16:25 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ static void	child(char **args, t_rdrct *rdrct)
 		dup2(rdrct->inall.pipefd[0], 0);
 	dup2(rdrct->outall.pipefd[1], 1);
 	execve(args[0], args, g_param->env);
+	exit(1);
 }
 
 static void	writer(int writer_pid, t_rdrct *rdrct)
