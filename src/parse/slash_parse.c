@@ -6,7 +6,7 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 01:49:29 by csamuro           #+#    #+#             */
-/*   Updated: 2021/09/03 20:09:06 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/09/03 22:39:03 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	apply_slash_full(char *str)
 			set_char(str - 1, '\t');
 		else if (*str == 's')
 			set_char(str - 1, ' ');
-		else if (*str == '\\')
+		else if (*str)
 			ft_memmove(str - 1, str, ft_strlen(str - 1));
 	}
 }

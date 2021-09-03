@@ -6,7 +6,7 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 23:58:51 by name              #+#    #+#             */
-/*   Updated: 2021/09/03 02:16:26 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/09/03 23:02:41 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,9 @@ typedef struct s_wheel
 
 void			ctrl_c(int signum, siginfo_t *siginfo, void *code);
 void			ctrl_c2(int signum, siginfo_t *siginfo, void *code);
+void			ctrl_sl(int signum, siginfo_t *siginfo, void *code);
 t_list			*check_line_lst(t_list *lst);
-void			sig_set(struct sigaction *action,
+void			sig_set(unsigned int sig, struct sigaction *action,
 					void (*f)(int, siginfo_t *, void *));
 unsigned int	dollr(t_parse *parse, t_list *l);
 char			*dollar_get_env(char *line);

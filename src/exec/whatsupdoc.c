@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   whatsupdoc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 21:16:21 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/08/29 17:13:54 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/09/03 22:56:51 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	whatsupdoc(int fd, char *stopword)
 	copy_cur_stdin = dup(0);
 	dup2(0, g_param->stdin_copy);
 	ft_memset(&control_c, 0, sizeof(control_c));
-	sig_set(&control_c, ctrl_c_wd);
+	sig_set(SIGINT, &control_c, ctrl_c_wd);
 	while (true)
 	{
 		line = readline(CYAN "\033[2K\rwhatsupdoc?> " RESET);
@@ -55,7 +55,7 @@ void	whatsupdoc(int fd, char *stopword)
 		}
 		free(line);
 	}
-	sig_set(&control_c, ctrl_c);
+	sig_set(SIGINT, &control_c, ctrl_c);
 	dup2(copy_cur_stdin, 0);
 	close(copy_cur_stdin);
 }

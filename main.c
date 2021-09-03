@@ -6,7 +6,7 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 22:46:08 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/09/03 22:17:41 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/09/03 23:03:03 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,8 @@ int	main(int argc, char **argv, char **env)
 	line = (char *) 0xFF;
 	while (line)
 	{
-		sig_set(&control_c, ctrl_c);
+		sig_set(SIGINT, &control_c, ctrl_c);
+		sig_set(SIGQUIT, &control_c, ctrl_sl);
 		line = readline(RED "\033[2K\rsuper " CYAN "shell " RESET "$> ");
 		// line = ft_strdup("expo");
 		if (!line)
@@ -94,7 +95,7 @@ int	main(int argc, char **argv, char **env)
 		list_of_parses = get_command_line(&line);
 		if (!list_of_parses)
 			continue ;
-		sig_set(&control_c, ctrl_c2), go_on_I_will_wait(exec(list_of_parses));
+		sig_set(SIGINT, &control_c, ctrl_c2), go_on_I_will_wait(exec(list_of_parses));
 		rl_replace_line("", 0);
 		if (list_of_parses)
 			ft_lstclear(list_of_parses, free_parse);

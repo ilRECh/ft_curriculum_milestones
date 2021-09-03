@@ -66,7 +66,7 @@ int	ft_export(char **args)
 		{
 			add_to_env(split);
 			add_to_exprt(split);
-			free(split);
+			free_split(split);
 		}
 		else
 		{

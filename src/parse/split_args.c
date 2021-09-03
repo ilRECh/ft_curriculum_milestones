@@ -6,7 +6,7 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 10:54:59 by csamuro           #+#    #+#             */
-/*   Updated: 2021/09/03 22:17:20 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/09/03 22:23:22 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,6 @@ t_parse	*to_separate_util_args(t_parse *parse, t_list *lst)
 	free_parse(parse);
 	return ((void *)1);
 }
-	// while (parse->argv && (parse->argv[i] || (!i && parse->argv[++i])))
-	// 	trimmer(parse->argv[i++], "\"\'");
 
 void	sub_repetat(t_list *lst, char **str, int *i)
 {
