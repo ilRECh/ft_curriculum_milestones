@@ -6,7 +6,7 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 22:46:08 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/09/03 23:28:23 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/09/04 01:56:56 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ static void	setup_env(char **argv, char **env)
 
 	g_param = ft_calloc(1, sizeof(t_param));
 	g_param->stdin_copy = dup(0);
+	g_param->stdout_copy = dup(1);
 	vars = 0;
 	iter_1 = 0;
 	while (env[iter_1++])

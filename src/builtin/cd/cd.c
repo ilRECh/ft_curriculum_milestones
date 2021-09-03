@@ -47,7 +47,7 @@ int	ft_cd(char **args)
 	res = false;
 	path = args[1];
 	if (!path)
-		path = "/";
+		path = "~";
 	oldpath = oldpwd();
 	if (path[0] == '~'
 		|| (path[0] == '-' && path[1] == '-' && !path[2] && path++))

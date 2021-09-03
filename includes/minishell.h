@@ -35,6 +35,7 @@ typedef struct s_param
 	char	**locals;
 	int		ret;
 	int		stdin_copy;
+	int		stdout_copy;
 }	t_param;
 
 //

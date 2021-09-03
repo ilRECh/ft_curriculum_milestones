@@ -6,7 +6,7 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 06:20:25 by csamuro           #+#    #+#             */
-/*   Updated: 2021/09/02 07:05:25 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/09/04 01:45:24 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,24 +57,24 @@ char	*is_util_exists(char *file_path)
 	char	**paths;
 	int		fd;
 
+	if (file_path[0] == '/')
+	{
+		(fd = open(file_path, O_RDONLY)), close(fd);
+		if (fd > 2)
+			return (ft_strdup(file_path));
+	}
 	paths = ft_split(getvalue("PATH"), ':');
 	if (!paths)
-		return ((void *)ret_perr("malloc ft_split error"));
-	if (*file_path == '\\')
-		ft_memmove(file_path, &file_path[1], ft_strlen(file_path));
+		return (NULL);
 	str_concat = ft_strdup(file_path);
-	fd = 0;
-	if ((str_concat[0] == '.' && str_concat[1] == '/') \
-	|| is_from_path(paths, str_concat))
+	if (ft_strnstr(str_concat, "./", 2) || is_from_path(paths, str_concat))
 		fd = open(str_concat, O_RDONLY);
 	else
 		run_compare(paths, &fd, &str_concat, file_path);
 	free_tabs(paths);
 	if (fd < 3)
-	{
-		free(str_concat);
-		return (NULL);
-	}
-	close(fd);
+		free(str_concat), (str_concat = NULL);
+	else
+		close(fd);
 	return (str_concat);
 }

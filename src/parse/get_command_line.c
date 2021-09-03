@@ -6,7 +6,7 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 06:20:05 by csamuro           #+#    #+#             */
-/*   Updated: 2021/09/03 02:21:43 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/09/04 01:08:42 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 // test_print_lst(lst, 0);
 // printf("\n");
 */
+			// return ((t_list *)ret_perr("utils"));
 
 t_list	*get_command_line(char **line)
 {
@@ -35,7 +36,7 @@ t_list	*get_command_line(char **line)
 	if (!tmp || (long long)tmp < 3 || !lst->head || post_parser(lst))
 	{
 		if (!tmp)
-			return ((t_list *)ret_perr("utils"));
+			return (NULL);
 		if ((long long)tmp == 2)
 			write (1, "Error: operator is't valid\n", 28);
 		if (!tmp || (long long)tmp == 2)

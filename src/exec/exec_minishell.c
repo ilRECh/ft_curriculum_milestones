@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_minishell.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 23:04:48 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/08/28 22:54:22 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/09/04 01:55:35 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int	exec_minishell(char **argv, t_rdrct *rdrct, int *exitcode)
 	if (!pid)
 	{
 		execve(argv[0], argv, g_param->env);
+		printf("no right to execute\n");
+		exit(1);
 	}
 	else
 	{
