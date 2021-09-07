@@ -108,6 +108,9 @@ unsigned int	dollr(t_parse *parse, t_list *l)
 		was_space = FALSE;
 		while (l->head && *str)
 		{
+			if (*str == '\'' && *++str)
+				while (*str && *str != '\'')
+					str++;
 			if (ft_isspace(*str))
 				was_space = TRUE;
 			if (*str == '=' && !was_space)

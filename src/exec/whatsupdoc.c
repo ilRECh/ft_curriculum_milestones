@@ -19,11 +19,9 @@ static inline void	writing(int fd, char **line)
 	write(fd, "\n", 1);
 }
 
-static void	ctrlwd(int signum, siginfo_t *siginfo, void *code)
+static void	ctrlwd(int signum)
 {
 	(void)signum;
-	(void)siginfo;
-	(void)code;
 	g_param->ret = 130;
 	rl_replace_line("", 0);
 	rl_on_new_line();
@@ -31,30 +29,26 @@ static void	ctrlwd(int signum, siginfo_t *siginfo, void *code)
 	write(1, CYAN "\nwhatsupdoc?> " RESET, 26);
 }
 
-static void	ctrlsl(int signum, siginfo_t *siginfo, void *code)
-{
-	(void)signum;
-	(void)siginfo;
-	(void)code;
-	g_param->ret = 130;
-	rl_replace_line("", 0);
-	rl_on_new_line();
-	rl_redisplay();
-	write(1, CYAN "\033[2K\rwhatsupdoc?> " RESET, 30);
-}
+// static void	ctrlsl(int signum)
+// {
+// 	(void)signum;
+// 	// g_param->ret = 130;
+// 	rl_replace_line("", 0);
+// 	rl_on_new_line();
+// 	rl_redisplay();
+// 	write(1, CYAN "\033[2K\rwhatsupdoc?> " RESET, 30);
+// }
 
 void	whatsupdoc(int fd, char *stopword)
 {
 	char				*line;
 	int					copy_cur_stdin;
 	bool				loop;
-	struct sigaction	control_c;
 
 	loop = true;
 	copy_cur_stdin = dup(0);
 	dup2(0, g_param->stdin_copy);
-	ft_memset(&control_c, 0, sizeof(control_c));
-	sig_set(SIGINT, &control_c, ctrlwd), sig_set(SIGQUIT, &control_c, ctrlsl);
+	signal(SIGINT, ctrlwd), signal(SIGQUIT, SIG_IGN);
 	while (true)
 	{
 		line = readline(CYAN "\033[2K\rwhatsupdoc?> " RESET);
@@ -67,7 +61,7 @@ void	whatsupdoc(int fd, char *stopword)
 		}
 		free(line);
 	}
-	sig_set(SIGINT, &control_c, ctrl_c), sig_set(SIGQUIT, &control_c, ctrl_sl);
+	signal(SIGINT, ctrl_c), signal(SIGQUIT, SIG_IGN);
 	dup2(copy_cur_stdin, 0);
 	close(copy_cur_stdin);
 }

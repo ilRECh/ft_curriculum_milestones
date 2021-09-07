@@ -68,24 +68,22 @@ static void	setup_env(char **argv, char **env)
 
 int	main(int argc, char **argv, char **env)
 {
-	struct sigaction	cotrl_c;
 	t_list				*list_of_parses;
 	char				*line;
 
 	(void)argc;
-	ft_memset(&cotrl_c, 0, sizeof(cotrl_c)), setup_env(argv, env);
 	line = (char *) 0xFF;
+	setup_env(argv, env);
 	while (line)
 	{
-		sig_set(SIGINT, &cotrl_c, ctrl_c), sig_set(SIGQUIT, &cotrl_c, ctrl_sl);
-		line = readline(RED "\033[2K\rsuper " CYAN "shell " RESET "$> ");
+		signal(SIGINT, ctrl_c), signal(SIGQUIT, SIG_IGN);
+		line = readline(RED "super " CYAN "shell " RESET "$> ");
 		if (!line)
 			break ;
 		add_history(line);
 		list_of_parses = get_command_line(&line);
 		if (!list_of_parses)
 			continue ;
-		sig_set(SIGINT, &cotrl_c, ctrl_c2);
 		go_on_I_will_wait(exec(list_of_parses));
 		rl_replace_line("", 0);
 		if (list_of_parses)

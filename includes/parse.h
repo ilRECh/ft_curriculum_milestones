@@ -44,12 +44,10 @@ typedef struct s_wheel
 	short	sp;
 }	t_wheel;
 
-void			ctrl_c(int signum, siginfo_t *siginfo, void *code);
-void			ctrl_c2(int signum, siginfo_t *siginfo, void *code);
-void			ctrl_sl(int signum, siginfo_t *siginfo, void *code);
+void			ctrl_c(int signum);
+void			ctrl_c2(int signum);
+void			ctrl_sl(int signum);
 t_list			*check_line_lst(t_list *lst);
-void			sig_set(unsigned int sig, struct sigaction *action,
-					void (*f)(int, siginfo_t *, void *));
 unsigned int	dollr(t_parse *parse, t_list *l);
 char			*dollar_get_env(char *line);
 char			*ft_strjoin_free(char *s1, char *s2, short fr);

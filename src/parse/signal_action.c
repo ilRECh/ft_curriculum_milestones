@@ -12,41 +12,21 @@
 
 #include "minishell.h"
 
-void	ctrl_c(int signum, siginfo_t *siginfo, void *code)
+void	ctrl_c(int signum)
 {
 	(void)signum;
-	(void)siginfo;
-	(void)code;
+
 	g_param->ret = 130;
-	rl_replace_line("", 0);
-	rl_on_new_line();
-	rl_redisplay();
+	// rl_replace_line("", 0);
+	// rl_on_new_line();
+	// write(1, "\n", 1);
 	write(1, RED "\nsuper " CYAN "shell " RESET "$> ", 35);
-}
-
-void	ctrl_sl(int signum, siginfo_t *siginfo, void *code)
-{
-	(void)signum;
-	(void)siginfo;
-	(void)code;
-	g_param->ret = 130;
-	rl_replace_line("", 0);
-	rl_on_new_line();
 	rl_redisplay();
-	write(1, RED "\033[2K\rsuper " CYAN "shell " RESET "$> ", 39);
 }
 
-void	ctrl_c2(int signum, siginfo_t *siginfo, void *code)
-{
-	(void)signum;
-	(void)siginfo;
-	(void)code;
-}
-
-void	sig_set(unsigned int sig, struct sigaction *action,
-	void (*f)(int, siginfo_t *, void *))
-{
-	action->sa_sigaction = (*f);
-	action->sa_flags = SA_SIGINFO;
-	sigaction(sig, action, NULL);
-}
+// void	ctrl_c2(int signum)
+// {
+// 	(void)signum;
+// 	(void)siginfo;
+// 	(void)code;
+// }
