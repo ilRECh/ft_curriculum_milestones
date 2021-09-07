@@ -13,6 +13,7 @@
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
+# include <termios.h>
 # include "libft.h"
 # include "parse.h"
 # include <errno.h>
@@ -36,6 +37,7 @@ typedef struct s_param
 	int		ret;
 	int		stdin_copy;
 	int		stdout_copy;
+	struct termios saved;
 }	t_param;
 
 //

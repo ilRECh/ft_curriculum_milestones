@@ -47,6 +47,7 @@ typedef struct s_wheel
 void			ctrl_c(int signum);
 void			ctrl_c2(int signum);
 void			ctrl_sl(int signum);
+void			ctrl_fucking_c(int signum);
 t_list			*check_line_lst(t_list *lst);
 unsigned int	dollr(t_parse *parse, t_list *l);
 char			*dollar_get_env(char *line);

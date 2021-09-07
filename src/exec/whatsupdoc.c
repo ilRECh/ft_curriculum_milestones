@@ -32,8 +32,7 @@ static void	ctrlwd(int signum)
 // static void	ctrlsl(int signum)
 // {
 // 	(void)signum;
-// 	// g_param->ret = 130;
-// 	rl_replace_line("", 0);
+// 	// g_param->ret = 130;// 	rl_replace_line("", 0);
 // 	rl_on_new_line();
 // 	rl_redisplay();
 // 	write(1, CYAN "\033[2K\rwhatsupdoc?> " RESET, 30);

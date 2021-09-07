@@ -18,10 +18,10 @@ char	*trimmer(char *str, char *c)
 
 	if (!str)
 		return (str);
-	while (*str && ft_strchr(c, *str))
+	if (*str && ft_strchr(c, *str))
 		ft_memmove(str, &str[1], ft_strlen(str));
 	x = ft_strlen(str) - 1;
-	while (str[x] && ft_strchr(c, str[x]))
+	if (str[x] && ft_strchr(c, str[x]))
 	{
 		str[x] = 0;
 		x = ft_strlen(str) - 1;

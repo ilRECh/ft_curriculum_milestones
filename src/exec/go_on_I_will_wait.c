@@ -27,5 +27,7 @@ int	go_on_I_will_wait(int pid)
 		else if (wpid <= 0)
 			break ;
 	}
+	if (g_param->ret == 2)
+		write (1, "\n", 1);
 	return (0);
 }

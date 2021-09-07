@@ -64,6 +64,7 @@ static void	setup_env(char **argv, char **env)
 	if (getvalue("SHELL"))
 		setvalue("SHELL", argv[0]);
 	pre_env();
+	// tcgetattr(STDIN_FILENO, &g_param->saved);
 }
 
 int	main(int argc, char **argv, char **env)
@@ -74,16 +75,22 @@ int	main(int argc, char **argv, char **env)
 	(void)argc;
 	line = (char *) 0xFF;
 	setup_env(argv, env);
+    // struct termios attributes;
+    // tcgetattr(STDIN_FILENO, &attributes);
+    // tcsetattr(STDIN_FILENO, TCSAFLUSH, &attributes);
+    // attributes.c_lflag &= ~ ISIG;
 	while (line)
 	{
 		signal(SIGINT, ctrl_c), signal(SIGQUIT, SIG_IGN);
 		line = readline(RED "super " CYAN "shell " RESET "$> ");
 		if (!line)
 			break ;
-		add_history(line);
+		if (*line)
+			add_history(line);
 		list_of_parses = get_command_line(&line);
 		if (!list_of_parses)
 			continue ;
+		signal(SIGINT, SIG_IGN);
 		go_on_I_will_wait(exec(list_of_parses));
 		rl_replace_line("", 0);
 		if (list_of_parses)

@@ -14,6 +14,7 @@
 
 static void	child(char **args, t_rdrct *rdrct)
 {
+	signal(SIGINT, SIG_DFL);
 	ft_lstclear(&rdrct->in, NULL);
 	ft_lstclear(&rdrct->out, NULL);
 	if (rdrct->copy.is0)
@@ -36,6 +37,7 @@ static void	writer(int writer_pid, t_rdrct *rdrct)
 {
 	if (!writer_pid)
 	{
+		signal(SIGINT, SIG_IGN);
 		if (rdrct->pipe.is)
 			close(rdrct->pipe.pipefd[0]);
 		if (rdrct->copy.is0)

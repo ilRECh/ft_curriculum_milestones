@@ -100,15 +100,19 @@ unsigned int	dollr(t_parse *parse, t_list *l)
 	unsigned int	i;
 	char			*str;
 	_Bool			was_space;
+	_Bool			quot;
 
 	i = -1;
+	quot = FALSE;
 	while (parse->argv[++i])
 	{
 		str = parse->argv[i];
 		was_space = FALSE;
 		while (l->head && *str)
 		{
-			if (*str == '\'' && *++str)
+			if ((!quot && *str == '\"') || (quot && *str == '\"' && *(str -1) != '\\'))
+				quot = !quot;
+			if (!quot && *str == '\'' && *++str)
 				while (*str && *str != '\'')
 					str++;
 			if (ft_isspace(*str))
