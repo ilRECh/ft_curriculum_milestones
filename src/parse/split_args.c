@@ -94,19 +94,20 @@ t_list	*split_args(t_list *l)
 {
 	t_parse	*p;
 
-	l->cur = l->head;
 	while (l->cur)
 	{
 		p = (t_parse *)l->cur->content;
 		if (p->argv && *p->argv && !ft_strncmp(CASE, *p->argv, 13))
-			if (!split_args(((t_list *)((t_parse *)l->cur->content)->argv[1])))
+			if (!split_args(((t_list *)p->argv[1])))
 				return (NULL);
-		if (p->argv && *p->argv && ft_strncmp(CASE, *p->argv, 13))
+		else if (p->argv && *p->argv)
 		{
 			if (dollr(p, l))
 			{
 				if (sub_split_args(l))
 					return ((void *)2);
+				if (!l || !l->head)
+					return ((void *)1);
 				continue ;
 			}
 			l->cur->content = sub_parse(p);

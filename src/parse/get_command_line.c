@@ -32,6 +32,7 @@ t_list	*get_command_line(char **line)
 		return (NULL);
 	lst = split_ignore_caps(*line, 0);
 	free (*line);
+	lst->cur = lst->head;
 	tmp = split_args(lst);
 	if (!tmp || (long long)tmp < 3 || !lst->head || post_parser(lst))
 	{

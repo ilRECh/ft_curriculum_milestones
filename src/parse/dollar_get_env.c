@@ -49,7 +49,7 @@ char	*set_env(char *line, char *ln)
 	return (ft_strjoin_free(res, ft_strdup(ln + klen), 3));
 }
 
-static _Bool	seb_str_dollr(t_parse *parse, char **str, int i, t_list *l)
+static _Bool	seb_dollr(t_parse *parse, char **str, int i, t_list *l)
 {
 	char	*tmp;
 
@@ -114,19 +114,17 @@ unsigned int	dollr(t_parse *parse, t_list *l)
 		var.was_space = FALSE;
 		while (l->head && *var.str)
 		{
-			if ((!var.quot && *var.str == '\"')
-				|| (var.quot && *var.str == '\"' && *(var.str - 1) != '\\'))
-				var.quot = !var.quot;
+			(!var.quot && *var.str == '\"' && ++var.quot) || (var.quot \
+			&& *var.str == '\"' && *(var.str - 1) != '\\' && var.quot++);
 			if (!var.quot && *var.str == '\'' && *++var.str)
 				while (*var.str && *var.str != '\'')
 					var.str++;
-			if (ft_isspace(*var.str))
-				var.was_space = TRUE;
+			!var.was_space && ft_isspace(*var.str) && ++var.was_space;
 			if (*var.str == '=' && !var.was_space)
 				return (ft_for_equal(var.str, parse->argv[var.i], l));
-			if (*var.str == '$' && (parse->argv[var.i] == var.str || *(var.str - 1) != '\\'))
-				if (seb_str_dollr(parse, &var.str, var.i, l))
-					return (1);
+			if ((*var.str == '$' && (parse->argv[var.i] == var.str || \
+			var.str[-1] != '\\')) && (seb_dollr(parse, &var.str, var.i, l)))
+				return (1);
 			var.str++;
 		}
 	}

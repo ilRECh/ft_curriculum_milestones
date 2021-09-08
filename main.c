@@ -80,7 +80,7 @@ int	main(int argc, char **argv, char **env)
 	{
 		signal(SIGINT, ctrl_c), signal(SIGQUIT, SIG_IGN);
 		line = readline(RED "super " CYAN "shell " RESET "$> ");
-		// line = ft_strdup("echo \"\\taaaaa\"");//echo "\taaaaa"
+		// line = ft_strdup("ARG=1233"); //echo "\taaaaa"
 		if (!line)
 			break ;
 		if (*line)
