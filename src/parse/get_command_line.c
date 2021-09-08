@@ -35,9 +35,9 @@ t_list	*get_command_line(char **line)
 	tmp = split_args(lst);
 	if (!tmp || (long long)tmp < 3 || !lst->head || post_parser(lst))
 	{
-		if (!tmp)
-			return (NULL);
-		if ((long long)tmp == 2)
+		// if (!tmp)
+			// return (NULL);
+		if (!tmp || (long long)tmp == 2)
 			write (1, "Error: operator is't valid\n", 28);
 		if (!tmp || (long long)tmp == 2)
 			ft_lstclear(lst, free_parse);

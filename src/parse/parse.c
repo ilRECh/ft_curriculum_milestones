@@ -22,7 +22,7 @@ void	if_redir(t_wheel *w)
 			w->ln++;
 		w->line = w->ln;
 		w->line = w->ln;
-		while (*w->ln && !ft_isspace(*w->ln) && !ft_strchr("<>", *w->ln))
+		while (*w->ln && !ft_isspace(*w->ln) && !ft_strchr("<>()", *w->ln))
 			w->ln++;
 		while (ft_isspace(*w->ln))
 			w->ln++;

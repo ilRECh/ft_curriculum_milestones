@@ -88,7 +88,7 @@ t_list	ft_all_rdrcts(t_list *lst, t_rdrct *rdrct)
 	if (!rdrct->outall.is)
 		(rdrct->outall.is = true), pipe(rdrct->outall.pipefd);
 	sublst.head = lst->cur;
-	while (lst->cur && ((t_parse *)lst->cur->content)->oper != END
+	while (lst->cur && lst->cur->content && ((t_parse *)lst->cur->content)->oper != END
 		&& ((t_parse *)lst->cur->content)->oper != AND
 		&& ((t_parse *)lst->cur->content)->oper != OR
 		&& ((t_parse *)lst->cur->content)->oper != PIPE)

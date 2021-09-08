@@ -12,52 +12,79 @@
 
 #include "minishell.h"
 
-_Bool	error_handler(int num, int parentheses)
+_Bool	error_handler(int num, int parentheses, char *str)
 {
-	if (num > 0 && num < 4)
+	if (num == parentheses && num == -1)
+		printf("Error: names near redirect is not valid\n");
+	else if (num == parentheses && num == -2)
+		printf("Error: parentheses not filled in\n");
+	else if (num > 0 && num < 4)
 	{
 		if (num == 1)
 			printf("error, mistake to close: \'\n");
 		else if (num == 2)
 			printf("error, mistake to close: \"\n");
-		return (TRUE);
 	}
-	if (parentheses)
+	else if (parentheses)
 	{
 		if (parentheses > 0)
 			printf("error, mistake: )\n");
 		else if (parentheses < 0)
 			printf("error, mistake: (\n");
-		return (TRUE);
 	}
+	else
+		return (FALSE);
+	free(str);
+	return (TRUE);
+}
+
+_Bool	redir_check(char *str)
+{
+	_Bool	was_name;
+
+	was_name = FALSE;
+	while (*str && ft_isspace(*str))
+		str++;
+	if (*str && (ft_strchr("\'\"", *str) || ft_isalpha(*str)))
+		was_name = TRUE;
+	return (was_name);
+}
+
+_Bool	is_empty_par(char *str)
+{
+	while (*str && ft_isspace(*str))
+		str++;
+	if (!*str || *str == ')')
+		return (TRUE);
 	return (FALSE);
 }
 
-_Bool	pre_parser(char *line)
+_Bool	pre_parser(char *ln)
 {
 	unsigned int	i;
-	int				parentheses;
+	int				pare;
 	int				quotes_single;
 
 	i = -1;
-	parentheses = 0;
-	quotes_single = 0;
-	while (line[++i] && parentheses >= 0)
+	pare = (quotes_single = 0);
+	while (ln[++i] && pare >= 0)
 	{
-		if (line[i] == '\"' && (!i || line[i - 1] != '\\'))
-			while (line[++i] && (line[i] != '\"' || line[i - 1] == '\\'))
+		if (ft_strchr ("<>", ln[i]) && !redir_check(&ln[i + 1]))
+			return (error_handler (-1, -1, ln));
+		if (ln[i] == '\"' && (!i || ln[i - 1] != '\\'))
+			while (ln[++i] && (ln[i] != '\"' || ln[i - 1] == '\\'))
 				;
-		if (!line[i])
-			return (error_handler(2, 0));
-		if (line[i] == '\'' && (!i || line[i - 1] != '\\'))
-			while (line[++i] && (line[i] != '\''))
+		if (!ln[i])
+			return (error_handler(2, 0, ln));
+		if (ln[i] == '\'' && (!i || ln[i - 1] != '\\'))
+			while (ln[++i] && (ln[i] != '\''))
 				;
-		if (!line[i])
-			return (error_handler(1, 0));
-		if (line[i] == '(' && (!i || line[i - 1] != '\\'))
-			parentheses++;
-		else if (line[i] == ')' && (!i || line[i - 1] != '\\'))
-			parentheses--;
+		if (!ln[i])
+			return (error_handler(1, 0, ln));
+		((!i || ln[i - 1] != '\\') && \
+		((ln[i] == '(' && ++pare) || (ln[i] == ')' && pare--)));
+		if (ln[i] == '(' && is_empty_par(&ln[i + 1]))
+			return (error_handler(-2, -2, ln));
 	}
-	return (error_handler(0, parentheses));
+	return (error_handler(0, pare, ln));
 }
