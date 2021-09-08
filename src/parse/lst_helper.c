@@ -41,7 +41,7 @@ char	**list_to_char2(t_list *lst)
 	}
 	while (len--)
 	{
-		tabs[len] = slash_parse(lst->cur->content);
+		tabs[len] = trimmer(slash_parse(lst->cur->content), "\"\'", ONCE);
 		lst->cur = lst->cur->prev;
 	}
 	ft_lstclear(lst, NULL);

@@ -16,15 +16,17 @@ void	ctrl_c(int signum)
 {
 	(void)signum;
 
-	g_param->ret = 130;
+	g_param->ret = 1;
 
-	// write(1, "\033[2K\r", 6);
-	rl_replace_line("", 0);
+	// rl_replace_line("", 0);
+	// write(1, "\n", 1);
+	// rl_on_new_line();
+	// rl_redisplay();
+
 	write(1, "\n", 1);
 	rl_on_new_line();
-	// write(1, RED "\033[2K\rsuper " CYAN "shell " RESET "$> ", 39);
+	rl_replace_line("", 0);
 	rl_redisplay();
-	// write(1, "\n", 1);
 }
 
 void	ctrl_fucking_c(int signum)

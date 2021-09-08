@@ -12,19 +12,24 @@
 
 #include "minishell.h"
 
-char	*trimmer(char *str, char *c)
+char	*trimmer(char *str, char *c, _Bool mode)
 {
 	short	x;
+	_Bool	b;
 
 	if (!str)
 		return (str);
-	if (*str && ft_strchr(c, *str))
-		ft_memmove(str, &str[1], ft_strlen(str));
-	x = ft_strlen(str) - 1;
-	if (str[x] && ft_strchr(c, str[x]))
+	b = TRUE;
+	while (b && *str && ft_strchr(c, *str))
 	{
-		str[x] = 0;
+		b = FALSE;
+		if (*str && ft_strchr(c, *str))
+			ft_memmove(str, &str[1], ft_strlen(str)), b = TRUE;
 		x = ft_strlen(str) - 1;
+		if (x && str[x] && ft_strchr(c, str[x]))
+			str[x--] = 0;
+		if (mode == ONCE)
+			b = FALSE;
 	}
 	return (str);
 }

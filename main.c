@@ -76,15 +76,11 @@ int	main(int argc, char **argv, char **env)
 	line = (char *) 0xFF;
 	setup_env(argv, env);
 	// add_to_env(ft_split("PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:/usr/local/munki:~/.dotnet/tools", '='));
-    // struct termios attributes;
-    // tcgetattr(STDIN_FILENO, &attributes);
-    // tcsetattr(STDIN_FILENO, TCSAFLUSH, &attributes);
-    // attributes.c_lflag &= ~ ISIG;
 	while (line)
 	{
 		signal(SIGINT, ctrl_c), signal(SIGQUIT, SIG_IGN);
 		line = readline(RED "super " CYAN "shell " RESET "$> ");
-		// line = ft_strdup("echo && (echo) || ( < bbbb)");
+		// line = ft_strdup("echo \"\\taaaaa\"");//echo "\taaaaa"
 		if (!line)
 			break ;
 		if (*line)

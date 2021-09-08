@@ -28,6 +28,8 @@
 # define PIPE		8
 # define CASE_OPEN	9
 # define CASE_CLOSE	10
+# define ONCE		0
+# define FULL		1
 
 typedef struct s_parse
 {
@@ -53,7 +55,7 @@ unsigned int	dollr(t_parse *parse, t_list *l);
 char			*dollar_get_env(char *line);
 char			*ft_strjoin_free(char *s1, char *s2, short fr);
 t_list			*get_command_line(char **line);
-char			*trimmer(char *str, char *c);
+char			*trimmer(char *str, char *c, _Bool mode);
 t_list			*split_args(t_list *lst);
 _Bool			sub_sub_quote(char *str, int *i);
 int				ft_strlenspace(char *str);

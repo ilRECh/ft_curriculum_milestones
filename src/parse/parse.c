@@ -32,7 +32,7 @@ void	if_redir(t_wheel *w)
 		pars_gen_fill(
 			argv_fill_1(
 				trimmer(
-					ft_strndup(w->line, w->ln - w->line), " ")),
+					ft_strndup(w->line, w->ln - w->line), " ", FULL)),
 			w->sp_prev));
 	if (w->sp)
 		while (*w->ln && (ft_strchr("<>", *w->ln) || ft_isspace(*w->ln)))
@@ -48,7 +48,7 @@ void	if_pipe_oper_end(t_wheel *w)
 			pars_gen_fill(
 				argv_fill_1(
 					trimmer(
-						ft_strndup(w->line, w->ln - w->line), " ")),
+						ft_strndup(w->line, w->ln - w->line), " ", FULL)),
 				w->sp_prev));
 	ft_lstadd_back(w->lst, pars_gen_fill((char **) NULL, w->sp));
 	while (*w->ln && ft_strchr(";&| ", *++w->ln))
@@ -66,7 +66,7 @@ void	if_sub_lst(t_wheel *w)
 			pars_gen_fill(
 				argv_fill_1(
 					trimmer(
-						ft_strndup(w->line, w->ln - w->line), " ")),
+						ft_strndup(w->line, w->ln - w->line), " ", FULL)),
 				w->sp_prev));
 	argv = argv_fill_2(ft_strdup(CASE),
 			(char *)split_ignore_caps(w->ln + 1, 0));
@@ -85,7 +85,7 @@ t_list	*if_close_bracket(t_wheel *w)
 			pars_gen_fill(
 				argv_fill_1(
 					trimmer(
-						ft_strndup(w->line, w->ln - w->line), " ")),
+						ft_strndup(w->line, w->ln - w->line), " ", FULL)),
 				w->sp_prev));
 	return (w->lst);
 }

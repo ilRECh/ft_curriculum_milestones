@@ -43,7 +43,7 @@ t_parse	*to_separate_util_args(t_parse *parse, t_list *lst)
 
 void	sub_repetat(t_list *lst, char **str, int *i)
 {
-	ft_lstadd_back(lst, trimmer(ft_strndup(*str, *i), "\'\""));
+	ft_lstadd_back(lst, ft_strndup(*str, *i));
 	(*str) += (*i);
 	while (*(*str) && (ft_isspace(*(*str))))
 		(*str)++;
