@@ -6,7 +6,7 @@
 /*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 21:17:49 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/09/01 17:26:47 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/09/08 20:18:22 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,8 @@ t_list	ft_all_rdrcts(t_list *lst, t_rdrct *rdrct)
 	if (!rdrct->outall.is)
 		(rdrct->outall.is = true), pipe(rdrct->outall.pipefd);
 	sublst.head = lst->cur;
-	while (lst->cur && lst->cur->content && ((t_parse *)lst->cur->content)->oper != END
-		&& ((t_parse *)lst->cur->content)->oper != AND
+	while (lst->cur && lst->cur->content && ((t_parse *)lst->cur->content)
+		->oper != END && ((t_parse *)lst->cur->content)->oper != AND
 		&& ((t_parse *)lst->cur->content)->oper != OR
 		&& ((t_parse *)lst->cur->content)->oper != PIPE)
 	{

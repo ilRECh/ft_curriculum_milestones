@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dollar_get_env.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 10:47:41 by csamuro           #+#    #+#             */
-/*   Updated: 2021/09/03 02:39:56 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/09/08 20:37:41 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,34 +95,39 @@ unsigned int	ft_for_equal(char *str, char *base_str, t_list *l)
 	return (1);
 }
 
-unsigned int	dollr(t_parse *parse, t_list *l)
+typedef struct s_dollr
 {
 	unsigned int	i;
 	char			*str;
 	_Bool			was_space;
 	_Bool			quot;
+}	t_dollr;
 
-	i = -1;
-	quot = FALSE;
-	while (parse->argv[++i])
+unsigned int	dollr(t_parse *parse, t_list *l)
+{
+	t_dollr	var;
+
+	var.i = (var.quot = FALSE) - 1;
+	while (parse->argv[++var.i])
 	{
-		str = parse->argv[i];
-		was_space = FALSE;
-		while (l->head && *str)
+		var.str = parse->argv[var.i];
+		var.was_space = FALSE;
+		while (l->head && *var.str)
 		{
-			if ((!quot && *str == '\"') || (quot && *str == '\"' && *(str -1) != '\\'))
-				quot = !quot;
-			if (!quot && *str == '\'' && *++str)
-				while (*str && *str != '\'')
-					str++;
-			if (ft_isspace(*str))
-				was_space = TRUE;
-			if (*str == '=' && !was_space)
-				return (ft_for_equal(str, parse->argv[i], l));
-			if (*str == '$' && (parse->argv[i] == str || *(str - 1) != '\\'))
-				if (seb_str_dollr(parse, &str, i, l))
+			if ((!var.quot && *var.str == '\"')
+				|| (var.quot && *var.str == '\"' && *(var.str - 1) != '\\'))
+				var.quot = !var.quot;
+			if (!var.quot && *var.str == '\'' && *++var.str)
+				while (*var.str && *var.str != '\'')
+					var.str++;
+			if (ft_isspace(*var.str))
+				var.was_space = TRUE;
+			if (*var.str == '=' && !var.was_space)
+				return (ft_for_equal(var.str, parse->argv[var.i], l));
+			if (*var.str == '$' && (parse->argv[var.i] == var.str || *(var.str - 1) != '\\'))
+				if (seb_str_dollr(parse, &var.str, var.i, l))
 					return (1);
-			str++;
+			var.str++;
 		}
 	}
 	return (0);

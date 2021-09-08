@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lst_helper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 06:20:40 by csamuro           #+#    #+#             */
-/*   Updated: 2021/09/03 23:04:03 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/09/08 20:35:43 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,17 +44,6 @@ char	**list_to_char2(t_list *lst)
 		tabs[len] = slash_parse(lst->cur->content);
 		lst->cur = lst->cur->prev;
 	}
-	// while (tabs && tabs[++len])
-	// 	trimmer(tabs[len], "\"\'");
 	ft_lstclear(lst, NULL);
 	return (tabs);
 }
-
-// void	lst_trimmer(t_list *lst)
-// {
-// 	t_list	*tmp;
-
-// 	tmp = lst;
-// 	tmp->cur = tmp->head;
-// 	trimmer(tmp->cur->content, "\"\' ");
-// }

@@ -31,13 +31,13 @@
 
 typedef struct s_param
 {
-	char	**env;
-	char	**exprt;
-	char	**locals;
-	int		ret;
-	int		stdin_copy;
-	int		stdout_copy;
-	struct termios saved;
+	char			**env;
+	char			**exprt;
+	char			**locals;
+	int				ret;
+	int				stdin_copy;
+	int				stdout_copy;
+	struct termios	saved;
 }	t_param;
 
 //

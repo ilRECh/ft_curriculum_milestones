@@ -6,7 +6,7 @@
 /*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 06:20:59 by csamuro           #+#    #+#             */
-/*   Updated: 2021/09/08 20:12:56 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/09/08 20:36:24 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,7 @@ _Bool	pre_parser(char *ln)
 	int				pare;
 	int				quotes_single;
 
-	i = -1;
-	pare = (quotes_single = 0);
+	i = (pare = (quotes_single = 0)) - 1;
 	while (ln[++i] && pare >= 0)
 	{
 		if (ft_strchr ("<>", ln[i]) && !redir_check(ln[i], &ln[i + 1]))
