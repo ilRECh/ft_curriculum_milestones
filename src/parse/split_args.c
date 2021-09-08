@@ -100,7 +100,7 @@ t_list	*split_args(t_list *l)
 		if (p->argv && *p->argv && !ft_strncmp(CASE, *p->argv, 13))
 			if (!split_args(((t_list *)p->argv[1])))
 				return (NULL);
-		else if (p->argv && *p->argv)
+		if (p->argv && *p->argv && ft_strncmp(CASE, *p->argv, 13))
 		{
 			if (dollr(p, l))
 			{
