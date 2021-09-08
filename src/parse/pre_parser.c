@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pre_parser.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 06:20:59 by csamuro           #+#    #+#             */
-/*   Updated: 2021/09/02 07:11:36 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/09/08 20:12:56 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,16 @@ _Bool	error_handler(int num, int parentheses, char *str)
 	return (TRUE);
 }
 
-_Bool	redir_check(char *str)
+_Bool	redir_check(char redir, char *str)
 {
 	_Bool	was_name;
 
 	was_name = FALSE;
-	while (*str && ft_isspace(*str))
+	if (str && *str == redir)
 		str++;
-	if (*str && (ft_strchr("\'\"", *str) || ft_isalpha(*str)))
+	while (str && *str && ft_isspace(*str))
+		str++;
+	if (str && *str && (ft_strchr("\'\"", *str) || ft_isalpha(*str)))
 		was_name = TRUE;
 	return (was_name);
 }
@@ -69,7 +71,7 @@ _Bool	pre_parser(char *ln)
 	pare = (quotes_single = 0);
 	while (ln[++i] && pare >= 0)
 	{
-		if (ft_strchr ("<>", ln[i]) && !redir_check(&ln[i + 1]))
+		if (ft_strchr ("<>", ln[i]) && !redir_check(ln[i], &ln[i + 1]))
 			return (error_handler (-1, -1, ln));
 		if (ln[i] == '\"' && (!i || ln[i - 1] != '\\'))
 			while (ln[++i] && (ln[i] != '\"' || ln[i - 1] == '\\'))
