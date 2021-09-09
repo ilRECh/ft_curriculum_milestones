@@ -6,7 +6,7 @@
 /*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 21:16:21 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/09/09 20:01:04 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/09/09 20:20:26 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,6 @@ static inline void	writing(int fd, char **line)
 	*line = dollar_get_env(*line);
 	write(fd, *line, ft_strlen(*line));
 	write(fd, "\n", 1);
-}
-
-int	getcc(struct __sFILE *a)
-{
-	(void)a;
-	if (g_param->ret == 130)
-		return (-1);
-	return (0);
 }
 
 static void	ctrlwd(int signum)

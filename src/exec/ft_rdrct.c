@@ -6,7 +6,7 @@
 /*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 21:17:49 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/09/09 19:55:36 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/09/09 20:04:44 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,13 @@ int	ft_rdrct(char to, t_rdrct *rdrct, t_parse *file)
 {
 	int			pipefd[2];
 
-	if ((to == RDCT_L || to == RDCT_L2)
-		&& !rdrct->inall.is)
-	{
-		rdrct->inall.is = true;
-		pipe(rdrct->inall.pipefd);
-	}
+	if ((to == RDCT_L || to == RDCT_L2) && !rdrct->inall.is)
+		(rdrct->inall.is = true), pipe(rdrct->inall.pipefd);
 	if (to == RDCT_L && add(open(file->argv[1], O_RDONLY), rdrct, file, to))
 		return (1);
 	else if (to == RDCT_L2)
 	{
-		pipe(pipefd);
-		whatsupdoc(pipefd[1], file->argv[1]);
+		pipe(pipefd), whatsupdoc(pipefd[1], file->argv[1]);
 		if (g_param->ret != 130)
 			ft_lstadd_back(&rdrct->in, (void *)((long long)pipefd[0]));
 		else
