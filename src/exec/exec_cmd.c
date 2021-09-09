@@ -15,6 +15,8 @@
 static void	child(char **args, t_rdrct *rdrct)
 {
 	signal(SIGINT, SIG_DFL);
+	signal(SIGQUIT, SIG_DFL);
+	signal(EOF, SIG_DFL);
 	ft_lstclear(&rdrct->in, NULL);
 	ft_lstclear(&rdrct->out, NULL);
 	if (rdrct->copy.is0)
