@@ -79,7 +79,6 @@ ENVIRON					=	$(addprefix $(ENVIRON_DIR), $(ENVIRON_LIST))
 
 
 PARSE_LIST				=	dollar_get_env.c \
-							dollar_get_env_extra.c \
 							parse.c \
 							utils_parse.c \
 							trimmer.c \

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_minishell.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 23:04:48 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/09/04 01:55:35 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/09/09 18:47:29 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	exec_minishell(char **argv, t_rdrct *rdrct, int *exitcode)
 	else
 	{
 		waitpid(pid, exitcode, 0);
+		*exitcode = WEXITSTATUS(*exitcode);
 	}
 	return (-1);
 }

@@ -6,7 +6,7 @@
 /*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 21:17:49 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/09/08 20:18:22 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/09/09 20:04:44 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,20 @@ int	ft_rdrct(char to, t_rdrct *rdrct, t_parse *file)
 {
 	int			pipefd[2];
 
-	if ((to == RDCT_L || to == RDCT_L2)
-		&& !rdrct->inall.is)
-	{
-		rdrct->inall.is = true;
-		pipe(rdrct->inall.pipefd);
-	}
+	if ((to == RDCT_L || to == RDCT_L2) && !rdrct->inall.is)
+		(rdrct->inall.is = true), pipe(rdrct->inall.pipefd);
 	if (to == RDCT_L && add(open(file->argv[1], O_RDONLY), rdrct, file, to))
 		return (1);
 	else if (to == RDCT_L2)
 	{
-		pipe(pipefd);
-		ft_lstadd_back(&rdrct->in, (void *)((long long)pipefd[0]));
-		whatsupdoc(pipefd[1], file->argv[1]);
+		pipe(pipefd), whatsupdoc(pipefd[1], file->argv[1]);
+		if (g_param->ret != 130)
+			ft_lstadd_back(&rdrct->in, (void *)((long long)pipefd[0]));
+		else
+		{
+			close(pipefd[0]);
+			return (1);
+		}
 		close(pipefd[1]);
 	}
 	else if (to == RDCT_R && add(open(file->argv[1],
@@ -69,6 +70,18 @@ static t_list	skip(t_list *lst, t_list *sublst)
 	sublst->head = NULL;
 	sublst->cur = NULL;
 	sublst->end = lst->cur;
+	return (*sublst);
+}
+
+static t_list	skip_whatsupdoc(t_list *lst, t_list *sublst)
+{
+	while (lst && lst->cur)
+	{
+		lst->cur = lst->cur->next;
+	}
+	sublst->head = NULL;
+	sublst->cur = NULL;
+	sublst->end = NULL;
 	return (*sublst);
 }
 
@@ -96,8 +109,9 @@ t_list	ft_all_rdrcts(t_list *lst, t_rdrct *rdrct)
 		if (((t_parse *)lst->cur->content)->oper == RDCT_L
 			&& ft_rdrct(RDCT_L, rdrct, lst->cur->content))
 			return (skip(lst, &sublst));
-		else if (((t_parse *)lst->cur->content)->oper == RDCT_L2)
-			ft_rdrct(RDCT_L2, rdrct, lst->cur->content);
+		else if (((t_parse *)lst->cur->content)->oper == RDCT_L2
+			&& ft_rdrct(RDCT_L2, rdrct, lst->cur->content))
+			return (skip_whatsupdoc(lst, &sublst));
 		else if (((t_parse *)lst->cur->content)->oper == RDCT_R
 			&& ft_rdrct(RDCT_R, rdrct, lst->cur->content))
 			return (skip(lst, &sublst));
@@ -106,6 +120,5 @@ t_list	ft_all_rdrcts(t_list *lst, t_rdrct *rdrct)
 			return (skip(lst, &sublst));
 		lst->cur = lst->cur->next;
 	}
-	sublst.end = lst->cur;
-	return (sublst);
+	return ((sublst.end = lst->cur), sublst);
 }
