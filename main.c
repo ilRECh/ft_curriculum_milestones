@@ -64,7 +64,6 @@ static void	setup_env(char **argv, char **env)
 	if (getvalue("SHELL"))
 		setvalue("SHELL", argv[0]);
 	pre_env();
-	// tcgetattr(STDIN_FILENO, &g_param->saved);
 }
 
 int	main(int argc, char **argv, char **env)
@@ -75,18 +74,15 @@ int	main(int argc, char **argv, char **env)
 	(void)argc;
 	line = (char *) 0xFF;
 	setup_env(argv, env);
-	// add_to_env(ft_split("PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:/usr/local/munki:~/.dotnet/tools", '='));
 	while (line)
 	{
 		signal(SIGINT, ctrl_c), signal(SIGQUIT, SIG_IGN);
 		line = readline(RED "super " CYAN "shell " RESET "$> ");
-		// line = ft_strdup("ARG=1233"); //echo "\taaaaa"
 		if (!line)
 			break ;
 		if (*line)
 			add_history(line);
 		list_of_parses = get_command_line(&line);
-		// exit(0);
 		if (!list_of_parses)
 			continue ;
 		signal(SIGINT, SIG_IGN);
