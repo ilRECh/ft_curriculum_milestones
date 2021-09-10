@@ -54,7 +54,7 @@ static _Bool	seb_dollr(t_parse *parse, char **str, int i, t_list *l)
 	char	*tmp;
 
 	tmp = *str;
-	if (!tmp[1] || ft_strchr("<>|&\"\'", tmp[1]) || ft_isspace(tmp[1]))
+	if (!tmp[1] || ft_strchr("<>|&\"\'()\\", tmp[1]) || ft_isspace(tmp[1]))
 		return (FALSE);
 	while (*tmp && !ft_isspace(*tmp) && *tmp != '=')
 		tmp++;
