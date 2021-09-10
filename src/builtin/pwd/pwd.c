@@ -6,7 +6,7 @@
 /*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 22:54:47 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/08/29 03:09:33 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/09/10 19:15:47 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_pwd(char **args)
 
 	if (args[1])
 	{
-		printf("pwd: too many arguments\n");
+		error_str("pwd: too many arguments\n");
 		return (1);
 	}
 	else if (getvalue("PWD"))
@@ -33,6 +33,7 @@ int	ft_pwd(char **args)
 			error_str("pwd: cannot retrieve current directory\n");
 			return (1);
 		}
+		free(tmp);
 	}
 	return (0);
 }
