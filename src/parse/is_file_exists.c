@@ -23,11 +23,13 @@ void	free_tabs(char **tab)
 }
 
 void	run_compare(char **paths, int *fd,
-			char **str_concat, char *file_path)
+			char **str_concat)
 {
-	int	i;
+	char	*file_path;
+	int		i;
 
 	i = -1;
+	file_path = ft_strdup(*str_concat);
 	while (paths[++i])
 	{
 		free(*str_concat);
@@ -37,6 +39,7 @@ void	run_compare(char **paths, int *fd,
 		if (*fd > 2)
 			break ;
 	}
+	free(file_path);
 }
 
 _Bool	is_from_path(char **paths, char *str)
@@ -57,20 +60,20 @@ char	*is_util_exists(char *file_path)
 	char	**paths;
 	int		fd;
 
-	if (file_path[0] == '/')
+	str_concat = trimmer(ft_strdup(file_path), "\"\'", FULL);
+	if (*str_concat == '/')
 	{
-		(fd = open(file_path, O_RDONLY)), close(fd);
+		(fd = open(str_concat, O_RDONLY)), close(fd);
 		if (fd > 2)
-			return (ft_strdup(file_path));
+			return (str_concat);
 	}
 	paths = ft_split(getvalue("PATH"), ':');
 	if (!paths)
 		return (NULL);
-	str_concat = ft_strdup(file_path);
 	if (ft_strnstr(str_concat, "./", 2) || is_from_path(paths, str_concat))
 		fd = open(str_concat, O_RDONLY);
 	else
-		run_compare(paths, &fd, &str_concat, file_path);
+		run_compare(paths, &fd, &str_concat);
 	free_tabs(paths);
 	if (fd < 3)
 		free(str_concat), (str_concat = NULL);

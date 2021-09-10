@@ -20,7 +20,7 @@ t_parse	*to_separate_util_args(t_parse *parse, t_list *lst)
 	parse->argv = NULL;
 	if (!parse->oper)
 	{
-		if (is_builtins(((char *)lst->head->content)))
+		if (is_builtins((char **)&lst->head->content))
 			beg = ft_strdup(((char *)lst->head->content));
 		else
 			beg = is_util_exists(((char *)lst->head->content));

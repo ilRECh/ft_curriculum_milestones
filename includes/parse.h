@@ -62,7 +62,7 @@ int				ft_strlenspace(char *str);
 void			free_parse(void *p);
 _Bool			ret_perr(const char *mess);
 char			*is_util_exists(char *file_path);
-_Bool			is_builtins(char *str);
+_Bool			is_builtins(char **str);
 _Bool			pre_parser(char *line);
 char			*slash_parse(char *str);
 _Bool			post_parser(t_list *lst);
