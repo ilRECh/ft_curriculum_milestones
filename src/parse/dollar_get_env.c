@@ -54,6 +54,8 @@ static _Bool	seb_dollr(t_parse *parse, char **str, int i, t_list *l)
 	char	*tmp;
 
 	tmp = *str;
+	if (!tmp[1] || ft_strchr("<>|&\"\'", tmp[1]) || ft_isspace(tmp[1]))
+		return (FALSE);
 	while (*tmp && !ft_isspace(*tmp) && *tmp != '=')
 		tmp++;
 	if (*tmp == '=')
@@ -70,11 +72,7 @@ static _Bool	seb_dollr(t_parse *parse, char **str, int i, t_list *l)
 		return (FALSE);
 	}
 	else if (tmp)
-	{
-		free (tmp);
-		ft_lstdelone(l, free_parse);
-		return (TRUE);
-	}
+		free(tmp), ft_lstdelone(l, free_parse);
 	return (TRUE);
 }
 
@@ -115,7 +113,7 @@ unsigned int	dollr(t_parse *parse, t_list *l)
 		while (l->head && *var.str)
 		{
 			(!var.quot && *var.str == '\"' && ++var.quot) || (var.quot \
-			&& *var.str == '\"' && *(var.str - 1) != '\\' && var.quot++);
+			&& *var.str == '\"' && *(var.str - 1) != '\\' && --var.quot);
 			if (!var.quot && *var.str == '\'' && *++var.str)
 				while (*var.str && *var.str != '\'')
 					var.str++;

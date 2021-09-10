@@ -48,8 +48,8 @@ _Bool	sub_sub_quote(char *str, int *i)
 				;
 	}
 	*i = k + 1;
-	if (!str[k] || !str[k + 1] || (ft_isspace(str[k + 2])
-			&& str[k + 1] != '\\'))
+	if ((!str[k] || !str[k + 1] || ft_isspace(str[k + 2]) \
+	|| ft_strchr("\"\'", str[k + 1])) && str[k + 1] != '\\')
 		return (TRUE);
 	return (FALSE);
 }

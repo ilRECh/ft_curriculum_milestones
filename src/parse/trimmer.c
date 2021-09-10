@@ -26,7 +26,7 @@ char	*trimmer(char *str, char *c, _Bool mode)
 		if (*str && ft_strchr(c, *str))
 			ft_memmove(str, &str[1], ft_strlen(str)), b = TRUE;
 		x = ft_strlen(str) - 1;
-		if (x && str[x] && ft_strchr(c, str[x]))
+		if (str[x] && ft_strchr(c, str[x]))
 			str[x--] = 0;
 		if (mode == ONCE)
 			b = FALSE;

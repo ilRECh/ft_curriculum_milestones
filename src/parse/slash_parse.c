@@ -55,8 +55,8 @@ char	*slash_parse(char *str)
 	{
 		if (str[i] == '\'')
 			skip_quote(str, &i, '\'');
-		if (str[i] == '\"' && (!i || str[i - 1] != '\\'))
-			while (str[++i] != '\"')
+		if (str[i] && str[i] == '\"' && (!i || str[i - 1] != '\\'))
+			while (str[++i] && str[i] != '\"')
 				apply_slash_full(&str[i]);
 		if (str[i] == '\\')
 			ft_memmove(&str[i], &str[i + 1], ft_strlen(&str[i]));
