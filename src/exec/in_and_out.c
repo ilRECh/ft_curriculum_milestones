@@ -6,7 +6,7 @@
 /*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 21:20:51 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/09/09 20:29:57 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/09/10 18:04:36 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	out(t_list *out, int outfd)
 			rd = read(outfd, buf, 1000);
 			while (out->cur)
 			{
-				printf("%zd\n", write((int)out->cur->content, buf, rd));
+				write((int)out->cur->content, buf, rd);
 				out->cur = out->cur->next;
 			}
 		}
