@@ -6,7 +6,7 @@
 /*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 22:54:55 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/08/29 03:38:10 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/09/10 20:35:37 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ int	ft_unset(char **args)
 {
 	int	iter_1;
 
+	if (!args[1])
+		error_str("unset: not enough arguments\n");
 	iter_1 = -1;
 	while (args[++iter_1] && check_arg(args[iter_1]))
 	{

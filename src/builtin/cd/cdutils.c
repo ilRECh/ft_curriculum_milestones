@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cdutils.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/29 14:28:05 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/09/04 01:03:26 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/09/10 19:01:19 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	is_way_exist(char *way)
 	dir = opendir(way);
 	if (!dir)
 		return (1);
+	closedir(dir);
 	return (0);
 }
 
@@ -67,7 +68,5 @@ void	update_oldpwd(bool res, char *oldpath)
 {
 	if (!res && oldpath && getvalue("OLDPWD"))
 		setvalue("OLDPWD", oldpath);
-	else
-		printf("cd: error setting up OLDPWD");
 	free(oldpath);
 }

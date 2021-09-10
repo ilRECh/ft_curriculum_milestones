@@ -6,7 +6,7 @@
 /*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 21:17:34 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/09/09 18:58:21 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/09/10 18:31:07 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	errr(int pid, int *exitcode, t_rdrct *rdrct)
 static void	or(int pid, int *exitcode, t_list *lst)
 {
 	if (pid > 0)
-		if (waitpid(pid, exitcode, 0) < 0)
+		if (!go_on_I_will_wait(pid))
 			*exitcode = g_param->ret;
 	if (!*exitcode)
 	{
@@ -57,7 +57,7 @@ static void	or(int pid, int *exitcode, t_list *lst)
 static void	and(int pid, int *exitcode, t_list *lst)
 {
 	if (pid > 0)
-		if (waitpid(pid, exitcode, 0) < 0)
+		if (!go_on_I_will_wait(pid))
 			*exitcode = g_param->ret;
 	if (*exitcode)
 	{
@@ -76,7 +76,7 @@ static void	and(int pid, int *exitcode, t_list *lst)
 static void	end(int pid, int *exitcode, t_list *lst)
 {
 	if (pid > 0)
-		if (waitpid(pid, exitcode, 0) < 0)
+		if (!go_on_I_will_wait(pid))
 			*exitcode = g_param->ret;
 	lst->cur = lst->cur->next;
 }

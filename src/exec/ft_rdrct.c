@@ -6,7 +6,7 @@
 /*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 21:17:49 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/09/09 20:04:44 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/09/10 19:37:31 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ int	ft_rdrct(char to, t_rdrct *rdrct, t_parse *file)
 		close(pipefd[1]);
 	}
 	else if (to == RDCT_R && add(open(file->argv[1],
-				O_WRONLY | O_CREAT | O_TRUNC, 00777), rdrct, file, to))
+				O_WRONLY | O_CREAT | O_TRUNC, 00666), rdrct, file, to))
 		return (1);
 	else if (to == RDCT_R2 && add(open(file->argv[1],
-				O_WRONLY | O_CREAT | O_APPEND, 00777), rdrct, file, to))
+				O_WRONLY | O_CREAT | O_APPEND, 00666), rdrct, file, to))
 		return (1);
 	return (0);
 }
