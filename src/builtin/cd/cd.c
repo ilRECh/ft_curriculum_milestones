@@ -23,7 +23,7 @@ static void	home(char *path, bool *res)
 	else
 	{
 		*res = false;
-		error_str("HOME not set");
+		error_str("HOME not set\n");
 	}
 }
 
@@ -32,7 +32,7 @@ static void	back(bool *res)
 	if (getvalue("OLDPWD"))
 		*res = chpath(getvalue("OLDPWD"));
 	else
-		error_str("cd: OLDPWD not set");
+		error_str("cd: OLDPWD not set\n");
 }
 
 int	ft_cd(char **args)
@@ -42,7 +42,7 @@ int	ft_cd(char **args)
 	bool	res;
 
 	if (args[1] && args[2]
-		&& error_str("cd: too many arguments"))
+		&& error_str("cd: too many arguments\n"))
 		return (1);
 	res = false;
 	path = args[1];
