@@ -40,7 +40,7 @@ int	ft_exit(char **args)
 	if (!args)
 		exit_status = 1;
 	else if (args && args[1] && args[2]
-		&& error_str("exit: too many arguments"))
+		&& error_str("exit: too many arguments\n"))
 		return (1);
 	else if (args && args[1])
 		exit_status = ft_atoi(args[1]);

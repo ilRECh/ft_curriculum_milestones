@@ -17,7 +17,7 @@ int	ft_env(char	**args)
 	char	**tmp;
 
 	if (args[1]
-		&& error_str("env: too many arguments"))
+		&& error_str("env: too many arguments\n"))
 		return (1);
 	tmp = g_param->env;
 	while (tmp && *tmp)
