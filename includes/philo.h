@@ -6,7 +6,7 @@
 /*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 19:33:31 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/09/13 19:36:16 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/09/13 20:37:22 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,7 @@
 # define BLUE_BOLD "\033[0;34;1m"
 # define MAGENTA_BOLD "\033[0;35;1m"
 # define CYAN_BOLD "\033[0;36;1m"
+
+int		philo(int argc, char **argv);
 
 #endif
