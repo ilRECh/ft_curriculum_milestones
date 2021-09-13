@@ -19,7 +19,7 @@ SRC_LIST				=	philo.c
 SRC_DIR					=	./src/
 SRC						=	$(addprefix $(SRC_DIR), $(SRC_LIST)) main.c
 
-OBJS					=	$(SRC:.c=.o) main.o
+OBJS					=	$(SRC:.c=.o)
 
 # COLORS
 BLACK					=	\033[0;30m
