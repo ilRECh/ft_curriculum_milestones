@@ -6,15 +6,15 @@
 /*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 19:38:18 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/09/13 20:51:31 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/09/14 19:17:56 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	parse(int argc, char **argv)
+int32_t	parse(int argc, char **argv)
 {
-	int	i;
+	int32_t	i;
 
 	i = 0;
 	while (argc--)
@@ -23,17 +23,20 @@ int	parse(int argc, char **argv)
 		{
 			if (!('0' <= argv[argc][i] && argv[argc][i] <= '9')
 				&& argv[argc][i] != '+')
+			{
+				printf(RED "wrong argument: %s\n" RESET, argv[argc]);
 				return (1);
+			}
 			i++;
 		}
 	}
 	return (0);
 }
 
-int	ft_atoi(const char *nptr)
+int32_t	ft_atoi(const char *nptr)
 {
-	unsigned int	result;
-	int				digits_countdown;
+	uint32_t	result;
+	int32_t		digits_countdown;
 
 	result = 0;
 	digits_countdown = 19;
@@ -52,13 +55,13 @@ int	ft_atoi(const char *nptr)
 
 typedef struct s_init
 {
-	int			*array;
-	int			size;
-	int			i;
-	int (*const	get_int)(char const *);
+	uint32_t	*array;
+	uint32_t	size;
+	uint32_t	i;
+	int32_t (*const get_int)(char const *);
 }	t_init;
 
-int	philo(int argc, char **argv)
+int32_t	philo(int argc, char **argv)
 {
 	static t_init	args = {NULL, 0, 0, ft_atoi};
 
@@ -69,6 +72,10 @@ int	philo(int argc, char **argv)
 		return (1);
 	while (args.i < args.size)
 		args.array[args.i++] = args.get_int(*argv++);
-	//sit_down_please(args.array, args.size);
-	return (0);
+	if (args.array[0] < 1)
+	{
+		printf(RED "Oh... mom's spaghetti..\n" RESET);
+		return (1);
+	}
+	return (sit_down_please(args.array, args.size));
 }

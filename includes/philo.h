@@ -6,7 +6,7 @@
 /*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 19:33:31 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/09/13 20:37:22 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/09/14 21:55:07 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,33 @@
 # define MAGENTA_BOLD "\033[0;35;1m"
 # define CYAN_BOLD "\033[0;36;1m"
 
-int		philo(int argc, char **argv);
+typedef struct s_table	t_table;
+
+typedef struct s_philosopher
+{
+	uint32_t	num;
+	uint32_t	time_to_die;
+	uint32_t	time_to_eat;
+	uint32_t	time_to_sleep;
+	uint32_t	dined_times;
+	int32_t		max_dined_times;
+	int32_t		odd_wait;
+	uint32_t	left_fork;
+	uint32_t	right_fork;
+	t_table		*table;
+}	t_philosopher;
+
+typedef struct s_table
+{
+	pthread_mutex_t		*Amutexes;
+	t_philosopher		*Aphilos;
+	uint32_t			philos;
+	uint32_t			i;
+	int32_t				is_on_diet;
+}	t_table;
+
+int32_t	philo(int32_t argc, char **argv);
+int32_t	sit_down_please(uint32_t *array, int32_t size);
+void	*life(void *arg);
 
 #endif

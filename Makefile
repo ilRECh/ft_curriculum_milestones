@@ -15,7 +15,9 @@ HDRS					=	$(addprefix $(HDRS_PHILO_DIR), $(HDRS_PHILO))
 							
 INCLUDES 				=	-I $(HDRS_PHILO_DIR)
 
-SRC_LIST				=	philo.c
+SRC_LIST				=	philo.c \
+							sit_down_please.c \
+							life.c
 SRC_DIR					=	./src/
 SRC						=	$(addprefix $(SRC_DIR), $(SRC_LIST)) main.c
 

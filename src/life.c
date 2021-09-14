@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   life.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/11 19:33:35 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/09/14 18:25:58 by vcobbler         ###   ########.fr       */
+/*   Created: 2021/09/14 20:33:31 by vcobbler          #+#    #+#             */
+/*   Updated: 2021/09/14 22:15:53 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static void	usage(void)
+void	*life(void *arg)
 {
-	printf(CYAN "\vusage:\t" RESET
-		GREEN_BOLD "./philo time_to_die "
-		"time_to_eat time_to_sleep " RESET
-		GREEN "[number_of_times_each_philosopher_must_eat]\v\n" RESET);
-}
+	t_philosopher	*philo;
 
-int32_t	main(int argc, char **argv)
-{
-	if (argc == 5 || argc == 6)
-		return (philo(argc - 1, argv + 1));
-	else
-		usage();
+	philo = (t_philosopher *)arg;
+	usleep(10 + philo->odd_wait);
+	printf("Hello! I am philo %d\n", philo->num);
 	return (0);
 }
