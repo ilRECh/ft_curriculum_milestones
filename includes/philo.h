@@ -6,7 +6,7 @@
 /*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 19:33:31 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/09/14 21:55:07 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/09/15 20:02:20 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@
 # define CYAN_BOLD "\033[0;36;1m"
 
 typedef struct s_table	t_table;
-
-typedef struct s_philosopher
+typedef pthread_mutex_t	t_mutex;
+typedef struct s_philosopherq
 {
 	uint32_t	num;
 	uint32_t	time_to_die;
@@ -46,6 +46,10 @@ typedef struct s_philosopher
 	uint32_t	time_to_sleep;
 	uint32_t	dined_times;
 	int32_t		max_dined_times;
+	uint32_t	dined_last_time;
+	t_mutex		eating_mutex;
+	bool		is_eating;
+	bool		is_alive;
 	int32_t		odd_wait;
 	uint32_t	left_fork;
 	uint32_t	right_fork;
