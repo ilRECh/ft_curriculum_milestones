@@ -6,7 +6,7 @@
 /*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 19:33:31 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/09/15 20:02:20 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/09/16 19:38:26 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,38 +35,58 @@
 # define BLUE_BOLD "\033[0;34;1m"
 # define MAGENTA_BOLD "\033[0;35;1m"
 # define CYAN_BOLD "\033[0;36;1m"
+# define FORK 0
+# define EAT 1
+# define SLEEP 2
+# define THINK 3
+# define DIED 4
 
-typedef struct s_table	t_table;
-typedef pthread_mutex_t	t_mutex;
+typedef struct s_table		t_table;
+typedef struct s_watchdog	t_watchdog;
+typedef pthread_mutex_t		t_mutex;
 typedef struct s_philosopherq
 {
+	pthread_t	life_th;
 	uint32_t	num;
-	uint32_t	time_to_die;
-	uint32_t	time_to_eat;
-	uint32_t	time_to_sleep;
+	uint64_t	time_to_die;
+	uint64_t	time_to_eat;
+	uint64_t	time_to_sleep;
 	uint32_t	dined_times;
 	int32_t		max_dined_times;
-	uint32_t	dined_last_time;
+	uint64_t	dined_last_time;
 	t_mutex		eating_mutex;
+	t_mutex		msg_mutex;
 	bool		is_eating;
 	bool		is_alive;
-	int32_t		odd_wait;
+	uint64_t	odd_wait;
+	uint64_t	time_life_start;
 	uint32_t	left_fork;
 	uint32_t	right_fork;
 	t_table		*table;
+	t_watchdog	*watchdog;
 }	t_philosopher;
+
+typedef struct s_watchdog
+{
+	pthread_t		watch_th;
+	t_philosopher	*philo;
+}	t_watchdog;
 
 typedef struct s_table
 {
 	pthread_mutex_t		*Amutexes;
 	t_philosopher		*Aphilos;
+	t_watchdog			*Awatchdogs;
 	uint32_t			philos;
 	uint32_t			i;
 	int32_t				is_on_diet;
 }	t_table;
 
-int32_t	philo(int32_t argc, char **argv);
-int32_t	sit_down_please(uint32_t *array, int32_t size);
-void	*life(void *arg);
+int32_t		philo(int32_t argc, char **argv);
+int32_t		sit_down_please(uint32_t *array, int32_t size);
+void		*life(void *arg);
+int			msg(uint32_t type, uint32_t num, t_mutex *mute);
+void		*I_SEE_YOU(void *arg);
+uint64_t	get_time(void);
 
 #endif

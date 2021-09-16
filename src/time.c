@@ -1,29 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   msg.c                                              :+:      :+:    :+:   */
+/*   time.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/15 20:04:49 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/09/16 19:46:02 by vcobbler         ###   ########.fr       */
+/*   Created: 2021/09/16 18:54:09 by vcobbler          #+#    #+#             */
+/*   Updated: 2021/09/16 19:03:27 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	msg(uint32_t type, uint32_t num, t_mutex *mute)
+uint64_t	get_time(void)
 {
-	const char	*msgs[] = {
-		"has taken a fork",
-		GREEN "is eating" RESET,
-		"is sleeping",
-		"is thinking",
-		RED "died" RESET
-	};
+	struct timeval	time;
 
-	pthread_mutex_lock(mute);
-	printf("%llu %d %s\n", get_time(), num, msgs[type]);
-	pthread_mutex_unlock(mute);
-	return (0);
+	gettimeofday(&time, NULL);
+	return ((uint64_t)(time.tv_sec * 1000 + time.tv_usec / 1000));
 }

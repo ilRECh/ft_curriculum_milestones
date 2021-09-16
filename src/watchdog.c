@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   msg.c                                              :+:      :+:    :+:   */
+/*   watchdog.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/15 20:04:49 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/09/16 19:46:02 by vcobbler         ###   ########.fr       */
+/*   Created: 2021/09/16 18:36:42 by vcobbler          #+#    #+#             */
+/*   Updated: 2021/09/16 19:48:36 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	msg(uint32_t type, uint32_t num, t_mutex *mute)
+void	*I_SEE_YOU(void *arg)
 {
-	const char	*msgs[] = {
-		"has taken a fork",
-		GREEN "is eating" RESET,
-		"is sleeping",
-		"is thinking",
-		RED "died" RESET
-	};
+	t_philosopher	*philo;
 
-	pthread_mutex_lock(mute);
-	printf("%llu %d %s\n", get_time(), num, msgs[type]);
-	pthread_mutex_unlock(mute);
-	return (0);
+	philo = arg;
+	if (philo->is_alive)
+		printf("he is alive!\n");
+	while(1);
+	return (NULL);
 }

@@ -17,7 +17,10 @@ INCLUDES 				=	-I $(HDRS_PHILO_DIR)
 
 SRC_LIST				=	philo.c \
 							sit_down_please.c \
-							life.c
+							life.c \
+							time.c \
+							msg.c \
+							watchdog.c
 SRC_DIR					=	./src/
 SRC						=	$(addprefix $(SRC_DIR), $(SRC_LIST)) main.c
 
