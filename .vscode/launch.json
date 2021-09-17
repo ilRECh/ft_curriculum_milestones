@@ -10,7 +10,7 @@
 			"request": "launch",
 			"program": "${workspaceFolder}/philo",
 			"args": [
-				"1",
+				"3",
 				"2",
 				"3",
 				"4",

@@ -6,7 +6,7 @@
 /*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 19:38:18 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/09/14 19:17:56 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/09/17 19:53:38 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,13 +61,13 @@ typedef struct s_init
 	int32_t (*const get_int)(char const *);
 }	t_init;
 
-int32_t	philo(int argc, char **argv)
+int32_t	philo(int32_t argc, char **argv)
 {
 	static t_init	args = {NULL, 0, 0, ft_atoi};
 
 	if (parse(argc, argv))
 		return (1);
-	args.array = malloc(sizeof(int) * (args.size = argc));
+	args.array = malloc(sizeof(int32_t) * (args.size = argc));
 	if (!args.array)
 		return (1);
 	while (args.i < args.size)

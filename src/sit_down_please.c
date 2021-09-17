@@ -6,7 +6,7 @@
 /*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 18:19:03 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/09/16 19:47:34 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/09/17 20:23:48 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,9 @@ static void	philos_init(t_table *table, uint32_t *array, int32_t is_on_diet)
 		else
 			table->Aphilos[table->i].max_dined_times = -1;
 		table->Aphilos[table->i].dined_times = 0;
+		table->Aphilos[table->i].dined_last_time = 0;
 		if (table->i % 2)
-			table->Aphilos[table->i].odd_wait = 300;
+			table->Aphilos[table->i].odd_wait = 10000;
 		else
 			table->Aphilos[table->i].odd_wait = 0;
 		table->Aphilos[table->i].left_fork = table->i;
@@ -75,14 +76,20 @@ static void	watchdogs_init(t_table *table)
 {
 	table->i = -1;
 	while (++table->i < table->philos)
+	{
 		table->Awatchdogs[table->i].philo = table->Aphilos + table->i;
+		table->Awatchdogs[table->i].eating_mutex
+			= &table->Aphilos[table->i].eating_mutex;
+		table->Awatchdogs[table->i].msg_mutex
+			= &table->Aphilos[table->i].msg_mutex;
+	}
 }
 
 int32_t	sit_down_please(uint32_t *array, int32_t size)
 {
 	t_table			table;
 
-	table.Amutexes = malloc(sizeof(pthread_mutex_t)
+	table.Amutexes = malloc(sizeof(t_mutex)
 			* (array[0] == 1) * 2 + (array[0] != 1) * array[0]);
 	if (!table.Amutexes)
 		return (1);

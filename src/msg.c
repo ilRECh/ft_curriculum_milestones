@@ -6,13 +6,13 @@
 /*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 20:04:49 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/09/16 19:46:02 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/09/17 19:23:50 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	msg(uint32_t type, uint32_t num, t_mutex *mute)
+int32_t	msg(uint32_t type, uint32_t num, t_mutex *mute)
 {
 	const char	*msgs[] = {
 		"has taken a fork",

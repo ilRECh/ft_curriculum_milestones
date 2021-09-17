@@ -6,7 +6,7 @@
 /*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 19:33:31 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/09/16 19:38:26 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/09/17 20:22:29 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@
 typedef struct s_table		t_table;
 typedef struct s_watchdog	t_watchdog;
 typedef pthread_mutex_t		t_mutex;
-typedef struct s_philosopherq
+typedef struct s_philosopher
 {
 	pthread_t	life_th;
 	uint32_t	num;
@@ -63,11 +63,12 @@ typedef struct s_philosopherq
 	uint32_t	left_fork;
 	uint32_t	right_fork;
 	t_table		*table;
-	t_watchdog	*watchdog;
 }	t_philosopher;
 
 typedef struct s_watchdog
 {
+	t_mutex			*eating_mutex;
+	t_mutex			*msg_mutex;
 	pthread_t		watch_th;
 	t_philosopher	*philo;
 }	t_watchdog;
@@ -85,7 +86,7 @@ typedef struct s_table
 int32_t		philo(int32_t argc, char **argv);
 int32_t		sit_down_please(uint32_t *array, int32_t size);
 void		*life(void *arg);
-int			msg(uint32_t type, uint32_t num, t_mutex *mute);
+int32_t		msg(uint32_t type, uint32_t num, t_mutex *mute);
 void		*I_SEE_YOU(void *arg);
 uint64_t	get_time(void);
 
