@@ -14,7 +14,9 @@
 # define PHILO_H
 
 # include <stdio.h>
-# include <stdint.h>
+# ifdef STDINT
+#  include <stdint.h>
+# endif
 # include <stdlib.h>
 # include <stdbool.h>
 # include <unistd.h>
@@ -52,14 +54,13 @@ typedef struct s_philosopher
 	uint64_t	time_to_die;
 	uint64_t	time_to_eat;
 	uint64_t	time_to_sleep;
-	uint32_t	dined_times;
+	int32_t		dined_times;
 	int32_t		max_dined_times;
 	uint64_t	dined_last_time;
 	t_mutex		eating_mutex;
 	t_mutex		*msg_mutex;
 	bool		is_eating;
 	bool		is_alive;
-	uint64_t	odd_wait;
 	uint64_t	time_life_start;
 	uint32_t	left_fork;
 	uint32_t	right_fork;
@@ -88,7 +89,7 @@ typedef struct s_table
 int32_t		philo(int32_t argc, char **argv);
 int32_t		sit_down_please(uint32_t *array, int32_t size);
 void		*life(void *arg);
-int32_t		msg(uint32_t type, uint32_t num, t_mutex *mute);
+int32_t		msg(uint32_t type, t_philosopher *philo, t_mutex *mute);
 void		*I_SEE_YOU(void *arg);
 uint64_t	get_time(void);
 

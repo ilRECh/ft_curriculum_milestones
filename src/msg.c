@@ -12,7 +12,7 @@
 
 #include "philo.h"
 
-int32_t	msg(uint32_t type, uint32_t num, t_mutex *mute)
+int32_t	msg(uint32_t type, t_philosopher *philo, t_mutex *mute)
 {
 	const char	*msgs[] = {
 		"has taken a fork",
@@ -25,10 +25,14 @@ int32_t	msg(uint32_t type, uint32_t num, t_mutex *mute)
 
 	pthread_mutex_lock(mute);
 	if (!is_typing)
+	{
+		philo->is_alive = false;
+		pthread_mutex_unlock(mute);
 		return (1);
+	}
 	if (type == DIED)
 		is_typing = false;
-	printf("%lu %d %s\n", get_time(), num, msgs[type]);
+	printf("%lu %d %s\n", get_time(), philo->num, msgs[type]);
 	pthread_mutex_unlock(mute);
 	return (0);
 }

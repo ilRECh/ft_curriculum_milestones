@@ -10,10 +10,10 @@
 			"request": "launch",
 			"program": "${workspaceFolder}/philo",
 			"args": [
-				"1",
-				"500",
+				"4",
+				"310",
 				"200",
-				"200",
+				"100",
 			],
 			"stopAtEntry": false,
 			"cwd": "${fileDirname}",

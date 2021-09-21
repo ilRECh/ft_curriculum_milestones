@@ -29,10 +29,6 @@ static void	philos_init(t_table *table, uint32_t *array, int32_t is_on_diet)
 			table->Aphilos[table->i].max_dined_times = -1;
 		table->Aphilos[table->i].dined_times = 0;
 		table->Aphilos[table->i].dined_last_time = 0;
-		if (table->i % 2)
-			table->Aphilos[table->i].odd_wait = 10000;
-		else
-			table->Aphilos[table->i].odd_wait = 0;
 		table->Aphilos[table->i].left_fork = table->i;
 		table->Aphilos[table->i].right_fork = table->i + 1;
 		table->Aphilos[table->i].table = table;
@@ -46,15 +42,13 @@ static void	mutexes_init(t_table *table)
 	table->i = -1;
 	while (++table->i < table->philos)
 		pthread_mutex_init(table->Amutexes + table->i, NULL);
-	if (table->philos == 1)
-		pthread_mutex_init(table->Amutexes + table->i + 1, NULL);
 	pthread_mutex_init(&table->msg_mutex, NULL);
 }
 
 static int32_t	threads_init(t_table *table)
 {
-	table->i = -1;
-	while (++table->i < table->philos)
+	table->i = 0;
+	while (table->i < table->philos)
 	{
 		if (pthread_create(&table->Aphilos[table->i].life_th,
 				NULL, life, table->Aphilos + table->i))
@@ -62,6 +56,20 @@ static int32_t	threads_init(t_table *table)
 		if (pthread_create(&table->Awatchdogs[table->i].watch_th,
 				NULL, I_SEE_YOU, table->Awatchdogs + table->i))
 			return (1);
+		usleep(200);
+		table->i += 2;
+	}
+	table->i = 1;
+	while (table->philos > 1 && table->i < table->philos)
+	{
+		if (pthread_create(&table->Aphilos[table->i].life_th,
+				NULL, life, table->Aphilos + table->i))
+			return (1);
+		if (pthread_create(&table->Awatchdogs[table->i].watch_th,
+				NULL, I_SEE_YOU, table->Awatchdogs + table->i))
+			return (1);
+		usleep(200);
+		table->i += 2;
 	}
 	table->i = -1;
 	while (++table->i < table->philos)
@@ -91,8 +99,7 @@ int32_t	sit_down_please(uint32_t *array, int32_t size)
 {
 	t_table	table;
 
-	table.Amutexes = malloc(sizeof(t_mutex)
-			* (array[0] == 1) * 2 + (array[0] != 1) * array[0]);
+	table.Amutexes = malloc(sizeof(t_mutex) * array[0]);
 	if (!table.Amutexes)
 		return (1);
 	table.philos = array[0];

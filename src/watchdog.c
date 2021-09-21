@@ -21,10 +21,13 @@ void	*I_SEE_YOU(void *arg)
 	{
 		usleep(1000);
 		pthread_mutex_lock(watchdog->eating_mutex);
-		//printf("%lu %lu %lu\n", get_time(), watchdog->philo->dined_last_time, watchdog->philo->time_to_die);
 		if (get_time() - watchdog->philo->dined_last_time >= watchdog->philo->time_to_die)
 		{
-			msg(DIED, watchdog->philo->num, watchdog->msg_mutex);
+			if (watchdog->philo->max_dined_times >= 0
+				&& watchdog->philo->dined_times == watchdog->philo->max_dined_times)
+				return (NULL);
+			watchdog->philo->is_alive = false;
+			msg(DIED, watchdog->philo, watchdog->msg_mutex);
 			pthread_mutex_unlock(watchdog->eating_mutex);
 			return (NULL);
 		}

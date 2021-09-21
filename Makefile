@@ -1,11 +1,21 @@
 .PHONY:	
 	all clean fclean re
 
+OS						=	$(shell uname)
 NAME					=	philo
 RM						=	rm -rf
 GCC						=	gcc
 AR						=	ar -crs
 FLAGS					=	-Wall -Wextra -Werror -c -g
+
+ifeq ($(OS), Linux)
+DEFINES					=	-DSTDINT
+LIB_PTHREAD				=	-lpthread
+endif
+ifeq ($(OS), Darwin)
+DEFINES					=
+LIB_PTHREAD				=
+endif
 
 HDRS_PHILO				=	philo.h							
 
@@ -37,13 +47,13 @@ CYAN					=	\033[0;36m
 RESET					=	\033[0m
 
 %.o : %.c $(HDRS)
-	@$(GCC) $(FLAGS) $(INCLUDES) $< -o $@
+	@$(GCC) $(FLAGS) $(INCLUDES) $(DEFINES) $< -o $@
 	@echo "$(GREEN).$(RESET)\c"
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@$(GCC) $(OBJS) -lpthread -o $(NAME)
+	@$(GCC) $(OBJS) $(LIB_PTHREAD) -o $(NAME)
 	@echo "\n$(NAME): $(GREEN)object files were created$(RESET)"
 	@echo "$(NAME): $(GREEN)$(NAME) was created$(RESET)"
 
