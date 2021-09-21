@@ -10,17 +10,16 @@
 			"request": "launch",
 			"program": "${workspaceFolder}/philo",
 			"args": [
-				"3",
-				"2",
-				"3",
-				"4",
-				"5"
+				"1",
+				"500",
+				"200",
+				"200",
 			],
 			"stopAtEntry": false,
 			"cwd": "${fileDirname}",
 			"environment": [],
 			"externalConsole": false,
-			"MIMode": "lldb"
+			"MIMode": "gdb"
 		}
 	]
 }

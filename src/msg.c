@@ -21,9 +21,14 @@ int32_t	msg(uint32_t type, uint32_t num, t_mutex *mute)
 		"is thinking",
 		RED "died" RESET
 	};
+	static bool	is_typing = true;
 
 	pthread_mutex_lock(mute);
-	printf("%llu %d %s\n", get_time(), num, msgs[type]);
+	if (!is_typing)
+		return (1);
+	if (type == DIED)
+		is_typing = false;
+	printf("%lu %d %s\n", get_time(), num, msgs[type]);
 	pthread_mutex_unlock(mute);
 	return (0);
 }

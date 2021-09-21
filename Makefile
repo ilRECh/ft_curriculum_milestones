@@ -37,13 +37,13 @@ CYAN					=	\033[0;36m
 RESET					=	\033[0m
 
 %.o : %.c $(HDRS)
-	@$(GCC) $(FLAGS) $(INCLUDES)  $< -o $@
+	@$(GCC) $(FLAGS) $(INCLUDES) $< -o $@
 	@echo "$(GREEN).$(RESET)\c"
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@$(GCC) $(OBJS) -o $(NAME)
+	@$(GCC) $(OBJS) -lpthread -o $(NAME)
 	@echo "\n$(NAME): $(GREEN)object files were created$(RESET)"
 	@echo "$(NAME): $(GREEN)$(NAME) was created$(RESET)"
 

@@ -14,6 +14,7 @@
 # define PHILO_H
 
 # include <stdio.h>
+# include <stdint.h>
 # include <stdlib.h>
 # include <stdbool.h>
 # include <unistd.h>
@@ -55,7 +56,7 @@ typedef struct s_philosopher
 	int32_t		max_dined_times;
 	uint64_t	dined_last_time;
 	t_mutex		eating_mutex;
-	t_mutex		msg_mutex;
+	t_mutex		*msg_mutex;
 	bool		is_eating;
 	bool		is_alive;
 	uint64_t	odd_wait;
@@ -81,6 +82,7 @@ typedef struct s_table
 	uint32_t			philos;
 	uint32_t			i;
 	int32_t				is_on_diet;
+	t_mutex				msg_mutex;
 }	t_table;
 
 int32_t		philo(int32_t argc, char **argv);

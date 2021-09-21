@@ -16,7 +16,8 @@ static void	philos_init(t_table *table, uint32_t *array, int32_t is_on_diet)
 {
 	while (++table->i < table->philos)
 	{
-		pthread_mutex_init(&table->Aphilos[table->i].msg_mutex, NULL);
+
+		table->Aphilos[table->i].msg_mutex = &table->msg_mutex;
 		pthread_mutex_init(&table->Aphilos[table->i].eating_mutex, NULL);
 		table->Aphilos[table->i].num = table->i + 1;
 		table->Aphilos[table->i].time_to_die = array[0];
@@ -47,6 +48,7 @@ static void	mutexes_init(t_table *table)
 		pthread_mutex_init(table->Amutexes + table->i, NULL);
 	if (table->philos == 1)
 		pthread_mutex_init(table->Amutexes + table->i + 1, NULL);
+	pthread_mutex_init(&table->msg_mutex, NULL);
 }
 
 static int32_t	threads_init(t_table *table)
@@ -81,13 +83,13 @@ static void	watchdogs_init(t_table *table)
 		table->Awatchdogs[table->i].eating_mutex
 			= &table->Aphilos[table->i].eating_mutex;
 		table->Awatchdogs[table->i].msg_mutex
-			= &table->Aphilos[table->i].msg_mutex;
+			= &table->msg_mutex;
 	}
 }
 
 int32_t	sit_down_please(uint32_t *array, int32_t size)
 {
-	t_table			table;
+	t_table	table;
 
 	table.Amutexes = malloc(sizeof(t_mutex)
 			* (array[0] == 1) * 2 + (array[0] != 1) * array[0]);

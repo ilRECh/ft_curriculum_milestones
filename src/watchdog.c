@@ -19,9 +19,15 @@ void	*I_SEE_YOU(void *arg)
 	watchdog = arg;
 	while (1)
 	{
+		usleep(1000);
 		pthread_mutex_lock(watchdog->eating_mutex);
-		if (watchdog->philo->is_alive)
-			printf("he is alive!\n");
+		//printf("%lu %lu %lu\n", get_time(), watchdog->philo->dined_last_time, watchdog->philo->time_to_die);
+		if (get_time() - watchdog->philo->dined_last_time >= watchdog->philo->time_to_die)
+		{
+			msg(DIED, watchdog->philo->num, watchdog->msg_mutex);
+			pthread_mutex_unlock(watchdog->eating_mutex);
+			return (NULL);
+		}
 		pthread_mutex_unlock(watchdog->eating_mutex);
 		usleep(1000);
 	}
