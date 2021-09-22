@@ -19,10 +19,11 @@ void	*I_SEE_YOU(void *arg)
 	watchdog = arg;
 	while (1)
 	{
-		usleep(1000);
+		usleep(10);
 		pthread_mutex_lock(watchdog->eating_mutex);
-		if (get_time() - watchdog->philo->dined_last_time >= watchdog->philo->time_to_die)
+		if (get_time() - watchdog->philo->dined_last_time > watchdog->philo->time_to_die)
 		{
+			// printf("%d %lu %lu %lu\n", watchdog->philo->num, get_time(), watchdog->philo->dined_last_time, watchdog->philo->time_to_die);
 			if (watchdog->philo->max_dined_times >= 0
 				&& watchdog->philo->dined_times == watchdog->philo->max_dined_times)
 				return (NULL);
@@ -32,7 +33,6 @@ void	*I_SEE_YOU(void *arg)
 			return (NULL);
 		}
 		pthread_mutex_unlock(watchdog->eating_mutex);
-		usleep(1000);
 	}
 	return (NULL);
 }

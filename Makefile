@@ -30,7 +30,8 @@ SRC_LIST				=	philo.c \
 							life.c \
 							time.c \
 							msg.c \
-							watchdog.c
+							watchdog.c \
+							myusleep.c
 SRC_DIR					=	./src/
 SRC						=	$(addprefix $(SRC_DIR), $(SRC_LIST)) main.c
 

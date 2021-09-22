@@ -14,7 +14,7 @@
 
 int32_t	msg(uint32_t type, t_philosopher *philo, t_mutex *mute)
 {
-	const char	*msgs[] = {
+	static const char	*msgs[] = {
 		"has taken a fork",
 		GREEN "is eating" RESET,
 		"is sleeping",

@@ -18,7 +18,10 @@ static void	philos_init(t_table *table, uint32_t *array, int32_t is_on_diet)
 	{
 
 		table->Aphilos[table->i].msg_mutex = &table->msg_mutex;
-		pthread_mutex_init(&table->Aphilos[table->i].eating_mutex, NULL);
+		table->Aphilos[table->i].eating_mutex = malloc(sizeof(t_mutex));
+		if (!table->Aphilos[table->i].eating_mutex)
+			return ;
+		pthread_mutex_init(table->Aphilos[table->i].eating_mutex, NULL);
 		table->Aphilos[table->i].num = table->i + 1;
 		table->Aphilos[table->i].time_to_die = array[0];
 		table->Aphilos[table->i].time_to_eat = array[1];
@@ -29,12 +32,14 @@ static void	philos_init(t_table *table, uint32_t *array, int32_t is_on_diet)
 			table->Aphilos[table->i].max_dined_times = -1;
 		table->Aphilos[table->i].dined_times = 0;
 		table->Aphilos[table->i].dined_last_time = 0;
-		table->Aphilos[table->i].left_fork = table->i;
-		table->Aphilos[table->i].right_fork = table->i + 1;
+		table->Aphilos[table->i].left_fork = table->Amutexes + table->i;
+		table->Aphilos[table->i].right_fork = table->Amutexes + table->i + 1;
 		table->Aphilos[table->i].table = table;
 	}
 	if (table->philos > 1)
-		table->Aphilos[table->i - 1].right_fork = 0;
+		table->Aphilos[table->i - 1].right_fork = table->Amutexes;
+	else
+		table->Aphilos[table->i - 1].right_fork = NULL;
 }
 
 static void	mutexes_init(t_table *table)
@@ -56,9 +61,10 @@ static int32_t	threads_init(t_table *table)
 		if (pthread_create(&table->Awatchdogs[table->i].watch_th,
 				NULL, I_SEE_YOU, table->Awatchdogs + table->i))
 			return (1);
-		usleep(200);
 		table->i += 2;
+		usleep(300);
 	}
+	myusleep(1);
 	table->i = 1;
 	while (table->philos > 1 && table->i < table->philos)
 	{
@@ -68,8 +74,8 @@ static int32_t	threads_init(t_table *table)
 		if (pthread_create(&table->Awatchdogs[table->i].watch_th,
 				NULL, I_SEE_YOU, table->Awatchdogs + table->i))
 			return (1);
-		usleep(200);
 		table->i += 2;
+		usleep(300);
 	}
 	table->i = -1;
 	while (++table->i < table->philos)
@@ -89,7 +95,7 @@ static void	watchdogs_init(t_table *table)
 	{
 		table->Awatchdogs[table->i].philo = table->Aphilos + table->i;
 		table->Awatchdogs[table->i].eating_mutex
-			= &table->Aphilos[table->i].eating_mutex;
+			= table->Aphilos[table->i].eating_mutex;
 		table->Awatchdogs[table->i].msg_mutex
 			= &table->msg_mutex;
 	}

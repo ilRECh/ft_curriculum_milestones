@@ -57,13 +57,13 @@ typedef struct s_philosopher
 	int32_t		dined_times;
 	int32_t		max_dined_times;
 	uint64_t	dined_last_time;
-	t_mutex		eating_mutex;
+	t_mutex		*eating_mutex;
 	t_mutex		*msg_mutex;
 	bool		is_eating;
 	bool		is_alive;
 	uint64_t	time_life_start;
-	uint32_t	left_fork;
-	uint32_t	right_fork;
+	t_mutex		*left_fork;
+	t_mutex		*right_fork;
 	t_table		*table;
 }	t_philosopher;
 
@@ -92,5 +92,6 @@ void		*life(void *arg);
 int32_t		msg(uint32_t type, t_philosopher *philo, t_mutex *mute);
 void		*I_SEE_YOU(void *arg);
 uint64_t	get_time(void);
+void		myusleep(uint64_t tm);
 
 #endif
