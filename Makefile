@@ -9,11 +9,11 @@ AR						=	ar -crs
 FLAGS					=	-Wall -Wextra -Werror -c -g
 
 ifeq ($(OS), Linux)
-DEFINES					=	-DSTDINT
+DEFINES					=	-DSTDINT -DLINUX
 LIB_PTHREAD				=	-lpthread
 endif
 ifeq ($(OS), Darwin)
-DEFINES					=
+DEFINES					=	-DMAC
 LIB_PTHREAD				=
 endif
 

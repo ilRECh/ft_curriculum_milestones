@@ -6,7 +6,7 @@
 /*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 18:19:03 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/09/17 20:23:48 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/09/22 18:58:24 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ static void	philos_init(t_table *table, uint32_t *array, int32_t is_on_diet)
 {
 	while (++table->i < table->philos)
 	{
-
 		table->Aphilos[table->i].msg_mutex = &table->msg_mutex;
 		table->Aphilos[table->i].eating_mutex = malloc(sizeof(t_mutex));
 		if (!table->Aphilos[table->i].eating_mutex)
@@ -75,14 +74,6 @@ static int32_t	threads_init(t_table *table)
 			return (1);
 		table->i += 2;
 	}
-	table->i = -1;
-	while (++table->i < table->philos)
-	{
-		if (pthread_join(table->Aphilos[table->i].life_th, NULL))
-			return (1);
-		if (pthread_join(table->Awatchdogs[table->i].watch_th, NULL))
-			return (1);
-	}
 	return (0);
 }
 
@@ -121,6 +112,6 @@ int32_t	sit_down_please(uint32_t *array, int32_t size)
 	watchdogs_init(&table);
 	if (threads_init(&table))
 		return (1);
-	// free_all(table);
+	free_all(&table);
 	return (0);
 }

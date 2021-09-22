@@ -6,7 +6,7 @@
 /*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 19:33:31 by vcobbler          #+#    #+#             */
-/*   Updated: 2021/09/17 20:22:29 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/09/22 18:58:09 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,11 @@
 # define SLEEP 2
 # define THINK 3
 # define DIED 4
+# if defined(LINUX)
+#  define GETTIMETYPE "%lu"
+# elif defined(MAC)
+#  define GETTIMETYPE "%llu"
+# endif 
 
 typedef struct s_table		t_table;
 typedef struct s_watchdog	t_watchdog;
@@ -59,9 +64,7 @@ typedef struct s_philosopher
 	uint64_t	dined_last_time;
 	t_mutex		*eating_mutex;
 	t_mutex		*msg_mutex;
-	bool		is_eating;
 	bool		is_alive;
-	uint64_t	time_life_start;
 	t_mutex		*left_fork;
 	t_mutex		*right_fork;
 	t_table		*table;
@@ -93,5 +96,6 @@ int32_t		msg(uint32_t type, t_philosopher *philo, t_mutex *mute);
 void		*I_SEE_YOU(void *arg);
 uint64_t	get_time(void);
 void		myusleep(uint64_t tm);
+void		free_all(t_table *table);
 
 #endif
