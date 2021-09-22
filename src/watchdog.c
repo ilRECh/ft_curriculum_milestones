@@ -15,15 +15,17 @@
 void	*I_SEE_YOU(void *arg)
 {
 	t_watchdog	*watchdog;
+	uint64_t	tm;
 
 	watchdog = arg;
 	while (1)
 	{
 		usleep(10);
 		pthread_mutex_lock(watchdog->eating_mutex);
-		if (get_time() - watchdog->philo->dined_last_time > watchdog->philo->time_to_die)
+		tm = get_time() + 3;
+		if (tm - watchdog->philo->dined_last_time > watchdog->philo->time_to_die)
 		{
-			// printf("%d %lu %lu %lu\n", watchdog->philo->num, get_time(), watchdog->philo->dined_last_time, watchdog->philo->time_to_die);
+			printf("%d %lu %lu %lu\n", watchdog->philo->num, tm, watchdog->philo->dined_last_time, watchdog->philo->time_to_die);
 			if (watchdog->philo->max_dined_times >= 0
 				&& watchdog->philo->dined_times == watchdog->philo->max_dined_times)
 				return (NULL);

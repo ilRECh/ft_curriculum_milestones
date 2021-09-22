@@ -62,9 +62,8 @@ static int32_t	threads_init(t_table *table)
 				NULL, I_SEE_YOU, table->Awatchdogs + table->i))
 			return (1);
 		table->i += 2;
-		usleep(300);
 	}
-	myusleep(1);
+	myusleep(2);
 	table->i = 1;
 	while (table->philos > 1 && table->i < table->philos)
 	{
@@ -75,7 +74,6 @@ static int32_t	threads_init(t_table *table)
 				NULL, I_SEE_YOU, table->Awatchdogs + table->i))
 			return (1);
 		table->i += 2;
-		usleep(300);
 	}
 	table->i = -1;
 	while (++table->i < table->philos)

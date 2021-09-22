@@ -40,7 +40,7 @@ static int	eat(t_philosopher *philo)
 		pthread_mutex_unlock(philo->eating_mutex);
 		return (1);
 	}
-	philo->dined_last_time = get_time() + 30;
+	philo->dined_last_time = get_time();
 	philo->dined_times++;
 	if (msg(EAT, philo, philo->msg_mutex))
 	{
@@ -49,7 +49,7 @@ static int	eat(t_philosopher *philo)
 		pthread_mutex_unlock(philo->eating_mutex);
 		return (1);
 	}
-	myusleep(philo->time_to_eat - 30);
+	myusleep(philo->time_to_eat - 10);
 	//usleep(philo->time_to_eat * 1000);
 	pthread_mutex_unlock(philo->eating_mutex);
 	pthread_mutex_unlock(philo->right_fork);
