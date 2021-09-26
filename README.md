@@ -1,3 +1,3 @@
 # philosophers
 Philosophers dilemma implementation.
-Source: https://en.wikipedia.org/wiki/Dining_philosophers_problem
+[Original problem description](https://en.wikipedia.org/wiki/Dining_philosophers_problem).
