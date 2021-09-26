@@ -1,2 +1,2 @@
 # cub3d
-Repeating the first FPS shooter ever.
+Discovering a way the Wolfenstein 3D was created.
