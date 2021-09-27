@@ -6,7 +6,7 @@
 /*   By: name <name@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 12:11:31 by name              #+#    #+#             */
-/*   Updated: 2021/09/27 13:03:55 by name             ###   ########.fr       */
+/*   Updated: 2021/09/27 16:11:43 by name             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,36 @@ static void	usage(void)
 		GREEN_BOLD "./cub3d path_to_map\v\n" RESET);
 }
 
-void cub3d(void)
+int	cub3d(char *map)
 {
-	
+	static t_all	all;
+	int				fd;
+
+	if (!ft_strrchr(map, '.') || ft_strncmp(ft_strrchr(map, '.') + 1, "cub", 4))
+	{
+		printf(RED "Error\n" RESET "invalid file\n");
+		return (1);
+	}
+	fd = open(map, O_RDONLY);
+	if (!fd || read(fd, NULL, 0) < 0)
+	{
+		printf(RED "Error\n" RESET "invalid file\n");
+		return (1);
+	}
+	if (parse(&all, fd))
+	{
+		printf(RED "Error\n" RESET "invalid file formatting\n");
+		return (1);
+	}
+	close(fd);
+	//game(&all);
+	return (0);
 }
 
 int	main(int argc, char **argv)
 {
 	if (argc == 2)
-	{
-		if (parse(argv + 1, NULL))
-			cub3d();
-	}
+		return (cub3d(argv[1]));
 	else
 		usage();
 	return (0);

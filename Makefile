@@ -30,7 +30,7 @@ GNL						=	./src/get_next_line/gnl.a
 LIBFT_MAKE				=	./src/libft/
 LIBFT					=	./src/libft/libft.a
 
-PARSE_LIST				=	
+PARSE_LIST				=	parse.c
 PARSE_DIR				=	./src/parse/
 PARSE					=	$(addprefix $(PARSE_DIR), $(PARSE_LIST))
 
