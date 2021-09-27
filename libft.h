@@ -3,6 +3,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdbool.h>
 
 ///
 ///	SORTs
@@ -112,6 +113,19 @@ void			ft_putnbr_fd(int n, int fd);
 unsigned int	ft_abs(int n);
 
 ///
+///	LISTS
+///
+typedef struct s_slist	t_slist;
+typedef struct s_dlist	t_dlist;
+typedef struct s_list
+{
+	t_slist	*Sstart;
+	t_dlist	*Dstart;
+	t_slist	*Scur;
+	t_dlist	*Dcur;
+}	t_list;
+
+///
 ///	Single-linked list
 ///
 typedef struct s_slist
@@ -120,15 +134,15 @@ typedef struct s_slist
 	struct s_slist	*next;
 }	t_slist;
 
-t_slist			*ft_lstnew(void *content);
-void			ft_lstadd_front(t_slist **lst, t_slist *new);
-int				ft_lstsize(t_slist *lst);
-t_slist			*ft_lstlast(t_slist *lst);
-void			ft_lstadd_back(t_slist **lst, t_slist *new);
-void			ft_lstdelone(t_slist *lst, void (*del)(void *));
-void			ft_lstclear(t_slist **lst, void (*del)(void *));
-void			ft_lstiter(t_slist *lst, void (*f)(void *));
-t_slist			*ft_lstmap(t_slist *lst, void *(*f)(void *),
+t_slist			*ft_lstnewS(void *content);
+void			ft_lstadd_frontS(t_slist **lst, void *cont);
+int				ft_lstsizeS(t_slist *lst);
+t_slist			*ft_lstlastS(t_slist *lst);
+void			ft_lstadd_backS(t_slist **lst, void *cont);
+void			ft_lstdeloneS(t_slist *lst, void (*del)(void *));
+void			ft_lstclearS(t_slist **lst, void (*del)(void *));
+void			ft_lstiterS(t_slist *lst, void (*f)(void *));
+t_slist			*ft_lstmapS(t_slist *lst, void *(*f)(void *),
 					void (*del)(void *));
 
 ///
@@ -141,6 +155,16 @@ typedef struct s_dlist
 	struct s_dlist	*prev;
 }	t_dlist;
 
-t_dlist			*ft_lstfirst(t_dlist *lst);
+t_dlist			*ft_lstnewD(void *content);
+void			ft_lstadd_frontD(t_dlist **lst, void *cont);
+int				ft_lstsizeD(t_dlist *lst);
+t_dlist			*ft_lstlastD(t_dlist *lst);
+t_dlist			*ft_lstfirstD(t_dlist *lst);
+void			ft_lstadd_backD(t_dlist **lst, void *cont);
+void			ft_lstdeloneD(t_dlist *lst, void (*del)(void *));
+void			ft_lstclearD(t_dlist **lst, void (*del)(void *));
+void			ft_lstiterD(t_dlist *lst, void (*f)(void *));
+t_dlist			*ft_lstmapD(t_dlist *lst, void *(*f)(void *),
+					void (*del)(void *));
 
 #endif

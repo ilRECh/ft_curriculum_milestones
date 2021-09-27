@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_lstdeloneS.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: name <name@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/27 10:22:51 by name              #+#    #+#             */
-/*   Updated: 2021/09/27 10:23:08 by name             ###   ########.fr       */
+/*   Created: 2021/09/27 10:04:24 by name              #+#    #+#             */
+/*   Updated: 2021/09/27 10:04:54 by name             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_toupper(int c)
+void	ft_lstdeloneS(t_slist *lst, void (*del)(void *))
 {
-	if (c >= 97 && c <= 122)
-		return (c - 32);
-	return (c);
+	if (lst)
+		(*del)(lst->content);
+	free(lst);
 }

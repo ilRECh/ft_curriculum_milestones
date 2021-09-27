@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_lstnewD.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: name <name@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/27 10:22:51 by name              #+#    #+#             */
-/*   Updated: 2021/09/27 10:23:08 by name             ###   ########.fr       */
+/*   Created: 2021/09/27 10:07:08 by name              #+#    #+#             */
+/*   Updated: 2021/09/27 10:28:01 by name             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_toupper(int c)
+t_dlist	*ft_lstnewD(void *content)
 {
-	if (c >= 97 && c <= 122)
-		return (c - 32);
-	return (c);
+	t_dlist	*new_elem;
+
+	new_elem = ft_calloc(1, sizeof(t_dlist));
+	if (new_elem)
+		new_elem->content = content;
+	return (new_elem);
 }

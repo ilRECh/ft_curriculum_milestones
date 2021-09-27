@@ -35,15 +35,25 @@ SRCS	= ft_bzero.c\
 		  ft_putstr_fd.c\
 		  ft_putendl_fd.c\
 		  ft_putnbr_fd.c\
-		  ft_lstnew.c\
-		  ft_lstadd_front.c\
-		  ft_lstsize.c\
-		  ft_lstlast.c\
-		  ft_lstadd_back.c\
-		  ft_lstdelone.c\
-		  ft_lstclear.c\
-		  ft_lstiter.c\
-		  ft_lstmap.c\
+		  ft_lstnewS.c\
+		  ft_lstadd_frontS.c\
+		  ft_lstsizeS.c\
+		  ft_lstlastS.c\
+		  ft_lstadd_backS.c\
+		  ft_lstdeloneS.c\
+		  ft_lstclearS.c\
+		  ft_lstiterS.c\
+		  ft_lstmapS.c\
+		  ft_lstnewD.c\
+		  ft_lstadd_frontD.c\
+		  ft_lstsizeD.c\
+		  ft_lstlastD.c\
+		  ft_lstadd_backD.c\
+		  ft_lstdeloneD.c\
+		  ft_lstclearD.c\
+		  ft_lstiterD.c\
+		  ft_lstmapD.c\
+		  ft_lstfirstD.c\
 		  ft_mergesort.c
 
 OBJS	= $(SRCS:.c=.o)
