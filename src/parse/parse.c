@@ -6,7 +6,7 @@
 /*   By: name <name@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 15:03:33 by name              #+#    #+#             */
-/*   Updated: 2021/09/27 16:13:38 by name             ###   ########.fr       */
+/*   Updated: 2021/09/28 10:53:51 by name             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,27 @@ bool	parse(t_all *all, int fd)
 	char	*line;
 	int		ret;
 	
-	lst.Sstart = NULL;
+	lst.Scur = (lst.Sstart = (t_slist *)(lst.Dcur = (lst.Dstart = NULL)));
 	while (true)
 	{
 		ret = get_next_line(fd, &line);
 		if (ret < 0)
-			return (true);
-		ft_lstadd_backS(&lst.Sstart, line);
+			return ((all->err = ft_strdup("file corrupted while reading")), true);
+		ft_lstadd_backD(&lst.Dstart, line);
 		if (ret == 0)
 			break ;
 	}
-	lst.Scur = lst.Sstart;
-	while (lst.Scur)
+#ifdef DEBUG
+	lst.Dcur = lst.Dstart;
+	while (lst.Dcur)
 	{
-		printf("|%s|\\n\n", (char *)lst.Scur->content);
-		lst.Scur = lst.Scur->next;
+		printf("|%s|\\n\n", (char *)lst.Dcur->content);
+		lst.Dcur = lst.Dcur->next;
 	}
-	(void)all;
+#endif
+	if (setup_params(all, &lst))
+		return (flf(&lst, fd), true);
+	if (setup_map(all, &lst))
+		return (flf(&lst, fd), true);
 	return (false);
 }

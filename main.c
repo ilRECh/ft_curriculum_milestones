@@ -6,7 +6,7 @@
 /*   By: name <name@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 12:11:31 by name              #+#    #+#             */
-/*   Updated: 2021/09/27 16:11:43 by name             ###   ########.fr       */
+/*   Updated: 2021/09/28 10:29:46 by name             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,15 @@ int	cub3d(char *map)
 		return (1);
 	}
 	fd = open(map, O_RDONLY);
-	if (!fd || read(fd, NULL, 0) < 0)
+	if (!fd || (read(fd, NULL, 0) < 0 && !close(fd)))
 	{
 		printf(RED "Error\n" RESET "invalid file\n");
 		return (1);
 	}
 	if (parse(&all, fd))
 	{
-		printf(RED "Error\n" RESET "invalid file formatting\n");
+		printf(RED "Error\n" RESET "invalid file formatting: %s\n", all.err);
+		free(all.err);
 		return (1);
 	}
 	close(fd);
