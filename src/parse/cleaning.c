@@ -6,7 +6,7 @@
 /*   By: name <name@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 10:26:25 by name              #+#    #+#             */
-/*   Updated: 2021/09/28 10:33:06 by name             ###   ########.fr       */
+/*   Updated: 2021/09/28 22:29:05 by name             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,25 @@ bool	fs(char **split)
 		free(split[i]);
 	free(split);
 	return (true);
+}
+
+bool	fall(t_all *all)
+{
+	int	i;
+
+	//win
+	//plr
+	i = -1;
+	while (all->textures[++i])
+		free(all->textures[i]);
+	free(all->textures);
+	i = -1;
+	while (all->colors[++i])
+		free(all->colors[i]);
+	free(all->colors);
+	i = -1;
+	while (all->map && all->map[++i])
+		free(all->map[i]);
+	free(all->map);
+	free(all->err);
 }

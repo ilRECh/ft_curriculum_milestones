@@ -6,7 +6,7 @@
 /*   By: name <name@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 12:36:39 by name              #+#    #+#             */
-/*   Updated: 2021/09/28 10:52:50 by name             ###   ########.fr       */
+/*   Updated: 2021/09/28 22:29:02 by name             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,6 @@ bool	setup_map(t_all *all, t_list *lst);
 bool	fl(t_list *lst);
 bool	flf(t_list *lst, int fd);
 bool	fs(char **split);
+bool	fall(t_all *all);
 
 #endif //CUB3D_H
