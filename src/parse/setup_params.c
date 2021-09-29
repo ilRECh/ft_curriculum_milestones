@@ -6,7 +6,7 @@
 /*   By: name <name@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 10:48:24 by name              #+#    #+#             */
-/*   Updated: 2021/09/29 14:28:53 by name             ###   ########.fr       */
+/*   Updated: 2021/09/29 14:53:19 by name             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,12 +123,12 @@ printf("all->textures[%d] %s\n", *index, all->textures[*index]);
 printf("rgbstr: [0] %s, [1] %s, [2] %s\n", rgb[0], rgb[1], rgb[2]);
 #endif
 		all->colors[*index] = ft_calloc(3, sizeof(unsigned char));
-		all->colors[*index][0] = ft_atoi(split[0]);
-		all->colors[*index][1] = ft_atoi(split[1]);
-		all->colors[*index][2] = ft_atoi(split[2]);
+		all->colors[*index][0] = ft_atoi(rgb[0]);
+		all->colors[*index][1] = ft_atoi(rgb[1]);
+		all->colors[*index][2] = ft_atoi(rgb[2]);
 		fs((char **)rgb);
 #ifdef DEBUG
-printf("rgbstr: [0] %d, [1] %d, [2] %d\n",
+printf("rgbdigit: [0] %d, [1] %d, [2] %d\n",
 	all->colors[*index][0],
 	all->colors[*index][1],
 	all->colors[*index][2]);
