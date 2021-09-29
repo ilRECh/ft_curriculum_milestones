@@ -6,7 +6,7 @@
 /*   By: name <name@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 10:09:02 by name              #+#    #+#             */
-/*   Updated: 2021/09/27 10:09:04 by name             ###   ########.fr       */
+/*   Updated: 2021/09/29 16:11:43 by name             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	getword(const char **start, const char **end, char c)
 	while (**start == c)
 		(*start)++;
 	*end = *start + 1;
-	while (**end != c)
+	while (**end && **end != c)
 		(*end)++;
 }
 
