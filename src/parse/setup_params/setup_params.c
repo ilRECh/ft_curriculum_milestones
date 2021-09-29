@@ -6,7 +6,7 @@
 /*   By: name <name@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 10:48:24 by name              #+#    #+#             */
-/*   Updated: 2021/09/29 14:53:19 by name             ###   ########.fr       */
+/*   Updated: 2021/09/29 22:12:00 by name             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,8 +135,10 @@ printf("rgbdigit: [0] %d, [1] %d, [2] %d\n",
 #endif
 	}
 	lst->Dcur = lst->Dcur->next;
-	if (lst->Dcur->prev == lst->Dstart)
+	if (lst->Dcur && lst->Dcur->prev == lst->Dstart)
 		lst->Dstart = lst->Dcur;
+	else if (!lst->Dcur)
+		return (false);
 	ft_lstdeloneD(lst->Dcur->prev, free);
 	return (false);
 }
@@ -150,11 +152,15 @@ bool	setup_params(t_all *all, t_list *lst)
 	lst->Dcur = lst->Dstart;
 	while (true)
 	{
+		if (!lst->Dcur)
+			break ;
 		if (ft_strlen(lst->Dcur->content) == 0)
 		{
 			lst->Dcur = lst->Dcur->next;
-			if (lst->Dcur->prev == lst->Dstart)
+			if (lst->Dcur && lst->Dcur->prev == lst->Dstart)
 				lst->Dstart = lst->Dcur;
+			else if (!lst->Dcur)
+				break ;
 			ft_lstdeloneD(lst->Dcur->prev, free);
 			continue ;
 		}
@@ -176,5 +182,24 @@ while (split[++i])
 		else
 			set_element(split, all, lst, &i);
 	}
+	if (setup_missing(all))
+		return (true);
+#ifdef DEBUG
+{int i = -1;
+while (++i < 6)
+	if(all->textures[i])
+		printf("all->textures[%d]: |%s|\n", i, all->textures[i]);
+	else
+		printf("all->textures[%d]: NULL\n", i);
+i = -1;
+printf("-----------------------------\n");
+while (++i < 6)		
+	if(all->colors[i])
+		printf("all->colors[%d]: |%3d|, |%3d|, |%3d|\n", i, all->colors[i][0]
+						, all->colors[i][1]
+						, all->colors[i][2]);
+	else
+		printf("all->colors[%d]: NULL\n", i);	}
+#endif
 	return (false);
 }
