@@ -6,7 +6,7 @@
 /*   By: name <name@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 12:11:31 by name              #+#    #+#             */
-/*   Updated: 2021/09/28 22:30:05 by name             ###   ########.fr       */
+/*   Updated: 2021/09/29 14:19:59 by name             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	cub3d(char *map)
 		printf(RED "Error\n" RESET "invalid file\n");
 		return (1);
 	}
-	if (!setup_all(&all))
+	if (setup_all(&all))
 	{
 		printf(RED "Error\n" RESET "no space left\n");
 		return (1);

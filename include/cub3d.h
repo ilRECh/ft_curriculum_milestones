@@ -6,7 +6,7 @@
 /*   By: name <name@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 12:36:39 by name              #+#    #+#             */
-/*   Updated: 2021/09/28 22:29:02 by name             ###   ########.fr       */
+/*   Updated: 2021/09/29 14:18:15 by name             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 # define SOUTH 1
 # define WEST 2
 # define EAST 3
-# define FLOOR 0
-# define CEILLING 1
+# define FLOOR 4
+# define CEILLING 5
 # define SCALE 16 // условный размер каждого квадратика в карте
 
 # define DEBUG
@@ -72,8 +72,11 @@ typedef struct s_all // структура для всего вместе
 ///	PARSING
 ///
 bool	parse(t_all *all, int fd);
+bool    setup_all(t_all *all);
 bool	setup_params(t_all *all, t_list *lst);
 bool	setup_map(t_all *all, t_list *lst);
+bool	check_num(char *number);
+bool	check_len_value(char **rgb);
 
 ///
 /// CLEANING

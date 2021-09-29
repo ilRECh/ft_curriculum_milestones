@@ -6,7 +6,7 @@
 /*   By: name <name@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 10:26:25 by name              #+#    #+#             */
-/*   Updated: 2021/09/28 22:29:05 by name             ###   ########.fr       */
+/*   Updated: 2021/09/29 14:30:02 by name             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ bool	fs(char **split)
 {
 	int	i;
 
-	i = 0;
-	while (split[i])
+	i = -1;
+	while (split && split[++i])
 		free(split[i]);
 	free(split);
 	return (true);
@@ -57,4 +57,5 @@ bool	fall(t_all *all)
 		free(all->map[i]);
 	free(all->map);
 	free(all->err);
+	return (true);
 }
