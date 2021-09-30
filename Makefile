@@ -30,11 +30,12 @@ GNL						=	./src/get_next_line/gnl.a
 LIBFT_MAKE				=	./src/libft/
 LIBFT					=	./src/libft/libft.a
 
-PARSE_LIST				=	parse.c
-PARSE_DIR				=	./src/parse/
-PARSE					=	$(addprefix $(PARSE_DIR), $(PARSE_LIST))
+SRC_LIST				=	parse.c\
+							count_islands.c
+SRC_DIR					=	./src/
+SRC						=	$(addprefix $(SRC_DIR), $(SRC_LIST))
 
-OBJS					=	$(PARSE:.c=.o) main.o
+OBJS					=	$(SRC:.c=.o) main.o
 
 # COLORS
 BLACK					=	\033[0;30m

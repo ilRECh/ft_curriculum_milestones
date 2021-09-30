@@ -10,6 +10,9 @@
 typedef struct s_islands
 {
 	char	**map;
+	int 	height;
+	int 	length;
 }	t_islands;
 
-bool	count(char *map);
+bool	count_islands(t_islands *islands);
+bool	parse(char *map, t_islands *islands);
