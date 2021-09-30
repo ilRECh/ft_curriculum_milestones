@@ -55,7 +55,7 @@ static inline bool	make_new_map(t_all *all, int height, int length)
 {
 	int	tmp;
 
-	all->map = ft_calloc(height + 2, sizeof(char *));
+	all->map = ft_calloc(height + 3, sizeof(char *));
 	if (!all->map)
 		return (true);
 	tmp = -1;
@@ -73,9 +73,35 @@ static inline bool	make_new_map(t_all *all, int height, int length)
 	{
 		printf("new_map[%3d]: |%s| ,len: %ld\n", i, all->map[i], ft_strlen(all->map[i]));
 	}
+	printf("\n---------------------------------------------------------\n");
 }
 #endif
 	return (false);
+}
+
+static inline void	duplicate_map(t_all *all, t_list *lst)
+{
+	int	i;
+	int	j;
+	
+	i = 1;
+	lst->Dcur = lst->Dstart;
+	while (lst->Dcur)
+	{
+		j = 0;
+		while (((char *)lst->Dcur->content)[j++])
+			all->map[i][j] = ((char *)lst->Dcur->content)[j - 1];
+		i++;
+		lst->Dcur = lst->Dcur->next;
+	}
+#ifdef DEBUG
+{
+	for (int i = 0; all->map[i]; i++)
+	{
+		printf("new_map[%3d]: |%s| ,len: %ld\n", i, all->map[i], ft_strlen(all->map[i]));
+	}
+}
+#endif
 }
 
 bool	make_map_from_lst(t_all *all, t_list *lst)
@@ -91,5 +117,6 @@ bool	make_map_from_lst(t_all *all, t_list *lst)
 	if (make_new_map(all, height, length))
 		return ((all->err
 			= ft_strdup("no space left")), true);
+	duplicate_map(all, lst);
 	return (false);
 }
