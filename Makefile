@@ -33,10 +33,11 @@ LIBFT					=	./src/libft/libft.a
 PARSE_LIST				=	parse.c\
 							setup_all.c\
 							cleaning.c\
-							setup_map/setup_map.c\
 							setup_params/setup_params.c\
 							setup_params/setup_params_additional.c\
-							setup_params/setup_missing.c
+							setup_params/setup_missing.c\
+							setup_map/setup_map.c\
+							setup_map/make_map_from_lst.c
 PARSE_DIR				=	./src/parse/
 PARSE					=	$(addprefix $(PARSE_DIR), $(PARSE_LIST))
 

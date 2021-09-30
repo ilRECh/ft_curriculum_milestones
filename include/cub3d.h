@@ -6,7 +6,7 @@
 /*   By: name <name@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 12:36:39 by name              #+#    #+#             */
-/*   Updated: 2021/09/30 09:36:02 by name             ###   ########.fr       */
+/*   Updated: 2021/09/30 10:16:44 by name             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ bool	setup_map(t_all *all, t_list *lst);
 bool	check_num(char *number);
 bool	check_len_value(char **rgb);
 bool	setup_missing(t_all *all);
+bool	make_map_from_lst(t_all *all, t_list *lst);
 
 ///
 /// CLEANING
