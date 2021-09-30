@@ -6,7 +6,7 @@
 /*   By: name <name@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 09:43:57 by name              #+#    #+#             */
-/*   Updated: 2021/09/30 10:18:08 by name             ###   ########.fr       */
+/*   Updated: 2021/09/30 22:10:29 by name             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,16 +82,12 @@ static inline bool	make_new_map(t_all *all, int height, int length)
 static inline void	duplicate_map(t_all *all, t_list *lst)
 {
 	int	i;
-	int	j;
 	
-	i = 1;
+	i = 0;
 	lst->Dcur = lst->Dstart;
 	while (lst->Dcur)
 	{
-		j = 0;
-		while (((char *)lst->Dcur->content)[j++])
-			all->map[i][j] = ((char *)lst->Dcur->content)[j - 1];
-		i++;
+		ft_memcpy(all->map[++i] + 1, lst->Dcur->content, ft_strlen(lst->Dcur->content));
 		lst->Dcur = lst->Dcur->next;
 	}
 #ifdef DEBUG
