@@ -6,7 +6,7 @@
 /*   By: name <name@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 09:43:57 by name              #+#    #+#             */
-/*   Updated: 2021/09/30 22:10:29 by name             ###   ########.fr       */
+/*   Updated: 2021/09/30 22:46:07 by name             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ bool	make_map_from_lst(t_all *all, t_list *lst)
 		return ((all->err
 			= ft_strdup("map contains empty lines."
 				" Unforgivable. Shame on you.")), true);
+	//check symbols and find player symbol (x + 1, y + 1. Because of the offset)
 	find_height_length(lst, &height, &length);
 	if (make_new_map(all, height, length))
 		return ((all->err
