@@ -6,7 +6,7 @@
 /*   By: name <name@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 12:36:39 by name              #+#    #+#             */
-/*   Updated: 2021/09/29 22:09:39 by name             ###   ########.fr       */
+/*   Updated: 2021/09/30 09:36:02 by name             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,13 @@ typedef struct s_all // структура для всего вместе
 	char	**textures;
 	int		**colors;
 	char	**map;
+	struct s_plrpos
+	{
+		int		x;
+		int		y;
+		char	direction;
+	}		plrpos;
+	
 	char	*err;
 }	t_all;
 

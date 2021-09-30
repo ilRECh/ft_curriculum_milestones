@@ -6,7 +6,7 @@
 /*   By: name <name@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 10:48:24 by name              #+#    #+#             */
-/*   Updated: 2021/09/29 22:12:00 by name             ###   ########.fr       */
+/*   Updated: 2021/09/30 09:14:07 by name             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,12 +134,32 @@ printf("rgbdigit: [0] %d, [1] %d, [2] %d\n",
 	all->colors[*index][2]);
 #endif
 	}
-	lst->Dcur = lst->Dcur->next;
-	if (lst->Dcur && lst->Dcur->prev == lst->Dstart)
-		lst->Dstart = lst->Dcur;
-	else if (!lst->Dcur)
-		return (false);
-	ft_lstdeloneD(lst->Dcur->prev, free);
+	{
+		t_dlist *next;
+		t_dlist	*prev;
+
+		next = lst->Dcur->next;
+		prev = lst->Dcur->prev;
+		if (!next && !prev)
+		{
+			lst->Dstart = NULL;
+			ft_lstdeloneD(lst->Dcur, free);
+			lst->Dcur = NULL;
+		}
+		else
+		{
+			if (lst->Dcur == lst->Dstart)
+				lst->Dstart = next;
+			ft_lstdeloneD(lst->Dcur, free);
+			lst->Dcur = next;
+		}
+	}
+	// lst->Dcur = lst->Dcur->next;
+	// if (lst->Dcur && lst->Dcur->prev == lst->Dstart)
+	// 	lst->Dstart = lst->Dcur;
+	// else if (!lst->Dcur)
+	// 	return (false);
+	// ft_lstdeloneD(lst->Dcur->prev, free);
 	return (false);
 }
 
