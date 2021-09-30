@@ -73,7 +73,7 @@ static inline bool	make_new_map(t_all *all, int height, int length)
 	{
 		printf("new_map[%3d]: |%s| ,len: %ld\n", i, all->map[i], ft_strlen(all->map[i]));
 	}
-	printf("\n---------------------------------------------------------\n");
+	printf("\n---------------------------------------------------------\n\n");
 }
 #endif
 	return (false);
