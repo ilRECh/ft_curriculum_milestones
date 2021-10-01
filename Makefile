@@ -37,6 +37,7 @@ PARSE_LIST				=	parse.c\
 							setup_params/setup_params_additional.c\
 							setup_params/setup_missing.c\
 							setup_map/setup_map.c\
+							setup_map/check_symbols.c\
 							setup_map/make_map_from_lst.c
 PARSE_DIR				=	./src/parse/
 PARSE					=	$(addprefix $(PARSE_DIR), $(PARSE_LIST))

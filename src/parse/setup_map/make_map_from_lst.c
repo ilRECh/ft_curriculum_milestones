@@ -6,7 +6,7 @@
 /*   By: name <name@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 09:43:57 by name              #+#    #+#             */
-/*   Updated: 2021/09/30 22:46:07 by name             ###   ########.fr       */
+/*   Updated: 2021/10/01 15:05:06 by name             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,8 @@ static inline void	duplicate_map(t_all *all, t_list *lst)
 	lst->Dcur = lst->Dstart;
 	while (lst->Dcur)
 	{
-		ft_memcpy(all->map[++i] + 1, lst->Dcur->content, ft_strlen(lst->Dcur->content));
+		ft_memcpy(all->map[++i] + 1,
+			lst->Dcur->content, ft_strlen(lst->Dcur->content));
 		lst->Dcur = lst->Dcur->next;
 	}
 #ifdef DEBUG
@@ -109,7 +110,8 @@ bool	make_map_from_lst(t_all *all, t_list *lst)
 		return ((all->err
 			= ft_strdup("map contains empty lines."
 				" Unforgivable. Shame on you.")), true);
-	//check symbols and find player symbol (x + 1, y + 1. Because of the offset)
+	if (check_symbols(all, lst))
+		return (true);
 	find_height_length(lst, &height, &length);
 	if (make_new_map(all, height, length))
 		return ((all->err

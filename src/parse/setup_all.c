@@ -6,7 +6,7 @@
 /*   By: name <name@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 22:22:58 by name              #+#    #+#             */
-/*   Updated: 2021/09/29 14:19:01 by name             ###   ########.fr       */
+/*   Updated: 2021/10/01 15:08:42 by name             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ bool    setup_all(t_all *all)
 	all->colors = ft_calloc(7, sizeof(unsigned char *));
 	if (!all->colors)
 		return (true);
+	all->plrpos.direction = 0;
+	all->plrpos.x = -1;
+	all->plrpos.y = -1;
 	all->map = NULL;
 	all->err = NULL;
 	return (false);
