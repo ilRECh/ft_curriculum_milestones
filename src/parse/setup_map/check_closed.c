@@ -6,20 +6,20 @@
 /*   By: name <name@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 22:25:24 by name              #+#    #+#             */
-/*   Updated: 2021/10/02 00:11:52 by name             ###   ########.fr       */
+/*   Updated: 2021/10/02 00:24:47 by name             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-#define UP 0
-#define UPLEFT 1 
-#define LEFT 2
-#define DOWNLEFT 3 
-#define DOWN 4
-#define DOWNRIGHT 5 
-#define RIGHT 6
-#define UPRIGHT 7
+//UP 0
+//UPLEFT 1 
+//LEFT 2
+//DOWNLEFT 3 
+//DOWN 4
+//DOWNRIGHT 5 
+//RIGHT 6
+//UPRIGHT 7
 
 static inline bool	err_at(int i, int j, t_all *all)
 {
