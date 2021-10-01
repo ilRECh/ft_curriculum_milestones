@@ -6,7 +6,7 @@
 /*   By: name <name@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 22:25:24 by name              #+#    #+#             */
-/*   Updated: 2021/10/02 00:01:39 by name             ###   ########.fr       */
+/*   Updated: 2021/10/02 00:11:52 by name             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static bool	check(int i, int j, t_all *all, bool go)
 	while (dir < 8)
 	{
 		if (check(i + dirs[dir][0], j + dirs[dir][1], all, false))
-			return (err_at(i + dirs[dir][0], j + dirs[dir][1], all), true);
+			return (err_at(i, j, all), true);
 		if (go)
 			dir++;
 		else

@@ -6,7 +6,7 @@
 /*   By: name <name@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 15:04:26 by name              #+#    #+#             */
-/*   Updated: 2021/10/01 23:33:28 by name             ###   ########.fr       */
+/*   Updated: 2021/10/02 00:09:40 by name             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 static bool	check(t_all *all, char *line, int i)
 {
-	int	j;
+	int		j;
+	char	tmp[2];
 
-	j = -1;
+	j = (tmp[1] = 0) - 1;
 	while (line && line[++j])
 	{
 		if (line[j] != ' ' && line[j] != '1' && line[j] != '0')
@@ -33,7 +34,8 @@ static bool	check(t_all *all, char *line, int i)
 			}
 			else
 				return ((all->err
-					= ft_strdup("there can be only one player")), true);
+					= ft_strjoin("there can be only one player, it is ",
+					(tmp[0] = all->plrpos.direction, tmp))), true);
 		}
 	}
 	return (false);

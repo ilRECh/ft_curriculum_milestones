@@ -6,7 +6,7 @@
 /*   By: name <name@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 10:48:24 by name              #+#    #+#             */
-/*   Updated: 2021/09/30 09:14:07 by name             ###   ########.fr       */
+/*   Updated: 2021/10/02 00:14:20 by name             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static bool	check_map_start(char **split)
 	i = (j = -1);
 	while (split[++i])
 	{
-		while (split[i][++j] == '1')
+		while (split[i][++j] == '1' || split[i][j] == '0')
 			;
 		if (split[i][j])
 			return (false);
