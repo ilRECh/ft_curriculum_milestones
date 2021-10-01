@@ -6,7 +6,7 @@ NAME					=	count_islands
 RM						=	rm -rf
 GCC						=	gcc
 AR						=	ar -crs
-FLAGS					=	-Wall -Wextra -Werror -c -g
+FLAGS					=	-Wall -Wextra -Werror -c
 
 HDRS_COUNT_ISLANDS		=	count_islands.h						
 HDRS_COUNT_ISLANDS_DIR	=	./include/

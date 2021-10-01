@@ -56,11 +56,6 @@ static bool	make_new_map(t_dlist *lst, t_islands *islands)
 	}
 	lst = ft_lstfirstD(lst);
 	ft_lstclearD(&lst, free);
-	for (int i = 1; i < islands->height + 2; i++)
-	{
-		islands->map[i][islands->length + 1] = '\n';
-		printf("%s", islands->map[i] + 1);
-	}
 	return (false);
 }
 
