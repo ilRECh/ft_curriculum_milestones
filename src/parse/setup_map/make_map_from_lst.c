@@ -6,7 +6,7 @@
 /*   By: name <name@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 09:43:57 by name              #+#    #+#             */
-/*   Updated: 2021/10/01 15:05:06 by name             ###   ########.fr       */
+/*   Updated: 2021/10/01 22:23:07 by name             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,14 +108,14 @@ bool	make_map_from_lst(t_all *all, t_list *lst)
 
 	if (check_for_empty_lines(lst))
 		return ((all->err
-			= ft_strdup("map contains empty lines."
+			= ft_strdup("the map contains empty lines."
 				" Unforgivable. Shame on you.")), true);
 	if (check_symbols(all, lst))
 		return (true);
 	find_height_length(lst, &height, &length);
 	if (make_new_map(all, height, length))
 		return ((all->err
-			= ft_strdup("no space left")), true);
+			= ft_strdup("no space left on the device")), true);
 	duplicate_map(all, lst);
 	return (false);
 }

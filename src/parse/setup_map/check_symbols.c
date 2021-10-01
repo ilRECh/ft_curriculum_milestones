@@ -6,7 +6,7 @@
 /*   By: name <name@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 15:04:26 by name              #+#    #+#             */
-/*   Updated: 2021/10/01 15:21:04 by name             ###   ########.fr       */
+/*   Updated: 2021/10/01 23:33:28 by name             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,7 @@ bool	check_symbols(t_all *all, t_list *lst)
 		lst->Dcur = lst->Dcur->next;
 		i++;
 	}
+	if (!all->plrpos.direction)
+		return ((all->err = ft_strdup("there is no player")), true);
 	return (false);
 }

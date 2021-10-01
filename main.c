@@ -6,7 +6,7 @@
 /*   By: name <name@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 12:11:31 by name              #+#    #+#             */
-/*   Updated: 2021/09/29 14:19:59 by name             ###   ########.fr       */
+/*   Updated: 2021/10/01 22:21:57 by name             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	usage(void)
 {
 	printf(CYAN "\vusage:\t" RESET
-		GREEN_BOLD "./cub3d path_to_map\v\n" RESET);
+		GREEN_BOLD "./cub3d path_to_the_map\v\n" RESET);
 }
 
 int	cub3d(char *map)
@@ -45,7 +45,6 @@ int	cub3d(char *map)
 		fall(&all);
 		return (1);
 	}
-	close(fd);
 	//game(&all);
 	return (0);
 }

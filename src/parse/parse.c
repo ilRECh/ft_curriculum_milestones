@@ -6,7 +6,7 @@
 /*   By: name <name@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 15:03:33 by name              #+#    #+#             */
-/*   Updated: 2021/09/30 08:53:54 by name             ###   ########.fr       */
+/*   Updated: 2021/10/01 22:13:03 by name             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,5 @@ bool	parse(t_all *all, int fd)
 		return (flf(&lst, fd), true);
 	if (setup_map(all, &lst))
 		return (flf(&lst, fd), true);
-	return (false);
+	return (flf(&lst, fd), false);
 }

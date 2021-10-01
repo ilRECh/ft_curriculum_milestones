@@ -6,7 +6,7 @@
 /*   By: name <name@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 10:49:06 by name              #+#    #+#             */
-/*   Updated: 2021/09/30 09:43:48 by name             ###   ########.fr       */
+/*   Updated: 2021/10/01 23:54:30 by name             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ bool	del_empty_from_end(t_all *all, t_list *lst)
 
 bool	setup_map(t_all *all, t_list *lst)
 {
+	char	*tmp;
 #ifdef DEBUG
 {
 	int i = 0;
@@ -72,5 +73,11 @@ bool	setup_map(t_all *all, t_list *lst)
 		return (true);
 	if (make_map_from_lst(all, lst))
 		return (true);
+	if (check_closed(all))
+		return ((all->err = ft_strjoin("the map is not closed properly"
+			" or/and space occured inside the map:\n", (tmp = all->err))),
+			free(tmp), true);
+	// if (check_extra_regions(all))
+	// 	return ((all->err = ft_strdup("extra regions aren't supported")), true);
 	return (false);
 }
