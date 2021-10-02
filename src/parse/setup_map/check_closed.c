@@ -6,7 +6,7 @@
 /*   By: name <name@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 22:25:24 by name              #+#    #+#             */
-/*   Updated: 2021/10/02 00:24:47 by name             ###   ########.fr       */
+/*   Updated: 2021/10/02 22:51:14 by name             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static inline bool	err_at(int i, int j, t_all *all)
 
 static bool	check(int i, int j, t_all *all, bool go)
 {
-	int					dir;
+	static int			dir = 0;
 	static const int	dirs[8][2] = {
 		{-1, 0},
 		{-1, -1},
@@ -52,18 +52,26 @@ static bool	check(int i, int j, t_all *all, bool go)
 		{-1, 1}
 	};
 
-	dir = 0;
-	if ((all->map[i][j] == ' ' && ++dir) || all->map[i][j] == '1')
-		return (dir);
+	if (all->map[i][j] == ' ')
+		return (true);
+	else if (all->map[i][j] == '1')
+		return (false);
 	while (dir < 8)
 	{
 		if (check(i + dirs[dir][0], j + dirs[dir][1], all, false))
-			return (err_at(i, j, all), true);
+		{
+			if (go)
+				dir = 0;
+			if (!all->err)
+				err_at(i, j, all);
+			return (true);
+		}
 		if (go)
 			dir++;
 		else
 			return (false);
 	}
+	dir = 0;
 	return (false);
 }
 

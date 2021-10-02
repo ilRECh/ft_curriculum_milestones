@@ -6,7 +6,7 @@
 /*   By: name <name@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 09:43:57 by name              #+#    #+#             */
-/*   Updated: 2021/10/01 22:23:07 by name             ###   ########.fr       */
+/*   Updated: 2021/10/02 15:18:07 by name             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,8 @@ bool	make_map_from_lst(t_all *all, t_list *lst)
 	if (check_symbols(all, lst))
 		return (true);
 	find_height_length(lst, &height, &length);
+	all->map_height = height;
+	all->map_length = length;
 	if (make_new_map(all, height, length))
 		return ((all->err
 			= ft_strdup("no space left on the device")), true);
