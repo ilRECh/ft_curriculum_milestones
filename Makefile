@@ -6,7 +6,7 @@ NAME					=	cub3d
 RM						=	rm -rf
 GCC						=	gcc
 AR						=	ar -crs
-FLAGS					=	-c -g#-Wall -Wextra -Werror -c -g
+FLAGS					=	-Wall -Wextra -Werror -c -g
 
 HDRS_CUB				=	cub3d.h						
 HDRS_CUB_DIR			=	./include/
@@ -40,7 +40,8 @@ PARSE_LIST				=	parse.c\
 							setup_map/check_symbols.c\
 							setup_map/make_map_from_lst.c\
 							setup_map/spaces_to_walls.c\
-							setup_map/check_closed.c
+							setup_map/check_closed.c\
+							setup_map/check_extra_regions.c
 PARSE_DIR				=	./src/parse/
 PARSE					=	$(addprefix $(PARSE_DIR), $(PARSE_LIST))
 

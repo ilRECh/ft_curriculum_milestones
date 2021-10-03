@@ -6,7 +6,7 @@
 /*   By: name <name@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 12:36:39 by name              #+#    #+#             */
-/*   Updated: 2021/10/02 22:31:58 by name             ###   ########.fr       */
+/*   Updated: 2021/10/03 15:12:10 by name             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ bool	make_map_from_lst(t_all *all, t_list *lst);
 bool	check_symbols(t_all *all, t_list *lst);
 bool	check_closed(t_all *all);
 void	spaces_to_walls(t_all *all);
+bool	check_extra_regions(t_all *all);
 
 ///
 /// CLEANING
