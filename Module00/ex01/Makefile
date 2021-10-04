@@ -2,7 +2,7 @@
 	all re fclean
 
 OS		=	$(shell uname)
-TARGET	=	AWEPOOK
+TARGET	=	phonebook
 RM		=	rm -rf
 FLAGS	=	-Wall -Wextra -Werror -c -std=c++98 -pedantic
 
