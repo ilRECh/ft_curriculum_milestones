@@ -24,15 +24,14 @@ void	PhoneBook::Add()
 	{
 		m_nSize += 1;
 	}
-	// std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
 
 void	PhoneBook::Search()
 {
-	int	nTmpIndex;
+	int	nTmpIndex = 0;
 
 	std::cout	<< "_____________________________________________\n"
-				<< "|" << "   index  " << "|"
+				<< "|" << "   indx   " << "|"
 				<< "first name" << "|"
 				<< "last  name" << "|"
 				<< " nickname " << "|\n"
@@ -69,27 +68,41 @@ void	PhoneBook::Search()
 			std::cout.write(m_aContact[i].getNickName().c_str(), 9);
 			std::cout.put('.');
 		}
-		std::cout << "|" << std::endl;
+		std::cout << "|\n---------------------------------------------\n" << std::endl;
 	}
 	if (m_nSize > 0)
 	{
-		std::cout << "Enter an index of the desired contact: ";
-		while (!(std::cin >> nTmpIndex) || !(nTmpIndex >= 1 && nTmpIndex <= 8))
+		while (true)
 		{
-			std::cout << "Your input makes no sence, and this is relevant behavior!" << std::endl;
 			std::cout << "Enter an index of the desired contact: ";
+			if (!isdigit(std::cin.peek()))
+			{
+				std::cout << "Your input makes no sence, and this is relevant behavior!\n";
+				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+				continue ;
+			}
+			else
+			{
+				std::cin >> nTmpIndex;
+				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+				if (!(nTmpIndex >= 1 && nTmpIndex <= m_nSize))
+				{
+					std::cout << "Your input makes no sence, and this is relevant behavior!\n";
+					continue ;
+				}
+				break ;
+			}
 		}
-		// std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		nTmpIndex -= 1;
-		std::cout	<< m_aContact[nTmpIndex].getFirstName() << std::endl
-					<< m_aContact[nTmpIndex].getLastName() << std::endl
-					<< m_aContact[nTmpIndex].getNickName() << std::endl
-					<< m_aContact[nTmpIndex].getPhoneNumber() << std::endl
-					<< m_aContact[nTmpIndex].getDarkestSecret() << std::endl;
+		std::cout	<< "The first name: " << m_aContact[nTmpIndex].getFirstName() << std::endl
+					<< "The last name: " << m_aContact[nTmpIndex].getLastName() << std::endl
+					<< "The nickname: " << m_aContact[nTmpIndex].getNickName() << std::endl
+					<< "The phone number: " << m_aContact[nTmpIndex].getPhoneNumber() << std::endl
+					<< "The darkest secret: " << m_aContact[nTmpIndex].getDarkestSecret() << std::endl;
 	}
 	else
 	{
-		std::cout.put('\n');
+		std::cout << std::endl;
 	}
 }
 
@@ -100,8 +113,13 @@ void	PhoneBook::MainLoop()
 	while (true)
 	{
 		std::cout << "Enter a command: ";
-		// std::getline(std::cin, sCmd);
+		if (isspace(std::cin.peek()))
+		{
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			continue ;
+		}
 		std::cin >> sCmd;
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		if (sCmd == "EXIT")
 			break ;
 		else if (sCmd == "ADD")
@@ -110,4 +128,3 @@ void	PhoneBook::MainLoop()
 			Search();
 	}
 }
-
