@@ -1,7 +1,7 @@
+#include <limits>
 #include "Contact.hpp"
 
-Contact::Contact():	m_sFirstName(), m_sLastName(),
-					m_sPhoneNumber(), m_sDarkestSecret()
+Contact::Contact()
 {
 }
 
@@ -9,44 +9,57 @@ Contact::~Contact()
 {
 }
 
-void	Contact::setFirstName(std::string &sFirstName)
+void	Contact::setFirstName()
 {
-	m_sFirstName = sFirstName;
+	std::cout << "Enter a first name: ";
+	std::cin >> m_sFirstName;
 }
 
-void	Contact::getFirstName()
+const std::string	Contact::getFirstName() const
 {
-	std::cout << m_sFirstName << std::endl;
+	return (m_sFirstName);
 }
 
-void	Contact::setLastName(std::string &sLastName)
+void	Contact::setLastName()
 {
-	m_sLastName = sLastName;
+	std::cout << "Enter a last name: ";
+	std::cin >> m_sLastName;
 }
 
-void	Contact::getLastName()
+const std::string	Contact::getLastName() const
 {
-	std::cout << m_sLastName << std::endl;
+	return (m_sLastName);
+}
+
+void	Contact::setNickName()
+{
+	std::cout << "Enter a nickname: ";
+	std::cin >> m_sNickName;
+}
+
+const std::string	Contact::getNickName() const
+{
+	return (m_sNickName);
 }
 
 void	Contact::setPhoneNumber()
 {
-	char	tmp;
-
-	
+	std::cout << "Enter a phone number: ";
+	std::cin >> m_sPhoneNumber;
 }
 
-void	Contact::getPhoneNumber()
+const std::string	Contact::getPhoneNumber() const
 {
-	std::cout << m_sPhoneNumber << std::endl;
+	return (m_sPhoneNumber);
 }
 
-void	Contact::setDarkestSecret(std::string &sDarkestSecret)
+void	Contact::setDarkestSecret()
 {
-	m_sDarkestSecret = sDarkestSecret;
+	std::cout << "Enter a darkest secret: ";
+	std::cin >> m_sDarkestSecret;
 }
 
-void	Contact::getDarkestSecret()
+const std::string	Contact::getDarkestSecret() const
 {
-	std::cout << m_sDarkestSecret << std::endl;
+	return (m_sDarkestSecret);
 }

@@ -8,17 +8,20 @@ class Contact
 private:
 	std::string	m_sFirstName;
 	std::string	m_sLastName;
+	std::string	m_sNickName;
 	std::string	m_sPhoneNumber;
 	std::string	m_sDarkestSecret;
 public:
 	Contact();
 	~Contact();
 	void	setFirstName();
-	void	getFirstName();
+	const std::string	getFirstName() const ;
 	void	setLastName();
-	void	getLastName();
+	const std::string	getLastName() const ;
+	void	setNickName();
+	const std::string	getNickName() const;
 	void	setPhoneNumber();
-	void	getPhoneNumber();
+	const std::string	getPhoneNumber() const ;
 	void	setDarkestSecret();
-	void	getDarkestSecret();
+	const std::string	getDarkestSecret() const ;
 };

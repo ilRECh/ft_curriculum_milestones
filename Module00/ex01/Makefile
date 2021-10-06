@@ -2,7 +2,7 @@
 	all re fclean
 
 OS		=	$(shell uname)
-TARGET	=	phonebook
+TARGET	=	AwePhoneBook
 RM		=	rm -rf
 FLAGS	=	-Wall -Wextra -Werror -c -std=c++98 -pedantic
 
@@ -14,9 +14,11 @@ else
 $(error cannot set proper compiler)
 endif
 
-HEADERS	=	awesomephonebook.hpp
+HEADERS	=	Contact.hpp\
+			PhoneBook.hpp
 
-SRC		=	awesomephonebook.cpp\
+SRC		=	Contact.cpp\
+			PhoneBook.cpp\
 			main.cpp
 OBJ		=	$(SRC:.cpp=.o)
 
