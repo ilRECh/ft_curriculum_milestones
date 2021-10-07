@@ -75,11 +75,6 @@ void	PhoneBook::Search()
 		while (true)
 		{
 			std::cout << "Enter an index of the desired contact: ";
-			while (::isspace(std::cin.peek()))
-			{
-				std::cin >> std::ws;
-				continue ;
-			}
 			if (!(std::cin >> nTmpIndex))
 			{
 				std::cin.clear();
