@@ -14,7 +14,6 @@ Account::Account( int initial_deposit ):	_accountIndex(_nbAccounts),
 {
 	_nbAccounts += 1;
 	_totalAmount += initial_deposit;
-	_totalNbDeposits += _nbDeposits;
 	Account::_displayTimestamp();
 	std::cout	<< "index:" << _accountIndex
 				<< ";amount:" << _amount
@@ -73,10 +72,16 @@ void	Account::displayAccountsInfos(void)
 
 void	Account::makeDeposit( int deposit )
 {
+	Account::_displayTimestamp();
+	std::cout	<< "index:" << _accountIndex
+				<< ";p_amount:" << _amount;
 	_amount += deposit;
 	_nbDeposits += 1;
 	_totalAmount += deposit;
 	_totalNbDeposits += 1;
+	std::cout	<< ";deposit:" << deposit
+				<< ";amount:" << _amount
+				<< ";nb_deposits:" << _nbDeposits << std::endl;
 }
 
 bool	Account::makeWithdrawal( int withdrawal )

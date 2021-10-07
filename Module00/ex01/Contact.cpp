@@ -1,5 +1,25 @@
+#include <stdlib.h>
 #include <limits>
 #include "Contact.hpp"
+
+static std::string	GetInput(const char *sPrompt)
+{
+	std::string	sTmp;
+
+	while (sTmp.empty())
+	{
+		std::cout << sPrompt;
+		if (!std::getline(std::cin, sTmp))
+		{
+			exit(0);
+		}
+		else if (sTmp.find_first_not_of(" \t\v\r\n") == sTmp.npos)
+		{
+			sTmp.clear();
+		}
+	}
+	return (sTmp);
+}
 
 Contact::Contact()
 {
@@ -11,8 +31,7 @@ Contact::~Contact()
 
 void	Contact::setFirstName()
 {
-	std::cout << "Enter a first name: ";
-	std::getline(std::cin, m_sFirstName);
+	m_sFirstName = ::GetInput("Enter a first name: ");
 }
 
 const std::string	Contact::getFirstName() const
@@ -22,8 +41,7 @@ const std::string	Contact::getFirstName() const
 
 void	Contact::setLastName()
 {
-	std::cout << "Enter a last name: ";
-	std::getline(std::cin, m_sLastName);
+	m_sLastName = ::GetInput("Enter a last name: ");
 }
 
 const std::string	Contact::getLastName() const
@@ -33,8 +51,7 @@ const std::string	Contact::getLastName() const
 
 void	Contact::setNickName()
 {
-	std::cout << "Enter a nickname: ";
-	std::getline(std::cin, m_sNickName);
+	m_sNickName = ::GetInput("Enter a nickname: ");
 }
 
 const std::string	Contact::getNickName() const
@@ -44,8 +61,7 @@ const std::string	Contact::getNickName() const
 
 void	Contact::setPhoneNumber()
 {
-	std::cout << "Enter a phone number: ";
-	std::getline(std::cin, m_sPhoneNumber);
+	m_sNickName = ::GetInput("Enter a phone number: ");
 }
 
 const std::string	Contact::getPhoneNumber() const
@@ -55,8 +71,7 @@ const std::string	Contact::getPhoneNumber() const
 
 void	Contact::setDarkestSecret()
 {
-	std::cout << "Enter a darkest secret: ";
-	std::getline(std::cin, m_sDarkestSecret);
+	m_sDarkestSecret = ::GetInput("Enter a darkest secret: ");
 }
 
 const std::string	Contact::getDarkestSecret() const

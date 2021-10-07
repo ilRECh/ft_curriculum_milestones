@@ -1,5 +1,6 @@
-#include "PhoneBook.hpp"
+#include <stdlib.h>
 #include <limits>
+#include "PhoneBook.hpp"
 
 PhoneBook::PhoneBook():	m_nCurrentFreePosition(0), m_nSize(0)
 {
@@ -75,8 +76,12 @@ void	PhoneBook::Search()
 		while (true)
 		{
 			std::cout << "Enter an index of the desired contact: ";
-			if (!(std::cin >> nTmpIndex))
+			if (!(std::cin >> nTmpIndex) || !(nTmpIndex >= 1 && nTmpIndex <= m_nSize))
 			{
+				if (std::cin.eof())
+				{
+					exit(0);
+				}
 				std::cin.clear();
 				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 				std::cout << "Your input makes no sence, and this is relevant behavior!\n";
@@ -102,11 +107,10 @@ void	PhoneBook::MainLoop()
 {
 	std::string	sCmd;
 
-	while (true)
+	while (!std::cin.eof())
 	{
 		std::cout << "Enter a command: ";
-		std::getline(std::cin, sCmd);
-		if (sCmd == "EXIT")
+		if (!std::getline(std::cin, sCmd) || sCmd == "EXIT")
 			break ;
 		else if (sCmd == "ADD")
 			Add();
