@@ -75,23 +75,20 @@ void	PhoneBook::Search()
 		while (true)
 		{
 			std::cout << "Enter an index of the desired contact: ";
-			if (!isdigit(std::cin.peek()))
+			while (::isspace(std::cin.peek()))
 			{
-				std::cout << "Your input makes no sence, and this is relevant behavior!\n";
-				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+				std::cin >> std::ws;
 				continue ;
 			}
-			else
+			if (!(std::cin >> nTmpIndex))
 			{
-				std::cin >> nTmpIndex;
+				std::cin.clear();
 				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-				if (!(nTmpIndex >= 1 && nTmpIndex <= m_nSize))
-				{
-					std::cout << "Your input makes no sence, and this is relevant behavior!\n";
-					continue ;
-				}
-				break ;
+				std::cout << "Your input makes no sence, and this is relevant behavior!\n";
+				continue ;
 			}
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			break ;
 		}
 		nTmpIndex -= 1;
 		std::cout	<< "The first name: " << m_aContact[nTmpIndex].getFirstName() << std::endl
@@ -113,13 +110,7 @@ void	PhoneBook::MainLoop()
 	while (true)
 	{
 		std::cout << "Enter a command: ";
-		if (isspace(std::cin.peek()))
-		{
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			continue ;
-		}
-		std::cin >> sCmd;
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		std::getline(std::cin, sCmd);
 		if (sCmd == "EXIT")
 			break ;
 		else if (sCmd == "ADD")
