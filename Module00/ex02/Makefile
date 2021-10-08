@@ -2,7 +2,7 @@
 	all re fclean
 
 OS		=	$(shell uname)
-TARGET	=	a.out
+TARGET	=	Account
 RM		=	rm -rf
 FLAGS	=	-Wall -Wextra -Werror -c -std=c++98 -pedantic
 
