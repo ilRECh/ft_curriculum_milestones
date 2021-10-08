@@ -21,7 +21,7 @@ SRC		=	Zombie.cpp\
 			main.cpp
 OBJ		=	$(SRC:.cpp=.o)
 
-%.o: %.cpp
+%.o: %.cpp	$(HEADERS)
 	$(CC) $(FLAGS) $< -o $@
 
 $(TARGET):	$(OBJ)

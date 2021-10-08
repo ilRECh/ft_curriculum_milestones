@@ -2,7 +2,7 @@
 	all re fclean
 
 OS		=	$(shell uname)
-TARGET	=	Zombie
+TARGET	=	SinS
 RM		=	rm -rf
 FLAGS	=	-Wall -Wextra -Werror -c -std=c++98 -pedantic
 
@@ -14,15 +14,12 @@ else
 $(error cannot set proper compiler)
 endif
 
-HEADERS	=	Zombie.hpp
+HEADERS	=	
 
-SRC		=	Zombie.cpp\
-			newZombie.cpp\
-			randomChump.cpp\
-			main.cpp
+SRC		=	main.cpp
 OBJ		=	$(SRC:.cpp=.o)
 
-%.o: %.cpp	$(HEADERS)
+%.o: %.cpp $(HEADERS)
 	$(CC) $(FLAGS) $< -o $@
 
 $(TARGET):	$(OBJ)
