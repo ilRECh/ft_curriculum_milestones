@@ -8,13 +8,17 @@
 			"name": "(gdb) Launch",
 			"type": "cppdbg",
 			"request": "launch",
-			"program": "${workspaceFolder}/Module00/ex01/AwePhoneBook",
-			"args": [],
+			"program": "${workspaceFolder}/Module01/ex04/replace",
+			"args": [
+				"file1",
+				"hello",
+				"general"
+			],
 			"stopAtEntry": false,
-			"cwd": "${workspaceFolder}",
+			"cwd": "${workspaceFolder}/Module01/ex04/",
 			"environment": [],
 			"externalConsole": false,
-			"MIMode": "gdb",
+			"MIMode": "lldb",
 			"setupCommands": [
 				{
 					"description": "Enable pretty-printing for gdb",

@@ -2,9 +2,9 @@
 	all re fclean
 
 OS		=	$(shell uname)
-TARGET	=	SinS
+TARGET	=	replace
 RM		=	rm -rf
-FLAGS	=	-Wall -Wextra -Werror -c -std=c++98 -pedantic
+FLAGS	=	-Wall -Wextra -Werror -c -g -std=c++98 -pedantic
 
 ifeq ($(OS), Darwin)
 CC		=	clang++
@@ -14,9 +14,10 @@ else
 $(error cannot set proper compiler)
 endif
 
-HEADERS	=	
+HEADERS	=	replace.hpp
 
-SRC		=	main.cpp
+SRC		=	main.cpp\
+			replace.cpp
 OBJ		=	$(SRC:.cpp=.o)
 
 %.o: %.cpp $(HEADERS)
