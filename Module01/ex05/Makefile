@@ -2,7 +2,7 @@
 	all re fclean
 
 OS		=	$(shell uname)
-TARGET	=	replace
+TARGET	=	Karen
 RM		=	rm -rf
 FLAGS	=	-Wall -Wextra -Werror -c -std=c++98 -pedantic
 
@@ -14,10 +14,11 @@ else
 $(error cannot set proper compiler)
 endif
 
-HEADERS	=	replace.hpp
+HEADERS	=	Karen.hpp
 
 SRC		=	main.cpp\
-			replace.cpp
+			Karen.cpp
+			
 OBJ		=	$(SRC:.cpp=.o)
 
 %.o: %.cpp $(HEADERS)
