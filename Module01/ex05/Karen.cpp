@@ -50,19 +50,26 @@ void	Karen::error( void )
 
 void	Karen::complain( std::string level )
 {
+	void	(Karen::*f[])(void) = {
+		&Karen::debug,
+		&Karen::info,
+		&Karen::warning,
+		&Karen::error
+	};
+
 	switch (HashIt(level))
 	{
 		case 745:
-			
+			(this->*f[0])();
 			break ;
 		case 1578:
-
+			(this->*f[1])();
 			break ;
 		case 459:
-
+			(this->*f[2])();
 			break ;
-		case 819:
-
+		case 816:
+			(this->*f[3])();
 			break ;
 		default:
 			break;

@@ -1,15 +1,12 @@
-#include "replace.hpp"
+#include "Karen.hpp"
 
-void	usage()
+int	main()
 {
-	std::cout	<< "\n\tusage:\t./replace <filename> <s1> <s2>\n" << std::endl;
-}
+	Karen	karen;
 
-int	main(int argc, char **argv)
-{
-	if (argc == 4)
-		return (replace(argv[1], argv[2], argv[3]));
-	else
-		usage();
+	karen.complain("DEBUG");
+	karen.complain("WARNING");
+	karen.complain("INFO");
+	karen.complain("ERROR");
 	return (0);
 }
