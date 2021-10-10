@@ -12,7 +12,20 @@
 
 #include "cub3d.h"
 
-bool	game()
+t_win	mlx_create( int width, int height )
 {
+	t_win	win;
+
+	win.mlx = mlx_init();
+	win.win = mlx_new_window(win.mlx, width, height, "cube3d!");
+	return (win);
+}
+
+bool	game(t_all *all)
+{
+	t_win	win;
+
+	win = mlx_create(1024, 512);
+	all->win = win.win;
 	return (false);
 }

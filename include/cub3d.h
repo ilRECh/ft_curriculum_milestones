@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include "libft.h"
+# include "mlx.h"
 # include "get_next_line.h"
 
 # define NORTH 0
@@ -73,7 +74,6 @@ typedef struct s_all // структура для всего вместе
 		int		y;
 		char	direction;
 	}		plrpos;
-	
 	char	*err;
 }	t_all;
 
@@ -81,7 +81,7 @@ typedef struct s_all // структура для всего вместе
 ///	PARSING
 ///
 bool	parse(t_all *all, int fd);
-bool    setup_all(t_all *all);
+bool	setup_all(t_all *all);
 bool	setup_params(t_all *all, t_list *lst);
 bool	setup_map(t_all *all, t_list *lst);
 bool	check_num(char *number);
@@ -100,5 +100,10 @@ bool	fl(t_list *lst);
 bool	flf(t_list *lst, int fd);
 bool	fs(char **split);
 bool	fall(t_all *all);
+
+//
+// game
+//
+bool	game(t_all *all);
 
 #endif //CUB3D_H

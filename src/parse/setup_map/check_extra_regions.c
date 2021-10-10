@@ -20,21 +20,21 @@ typedef struct s_any
 
 typedef enum e_mode
 {
-	encrypt,
-	decrypt
+	_encrypt,
+	_decrypt
 }	t_mode;
 
 static inline bool	check_symbol(t_mode mode, int y, int x, t_all *all)
 {
 	if (all->map[y][x] == ' ')
 		return (true);
-	else if (mode == encrypt)
+	else if (mode == _encrypt)
 	{
 		if (all->map[y][x] == 'A' || all->map[y][x] == 'B'
 			|| all->map[y][x] == 'Z')
 			return (true);
 	}
-	else if (mode == decrypt)
+	else if (mode == _decrypt)
 	{
 		if (all->map[y][x] == '0' || all->map[y][x] == '1'
 			|| all->map[y][x] == all->plrpos.direction)
@@ -47,11 +47,11 @@ static void	proceed(t_mode mode, int y, int x, t_all *all)
 {
 	if (check_symbol(mode, y, x, all))
 		return ;
-	else if (mode == encrypt)
+	else if (mode == _encrypt)
 		all->map[y][x] = 'A' * (all->map[y][x] == '0') 
 			+ 'B' * (all->map[y][x] == '1') 
 			+ 'Z' * (all->map[y][x] == all->plrpos.direction);
-	else if (mode == decrypt)
+	else if (mode == _decrypt)
 		all->map[y][x] = '0' * (all->map[y][x] == 'A') 
 			+ '1' * (all->map[y][x] == 'B') 
 			+ all->plrpos.direction * (all->map[y][x] == 'Z');
@@ -73,9 +73,9 @@ static bool	find_any(t_any *any, t_all *all, t_mode mode)
 		any->x = -1;
 		while (all->map[any->y][++any->x])
 		{
-			if (mode == encrypt && all->map[any->y][any->x] == '0')
+			if (mode == _encrypt && all->map[any->y][any->x] == '0')
 				return (true);
-			else if (mode == decrypt && all->map[any->y][any->x] == 'A')
+			else if (mode == _decrypt && all->map[any->y][any->x] == 'A')
 				return (true);
 		}
 	}
@@ -90,8 +90,8 @@ bool	check_extra_regions(t_all *all)
 {
 	t_any	any;
 
-	find_any(&any, all, encrypt);
-	proceed(encrypt, any.y, any.x, all);
+	find_any(&any, all, _encrypt);
+	proceed(_encrypt, any.y, any.x, all);
 #ifdef DEBUG
 {
 	for (int i = 0; all->map[i]; i++)
@@ -100,10 +100,10 @@ bool	check_extra_regions(t_all *all)
 	}
 }
 #endif
-	if (find_any(&any, all, encrypt))
+	if (find_any(&any, all, _encrypt))
 		return (true);
-	find_any(&any, all, decrypt);
-	proceed(decrypt, any.y, any.x, all);
+	find_any(&any, all, _decrypt);
+	proceed(_decrypt, any.y, any.x, all);
 	#ifdef DEBUG
 {
 	for (int i = 0; all->map[i]; i++)
