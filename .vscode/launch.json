@@ -8,17 +8,14 @@
 			"name": "(gdb) Launch",
 			"type": "cppdbg",
 			"request": "launch",
-			"program": "${workspaceFolder}/Module01/ex04/replace",
+			"program": "${workspaceFolder}/Module02/ex01/Fixed",
 			"args": [
-				"file1",
-				"hello",
-				"general"
 			],
 			"stopAtEntry": false,
-			"cwd": "${workspaceFolder}/Module01/ex04/",
+			"cwd": "${workspaceFolder}/Module02/ex01/",
 			"environment": [],
 			"externalConsole": false,
-			"MIMode": "lldb",
+			"MIMode": "gdb",
 			"setupCommands": [
 				{
 					"description": "Enable pretty-printing for gdb",
