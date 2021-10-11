@@ -1,7 +1,7 @@
-NO ./file1
-SO ./file2
-WE ./file3
-EA ./file4
+NO ./1.xpm
+SO ./2.xpm
+WE ./1.xpm
+EA ./2.xpm
 
 F 220,100,0
 C 225,30,255

@@ -12,20 +12,49 @@
 
 #include "cub3d.h"
 
-t_win	mlx_create( int width, int height )
+t_win	*mlx_create( int width, int height )
 {
-	t_win	win;
+	t_win	*win;
 
-	win.mlx = mlx_init();
-	win.win = mlx_new_window(win.mlx, width, height, "cube3d!");
+	win = malloc(sizeof(t_win));
+	win->mlx = mlx_init();
+	win->win = mlx_new_window(win->mlx, width, height, "cube3d!");
 	return (win);
 }
 
-bool	game(t_all *all)
+char	**ft_lstToChar(t_dlist *lst)
 {
-	t_win	win;
+	t_dlist	*tmp;
+	char	**ret;
+	int		lenfix;
+	int		len;
 
-	win = mlx_create(1024, 512);
-	all->win = win.win;
+	tmp = lst;
+	if (!lst || !lst->content)
+		return (NULL);
+	lenfix = (len = ft_lstsizeD(lst)) - 1;
+	ret = (char **)malloc(sizeof(char *) * (len + 1));
+	if (!ret)
+		return (NULL);
+	ret[len] = NULL;
+	while (len--)
+	{
+		if (!tmp->content)
+			return (NULL);
+		ret[lenfix - len] = tmp->content;
+		tmp = tmp->next;
+	}
+	return (ret);
+}
+
+
+
+bool	game(t_all *all, int width, int height)
+{
+	t_point	s_img;
+
+	all->win = mlx_create(width, height);
+	all->win->img = mlx_xpm_file_to_image(all->win->mlx, all->textures[0], &s_img.x, &s_img.y);
+	mlx_put_image_to_window(all->win->mlx, all->win->win, all->win->img, width / 2, height / 2);
 	return (false);
 }

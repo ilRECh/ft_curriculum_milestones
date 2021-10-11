@@ -104,6 +104,6 @@ bool	fall(t_all *all);
 //
 // game
 //
-bool	game(t_all *all);
+bool	game(t_all *all, int width, int height);
 
 #endif //CUB3D_H
