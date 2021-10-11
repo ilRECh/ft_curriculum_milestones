@@ -56,5 +56,7 @@ bool	game(t_all *all, int width, int height)
 	all->win = mlx_create(width, height);
 	all->win->img = mlx_xpm_file_to_image(all->win->mlx, all->textures[0], &s_img.x, &s_img.y);
 	mlx_put_image_to_window(all->win->mlx, all->win->win, all->win->img, width / 2, height / 2);
+	all->win->img = mlx_xpm_file_to_image(all->win->mlx, all->textures[1], &s_img.x, &s_img.y);
+	mlx_put_image_to_window(all->win->mlx, all->win->win, all->win->img, width / 2 + s_img.x, height / 2);
 	return (false);
 }
