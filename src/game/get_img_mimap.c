@@ -95,27 +95,13 @@ t_image	*create_img_minimap(t_all *all, t_point map_size, int width, int height)
 	return (img_map);
 }
 
+// создаю изображение миникарты и задаю коодинаты игроку
 t_image	*get_img_mimap(t_all *all)
 {
-	t_point	i;
 	t_point	map_size;
 
-	i.x = (i.y = -1);
 	map_size = map_len(all->map);
-	while (++i.y < map_size.y)
-	{
-		while (++i.x < map_size.x)
-		{
-			if (ft_strchr("EWSN", all->map[i.y][i.x]))
-			{
-				all->plrpos.direction = all->map[i.y][i.x];
-				all->plrpos.x = i.x;
-				all->plrpos.y = i.y;
-				i.y = map_size.y;
-				break;
-			}
-		}
-		i.x = -1;
-	}
+	set_plrpos(all, map_size);
+	set_plr(all, all->plrpos.x, all->plrpos.y, 0.5f);
 	return (create_img_minimap(all, map_size, 400, 200));
 }

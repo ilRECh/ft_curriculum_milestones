@@ -70,8 +70,8 @@ typedef struct s_all // структура для всего вместе
 	int		map_height;
 	struct s_plrpos
 	{
-		float	x;
-		float	y;
+		int	x;
+		int	y;
 		char	direction;
 	}		plrpos;
 	char	*err;
@@ -118,5 +118,8 @@ bool	fall(t_all *all);
 bool	game(t_all *all, int width, int height);
 // img map
 t_image	*get_img_mimap(t_all *all);
+// plr
+void	set_plrpos(t_all *all, t_point map_size);
+void	set_plr(t_all *all, float x, float y, float direction);
 
 #endif //CUB3D_H
