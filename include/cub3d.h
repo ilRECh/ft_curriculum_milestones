@@ -77,6 +77,17 @@ typedef struct s_all // структура для всего вместе
 	char	*err;
 }	t_all;
 
+typedef struct s_image // структура для изображений
+{
+	void	*img;
+	void	*addr;
+	uint16_t	width;
+	uint16_t	height;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}	t_image;
+
 ///
 ///	PARSING
 ///
@@ -105,5 +116,7 @@ bool	fall(t_all *all);
 // game
 //
 bool	game(t_all *all, int width, int height);
+// img map
+t_image	*get_img_mimap(t_all *all);
 
 #endif //CUB3D_H

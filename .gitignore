@@ -8,3 +8,5 @@ file*
 */*/*.a
 */*/*/*.a
 .vscode
+**/*DS_Store
+*Screen\ Shot*.png

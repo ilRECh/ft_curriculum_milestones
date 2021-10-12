@@ -18,7 +18,7 @@ t_win	*mlx_create( int width, int height )
 
 	win = malloc(sizeof(t_win));
 	win->mlx = mlx_init();
-	win->win = mlx_new_window(win->mlx, width, height, "cube3d!");
+	win->win = mlx_new_window(win->mlx, width, height, "default");
 	return (win);
 }
 
@@ -47,16 +47,21 @@ char	**ft_lstToChar(t_dlist *lst)
 	return (ret);
 }
 
-
-
 bool	game(t_all *all, int width, int height)
 {
 	t_point	s_img;
+	t_image	*img_mimap;
 
 	all->win = mlx_create(width, height);
+	img_mimap = get_img_mimap(all);
+
+
 	all->win->img = mlx_xpm_file_to_image(all->win->mlx, all->textures[0], &s_img.x, &s_img.y);
-	mlx_put_image_to_window(all->win->mlx, all->win->win, all->win->img, width / 2, height / 2);
+	mlx_put_image_to_window(all->win->mlx, all->win->win, all->win->img, width / 4, height / 4);
 	all->win->img = mlx_xpm_file_to_image(all->win->mlx, all->textures[1], &s_img.x, &s_img.y);
-	mlx_put_image_to_window(all->win->mlx, all->win->win, all->win->img, width / 2 + s_img.x, height / 2);
+	mlx_put_image_to_window(all->win->mlx, all->win->win, all->win->img, width / 4 + s_img.x, height / 4);
+
+
+	mlx_put_image_to_window(all->win->mlx, all->win->win, img_mimap->img, width / 3, height / 3);
 	return (false);
 }

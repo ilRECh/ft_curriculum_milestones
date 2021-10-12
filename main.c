@@ -45,7 +45,7 @@ int	cub3d(char *map)
 		fall(&all);
 		return (1);
 	}
-	game(&all, 1024, 768);
+	game(&all, 1000, 1000);
 	mlx_loop(all.win);
 	return (0);
 }

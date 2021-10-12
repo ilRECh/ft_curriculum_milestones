@@ -37,7 +37,8 @@ GNL						=	./src/get_next_line/gnl.a
 LIBFT_MAKE				=	./src/libft/
 LIBFT					=	./src/libft/libft.a
 
-GAME_LIST				=	game.c
+GAME_LIST				=	game.c\
+							get_img_mimap.c
 GAME_DIR				=	src/game/
 GAME					=	$(addprefix $(GAME_DIR), $(GAME_LIST))
 
@@ -75,7 +76,7 @@ RESET					=	\033[0m
 all: libs $(NAME)
 
 $(NAME): $(LIBFT) $(OBJS)
-	@$(GCC) $(OBJS) $(LIBFT) $(GNL) $(MLX) -o $(NAME) -framework opengl -framework appkit
+	@$(GCC) $(OBJS) $(LIBFT) $(GNL) $(MLX) -o $(NAME) -framework OpenGL -framework AppKit
 	@echo "\n$(NAME): $(GREEN)object files were created$(RESET)"
 	@echo "$(NAME): $(GREEN)$(NAME) was created$(RESET)"
 
