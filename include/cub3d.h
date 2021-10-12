@@ -70,8 +70,8 @@ typedef struct s_all // структура для всего вместе
 	int		map_height;
 	struct s_plrpos
 	{
-		int		x;
-		int		y;
+		float	x;
+		float	y;
 		char	direction;
 	}		plrpos;
 	char	*err;

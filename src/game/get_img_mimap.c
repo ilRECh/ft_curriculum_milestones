@@ -7,7 +7,7 @@
 #define MLX_WHT 0xFFFFFF
 #define MLX_GRY 0x666666
 
-// считаю габариты карты
+// считаю габариты карты x & y
 t_point		map_len(char **maps)
 {
 	t_point	point;
@@ -82,13 +82,13 @@ t_image	*new_image(void *mlx, int width, int height)
 }
 
 // создаю изображение миникарты
-t_image	*create_img_minimap(t_all *all, t_point point, int width, int height)
+t_image	*create_img_minimap(t_all *all, t_point map_size, int width, int height)
 {
 	t_point	topnt;
 	t_image	*img_map;
 
-	topnt.x = width / point.x;
-	topnt.y = height / point.y;
+	topnt.x = width / map_size.x;
+	topnt.y = height / map_size.y;
 
 	img_map = new_image(all->win->mlx, width, height);
 	draw_to_img_minmap(img_map, all->map, topnt);
@@ -97,8 +97,25 @@ t_image	*create_img_minimap(t_all *all, t_point point, int width, int height)
 
 t_image	*get_img_mimap(t_all *all)
 {
-	t_point	size;
+	t_point	i;
+	t_point	map_size;
 
-	size = map_len(all->map);
-	return (create_img_minimap(all, size, 400, 200));
+	i.x = (i.y = -1);
+	map_size = map_len(all->map);
+	while (++i.y < map_size.y)
+	{
+		while (++i.x < map_size.x)
+		{
+			if (ft_strchr("EWSN", all->map[i.y][i.x]))
+			{
+				all->plrpos.direction = all->map[i.y][i.x];
+				all->plrpos.x = i.x;
+				all->plrpos.y = i.y;
+				i.y = map_size.y;
+				break;
+			}
+		}
+		i.x = -1;
+	}
+	return (create_img_minimap(all, map_size, 400, 200));
 }
