@@ -53,15 +53,18 @@ bool	game(t_all *all, int width, int height)
 	t_image	*img_mimap;
 
 	all->win = mlx_create(width, height);
-	all->background = new_image(all->win->mlx, width, height);
 	img_mimap = get_img_mimap(all);
-
-
+// Задаю задний фон
+	set_background(all, width, height);
+// Вставка стены 1
 	all->win->img = mlx_xpm_file_to_image(all->win->mlx, all->textures[0], &s_img.x, &s_img.y);
 	mlx_put_image_to_window(all->win->mlx, all->win->win, all->win->img, width / 4, height / 4);
-	all->win->img = mlx_xpm_file_to_image(all->win->mlx, all->textures[1], &s_img.x, &s_img.y);
-	mlx_put_image_to_window(all->win->mlx, all->win->win, all->win->img, width / 4 + s_img.x, height / 4);
+	mlx_destroy_image(all->win->mlx, all->win->img);
 
+// Вставка стены 2
+	all->win->img = mlx_xpm_file_to_image(all->win->mlx, all->textures[1], &s_img.x, &s_img.y);
+	mlx_put_image_to_window(all->win->mlx, all->win->win, all->win->img, width / 4 + s_img.x + 15, height / 4);
+	mlx_destroy_image(all->win->mlx, all->win->img);
 
 	mlx_put_image_to_window(all->win->mlx, all->win->win, img_mimap->img, width / 3, height / 3);
 	return (false);

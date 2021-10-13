@@ -33,13 +33,17 @@
 ///
 ///	DATA
 ///
+typedef struct s_point // структура для точки | и размеров
+{
+	int	x;
+	int	y;
+}	t_point;
 
 typedef struct s_image // структура для изображений
 {
 	void	*img;
 	void	*addr;
-	uint16_t	width;
-	uint16_t	height;
+	t_point	size;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
@@ -55,12 +59,6 @@ typedef struct s_win //структура для окна
 	int		bpp;
 	int		en;
 }	t_win;
-
-typedef struct s_point // структура для точки
-{
-	int	x;
-	int	y;
-}	t_point;
 
 typedef struct s_plr //структура для игрока и луча
 {
@@ -79,8 +77,14 @@ typedef struct s_all // структура для всего вместе
 	char	**textures;
 	int		**colors;
 	char	**map;
+
+	// предлагаю использовать вместо  |
+	// этих переменных, структуру	  |
 	int		map_length;
 	int		map_height;
+	// Вот эту структуру ниже		 \|/
+	t_point	map_size;
+	//--
 	struct s_plrpos
 	{
 		int	x;
@@ -121,14 +125,13 @@ bool	game(t_all *all, int width, int height);
 // img map
 t_image	*get_img_mimap(t_all *all);
 // plr
-void	set_plrpos(t_all *all, t_point map_size);
+void	set_plrpos(t_all *all);
 void	set_plr(t_all *all, float x, float y, float direction);
 // image create
 t_image	*new_image(void *mlx, int width, int height);
-// paint to image by pixel and colour 0x00FFAABB
 void	my_mlx_pixel_put(t_image *img, int x, int y, unsigned int colour);
-// Закрашивает квадрат на картинке
 void	fill_rect_to_img(t_image *img, const t_point *start, \
 	const t_point *end, const unsigned int colour);
+void	set_background(t_all *all, int width, int height);
 
 #endif //CUB3D_H

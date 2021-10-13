@@ -58,13 +58,13 @@ void	draw_to_img_minmap(t_image *img_map, char **map, t_point topnt)
 }
 
 // создаю изображение миникарты
-t_image	*create_img_minimap(t_all *all, t_point map_size, int width, int height)
+t_image	*create_img_minimap(t_all *all, int width, int height)
 {
 	t_point	topnt;
 	t_image	*img_map;
 
-	topnt.x = width / map_size.x;
-	topnt.y = height / map_size.y;
+	topnt.x = width / all->map_size.x;
+	topnt.y = height / all->map_size.y;
 
 	img_map = new_image(all->win->mlx, width, height);
 	draw_to_img_minmap(img_map, all->map, topnt);
@@ -74,10 +74,8 @@ t_image	*create_img_minimap(t_all *all, t_point map_size, int width, int height)
 // создаю изображение миникарты и задаю коодинаты игроку
 t_image	*get_img_mimap(t_all *all)
 {
-	t_point	map_size;
-
-	map_size = map_len(all->map);
-	set_plrpos(all, map_size);
+	all->map_size = map_len(all->map);
+	set_plrpos(all);
 	set_plr(all, all->plrpos.x, all->plrpos.y, 0.5f);
-	return (create_img_minimap(all, map_size, 400, 200));
+	return (create_img_minimap(all, 400, 200));
 }
