@@ -25,8 +25,8 @@ void	my_mlx_pixel_put(t_image *img, int x, int y, unsigned int colour)
 }
 
 // закрашиваю квадрат пикселей
-// если start пустой то стартуется с нуля
-// если end пустой то закрашиваю все изображение со стартовой точки;
+// если start пустой то стартуется с нуля (x = 0) & (y = 0)
+// если end пустой то закрашиваю все изображение со стартовой точки, (x = img.width) & (y = img.height)
 void	fill_rect_to_img(t_image *img, const t_point *start, const t_point *end, const unsigned int colour)
 {
 	t_point	i;
