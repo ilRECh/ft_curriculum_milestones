@@ -33,6 +33,18 @@
 ///
 ///	DATA
 ///
+
+typedef struct s_image // структура для изображений
+{
+	void	*img;
+	void	*addr;
+	uint16_t	width;
+	uint16_t	height;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}	t_image;
+
 typedef struct s_win //структура для окна
 {
 	void	*mlx;
@@ -63,6 +75,7 @@ typedef struct s_all // структура для всего вместе
 {
 	t_win	*win;
 	t_plr	*plr;
+	t_image	*background;
 	char	**textures;
 	int		**colors;
 	char	**map;
@@ -76,17 +89,6 @@ typedef struct s_all // структура для всего вместе
 	}		plrpos;
 	char	*err;
 }	t_all;
-
-typedef struct s_image // структура для изображений
-{
-	void	*img;
-	void	*addr;
-	uint16_t	width;
-	uint16_t	height;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}	t_image;
 
 ///
 ///	PARSING
@@ -121,5 +123,9 @@ t_image	*get_img_mimap(t_all *all);
 // plr
 void	set_plrpos(t_all *all, t_point map_size);
 void	set_plr(t_all *all, float x, float y, float direction);
+// image create
+t_image	*new_image(void *mlx, int width, int height);
+// paint to image by pixel and colour 0x00FFAABB
+void	my_mlx_pixel_put(t_image *img, int x, int y, unsigned int colour);
 
 #endif //CUB3D_H

@@ -39,7 +39,8 @@ LIBFT					=	./src/libft/libft.a
 
 GAME_LIST				=	game.c\
 							get_img_mimap.c\
-							set_plr_full.c
+							set_plr_full.c\
+							image_maker.c
 GAME_DIR				=	src/game/
 GAME					=	$(addprefix $(GAME_DIR), $(GAME_LIST))
 

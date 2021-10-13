@@ -20,17 +20,6 @@ t_point		map_len(char **maps)
 	return (point);
 }
 
-// закрашиваю один пиксель
-void	my_mlx_pixel_put(t_image *img, int x, int y, unsigned int colour)
-{
-	char	*dst;
-
-	if (x < 0 || x > img->width || y < 0 || y > img->height)
-		return ;
-	dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
-	*(unsigned int *)dst = colour;
-}
-
 // закрашиваю квадратик пикселей
 void	drow_big_pixel(char c, t_image *img, t_point topnt, t_point	px)
 {
@@ -66,19 +55,6 @@ void	draw_to_img_minmap(t_image *img_map, char **map, t_point topnt)
 			drow_big_pixel(map[px.y][px.x], img_map, topnt, px);
 		px.x = -1;
 	}
-}
-
-// создает новое изображение
-t_image	*new_image(void *mlx, int width, int height)
-{
-	t_image	*img;
-
-	img = malloc(sizeof(t_image));
-	img->width = width;
-	img->height = height;
-	img->img = mlx_new_image(mlx, width, height);
-	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel, &img->line_length, &img->endian);
-	return (img);
 }
 
 // создаю изображение миникарты
