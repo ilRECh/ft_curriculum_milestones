@@ -53,6 +53,7 @@ bool	game(t_all *all, int width, int height)
 	t_image	*img_mimap;
 
 	all->win = mlx_create(width, height);
+	all->background = new_image(all->win->mlx, width, height);
 	img_mimap = get_img_mimap(all);
 
 

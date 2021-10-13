@@ -127,5 +127,8 @@ void	set_plr(t_all *all, float x, float y, float direction);
 t_image	*new_image(void *mlx, int width, int height);
 // paint to image by pixel and colour 0x00FFAABB
 void	my_mlx_pixel_put(t_image *img, int x, int y, unsigned int colour);
+// Закрашивает квадрат на картинке
+void	fill_rect_to_img(t_image *img, const t_point *start, \
+	const t_point *end, const unsigned int colour);
 
 #endif //CUB3D_H
