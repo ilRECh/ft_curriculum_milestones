@@ -77,3 +77,22 @@ void	Fixed::setRawBits( int const raw )
 	std::cout << "setRawBits member function called" << std::endl;
 	m_nValue = raw;
 }
+
+float	Fixed::toFloat( void ) const
+{
+	float			sign = 1.0f;
+	float			integer = (((m_nValue < 0) ? ((m_nValue & (0xFFFFFFFF << m_nFraction)) * -1) : (m_nValue &(0xFFFFFFFF << m_nFraction)))) >> m_nFraction;
+	float			decimal = 0.0f;
+	unsigned int	tmp_dec = m_nValue & 0x000000FF;
+	int				i = m_nFraction - 1;
+
+	*((unsigned int *)&sign) |= ((m_nValue >> 31) & 1) << 31;
+	for (; i >= 0; --i)
+	{
+		if (tmp_dec & (1 << i))
+			break ;
+	}
+	tmp_dec ^= 1 << i; 
+	*((unsigned int *)&decimal) |= (((i - m_nFraction) + 127) << (32 - m_nFraction - 1)) | (tmp_dec << (15 + i));
+	return (sign * integer + sign * decimal);
+}

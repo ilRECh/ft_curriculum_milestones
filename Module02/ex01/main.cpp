@@ -13,7 +13,8 @@ void	printBits(int x)
 
 int	main()
 {
-	Fixed a(2.5f);
+	Fixed a(-2.5f);
 	printBits(a.getRawBits());
+	std::cout << a.toFloat() << std::endl;
 	return (0);
 }
