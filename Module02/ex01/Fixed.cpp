@@ -56,12 +56,12 @@ Fixed::Fixed(const float n):	m_nValue(0)
 	{
 		if (exponent > 0)
 		{
-			m_nValue |= ((rawBits << (9 + exponent)) >> (32 - m_nFraction));
+			m_nValue |= ((rawBits << (m_nFraction + 1 + exponent)) >> (32 - m_nFraction));
 		}
 		else
 		{
 			m_nValue |= (1 << (m_nFraction + exponent))
-				| ((rawBits << 9) >> (32 - m_nFraction + exponent));
+				| ((rawBits << 9) >> (32 - (m_nFraction + exponent)));
 		}
 	}
 }
@@ -81,7 +81,7 @@ void	Fixed::setRawBits( int const raw )
 float	Fixed::toFloat( void ) const
 {
 	float			sign = 1.0f;
-	float			integer = (((m_nValue < 0) ? ((m_nValue & (0xFFFFFFFF << m_nFraction)) * -1) : (m_nValue &(0xFFFFFFFF << m_nFraction)))) >> m_nFraction;
+	float			integer = (((m_nValue < 0) ? ((m_nValue & (0xFFFFFFFF << m_nFraction)) * -1) : (m_nValue & (0xFFFFFFFF << m_nFraction)))) >> m_nFraction;
 	float			decimal = 0.0f;
 	unsigned int	tmp_dec = m_nValue & 0x000000FF;
 	int				i = m_nFraction - 1;
@@ -92,7 +92,25 @@ float	Fixed::toFloat( void ) const
 		if (tmp_dec & (1 << i))
 			break ;
 	}
-	tmp_dec ^= 1 << i; 
-	*((unsigned int *)&decimal) |= (((i - m_nFraction) + 127) << (32 - m_nFraction - 1)) | (tmp_dec << (15 + i));
+	if (i < 0)
+	{
+		decimal = 0.0f;
+	}
+	else
+	{
+		tmp_dec ^= 1 << i; 
+		*((unsigned int *)&decimal) |= (((i - m_nFraction) + 127) << (32 - m_nFraction - 1)) | (tmp_dec << (23 - i));
+	}
 	return (sign * integer + sign * decimal);
+}
+
+int	Fixed::toInt( void ) const 
+{
+	return ((((m_nValue < 0) ? ((m_nValue & (0xFFFFFFFF << m_nFraction)) * -1) : (m_nValue & (0xFFFFFFFF << m_nFraction))) >> m_nFraction) * ((m_nValue < 0) ? (-1) : (1)));
+}
+
+std::ostream& operator<<(std::ostream &out, const Fixed &f)
+{
+	out << f.toFloat();
+	return (out);
 }
