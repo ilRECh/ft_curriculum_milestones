@@ -15,7 +15,9 @@ int	main()
 {
 	Fixed a;
 	Fixed const b( 10 );
-	Fixed const c( 42.42f );
+	Fixed const c(42.42f);
+	float f = 42.5f;
+	printBits(*(unsigned int *)&f);
 	printBits(c.getRawBits());
 	Fixed const d( b );
 	a = Fixed( 1234.4321f );

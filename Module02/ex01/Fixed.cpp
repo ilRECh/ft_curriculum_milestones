@@ -1,16 +1,5 @@
 #include "Fixed.hpp"
 
-// typedef union u_Fixed
-// {
-// 	int	Value;
-// 	struct __attribute__ ((packed))
-// 	{
-// 		int integer:	24;
-// 		int	decimal:	8;
-// 	}	bits;
-// }	t_Fixed;
-
-
 Fixed::Fixed():	m_nValue(0)
 {
 	std::cout << "Default constructor called" << std::endl;
@@ -49,14 +38,14 @@ Fixed::Fixed(const float n):	m_nValue(0)
 		return ;
 
 	m_nValue |= ((((int)n >> 31) & 1) << 31)
-		| (((int)n << (m_nFraction + 1)) >> 1);
+		| ((int)n << m_nFraction);
 	unsigned int rawBits = *(unsigned int *)&n;
 	char exponent = ((rawBits << 1) >> 24) - 127;
-	if (exponent >= -8 && exponent <= 22)
+	if (exponent >= (m_nFraction * -1) && exponent <= 22)
 	{
 		if (exponent > 0)
 		{
-			m_nValue |= ((rawBits << (m_nFraction + 1 + exponent)) >> (32 - m_nFraction));
+			m_nValue |= ((rawBits << (9 + exponent)) >> (32 - m_nFraction));
 		}
 		else
 		{
@@ -83,7 +72,7 @@ float	Fixed::toFloat( void ) const
 	float			sign = 1.0f;
 	float			integer = (((m_nValue < 0) ? ((m_nValue & (0xFFFFFFFF << m_nFraction)) * -1) : (m_nValue & (0xFFFFFFFF << m_nFraction)))) >> m_nFraction;
 	float			decimal = 0.0f;
-	unsigned int	tmp_dec = m_nValue & 0x000000FF;
+	unsigned int	tmp_dec = m_nValue & ~(0xFFFFFFFF << m_nFraction);
 	int				i = m_nFraction - 1;
 
 	*((unsigned int *)&sign) |= ((m_nValue >> 31) & 1) << 31;
@@ -99,7 +88,7 @@ float	Fixed::toFloat( void ) const
 	else
 	{
 		tmp_dec ^= 1 << i; 
-		*((unsigned int *)&decimal) |= (((i - m_nFraction) + 127) << (32 - m_nFraction - 1)) | (tmp_dec << (23 - i));
+		*((unsigned int *)&decimal) |= (((i - m_nFraction) + 127) << 23) | (tmp_dec << (23 - i));
 	}
 	return (sign * integer + sign * decimal);
 }
