@@ -35,6 +35,7 @@ SRCS	= ft_bzero.c\
 		  ft_putstr_fd.c\
 		  ft_putendl_fd.c\
 		  ft_putnbr_fd.c\
+		  ft_lst_to_char.c\
 		  ft_lstnewS.c\
 		  ft_lstadd_frontS.c\
 		  ft_lstsizeS.c\

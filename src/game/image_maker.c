@@ -1,26 +1,25 @@
 #include "cub3d.h"
 
 // создает новое изображение
-t_image	*new_image(void *mlx, int width, int height)
+t_image	*new_image(void *mlx, t_point size)
 {
 	t_image	*img;
 
 	img = malloc(sizeof(t_image));
-	img->size.x = width;
-	img->size.y = height;
-	img->img = mlx_new_image(mlx, width, height);
+	img->size = size;
+	img->img = mlx_new_image(mlx, size.x, size.y);
 	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel, &img->line_length, &img->endian);
 	return (img);
 }
 
 // закрашиваю один пиксель
-void	my_mlx_pixel_put(t_image *img, int x, int y, unsigned int colour)
+void	pixel_put(t_image *img, t_point	p, unsigned int colour)
 {
 	char	*dst;
 
-	if (x < 0 || x > img->size.x || y < 0 || y > img->size.y)
+	if (p.x < 0 || p.x > img->size.x || p.y < 0 || p.y > img->size.y)
 		return ;
-	dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
+	dst = img->addr + (p.y * img->line_length + p.x * (img->bits_per_pixel / 8));
 	*(unsigned int *)dst = colour;
 }
 
@@ -40,34 +39,32 @@ void	fill_rect_to_img(t_image *img, const t_point *start, const t_point *end, co
 	if (end)
 		e = *end;
 	else
-	{
-		e.x = img->size.x;
-		e.y = img->size.y;
-	}
-	i = s, i.x--, i.y--;
+		e = img->size;
+	i = point_minus(s, point_set(-1, -1));
 	while (++i.y < e.y)
 	{
 		while (++i.x < e.x)
-			my_mlx_pixel_put(img, i.x, i.y, colour);
+			pixel_put(img, i, colour);
 		i.x = s.x - 1;
 	}
 }
 
 // Make background | ceiling and floor
-void	set_background(t_all *all, int width, int height)
+void	set_background(t_all *all)
 {
 	t_point	end;
 	t_point	start;
-	if (!all->background)
+
+	if (!all->buff)
 	{
-		all->background = new_image(all->win->mlx, width, height);
-		start.x = (start.y = 0);
-		end = all->background->size;
+		all->buff = new_image(all->win->mlx, all->screen_size);
+		start = point_set(0, 0);
+		end = all->buff->size;
 		end.y /= 2;
-		fill_rect_to_img(all->background, &start, &end, 0x005055CC);
+		fill_rect_to_img(all->buff, &start, &end, 0x005055CC);
 		start.y = end.y;
 		end.y *= 2;
-		fill_rect_to_img(all->background, &start, &end, 0x00201510);
+		fill_rect_to_img(all->buff, &start, &end, 0x00201510);
 	}
-	mlx_put_image_to_window(all->win->mlx, all->win->win, all->background->img, 0, 0);
+	image_to_window(all, all->buff, point_set(0, 0));
 }

@@ -7,21 +7,8 @@
 #define MLX_WHT 0xFFFFFF
 #define MLX_GRY 0x666666
 
-// считаю габариты карты x & y
-t_point		map_len(char **maps)
-{
-	t_point	point;
-
-	point.x = (point.y = 0);
-	while (maps[point.y][point.x])
-		point.x++;
-	while (maps[point.y])
-		point.y++;
-	return (point);
-}
-
 // закрашиваю квадратик пикселей
-void	drow_big_pixel(char c, t_image *img, t_point topnt, t_point	px)
+void	drow_big_pixel(char c, t_image *img, t_point scale, t_point	px)
 {
 	unsigned int		colour = 0xFF000000;
 	t_point	i;
@@ -32,50 +19,40 @@ void	drow_big_pixel(char c, t_image *img, t_point topnt, t_point	px)
 		colour = MLX_GRY;
 	else if (c == 'W')
 		colour = MLX_GRN;
-	px.x *= topnt.x;
-	px.y *= topnt.y;
-	i.x = (i.y = -1);
-	while (++i.y < topnt.y)
+	px = point_multiple(px, scale);
+	i = point_plus(px, scale);
+	while (++i.y < scale.y)
 	{
-		while (++i.x < topnt.x)
-			my_mlx_pixel_put(img, px.x + i.x, px.y + i.y, colour);
+		while (++i.x < scale.x)
+			pixel_put(img, point_plus(px, i), colour);
+			// pixel_put(img, px.x + i.x, px.y + i.y, colour);
 		i.x = -1;
 	}
 }
 
 // Закрашиваю изображение, (стена, пол или игрок)
-void	draw_to_img_minmap(t_image *img_map, char **map, t_point topnt)
+void	draw_to_buff_minmap(t_all *all, int div_map)
 {
 	t_point	px;
+	t_point	coef;
 
-	px.x = (px.y = -1);
-	while (map[++px.y])
+	coef = point_divide(point_divide(all->screen_size, point_set(div_map, div_map)), all->map_size);
+	px = point_set(-1, -1);
+	while (all->map[++px.y])
 	{
-		while (map[px.y][++px.x])
-			drow_big_pixel(map[px.y][px.x], img_map, topnt, px);
+		while (all->map[px.y][++px.x])
+		{
+			drow_big_pixel(all->map[px.y][px.x], all->buff, coef, \
+				point_plus(px, point_set(50, 50)));
+		}
 		px.x = -1;
 	}
 }
 
-// создаю изображение миникарты
-t_image	*create_img_minimap(t_all *all, int width, int height)
+// рисую изображение миникарты на буфере и задаю коодинаты игроку
+void	draw_mini_map(t_all *all)
 {
-	t_point	topnt;
-	t_image	*img_map;
-
-	topnt.x = width / all->map_size.x;
-	topnt.y = height / all->map_size.y;
-
-	img_map = new_image(all->win->mlx, width, height);
-	draw_to_img_minmap(img_map, all->map, topnt);
-	return (img_map);
-}
-
-// создаю изображение миникарты и задаю коодинаты игроку
-t_image	*get_img_mimap(t_all *all)
-{
-	all->map_size = map_len(all->map);
 	set_plrpos(all);
-	set_plr(all, all->plrpos.x, all->plrpos.y, 0.5f);
-	return (create_img_minimap(all, 400, 200));
+	set_plr(all, all->plrpos.x, all->plrpos.y, 10);
+	draw_to_buff_minmap(all, 20);
 }

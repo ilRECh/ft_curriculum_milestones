@@ -171,6 +171,7 @@ typedef struct s_dlist
 	struct s_dlist	*prev;
 }	t_dlist;
 
+char			**ft_lst_to_char(t_dlist *lst);
 t_dlist			*ft_lstnewD(void *content);
 void			ft_lstadd_frontD(t_dlist **lst, void *cont);
 int				ft_lstsizeD(t_dlist *lst);

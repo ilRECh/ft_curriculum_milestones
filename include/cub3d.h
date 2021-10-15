@@ -16,8 +16,8 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <fcntl.h>
-# include "libft.h"
 # include "mlx.h"
+# include "libft.h"
 # include "get_next_line.h"
 
 # define NORTH 0
@@ -73,7 +73,8 @@ typedef struct s_all // структура для всего вместе
 {
 	t_win	*win;
 	t_plr	*plr;
-	t_image	*background;
+	t_image	*buff;
+	t_point	screen_size;
 	char	**textures;
 	int		**colors;
 	char	**map;
@@ -121,17 +122,30 @@ bool	fall(t_all *all);
 //
 // game
 //
-bool	game(t_all *all, int width, int height);
+bool	game(t_all *all);
 // img map
-t_image	*get_img_mimap(t_all *all);
+void	draw_mini_map(t_all *all);
 // plr
 void	set_plrpos(t_all *all);
 void	set_plr(t_all *all, float x, float y, float direction);
 // image create
-t_image	*new_image(void *mlx, int width, int height);
-void	my_mlx_pixel_put(t_image *img, int x, int y, unsigned int colour);
+t_image	*new_image(void *mlx, t_point size);
+void	pixel_put(t_image *img, t_point p, unsigned int colour);
 void	fill_rect_to_img(t_image *img, const t_point *start, \
 	const t_point *end, const unsigned int colour);
-void	set_background(t_all *all, int width, int height);
+void	set_background(t_all *all);
+// utils_point
+t_point point_set(int x, int y);
+t_point point_plus(t_point p1, t_point p2);
+t_point point_minus(t_point p1, t_point p2);
+t_point point_divide(t_point p1, t_point p2);
+t_point point_multiple(t_point p1, t_point p2);
 
+//
+//	wrappers
+//
+int		image_to_window(t_all *all, const t_image *img, t_point position);
+t_image	*xpm_to_new_image(t_all *all, char *path_to_xpm);
+t_image	xpm_to_image(t_all *all, char *path_to_xpm);
+int	image_free(t_all *all, t_image	*img, bool mode);
 #endif //CUB3D_H

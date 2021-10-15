@@ -12,6 +12,19 @@
 
 #include "cub3d.h"
 
+// считаю габариты карты x & y
+t_point		map_len(char **maps)
+{
+	t_point	point;
+
+	point.x = (point.y = 0);
+	while (maps[point.y][point.x])
+		point.x++;
+	while (maps[point.y])
+		point.y++;
+	return (point);
+}
+
 t_win	*mlx_create( int width, int height )
 {
 	t_win	*win;
@@ -22,50 +35,23 @@ t_win	*mlx_create( int width, int height )
 	return (win);
 }
 
-char	**ft_lstToChar(t_dlist *lst)
+bool	game(t_all *all)
 {
-	t_dlist	*tmp;
-	char	**ret;
-	int		lenfix;
-	int		len;
+	t_image	img;
 
-	tmp = lst;
-	if (!lst || !lst->content)
-		return (NULL);
-	lenfix = (len = ft_lstsizeD(lst)) - 1;
-	ret = (char **)malloc(sizeof(char *) * (len + 1));
-	if (!ret)
-		return (NULL);
-	ret[len] = NULL;
-	while (len--)
-	{
-		if (!tmp->content)
-			return (NULL);
-		ret[lenfix - len] = tmp->content;
-		tmp = tmp->next;
-	}
-	return (ret);
-}
-
-bool	game(t_all *all, int width, int height)
-{
-	t_point	s_img;
-	t_image	*img_mimap;
-
-	all->win = mlx_create(width, height);
-	img_mimap = get_img_mimap(all);
+	all->map_size = map_len(all->map);
+	all->win = mlx_create(all->screen_size.x, all->screen_size.y);
 // Задаю задний фон
-	set_background(all, width, height);
+	set_background(all);
 // Вставка стены 1
-	all->win->img = mlx_xpm_file_to_image(all->win->mlx, all->textures[0], &s_img.x, &s_img.y);
-	mlx_put_image_to_window(all->win->mlx, all->win->win, all->win->img, width / 4, height / 4);
-	mlx_destroy_image(all->win->mlx, all->win->img);
+	img = xpm_to_image(all, all->textures[0]);
+	image_to_window(all, &img, point_set(0, 0));
+	image_free(all, &img, false);
 
-// Вставка стены 2
-	all->win->img = mlx_xpm_file_to_image(all->win->mlx, all->textures[1], &s_img.x, &s_img.y);
-	mlx_put_image_to_window(all->win->mlx, all->win->win, all->win->img, width / 4 + s_img.x + 15, height / 4);
-	mlx_destroy_image(all->win->mlx, all->win->img);
+	img = xpm_to_image(all, all->textures[1]);
+	image_to_window(all, &img, point_set(img.size.x, 0));
+	image_free(all, &img, false);
 
-	mlx_put_image_to_window(all->win->mlx, all->win->win, img_mimap->img, width / 3, height / 3);
+	draw_mini_map(all);
 	return (false);
 }
