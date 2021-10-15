@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: name <name@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 12:36:39 by name              #+#    #+#             */
-/*   Updated: 2021/10/03 15:12:10 by name             ###   ########.fr       */
+/*   Updated: 2021/10/15 17:19:29 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,4 +150,5 @@ int		image_to_window(t_all *all, const t_image *img, t_point position);
 t_image	*xpm_to_new_image(t_all *all, char *path_to_xpm);
 t_image	xpm_to_image(t_all *all, char *path_to_xpm);
 int	image_free(t_all *all, t_image	*img, bool mode);
+
 #endif //CUB3D_H
