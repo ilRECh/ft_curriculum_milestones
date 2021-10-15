@@ -130,7 +130,9 @@ void	set_plrpos(t_all *all);
 void	set_plr(t_all *all, float x, float y, float direction);
 // image create
 t_image	*new_image(void *mlx, t_point size);
+void    image_to_image_cp(t_image *dst, t_image *src, t_point position);
 void	pixel_put(t_image *img, t_point p, unsigned int colour);
+unsigned int	pixel_get(t_image *img, t_point	p);
 void	fill_rect_to_img(t_image *img, const t_point *start, \
 	const t_point *end, const unsigned int colour);
 void	set_background(t_all *all);

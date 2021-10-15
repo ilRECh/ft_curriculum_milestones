@@ -45,11 +45,13 @@ bool	game(t_all *all)
 	set_background(all);
 // Вставка стены 1
 	img = xpm_to_image(all, all->textures[0]);
-	image_to_window(all, &img, point_set(0, 0));
+	image_to_image_cp(all->buff, &img, point_set(50, 50));
+	// image_to_window(all, all->buff, point_set(0, 0));
 	image_free(all, &img, false);
 
 	img = xpm_to_image(all, all->textures[1]);
-	image_to_window(all, &img, point_set(img.size.x, 0));
+	image_to_image_cp(all->buff, &img, point_set(img.size.x + 50, 50));
+	// image_to_window(all, all->buff, point_set(img.size.x, 0));
 	image_free(all, &img, false);
 
 	draw_mini_map(all);

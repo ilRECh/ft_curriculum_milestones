@@ -19,8 +19,8 @@ void	drow_big_pixel(char c, t_image *img, t_point scale, t_point	px)
 		colour = MLX_GRY;
 	else if (c == 'W')
 		colour = MLX_GRN;
-	px = point_multiple(px, scale);
-	i = point_plus(px, scale);
+	i = point_multiple(px, scale);
+	scale = point_plus(i, scale);
 	while (++i.y < scale.y)
 	{
 		while (++i.x < scale.x)
@@ -36,7 +36,8 @@ void	draw_to_buff_minmap(t_all *all, int div_map)
 	t_point	px;
 	t_point	coef;
 
-	coef = point_divide(point_divide(all->screen_size, point_set(div_map, div_map)), all->map_size);
+	coef = point_divide(all->screen_size, all->map_size);
+	coef = point_divide(coef, point_set(div_map, div_map));
 	px = point_set(-1, -1);
 	while (all->map[++px.y])
 	{
@@ -54,5 +55,6 @@ void	draw_mini_map(t_all *all)
 {
 	set_plrpos(all);
 	set_plr(all, all->plrpos.x, all->plrpos.y, 10);
-	draw_to_buff_minmap(all, 20);
+	draw_to_buff_minmap(all, 6);
+	image_to_window(all, all->buff, point_set(0, 0));
 }

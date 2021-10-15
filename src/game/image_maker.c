@@ -12,15 +12,27 @@ t_image	*new_image(void *mlx, t_point size)
 	return (img);
 }
 
-// закрашиваю один пиксель
+// закрашиваю один пиксель на изображении
 void	pixel_put(t_image *img, t_point	p, unsigned int colour)
 {
 	char	*dst;
 
-	if (p.x < 0 || p.x > img->size.x || p.y < 0 || p.y > img->size.y)
+	if (p.x < 0 || p.x >= img->size.x || p.y < 0 || p.y >= img->size.y)
 		return ;
-	dst = img->addr + (p.y * img->line_length + p.x * (img->bits_per_pixel / 8));
+	dst = img->addr + ((p.y * img->line_length) + (p.x * (img->bits_per_pixel / 8)));
 	*(unsigned int *)dst = colour;
+}
+// Получаю пиксель из изображения
+unsigned int pixel_get(t_image *img, t_point	p)
+{
+	void	*dst;
+	unsigned int ret;
+
+	if (p.x < 0 || p.x >= img->size.x || p.y < 0 || p.y >= img->size.y)
+		return (0xFF000000);
+	dst = img->addr + ((p.y * img->line_length) + (p.x * (img->bits_per_pixel / 8)));
+	ret = *(unsigned int *)dst;
+	return(ret);
 }
 
 // закрашиваю квадрат пикселей
@@ -66,5 +78,5 @@ void	set_background(t_all *all)
 		end.y *= 2;
 		fill_rect_to_img(all->buff, &start, &end, 0x00201510);
 	}
-	image_to_window(all, all->buff, point_set(0, 0));
+	// image_to_window(all, all->buff, point_set(0, 0));
 }
