@@ -52,7 +52,7 @@ Fixed::Fixed(const float n):	m_nValue(0)
 		| (((int)n << (m_nFraction + 1)) >> 1);
 	unsigned int rawBits = *(unsigned int *)&n;
 	char exponent = ((rawBits << 1) >> 24) - 127;
-	if (exponent >= -8 && exponent <= 22)
+	if (exponent >= (m_nFraction * -1) && exponent <= 22)
 	{
 		if (exponent > 0)
 		{
