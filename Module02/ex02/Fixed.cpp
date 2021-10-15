@@ -2,22 +2,18 @@
 
 Fixed::Fixed():	m_nValue(0)
 {
-	std::cout << "Default constructor called" << std::endl;
 }
 
 Fixed::~Fixed()
 {
-	std::cout << "Destructor called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed &f):	m_nValue(f.m_nValue)
 {
-	std::cout << "Copy constructor called" << std::endl;
 }
 
 Fixed& Fixed::operator=(const Fixed &f)
 {
-	std::cout << "Assignation operator called" << std::endl;
 	if (this == &f)
         return (*this);
 	m_nValue = f.m_nValue;
@@ -57,13 +53,11 @@ Fixed::Fixed(const float n):	m_nValue(0)
 
 int	Fixed::getRawBits( void ) const
 {
-	std::cout << "getRawBits member function called" << std::endl;
 	return (m_nValue);
 }
 
 void	Fixed::setRawBits( int const raw )
 {
-	std::cout << "setRawBits member function called" << std::endl;
 	m_nValue = raw;
 }
 
@@ -96,6 +90,118 @@ float	Fixed::toFloat( void ) const
 int	Fixed::toInt( void ) const 
 {
 	return ((((m_nValue < 0) ? ((m_nValue & (0xFFFFFFFF << m_nFraction)) * -1) : (m_nValue & (0xFFFFFFFF << m_nFraction))) >> m_nFraction) * ((m_nValue < 0) ? (-1) : (1)));
+}
+
+bool Fixed::operator>(const Fixed &A) const
+{
+	return (toFloat() > A.toFloat());
+}
+
+bool Fixed::operator<(const Fixed &A) const
+{
+	return (toFloat() < A.toFloat());
+}
+
+bool Fixed::operator>=(const Fixed &A) const
+{
+	return (toFloat() >= A.toFloat());
+}
+
+bool Fixed::operator<=(const Fixed &A) const
+{
+	return (toFloat() <= A.toFloat());
+}
+
+bool Fixed::operator==(const Fixed &A) const
+{
+	return (toFloat() == A.toFloat());
+}
+
+bool Fixed::operator!=(const Fixed &A) const
+{
+	return (toFloat() != A.toFloat());
+}
+
+Fixed Fixed::operator+(const Fixed &A)
+{
+	return (Fixed(toFloat() + A.toFloat()));
+}
+
+Fixed Fixed::operator-(const Fixed &A)
+{
+	return (Fixed(toFloat() - A.toFloat()));
+}
+
+Fixed Fixed::operator*(const Fixed &A)
+{
+	return (Fixed(toFloat() * A.toFloat()));
+}
+
+Fixed Fixed::operator/(const Fixed &A)
+{
+	return (Fixed(toFloat() / A.toFloat()));
+}
+
+Fixed& Fixed::operator++()
+{
+	float tmp = 0.0f;
+	*(unsigned int*)&tmp |= (m_nFraction * -1 + 127) << 23;
+	*this = Fixed(toFloat() + tmp);
+	return (*this);
+}
+
+Fixed Fixed::operator++(int)
+{
+	Fixed tmp = *this;
+	++(*this);
+	return (tmp);
+}
+
+Fixed& Fixed::operator--()
+{
+	float tmp = 0.0f;
+	*(unsigned int*)&tmp |= (m_nFraction * -1 + 127) << 23;
+	*this = Fixed(toFloat() - tmp);
+	return (*this);
+}
+
+Fixed Fixed::operator--(int)
+{
+	Fixed tmp = *this;
+	--(*this);
+	return (tmp);
+}
+
+Fixed& Fixed::min(Fixed& A, Fixed& B)
+{
+	if (A.toFloat() <= B.toFloat())
+		return (A);
+	else
+		return (B);
+}
+
+const Fixed& Fixed::min(const Fixed& A, const Fixed& B)
+{
+	if (A.toFloat() <= B.toFloat())
+		return (A);
+	else
+		return (B);
+}
+
+Fixed& Fixed::max(Fixed &A, Fixed &B)
+{
+	if (A.toFloat() >= B.toFloat())
+		return (A);
+	else
+		return (B);
+}
+
+const Fixed& Fixed::max(const Fixed& A, const Fixed& B)
+{
+	if (A.toFloat() >= B.toFloat())
+		return (A);
+	else
+		return (B);
 }
 
 std::ostream& operator<<(std::ostream &out, const Fixed &f)
