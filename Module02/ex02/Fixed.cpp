@@ -92,32 +92,32 @@ int	Fixed::toInt( void ) const
 	return ((((m_nValue < 0) ? ((m_nValue & (0xFFFFFFFF << m_nFraction)) * -1) : (m_nValue & (0xFFFFFFFF << m_nFraction))) >> m_nFraction) * ((m_nValue < 0) ? (-1) : (1)));
 }
 
-inline bool Fixed::operator>(const Fixed &A) const
+bool Fixed::operator>(const Fixed &A) const
 {
 	return (toFloat() > A.toFloat());
 }
 
-inline bool Fixed::operator<(const Fixed &A) const
+bool Fixed::operator<(const Fixed &A) const
 {
 	return (toFloat() < A.toFloat());
 }
 
-inline bool Fixed::operator>=(const Fixed &A) const
+bool Fixed::operator>=(const Fixed &A) const
 {
 	return (toFloat() >= A.toFloat());
 }
 
-inline bool Fixed::operator<=(const Fixed &A) const
+bool Fixed::operator<=(const Fixed &A) const
 {
 	return (toFloat() <= A.toFloat());
 }
 
-inline bool Fixed::operator==(const Fixed &A) const
+bool Fixed::operator==(const Fixed &A) const
 {
 	return (toFloat() == A.toFloat());
 }
 
-inline bool Fixed::operator!=(const Fixed &A) const
+bool Fixed::operator!=(const Fixed &A) const
 {
 	return (toFloat() != A.toFloat());
 }

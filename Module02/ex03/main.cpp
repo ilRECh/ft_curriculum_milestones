@@ -1,4 +1,4 @@
-#include "Fixed.hpp"
+#include "Point.hpp"
 
 void	printBits(int x)
 {
@@ -11,16 +11,27 @@ void	printBits(int x)
 	std::cout << std::endl;
 }
 
+inline bool bsp(	Point const A,
+					Point const B,
+					Point const C,
+					Point const point)
+{
+	if ((B.getX() - A.getX()) * (point.getY() - A.getY()) - (B.getY() - A.getY()) * (point.getX() - A.getX()) > 0
+		&& (C.getX() - B.getX()) * (point.getY() - B.getY()) - (C.getY() - B.getY()) * (point.getX() - B.getX()) > 0
+		&& (A.getX() - C.getX()) * (point.getY() - C.getY()) - (A.getY() - C.getY()) * (point.getX() - C.getX()) > 0)
+	{
+		return (true);
+	}
+	return (false);
+}
+
 int	main()
 {
-	Fixed a;
-	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
-	std::cout << a << std::endl;
-	std::cout << ++a << std::endl;
-	std::cout << a << std::endl;
-	std::cout << a++ << std::endl;
-	std::cout << a << std::endl;
-	std::cout << b << std::endl;
-	std::cout << Fixed::max( a, b ) << std::endl;
+	Point A(1, 4);
+	Point B(4, 1);
+	Point C(1, 8);
+	Point point(1, 6);
+
+	std::cout << (bsp(A, B, C, point) ? "true" : "false") << std::endl;
 	return 0;
 }

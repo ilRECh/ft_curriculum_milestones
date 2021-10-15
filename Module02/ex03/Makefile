@@ -14,10 +14,12 @@ else
 $(error cannot set proper compiler)
 endif
 
-HEADERS	=	Fixed.hpp
+HEADERS	=	Fixed.hpp\
+			Point.hpp
 
 SRC		=	main.cpp\
-			Fixed.cpp
+			Fixed.cpp\
+			Point.cpp
 			
 OBJ		=	$(SRC:.cpp=.o)
 
