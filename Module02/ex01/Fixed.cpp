@@ -37,7 +37,7 @@ Fixed::Fixed(const float n):	m_nValue(0)
 	if (!n)
 		return ;
 
-	m_nValue |= ((((int)n >> 31) & 1) << 31)
+	m_nValue |= (((*(unsigned int*)&n >> 31) & 1) << 31)
 		| ((int)n << m_nFraction);
 	unsigned int rawBits = *(unsigned int *)&n;
 	char exponent = ((rawBits << 1) >> 24) - 127;

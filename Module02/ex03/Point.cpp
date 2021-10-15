@@ -24,6 +24,11 @@ Point& Point::operator=(const Point& p)
 	return (*this);
 }
 
+bool Point::operator==(const Point& A) const
+{
+	return (x == A.getX() && y == A.getY());
+}
+
 Fixed Point::getX() const
 {
 	return (x);

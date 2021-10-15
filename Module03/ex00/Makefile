@@ -4,7 +4,7 @@
 OS		=	$(shell uname)
 TARGET	=	Fixed
 RM		=	rm -rf
-FLAGS	=	-Wall -Wextra -Werror -c -g -std=c++98 -pedantic
+FLAGS	=	-Wall -Wextra -Werror -c -std=c++98 -pedantic
 
 ifeq ($(OS), Darwin)
 CC		=	clang++
@@ -14,12 +14,10 @@ else
 $(error cannot set proper compiler)
 endif
 
-HEADERS	=	Fixed.hpp\
-			Point.hpp
+HEADERS	=	Fixed.hpp
 
 SRC		=	main.cpp\
-			Fixed.cpp\
-			Point.cpp
+			Fixed.cpp
 			
 OBJ		=	$(SRC:.cpp=.o)
 
