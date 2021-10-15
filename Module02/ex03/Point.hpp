@@ -11,6 +11,7 @@ public:
 	Point(const Point& p);
 	Point(const float x, const float y);
 	Point& operator=(const Point& p);
+	bool operator==(const Point& A) const;
 	Fixed getX() const;
 	Fixed getY() const;
 };

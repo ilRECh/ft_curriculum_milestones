@@ -16,7 +16,11 @@ inline bool bsp(	Point const A,
 					Point const C,
 					Point const point)
 {
-	if ((B.getX() - A.getX()) * (point.getY() - A.getY()) - (B.getY() - A.getY()) * (point.getX() - A.getX()) > 0
+	if (A == B || B == C || C == A)
+	{
+		return (false);
+	}
+	else if ((B.getX() - A.getX()) * (point.getY() - A.getY()) - (B.getY() - A.getY()) * (point.getX() - A.getX()) > 0
 		&& (C.getX() - B.getX()) * (point.getY() - B.getY()) - (C.getY() - B.getY()) * (point.getX() - B.getX()) > 0
 		&& (A.getX() - C.getX()) * (point.getY() - C.getY()) - (A.getY() - C.getY()) * (point.getX() - C.getX()) > 0)
 	{
@@ -27,10 +31,10 @@ inline bool bsp(	Point const A,
 
 int	main()
 {
-	Point A(1, 4);
-	Point B(4, 1);
+	Point A(1, 1);
+	Point B(1.5, 4);
 	Point C(1, 8);
-	Point point(1, 6);
+	Point point(1.2, 4.1);
 
 	std::cout << (bsp(A, B, C, point) ? "true" : "false") << std::endl;
 	return 0;
