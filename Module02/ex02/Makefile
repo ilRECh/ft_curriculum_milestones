@@ -4,7 +4,7 @@
 OS		=	$(shell uname)
 TARGET	=	Fixed
 RM		=	rm -rf
-FLAGS	=	-Wall -Wextra -Werror -c -g -std=c++98 -pedantic
+FLAGS	=	-Wall -Wextra -Werror -c -std=c++98 -pedantic
 
 ifeq ($(OS), Darwin)
 CC		=	clang++
