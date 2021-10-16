@@ -28,6 +28,7 @@
 # define FLOOR 4
 # define CEILLING 5
 # define SCALE 16 // условный размер каждого квадратика в карте
+# define MAP_SIZE 4096 // условный размер карты в виртуальной реальности
 
 # define DEBUG
 

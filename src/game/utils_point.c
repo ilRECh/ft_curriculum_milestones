@@ -47,7 +47,7 @@ t_point point_set(int x, int y)
 
 void point_swap_xy(t_point *p)
 {
-    int t;
+    float t;
 
     if (p)
     {

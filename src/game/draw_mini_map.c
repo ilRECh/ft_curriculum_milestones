@@ -42,40 +42,46 @@ void	drow_big_pixel(char c, t_image *img, t_point scale, t_point	px)
 }
 
 // закрашиваю круг пикселей
-int	in_circle(t_point i, float radius, t_point pos)
+int	in_circle(t_plr *plr, float radius, t_point i)
 {
 	float	distance;
 
-	distance = sqrtf(powf(i.x - pos.x, 2.) + powf(i.y - pos.y, 2.));
+	distance = sqrtf(powf(plr->x - i.x, 2.) + powf(plr->y - i.y, 2.));
 	if (distance <= radius)
 	{
-		if ((radius - distance) < 15.00000000)
+		if ((radius - distance) < 1.00000000)
 			return (2);
 		return (1);
 	}
 	return (0);
 }
-void	drow_circle(t_image *img, t_point scale, t_point px)
+void	drow_circle(t_image *img, t_point scale, t_plr plr)
 {
-	t_point		pos;
-	t_point		to;
 	t_point		i;
+	t_point		to;
+	t_point		px;
+	int			ret;
 
-	scale = point_set(max_min(scale.x, scale.y, true), max_min(scale.x, scale.y, true));
-	pos = px;
+	px.x = plr.x;
+	px.y = plr.y;
+	i = point_multiple(point_plus(px, point_set(-2, -2)), scale);
+	to = point_multiple(point_plus(px, point_set(2, 2)), scale);
+	plr.x = (plr.x - 0.5f) * scale.x - 1;
+	plr.y = (plr.y - 0.5f) * scale.y - 1;
 
-	to = point_plus(pos, scale);
-	pos = (i = point_plus(pos, point_set(-1, -1)));
-	while (++pos.y <= to.y)
+	while (++i.y <= to.y)
 	{
-		while (++pos.x <= to.x)
+		while (++i.x <= to.x)
 		{
-			if (in_circle(point_minus(pos, i), (float)(scale.x / 2) , point_set(8, 8)))
-				pixel_put(img, point_plus(px, pos), 0xFF0000);
+			ret = in_circle(&plr, scale.x / 3, i);
+			if (ret == 1)
+				pixel_put(img, i, 0xFF0000);
+			else if (ret == 2)
+				pixel_put(img, i, 0x88FF0000);
 			// else
 				// pixel_put(img, point_plus(px, pos), 0x00116633);
 		}
-		pos.x = to.x - scale.x - 1;
+		i.x = (px.x - 2) * scale.x;
 	}
 }
 
@@ -108,7 +114,7 @@ void	player_in_map(t_all *all, t_image *img_map)
 
 	i = point_set(all->plr->x, all->plr->y);
 	scale_map = point_divide(img_map->size, all->map_size);
-	drow_circle(img_map, scale_map, point_set(all->plr->x, all->plr->y));
+	drow_circle(img_map, scale_map, *all->plr);
 }
 
 
