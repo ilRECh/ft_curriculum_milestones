@@ -41,7 +41,45 @@ void	drow_big_pixel(char c, t_image *img, t_point scale, t_point	px)
 	}
 }
 
-// Закрашиваю изображение, (стена, пол или игрок)
+// закрашиваю круг пикселей
+int	in_circle(t_point i, float radius, t_point pos)
+{
+	float	distance;
+
+	distance = sqrtf(powf(i.x - pos.x, 2.) + powf(i.y - pos.y, 2.));
+	if (distance <= radius)
+	{
+		if ((radius - distance) < 15.00000000)
+			return (2);
+		return (1);
+	}
+	return (0);
+}
+void	drow_circle(t_image *img, t_point scale, t_point px)
+{
+	t_point		pos;
+	t_point		to;
+	t_point		i;
+
+	scale = point_set(max_min(scale.x, scale.y, true), max_min(scale.x, scale.y, true));
+	pos = px;
+
+	to = point_plus(pos, scale);
+	pos = (i = point_plus(pos, point_set(-1, -1)));
+	while (++pos.y <= to.y)
+	{
+		while (++pos.x <= to.x)
+		{
+			if (in_circle(point_minus(pos, i), (float)(scale.x / 2) , point_set(8, 8)))
+				pixel_put(img, point_plus(px, pos), 0xFF0000);
+			// else
+				// pixel_put(img, point_plus(px, pos), 0x00116633);
+		}
+		pos.x = to.x - scale.x - 1;
+	}
+}
+
+// Закрашиваю изображение картой
 t_image	*draw_mini_map(t_all *all)
 {
 	t_point	px;
@@ -60,6 +98,17 @@ t_image	*draw_mini_map(t_all *all)
 		px.x = -1;
 	}
 	return (img_map);
+}
+
+// Рисую позицию и направлене игрока на карте
+void	player_in_map(t_all *all, t_image *img_map)
+{
+	t_point	i;
+	t_point	scale_map;
+
+	i = point_set(all->plr->x, all->plr->y);
+	scale_map = point_divide(img_map->size, all->map_size);
+	drow_circle(img_map, scale_map, point_set(all->plr->x, all->plr->y));
 }
 
 

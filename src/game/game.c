@@ -57,6 +57,7 @@ bool	game(t_all *all)
 
 // Записываем карту в общий буфер (all->buff)
 	img_map = draw_mini_map(all);
+	player_in_map(all, img_map);
 	image_to_image_cp_insert_clr(all->buff, img_map, point_set(321, 123), 0xFF000000);
 	image_free(all, img_map, true);
 

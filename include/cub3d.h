@@ -16,6 +16,7 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include <math.h>
 # include "mlx.h"
 # include "libft.h"
 # include "get_next_line.h"
@@ -128,6 +129,7 @@ t_image	*draw_mini_map(t_all *all);
 // plr
 void	set_plrpos(t_all *all);
 void	set_plr(t_all *all, float x, float y, float direction);
+void	player_in_map(t_all *all, t_image *img_map);
 // image create
 t_image	*new_image(void *mlx, t_point size);
 void    image_to_image_cp(t_image *dst, t_image *src, t_point position);
