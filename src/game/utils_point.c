@@ -44,3 +44,15 @@ t_point point_set(int x, int y)
     res.y = y;
     return (res);
 }
+
+void point_swap_xy(t_point *p)
+{
+    int t;
+
+    if (p)
+    {
+        t = p->x;
+        p->x = p->y;
+        p->y = t;
+    }
+}

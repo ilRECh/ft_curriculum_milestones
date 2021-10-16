@@ -7,54 +7,59 @@
 #define MLX_WHT 0xFFFFFF
 #define MLX_GRY 0x666666
 
+unsigned int color_set_by_map(char c)
+{
+	if (c == '1')
+		return (MLX_WHT);
+	else if (c == '0')
+		return (MLX_GRY);
+	return (0xFF000000);
+}
+
 // закрашиваю квадратик пикселей
 void	drow_big_pixel(char c, t_image *img, t_point scale, t_point	px)
 {
-	unsigned int		colour = 0xFF000000;
-	t_point	i;
+	t_point			i;
+	t_point			to;
+	unsigned int 	colour;
 
-	if (c == '1')
-		colour = MLX_WHT;
-	else if (c == '0')
-		colour = MLX_GRY;
-	else if (c == 'W')
-		colour = MLX_GRN;
+	colour = color_set_by_map(c);
+	scale = point_set(max_min(scale.x, scale.y, true), max_min(scale.x, scale.y, true));
 	i = point_multiple(px, scale);
-	scale = point_plus(i, scale);
-	while (++i.y < scale.y)
+	to = point_plus(i, scale);
+	i = point_plus(i, point_set(-1, -1));
+	while (++i.y <= to.y)
 	{
-		while (++i.x < scale.x)
-			pixel_put(img, point_plus(px, i), colour);
-			// pixel_put(img, px.x + i.x, px.y + i.y, colour);
-		i.x = -1;
+		while (++i.x <= to.x)
+		{
+			if (colour != 0xFF000000 && (i.x == to.x || i.y == to.y))
+				pixel_put(img, point_plus(px, i), 0x00116633);
+			else
+				pixel_put(img, point_plus(px, i), colour);
+		}
+		i.x = to.x - scale.x - 1;
 	}
 }
 
 // Закрашиваю изображение, (стена, пол или игрок)
-void	draw_to_buff_minmap(t_all *all, int div_map)
+t_image	*draw_mini_map(t_all *all)
 {
 	t_point	px;
-	t_point	coef;
+	t_point	scale;
+	t_image	*img_map;
 
-	coef = point_divide(all->screen_size, all->map_size);
-	coef = point_divide(coef, point_set(div_map, div_map));
+	img_map = new_image(all->win->mlx, point_multiple(all->map_size, point_set(16, 16)));
+	scale = point_divide(img_map->size, point_plus(all->map_size, point_set(1, 1)));
 	px = point_set(-1, -1);
 	while (all->map[++px.y])
 	{
 		while (all->map[px.y][++px.x])
 		{
-			drow_big_pixel(all->map[px.y][px.x], all->buff, coef, \
-				point_plus(px, point_set(50, 50)));
+			drow_big_pixel(all->map[px.y][px.x], img_map, scale, px);
 		}
 		px.x = -1;
 	}
+	return (img_map);
 }
 
-// рисую изображение миникарты на буфере и задаю коодинаты игроку
-void	draw_mini_map(t_all *all)
-{
-	set_plrpos(all);
-	set_plr(all, all->plrpos.x, all->plrpos.y, 10);
-	draw_to_buff_minmap(all, 6);
-	image_to_window(all, all->buff, point_set(0, 0));
-}
+

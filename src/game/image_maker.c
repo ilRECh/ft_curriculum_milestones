@@ -78,5 +78,4 @@ void	set_background(t_all *all)
 		end.y *= 2;
 		fill_rect_to_img(all->buff, &start, &end, 0x00201510);
 	}
-	// image_to_window(all, all->buff, point_set(0, 0));
 }

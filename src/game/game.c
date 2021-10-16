@@ -37,23 +37,38 @@ t_win	*mlx_create( int width, int height )
 
 bool	game(t_all *all)
 {
-	t_image	img;
+	t_image	img_whall[2];
+	t_image	*img_map;
 
 	all->map_size = map_len(all->map);
 	all->win = mlx_create(all->screen_size.x, all->screen_size.y);
-// Задаю задний фон
+
+// Задаю задний фон и стартовые позиции игрока
 	set_background(all);
-// Вставка стены 1
-	img = xpm_to_image(all, all->textures[0]);
-	image_to_image_cp(all->buff, &img, point_set(50, 50));
-	// image_to_window(all, all->buff, point_set(0, 0));
-	image_free(all, &img, false);
+	set_plrpos(all);
+	set_plr(all, all->plrpos.x, all->plrpos.y, 0.5f);
+// стены
+	img_whall[0] = xpm_to_image(all, all->textures[0]);
+	img_whall[1] = xpm_to_image(all, all->textures[1]);
 
-	img = xpm_to_image(all, all->textures[1]);
-	image_to_image_cp(all->buff, &img, point_set(img.size.x + 50, 50));
-	// image_to_window(all, all->buff, point_set(img.size.x, 0));
-	image_free(all, &img, false);
+// Записываем стены в общий буфер
+	image_to_image_cp(all->buff, &img_whall[0], point_set(50, 50));
+	image_to_image_cp(all->buff, &img_whall[1], point_set(img_whall[0].size.x + 50, 50));
 
-	draw_mini_map(all);
+// Записываем карту в общий буфер (all->buff)
+	img_map = draw_mini_map(all);
+	image_to_image_cp_insert_clr(all->buff, img_map, point_set(321, 123), 0xFF000000);
+	image_free(all, img_map, true);
+
+// фришим стены
+	image_free(all, &img_whall[0], false);
+	image_free(all, &img_whall[1], false);
+
+
+// Выводим буфер в окно
+	image_to_window(all, all->buff, point_set(0, 0));
+
+// Фришим буфер
+	image_free(all, all->buff, true);
 	return (false);
 }

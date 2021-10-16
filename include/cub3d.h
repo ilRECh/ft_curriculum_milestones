@@ -124,20 +124,27 @@ bool	fall(t_all *all);
 //
 bool	game(t_all *all);
 // img map
-void	draw_mini_map(t_all *all);
+t_image	*draw_mini_map(t_all *all);
 // plr
 void	set_plrpos(t_all *all);
 void	set_plr(t_all *all, float x, float y, float direction);
 // image create
 t_image	*new_image(void *mlx, t_point size);
 void    image_to_image_cp(t_image *dst, t_image *src, t_point position);
+void    image_to_image_cp_insert_clr(t_image *dst, t_image *src, t_point position, unsigned int ins_scolor);
 void	pixel_put(t_image *img, t_point p, unsigned int colour);
 unsigned int	pixel_get(t_image *img, t_point	p);
 void	fill_rect_to_img(t_image *img, const t_point *start, \
 	const t_point *end, const unsigned int colour);
 void	set_background(t_all *all);
+
+//
+// utils_int
+//
+int max_min(int a, int b, bool updown);
 // utils_point
 t_point point_set(int x, int y);
+void	point_swap_xy(t_point *p);
 t_point point_plus(t_point p1, t_point p2);
 t_point point_minus(t_point p1, t_point p2);
 t_point point_divide(t_point p1, t_point p2);
