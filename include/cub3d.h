@@ -76,6 +76,8 @@ typedef struct s_all // структура для всего вместе
 	t_win	*win;
 	t_plr	*plr;
 	t_image	*buff;
+	t_image whalls[4];
+	t_image *img_map;
 	t_point	screen_size;
 	char	**textures;
 	int		**colors;

@@ -41,39 +41,51 @@ void	drow_big_pixel(char c, t_image *img, t_point scale, t_point	px)
 	}
 }
 
+//	<<<<<<<<<<  mmmm, magic cos sin sex  >>>>>>>>>>>
+void	magic_cossin(t_all *all, float to_dir)
+{
+	all->plr->x = (all->plr->x - all->plr->y) * cos(to_dir);
+	all->plr->y = (all->plr->x + all->plr->y) * sin(to_dir);
+}
+
 // закрашиваю круг пикселей
 int	in_circle(t_plr *plr, float radius, t_point i)
 {
 	float	distance;
+	float	pow1;
+	float	pow2;
 
-	distance = sqrtf(powf(plr->x - i.x, 2.) + powf(plr->y - i.y, 2.));
+	pow1 = powf(plr->x - 1 - i.x, 2.);
+	pow2 = powf(plr->y - 1 - i.y, 2.);
+	distance = sqrtf(pow1 + pow2);
+	// distance = sqrtf(powf(plr->x - 1 - i.x, 2.) + powf(plr->y - 1 - i.y, 2.));
 	if (distance <= radius)
 	{
-		if ((radius - distance) < 1.00000000)
+		if ((radius - distance) < 2.0000000)
 			return (2);
 		return (1);
 	}
 	return (0);
 }
-void	drow_circle(t_image *img, t_point scale, t_plr plr)
+
+void	drow_circle(t_image *img, t_plr plr)
 {
 	t_point		i;
 	t_point		to;
-	t_point		px;
 	int			ret;
+	int			radius;
 
-	px.x = plr.x;
-	px.y = plr.y;
-	i = point_multiple(point_plus(px, point_set(-2, -2)), scale);
-	to = point_multiple(point_plus(px, point_set(2, 2)), scale);
-	plr.x = (plr.x - 0.5f) * scale.x - 1;
-	plr.y = (plr.y - 0.5f) * scale.y - 1;
+	i.x = plr.x * 0.9f;
+	i.y = plr.y * 0.9f;
+	to.x = plr.x + (plr.x - i.x);
+	to.y = plr.y + (plr.y - i.y);
+	radius = to.x - i.x;
 
 	while (++i.y <= to.y)
 	{
 		while (++i.x <= to.x)
 		{
-			ret = in_circle(&plr, scale.x / 3, i);
+			ret = in_circle(&plr, radius / 5, i);
 			if (ret == 1)
 				pixel_put(img, i, 0xFF0000);
 			else if (ret == 2)
@@ -81,8 +93,40 @@ void	drow_circle(t_image *img, t_point scale, t_plr plr)
 			// else
 				// pixel_put(img, point_plus(px, pos), 0x00116633);
 		}
-		i.x = (px.x - 2) * scale.x;
+		i.x = plr.x * 0.9f;
 	}
+}
+
+void	draw_line(t_image *img_map, t_plr p1, t_plr p2)
+{
+	t_plr	t;
+	int		step;
+
+	step = 100;
+	t.x = (p1.x - p2.x) / step;
+	t.y = (p1.y - p2.y) / step;
+	while (step --> 0)
+	{
+		pixel_put(img_map, point_set(p1.x -1, p1.y -1), 0x00FF00);
+		p1.x += t.x;
+		p1.y += t.y;
+	}
+}
+
+void	draw_view(t_image *img_map, t_plr *plr)
+{
+	float	c;
+	t_plr	p1;
+	t_plr	p2;
+
+	p1 = *plr;
+	// p1.x = img_map->size.x / p1.x;
+	// p1.y = img_map->size.y / p1.y;
+	p2 = p1;
+	c = 10.0f;
+	p1.x += sinf(plr->dir) * c;
+	p1.y += cosf(plr->dir) * c;
+	draw_line(img_map, p1, p2);
 }
 
 // Закрашиваю изображение картой
@@ -103,18 +147,19 @@ t_image	*draw_mini_map(t_all *all)
 		}
 		px.x = -1;
 	}
+	draw_view(img_map, all->plr);
 	return (img_map);
 }
 
 // Рисую позицию и направлене игрока на карте
 void	player_in_map(t_all *all, t_image *img_map)
 {
-	t_point	i;
-	t_point	scale_map;
+	// t_plr	plr;
 
-	i = point_set(all->plr->x, all->plr->y);
-	scale_map = point_divide(img_map->size, all->map_size);
-	drow_circle(img_map, scale_map, *all->plr);
+	// plr = *all->plr;
+	// all->plr->x *= img_map->size.x / all->map_size.x;
+	// all->plr->y *= img_map->size.y / all->map_size.y;
+	drow_circle(img_map, *all->plr);
 }
 
 

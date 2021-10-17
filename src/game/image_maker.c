@@ -68,14 +68,12 @@ void	set_background(t_all *all)
 	t_point	start;
 
 	if (!all->buff)
-	{
 		all->buff = new_image(all->win->mlx, all->screen_size);
-		start = point_set(0, 0);
-		end = all->buff->size;
-		end.y /= 2;
-		fill_rect_to_img(all->buff, &start, &end, 0x005055CC);
-		start.y = end.y;
-		end.y *= 2;
-		fill_rect_to_img(all->buff, &start, &end, 0x00201510);
-	}
+	start = point_set(0, 0);
+	end = all->buff->size;
+	end.y /= 2;
+	fill_rect_to_img(all->buff, &start, &end, 0x005055CC);
+	start.y = end.y;
+	end.y *= 2;
+	fill_rect_to_img(all->buff, &start, &end, 0x00201510);
 }
