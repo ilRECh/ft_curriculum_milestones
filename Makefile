@@ -38,13 +38,15 @@ LIBFT_MAKE				=	./src/libft/
 LIBFT					=	./src/libft/libft.a
 
 GAME_LIST				=	game.c\
+							init.c\
 							set_plr_full.c\
 							image_maker.c\
 							utils_point.c\
 							wrappers.c\
 							draw_mini_map.c\
 							image_functions.c\
-							utils_int.c
+							utils_int.c\
+							colors.c
 GAME_DIR				=	src/game/
 GAME					=	$(addprefix $(GAME_DIR), $(GAME_LIST))
 

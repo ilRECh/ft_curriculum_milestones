@@ -72,8 +72,8 @@ void	set_background(t_all *all)
 	start = point_set(0, 0);
 	end = all->buff->size;
 	end.y /= 2;
-	fill_rect_to_img(all->buff, &start, &end, 0x005055CC);
+	fill_rect_to_img(all->buff, &start, &end, create_rgb(all->colors[5]));
 	start.y = end.y;
 	end.y *= 2;
-	fill_rect_to_img(all->buff, &start, &end, 0x00201510);
+	fill_rect_to_img(all->buff, &start, &end, create_rgb(all->colors[4]));
 }

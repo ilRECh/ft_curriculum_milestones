@@ -143,10 +143,14 @@ void	fill_rect_to_img(t_image *img, const t_point *start, \
 	const t_point *end, const unsigned int colour);
 void	set_background(t_all *all);
 
-//
+// initialization
+void    init(t_all *all);
+t_point		map_len(char **maps);
+t_win	*mlx_create( int width, int height );
+
 // utils_int
-//
 int max_min(int a, int b, bool updown);
+
 // utils_point
 t_point point_set(int x, int y);
 void	point_swap_xy(t_point *p);
@@ -154,6 +158,9 @@ t_point point_plus(t_point p1, t_point p2);
 t_point point_minus(t_point p1, t_point p2);
 t_point point_divide(t_point p1, t_point p2);
 t_point point_multiple(t_point p1, t_point p2);
+
+//	colors
+unsigned int create_rgb(int *color);
 
 //
 //	wrappers
