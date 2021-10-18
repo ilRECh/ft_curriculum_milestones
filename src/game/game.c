@@ -35,21 +35,8 @@ t_win	*mlx_create( int width, int height )
 	return (win);
 }
 
-int	key_hook(int key_code, t_all *all)
+void	key_handler(int key_code, t_all *all)
 {
-
-	printf("key = %d\n", key_code);
-// Инициализирую буффер если не инит, и закрашиваю землю и небо
-	set_background(all);
-// Записываем стены в общий буфер
-	// image_to_image_cp(all->buff, &all->whalls[0], point_set(50, 50));
-	// image_to_image_cp(all->buff, &all->whalls[1], point_set(all->whalls[0].size.x + 50, 50));
-// Записываем карту в общий буфер (all->buff)
-	draw_mini_map(all);
-	player_in_map(all, all->img_map);
-	image_to_image_cp_insert_clr(all->buff, all->img_map, point_set(321, 123), 0xFF000000);
-// Выводим буфер в окно
-	image_to_window(all, all->buff, point_set(0, 0));
 	if (key_code == 126)
 		all->plr->y -= 2;
 	else if (key_code == 125)
@@ -88,6 +75,24 @@ int	key_hook(int key_code, t_all *all)
 		// image_free(all, all->buff, true);
 		exit (0);
 	}
+}
+
+int	key_hook(int key_code, t_all *all)
+{
+
+	printf("key = %d\n", key_code);
+	key_handler(key_code, all);
+// Инициализирую буффер если не инит, и закрашиваю землю и небо
+	set_background(all);
+// Записываем стены в общий буфер
+	// image_to_image_cp(all->buff, &all->whalls[0], point_set(50, 50));
+	// image_to_image_cp(all->buff, &all->whalls[1], point_set(all->whalls[0].size.x + 50, 50));
+// Записываем карту в общий буфер (all->buff)
+	draw_mini_map(all);
+	player_in_map(all, all->img_map);
+	image_to_image_cp_insert_clr(all->buff, all->img_map, point_set(321, 123), 0xFF000000);
+// Выводим буфер в окно
+	image_to_window(all, all->buff, point_set(0, 0));
 	return (0);
 }
 
@@ -95,16 +100,22 @@ bool	game(t_all *all)
 {
 	all->map_size = map_len(all->map);
 	all->win = mlx_create(all->screen_size.x, all->screen_size.y);
+	set_background(all);
+// Создаю изображение для миниарты
+	all->img_map = new_image(all->win->mlx, point_multiple(all->map_size, point_set(16, 16)));
 
 // Задаю стартовые позиции игрока
 	set_plrpos(all);
 	set_plr(all, all->plrpos.x - 0.5f, all->plrpos.y - 0.5f, 0.5f);
+
+// Подгоняю позиции игрока под пиксельный размер карты
+	all->plr->x *= all->img_map->size.x / all->map_size.x;
+	all->plr->y *= all->img_map->size.y / all->map_size.y;
 // стены
 	all->whalls[0] = xpm_to_image(all, all->textures[0]);
 	all->whalls[1] = xpm_to_image(all, all->textures[1]);
+
 	key_hook(-1, all);
-	all->plr->x *= all->img_map->size.x / all->map_size.x;
-	all->plr->y *= all->img_map->size.y / all->map_size.y;
 	mlx_hook(all->win->win, 2, 1L<<1, key_hook, all);
 	// mlx_key_hook(all->win->win, key_hook, all);
 	return (false);

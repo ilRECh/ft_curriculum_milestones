@@ -135,8 +135,6 @@ void	draw_mini_map(t_all *all)
 	t_point	px;
 	t_point	scale;
 
-	if (!all->img_map)
-		all->img_map = new_image(all->win->mlx, point_multiple(all->map_size, point_set(16, 16)));
 	scale = point_divide(all->img_map->size, point_plus(all->map_size, point_set(1, 1)));
 	px = point_set(-1, -1);
 	while (all->map[++px.y])
