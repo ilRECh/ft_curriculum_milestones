@@ -45,7 +45,7 @@ int	key_hook(int key_code, t_all *all)
 	// image_to_image_cp(all->buff, &all->whalls[0], point_set(50, 50));
 	// image_to_image_cp(all->buff, &all->whalls[1], point_set(all->whalls[0].size.x + 50, 50));
 // Записываем карту в общий буфер (all->buff)
-	all->img_map = draw_mini_map(all);
+	draw_mini_map(all);
 	player_in_map(all, all->img_map);
 	image_to_image_cp_insert_clr(all->buff, all->img_map, point_set(321, 123), 0xFF000000);
 // Выводим буфер в окно
@@ -66,6 +66,11 @@ int	key_hook(int key_code, t_all *all)
 	{
 		all->plr->x += sinf(all->plr->dir) * 2;
 		all->plr->y += cosf(all->plr->dir) * 2;
+	}
+	else if (key_code == 1)
+	{
+		all->plr->x -= sinf(all->plr->dir) * 2;
+		all->plr->y -= cosf(all->plr->dir) * 2;
 	}
 
 	if (key_code == 53)

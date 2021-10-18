@@ -128,7 +128,7 @@ bool	fall(t_all *all);
 //
 bool	game(t_all *all);
 // img map
-t_image	*draw_mini_map(t_all *all);
+void	draw_mini_map(t_all *all);
 // plr
 void	set_plrpos(t_all *all);
 void	set_plr(t_all *all, float x, float y, float direction);

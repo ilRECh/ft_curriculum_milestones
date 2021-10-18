@@ -73,22 +73,22 @@ void	drow_circle(t_image *img, t_plr plr)
 	t_point		i;
 	t_point		to;
 	int			ret;
-	int			radius;
 
-	i.x = plr.x * 0.9f;
-	i.y = plr.y * 0.9f;
-	to.x = plr.x + (plr.x - i.x);
-	to.y = plr.y + (plr.y - i.y);
-	radius = to.x - i.x;
+	i.x = plr.x - SCALE;
+	i.y = plr.y - SCALE;
+	to.x = plr.x + SCALE;
+	to.y = plr.y + SCALE;
 
 	while (++i.y <= to.y)
 	{
 		while (++i.x <= to.x)
 		{
-			ret = in_circle(&plr, radius / 5, i);
-			if (ret == 1)
+			ret = in_circle(&plr, SCALE / 3, i);
+			if (!ret)
+				continue ;
+			else if (ret == 1)
 				pixel_put(img, i, 0xFF0000);
-			else if (ret == 2)
+			else
 				pixel_put(img, i, 0x88FF0000);
 			// else
 				// pixel_put(img, point_plus(px, pos), 0x00116633);
@@ -130,25 +130,24 @@ void	draw_view(t_image *img_map, t_plr *plr)
 }
 
 // Закрашиваю изображение картой
-t_image	*draw_mini_map(t_all *all)
+void	draw_mini_map(t_all *all)
 {
 	t_point	px;
 	t_point	scale;
-	t_image	*img_map;
 
-	img_map = new_image(all->win->mlx, point_multiple(all->map_size, point_set(16, 16)));
-	scale = point_divide(img_map->size, point_plus(all->map_size, point_set(1, 1)));
+	if (!all->img_map)
+		all->img_map = new_image(all->win->mlx, point_multiple(all->map_size, point_set(16, 16)));
+	scale = point_divide(all->img_map->size, point_plus(all->map_size, point_set(1, 1)));
 	px = point_set(-1, -1);
 	while (all->map[++px.y])
 	{
 		while (all->map[px.y][++px.x])
 		{
-			drow_big_pixel(all->map[px.y][px.x], img_map, scale, px);
+			drow_big_pixel(all->map[px.y][px.x], all->img_map, scale, px);
 		}
 		px.x = -1;
 	}
-	draw_view(img_map, all->plr);
-	return (img_map);
+	draw_view(all->img_map, all->plr);
 }
 
 // Рисую позицию и направлене игрока на карте
