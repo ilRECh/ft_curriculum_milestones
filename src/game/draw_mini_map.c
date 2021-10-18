@@ -41,13 +41,6 @@ void	drow_big_pixel(char c, t_image *img, t_point scale, t_point	px)
 	}
 }
 
-//	<<<<<<<<<<  mmmm, magic cos sin sex  >>>>>>>>>>>
-void	magic_cossin(t_all *all, float to_dir)
-{
-	all->plr->x = (all->plr->x - all->plr->y) * cos(to_dir);
-	all->plr->y = (all->plr->x + all->plr->y) * sin(to_dir);
-}
-
 // закрашиваю круг пикселей
 int	in_circle(t_plr *plr, float radius, t_point i)
 {
@@ -97,7 +90,7 @@ void	drow_circle(t_image *img, t_plr plr)
 	}
 }
 
-void	draw_line(t_image *img_map, t_plr p1, t_plr p2)
+void	draw_line(t_image *img_map, t_plr p1, t_plr p2, int color)
 {
 	t_plr	t;
 	int		step;
@@ -107,26 +100,72 @@ void	draw_line(t_image *img_map, t_plr p1, t_plr p2)
 	t.y = (p1.y - p2.y) / step;
 	while (step --> 0)
 	{
-		pixel_put(img_map, point_set(p1.x -1, p1.y -1), 0x00FF00);
+		pixel_put(img_map, point_set(p1.x -1, p1.y -1), color);
 		p1.x += t.x;
 		p1.y += t.y;
 	}
 }
 
-void	draw_view(t_image *img_map, t_plr *plr)
+bool	is_wall(t_all *all, t_point point)
+{
+	int	scale;
+
+	scale = all->img_map->size.x / all->map_size.x;
+	point = point_divide(point, point_set(scale, scale));
+	if (all->map[point.y][point.x] == '0')
+	// if (all->map[all->map_size.y - point.y - 1][all->map_size.x - point.x - 1] == '0')
+		return (false);
+	return (true);
+}
+
+void	draw_raycast(t_all *all)
+{
+	t_plr	fpoint;
+	t_plr	t;
+	float	coef_rays;
+	float	direction;
+	float	count_rays;
+	float	width_view;
+
+	width_view = 0.9f; /* 90 это ширина обзора */
+	count_rays = 32;
+	coef_rays = width_view / count_rays;
+	direction = all->plr->dir - coef_rays + width_view / 2;
+	fpoint = *all->plr;
+
+	while(count_rays--)
+	{
+		while(!is_wall(all, point_set(fpoint.x, fpoint.y)))
+		{
+			fpoint.x += sinf(direction) * 0.5;
+			fpoint.y += cosf(direction) * 0.5;
+		}
+		t.x = fpoint.x - all->plr->x;
+		t.y = fpoint.y - all->plr->y;
+		fpoint.x -= t.x * 2;
+		fpoint.y -= t.y * 2;
+		draw_line(all->img_map, *all->plr, fpoint, 0xFF0000);
+		direction -= coef_rays;
+		fpoint.x = all->plr->x;
+		fpoint.y = all->plr->y;
+	}
+}
+
+void	draw_view(t_all *all)
 {
 	float	c;
 	t_plr	p1;
 	t_plr	p2;
 
-	p1 = *plr;
+	p1 = *all->plr;
 	// p1.x = img_map->size.x / p1.x;
 	// p1.y = img_map->size.y / p1.y;
 	p2 = p1;
 	c = 10.0f;
-	p1.x += sinf(plr->dir) * c;
-	p1.y += cosf(plr->dir) * c;
-	draw_line(img_map, p1, p2);
+	p1.x += sinf(all->plr->dir) * c;
+	p1.y += cosf(all->plr->dir) * c;
+	draw_line(all->img_map, p1, p2, 0x00FF00);
+	draw_raycast(all);
 }
 
 // Закрашиваю изображение картой
@@ -145,7 +184,7 @@ void	draw_mini_map(t_all *all)
 		}
 		px.x = -1;
 	}
-	draw_view(all->img_map, all->plr);
+	draw_view(all);
 }
 
 // Рисую позицию и направлене игрока на карте

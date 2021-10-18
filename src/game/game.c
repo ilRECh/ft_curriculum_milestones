@@ -61,8 +61,8 @@ int	key_hook(int key_code, t_all *all)
 // Инициализирую буффер если не инит, и закрашиваю землю и небо
 	set_background(all);
 // Записываем стены в общий буфер
-	image_to_image_cp(all->buff, &all->whalls[0], point_set(50, 50));
-	image_to_image_cp(all->buff, &all->whalls[1], point_set(all->whalls[0].size.x + 50, 50));
+	// image_to_image_cp(all->buff, &all->whalls[0], point_set(50, 50));
+	// image_to_image_cp(all->buff, &all->whalls[1], point_set(all->whalls[0].size.x + 50, 50));
 // Записываем карту в общий буфер (all->buff)
 	draw_mini_map(all);
 	player_in_map(all, all->img_map);
