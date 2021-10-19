@@ -1,11 +1,11 @@
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap():	Name("RandomChump"),
+ClapTrap::ClapTrap():	Name("RandomChumpClapTrap"),
 						Hitpoints(10),
 						EnergyPoints(10),
 						AttackDamage(0)
 {
-	std::cout << "Default constructor called, RandomChump created!" << std::endl;
+	std::cout << "Default constructor called, RandomChumpClapTrap created!" << std::endl;
 }
 
 ClapTrap::~ClapTrap()
