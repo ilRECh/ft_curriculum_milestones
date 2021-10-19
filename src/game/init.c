@@ -29,7 +29,7 @@ void    init(t_all *all)
 	all->win = mlx_create(all->screen_size.x, all->screen_size.y);
 	set_background(all);
 // Создаю изображение для миниарты
-	all->img_map = new_image(all->win->mlx, point_multiple(all->map_size, point_set(16, 16)));
+	all->img_map = new_image(all->win->mlx, point_multiple(all->map_size, point_set(24, 24)));
 // Задаю стартовые позиции игрока
 	set_plrpos(all);
 	set_plr(all, all->plrpos.x - 0.5f, all->plrpos.y - 0.5f, 0.5f);

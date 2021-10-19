@@ -46,7 +46,8 @@ GAME_LIST				=	game.c\
 							draw_mini_map.c\
 							image_functions.c\
 							utils_int.c\
-							colors.c
+							colors.c\
+							draw_perspective.c
 GAME_DIR				=	src/game/
 GAME					=	$(addprefix $(GAME_DIR), $(GAME_LIST))
 

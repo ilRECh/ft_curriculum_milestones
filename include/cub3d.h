@@ -41,6 +41,12 @@ typedef struct s_point // структура для точки | и размер
 	int	y;
 }	t_point;
 
+typedef struct s_dpoint // структура для точки | и размеров
+{
+	double	x;
+	double	y;
+}	t_dpoint;
+
 typedef struct s_image // структура для изображений
 {
 	void	*img;
@@ -152,12 +158,22 @@ t_win	*mlx_create( int width, int height );
 int max_min(int a, int b, bool updown);
 
 // utils_point
-t_point point_set(int x, int y);
-void	point_swap_xy(t_point *p);
-t_point point_plus(t_point p1, t_point p2);
-t_point point_minus(t_point p1, t_point p2);
-t_point point_divide(t_point p1, t_point p2);
-t_point point_multiple(t_point p1, t_point p2);
+t_dpoint	convert_point_to_dpoint(t_point point);
+t_point		convert_dpoint_to_point(t_dpoint dpoint);
+t_point		convert_plr_to_point(t_plr plr);
+t_dpoint	convert_plr_to_dpoint(t_plr plr);
+t_point		point_set(int x, int y);
+t_dpoint	dpoint_set(double x, double y);
+void		point_swap_xy(t_point *p);
+void		dpoint_swap_xy(t_dpoint *p);
+t_point		point_plus(t_point p1, t_point p2);
+t_dpoint	dpoint_plus(t_dpoint p1, t_dpoint p2);
+t_point		point_minus(t_point p1, t_point p2);
+t_dpoint	dpoint_minus(t_dpoint p1, t_dpoint p2);
+t_point		point_divide(t_point p1, t_point p2);
+t_dpoint	dpoint_divide(t_dpoint p1, t_dpoint p2);
+t_point		point_multiple(t_point p1, t_point p2);
+t_dpoint	dpoint_multiple(t_dpoint p1, t_dpoint p2);
 
 //	colors
 unsigned int create_rgb(int *color);

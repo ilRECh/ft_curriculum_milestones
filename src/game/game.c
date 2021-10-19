@@ -23,9 +23,9 @@ void	key_handler(int key_code, t_all *all)
 	else if (key_code == 123)
 		all->plr->x -= 2;
 	else if (key_code == 0)
-		all->plr->dir += 0.2f;
+		all->plr->dir += 0.1f;
 	else if (key_code == 2)
-		all->plr->dir -= 0.2f;
+		all->plr->dir -= 0.1f;
 	else if (key_code == 13)
 	{
 		all->plr->x += sinf(all->plr->dir) * 2;
@@ -59,14 +59,14 @@ int	key_hook(int key_code, t_all *all)
 	printf("key = %d\n", key_code);
 	key_handler(key_code, all);
 // Инициализирую буффер если не инит, и закрашиваю землю и небо
-	set_background(all);
-// Записываем стены в общий буфер
 	// image_to_image_cp(all->buff, &all->whalls[0], point_set(50, 50));
 	// image_to_image_cp(all->buff, &all->whalls[1], point_set(all->whalls[0].size.x + 50, 50));
+	set_background(all);
+// Записываем стены в общий буфер
 // Записываем карту в общий буфер (all->buff)
 	draw_mini_map(all);
 	player_in_map(all, all->img_map);
-	image_to_image_cp_insert_clr(all->buff, all->img_map, point_set(321, 123), 0xFF000000);
+	image_to_image_cp_insert_clr(all->buff, all->img_map, point_set(0, 0), 0xFF000000);
 // Выводим буфер в окно
 	image_to_window(all, all->buff, point_set(0, 0));
 	return (0);

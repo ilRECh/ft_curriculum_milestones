@@ -90,7 +90,7 @@ void	drow_circle(t_image *img, t_plr plr)
 	}
 }
 
-void	draw_line(t_image *img_map, t_plr p1, t_plr p2, int color)
+void	draw_line(t_image *img_map, t_dpoint p1, t_dpoint p2, int color)
 {
 	t_plr	t;
 	int		step;
@@ -120,44 +120,44 @@ bool	is_wall(t_all *all, t_point point)
 
 void	draw_raycast(t_all *all)
 {
-	t_plr	fpoint;
-	t_plr	t;
-	float	coef_rays;
-	float	direction;
-	float	count_rays;
-	float	width_view;
+	t_dpoint	dpoint;
+	t_dpoint	t;
+	double		coef_rays;
+	double		direction;
+	double		count_rays;
+	double		width_view;
 
 	width_view = 0.9f; /* 90 это ширина обзора */
-	count_rays = 32;
+	count_rays = 64;
 	coef_rays = width_view / count_rays;
-	direction = all->plr->dir - coef_rays + width_view / 2;
-	fpoint = *all->plr;
+	direction = all->plr->dir - coef_rays + (width_view / 2);
+	dpoint = convert_plr_to_dpoint(*all->plr);
 
 	while(count_rays--)
 	{
-		while(!is_wall(all, point_set(fpoint.x, fpoint.y)))
+		while(!is_wall(all, point_set(dpoint.x, dpoint.y)))
 		{
-			fpoint.x += sinf(direction) * 0.5;
-			fpoint.y += cosf(direction) * 0.5;
+			dpoint.x += sinf(direction) * 1.5;
+			dpoint.y += cosf(direction) * 1.5;
 		}
-		t.x = fpoint.x - all->plr->x;
-		t.y = fpoint.y - all->plr->y;
-		fpoint.x -= t.x * 2;
-		fpoint.y -= t.y * 2;
-		draw_line(all->img_map, *all->plr, fpoint, 0xFF0000);
+		t.x = dpoint.x - all->plr->x;
+		t.y = dpoint.y - all->plr->y;
+		dpoint.x -= t.x * 2;
+		dpoint.y -= t.y * 2;
+		draw_line(all->img_map, convert_plr_to_dpoint(*all->plr), dpoint, 0xAAFF0000);
 		direction -= coef_rays;
-		fpoint.x = all->plr->x;
-		fpoint.y = all->plr->y;
+		dpoint.x = all->plr->x;
+		dpoint.y = all->plr->y;
 	}
 }
 
 void	draw_view(t_all *all)
 {
-	float	c;
-	t_plr	p1;
-	t_plr	p2;
+	float		c;
+	t_dpoint	p1;
+	t_dpoint	p2;
 
-	p1 = *all->plr;
+	p1 = convert_plr_to_dpoint(*all->plr);
 	// p1.x = img_map->size.x / p1.x;
 	// p1.y = img_map->size.y / p1.y;
 	p2 = p1;
