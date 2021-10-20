@@ -25,7 +25,7 @@ Fixed::Fixed(const int n):	m_nValue(0)
 	if (!n)
 		return ;
 
-	m_nValue |= (((n >> 31) & 1) << 31) | ((n << (m_nFraction + 1)) >> 1);
+	m_nValue |= ((n < 0) ? (1 << 31) : (0)) | (((n < 0) ? (n * -1) : (n)) << m_nFraction);//((n << (m_nFraction + 1)) >> 1);
 }
 
 Fixed::Fixed(const float n):	m_nValue(0)
@@ -34,7 +34,7 @@ Fixed::Fixed(const float n):	m_nValue(0)
 		return ;
 
 	m_nValue |= (((*(unsigned int*)&n >> 31) & 1) << 31)
-		| ((int)n << m_nFraction);
+		| ((((int)n < 0) ? ((int)n * -1) : ((int)n)) << m_nFraction);
 	unsigned int rawBits = *(unsigned int *)&n;
 	char exponent = ((rawBits << 1) >> 24) - 127;
 	if (exponent >= (m_nFraction * -1) && exponent <= 22)
@@ -64,7 +64,7 @@ void	Fixed::setRawBits( int const raw )
 float	Fixed::toFloat( void ) const
 {
 	float			sign = 1.0f;
-	float			integer = (((m_nValue < 0) ? ((m_nValue & (0xFFFFFFFF << m_nFraction)) * -1) : (m_nValue & (0xFFFFFFFF << m_nFraction)))) >> m_nFraction;
+	float			integer = (*(unsigned int *)&m_nValue << 1) >> (m_nFraction + 1);
 	float			decimal = 0.0f;
 	unsigned int	tmp_dec = m_nValue & ~(0xFFFFFFFF << m_nFraction);
 	int				i = m_nFraction - 1;
@@ -89,7 +89,7 @@ float	Fixed::toFloat( void ) const
 
 int	Fixed::toInt( void ) const 
 {
-	return ((((m_nValue < 0) ? ((m_nValue & (0xFFFFFFFF << m_nFraction)) * -1) : (m_nValue & (0xFFFFFFFF << m_nFraction))) >> m_nFraction) * ((m_nValue < 0) ? (-1) : (1)));
+	return (((*(unsigned int *)&m_nValue << 1) >> (m_nFraction + 1)) * (((m_nValue >> 31) & 1) ? (-1) : (1)));
 }
 
 bool Fixed::operator>(const Fixed &A) const

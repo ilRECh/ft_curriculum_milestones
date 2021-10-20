@@ -34,8 +34,12 @@ int	main()
 	Point A(1, 1);
 	Point B(1.5, 4);
 	Point C(1, 8);
-	Point point(1.2, 4.1);
+	Point point(1.01f, 4.1);
 
+	std::cout << A.getX() << ' ' << A.getY() << std::endl;
+	std::cout << B.getX() << ' ' << B.getY() << std::endl;
+	std::cout << C.getX() << ' ' << C.getY() << std::endl;
+	std::cout << point.getX() << ' ' << point.getY() << std::endl;
 	std::cout << (bsp(A, B, C, point) ? "true" : "false") << std::endl;
 	return 0;
 }
