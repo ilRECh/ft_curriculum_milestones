@@ -54,6 +54,27 @@ void	key_handler(int key_code, t_all *all)
 	}
 }
 
+t_point	align_to_screen(t_point screen, t_point image, int8_t mode)
+{
+	t_point	position;
+
+	position = point_set(0, 0);
+	if (mode & CENTER)
+	{
+		position.x = (screen.x - image.x) - image.x / 2;
+		position.y = (screen.y - image.y) - image.y / 2;
+	}
+	if (mode & LEFT)
+		position.x = 0;
+	if (mode & RIGHT)
+		position.x = screen.x - image.x;
+	if (mode & UP)
+		position.y = 0;
+	if (mode & DOWN)
+		position.y = screen.y - image.y;
+	return (position);
+}
+
 int	key_hook(int key_code, t_all *all)
 {
 	printf("key = %d\n", key_code);
@@ -66,7 +87,17 @@ int	key_hook(int key_code, t_all *all)
 // Записываем карту в общий буфер (all->buff)
 	draw_mini_map(all);
 	player_in_map(all, all->img_map);
-	image_to_image_cp_insert_clr(all->buff, all->img_map, point_set(0, 0), 0xFF000000);
+	draw_raycast(all);
+	image_to_image_cp_insert_clr(all->buff, all->img_map, 
+		align_to_screen(all->buff->size, all->img_map->size, CENTER | DOWN), 0xFF000000);
+
+
+	// for (size_t i = 0; i < 200; i++)
+	// {
+	// 	draw_vpixel_line(all, 50 + i, i, 200 - i + 30);
+	// }
+	
+
 // Выводим буфер в окно
 	image_to_window(all, all->buff, point_set(0, 0));
 	return (0);

@@ -2,16 +2,16 @@
 
 // int
 
-t_point convert_dpoint_to_point(t_dpoint dpoint)
+t_point conv_dp_to_p(t_dpoint dpoint)
 {
     t_point point;
 
     point.x = dpoint.x;
-    point.x = dpoint.x;
+    point.y = dpoint.y;
     return (point);
 }
 
-t_point convert_plr_to_point(t_plr plr)
+t_point conv_plr_to_point(t_plr plr)
 {
     t_point point;
 
@@ -79,16 +79,16 @@ void point_swap_xy(t_point *p)
 
 /////////////// double
 
-t_dpoint convert_point_to_dpoint(t_point point)
+t_dpoint conv_p_to_dp(t_point point)
 {
     t_dpoint dpoint;
 
     dpoint.x = point.x;
-    dpoint.x = point.x;
+    dpoint.y = point.y;
     return (dpoint);
 }
 
-t_dpoint convert_plr_to_dpoint(t_plr plr)
+t_dpoint conv_plr_to_dpoint(t_plr plr)
 {
     t_dpoint dpoint;
 

@@ -27,14 +27,22 @@
 # define EAST 3
 # define FLOOR 4
 # define CEILLING 5
-# define SCALE 16 // условный размер каждого квадратика в карте
-# define MAP_SIZE 4096 // условный размер карты в виртуальной реальности
-
+# define SCALE 64 // условный размер каждого квадратика в карте
+# define SENS_RAY 0.15
 # define DEBUG
 
 ///
 ///	DATA
 ///
+typedef enum s_align
+{
+	UP = 0b00001,
+	DOWN = 0b00010,
+	LEFT = 0b00100,
+	RIGHT = 0b01000,
+	CENTER = 0b10000
+} t_align;
+
 typedef struct s_point // структура для точки | и размеров
 {
 	int	x;
@@ -158,10 +166,10 @@ t_win	*mlx_create( int width, int height );
 int max_min(int a, int b, bool updown);
 
 // utils_point
-t_dpoint	convert_point_to_dpoint(t_point point);
-t_point		convert_dpoint_to_point(t_dpoint dpoint);
-t_point		convert_plr_to_point(t_plr plr);
-t_dpoint	convert_plr_to_dpoint(t_plr plr);
+t_dpoint	conv_p_to_dp(t_point point);
+t_point		conv_dp_to_p(t_dpoint dpoint);
+t_point		conv_plr_to_point(t_plr plr);
+t_dpoint	conv_plr_to_dpoint(t_plr plr);
 t_point		point_set(int x, int y);
 t_dpoint	dpoint_set(double x, double y);
 void		point_swap_xy(t_point *p);
@@ -185,5 +193,12 @@ int		image_to_window(t_all *all, const t_image *img, t_point position);
 t_image	*xpm_to_new_image(t_all *all, char *path_to_xpm);
 t_image	xpm_to_image(t_all *all, char *path_to_xpm);
 int	image_free(t_all *all, t_image	*img, bool mode);
+
+//
+// perspective
+//
+void	draw_line(t_image *img_map, t_dpoint p1, t_dpoint p2, int color);
+void	draw_raycast(t_all *all);
+void    draw_vpixel_line(t_all *all, int x, double xdwall, int height_wall);
 
 #endif //CUB3D_H

@@ -25,14 +25,17 @@ t_win	*mlx_create( int width, int height )
 
 void    init(t_all *all)
 {
+	t_point	tmp;
+
     all->map_size = map_len(all->map);
 	all->win = mlx_create(all->screen_size.x, all->screen_size.y);
 	set_background(all);
 // Создаю изображение для миниарты
-	all->img_map = new_image(all->win->mlx, point_multiple(all->map_size, point_set(24, 24)));
+	tmp = point_multiple(all->map_size, point_set(SCALE >> 2, SCALE >> 2));
+	all->img_map = new_image(all->win->mlx, tmp);
 // Задаю стартовые позиции игрока
 	set_plrpos(all);
-	set_plr(all, all->plrpos.x - 0.5f, all->plrpos.y - 0.5f, 0.5f);
+	set_plr(all, all->plrpos.x - 0.5f, all->plrpos.y - 0.5f, 3.1f / 2);
 
 // Подгоняю позиции игрока под пиксельный размер карты
 	all->plr->x *= all->img_map->size.x / all->map_size.x;
@@ -40,4 +43,6 @@ void    init(t_all *all)
 // стены
 	all->whalls[0] = xpm_to_image(all, all->textures[0]);
 	all->whalls[1] = xpm_to_image(all, all->textures[1]);
+	all->whalls[2] = all->whalls[0];
+	all->whalls[3] = all->whalls[1];
 }
