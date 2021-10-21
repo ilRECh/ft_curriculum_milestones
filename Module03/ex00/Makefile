@@ -2,11 +2,7 @@
 	all re fclean
 
 OS		=	$(shell uname)
-<<<<<<< HEAD
-TARGET	=	Fixed
-=======
 TARGET	=	ClapTrap
->>>>>>> c88813b833d07bf48c85be3b9aa8a7a075733bf3
 RM		=	rm -rf
 FLAGS	=	-Wall -Wextra -Werror -c -std=c++98 -pedantic
 
@@ -18,16 +14,10 @@ else
 $(error cannot set proper compiler)
 endif
 
-<<<<<<< HEAD
-HEADERS	=	
-
-SRC		=	main.cpp
-=======
 HEADERS	=	ClapTrap.hpp
 
 SRC		=	main.cpp\
 			ClapTrap.cpp
->>>>>>> c88813b833d07bf48c85be3b9aa8a7a075733bf3
 			
 OBJ		=	$(SRC:.cpp=.o)
 

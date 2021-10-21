@@ -2,7 +2,7 @@
 	all re fclean
 
 OS		=	$(shell uname)
-TARGET	=	ScavTrap
+TARGET	=	FragTrap
 RM		=	rm -rf
 FLAGS	=	-Wall -Wextra -Werror -c -std=c++98 -pedantic
 
@@ -15,11 +15,13 @@ $(error cannot set proper compiler)
 endif
 
 HEADERS	=	ClapTrap.hpp\
-			ScavTrap.hpp
+			ScavTrap.hpp\
+			FragTrap.hpp
 
 SRC		=	main.cpp\
 			ClapTrap.cpp\
-			ScavTrap.cpp
+			ScavTrap.cpp\
+			FragTrap.cpp
 			
 OBJ		=	$(SRC:.cpp=.o)
 

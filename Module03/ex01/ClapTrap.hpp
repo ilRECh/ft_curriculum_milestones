@@ -5,6 +5,10 @@
 class ClapTrap
 {
 protected:
+	ClapTrap(	int Hitpoints,
+				int EnergyPoints,
+				int AttackDamage,
+				std::string sName = "RandomChump");
 	std::string Name;
 	int	Hitpoints;
 	int EnergyPoints;
@@ -12,7 +16,7 @@ protected:
 public:
 	ClapTrap();
 	~ClapTrap();
-	ClapTrap(const ClapTrap& C);
+	ClapTrap(const ClapTrap &C);
 	ClapTrap& operator=(const ClapTrap& C);
 	ClapTrap(std::string sName);
 	std::string GetName();

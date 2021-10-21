@@ -5,20 +5,20 @@ ClapTrap::ClapTrap():	Name("RandomChumpClapTrap"),
 						EnergyPoints(10),
 						AttackDamage(0)
 {
-	std::cout << "Default constructor called, RandomChumpClapTrap created!" << std::endl;
+	std::cout << "Default constructor called, RandomChump created!(ClapTrap)" << std::endl;
 }
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "Destructor called, " << Name << " vanished!" << std::endl;
+	std::cout << "Destructor called, " << Name << " vanished! (ClapTrap)" << std::endl;
 }
 
-ClapTrap::ClapTrap(const ClapTrap& C):	Name(C.Name),
+ClapTrap::ClapTrap(const ClapTrap &C):	Name(C.Name),
 										Hitpoints(C.Hitpoints),
 										EnergyPoints(C.EnergyPoints),
 										AttackDamage(C.AttackDamage)
 {
-	std::cout << "Copy constructor called!" << std::endl;
+	std::cout << "Copy constructor called! (ClapTrap)" << std::endl;
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& C)
@@ -31,14 +31,26 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& C)
 	AttackDamage = C.AttackDamage;
 	return (*this);
 }
+
 ClapTrap::ClapTrap(std::string sName):	Name(sName),
 										Hitpoints(10),
 										EnergyPoints(10),
 										AttackDamage(0)
 {
-	std::cout << "Constructor with a name called, " << Name << " created!" << std::endl;
+	std::cout << "Constructor with a name called, " << Name << " created! (ClapTrap)" << std::endl;
 }
 
+ClapTrap::ClapTrap(	int nHitpoints,
+					int nEnergyPoints,
+					int nAttackDamage,
+					std::string sName):	Name(sName),
+										Hitpoints(nHitpoints),
+										EnergyPoints(nEnergyPoints),
+										AttackDamage(nAttackDamage)
+{
+	std::cout << "Protected constructor called, " << Name << " created! (ClapTrap)" << std::endl;
+}
+				
 
 std::string ClapTrap::GetName()
 {
