@@ -2,7 +2,7 @@
 	all re fclean
 
 OS		=	$(shell uname)
-TARGET	=	FragTrap
+TARGET	=	DiamondTrap
 RM		=	rm -rf
 FLAGS	=	-Wall -Wextra -Werror -c -std=c++98 -pedantic
 
@@ -16,12 +16,14 @@ endif
 
 HEADERS	=	ClapTrap.hpp\
 			ScavTrap.hpp\
-			FragTrap.hpp
+			FragTrap.hpp\
+			DiamondTrap.hpp
 
 SRC		=	main.cpp\
 			ClapTrap.cpp\
 			ScavTrap.cpp\
-			FragTrap.cpp
+			FragTrap.cpp\
+			DiamondTrap.cpp
 			
 OBJ		=	$(SRC:.cpp=.o)
 
