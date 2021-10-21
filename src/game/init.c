@@ -25,24 +25,22 @@ t_win	*mlx_create( int width, int height )
 
 void    init(t_all *all)
 {
-	t_point	tmp;
-
     all->map_size = map_len(all->map);
 	all->win = mlx_create(all->screen_size.x, all->screen_size.y);
 	set_background(all);
 // Создаю изображение для миниарты
-	tmp = point_multiple(all->map_size, point_set(SCALE >> 2, SCALE >> 2));
-	all->img_map = new_image(all->win->mlx, tmp);
+	all->img_map = new_image(all->win->mlx,
+		pnt_multiple(all->map_size, pnt_s(SCALE >> 2)));
 // Задаю стартовые позиции игрока
 	set_plrpos(all);
 	set_plr(all, all->plrpos.x - 0.5f, all->plrpos.y - 0.5f, 3.1f / 2);
-
-// Подгоняю позиции игрока под пиксельный размер карты
-	all->plr->x *= all->img_map->size.x / all->map_size.x;
-	all->plr->y *= all->img_map->size.y / all->map_size.y;
+//* Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+// // Подгоняю позиции игрока под пиксельный размер карты
+// 	all->plr->x *= all->img_map->size.x / all->map_size.x;
+// 	all->plr->y *= all->img_map->size.y / all->map_size.y;
 // стены
 	all->whalls[0] = xpm_to_image(all, all->textures[0]);
 	all->whalls[1] = xpm_to_image(all, all->textures[1]);
-	all->whalls[2] = all->whalls[0];
-	all->whalls[3] = all->whalls[1];
+	all->whalls[2] = xpm_to_image(all, all->textures[0]);
+	all->whalls[3] = xpm_to_image(all, all->textures[1]);
 }

@@ -5,118 +5,117 @@
 //  WEST > 2 < 3
 //  EAST > 3 < 4
 
-int	use_pols(double *dbl)
-{
-	int pol;
-
-	if (*dbl > 3)
-		pol = EAST;
-	else if (*dbl > 2)
-		pol = WEST;
-	else if (*dbl > 1)
-		pol = SOUTH;
-	else
-		pol = NORTH;
-	*dbl -= pol;
-	return (pol);
-}
-
 // x			это позиция в общем буфере
 // xdwall		это кэфициент позиций пикселей с текстуры 100.00
 // height_wall	это размер вертикали стены
-void    draw_vpixel_line(t_all *all, int x, double xdwall, int height_wall)
+void    draw_vpixel_line(t_all *all, int x, int height_wall, double x_dwall)
 {
 	int		start_ybuff;
 	int		iter;
 	double	coef_iter;
 	double	d_iter;
-	int		pols;
 
-	pols = use_pols(&xdwall);
-	xdwall *= 200;
-	// xdwall = (xdwall * all->whalls[pols].size.x);
-	start_ybuff = (all->buff->size.y - height_wall) / 2;
-	coef_iter = (double)all->whalls[pols].size.y / (double)height_wall;
-	iter = -1;
-	d_iter = 0.000;
+	// x_dwall 0.0 <-> 1.0
+	x_dwall = (x_dwall * all->whalls[0].size.x);			// превращаем коэффициент в позицию X на текстуре
+	start_ybuff = (all->buff->size.y - height_wall) / 2;	// Определяем место начала стены в буфере
+	coef_iter = (double)all->whalls[0].size.y / (double)height_wall;	// коэфициент итерации для Y стены
+	d_iter = 0.000;														// итератор для Y стены
+	iter = -1;															// итератор для буфера
 	while (++iter < height_wall)
 	{
-		pixel_put(all->buff, point_set(x, start_ybuff + iter), 
-			pixel_get(&all->whalls[pols], point_set(xdwall , d_iter)));
+		pixel_put(all->buff, pnt_set(x, start_ybuff + iter), 
+			pixel_get(&all->whalls[1], pnt_set(x_dwall , d_iter)));
 		d_iter += coef_iter;
 	}
 }
 
 bool	is_wall(t_all *all, t_point point)
 {
-	int	scale;
-
-	scale = all->img_map->size.x / all->map_size.x;
-	point = point_divide(point, point_set(scale, scale));
 	if (all->map[point.y][point.x] == '0')
-	// if (all->map[all->map_size.y - point.y - 1][all->map_size.x - point.x - 1] == '0')
 		return (false);
 	return (true);
 }
 
 
-static inline double	len_ray(t_dpoint a, t_dpoint b)
+static inline int	height_wall(t_all *all, t_dpoint a, t_dpoint b, t_dpoint proj)
 {
-	b = dpoint_minus(b, a);
-	b = dpoint_multiple(b, b);
-	return (sqrt(b.x + b.y));
+	a = dpnt_minus(a, proj);
+	b = dpnt_minus(b, proj);
+	b = dpnt_minus(a, b);
+	b = dpnt_multiple(b, b);
+	double test = (sqrtf(b.x + b.y));
+
+	return (all->buff->size.y / test);
 }
 
-double		get_pole(t_dpoint ray, t_dpoint size)
+
+void	shoot_ray_eco(t_all *all, t_dpoint *dpoint, double direction)
 {
-	t_dpoint	dif;
-	t_point		pos_on_map;
-	(void)size;
-	ray = dpoint_divide(ray, size);
-	pos_on_map = conv_dp_to_p(ray);
-	dif.x = ray.x - (double)pos_on_map.x;
-	dif.y = ray.y - (double)pos_on_map.y;
-	if (dif.y > 1.0 - SENS_RAY)
-		return (SOUTH + dif.x);
-	else if (dif.x < SENS_RAY)
-		return (WEST + dif.y);
-	else if (dif.x > 1 - SENS_RAY)
-		return (EAST + dif.y);
-	else if (dif.y < SENS_RAY)
-		return (NORTH + dif.x);
-	return (0);
+	t_dpoint	bias;
+
+	bias.x = sinf(direction) * 0.01;
+	bias.y = cosf(direction) * 0.01;
+	while(!is_wall(all, pnt_set(dpoint->x, dpoint->y)))
+		*dpoint = dpnt_plus(*dpoint, bias);
+}
+
+double	get_x_dwall(t_all *all, t_dpoint *dpoint)
+{
+	t_dpoint	in_scale;
+	t_dpoint	half;
+
+	in_scale = dpnt_mod(dpnt_divide(*dpoint, conv_ptod(all->map_size)));
+	half.x = in_scale.x > 0.5 ? 1.0 - in_scale.x : in_scale.x;
+	half.y = in_scale.y > 0.5 ? 1.0 - in_scale.y : in_scale.y;
+	if (half.x < half.y)
+		return (in_scale.y);
+	return (in_scale.x);
 }
 
 void	draw_raycast(t_all *all)
 {
 	(void)all;
+	double		scale;
 	t_dpoint	dpoint;
 	t_dpoint	t;
+	int			h_wall;
 	double		coef_rays;
 	double		direction;
-	double		count_rays;
 	double		width_view;
+	int			i;
 
-	width_view = 0.75f; /* 90 это ширина обзора */
-	count_rays = all->buff->size.x;
-	coef_rays = width_view / count_rays;
+	t_dpoint	project;
+	double		width_plane;
+	double		coef_projplane;
+
+	scale = all->buff->size.x / all->map_size.x;
+
+	width_view = degToRad(60); /* 90 это ширина обзора */
+	coef_rays = width_view / all->buff->size.x;
+
+	width_plane = 0.4;
+	coef_projplane = width_plane / all->buff->size.x;
+	project.x = all->plr->x + 0.2 * cosf(all->plr->dir - degToRad(width_view / 2));
+	project.y = all->plr->y + 0.2 * cosf(all->plr->dir - degToRad(width_view / 2));
+
+
 	direction = all->plr->dir - coef_rays + (width_view / 2);
-	dpoint = conv_plr_to_dpoint(*all->plr);
+	dpoint = conv_pltod(*all->plr);
 
-	while(count_rays--)
+	i = -1;
+	while(++i < all->buff->size.x)
 	{
-		while(!is_wall(all, point_set(dpoint.x, dpoint.y)))
-		{
-			dpoint.x += sinf(direction) * 1.5;
-			dpoint.y += cosf(direction) * 1.5;
-		}
-		draw_vpixel_line(all, all->buff->size.x - count_rays , get_pole(dpoint, conv_p_to_dp(all->map_size)),
-			300 - len_ray(conv_plr_to_dpoint(*all->plr), dpoint));
+		shoot_ray_eco(all, &dpoint, direction);
+		h_wall = height_wall(all, conv_pltod(*all->plr), dpoint, project);
+		project = dpnt_plus(project, dpnt_s(coef_projplane));
+		draw_vpixel_line(all, i, h_wall, get_x_dwall(all, &dpoint));
 		t.x = dpoint.x - all->plr->x;
 		t.y = dpoint.y - all->plr->y;
 		dpoint.x -= t.x * 2;
 		dpoint.y -= t.y * 2;
-		draw_line(all->img_map, conv_plr_to_dpoint(*all->plr), dpoint, 0xAAFF0000);
+		draw_line(all->img_map, 
+			dpnt_multiple(	conv_pltod(*all->plr),	dpnt_s(SCALE >> 2)),
+			dpnt_multiple(				dpoint,		dpnt_s(SCALE >> 2)), 0x0);
 		direction -= coef_rays;
 		dpoint.x = all->plr->x;
 		dpoint.y = all->plr->y;

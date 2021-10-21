@@ -28,7 +28,7 @@
 # define FLOOR 4
 # define CEILLING 5
 # define SCALE 64 // условный размер каждого квадратика в карте
-# define SENS_RAY 0.15
+# define SENS_RAY 0.01
 # define DEBUG
 
 ///
@@ -166,22 +166,25 @@ t_win	*mlx_create( int width, int height );
 int max_min(int a, int b, bool updown);
 
 // utils_point
-t_dpoint	conv_p_to_dp(t_point point);
-t_point		conv_dp_to_p(t_dpoint dpoint);
-t_point		conv_plr_to_point(t_plr plr);
-t_dpoint	conv_plr_to_dpoint(t_plr plr);
-t_point		point_set(int x, int y);
-t_dpoint	dpoint_set(double x, double y);
-void		point_swap_xy(t_point *p);
-void		dpoint_swap_xy(t_dpoint *p);
-t_point		point_plus(t_point p1, t_point p2);
-t_dpoint	dpoint_plus(t_dpoint p1, t_dpoint p2);
-t_point		point_minus(t_point p1, t_point p2);
-t_dpoint	dpoint_minus(t_dpoint p1, t_dpoint p2);
-t_point		point_divide(t_point p1, t_point p2);
-t_dpoint	dpoint_divide(t_dpoint p1, t_dpoint p2);
-t_point		point_multiple(t_point p1, t_point p2);
-t_dpoint	dpoint_multiple(t_dpoint p1, t_dpoint p2);
+t_dpoint	dpnt_mod(t_dpoint dpoint);
+t_dpoint	conv_ptod(t_point point);
+t_point		conv_dtop(t_dpoint dpoint);
+t_point		conv_pltop(t_plr plr);
+t_dpoint	conv_pltod(t_plr plr);
+t_point		pnt_s(int xy);
+t_point		pnt_set(int x, int y);
+t_dpoint	dpnt_s(double xy);
+t_dpoint	dpnt_set(double x, double y);
+void		pnt_swap_xy(t_point *p);
+void		dpnt_swap_xy(t_dpoint *p);
+t_point		pnt_plus(t_point p1, t_point p2);
+t_dpoint	dpnt_plus(t_dpoint p1, t_dpoint p2);
+t_point		pnt_minus(t_point p1, t_point p2);
+t_dpoint	dpnt_minus(t_dpoint p1, t_dpoint p2);
+t_point		pnt_divide(t_point p1, t_point p2);
+t_dpoint	dpnt_divide(t_dpoint p1, t_dpoint p2);
+t_point		pnt_multiple(t_point p1, t_point p2);
+t_dpoint	dpnt_multiple(t_dpoint p1, t_dpoint p2);
 
 //	colors
 unsigned int create_rgb(int *color);
@@ -199,6 +202,9 @@ int	image_free(t_all *all, t_image	*img, bool mode);
 //
 void	draw_line(t_image *img_map, t_dpoint p1, t_dpoint p2, int color);
 void	draw_raycast(t_all *all);
-void    draw_vpixel_line(t_all *all, int x, double xdwall, int height_wall);
+void    draw_vpixel_line(t_all *all, int x, int height_wall, double x_dwall);
+
+// trigonometry
+double	degToRad(double degree);
 
 #endif //CUB3D_H

@@ -14,27 +14,29 @@
 
 void	key_handler(int key_code, t_all *all)
 {
-	if (key_code == 126)
-		all->plr->y -= 2;
+	if (key_code == -1)
+		return ;
+	else if (key_code == 126)
+		all->plr->y -= 0.33;
 	else if (key_code == 125)
-		all->plr->y += 2;
+		all->plr->y += 0.33;
 	else if (key_code == 124)
-		all->plr->x += 2;
+		all->plr->x += 0.33;
 	else if (key_code == 123)
-		all->plr->x -= 2;
+		all->plr->x -= 0.33;
 	else if (key_code == 0)
-		all->plr->dir += 0.1f;
+		all->plr->dir += degToRad(5);
 	else if (key_code == 2)
-		all->plr->dir -= 0.1f;
+		all->plr->dir -= degToRad(5);
 	else if (key_code == 13)
 	{
-		all->plr->x += sinf(all->plr->dir) * 2;
-		all->plr->y += cosf(all->plr->dir) * 2;
+		all->plr->x += sinf(all->plr->dir) * 0.33;
+		all->plr->y += cosf(all->plr->dir) * 0.33;
 	}
 	else if (key_code == 1)
 	{
-		all->plr->x -= sinf(all->plr->dir) * 2;
-		all->plr->y -= cosf(all->plr->dir) * 2;
+		all->plr->x -= sinf(all->plr->dir) * 0.33;
+		all->plr->y -= cosf(all->plr->dir) * 0.33;
 	}
 
 	if (key_code == 53)
@@ -58,7 +60,7 @@ t_point	align_to_screen(t_point screen, t_point image, int8_t mode)
 {
 	t_point	position;
 
-	position = point_set(0, 0);
+	position = pnt_s(0);
 	if (mode & CENTER)
 	{
 		position.x = (screen.x - image.x) - image.x / 2;
@@ -80,8 +82,8 @@ int	key_hook(int key_code, t_all *all)
 	printf("key = %d\n", key_code);
 	key_handler(key_code, all);
 // Инициализирую буффер если не инит, и закрашиваю землю и небо
-	// image_to_image_cp(all->buff, &all->whalls[0], point_set(50, 50));
-	// image_to_image_cp(all->buff, &all->whalls[1], point_set(all->whalls[0].size.x + 50, 50));
+	// image_to_image_cp(all->buff, &all->whalls[0], pnt_set(50, 50));
+	// image_to_image_cp(all->buff, &all->whalls[1], pnt_set(all->whalls[0].size.x + 50, 50));
 	set_background(all);
 // Записываем стены в общий буфер
 // Записываем карту в общий буфер (all->buff)
@@ -99,7 +101,7 @@ int	key_hook(int key_code, t_all *all)
 	
 
 // Выводим буфер в окно
-	image_to_window(all, all->buff, point_set(0, 0));
+	image_to_window(all, all->buff, pnt_set(0, 0));
 	return (0);
 }
 

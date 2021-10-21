@@ -4,7 +4,7 @@ void	set_plrpos(t_all *all)
 {
 	t_point	i;
 
-	i = point_set(-1, -1);
+	i = pnt_s(-1);
 	while (++i.y < all->map_size.y)
 	{
 		while (++i.x < all->map_size.x)

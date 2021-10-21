@@ -4,11 +4,11 @@ void    image_to_image_cp(t_image *dst, t_image *src, t_point position)
 {
 	t_point i;
 
-	i = point_set(-1, -1);
+	i = pnt_s(-1);
 	while (++i.y < src->size.y)
 	{
 		while (++i.x < src->size.x)
-			pixel_put(dst, point_plus(i, position), pixel_get(src, i));
+			pixel_put(dst, pnt_plus(i, position), pixel_get(src, i));
 		i.x = -1;
 	}
 }
@@ -18,7 +18,7 @@ void    image_to_image_cp_insert_clr(t_image *dst, t_image *src, t_point positio
 	unsigned int color;
 	t_point i;
 
-	i = point_set(-1, -1);
+	i = pnt_s(-1);
 	while (++i.y < src->size.y)
 	{
 		while (++i.x < src->size.x)
@@ -26,7 +26,7 @@ void    image_to_image_cp_insert_clr(t_image *dst, t_image *src, t_point positio
 			color = pixel_get(src, i);
 			if (color == ins_scolor)
 				continue ;
-			pixel_put(dst, point_plus(i, position), color);
+			pixel_put(dst, pnt_plus(i, position), color);
 		}
 		i.x = -1;
 	}
