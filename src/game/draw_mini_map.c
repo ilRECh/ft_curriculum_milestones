@@ -94,17 +94,17 @@ void	drow_circle(t_image *img, t_all *all)
 
 void	draw_line(t_image *img_map, t_dpoint p1, t_dpoint p2, int color)
 {
-	t_plr	t;
-	int		step;
+	t_dpoint	t;
+	int			step;
 
-	step = 100;
+	step = 300;
 	t.x = (p1.x - p2.x) / step;
 	t.y = (p1.y - p2.y) / step;
 	while (step --> 0)
 	{
 		pixel_put(img_map, pnt_set(p1.x -1, p1.y -1), color);
-		p1.x += t.x;
-		p1.y += t.y;
+		p1.x -= t.x;
+		p1.y -= t.y;
 	}
 }
 
@@ -120,8 +120,8 @@ void	draw_view(t_all *all)
 	// p1.y = img_map->size.y / p1.y;
 	p2 = p1;
 	c = 10.0f;
-	p1.x += sinf(all->plr->dir) * c;
-	p1.y += cosf(all->plr->dir) * c;
+	p1.x -= sin(all->plr->dir) * c;
+	p1.y -= cos(all->plr->dir) * c;
 	draw_line(all->img_map, p1, p2, 0x00FF00);
 	// draw_raycast(all);
 }

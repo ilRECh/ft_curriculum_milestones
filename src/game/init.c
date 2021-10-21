@@ -33,7 +33,7 @@ void    init(t_all *all)
 		pnt_multiple(all->map_size, pnt_s(SCALE >> 2)));
 // Задаю стартовые позиции игрока
 	set_plrpos(all);
-	set_plr(all, all->plrpos.x - 0.5f, all->plrpos.y - 0.5f, 3.1f / 2);
+	set_plr(all, all->plrpos.x - 0.2f, all->plrpos.y - 0.1f, 3.1f / 2);
 //* Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 // // Подгоняю позиции игрока под пиксельный размер карты
 // 	all->plr->x *= all->img_map->size.x / all->map_size.x;

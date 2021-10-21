@@ -31,6 +31,10 @@ void    draw_vpixel_line(t_all *all, int x, int height_wall, double x_dwall)
 
 bool	is_wall(t_all *all, t_point point)
 {
+	if (point.x >= all->map_size.x || point.y >= all->map_size.y)
+		return (true);
+	if (point.x < 0 || point.y < 0)
+		return (true);
 	if (all->map[point.y][point.x] == '0')
 		return (false);
 	return (true);
@@ -48,15 +52,71 @@ static inline int	height_wall(t_all *all, t_dpoint a, t_dpoint b, t_dpoint proj)
 	return (all->buff->size.y / test);
 }
 
+t_dpoint	to_round_step(t_dpoint *dpoint, double direction)
+{
+	t_dpoint	bias;
+	double		integer;
+	double		modX;
+	double		modY;
+	double		x;
+	double		y;
+
+	x = sin(direction) * 100;
+	y = cos(direction) * 100;
+	
+	modX = x > 0 ? 1 - modf(dpoint->x, &integer) : - modf(dpoint->x, &integer);
+	modY = y > 0 ? 1 - modf(dpoint->y, &integer) : - modf(dpoint->y, &integer);
+
+	if (d_plus(modX) < d_plus(modY))
+	{
+		bias.y = cos(direction) * modX;
+		bias.x = modX;
+	}
+	else
+	{
+		bias.x = sin(direction) * modY;
+		bias.y = modY;
+	}
+	return (bias);
+//|-------|----*--|-------|-------|
+//|       |       |       |       |
+//|       |       |       |       |
+//|-------|-------*-------|-------|
+//|       |       |       |       |
+//|       |       |       |       |
+//|-------|-------|-*-----|-------|
+//|       |       |       |       |
+//|       |       |       |       |
+//|-------|-------|-----*-|-------|
+}
 
 void	shoot_ray_eco(t_all *all, t_dpoint *dpoint, double direction)
 {
 	t_dpoint	bias;
+	double		x;
+	double		y;
+	// int8_t		mode;
 
-	bias.x = sinf(direction) * 0.01;
-	bias.y = cosf(direction) * 0.01;
-	while(!is_wall(all, pnt_set(dpoint->x, dpoint->y)))
-		*dpoint = dpnt_plus(*dpoint, bias);
+	// mode = 0;
+	bias = dpnt_s(0);
+	// if (sin(direction) * 100 > 0)
+	// 	mode |= RIGHT;
+	// else
+	// 	mode |= LEFT;
+	// if (cos(direction) * 100 > 0)
+	// 	mode |= DOWN;
+	// else
+	// 	mode |= UP;
+
+	x = sin(direction) * 0.01;
+	y = cos(direction) * 0.01;
+	while(!is_wall(all, pnt_set(dpoint->x + bias.x, dpoint->y + bias.y)))
+	{
+		// bias = to_round_step(dpoint, direction, mode);
+		bias.x += x;
+		bias.y += y;
+	}
+	*dpoint = dpnt_plus(*dpoint, bias);
 }
 
 double	get_x_dwall(t_all *all, t_dpoint *dpoint)
@@ -77,7 +137,6 @@ void	draw_raycast(t_all *all)
 	(void)all;
 	double		scale;
 	t_dpoint	dpoint;
-	t_dpoint	t;
 	int			h_wall;
 	double		coef_rays;
 	double		direction;
@@ -93,10 +152,10 @@ void	draw_raycast(t_all *all)
 	width_view = degToRad(60); /* 90 это ширина обзора */
 	coef_rays = width_view / all->buff->size.x;
 
-	width_plane = 0.4;
+	width_plane = 0.1;
 	coef_projplane = width_plane / all->buff->size.x;
-	project.x = all->plr->x + 0.2 * cosf(all->plr->dir - degToRad(width_view / 2));
-	project.y = all->plr->y + 0.2 * cosf(all->plr->dir - degToRad(width_view / 2));
+	project.x = all->plr->x + 0.5 * cosf(all->plr->dir - degToRad(width_view / 2));
+	project.y = all->plr->y + 0.5 * cosf(all->plr->dir - degToRad(width_view / 2));
 
 
 	direction = all->plr->dir - coef_rays + (width_view / 2);
@@ -109,15 +168,10 @@ void	draw_raycast(t_all *all)
 		h_wall = height_wall(all, conv_pltod(*all->plr), dpoint, project);
 		project = dpnt_plus(project, dpnt_s(coef_projplane));
 		draw_vpixel_line(all, i, h_wall, get_x_dwall(all, &dpoint));
-		t.x = dpoint.x - all->plr->x;
-		t.y = dpoint.y - all->plr->y;
-		dpoint.x -= t.x * 2;
-		dpoint.y -= t.y * 2;
 		draw_line(all->img_map, 
 			dpnt_multiple(	conv_pltod(*all->plr),	dpnt_s(SCALE >> 2)),
 			dpnt_multiple(				dpoint,		dpnt_s(SCALE >> 2)), 0x0);
+		dpoint = conv_pltod(*all->plr);
 		direction -= coef_rays;
-		dpoint.x = all->plr->x;
-		dpoint.y = all->plr->y;
 	}
 }

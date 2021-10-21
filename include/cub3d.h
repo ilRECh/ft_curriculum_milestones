@@ -206,5 +206,6 @@ void    draw_vpixel_line(t_all *all, int x, int height_wall, double x_dwall);
 
 // trigonometry
 double	degToRad(double degree);
+double  d_plus(double d);
 
 #endif //CUB3D_H
