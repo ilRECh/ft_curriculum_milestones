@@ -16,12 +16,16 @@ endif
 
 HEADERS	=	Animal.hpp\
 			Dog.hpp\
-			Cat.hpp
+			Cat.hpp\
+			WrongAnimal.hpp\
+			WrongCat.hpp
 
 SRC		=	main.cpp\
 			Cat.cpp\
 			Dog.cpp\
-			Animal.cpp
+			Animal.cpp\
+			WrongAnimal.cpp\
+			WrongCat.cpp
 			
 OBJ		=	$(SRC:.cpp=.o)
 
