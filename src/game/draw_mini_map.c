@@ -80,10 +80,10 @@ void	drow_circle(t_image *img, t_all *all)
 			ret = in_circle(all->plr, 0.5f, i);
 			if (ret)
 			{
-				if (ret == 1)
+				if (ret == 2)
 					pixel_put(img, conv_dtop(dpnt_multiple(i, dpnt_s(SCALE >> 2))), 0xFF0000);
-				else
-					pixel_put(img, conv_dtop(dpnt_multiple(i, dpnt_s(SCALE >> 2))), 0x880011FF);
+				// else
+					// pixel_put(img, conv_dtop(dpnt_multiple(i, dpnt_s(SCALE >> 2))), 0x880011FF);
 			}
 			i.x += 0.05;
 		}
@@ -102,7 +102,7 @@ void	draw_line(t_image *img_map, t_dpoint p1, t_dpoint p2, int color)
 	t.y = (p1.y - p2.y) / step;
 	while (step --> 0)
 	{
-		pixel_put(img_map, pnt_set(p1.x -1, p1.y -1), color);
+		pixel_put(img_map, pnt_set(p1.x, p1.y), color);
 		p1.x -= t.x;
 		p1.y -= t.y;
 	}

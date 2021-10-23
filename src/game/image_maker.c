@@ -12,6 +12,16 @@ t_image	*new_image(void *mlx, t_point size)
 	return (img);
 }
 
+t_image	image(void *mlx, t_point size)
+{
+	t_image	img;
+
+	img.size = size;
+	img.img = mlx_new_image(mlx, size.x, size.y);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
+	return (img);
+}
+
 // закрашиваю один пиксель на изображении
 void	pixel_put(t_image *img, t_point	p, unsigned int colour)
 {
@@ -38,7 +48,7 @@ unsigned int pixel_get(t_image *img, t_point	p)
 // закрашиваю квадрат пикселей
 // если start пустой то стартуется с нуля (x = 0) & (y = 0)
 // если end пустой то закрашиваю все изображение со стартовой точки, (x = img.width) & (y = img.height)
-void	fill_rect_to_img(t_image *img, const t_point *start, const t_point *end, const unsigned int colour)
+t_image	*fill_rect_to_img(t_image *img, const t_point *start, const t_point *end, const unsigned int colour)
 {
 	t_point	i;
 	t_point	s;
@@ -59,6 +69,7 @@ void	fill_rect_to_img(t_image *img, const t_point *start, const t_point *end, co
 			pixel_put(img, i, colour);
 		i.x = s.x - 1;
 	}
+	return (img);
 }
 
 // Make background | ceiling and floor

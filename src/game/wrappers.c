@@ -10,7 +10,10 @@ t_image	*xpm_to_new_image(t_all *all, char *path_to_xpm)
 	t_image	*img;
 
 	img = malloc(sizeof(t_image));
+	if (!img)
+		exit(EXIT_FAILURE);
 	img->img = mlx_xpm_file_to_image(all->win->mlx, path_to_xpm, &img->size.x, &img->size.y);
+	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel, &img->line_length, &img->endian);
 	return (img);
 }
 

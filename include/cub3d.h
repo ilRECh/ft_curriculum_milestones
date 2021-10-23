@@ -90,7 +90,7 @@ typedef struct s_all // структура для всего вместе
 	t_win	*win;
 	t_plr	*plr;
 	t_image	*buff;
-	t_image whalls[4];
+	t_image *whalls[4];
 	t_image *img_map;
 	t_point	screen_size;
 	char	**textures;
@@ -149,11 +149,12 @@ void	set_plr(t_all *all, float x, float y, float direction);
 void	player_in_map(t_all *all, t_image *img_map);
 // image create
 t_image	*new_image(void *mlx, t_point size);
+t_image	image(void *mlx, t_point size);
 void    image_to_image_cp(t_image *dst, t_image *src, t_point position);
 void    image_to_image_cp_insert_clr(t_image *dst, t_image *src, t_point position, unsigned int ins_scolor);
 void	pixel_put(t_image *img, t_point p, unsigned int colour);
 unsigned int	pixel_get(t_image *img, t_point	p);
-void	fill_rect_to_img(t_image *img, const t_point *start, \
+t_image	*fill_rect_to_img(t_image *img, const t_point *start, \
 	const t_point *end, const unsigned int colour);
 void	set_background(t_all *all);
 
@@ -175,8 +176,6 @@ t_point		pnt_s(int xy);
 t_point		pnt_set(int x, int y);
 t_dpoint	dpnt_s(double xy);
 t_dpoint	dpnt_set(double x, double y);
-void		pnt_swap_xy(t_point *p);
-void		dpnt_swap_xy(t_dpoint *p);
 t_point		pnt_plus(t_point p1, t_point p2);
 t_dpoint	dpnt_plus(t_dpoint p1, t_dpoint p2);
 t_point		pnt_minus(t_point p1, t_point p2);
@@ -207,5 +206,6 @@ void    draw_vpixel_line(t_all *all, int x, int height_wall, double x_dwall);
 // trigonometry
 double	degToRad(double degree);
 double  d_plus(double d);
+double  d_dif_len(double a, double b);
 
 #endif //CUB3D_H

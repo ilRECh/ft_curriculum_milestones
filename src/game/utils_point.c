@@ -1,7 +1,7 @@
 #include "cub3d.h"
 
 // int
-
+// convert (DOUBLE t_dpoint) to (INT t_point)
 t_point conv_dtop(t_dpoint dpoint)
 {
 	t_point point;
@@ -11,6 +11,7 @@ t_point conv_dtop(t_dpoint dpoint)
 	return (point);
 }
 
+// convert t_plr to t_point
 t_point conv_pltop(t_plr plr)
 {
 	t_point point;
@@ -20,6 +21,7 @@ t_point conv_pltop(t_plr plr)
 	return (point);
 }
 
+// return (point + point)
 t_point pnt_plus(t_point p1, t_point p2)
 {
 	t_point res;
@@ -29,6 +31,7 @@ t_point pnt_plus(t_point p1, t_point p2)
 	return (res);
 }
 
+// return (point - point)
 t_point pnt_minus(t_point p1, t_point p2)
 {
 	t_point res;
@@ -38,6 +41,7 @@ t_point pnt_minus(t_point p1, t_point p2)
 	return (res);
 }
 
+// return (point / point)
 t_point pnt_divide(t_point p1, t_point p2)
 {
 	t_point res;
@@ -47,6 +51,7 @@ t_point pnt_divide(t_point p1, t_point p2)
 	return (res);
 }
 
+// return (point * point)
 t_point pnt_multiple(t_point p1, t_point p2)
 {
 	t_point res;
@@ -57,6 +62,7 @@ t_point pnt_multiple(t_point p1, t_point p2)
 }
 
 
+// return (point.x = xy, point.y = xy)
 t_point pnt_s(int xy)
 {
 	t_point res;
@@ -66,18 +72,8 @@ t_point pnt_s(int xy)
 	return (res);
 }
 
-void pnt_swap_xy(t_point *p)
-{
-	float t;
 
-	if (p)
-	{
-		t = p->x;
-		p->x = p->y;
-		p->y = t;
-	}
-}
-
+// return (point.x = x, point.y = y)
 t_point pnt_set(int x, int y)
 {
 	t_point res;
@@ -87,8 +83,11 @@ t_point pnt_set(int x, int y)
 	return (res);
 }
 
+//
 /////////////// double
+//
 
+// return (get mantissa for X and Y in dpoint)
 t_dpoint dpnt_mod(t_dpoint dpoint)
 {
 	t_dpoint mod;
@@ -99,6 +98,7 @@ t_dpoint dpnt_mod(t_dpoint dpoint)
 	return (mod);
 }
 
+// convert (INT point) to (DOUBLE dpoint)
 t_dpoint conv_ptod(t_point point)
 {
 	t_dpoint dpoint;
@@ -108,6 +108,7 @@ t_dpoint conv_ptod(t_point point)
 	return (dpoint);
 }
 
+// convert t_plr to t_dpoint
 t_dpoint conv_pltod(t_plr plr)
 {
 	t_dpoint dpoint;
@@ -117,6 +118,7 @@ t_dpoint conv_pltod(t_plr plr)
 	return (dpoint);
 }
 
+// return (t_dpoint + t_dpoint);
 t_dpoint dpnt_plus(t_dpoint p1, t_dpoint p2)
 {
 	t_dpoint res;
@@ -126,6 +128,7 @@ t_dpoint dpnt_plus(t_dpoint p1, t_dpoint p2)
 	return (res);
 }
 
+// return (t_dpoint - t_dpoint);
 t_dpoint dpnt_minus(t_dpoint p1, t_dpoint p2)
 {
 	t_dpoint res;
@@ -135,6 +138,7 @@ t_dpoint dpnt_minus(t_dpoint p1, t_dpoint p2)
 	return (res);
 }
 
+// return (t_dpoint / t_dpoint);
 t_dpoint dpnt_divide(t_dpoint p1, t_dpoint p2)
 {
 	t_dpoint res;
@@ -144,6 +148,7 @@ t_dpoint dpnt_divide(t_dpoint p1, t_dpoint p2)
 	return (res);
 }
 
+// return (t_dpoint * t_dpoint);
 t_dpoint dpnt_multiple(t_dpoint p1, t_dpoint p2)
 {
 	t_dpoint res;
@@ -153,6 +158,7 @@ t_dpoint dpnt_multiple(t_dpoint p1, t_dpoint p2)
 	return (res);
 }
 
+// return (t_dpoint.x = x, t_dpoint.y = y);
 t_dpoint dpnt_set(double x, double y)
 {
 	t_dpoint res;
@@ -162,18 +168,7 @@ t_dpoint dpnt_set(double x, double y)
 	return (res);
 }
 
-void dpnt_swap_xy(t_dpoint *p)
-{
-	float t;
-
-	if (p)
-	{
-		t = p->x;
-		p->x = p->y;
-		p->y = t;
-	}
-}
-
+// return (t_dpoint.x = xy, t_dpoint.y = xy);
 t_dpoint dpnt_s(double xy)
 {
 	t_dpoint res;
