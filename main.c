@@ -48,6 +48,7 @@ int	cub3d(char *map)
 	all.screen_size = pnt_set(1280, 1280);
 	game(&all);
 	mlx_loop(all.win);
+	// while (true);
 	return (0);
 }
 

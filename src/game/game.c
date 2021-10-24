@@ -28,16 +28,21 @@ void	key_handler(int key_code, t_all *all)
 {
 	if (key_code == -1)
 		return ;
-	else if (key_code == 126)
-		all->plr->y -= 0.33;
-	else if (key_code == 125)
-		all->plr->y += 0.33;
-	else if (key_code == 124)
-		all->plr->x += 0.33;
-	else if (key_code == 123)
-		all->plr->x -= 0.33;
+	// else if (key_code == 126)
+	// 	all->plr->y -= 0.33;
+
+	// else if (key_code == 125)
+	// 	all->plr->y += 0.33;
+
+	// else if (key_code == 124)
+	// 	all->plr->x += 0.33;
+
+	// else if (key_code == 123)
+	// 	all->plr->x -= 0.33;
+
 	else if (key_code == 0)
 		all->plr->dir += degToRad(5);
+
 	else if (key_code == 2)
 		all->plr->dir -= degToRad(5);
 	else if (key_code == 13)

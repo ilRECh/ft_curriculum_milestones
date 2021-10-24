@@ -170,6 +170,7 @@ bool	setup_params(t_all *all, t_list *lst)
 
 	i = -1;
 	lst->Dcur = lst->Dstart;
+	// split = NULL;
 	while (true)
 	{
 		if (!lst->Dcur)
@@ -184,12 +185,16 @@ bool	setup_params(t_all *all, t_list *lst)
 			ft_lstdeloneD(lst->Dcur->prev, free);
 			continue ;
 		}
+		// if (split)
+		// 	free(split);
 		split = ft_split(lst->Dcur->content, ' ');
-#ifdef DEBUG
-{int i = -1;
-while (split[++i])
-	printf("split[%d]: |%s|\n", i, split[i]);}
-#endif
+
+	// #ifdef DEBUG
+	// int i = -1;
+	// while (split[++i])
+	// 	printf("split[%d]: |%s|\n", i, split[i]);
+	// #endif
+
 		if (check_element_name(split, all, lst, &i))
 		{
 			if (all->err)
