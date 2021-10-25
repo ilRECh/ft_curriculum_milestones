@@ -12,75 +12,6 @@
 
 #include "cub3d.h"
 
-bool	check_in_radius(char **map, t_dpoint pnt, float radius)
-{
-	int			i;
-
-	i = -1;
-	while (++i < 360)
-		if (map [(int)(pnt.y + (cos(degToRad(i)) * radius))] \
-				[(int)(pnt.x + (sin(degToRad(i)) * radius))] == '1')
-			return (false);
-	return (true);
-}
-
-void	key_handler(int key_code, t_all *all)
-{
-	if (key_code == -1)
-		return ;
-	// else if (key_code == 126)
-	// 	all->plr->y -= 0.33;
-
-	// else if (key_code == 125)
-	// 	all->plr->y += 0.33;
-
-	// else if (key_code == 124)
-	// 	all->plr->x += 0.33;
-
-	// else if (key_code == 123)
-	// 	all->plr->x -= 0.33;
-
-	else if (key_code == 0)
-		all->plr->dir += degToRad(5);
-
-	else if (key_code == 2)
-		all->plr->dir -= degToRad(5);
-	else if (key_code == 13)
-	{
-		if (check_in_radius(all->map, dpnt_plus(conv_pltod(*all->plr), \
-			dpnt_set(sinf(all->plr->dir) / 2, 0)), 0.3f))
-			all->plr->x += sinf(all->plr->dir) * 0.33;
-		if (check_in_radius(all->map, dpnt_plus(conv_pltod(*all->plr), \
-			dpnt_set(0, cosf(all->plr->dir) / 2)), 0.3f))
-			all->plr->y += cosf(all->plr->dir) * 0.33;
-	}
-	else if (key_code == 1)
-	{
-		if (check_in_radius(all->map, dpnt_minus(conv_pltod(*all->plr), \
-			dpnt_set(sinf(all->plr->dir) / 2, 0)), 0.3f))
-			all->plr->x -= sinf(all->plr->dir) * 0.33;
-		if (check_in_radius(all->map, dpnt_minus(conv_pltod(*all->plr), \
-			dpnt_set(0, cosf(all->plr->dir) / 2)), 0.3f))
-			all->plr->y -= cosf(all->plr->dir) * 0.33;
-	}
-
-	if (key_code == 53)
-	{
-		// // фришим карту
-		// printf("-----%%p-----\n");
-		// image_free(all, all->img_map, true);
-		// // фришим стены
-		// printf("-----%%p-----\n");
-		// image_free(all, &all->whalls[0], false);
-		// printf("-----%%p-----\n");
-		// image_free(all, &all->whalls[1], false);
-		// // Фришим буфер
-		// printf("-----%%p-----\n");
-		// image_free(all, all->buff, true);
-		exit (0);
-	}
-}
-
 t_point	align_to_screen(t_point screen, t_point image, int8_t mode)
 {
 	t_point	position;
@@ -106,26 +37,13 @@ int	key_hook(int key_code, t_all *all)
 {
 	printf("key = %d\n", key_code);
 	key_handler(key_code, all);
-// Инициализирую буффер если не инит, и закрашиваю землю и небо
-	// image_to_image_cp(all->buff, &all->whalls[0], pnt_set(50, 50));
-	// image_to_image_cp(all->buff, &all->whalls[1], pnt_set(all->whalls[0].size.x + 50, 50));
 	set_background(all);
-// Записываем стены в общий буфер
-// Записываем карту в общий буфер (all->buff)
 	draw_mini_map(all);
 	player_in_map(all, all->img_map);
 	draw_raycast(all);
-	image_to_image_cp_insert_clr(all->buff, all->img_map, 
-		align_to_screen(all->buff->size, all->img_map->size, CENTER | DOWN), 0xFF000000);
-
-
-	// for (size_t i = 0; i < 200; i++)
-	// {
-	// 	draw_vpixel_line(all, 50 + i, i, 200 - i + 30);
-	// }
-	
-
-// Выводим буфер в окно
+	image_to_image_cp_insert_clr(all->buff, all->img_map, \
+		align_to_screen(all->buff->size, all->img_map->size, \
+		CENTER | DOWN), 0xFF000000);
 	image_to_window(all, all->buff, pnt_set(0, 0));
 	return (0);
 }
@@ -134,7 +52,7 @@ bool	game(t_all *all)
 {
 	init(all);
 	key_hook(-1, all);
+	mlx_hook(all->win->win, 17, 0, &close_x, NULL);
 	mlx_hook(all->win->win, 2, 1L<<1, key_hook, all);
-	// mlx_key_hook(all->win->win, key_hook, all);
 	return (false);
 }

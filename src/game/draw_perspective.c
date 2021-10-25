@@ -126,45 +126,40 @@ double	get_x_dwall(t_all *all, t_dpoint *dpoint)
 	return (in_scale.x);
 }
 
+t_project_plane	project_plane_set(t_all *all, double width_in_deg, double distance_to_plane)
+{
+	t_project_plane	prj;
+
+	prj.width = degToRad(width_in_deg);
+	prj.project.x = all->plr->x + distance_to_plane * cosf(all->plr->dir - degToRad(width_in_deg / 2));
+	prj.project.y = all->plr->y + distance_to_plane * cosf(all->plr->dir - degToRad(width_in_deg / 2));
+	prj.coef = prj.width / all->buff->size.x;
+	return (prj);
+}
+
 void	draw_raycast(t_all *all)
 {
-	double		scale;
+	t_project_plane proj;
 	t_dpoint	dpoint;
 	int			h_wall;
-	double		coef_rays;
 	double		direction;
-	double		width_view;
 	int			i;
 
-	t_dpoint	project;
-	double		width_plane;
-	double		coef_projplane;
-
-	scale = all->buff->size.x / all->map_size.x;
-
-	width_view = degToRad(60); /* это ширина обзора */
-	coef_rays = width_view / all->buff->size.x;
-
-	width_plane = 0.1;
-	coef_projplane = width_plane / all->buff->size.x;
-	project.x = all->plr->x + 0.5 * cosf(all->plr->dir - degToRad(width_view / 2));
-	project.y = all->plr->y + 0.5 * cosf(all->plr->dir - degToRad(width_view / 2));
-
-
-	direction = all->plr->dir - coef_rays + (width_view / 2);
+	proj = project_plane_set(all, 60, 0.5);
+	direction = all->plr->dir + (proj.width / 2);
 	dpoint = conv_pltod(*all->plr);
 
 	i = -1;
 	while(++i < all->buff->size.x)
 	{
 		shoot_ray_eco(all, &dpoint, direction);
-		project = dpnt_plus(project, dpnt_s(coef_projplane));
-		h_wall = height_wall(all, conv_pltod(*all->plr), dpoint, project);
+		proj.project = dpnt_plus(proj.project, dpnt_s(proj.coef));
+		h_wall = height_wall(all, conv_pltod(*all->plr), dpoint, proj.project);
 		draw_vpixel_line(all, i, h_wall, get_x_dwall(all, &dpoint));
 		draw_line(all->img_map, 
 			dpnt_multiple(	conv_pltod(*all->plr),	dpnt_s(SCALE >> 2)),
 			dpnt_multiple(				dpoint,		dpnt_s(SCALE >> 2)), 0x0);
 		dpoint = conv_pltod(*all->plr);
-		direction -= coef_rays;
+		direction -= proj.coef;
 	}
 }
