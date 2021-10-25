@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_closed.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: name <name@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 22:25:24 by name              #+#    #+#             */
-/*   Updated: 2021/10/02 22:51:14 by name             ###   ########.fr       */
+/*   Updated: 2021/10/25 20:59:34 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,27 +30,21 @@ static inline bool	err_at(int i, int j, t_all *all)
 	tmp[1] = ft_strndup(all->map[i] + j - 1, 4);
 	tmp[1][3] = '\n';
 	all->err = ft_strjoin(tmp[0], tmp[1]);
-	free(tmp[0]), free(tmp[1]);
+	free(tmp[0]);
+	free(tmp[1]);
 	tmp[0] = ft_strndup(all->map[i + 1] + j - 1, 3);
 	tmp[1] = all->err;
 	all->err = ft_strjoin(all->err, tmp[0]);
-	free(tmp[0]), free(tmp[1]);
+	free(tmp[0]);
+	free(tmp[1]);
 	return (true);
 }
 
 static bool	check(int i, int j, t_all *all, bool go)
 {
 	static int			dir = 0;
-	static const int	dirs[8][2] = {
-		{-1, 0},
-		{-1, -1},
-		{0, -1},
-		{1, -1},
-		{1, 0},
-		{1, 1},
-		{0, 1},
-		{-1, 1}
-	};
+	static const int	dirs[8][2] = {{-1, 0}, {-1, -1},
+	{0, -1}, {1, -1}, {1, 0}, {1, 1}, {0, 1}, {-1, 1}};
 
 	if (all->map[i][j] == ' ')
 		return (true);

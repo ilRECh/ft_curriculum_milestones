@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cleaning.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: name <name@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 10:26:25 by name              #+#    #+#             */
-/*   Updated: 2021/09/29 14:30:02 by name             ###   ########.fr       */
+/*   Updated: 2021/10/25 21:19:59 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ bool	fs(char **split)
 
 	i = -1;
 	while (split && split[++i])
+	{
 		free(split[i]);
+		(split[i] = NULL);
+	}
 	free(split);
 	return (true);
 }
@@ -42,8 +45,6 @@ bool	fall(t_all *all)
 {
 	int	i;
 
-	//win
-	//plr
 	i = -1;
 	while (all->textures[++i])
 		free(all->textures[i]);
@@ -57,5 +58,11 @@ bool	fall(t_all *all)
 		free(all->map[i]);
 	free(all->map);
 	free(all->err);
+	return (true);
+}
+
+bool	free_but_i_hate_norminette(void *f)
+{
+	free(f);
 	return (true);
 }

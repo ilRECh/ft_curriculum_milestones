@@ -6,7 +6,7 @@
 /*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 12:36:39 by name              #+#    #+#             */
-/*   Updated: 2021/10/15 17:19:29 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/10/25 21:20:17 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,8 @@ typedef struct s_project_plane
 bool		parse(t_all *all, int fd);
 bool		setup_all(t_all *all);
 bool		setup_params(t_all *all, t_list *lst);
+void		set_colors(t_all *all, char **rgb, int *index);
+bool		go_next(t_list *lst);
 bool		setup_map(t_all *all, t_list *lst);
 bool		check_num(char *number);
 bool		check_len_value(char **rgb);
@@ -138,6 +140,7 @@ bool		fl(t_list *lst);
 bool		flf(t_list *lst, int fd);
 bool		fs(char **split);
 bool		fall(t_all *all);
+bool		free_but_i_hate_norminette(void *f);
 
 //
 // game

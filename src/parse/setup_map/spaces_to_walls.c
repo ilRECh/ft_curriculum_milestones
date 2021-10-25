@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   spaces_to_walls.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: name <name@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/02 12:07:54 by name              #+#    #+#             */
-/*   Updated: 2021/10/02 22:44:30 by name             ###   ########.fr       */
+/*   Updated: 2021/10/25 20:55:35 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,4 @@ void	spaces_to_walls(t_all *all)
 				all->map[i][j] = ' ';
 		}
 	}
-#ifdef DEBUG
-{
-	printf("\n-----------------------------------------------------------------\n\n");
-	for (int i = 0; all->map[i]; i++)
-	{
-		printf("new_map[%3d]: |%s| ,len: %ld\n", i, all->map[i], ft_strlen(all->map[i]));
-	}
-}
-#endif
 }
