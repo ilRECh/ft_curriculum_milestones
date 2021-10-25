@@ -19,8 +19,8 @@ t_point	align_to_screen(t_point screen, t_point image, int8_t mode)
 	position = pnt_s(0);
 	if (mode & CENTER)
 	{
-		position.x = (screen.x - image.x) - image.x / 2;
-		position.y = (screen.y - image.y) - image.y / 2;
+		position.x = (screen.x - image.x) / 2;
+		position.y = (screen.y - image.y) / 2;
 	}
 	if (mode & LEFT)
 		position.x = 0;

@@ -8,24 +8,51 @@
 // x			это позиция в общем буфере
 // xdwall		это кэфициент позиций пикселей с текстуры 100.00
 // height_wall	это размер вертикали стены
+
+uint32_t	deep_dark(uint32_t colour, double x_dwall)
+{
+	unsigned int	t;
+	unsigned int	r;
+	unsigned int	g;
+	unsigned int	b;
+	(void)x_dwall;
+
+	x_dwall /= 3;
+	t = (colour >> 24) * x_dwall;
+	r = (0x000000FF & colour >> 16) * x_dwall;
+	g = (0x000000FF & colour >> 8) * x_dwall;
+	b = (0x000000FF & colour) * x_dwall;
+
+	colour = t;
+	colour <<= 8;
+	colour += r;
+	colour <<= 8;
+	colour += g;
+	colour <<= 8;
+	colour += b;
+	return (colour);
+}
+
 void    draw_vpixel_line(t_all *all, int x, int height_wall, double x_dwall)
 {
 	int		start_ybuff;
+	double	wy[2];
+	double	coef;
+	double	idw;
 	int		iter;
-	double	coef_iter;
-	double	d_iter;
 
-	// x_dwall 0.0 <-> 1.0
-	x_dwall = (x_dwall * all->whalls[0]->size.x);			// превращаем коэффициент в позицию X на текстуре
+	x_dwall = 1 - modf(x_dwall, &idw);
+	coef = x_dwall;
+	x_dwall *= all->whalls[(int)idw]->size.x;			// превращаем коэффициент в позицию X на текстуре
 	start_ybuff = (all->buff->size.y - height_wall) / 2;	// Определяем место начала стены в буфере
-	coef_iter = (double)all->whalls[0]->size.y / (double)height_wall;	// коэфициент итерации для Y стены
-	d_iter = 0.000;														// итератор для Y стены
+	wy[1] = (double)all->whalls[(int)idw]->size.y / (double)height_wall;	// коэфициент итерации для Y стены
+	wy[0] = 0.000;														// итератор для Y стены
 	iter = -1;															// итератор для буфера
 	while (++iter < height_wall)
 	{
 		pixel_put(all->buff, pnt_set(x, start_ybuff + iter), 
-			pixel_get(all->whalls[1], pnt_set(x_dwall , d_iter)));
-		d_iter += coef_iter;
+			deep_dark(pixel_get(all->whalls[(int)idw], pnt_set(x_dwall , wy[0])), (double)height_wall / 450.0));
+		wy[0] += wy[1];
 	}
 }
 
@@ -35,7 +62,6 @@ bool	is_wall(t_all *all, t_dpoint *point)
 		return (true);
 	if (point->x < 0 || point->y < 0)
 		return (true);
-	// if (all->map[(int)ceil(point->y)][(int)ceil(point->x)] == '0')
 	if (all->map[(int)point->y][(int)point->x] == '0')
 		return (false);
 	return (true);
@@ -62,38 +88,7 @@ double	get_dist(double vector, double xy)
 	return (- modf(xy, &integer));
 }
 
-void	to_round_step(t_dpoint *dpnt, double direction, t_dpoint	vct)
-{
-	t_dpoint	bias;
-	t_dpoint	mod;
-	t_dpoint	cmp;
-
-	mod = dpnt_set(get_dist(vct.x, dpnt->x), get_dist(vct.y, dpnt->y));
-	cmp = dpnt_set(tan(direction) * mod.y, mod.x / tan(direction));
-	if ((cmp.x < 1 && cmp.x > -1 && d_plus(cmp.x) < d_plus(cmp.y) && cmp.x != 0) || cmp.y == 0)
-		bias = dpnt_set(cmp.x, mod.y);
-	else
-		bias = dpnt_set(mod.x, cmp.y);
-	dpnt->x += bias.x;
-	dpnt->y += bias.y;
-	bias = dpnt_s(0);
-
-//|-------|-------|-------|-------|
-//|       |       |       |       |
-//|       |       |       |       |
-//|-------|-------|-------|-------|
-//|    *  |       +       |       |
-//|       |       |       |       |
-//|-------|-------|-+-+---|-------|
-//|       |       |       |       |
-//|       |       / + *   |       |
-//|-------|-------|-------|-------|
-//|       |       |       |       |
-//|       |       |       |       |
-//|-------|-------|-------|-------|
-}
-
-void	shoot_ray_eco(t_all *all, t_dpoint *dpoint, double direction)
+void	shoot_ray(t_all *all, t_dpoint *dpoint, double direction)
 {
 	t_dpoint	bias;
 	t_dpoint	vector;
@@ -112,18 +107,35 @@ void	shoot_ray_eco(t_all *all, t_dpoint *dpoint, double direction)
 		// to_round_step(dpoint, direction, vector);
 }
 
-double	get_x_dwall(t_all *all, t_dpoint *dpoint)
+void	idxw_detect(t_dpoint point, double *idwx)
+{
+	const float	limit = 0.99;
+
+	point = dpnt_mod(point);
+	if (point.x > limit)
+		*idwx += 3;
+	else if (point.x < 1 - limit)
+		*idwx += 2;
+	else if (point.y > limit)
+		*idwx += 1;
+}
+
+double	get_x_dwall(t_dpoint *dpoint)
 {
 	t_dpoint	in_scale;
 	t_dpoint	half;
-	(void)all;
+	double		res;
+
 	// in_scale = dpnt_mod(dpnt_divide(*dpoint, conv_ptod(all->map_size)));
 	in_scale = dpnt_mod(*dpoint);
 	half.x = in_scale.x > 0.5 ? 1.0 - in_scale.x : in_scale.x;
 	half.y = in_scale.y > 0.5 ? 1.0 - in_scale.y : in_scale.y;
 	if (half.x < half.y)
-		return (in_scale.y);
-	return (in_scale.x);
+		res = in_scale.y;
+	else
+		res = in_scale.x;
+	idxw_detect(*dpoint, &res);
+	return (res);
 }
 
 t_project_plane	project_plane_set(t_all *all, double width_in_deg, double distance_to_plane)
@@ -152,13 +164,13 @@ void	draw_raycast(t_all *all)
 	i = -1;
 	while(++i < all->buff->size.x)
 	{
-		shoot_ray_eco(all, &dpoint, direction);
+		shoot_ray(all, &dpoint, direction);
 		proj.project = dpnt_plus(proj.project, dpnt_s(proj.coef));
 		h_wall = height_wall(all, conv_pltod(*all->plr), dpoint, proj.project);
-		draw_vpixel_line(all, i, h_wall, get_x_dwall(all, &dpoint));
+		draw_vpixel_line(all, i, h_wall, get_x_dwall(&dpoint));
 		draw_line(all->img_map, 
-			dpnt_multiple(	conv_pltod(*all->plr),	dpnt_s(SCALE >> 2)),
-			dpnt_multiple(				dpoint,		dpnt_s(SCALE >> 2)), 0x0);
+			dpnt_multiple(	conv_pltod(*all->plr),	dpnt_s(SCALE >> 3)),
+			dpnt_multiple(				dpoint,		dpnt_s(SCALE >> 3)), 0x0);
 		dpoint = conv_pltod(*all->plr);
 		direction -= proj.coef;
 	}

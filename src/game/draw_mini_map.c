@@ -81,9 +81,9 @@ void	drow_circle(t_image *img, t_all *all)
 			if (ret)
 			{
 				if (ret == 2)
-					pixel_put(img, conv_dtop(dpnt_multiple(i, dpnt_s(SCALE >> 2))), 0xFF0000);
+					pixel_put(img, conv_dtop(dpnt_multiple(i, dpnt_s(SCALE >> 3))), 0xFF0000);
 				// else
-					// pixel_put(img, conv_dtop(dpnt_multiple(i, dpnt_s(SCALE >> 2))), 0x880011FF);
+					// pixel_put(img, conv_dtop(dpnt_multiple(i, dpnt_s(SCALE >> 3))), 0x880011FF);
 			}
 			i.x += 0.05;
 		}
@@ -115,7 +115,7 @@ void	draw_view(t_all *all)
 	t_dpoint	p2;
 
 	p1 = conv_pltod(*all->plr);
-	p1 = dpnt_multiple(p1, dpnt_s(SCALE >> 2));
+	p1 = dpnt_multiple(p1, dpnt_s(SCALE >> 3));
 	// p1.x = img_map->size.x / p1.x;
 	// p1.y = img_map->size.y / p1.y;
 	p2 = p1;

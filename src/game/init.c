@@ -5,7 +5,7 @@ t_point		map_len(char **maps)
 {
 	t_point	point;
 
-	point.x = (point.y = 0);
+	point = pnt_s(0);
 	while (maps[point.y][point.x])
 		point.x++;
 	while (maps[point.y])
@@ -47,7 +47,7 @@ void    init(t_all *all)
 	set_background(all);
 // Создаю изображение для миниарты
 	all->img_map = new_image(all->win->mlx,
-		pnt_multiple(all->map_size, pnt_s(SCALE >> 2)));
+		pnt_multiple(all->map_size, pnt_s(SCALE >> 3)));
 // Задаю стартовые позиции игрока
 	set_plrpos(all);
 	set_plr(all, all->plrpos.x - 0.2f, all->plrpos.y - 0.1f, degToRad(0));
