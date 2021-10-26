@@ -6,7 +6,7 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 14:33:02 by csamuro           #+#    #+#             */
-/*   Updated: 2021/10/26 15:33:36 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/10/26 16:33:05 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	draw_view(t_all *all)
 	t_dpoint	p2;
 
 	p1 = conv_pltod(*all->plr);
-	p1 = dpnt_multiple(p1, dpnt_s(SCALE >> 3));
+	p1 = dpnt_multiple(p1, dpnt_s(all->scale));
 	p2 = p1;
 	c = 10.0f;
 	p1.x -= sin(all->plr->dir) * c;

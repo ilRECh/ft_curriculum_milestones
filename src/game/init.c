@@ -6,7 +6,7 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 14:55:09 by csamuro           #+#    #+#             */
-/*   Updated: 2021/10/26 16:17:09 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/10/26 16:33:35 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,9 @@ void	init(t_all *all)
 	all->map_size = map_len(all->map);
 	all->win = mlx_create(all->screen_size.x, all->screen_size.y);
 	set_background(all);
+	all->scale = all->buff->size.x / (all->map_size.x * 2.5f);
 	all->img_map = new_image(all->win->mlx,
-			pnt_multiple(all->map_size, pnt_s(SCALE >> 3)));
+			pnt_multiple(all->map_size, pnt_s(all->scale)));
 	set_plrpos(all);
 	set_plr(all, all->plrpos.x + 0.5f, all->plrpos.y + 0.5f);
 	init_texture(all);

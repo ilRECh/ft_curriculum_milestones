@@ -6,7 +6,7 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 15:04:28 by csamuro           #+#    #+#             */
-/*   Updated: 2021/10/26 15:27:07 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/10/26 16:33:05 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,8 @@ void	draw_raycast(t_all *all)
 		h_wall = height_wall(all, conv_pltod(*all->plr), dpoint, proj.project);
 		draw_vpixel_line(all, i, h_wall, get_x_dwall(&dpoint));
 		draw_line(all->img_map,
-			dpnt_multiple(conv_pltod(*all->plr), dpnt_s(SCALE >> 3)),
-			dpnt_multiple(dpoint, dpnt_s(SCALE >> 3)), 0x0);
+			dpnt_multiple(conv_pltod(*all->plr), dpnt_s(all->scale)),
+			dpnt_multiple(dpoint, dpnt_s(all->scale)), 0x0);
 		dpoint = conv_pltod(*all->plr);
 		direction -= proj.coef;
 	}

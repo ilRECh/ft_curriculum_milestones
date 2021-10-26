@@ -6,7 +6,7 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 12:36:39 by name              #+#    #+#             */
-/*   Updated: 2021/10/26 16:13:41 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/10/26 16:31:43 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ typedef struct s_all // структура для всего вместе
 	char	**textures;
 	int		**colors;
 	char	**map;
+	int		scale;
 	int		map_length;
 	int		map_height;
 	t_point	map_size;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: name <name@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 12:11:31 by name              #+#    #+#             */
-/*   Updated: 2021/10/01 22:21:57 by name             ###   ########.fr       */
+/*   Updated: 2021/10/26 16:33:55 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	cub3d(char *map)
 		fall(&all);
 		return (1);
 	}
-	all.screen_size = pnt_set(1920, 1080);
+	all.screen_size = pnt_set(1024, 640);
 	game(&all);
 	mlx_loop(all.win);
 	return (0);

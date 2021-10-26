@@ -6,7 +6,7 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 15:42:43 by csamuro           #+#    #+#             */
-/*   Updated: 2021/10/26 15:42:46 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/10/26 16:33:05 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	player_in_map(t_all *all, t_image *img)
 			ret = in_circle(all->plr, 0.5f, i);
 			if (ret == 2)
 				pixel_put(img, conv_dtop(\
-					dpnt_multiple(i, dpnt_s(SCALE >> 3))), 0xFF0000);
+					dpnt_multiple(i, dpnt_s(all->scale))), 0xFF0000);
 			i.x += 0.05;
 		}
 		i.y += 0.05;
