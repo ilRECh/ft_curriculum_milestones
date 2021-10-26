@@ -99,8 +99,8 @@ void	shoot_ray(t_all *all, t_dpoint *dpoint, double direction)
 
 	bias = dpnt_s(0);
 	vector = dpnt_set(sin(direction), cos(direction));
-	x = sin(direction) * 0.009;
-	y = cos(direction) * 0.009;
+	x = sin(direction) * 0.003;
+	y = cos(direction) * 0.003;
 	while(!is_wall(all, dpoint))
 	{
 		dpoint->x += x;
@@ -111,7 +111,7 @@ void	shoot_ray(t_all *all, t_dpoint *dpoint, double direction)
 
 void	idxw_detect(t_dpoint point, double *idwx)
 {
-	const float	limit = 0.990;
+	const float	limit = 0.997;
 
 	point = dpnt_mod(point);
 	if (point.x > limit && point.x > point.y)
