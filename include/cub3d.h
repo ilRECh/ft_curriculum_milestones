@@ -6,7 +6,7 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 12:36:39 by name              #+#    #+#             */
-/*   Updated: 2021/10/26 15:34:29 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/10/26 16:13:41 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,7 +152,7 @@ void		key_handler(int key_code, t_all *all);
 void		draw_mini_map(t_all *all);
 // plr
 void		set_plrpos(t_all *all);
-void		set_plr(t_all *all, float x, float y, float direction);
+void		set_plr(t_all *all, float x, float y);
 void		player_in_map(t_all *all, t_image *img_map);
 // image create
 t_image		*new_image(void *mlx, t_point size);

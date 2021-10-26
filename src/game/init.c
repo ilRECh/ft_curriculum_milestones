@@ -6,7 +6,7 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 14:55:09 by csamuro           #+#    #+#             */
-/*   Updated: 2021/10/26 14:56:48 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/10/26 16:17:09 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,6 @@ void	init(t_all *all)
 	all->img_map = new_image(all->win->mlx,
 			pnt_multiple(all->map_size, pnt_s(SCALE >> 3)));
 	set_plrpos(all);
-	set_plr(all, all->plrpos.x - 0.2f, all->plrpos.y - 0.1f, degToRad(0));
+	set_plr(all, all->plrpos.x + 0.5f, all->plrpos.y + 0.5f);
 	init_texture(all);
 }
