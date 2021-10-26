@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   key_handler.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/26 14:54:44 by csamuro           #+#    #+#             */
+/*   Updated: 2021/10/26 15:43:04 by csamuro          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 bool	check_in_radius(char **map, t_dpoint pnt, float radius)
@@ -12,7 +24,7 @@ bool	check_in_radius(char **map, t_dpoint pnt, float radius)
 	return (true);
 }
 
-int	close_x()
+int	close_x( void )
 {
 	exit(EXIT_SUCCESS);
 }

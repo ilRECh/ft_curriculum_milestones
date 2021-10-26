@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   colors.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/26 14:32:24 by csamuro           #+#    #+#             */
+/*   Updated: 2021/10/26 15:43:13 by csamuro          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
-unsigned int create_rgb(int *color)
+unsigned int	create_rgb(int *color)
 {
-    if (!color)
-        return (0x0);
-    return (color[0] << 16 | color[1] << 8 | color[2]);
+	if (!color)
+		return (0x0);
+	return (color[0] << 16 | color[1] << 8 | color[2]);
 }

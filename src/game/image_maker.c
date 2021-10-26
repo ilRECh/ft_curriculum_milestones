@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   image_maker.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/26 14:58:24 by csamuro           #+#    #+#             */
+/*   Updated: 2021/10/26 15:56:29 by csamuro          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 // создает новое изображение
@@ -8,7 +20,8 @@ t_image	*new_image(void *mlx, t_point size)
 	img = malloc(sizeof(t_image));
 	img->size = size;
 	img->img = mlx_new_image(mlx, size.x, size.y);
-	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel, &img->line_length, &img->endian);
+	img->addr = mlx_get_data_addr \
+		(img->img, &img->bits_per_pixel, &img->line_length, &img->endian);
 	return (img);
 }
 
@@ -18,37 +31,17 @@ t_image	image(void *mlx, t_point size)
 
 	img.size = size;
 	img.img = mlx_new_image(mlx, size.x, size.y);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
+	img.addr = mlx_get_data_addr \
+		(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
 	return (img);
-}
-
-// закрашиваю один пиксель на изображении
-void	pixel_put(t_image *img, t_point	p, unsigned int colour)
-{
-	char	*dst;
-
-	if (p.x < 0 || p.x >= img->size.x || p.y < 0 || p.y >= img->size.y)
-		return ;
-	dst = img->addr + ((p.y * img->line_length) + (p.x * (img->bits_per_pixel / 8)));
-	*(unsigned int *)dst = colour;
-}
-// Получаю пиксель из изображения
-unsigned int pixel_get(t_image *img, t_point	p)
-{
-	void	*dst;
-	unsigned int ret;
-
-	if (p.x < 0 || p.x >= img->size.x || p.y < 0 || p.y >= img->size.y)
-		return (0xFF000000);
-	dst = img->addr + ((p.y * img->line_length) + (p.x * (img->bits_per_pixel / 8)));
-	ret = *(unsigned int *)dst;
-	return(ret);
 }
 
 // закрашиваю квадрат пикселей
 // если start пустой то стартуется с нуля (x = 0) & (y = 0)
-// если end пустой то закрашиваю все изображение со стартовой точки, (x = img.width) & (y = img.height)
-t_image	*fill_rect_to_img(t_image *img, const t_point *start, const t_point *end, const unsigned int colour)
+// если end пустой то закрашиваю все изображение
+// со стартовой точки, (x = img.width) & (y = img.height)
+t_image	*fill_rect_to_img(t_image *img,
+	const t_point *start, const t_point *end, const unsigned int colour)
 {
 	t_point	i;
 	t_point	s;
@@ -62,7 +55,7 @@ t_image	*fill_rect_to_img(t_image *img, const t_point *start, const t_point *end
 		e = *end;
 	else
 		e = img->size;
-	i = pnt_minus(s, pnt_s(-1));
+	i = pnt_minus(s, pnt_s(1));
 	while (++i.y < e.y)
 	{
 		while (++i.x < e.x)

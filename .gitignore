@@ -10,3 +10,4 @@ file*
 .vscode
 **/*DS_Store
 *Screen\ Shot*.png
+**/*.sh

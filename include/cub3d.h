@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 12:36:39 by name              #+#    #+#             */
-/*   Updated: 2021/10/25 21:20:17 by vcobbler         ###   ########.fr       */
+/*   Updated: 2021/10/26 15:34:29 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -204,6 +204,9 @@ t_image		*xpm_to_new_image(t_all *all, char *path_to_xpm);
 t_image		xpm_to_image(t_all *all, char *path_to_xpm);
 int			image_free(t_all *all, t_image	*img, bool mode);
 
+//	player_in_map
+void		player_in_map(t_all *all, t_image *img);
+
 //
 // perspective
 //
@@ -211,6 +214,8 @@ void		draw_line(t_image *img_map, t_dpoint p1, t_dpoint p2, int color);
 void		draw_raycast(t_all *all);
 void		draw_vpixel_line(t_all *all, int x,
 				int height_wall, double x_dwall);
+void		shoot_ray(t_all *all, t_dpoint *dpoint, double direction);
+double		get_x_dwall(t_dpoint *dpoint);
 // trigonometry
 double		degToRad(double degree);
 double		d_plus(double d);

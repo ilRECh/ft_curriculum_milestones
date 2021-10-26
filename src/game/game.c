@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: name <name@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/03 15:42:11 by name              #+#    #+#             */
-/*   Updated: 2021/10/03 15:42:26 by name             ###   ########.fr       */
+/*   Updated: 2021/10/26 15:03:17 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,6 @@ bool	game(t_all *all)
 	init(all);
 	key_hook(-1, all);
 	mlx_hook(all->win->win, 17, 0, &close_x, NULL);
-	mlx_hook(all->win->win, 2, 1L<<1, key_hook, all);
+	mlx_hook(all->win->win, 2, 1L << 1, key_hook, all);
 	return (false);
 }

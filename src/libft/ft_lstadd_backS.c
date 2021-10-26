@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstadd_backS.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: name <name@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 09:47:39 by name              #+#    #+#             */
-/*   Updated: 2021/09/27 10:01:28 by name             ###   ########.fr       */
+/*   Updated: 2021/10/26 16:00:43 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_lstadd_backS(t_slist **lst, void *cont)
 {
 	t_slist	*last;
-	t_slist *new;
+	t_slist	*new;
 
 	if (!lst)
 		return ;

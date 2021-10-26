@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   image_functions.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/26 15:01:54 by csamuro           #+#    #+#             */
+/*   Updated: 2021/10/26 15:02:50 by csamuro          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
-void    image_to_image_cp(t_image *dst, t_image *src, t_point position)
+void	image_to_image_cp(t_image *dst, t_image *src, t_point position)
 {
-	t_point i;
+	t_point	i;
 
 	i = pnt_s(-1);
 	while (++i.y < src->size.y)
@@ -13,10 +25,11 @@ void    image_to_image_cp(t_image *dst, t_image *src, t_point position)
 	}
 }
 
-void    image_to_image_cp_insert_clr(t_image *dst, t_image *src, t_point position, unsigned int ins_scolor)
+void	image_to_image_cp_insert_clr(t_image *dst,
+	t_image *src, t_point position, unsigned int ins_scolor)
 {
-	unsigned int color;
-	t_point i;
+	unsigned int	color;
+	t_point			i;
 
 	i = pnt_s(-1);
 	while (++i.y < src->size.y)

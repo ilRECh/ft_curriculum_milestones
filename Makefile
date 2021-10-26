@@ -37,19 +37,25 @@ GNL						=	./src/get_next_line/gnl.a
 LIBFT_MAKE				=	./src/libft/
 LIBFT					=	./src/libft/libft.a
 
-GAME_LIST				=	game.c\
-							init.c\
-							set_plr_full.c\
-							image_maker.c\
-							utils_point.c\
-							wrappers.c\
+GAME_LIST				=	colors.c\
 							draw_mini_map.c\
-							image_functions.c\
-							utils_int.c\
-							colors.c\
+							draw_perspective_wall.c\
 							draw_perspective.c\
+							game.c\
+							image_functions.c\
+							image_maker.c\
+							init.c\
+							key_handler.c\
+							pixel_get_put_color.c\
+							player_on_map.c\
+							set_plr_full.c\
+							utils_dpoint_math.c\
+							utils_dpoint.c\
+							utils_int.c\
+							utils_point_math.c\
+							utils_point.c\
 							utils_trigonometry.c\
-							key_handler.c
+							wrappers.c
 GAME_DIR				=	src/game/
 GAME					=	$(addprefix $(GAME_DIR), $(GAME_LIST))
 

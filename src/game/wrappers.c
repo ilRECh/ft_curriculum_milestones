@@ -1,8 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   wrappers.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/26 14:43:35 by csamuro           #+#    #+#             */
+/*   Updated: 2021/10/26 14:44:19 by csamuro          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
-int		image_to_window(t_all *all, const t_image *img, t_point position)
+int	image_to_window(t_all *all, const t_image *img, t_point position)
 {
-	return (mlx_put_image_to_window(all->win->mlx, all->win->win, img->img, position.x, position.y));
+	return (mlx_put_image_to_window \
+	(all->win->mlx, all->win->win, img->img, position.x, position.y));
 }
 
 t_image	*xpm_to_new_image(t_all *all, char *path_to_xpm)
@@ -12,8 +25,10 @@ t_image	*xpm_to_new_image(t_all *all, char *path_to_xpm)
 	img = malloc(sizeof(t_image));
 	if (!img)
 		exit(EXIT_FAILURE);
-	img->img = mlx_xpm_file_to_image(all->win->mlx, path_to_xpm, &img->size.x, &img->size.y);
-	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel, &img->line_length, &img->endian);
+	img->img = mlx_xpm_file_to_image \
+		(all->win->mlx, path_to_xpm, &img->size.x, &img->size.y);
+	img->addr = mlx_get_data_addr \
+		(img->img, &img->bits_per_pixel, &img->line_length, &img->endian);
 	return (img);
 }
 
@@ -21,13 +36,13 @@ t_image	xpm_to_image(t_all *all, char *path_to_xpm)
 {
 	t_image	img;
 
-	img.img = mlx_xpm_file_to_image(all->win->mlx, path_to_xpm, &img.size.x, &img.size.y);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
+	img.img = mlx_xpm_file_to_image \
+		(all->win->mlx, path_to_xpm, &img.size.x, &img.size.y);
+	img.addr = mlx_get_data_addr \
+		(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
 	return (img);
 }
 
-// mode false = just destroy
-// mode true = full free;
 int	image_free(t_all *all, t_image	*img, bool mode)
 {
 	int	ret;
