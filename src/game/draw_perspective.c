@@ -9,29 +9,31 @@
 // xdwall		это кэфициент позиций пикселей с текстуры 100.00
 // height_wall	это размер вертикали стены
 
-uint32_t	deep_dark(uint32_t colour, double x_dwall)
-{
-	unsigned int	t;
-	unsigned int	r;
-	unsigned int	g;
-	unsigned int	b;
-	(void)x_dwall;
+// uint32_t	deep_dark(uint32_t colour, double x_dwall)
+// {
+// 	unsigned int	t;
+// 	unsigned int	r;
+// 	unsigned int	g;
+// 	unsigned int	b;
+// 	(void)x_dwall;
 
-	x_dwall /= 3;
-	t = (colour >> 24) * x_dwall;
-	r = (0x000000FF & colour >> 16) * x_dwall;
-	g = (0x000000FF & colour >> 8) * x_dwall;
-	b = (0x000000FF & colour) * x_dwall;
+// 	x_dwall /= 1.2;
+// 	if (x_dwall > 1)
+// 		x_dwall = 1;
+// 	t = (colour >> 24) * x_dwall;
+// 	r = (0x000000FF & colour >> 16) * x_dwall;
+// 	g = (0x000000FF & colour >> 8) * x_dwall;
+// 	b = (0x000000FF & colour) * x_dwall;
 
-	colour = t;
-	colour <<= 8;
-	colour += r;
-	colour <<= 8;
-	colour += g;
-	colour <<= 8;
-	colour += b;
-	return (colour);
-}
+// 	colour = t;
+// 	colour <<= 8;
+// 	colour += r;
+// 	colour <<= 8;
+// 	colour += g;
+// 	colour <<= 8;
+// 	colour += b;
+// 	return (colour);
+// }
 
 void    draw_vpixel_line(t_all *all, int x, int height_wall, double x_dwall)
 {
@@ -51,7 +53,7 @@ void    draw_vpixel_line(t_all *all, int x, int height_wall, double x_dwall)
 	while (++iter < height_wall)
 	{
 		pixel_put(all->buff, pnt_set(x, start_ybuff + iter), 
-			deep_dark(pixel_get(all->whalls[(int)idw], pnt_set(x_dwall , wy[0])), (double)height_wall / 450.0));
+			/*deep_dark(*/pixel_get(all->whalls[(int)idw], pnt_set(x_dwall , wy[0]))/*, (double)height_wall / 450.0)*/);
 		wy[0] += wy[1];
 	}
 }
@@ -109,15 +111,21 @@ void	shoot_ray(t_all *all, t_dpoint *dpoint, double direction)
 
 void	idxw_detect(t_dpoint point, double *idwx)
 {
-	const float	limit = 0.99;
+	const float	limit = 0.990;
 
 	point = dpnt_mod(point);
-	if (point.x > limit)
+	if (point.x > limit && point.x > point.y)
 		*idwx += 3;
-	else if (point.x < 1 - limit)
+	else if (point.x < 1 - limit && point.x < point.y)
 		*idwx += 2;
 	else if (point.y > limit)
 		*idwx += 1;
+	// if (point.x > limit)
+	// 	*idwx += 3;
+	// else if (point.x < 1 - limit)
+	// 	*idwx += 2;
+	// else if (point.y > limit)
+	// 	*idwx += 1;
 }
 
 double	get_x_dwall(t_dpoint *dpoint)

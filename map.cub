@@ -1,7 +1,7 @@
-NO ./xpm/jepa.XPM
-SO ./xpm/back.XPM
-WE ./xpm/nojik.XPM
-EA ./xpm/pohuy.XPM
+NO ./xpm/wall_cyberpunk2.XPM
+SO ./xpm/wall_cyberpunk1.XPM
+WE ./xpm/wall_cyberpunk2.XPM
+EA ./xpm/wall_cyberpunk1.XPM
 
 F 50,10,15
 C 100,90,200
