@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 12:11:31 by name              #+#    #+#             */
-/*   Updated: 2021/10/26 16:33:55 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/10/27 18:52:11 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	cub3d(char *map)
 	}
 	all.screen_size = pnt_set(1024, 640);
 	game(&all);
-	mlx_loop(all.win);
+	mlx_loop(all.win->mlx);
 	return (0);
 }
 
