@@ -6,7 +6,7 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 12:11:31 by name              #+#    #+#             */
-/*   Updated: 2021/10/27 15:24:43 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/10/28 12:50:12 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	cub3d(char *map)
 	}
 	all.screen_size = pnt_set(1024, 768);
 	game(&all);
-	mlx_loop(all.win);
+	mlx_loop(all.win->mlx);
 	return (0);
 }
 
