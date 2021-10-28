@@ -6,7 +6,7 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 15:20:12 by csamuro           #+#    #+#             */
-/*   Updated: 2021/10/26 16:24:57 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/10/27 15:24:23 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	idxw_detect(t_dpoint point, double *idwx)
 {
-	const float	limit = 0.992;
+	const float	limit = 0.998;
 
 	point = dpnt_mod(point);
 	if (point.x > limit && point.x > point.y)
@@ -23,6 +23,8 @@ void	idxw_detect(t_dpoint point, double *idwx)
 		*idwx += 2;
 	else if (point.y > limit)
 		*idwx += 1;
+	else
+		*idwx += 0;
 }
 
 double	get_x_dwall(t_dpoint *dpoint)
@@ -68,8 +70,8 @@ void	shoot_ray(t_all *all, t_dpoint *dpoint, double direction)
 
 	bias = dpnt_s(0);
 	vector = dpnt_set(sin(direction), cos(direction));
-	x = sin(direction) * 0.005;
-	y = cos(direction) * 0.005;
+	x = sin(direction) * 0.0005;
+	y = cos(direction) * 0.0005;
 	while (!is_wall(all, dpoint))
 	{
 		dpoint->x += x;
