@@ -6,7 +6,7 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 14:55:09 by csamuro           #+#    #+#             */
-/*   Updated: 2021/10/26 16:33:35 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/10/28 13:17:24 by csamuro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,16 @@ void	init_texture(t_all *all)
 	int	i;
 
 	i = -1;
-	if (all->textures)
-		while (all->textures[++i] && i < 4)
-			all->whalls[i] = xpm_to_new_image(all, all->textures[i]);
-	while (i < 4)
+	while (++i < 4)
 	{
-		all->whalls[i] = new_image(all->win->mlx, pnt_s(100));
-		fill_rect_to_img \
-			(all->whalls[i], NULL, NULL, create_rgb(all->colors[i]));
-		i++;
+		if (all->textures[i])
+			all->whalls[i] = xpm_to_new_image(all, all->textures[i]);
+		else
+		{
+			all->whalls[i] = new_image(all->win->mlx, pnt_s(100));
+			fill_rect_to_img \
+				(all->whalls[i], NULL, NULL, create_rgb(all->colors[i]));
+		}
 	}
 }
 
