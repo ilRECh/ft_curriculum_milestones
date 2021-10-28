@@ -3,12 +3,10 @@
 Character::Character():	m_sName("Nobody"),
 						m_Inventory()
 {
-	std::cout << "Default constructor called! (Character)" << std::endl;
 }
 
 Character::~Character()
 {
-	std::cout << "Destructor called! (Character)" << std::endl;
 	for (int i = 0; i < 4; i++)
 	{
 		delete m_Inventory[i];
@@ -18,7 +16,6 @@ Character::~Character()
 Character::Character(const Character &C):	m_sName(C.m_sName),
 											m_Inventory()
 {
-	std::cout << "Copy constructor called! (Character)" << std::endl;
 	for (int i = 0; i < 4; ++i)
 	{
 		m_Inventory[i] = C.m_Inventory[i]->clone();
@@ -36,6 +33,10 @@ Character& Character::operator=(const Character &C)
 		m_Inventory[i] = C.m_Inventory[i]->clone();
 	}
 	return (*this);
+}
+
+Character::Character(std::string name):	m_sName(name)
+{
 }
 
 std::string const& Character::getName() const

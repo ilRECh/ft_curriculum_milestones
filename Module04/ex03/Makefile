@@ -2,7 +2,7 @@
 	all re fclean
 
 OS		=	$(shell uname)
-TARGET	=	Zoo
+TARGET	=	Interface
 RM		=	rm -rf
 FLAGS	=	-Wall -Wextra -Werror -c -std=c++98 -pedantic
 
@@ -14,10 +14,20 @@ else
 $(error cannot set proper compiler)
 endif
 
-HEADERS	=	AMateria.hpp
+HEADERS	=	AMateria.hpp\
+			Character.hpp\
+			Cure.hpp\
+			Ice.hpp\
+			ICharacter.hpp\
+			IMateriaSource.hpp\
+			MateriaSource.hpp
 
 SRC		=	main.cpp\
-			AMateria.cpp
+			AMateria.cpp\
+			Character.cpp\
+			Cure.cpp\
+			Ice.cpp\
+			MateriaSource.cpp
 			
 OBJ		=	$(SRC:.cpp=.o)
 

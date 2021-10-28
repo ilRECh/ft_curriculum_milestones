@@ -2,6 +2,8 @@
 #include <string>
 #include "AMateria.hpp"
 
+class AMateria;
+
 class ICharacter
 {
 public:

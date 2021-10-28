@@ -1,18 +1,15 @@
 #include "Cure.hpp"
 
-Cure::Cure():	AMateria("Cure")
+Cure::Cure():	AMateria("cure")
 {
-	std::cout << "Default constructor called! (Cure)" << std::endl;
 }
 
 Cure::~Cure()
 {
-	std::cout << "Destructor called! (Cure)" << std::endl;
 }
 
-Cure::Cure(const Cure &C):	AMateria("Cure")
+Cure::Cure(const Cure &C):	AMateria(C.m_Type)
 {
-	std::cout << "Copy constructor called! (Cure)" << std::endl;
 }
 
 Cure& Cure::operator=(const Cure &C)
