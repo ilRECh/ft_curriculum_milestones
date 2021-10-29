@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/03 15:42:11 by name              #+#    #+#             */
-/*   Updated: 2021/10/27 14:29:05 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/10/29 19:44:56 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ t_point	align_to_screen(t_point screen, t_point image, int8_t mode)
 
 int	key_hook(int key_code, t_all *all)
 {
-	printf("key = %d\n", key_code);
 	key_handler(key_code, all);
 	set_background(all);
 	draw_mini_map(all);
