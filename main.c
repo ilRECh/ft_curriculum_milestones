@@ -6,7 +6,7 @@
 /*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 12:11:31 by name              #+#    #+#             */
-/*   Updated: 2021/10/28 12:50:12 by csamuro          ###   ########.fr       */
+/*   Updated: 2021/10/29 19:39:13 by vcobbler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,16 @@ int	cub3d(char *map)
 	static t_all	all;
 	int				fd;
 
-	if (!ft_strrchr(map, '.') || ft_strncmp(ft_strrchr(map, '.') + 1, "cub", 4))
-	{
-		printf(RED "Error\n" RESET "invalid file\n");
+	if ((!ft_strrchr(map, '.') || ft_strncmp(ft_strrchr(map, '.')
+				+ 1, "cub", 4))
+		&& printf(RED "Error\n" RESET "invalid file\n"))
 		return (1);
-	}
 	fd = open(map, O_RDONLY);
-	if (!fd || (read(fd, NULL, 0) < 0 && !close(fd)))
-	{
-		printf(RED "Error\n" RESET "invalid file\n");
+	if ((!fd || (read(fd, NULL, 0) < 0 && !close(fd)))
+		&& printf(RED "Error\n" RESET "invalid file\n"))
 		return (1);
-	}
-	if (setup_all(&all))
-	{
-		printf(RED "Error\n" RESET "no space left\n");
+	if (setup_all(&all) && printf(RED "Error\n" RESET "no space left\n"))
 		return (1);
-	}
 	if (parse(&all, fd))
 	{
 		printf(RED "Error\n" RESET "invalid file formatting: %s\n", all.err);
