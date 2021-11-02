@@ -56,6 +56,57 @@ void Bureaucrat::decrementGrade()
 	m_nGrade++;
 }
 
+bool Bureaucrat::signForm(Form &F)
+{
+	try
+	{
+		F.beSigned(*this);
+		std::cout << m_sName << " signs " << F.getName() << '\n';
+		std::cout << F << std::endl;
+	}
+	catch (const Form::GradeTooLowException &e)
+	{
+		std::cout <<	m_sName << " cannot sign " << F.getName() <<
+						" because " << e.m_sMessage << std::endl;
+		return (true);
+	}
+	catch (...)
+	{
+		std::cout <<	m_sName << " cannot sign " << F.getName() <<
+						" because of some other reasons" << std::endl;
+		return (true);
+	}
+	return (false);
+}
+
+bool Bureaucrat::executeForm(Form const & form)
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << m_sName << " executes " << form.getName() << std::endl;
+	}
+	catch (const Form::GradeTooLowException &e)
+	{
+		std::cout <<	m_sName << " cannot execute " << form.getName() <<
+						" because " << e.m_sMessage << std::endl;
+		return (true);
+	}
+	catch (const Form::FormIsNotSignedException &e)
+	{
+		std::cout <<	m_sName << " cannot execute " << form.getName() <<
+						" because " << e.m_sMessage << std::endl;
+		return (true);
+	}
+	catch (...)
+	{
+		std::cout <<	m_sName << " cannot sign " << form.getName() <<
+						" because of some other reasons" << std::endl;
+		return (true);
+	}
+	return (false);
+}
+
 Bureaucrat::GradeTooHighException::GradeTooHighException(int grade, std::string const &message):
 m_sMessage(message),
 m_nGrade(grade)

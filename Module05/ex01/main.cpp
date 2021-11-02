@@ -2,22 +2,23 @@
 #include <cstdlib>
 #include <iostream>
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int	main(int argc, char **argv)
 {
-	if (argc > 1)
+	if (argc == 4)
 	{
 		try
 		{
 			Bureaucrat bureaucrat("me", std::atoi(argv[1]));
+			Form form("some sh*t", std::atoi(argv[2]), std::atoi(argv[3]));
 			std::cout << bureaucrat << '\n';
-			std::cout << "incrementing: ";
-			bureaucrat.incrementGrade();
-			std::cout << bureaucrat << '\n';
-			std::cout << "decrementing: ";
-			bureaucrat.decrementGrade();
-			bureaucrat.decrementGrade();
-			std::cout << bureaucrat << std::endl;
+			std::cout << form << '\n';
+			while (bureaucrat.signForm(form))
+			{
+				bureaucrat.incrementGrade();
+				std::cout << bureaucrat << '\n';
+			}
 		}
 		catch(const Bureaucrat::GradeTooHighException &e)
 		{
