@@ -1,7 +1,7 @@
 TARGET		:= test
 CXX			:= clang++
 CXXFLAGS	:= -Wall -Wextra -Werror -std=c++98
-SRC			:= $(wildcard *.cpp)
+SRC			:= main.cpp
 OBJECTS		:= $(SRC:%.cpp=%.o)
 INCLUDE		:= -I ./include
 
@@ -9,18 +9,18 @@ INCLUDE		:= -I ./include
 
 all: $(TARGET)
 
-$(OBJ_DIR)/%.o: %.cpp
+%.o: %.cpp
 	@$(CXX) $(CXXFLAGS) -c $< -o $@
 	@echo $(CXX) $(CXXFLAGS) $(INCLUDE) $@
 
 $(TARGET): $(OBJECTS)
-	@$(CXX) $(CXXFLAGS) -o $(TARGET) $
+	@$(CXX) $(CXXFLAGS) -o $(TARGET) $<
 	@echo $(CXX) $(CXXFLAGS) $@
 
 clean:
-	-@rm -rvf $(OBJ_DIR)/*
+	-@rm -f $(OBJECTS)
 
 fclean: clean
-	-@rm -rvf $(APP_DIR)/*
+	-@rm -f $(TARGET)
 
 re			: clean all

@@ -1,14 +1,17 @@
 #ifndef MAP_HPP
 #define MAP_HPP
 
-#include <bits/stl_algobase.h>
-#include <bits/allocator.h>
-#include <bits/stl_function.h>
-#include <bits/cpp_type_traits.h>
-#include <ext/alloc_traits.h>
-#include <bits/functexcept.h>
-#include <bits/concept_check.h>
+#include <bits/stl_tree.h>
 
+#include <bits/stl_algobase.h>
+// #include <bits/allocator.h>
+#include <bits/stl_function.h>
+// #include <bits/cpp_type_traits.h>
+#include <ext/alloc_traits.h>
+// #include <bits/functexcept.h>
+// #include <bits/concept_check.h>
+
+namespace ft {
 
 template <typename _Key, typename _Tp, typename _Compare = std::less<_Key>,
 typename _Alloc = std::allocator<std::pair<const _Key, _Tp> > >
@@ -49,7 +52,7 @@ private:
     typedef typename __gnu_cxx::__alloc_traits<_Alloc>::template
 rebind<value_type>::other _Pair_alloc_type;
 
-    typedef _Rb_tree<key_type, value_type, _Select1st<value_type>,
+    typedef std::_Rb_tree<key_type, value_type, std::_Select1st<value_type>,
             key_compare, _Pair_alloc_type> _Rep_type;
 
     /// The actual tree structure.
@@ -164,7 +167,7 @@ return (*__i).second;
     {
 iterator __i = lower_bound(__k);
 if (__i == end() || key_comp()(__k, (*__i).first))
-    __throw_out_of_range(__N("map::at"));
+    std::__throw_out_of_range(__N("map::at"));
 return (*__i).second;
     }
 
@@ -173,7 +176,7 @@ return (*__i).second;
     {
 const_iterator __i = lower_bound(__k);
 if (__i == end() || key_comp()(__k, (*__i).first))
-    __throw_out_of_range(__N("map::at"));
+    std::__throw_out_of_range(__N("map::at"));
 return (*__i).second;
     }
 
@@ -263,4 +266,7 @@ return (*__i).second;
     operator<(const map<_K1, _T1, _C1, _A1>&,
         const map<_K1, _T1, _C1, _A1>&);
 };
+
+};
+
 #endif
