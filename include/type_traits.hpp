@@ -1,5 +1,5 @@
-#ifndef FT_UTILITY
-#define FT_UTILITY
+#ifndef TYPE_TRAITS_HPP
+#define TYPE_TRAITS_HPP
 
 namespace ft {
 
@@ -72,4 +72,4 @@ struct is_integral : public integral_constant<bool, (is_integral_helper<typename
 
 };
 
-#endif
+#endif //TYPE_TRAITS_HPP

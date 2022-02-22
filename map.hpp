@@ -7,65 +7,163 @@
 #include <iterator>
 #include <memory>
 #include <utility>
+#include "utility.hpp"
 #include <functional>
-#include <initializer_list>
+// #include <initializer_list>
 #include <type_traits>
 #include <__cxx_version>
+#include <map>
 
 //TODO delete this!
-using std::less;
+
+// using std::less;
+using ft::less;
+
 using std::allocator;
+
 using std::pair;
 using std::is_same;
 using std::__rebind_alloc_helper;
 using std::allocator_traits;
+using std::__map_iterator;
+using std::__map_const_iterator;
 using std::__tree;
 using std::__diagnose_non_const_comparator;
-using std::__map_const_iterator;
-using std::__map_iterator;
 using std::is_nothrow_default_constructible;
 using std::binary_function;
 using std::is_empty;
 using std::__libcpp_is_final;
 using std::__is_nothrow_swappable;
 using std::is_nothrow_copy_constructible;
+using std::__map_node_destructor;
+using std::unique_ptr;
+using std::pointer_traits;
+using std::bidirectional_iterator_tag;
+using std::__map_value_compare;
 
-template <class _Key, class _CP, class _Compare,
-          bool = is_empty<_Compare>::value && !__libcpp_is_final<_Compare>::value>
-class __map_value_compare
-    : private _Compare
-{
-public:
+// namespace ft {
 
-    __map_value_compare()
-        throw() (is_nothrow_default_constructible<_Compare>::value)
-        : _Compare() {}
+// template <class _Key, class _CP, class _Compare,
+//           bool = is_empty<_Compare>::value && !__libcpp_is_final<_Compare>::value>
+// class __map_value_compare
+//     : private _Compare
+// {
+// public:
+//     __map_value_compare() : _Compare() {}
+//     __map_value_compare(_Compare c) : _Compare(c) {}
+//     const _Compare& key_comp() const {return *this;}
+//     bool operator()(const _CP& __x, const _CP& __y) const
+//         {return static_cast<const _Compare&>(*this)(__x.__get_value().first, __y.__get_value().first);}
+//     bool operator()(const _CP& __x, const _Key& __y) const
+//         {return static_cast<const _Compare&>(*this)(__x.__get_value().first, __y);}
+//     bool operator()(const _Key& __x, const _CP& __y) const
+//         {return static_cast<const _Compare&>(*this)(__x, __y.__get_value().first);}
+//     void swap(__map_value_compare&__y)
+//     {
+//       using _VSTD::swap;
+//       swap(static_cast<_Compare&>(*this), static_cast<_Compare&>(__y));
+//     }
+// };
 
-    __map_value_compare(_Compare c)
-        throw() (is_nothrow_copy_constructible<_Compare>::value)
-        : _Compare(c) {}
+// template <class _TreeIterator>
+// class __map_iterator
+// {
+//     typedef typename _TreeIterator::_NodeTypes                   _NodeTypes;
+//     typedef typename _TreeIterator::__pointer_traits             __pointer_traits;
 
-    const _Compare& key_comp() const _NOEXCEPT {return *this;}
+//     _TreeIterator __i_;
 
-    bool operator()(const _CP& __x, const _CP& __y) const
-        {return static_cast<const _Compare&>(*this)(__x.__get_value().first, __y.__get_value().first);}
+// public:
+//     typedef bidirectional_iterator_tag                           iterator_category;
+//     typedef typename _NodeTypes::__map_value_type                value_type;
+//     typedef typename _TreeIterator::difference_type              difference_type;
+//     typedef value_type&                                          reference;
+//     typedef typename _NodeTypes::__map_value_type_pointer        pointer;
 
-    bool operator()(const _CP& __x, const _Key& __y) const
-        {return static_cast<const _Compare&>(*this)(__x.__get_value().first, __y);}
+//     __map_iterator() throw() {}
+//     __map_iterator(_TreeIterator __i) _NOEXCEPT : __i_(__i) {}
+//     reference operator*() const {return __i_->__get_value();}
+//     pointer operator->() const {return pointer_traits<pointer>::pointer_to(__i_->__get_value());}
+//     __map_iterator& operator++() {++__i_; return *this;}
+//     __map_iterator operator++(int)
+//     {
+//         __map_iterator __t(*this);
+//         ++(*this);
+//         return __t;
+//     }
 
-    bool operator()(const _Key& __x, const _CP& __y) const
-        {return static_cast<const _Compare&>(*this)(__x, __y.__get_value().first);}
-    void swap(__map_value_compare&__y)
-        throw() (__is_nothrow_swappable<_Compare>::value)
-    {
-      using _VSTD::swap;
-      swap(static_cast<_Compare&>(*this), static_cast<_Compare&>(__y));
-    }
-};
+//     __map_iterator& operator--() {--__i_; return *this;}
+//     __map_iterator operator--(int)
+//     {
+//         __map_iterator __t(*this);
+//         --(*this);
+//         return __t;
+//     }
+
+//     friend
+//     bool operator==(const __map_iterator& __x, const __map_iterator& __y)
+//         {return __x.__i_ == __y.__i_;}
+//     friend
+//     bool operator!=(const __map_iterator& __x, const __map_iterator& __y)
+//         {return __x.__i_ != __y.__i_;}
+
+//     template <class, class, class, class> friend class map;
+//     template <class> friend class __map_const_iterator;
+// };
+
+// template <class _TreeIterator>
+// class __map_const_iterator
+// {
+//     typedef typename _TreeIterator::_NodeTypes                   _NodeTypes;
+//     typedef typename _TreeIterator::__pointer_traits             __pointer_traits;
+
+//     _TreeIterator __i_;
+
+// public:
+//     typedef bidirectional_iterator_tag                           iterator_category;
+//     typedef typename _NodeTypes::__map_value_type                value_type;
+//     typedef typename _TreeIterator::difference_type              difference_type;
+//     typedef const value_type&                                    reference;
+//     typedef typename _NodeTypes::__const_map_value_type_pointer  pointer;
+
+//     __map_const_iterator() throw() {}
+
+//     __map_const_iterator(_TreeIterator __i) throw() : __i_(__i) {}
+//     __map_const_iterator(__map_iterator<
+//         typename _TreeIterator::__non_const_iterator> __i) throw()
+//         : __i_(__i.__i_) {}
+
+//     reference operator*() const {return __i_->__get_value();}
+//     pointer operator->() const {return pointer_traits<pointer>::pointer_to(__i_->__get_value());}
+
+//     __map_const_iterator& operator++() {++__i_; return *this;}
+//     __map_const_iterator operator++(int)
+//     {
+//         __map_const_iterator __t(*this);
+//         ++(*this);
+//         return __t;
+//     }
+
+//     __map_const_iterator& operator--() {--__i_; return *this;}
+//     __map_const_iterator operator--(int)
+//     {
+//         __map_const_iterator __t(*this);
+//         --(*this);
+//         return __t;
+//     }
+
+//     friend    bool operator==(const __map_const_iterator& __x, const __map_const_iterator& __y)
+//         {return __x.__i_ == __y.__i_;}
+//     friend    bool operator!=(const __map_const_iterator& __x, const __map_const_iterator& __y)
+//         {return __x.__i_ != __y.__i_;}
+
+//     template <class, class, class, class> friend class map;
+//     template <class, class, class> friend class __tree_const_iterator;
+// };
 
 template <class _Key, class _Tp, class _Compare = less<_Key>,
           class _Allocator = allocator<pair<const _Key, _Tp> > >
-class map
+class Map
 {
 public:
     // types:
@@ -84,7 +182,7 @@ public:
     class value_compare
         : public binary_function<value_type, value_type, bool>
     {
-        friend class map;
+        friend class Map;
     protected:
         key_compare comp;
 
@@ -118,28 +216,19 @@ public:
     typedef _VSTD::reverse_iterator<const_iterator>         const_reverse_iterator;
 
     // template <class _Key2, class _Value2, class _Comp2, class _Alloc2>
-    //     friend class _LIBCPP_TEMPLATE_VIS map;
+    //     friend class _LIBCPP_TEMPLATE_VIS Map;
     // template <class _Key2, class _Value2, class _Comp2, class _Alloc2>
     //     friend class _LIBCPP_TEMPLATE_VIS multimap;
 
-    map()
-        throw() (
-            is_nothrow_default_constructible<allocator_type>::value &&
-            is_nothrow_default_constructible<key_compare>::value &&
-            is_nothrow_copy_constructible<key_compare>::value)
-        : __tree_(__vc(key_compare())) {}
+    Map() : __tree_(__vc(key_compare())) {}
 
-    explicit map(const key_compare& __comp)
-        throw()(
-            is_nothrow_default_constructible<allocator_type>::value &&
-            is_nothrow_copy_constructible<key_compare>::value)
-        : __tree_(__vc(__comp)) {}
+    explicit Map(const key_compare& __comp) : __tree_(__vc(__comp)) {}
 
-    explicit map(const key_compare& __comp, const allocator_type& __a)
+    explicit Map(const key_compare& __comp, const allocator_type& __a)
         : __tree_(__vc(__comp), typename __base::allocator_type(__a)) {}
 
     template <class _InputIterator>
-        map(_InputIterator __f, _InputIterator __l,
+        Map(_InputIterator __f, _InputIterator __l,
             const key_compare& __comp = key_compare())
         : __tree_(__vc(__comp))
         {
@@ -147,7 +236,7 @@ public:
         }
 
     template <class _InputIterator>
-        map(_InputIterator __f, _InputIterator __l,
+        Map(_InputIterator __f, _InputIterator __l,
             const key_compare& __comp, const allocator_type& __a)
         : __tree_(__vc(__comp), typename __base::allocator_type(__a))
         {
@@ -155,13 +244,13 @@ public:
         }
 
 
-    map(const map& __m)
+    Map(const Map& __m)
         : __tree_(__m.__tree_)
         {
             insert(__m.begin(), __m.end());
         }
 
-    map& operator=(const map& __m)
+    Map& operator=(const Map& __m)
         {
             if (this != &__m) {
                 __tree_.clear();
@@ -172,12 +261,12 @@ public:
             return *this;
         }
 
-    explicit map(const allocator_type& __a)
+    explicit Map(const allocator_type& __a)
         : __tree_(typename __base::allocator_type(__a))
         {
         }
 
-    map(const map& __m, const allocator_type& __a)
+    Map(const Map& __m, const allocator_type& __a)
         : __tree_(__m.__tree_.value_comp(), typename __base::allocator_type(__a))
         {
             insert(__m.begin(), __m.end());
@@ -237,10 +326,9 @@ public:
         {return __tree_.__erase_unique(__k);}
     iterator  erase(const_iterator __f, const_iterator __l)
         {return __tree_.erase(__f.__i_, __l.__i_);}
-    void clear() throw() {__tree_.clear();
+    void clear() throw() {__tree_.clear();}
 
-    void swap(map& __m)
-        throw()(__is_nothrow_swappable<__base>::value)
+    void swap(Map& __m)
         {__tree_.swap(__m.__tree_);}
 
     iterator find(const key_type& __k)             {return __tree_.find(__k);}
@@ -272,5 +360,7 @@ private:
     typedef __map_node_destructor<__node_allocator> _Dp;
     typedef unique_ptr<__node, _Dp> __node_holder;
 };
+
+// };
 
 #endif
