@@ -3,11 +3,12 @@ CXX			:= clang++
 CXXFLAGS	:= -Wall -Wextra -Werror -std=c++98 -g
 SRC			:= main.cpp
 OBJECTS		:= $(SRC:%.cpp=%.o)
+INCLUDES	:= $(wildcard include/*.hpp)\ $(wildcard *.hpp)
 INCLUDE		:= -I ./include
 
 .PHONY: all clean fclean re
 
-all: $(TARGET)
+all: $(INCLUDES) $(TARGET)
 
 %.o: %.cpp
 	@$(CXX) $(CXXFLAGS) -c $< -o $@

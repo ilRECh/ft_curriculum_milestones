@@ -69,6 +69,13 @@ template<typename _Tp>
 struct is_integral : public integral_constant<bool, (is_integral_helper<typename remove_cv<_Tp>::type>::value)>
 { };
 
+template <class>
+struct __void_t { typedef void type; };
+
+template <bool _Bp, class _If, class _Then>
+    struct conditional {typedef _If type;};
+template <class _If, class _Then>
+    struct conditional<false, _If, _Then> {typedef _Then type;};
 
 };
 
