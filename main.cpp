@@ -2,10 +2,10 @@
 #include <string>
 #include <deque>
 
-#include "Map.hpp"
+#include "map.hpp"
 // #include <map>
 // #define _map std::map
-#define _map ft::Map
+#define _map ft::map
 
 // #include <stack>
 // #define _stack std::stack
@@ -121,12 +121,17 @@
 #include <map>
 
 int main() {
-	_map<int, int> a;
+	_map<int, int> a, e;
 	ft::pair<int, int> b(1, 2);
 	a.insert(b);
-	std::map<int, int> c;
+	e.insert(b);
+	std::map<int, int> c, g;
 	std::pair<int, int> d(1, 2);
 	c.insert(d);
+	g.insert(d);
+	std::cout << (c == g ? "true" : "false") << std::endl;
+	std::cout << (a == e ? "true" : "false") << std::endl;
 	std::cout << c[1] << std::endl;
+	std::cout << a[1] << std::endl;
 	return 0;
 }

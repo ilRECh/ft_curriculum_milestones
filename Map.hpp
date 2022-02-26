@@ -21,6 +21,7 @@ using std::pair;
 using std::is_same;
 using std::__rebind_alloc_helper;
 using std::allocator_traits;
+using std::__throw_out_of_range;
 // using std::__map_iterator;
 // using std::__map_const_iterator;
 // using std::__tree;
@@ -77,7 +78,7 @@ public:
     bool __first_constructed;
     bool __second_constructed;
 
-    explicit __map_node_destructor(allocator_type& __na) _NOEXCEPT
+    explicit __map_node_destructor(allocator_type& __na) throw()
         : __na_(__na),
           __first_constructed(false),
           __second_constructed(false)
@@ -85,7 +86,7 @@ public:
 
 #ifndef _LIBCPP_CXX03_LANG
     _LIBCPP_INLINE_VISIBILITY
-    __map_node_destructor(__tree_node_destructor<allocator_type>&& __x) _NOEXCEPT
+    __map_node_destructor(__tree_node_destructor<allocator_type>&& __x) throw()
         : __na_(__x.__na_),
           __first_constructed(__x.__value_constructed),
           __second_constructed(__x.__value_constructed)
@@ -94,12 +95,12 @@ public:
         }
 #endif  // _LIBCPP_CXX03_LANG
 
-    void operator()(pointer __p) _NOEXCEPT
+    void operator()(pointer __p) throw()
     {
         if (__second_constructed)
-            __alloc_traits::destroy(__na_, _VSTD::addressof(__p->__value_.__get_value().second));
+            __alloc_traits::destroy(__na_, &__p->__value_.__get_value().second);
         if (__first_constructed)
-            __alloc_traits::destroy(__na_, _VSTD::addressof(__p->__value_.__get_value().first));
+            __alloc_traits::destroy(__na_, &__p->__value_.__get_value().first);
         if (__p)
             __alloc_traits::deallocate(__na_, __p, 1);
     }
@@ -122,7 +123,7 @@ public:
         {return static_cast<const _Compare&>(*this)(__x, __y.__get_value().first);}
     void swap(__map_value_compare&__y)
     {
-      using _VSTD::swap;
+      using ft::swap;
       swap(static_cast<_Compare&>(*this), static_cast<_Compare&>(__y));
     }
 };
@@ -143,7 +144,7 @@ public:
     typedef typename _NodeTypes::__map_value_type_pointer        pointer;
 
     __map_iterator() throw() {}
-    __map_iterator(_TreeIterator __i) _NOEXCEPT : __i_(__i) {}
+    __map_iterator(_TreeIterator __i) throw() : __i_(__i) {}
     reference operator*() const {return __i_->__get_value();}
     pointer operator->() const {return pointer_traits<pointer>::pointer_to(__i_->__get_value());}
     __map_iterator& operator++() {++__i_; return *this;}
@@ -169,7 +170,7 @@ public:
     bool operator!=(const __map_iterator& __x, const __map_iterator& __y)
         {return __x.__i_ != __y.__i_;}
 
-    template <class, class, class, class> friend class Map;
+    template <class, class, class, class> friend class map;
     template <class> friend class __map_const_iterator;
 };
 
@@ -219,13 +220,13 @@ public:
     friend    bool operator!=(const __map_const_iterator& __x, const __map_const_iterator& __y)
         {return __x.__i_ != __y.__i_;}
 
-    template <class, class, class, class> friend class Map;
+    template <class, class, class, class> friend class map;
     template <class, class, class> friend class __tree_const_iterator;
 };
 
 template <class _Key, class _Tp, class _Compare = less<_Key>,
           class _Allocator = allocator<pair<const _Key, _Tp> > >
-class Map
+class map
 {
 public:
     // types:
@@ -244,7 +245,7 @@ public:
     class value_compare
         : public binary_function<value_type, value_type, bool>
     {
-        friend class Map;
+        friend class map;
     protected:
         key_compare comp;
 
@@ -274,23 +275,23 @@ public:
     typedef typename __alloc_traits::difference_type       difference_type;
     typedef __map_iterator<typename __base::iterator>             iterator;
     typedef __map_const_iterator<typename __base::const_iterator> const_iterator;
-    typedef _VSTD::reverse_iterator<iterator>               reverse_iterator;
-    typedef _VSTD::reverse_iterator<const_iterator>         const_reverse_iterator;
+    typedef ft::reverse_iterator<iterator>               reverse_iterator;
+    typedef ft::reverse_iterator<const_iterator>         const_reverse_iterator;
 
     // template <class _Key2, class _Value2, class _Comp2, class _Alloc2>
-    //     friend class _LIBCPP_TEMPLATE_VIS Map;
+    //     friend class _LIBCPP_TEMPLATE_VIS map;
     // template <class _Key2, class _Value2, class _Comp2, class _Alloc2>
     //     friend class _LIBCPP_TEMPLATE_VIS multimap;
 
-    Map() : __tree_(__vc(key_compare())) {}
+    map() : __tree_(__vc(key_compare())) {}
 
-    explicit Map(const key_compare& __comp) : __tree_(__vc(__comp)) {}
+    explicit map(const key_compare& __comp) : __tree_(__vc(__comp)) {}
 
-    explicit Map(const key_compare& __comp, const allocator_type& __a)
+    explicit map(const key_compare& __comp, const allocator_type& __a)
         : __tree_(__vc(__comp), typename __base::allocator_type(__a)) {}
 
     template <class _InputIterator>
-        Map(_InputIterator __f, _InputIterator __l,
+        map(_InputIterator __f, _InputIterator __l,
             const key_compare& __comp = key_compare())
         : __tree_(__vc(__comp))
         {
@@ -298,7 +299,7 @@ public:
         }
 
     template <class _InputIterator>
-        Map(_InputIterator __f, _InputIterator __l,
+        map(_InputIterator __f, _InputIterator __l,
             const key_compare& __comp, const allocator_type& __a)
         : __tree_(__vc(__comp), typename __base::allocator_type(__a))
         {
@@ -306,13 +307,13 @@ public:
         }
 
 
-    Map(const Map& __m)
+    map(const map& __m)
         : __tree_(__m.__tree_)
         {
             insert(__m.begin(), __m.end());
         }
 
-    Map& operator=(const Map& __m)
+    map& operator=(const map& __m)
         {
             if (this != &__m) {
                 __tree_.clear();
@@ -323,12 +324,12 @@ public:
             return *this;
         }
 
-    explicit Map(const allocator_type& __a)
+    explicit map(const allocator_type& __a)
         : __tree_(typename __base::allocator_type(__a))
         {
         }
 
-    Map(const Map& __m, const allocator_type& __a)
+    map(const map& __m, const allocator_type& __a)
         : __tree_(__m.__tree_.value_comp(), typename __base::allocator_type(__a))
         {
             insert(__m.begin(), __m.end());
@@ -350,21 +351,21 @@ public:
     const_reverse_iterator rend() const throw()
         {return const_reverse_iterator(begin());}
 
-    const_iterator cbegin() const _NOEXCEPT {return begin();}
-    const_iterator cend() const _NOEXCEPT {return end();}
-    const_reverse_iterator crbegin() const _NOEXCEPT {return rbegin();}
-    const_reverse_iterator crend() const _NOEXCEPT {return rend();}
+    const_iterator cbegin() const throw() {return begin();}
+    const_iterator cend() const throw() {return end();}
+    const_reverse_iterator crbegin() const throw() {return rbegin();}
+    const_reverse_iterator crend() const throw() {return rend();}
 
-    bool      empty() const _NOEXCEPT {return __tree_.size() == 0;}
-    size_type size() const _NOEXCEPT {return __tree_.size();}
-    size_type max_size() const _NOEXCEPT {return __tree_.max_size();}
+    bool      empty() const throw() {return __tree_.size() == 0;}
+    size_type size() const throw() {return __tree_.size();}
+    size_type max_size() const throw() {return __tree_.max_size();}
 
     mapped_type& operator[](const key_type& __k);
 
           mapped_type& at(const key_type& __k);
     const mapped_type& at(const key_type& __k) const;
 
-    allocator_type get_allocator() const _NOEXCEPT {return allocator_type(__tree_.__alloc());}
+    allocator_type get_allocator() const throw() {return allocator_type(__tree_.__alloc());}
     key_compare    key_comp()      const {return __tree_.value_comp().key_comp();}
     value_compare  value_comp()    const {return value_compare(__tree_.value_comp().key_comp());}
 
@@ -390,7 +391,7 @@ public:
         {return __tree_.erase(__f.__i_, __l.__i_);}
     void clear() throw() {__tree_.clear();}
 
-    void swap(Map& __m)
+    void swap(map& __m)
         {__tree_.swap(__m.__tree_);}
 
     iterator find(const key_type& __k)             {return __tree_.find(__k);}
@@ -426,21 +427,21 @@ private:
 
 
 template <class _Key, class _Tp, class _Compare, class _Allocator>
-typename Map<_Key, _Tp, _Compare, _Allocator>::__node_holder
-Map<_Key, _Tp, _Compare, _Allocator>::__construct_node_with_key(const key_type& __k)  
+typename map<_Key, _Tp, _Compare, _Allocator>::__node_holder
+map<_Key, _Tp, _Compare, _Allocator>::__construct_node_with_key(const key_type& __k)  
 {
     __node_allocator& __na = __tree_.__node_alloc();
     __node_holder __h(__node_traits::allocate(__na, 1), _Dp(__na));
-    __node_traits::construct(__na, _VSTD::addressof(__h->__value_.__get_value().first), __k);
+    __node_traits::construct(__na, &__h->__value_.__get_value().first, __k);
     __h.get_deleter().__first_constructed = true;
-    __node_traits::construct(__na, _VSTD::addressof(__h->__value_.__get_value().second));
+    __node_traits::construct(__na, &__h->__value_.__get_value().second);
     __h.get_deleter().__second_constructed = true;
     return _LIBCPP_EXPLICIT_MOVE(__h);  // explicitly moved for C++03
 }
 
 template <class _Key, class _Tp, class _Compare, class _Allocator>
 _Tp&
-Map<_Key, _Tp, _Compare, _Allocator>::operator[](const key_type& __k)
+map<_Key, _Tp, _Compare, _Allocator>::operator[](const key_type& __k)
 {
     __parent_pointer __parent;
     __node_base_pointer& __child = __tree_.__find_equal(__parent, __k);
@@ -456,23 +457,23 @@ Map<_Key, _Tp, _Compare, _Allocator>::operator[](const key_type& __k)
 
 template <class _Key, class _Tp, class _Compare, class _Allocator>
 _Tp&
-Map<_Key, _Tp, _Compare, _Allocator>::at(const key_type& __k)
+map<_Key, _Tp, _Compare, _Allocator>::at(const key_type& __k)
 {
     __parent_pointer __parent;
     __node_base_pointer& __child = __tree_.__find_equal(__parent, __k);
     if (__child == nullptr)
-        __throw_out_of_range("Map::at:  key not found");
+        __throw_out_of_range("map::at:  key not found");
     return static_cast<__node_pointer>(__child)->__value_.__get_value().second;
 }
 
 template <class _Key, class _Tp, class _Compare, class _Allocator>
 const _Tp&
-Map<_Key, _Tp, _Compare, _Allocator>::at(const key_type& __k) const
+map<_Key, _Tp, _Compare, _Allocator>::at(const key_type& __k) const
 {
     __parent_pointer __parent;
     __node_base_pointer __child = __tree_.__find_equal(__parent, __k);
     if (__child == nullptr)
-        __throw_out_of_range("Map::at:  key not found");
+        __throw_out_of_range("map::at:  key not found");
     return static_cast<__node_pointer>(__child)->__value_.__get_value().second;
 }
 
@@ -480,26 +481,26 @@ Map<_Key, _Tp, _Compare, _Allocator>::at(const key_type& __k) const
 template <class _Key, class _Tp, class _Compare, class _Allocator>
 inline _LIBCPP_INLINE_VISIBILITY
 bool
-operator==(const Map<_Key, _Tp, _Compare, _Allocator>& __x,
-           const Map<_Key, _Tp, _Compare, _Allocator>& __y)
+operator==(const map<_Key, _Tp, _Compare, _Allocator>& __x,
+           const map<_Key, _Tp, _Compare, _Allocator>& __y)
 {
-    return __x.size() == __y.size() && _VSTD::equal(__x.begin(), __x.end(), __y.begin());
+    return __x.size() == __y.size() && ft::equal(__x.begin(), __x.end(), __y.begin());
 }
 
 template <class _Key, class _Tp, class _Compare, class _Allocator>
 inline _LIBCPP_INLINE_VISIBILITY
 bool
-operator< (const Map<_Key, _Tp, _Compare, _Allocator>& __x,
-           const Map<_Key, _Tp, _Compare, _Allocator>& __y)
+operator< (const map<_Key, _Tp, _Compare, _Allocator>& __x,
+           const map<_Key, _Tp, _Compare, _Allocator>& __y)
 {
-    return _VSTD::lexicographical_compare(__x.begin(), __x.end(), __y.begin(), __y.end());
+    return ft::lexicographical_compare(__x.begin(), __x.end(), __y.begin(), __y.end());
 }
 
 template <class _Key, class _Tp, class _Compare, class _Allocator>
 inline _LIBCPP_INLINE_VISIBILITY
 bool
-operator!=(const Map<_Key, _Tp, _Compare, _Allocator>& __x,
-           const Map<_Key, _Tp, _Compare, _Allocator>& __y)
+operator!=(const map<_Key, _Tp, _Compare, _Allocator>& __x,
+           const map<_Key, _Tp, _Compare, _Allocator>& __y)
 {
     return !(__x == __y);
 }
@@ -507,8 +508,8 @@ operator!=(const Map<_Key, _Tp, _Compare, _Allocator>& __x,
 template <class _Key, class _Tp, class _Compare, class _Allocator>
 inline _LIBCPP_INLINE_VISIBILITY
 bool
-operator> (const Map<_Key, _Tp, _Compare, _Allocator>& __x,
-           const Map<_Key, _Tp, _Compare, _Allocator>& __y)
+operator> (const map<_Key, _Tp, _Compare, _Allocator>& __x,
+           const map<_Key, _Tp, _Compare, _Allocator>& __y)
 {
     return __y < __x;
 }
@@ -516,8 +517,8 @@ operator> (const Map<_Key, _Tp, _Compare, _Allocator>& __x,
 template <class _Key, class _Tp, class _Compare, class _Allocator>
 inline _LIBCPP_INLINE_VISIBILITY
 bool
-operator>=(const Map<_Key, _Tp, _Compare, _Allocator>& __x,
-           const Map<_Key, _Tp, _Compare, _Allocator>& __y)
+operator>=(const map<_Key, _Tp, _Compare, _Allocator>& __x,
+           const map<_Key, _Tp, _Compare, _Allocator>& __y)
 {
     return !(__x < __y);
 }
@@ -525,8 +526,8 @@ operator>=(const Map<_Key, _Tp, _Compare, _Allocator>& __x,
 template <class _Key, class _Tp, class _Compare, class _Allocator>
 inline _LIBCPP_INLINE_VISIBILITY
 bool
-operator<=(const Map<_Key, _Tp, _Compare, _Allocator>& __x,
-           const Map<_Key, _Tp, _Compare, _Allocator>& __y)
+operator<=(const map<_Key, _Tp, _Compare, _Allocator>& __x,
+           const map<_Key, _Tp, _Compare, _Allocator>& __y)
 {
     return !(__y < __x);
 }
@@ -534,14 +535,12 @@ operator<=(const Map<_Key, _Tp, _Compare, _Allocator>& __x,
 template <class _Key, class _Tp, class _Compare, class _Allocator>
 inline _LIBCPP_INLINE_VISIBILITY
 void
-swap(Map<_Key, _Tp, _Compare, _Allocator>& __x,
-     Map<_Key, _Tp, _Compare, _Allocator>& __y)
+swap(map<_Key, _Tp, _Compare, _Allocator>& __x,
+     map<_Key, _Tp, _Compare, _Allocator>& __y)
     _NOEXCEPT_(_NOEXCEPT_(__x.swap(__y)))
 {
     __x.swap(__y);
 }
-
-
 
 };
 

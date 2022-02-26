@@ -536,7 +536,7 @@ struct __tree_key_value_types {
 	}
 	
 	static __container_value_type* __get_ptr(__node_value_type& __n) {
-	return _VSTD::addressof(__n);
+	return &__n;
 	}
 };
 
@@ -579,7 +579,7 @@ struct __tree_key_value_types<__value_type<_Key, _Tp> > {
 
   
   static __container_value_type* __get_ptr(__node_value_type& __n) {
-    return _VSTD::addressof(__n.__get_value());
+    return &__n.__get_value();
   }
 };
 
@@ -1033,7 +1033,7 @@ public:
         {return static_cast<__node_pointer>(__end_node()->__left_);}
 
     __node_base_pointer* __root_ptr() const throw() {
-        return _VSTD::addressof(__end_node()->__left_);
+        return &__end_node()->__left_;
     }
 
     typedef __tree_iterator<value_type, __node_pointer, difference_type>             iterator;
@@ -1075,124 +1075,12 @@ public:
 
     void swap(__tree& __t);
 
-#ifndef _LIBCPP_CXX03_LANG
-    template <class _Key, class ..._Args>
-    pair<iterator, bool>
-    __emplace_unique_key_args(_Key const&, _Args&&... __args);
-    template <class _Key, class ..._Args>
-    iterator
-    __emplace_hint_unique_key_args(const_iterator, _Key const&, _Args&&...);
-
-    template <class... _Args>
-    pair<iterator, bool> __emplace_unique_impl(_Args&&... __args);
-
-    template <class... _Args>
-    iterator __emplace_hint_unique_impl(const_iterator __p, _Args&&... __args);
-
-    template <class... _Args>
-    iterator __emplace_multi(_Args&&... __args);
-
-    template <class... _Args>
-    iterator __emplace_hint_multi(const_iterator __p, _Args&&... __args);
-
-    template <class _Pp>
-    
-    pair<iterator, bool> __emplace_unique(_Pp&& __x) {
-        return __emplace_unique_extract_key(_VSTD::forward<_Pp>(__x),
-                                            __can_extract_key<_Pp, key_type>());
-    }
-
-    template <class _First, class _Second>
-    
-    typename enable_if<
-        __can_extract_map_key<_First, key_type, __container_value_type>::value,
-        pair<iterator, bool>
-    >::type __emplace_unique(_First&& __f, _Second&& __s) {
-        return __emplace_unique_key_args(__f, _VSTD::forward<_First>(__f),
-                                              _VSTD::forward<_Second>(__s));
-    }
-
-    template <class... _Args>
-    
-    pair<iterator, bool> __emplace_unique(_Args&&... __args) {
-        return __emplace_unique_impl(_VSTD::forward<_Args>(__args)...);
-    }
-
-    template <class _Pp>
-    
-    pair<iterator, bool>
-    __emplace_unique_extract_key(_Pp&& __x, __extract_key_fail_tag) {
-      return __emplace_unique_impl(_VSTD::forward<_Pp>(__x));
-    }
-
-    template <class _Pp>
-    
-    pair<iterator, bool>
-    __emplace_unique_extract_key(_Pp&& __x, __extract_key_self_tag) {
-      return __emplace_unique_key_args(__x, _VSTD::forward<_Pp>(__x));
-    }
-
-    template <class _Pp>
-    
-    pair<iterator, bool>
-    __emplace_unique_extract_key(_Pp&& __x, __extract_key_first_tag) {
-      return __emplace_unique_key_args(__x.first, _VSTD::forward<_Pp>(__x));
-    }
-
-    template <class _Pp>
-    
-    iterator __emplace_hint_unique(const_iterator __p, _Pp&& __x) {
-        return __emplace_hint_unique_extract_key(__p, _VSTD::forward<_Pp>(__x),
-                                            __can_extract_key<_Pp, key_type>());
-    }
-
-    template <class _First, class _Second>
-    
-    typename enable_if<
-        __can_extract_map_key<_First, key_type, __container_value_type>::value,
-        iterator
-    >::type __emplace_hint_unique(const_iterator __p, _First&& __f, _Second&& __s) {
-        return __emplace_hint_unique_key_args(__p, __f,
-                                              _VSTD::forward<_First>(__f),
-                                              _VSTD::forward<_Second>(__s));
-    }
-
-    template <class... _Args>
-    
-    iterator __emplace_hint_unique(const_iterator __p, _Args&&... __args) {
-        return __emplace_hint_unique_impl(__p, _VSTD::forward<_Args>(__args)...);
-    }
-
-    template <class _Pp>
-    
-    iterator
-    __emplace_hint_unique_extract_key(const_iterator __p, _Pp&& __x, __extract_key_fail_tag) {
-      return __emplace_hint_unique_impl(__p, _VSTD::forward<_Pp>(__x));
-    }
-
-    template <class _Pp>
-    
-    iterator
-    __emplace_hint_unique_extract_key(const_iterator __p, _Pp&& __x, __extract_key_self_tag) {
-      return __emplace_hint_unique_key_args(__p, __x, _VSTD::forward<_Pp>(__x));
-    }
-
-    template <class _Pp>
-    
-    iterator
-    __emplace_hint_unique_extract_key(const_iterator __p, _Pp&& __x, __extract_key_first_tag) {
-      return __emplace_hint_unique_key_args(__p, __x.first, _VSTD::forward<_Pp>(__x));
-    }
-
-#else
     template <class _Key, class _Args>
     
     pair<iterator, bool> __emplace_unique_key_args(_Key const&, _Args& __args);
     template <class _Key, class _Args>
     
     iterator __emplace_hint_unique_key_args(const_iterator, _Key const&, _Args&);
-#endif
-
     
     pair<iterator, bool> __insert_unique(const __container_value_type& __v) {
         return __emplace_unique_key_args(_NodeTypes::__get_key(__v), __v);
@@ -1202,67 +1090,9 @@ public:
     iterator __insert_unique(const_iterator __p, const __container_value_type& __v) {
         return __emplace_hint_unique_key_args(__p, _NodeTypes::__get_key(__v), __v);
     }
-
-#ifdef _LIBCPP_CXX03_LANG
     
-    iterator __insert_multi(const __container_value_type& __v);
-    
+    iterator __insert_multi(const __container_value_type& __v);    
     iterator __insert_multi(const_iterator __p, const __container_value_type& __v);
-#else
-    
-    pair<iterator, bool> __insert_unique(__container_value_type&& __v) {
-        return __emplace_unique_key_args(_NodeTypes::__get_key(__v), _VSTD::move(__v));
-    }
-
-    
-    iterator __insert_unique(const_iterator __p, __container_value_type&& __v) {
-        return __emplace_hint_unique_key_args(__p, _NodeTypes::__get_key(__v), _VSTD::move(__v));
-    }
-
-    template <class _Vp, class = typename enable_if<
-            !is_same<typename __unconstref<_Vp>::type,
-                     __container_value_type
-            >::value
-        >::type>
-    
-    pair<iterator, bool> __insert_unique(_Vp&& __v) {
-        return __emplace_unique(_VSTD::forward<_Vp>(__v));
-    }
-
-    template <class _Vp, class = typename enable_if<
-            !is_same<typename __unconstref<_Vp>::type,
-                     __container_value_type
-            >::value
-        >::type>
-    
-    iterator __insert_unique(const_iterator __p, _Vp&& __v) {
-        return __emplace_hint_unique(__p, _VSTD::forward<_Vp>(__v));
-    }
-
-    
-    iterator __insert_multi(__container_value_type&& __v) {
-        return __emplace_multi(_VSTD::move(__v));
-    }
-
-    
-    iterator __insert_multi(const_iterator __p, __container_value_type&& __v) {
-        return __emplace_hint_multi(__p, _VSTD::move(__v));
-    }
-
-    template <class _Vp>
-    
-    iterator __insert_multi(_Vp&& __v) {
-        return __emplace_multi(_VSTD::forward<_Vp>(__v));
-    }
-
-    template <class _Vp>
-    
-    iterator __insert_multi(const_iterator __p, _Vp&& __v) {
-        return __emplace_hint_multi(__p, _VSTD::forward<_Vp>(__v));
-    }
-
-#endif // !_LIBCPP_CXX03_LANG
-
     
     pair<iterator, bool> __node_insert_unique(__node_pointer __nd);
     
@@ -1277,36 +1107,6 @@ public:
 
      iterator
     __remove_node_pointer(__node_pointer) throw();
-
-#if _LIBCPP_STD_VER > 14
-    template <class _NodeHandle, class _InsertReturnType>
-    
-    _InsertReturnType __node_handle_insert_unique(_NodeHandle&&);
-    template <class _NodeHandle>
-    
-    iterator __node_handle_insert_unique(const_iterator, _NodeHandle&&);
-    template <class _Tree>
-    
-    void __node_handle_merge_unique(_Tree& __source);
-
-    template <class _NodeHandle>
-    
-    iterator __node_handle_insert_multi(_NodeHandle&&);
-    template <class _NodeHandle>
-    
-    iterator __node_handle_insert_multi(const_iterator, _NodeHandle&&);
-    template <class _Tree>
-    
-    void __node_handle_merge_multi(_Tree& __source);
-
-
-    template <class _NodeHandle>
-    
-    _NodeHandle __node_handle_extract(key_type const&);
-    template <class _NodeHandle>
-    
-    _NodeHandle __node_handle_extract(const_iterator);
-#endif
 
     iterator erase(const_iterator __p);
     iterator erase(const_iterator __f, const_iterator __l);
@@ -1437,7 +1237,7 @@ private:
 
     
     void __move_assign_alloc(__tree& __t, true_type)
-        {__node_alloc() = _VSTD::move(__t.__node_alloc());}
+        {__node_alloc() = __t.__node_alloc();}
     
     void __move_assign_alloc(__tree&, false_type) throw() {}
 
@@ -1445,7 +1245,6 @@ private:
     static __node_pointer __detach(__node_pointer);
 
     template <class, class, class, class> friend class _LIBCPP_TEMPLATE_VIS map;
-    template <class, class, class, class> friend class _LIBCPP_TEMPLATE_VIS multimap;
 };
 
 template <class _Tp, class _Compare, class _Allocator>
@@ -1631,129 +1430,6 @@ __tree<_Tp, _Compare, _Allocator>::__tree(const __tree& __t)
     __begin_node() = __end_node();
 }
 
-#ifndef _LIBCPP_CXX03_LANG
-
-template <class _Tp, class _Compare, class _Allocator>
-__tree<_Tp, _Compare, _Allocator>::__tree(__tree&& __t)
-    : __begin_node_(_VSTD::move(__t.__begin_node_)),
-      __pair1_(_VSTD::move(__t.__pair1_)),
-      __pair3_(_VSTD::move(__t.__pair3_))
-{
-    if (size() == 0)
-        __begin_node() = __end_node();
-    else
-    {
-        __end_node()->__left_->__parent_ = static_cast<__parent_pointer>(__end_node());
-        __t.__begin_node() = __t.__end_node();
-        __t.__end_node()->__left_ = nullptr;
-        __t.size() = 0;
-    }
-}
-
-template <class _Tp, class _Compare, class _Allocator>
-__tree<_Tp, _Compare, _Allocator>::__tree(__tree&& __t, const allocator_type& __a)
-    : __pair1_(__second_tag(), __node_allocator(__a)),
-      __pair3_(0, _VSTD::move(__t.value_comp()))
-{
-    if (__a == __t.__alloc())
-    {
-        if (__t.size() == 0)
-            __begin_node() = __end_node();
-        else
-        {
-            __begin_node() = __t.__begin_node();
-            __end_node()->__left_ = __t.__end_node()->__left_;
-            __end_node()->__left_->__parent_ = static_cast<__parent_pointer>(__end_node());
-            size() = __t.size();
-            __t.__begin_node() = __t.__end_node();
-            __t.__end_node()->__left_ = nullptr;
-            __t.size() = 0;
-        }
-    }
-    else
-    {
-        __begin_node() = __end_node();
-    }
-}
-
-template <class _Tp, class _Compare, class _Allocator>
-void
-__tree<_Tp, _Compare, _Allocator>::__move_assign(__tree& __t, true_type)
-{
-    destroy(static_cast<__node_pointer>(__end_node()->__left_));
-    __begin_node_ = __t.__begin_node_;
-    __pair1_.first() = __t.__pair1_.first();
-    __move_assign_alloc(__t);
-    __pair3_ = _VSTD::move(__t.__pair3_);
-    if (size() == 0)
-        __begin_node() = __end_node();
-    else
-    {
-        __end_node()->__left_->__parent_ = static_cast<__parent_pointer>(__end_node());
-        __t.__begin_node() = __t.__end_node();
-        __t.__end_node()->__left_ = nullptr;
-        __t.size() = 0;
-    }
-}
-
-template <class _Tp, class _Compare, class _Allocator>
-void
-__tree<_Tp, _Compare, _Allocator>::__move_assign(__tree& __t, false_type)
-{
-    if (__node_alloc() == __t.__node_alloc())
-        __move_assign(__t, true_type());
-    else
-    {
-        value_comp() = _VSTD::move(__t.value_comp());
-        const_iterator __e = end();
-        if (size() != 0)
-        {
-            __node_pointer __cache = __detach();
-#ifndef _LIBCPP_NO_EXCEPTIONS
-            try
-            {
-#endif  // _LIBCPP_NO_EXCEPTIONS
-                while (__cache != nullptr && __t.size() != 0)
-                {
-                    __cache->__value_ = _VSTD::move(__t.remove(__t.begin())->__value_);
-                    __node_pointer __next = __detach(__cache);
-                    __node_insert_multi(__cache);
-                    __cache = __next;
-                }
-#ifndef _LIBCPP_NO_EXCEPTIONS
-            }
-            catch (...)
-            {
-                while (__cache->__parent_ != nullptr)
-                    __cache = static_cast<__node_pointer>(__cache->__parent_);
-                destroy(__cache);
-                throw;
-            }
-#endif  // _LIBCPP_NO_EXCEPTIONS
-            if (__cache != nullptr)
-            {
-                while (__cache->__parent_ != nullptr)
-                    __cache = static_cast<__node_pointer>(__cache->__parent_);
-                destroy(__cache);
-            }
-        }
-        while (__t.size() != 0)
-            __insert_multi(__e, _NodeTypes::__move(__t.remove(__t.begin())->__value_));
-    }
-}
-
-template <class _Tp, class _Compare, class _Allocator>
-__tree<_Tp, _Compare, _Allocator>&
-__tree<_Tp, _Compare, _Allocator>::operator=(__tree&& __t)
-
-{
-    __move_assign(__t, integral_constant<bool,
-                  __node_traits::propagate_on_container_move_assignment::value>());
-    return *this;
-}
-
-#endif  // _LIBCPP_CXX03_LANG
-
 template <class _Tp, class _Compare, class _Allocator>
 __tree<_Tp, _Compare, _Allocator>::~__tree()
 {
@@ -1780,7 +1456,7 @@ template <class _Tp, class _Compare, class _Allocator>
 void
 __tree<_Tp, _Compare, _Allocator>::swap(__tree& __t)
 {
-    using _VSTD::swap;
+	using ft::swap;
     swap(__begin_node_, __t.__begin_node_);
     swap(__pair1_.first(), __t.__pair1_.first());
     __swap_allocator(__node_alloc(), __t.__node_alloc());
@@ -1939,7 +1615,7 @@ __tree<_Tp, _Compare, _Allocator>::__find_equal(__parent_pointer& __parent,
             if (value_comp()(__v, __nd->__value_))
             {
                 if (__nd->__left_ != nullptr) {
-                    __nd_ptr = _VSTD::addressof(__nd->__left_);
+                    __nd_ptr = &__nd->__left_;
                     __nd = static_cast<__node_pointer>(__nd->__left_);
                 } else {
                     __parent = static_cast<__parent_pointer>(__nd);
@@ -1949,7 +1625,7 @@ __tree<_Tp, _Compare, _Allocator>::__find_equal(__parent_pointer& __parent,
             else if (value_comp()(__nd->__value_, __v))
             {
                 if (__nd->__right_ != nullptr) {
-                    __nd_ptr = _VSTD::addressof(__nd->__right_);
+                    __nd_ptr = &__nd->__right_;
                     __nd = static_cast<__node_pointer>(__nd->__right_);
                 } else {
                     __parent = static_cast<__parent_pointer>(__nd);
@@ -2006,7 +1682,7 @@ __tree<_Tp, _Compare, _Allocator>::__find_equal(const_iterator __hint,
     else if (value_comp()(*__hint, __v))  // check after
     {
         // *__hint < __v
-        const_iterator __next = _VSTD::next(__hint);
+        const_iterator __next = ++__hint;
         if (__next == end() || value_comp()(__v, *__next))
         {
             // *__hint < __v < *_VSTD::next(__hint)
@@ -2064,11 +1740,7 @@ __tree<_Tp, _Compare, _Allocator>::__emplace_unique_key_args(_Key const& __k, _A
     bool __inserted = false;
     if (__child == nullptr)
     {
-#ifndef _LIBCPP_CXX03_LANG
-        __node_holder __h = __construct_node(_VSTD::forward<_Args>(__args)...);
-#else
         __node_holder __h = __construct_node(__args);
-#endif
         __insert_node_at(__parent, __child, static_cast<__node_base_pointer>(__h.get()));
         __r = __h.release();
         __inserted = true;
@@ -2097,11 +1769,7 @@ __tree<_Tp, _Compare, _Allocator>::__emplace_hint_unique_key_args(
     __node_pointer __r = static_cast<__node_pointer>(__child);
     if (__child == nullptr)
     {
-#ifndef _LIBCPP_CXX03_LANG
-        __node_holder __h = __construct_node(_VSTD::forward<_Args>(__args)...);
-#else
         __node_holder __h = __construct_node(__args);
-#endif
         __insert_node_at(__parent, __child, static_cast<__node_base_pointer>(__h.get()));
         __r = __h.release();
     }
@@ -2109,87 +1777,6 @@ __tree<_Tp, _Compare, _Allocator>::__emplace_hint_unique_key_args(
 }
 
 
-#ifndef _LIBCPP_CXX03_LANG
-
-template <class _Tp, class _Compare, class _Allocator>
-template <class ..._Args>
-typename __tree<_Tp, _Compare, _Allocator>::__node_holder
-__tree<_Tp, _Compare, _Allocator>::__construct_node(_Args&& ...__args)
-{
-    static_assert(!__is_tree_value_type<_Args...>::value,
-                  "Cannot construct from __value_type");
-    __node_allocator& __na = __node_alloc();
-    __node_holder __h(__node_traits::allocate(__na, 1), _Dp(__na));
-    __node_traits::construct(__na, _NodeTypes::__get_ptr(__h->__value_), _VSTD::forward<_Args>(__args)...);
-    __h.get_deleter().__value_constructed = true;
-    return __h;
-}
-
-
-template <class _Tp, class _Compare, class _Allocator>
-template <class... _Args>
-pair<typename __tree<_Tp, _Compare, _Allocator>::iterator, bool>
-__tree<_Tp, _Compare, _Allocator>::__emplace_unique_impl(_Args&&... __args)
-{
-    __node_holder __h = __construct_node(_VSTD::forward<_Args>(__args)...);
-    __parent_pointer __parent;
-    __node_base_pointer& __child = __find_equal(__parent, __h->__value_);
-    __node_pointer __r = static_cast<__node_pointer>(__child);
-    bool __inserted = false;
-    if (__child == nullptr)
-    {
-        __insert_node_at(__parent, __child, static_cast<__node_base_pointer>(__h.get()));
-        __r = __h.release();
-        __inserted = true;
-    }
-    return pair<iterator, bool>(iterator(__r), __inserted);
-}
-
-template <class _Tp, class _Compare, class _Allocator>
-template <class... _Args>
-typename __tree<_Tp, _Compare, _Allocator>::iterator
-__tree<_Tp, _Compare, _Allocator>::__emplace_hint_unique_impl(const_iterator __p, _Args&&... __args)
-{
-    __node_holder __h = __construct_node(_VSTD::forward<_Args>(__args)...);
-    __parent_pointer __parent;
-    __node_base_pointer __dummy;
-    __node_base_pointer& __child = __find_equal(__p, __parent, __dummy, __h->__value_);
-    __node_pointer __r = static_cast<__node_pointer>(__child);
-    if (__child == nullptr)
-    {
-        __insert_node_at(__parent, __child, static_cast<__node_base_pointer>(__h.get()));
-        __r = __h.release();
-    }
-    return iterator(__r);
-}
-
-template <class _Tp, class _Compare, class _Allocator>
-template <class... _Args>
-typename __tree<_Tp, _Compare, _Allocator>::iterator
-__tree<_Tp, _Compare, _Allocator>::__emplace_multi(_Args&&... __args)
-{
-    __node_holder __h = __construct_node(_VSTD::forward<_Args>(__args)...);
-    __parent_pointer __parent;
-    __node_base_pointer& __child = __find_leaf_high(__parent, _NodeTypes::__get_key(__h->__value_));
-    __insert_node_at(__parent, __child, static_cast<__node_base_pointer>(__h.get()));
-    return iterator(static_cast<__node_pointer>(__h.release()));
-}
-
-template <class _Tp, class _Compare, class _Allocator>
-template <class... _Args>
-typename __tree<_Tp, _Compare, _Allocator>::iterator
-__tree<_Tp, _Compare, _Allocator>::__emplace_hint_multi(const_iterator __p,
-                                                        _Args&&... __args)
-{
-    __node_holder __h = __construct_node(_VSTD::forward<_Args>(__args)...);
-    __parent_pointer __parent;
-    __node_base_pointer& __child = __find_leaf(__p, __parent, _NodeTypes::__get_key(__h->__value_));
-    __insert_node_at(__parent, __child, static_cast<__node_base_pointer>(__h.get()));
-    return iterator(static_cast<__node_pointer>(__h.release()));
-}
-
-
-#else  // _LIBCPP_CXX03_LANG
 
 template <class _Tp, class _Compare, class _Allocator>
 typename __tree<_Tp, _Compare, _Allocator>::__node_holder
@@ -2202,7 +1789,6 @@ __tree<_Tp, _Compare, _Allocator>::__construct_node(const __container_value_type
     return _LIBCPP_EXPLICIT_MOVE(__h);  // explicitly moved for C++03
 }
 
-#endif  // _LIBCPP_CXX03_LANG
 
 #ifdef _LIBCPP_CXX03_LANG
 template <class _Tp, class _Compare, class _Allocator>
@@ -2297,164 +1883,6 @@ __tree<_Tp, _Compare, _Allocator>::__remove_node_pointer(__node_pointer __ptr) t
     return __r;
 }
 
-#if _LIBCPP_STD_VER > 14
-template <class _Tp, class _Compare, class _Allocator>
-template <class _NodeHandle, class _InsertReturnType>
-
-_InsertReturnType
-__tree<_Tp, _Compare, _Allocator>::__node_handle_insert_unique(
-    _NodeHandle&& __nh)
-{
-    if (__nh.empty())
-        return _InsertReturnType{end(), false, _NodeHandle()};
-
-    __node_pointer __ptr = __nh.__ptr_;
-    __parent_pointer __parent;
-    __node_base_pointer& __child = __find_equal(__parent,
-                                                __ptr->__value_);
-    if (__child != nullptr)
-        return _InsertReturnType{
-            iterator(static_cast<__node_pointer>(__child)),
-            false, _VSTD::move(__nh)};
-
-    __insert_node_at(__parent, __child,
-                     static_cast<__node_base_pointer>(__ptr));
-    __nh.__release();
-    return _InsertReturnType{iterator(__ptr), true, _NodeHandle()};
-}
-
-template <class _Tp, class _Compare, class _Allocator>
-template <class _NodeHandle>
-
-typename __tree<_Tp, _Compare, _Allocator>::iterator
-__tree<_Tp, _Compare, _Allocator>::__node_handle_insert_unique(
-    const_iterator __hint, _NodeHandle&& __nh)
-{
-    if (__nh.empty())
-        return end();
-
-    __node_pointer __ptr = __nh.__ptr_;
-    __parent_pointer __parent;
-    __node_base_pointer __dummy;
-    __node_base_pointer& __child = __find_equal(__hint, __parent, __dummy,
-                                                __ptr->__value_);
-    __node_pointer __r = static_cast<__node_pointer>(__child);
-    if (__child == nullptr)
-    {
-        __insert_node_at(__parent, __child,
-                         static_cast<__node_base_pointer>(__ptr));
-        __r = __ptr;
-        __nh.__release();
-    }
-    return iterator(__r);
-}
-
-template <class _Tp, class _Compare, class _Allocator>
-template <class _NodeHandle>
-
-_NodeHandle
-__tree<_Tp, _Compare, _Allocator>::__node_handle_extract(key_type const& __key)
-{
-    iterator __it = find(__key);
-    if (__it == end())
-        return _NodeHandle();
-    return __node_handle_extract<_NodeHandle>(__it);
-}
-
-template <class _Tp, class _Compare, class _Allocator>
-template <class _NodeHandle>
-
-_NodeHandle
-__tree<_Tp, _Compare, _Allocator>::__node_handle_extract(const_iterator __p)
-{
-    __node_pointer __np = __p.__get_np();
-    __remove_node_pointer(__np);
-    return _NodeHandle(__np, __alloc());
-}
-
-template <class _Tp, class _Compare, class _Allocator>
-template <class _Tree>
-
-void
-__tree<_Tp, _Compare, _Allocator>::__node_handle_merge_unique(_Tree& __source)
-{
-    static_assert(is_same<typename _Tree::__node_pointer, __node_pointer>::value, "");
-
-    for (typename _Tree::iterator __i = __source.begin();
-         __i != __source.end();)
-    {
-        __node_pointer __src_ptr = __i.__get_np();
-        __parent_pointer __parent;
-        __node_base_pointer& __child =
-            __find_equal(__parent, _NodeTypes::__get_key(__src_ptr->__value_));
-        ++__i;
-        if (__child != nullptr)
-            continue;
-        __source.__remove_node_pointer(__src_ptr);
-        __insert_node_at(__parent, __child,
-                         static_cast<__node_base_pointer>(__src_ptr));
-    }
-}
-
-template <class _Tp, class _Compare, class _Allocator>
-template <class _NodeHandle>
-
-typename __tree<_Tp, _Compare, _Allocator>::iterator
-__tree<_Tp, _Compare, _Allocator>::__node_handle_insert_multi(_NodeHandle&& __nh)
-{
-    if (__nh.empty())
-        return end();
-    __node_pointer __ptr = __nh.__ptr_;
-    __parent_pointer __parent;
-    __node_base_pointer& __child = __find_leaf_high(
-        __parent, _NodeTypes::__get_key(__ptr->__value_));
-    __insert_node_at(__parent, __child, static_cast<__node_base_pointer>(__ptr));
-    __nh.__release();
-    return iterator(__ptr);
-}
-
-template <class _Tp, class _Compare, class _Allocator>
-template <class _NodeHandle>
-
-typename __tree<_Tp, _Compare, _Allocator>::iterator
-__tree<_Tp, _Compare, _Allocator>::__node_handle_insert_multi(
-    const_iterator __hint, _NodeHandle&& __nh)
-{
-    if (__nh.empty())
-        return end();
-
-    __node_pointer __ptr = __nh.__ptr_;
-    __parent_pointer __parent;
-    __node_base_pointer& __child = __find_leaf(__hint, __parent,
-                                               _NodeTypes::__get_key(__ptr->__value_));
-    __insert_node_at(__parent, __child, static_cast<__node_base_pointer>(__ptr));
-    __nh.__release();
-    return iterator(__ptr);
-}
-
-template <class _Tp, class _Compare, class _Allocator>
-template <class _Tree>
-
-void
-__tree<_Tp, _Compare, _Allocator>::__node_handle_merge_multi(_Tree& __source)
-{
-    static_assert(is_same<typename _Tree::__node_pointer, __node_pointer>::value, "");
-
-    for (typename _Tree::iterator __i = __source.begin();
-         __i != __source.end();)
-    {
-        __node_pointer __src_ptr = __i.__get_np();
-        __parent_pointer __parent;
-        __node_base_pointer& __child = __find_leaf_high(
-            __parent, _NodeTypes::__get_key(__src_ptr->__value_));
-        ++__i;
-        __source.__remove_node_pointer(__src_ptr);
-        __insert_node_at(__parent, __child,
-                         static_cast<__node_base_pointer>(__src_ptr));
-    }
-}
-
-#endif  // _LIBCPP_STD_VER > 14
 
 template <class _Tp, class _Compare, class _Allocator>
 typename __tree<_Tp, _Compare, _Allocator>::iterator
@@ -2561,10 +1989,11 @@ __tree<_Tp, _Compare, _Allocator>::__count_multi(const _Key& __k) const
         else if (value_comp()(__rt->__value_, __k))
             __rt = static_cast<__node_pointer>(__rt->__right_);
         else
-            return _VSTD::distance(
-                __lower_bound(__k, static_cast<__node_pointer>(__rt->__left_), static_cast<__iter_pointer>(__rt)),
-                __upper_bound(__k, static_cast<__node_pointer>(__rt->__right_), __result)
-            );
+            // return _VSTD::distance(
+            //     __lower_bound(__k, static_cast<__node_pointer>(__rt->__left_), static_cast<__iter_pointer>(__rt)),
+            //     __upper_bound(__k, static_cast<__node_pointer>(__rt->__right_), __result)
+            // );
+			return 0;
     }
     return 0;
 }
