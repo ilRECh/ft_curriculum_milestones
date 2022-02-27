@@ -1,4 +1,4 @@
-TARGET		:= test
+TARGET		:= a.out
 CXX			:= clang++
 CXXFLAGS	:= -Wall -Wextra -Werror -std=c++98 -g
 SRC			:= main.cpp

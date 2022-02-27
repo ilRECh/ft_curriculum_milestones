@@ -1456,7 +1456,7 @@ template <class _Tp, class _Compare, class _Allocator>
 void
 __tree<_Tp, _Compare, _Allocator>::swap(__tree& __t)
 {
-	using ft::swap;
+	using std::swap;
     swap(__begin_node_, __t.__begin_node_);
     swap(__pair1_.first(), __t.__pair1_.first());
     __swap_allocator(__node_alloc(), __t.__node_alloc());

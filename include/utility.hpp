@@ -15,18 +15,10 @@ using std::is_same;
 
 namespace ft {
 
-template <class _Arg1, class _Arg2, class _Result>
-struct binary_function
+template <class _Tp, typename _Tp2 = _Tp>
+struct less
 {
-    typedef _Arg1   first_argument_type;
-    typedef _Arg2   second_argument_type;
-    typedef _Result result_type;
-};
-
-template <class _Tp>
-struct less : binary_function<_Tp, _Tp, bool>
-{
-    bool operator()(const _Tp& __x, const _Tp& __y) const
+    bool operator()(const _Tp& __x, const _Tp2& __y) const
         {return __x < __y;}
 };
 
@@ -53,6 +45,34 @@ template <class _Tp>
 typename add_lvalue_reference<_Tp>::type
 declval();
 
+
+// template <class _T1, class _T2 = _T1>
+// struct __less
+// {
+//     bool operator()(const _T1& __x, const _T1& __y) const {return __x < __y;}
+//     bool operator()(const _T1& __x, const _T2& __y) const {return __x < __y;}
+//     bool operator()(const _T2& __x, const _T1& __y) const {return __x < __y;}
+//     bool operator()(const _T2& __x, const _T2& __y) const {return __x < __y;}
+// };
+
+// template <class _T1>
+// struct __less<_T1, _T1>
+// {
+//     bool operator()(const _T1& __x, const _T1& __y) const {return __x < __y;}
+// };
+
+// template <class _T1>
+// struct __less<const _T1, _T1>
+// {
+//     bool operator()(const _T1& __x, const _T1& __y) const {return __x < __y;}
+// };
+
+// template <class _T1>
+// struct __less<_T1, const _T1>
+// {
+//     bool operator()(const _T1& __x, const _T1& __y) const {return __x < __y;}
+// };
+
 template <class _Compare, class _InputIterator1, class _InputIterator2>
 bool __lexicographical_compare(_InputIterator1 __first1, _InputIterator1 __last1,
                           _InputIterator2 __first2, _InputIterator2 __last2, _Compare __comp)
@@ -67,33 +87,6 @@ bool __lexicographical_compare(_InputIterator1 __first1, _InputIterator1 __last1
     return false;
 }
 
-template <class _T1, class _T2 = _T1>
-struct __less
-{
-    bool operator()(const _T1& __x, const _T1& __y) const {return __x < __y;}
-    bool operator()(const _T1& __x, const _T2& __y) const {return __x < __y;}
-    bool operator()(const _T2& __x, const _T1& __y) const {return __x < __y;}
-    bool operator()(const _T2& __x, const _T2& __y) const {return __x < __y;}
-};
-
-template <class _T1>
-struct __less<_T1, _T1>
-{
-    bool operator()(const _T1& __x, const _T1& __y) const {return __x < __y;}
-};
-
-template <class _T1>
-struct __less<const _T1, _T1>
-{
-    bool operator()(const _T1& __x, const _T1& __y) const {return __x < __y;}
-};
-
-template <class _T1>
-struct __less<_T1, const _T1>
-{
-    bool operator()(const _T1& __x, const _T1& __y) const {return __x < __y;}
-};
-
 template <class _InputIterator1, class _InputIterator2, class _Compare>
 inline
 bool
@@ -101,44 +94,41 @@ lexicographical_compare(_InputIterator1 __first1, _InputIterator1 __last1,
                         _InputIterator2 __first2, _InputIterator2 __last2, _Compare __comp)
 {
     typedef typename add_lvalue_reference<_Compare>::type _Comp_ref;
-    return __lexicographical_compare<_Comp_ref>(__first1, __last1, __first2, __last2, __comp);
+    return ft::__lexicographical_compare<_Comp_ref>(__first1, __last1, __first2, __last2, __comp);
 }
 
 template <class _InputIterator1, class _InputIterator2>
 inline bool lexicographical_compare(_InputIterator1 __first1, _InputIterator1 __last1,
                         _InputIterator2 __first2, _InputIterator2 __last2)
 {
-    return __lexicographical_compare(__first1, __last1, __first2, __last2,
-                                         __less<typename iterator_traits<_InputIterator1>::value_type,
+    return ft::__lexicographical_compare(__first1, __last1, __first2, __last2,
+                                         ft::less<typename iterator_traits<_InputIterator1>::value_type,
                                                 typename iterator_traits<_InputIterator2>::value_type>());
 }
 
 template <class _T1, class _T2 = _T1>
 struct __equal_to
 {
-    bool operator()(const _T1& __x, const _T1& __y) const {return __x == __y;}
     bool operator()(const _T1& __x, const _T2& __y) const {return __x == __y;}
-    bool operator()(const _T2& __x, const _T1& __y) const {return __x == __y;}
-    bool operator()(const _T2& __x, const _T2& __y) const {return __x == __y;}
 };
 
-template <class _T1>
-struct __equal_to<_T1, _T1>
-{
-    bool operator()(const _T1& __x, const _T1& __y) const {return __x == __y;}
-};
+// template <class _T1>
+// struct __equal_to<_T1, _T1>
+// {
+//     bool operator()(const _T1& __x, const _T1& __y) const {return __x == __y;}
+// };
 
-template <class _T1>
-struct __equal_to<const _T1, _T1>
-{
-    bool operator()(const _T1& __x, const _T1& __y) const {return __x == __y;}
-};
+// template <class _T1>
+// struct __equal_to<const _T1, _T1>
+// {
+//     bool operator()(const _T1& __x, const _T1& __y) const {return __x == __y;}
+// };
 
-template <class _T1>
-struct __equal_to<_T1, const _T1>
-{
-    bool operator()(const _T1& __x, const _T1& __y) const {return __x == __y;}
-};
+// template <class _T1>
+// struct __equal_to<_T1, const _T1>
+// {
+//     bool operator()(const _T1& __x, const _T1& __y) const {return __x == __y;}
+// };
 
 template <class _InputIterator1, class _InputIterator2, class _BinaryPredicate>
 inline bool equal(_InputIterator1 __first1, _InputIterator1 __last1, _InputIterator2 __first2, _BinaryPredicate __pred)
@@ -154,7 +144,7 @@ inline bool equal(_InputIterator1 __first1, _InputIterator1 __last1, _InputItera
 {
     typedef typename iterator_traits<_InputIterator1>::value_type __v1;
     typedef typename iterator_traits<_InputIterator2>::value_type __v2;
-    return equal(__first1, __last1, __first2, __equal_to<__v1, __v2>());
+    return ft::equal(__first1, __last1, __first2, __equal_to<__v1, __v2>());
 }
 
 template <class _T1, class _T2>
@@ -188,62 +178,48 @@ struct pair
 };
 
 template <class _T1, class _T2>
-inline _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR_AFTER_CXX11
-bool
-operator==(const pair<_T1,_T2>& __x, const pair<_T1,_T2>& __y)
+inline bool operator==(const pair<_T1,_T2>& __x, const pair<_T1,_T2>& __y)
 {
     return __x.first == __y.first && __x.second == __y.second;
 }
 
 template <class _T1, class _T2>
-inline _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR_AFTER_CXX11
-bool
-operator!=(const pair<_T1,_T2>& __x, const pair<_T1,_T2>& __y)
+inline bool operator!=(const pair<_T1,_T2>& __x, const pair<_T1,_T2>& __y)
 {
     return !(__x == __y);
 }
 
 template <class _T1, class _T2>
-inline _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR_AFTER_CXX11
-bool
-operator< (const pair<_T1,_T2>& __x, const pair<_T1,_T2>& __y)
+inline bool operator< (const pair<_T1,_T2>& __x, const pair<_T1,_T2>& __y)
 {
     return __x.first < __y.first || (!(__y.first < __x.first) && __x.second < __y.second);
 }
 
 template <class _T1, class _T2>
-inline _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR_AFTER_CXX11
-bool
-operator> (const pair<_T1,_T2>& __x, const pair<_T1,_T2>& __y)
+inline bool operator> (const pair<_T1,_T2>& __x, const pair<_T1,_T2>& __y)
 {
     return __y < __x;
 }
 
 template <class _T1, class _T2>
-inline _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR_AFTER_CXX11
-bool
-operator>=(const pair<_T1,_T2>& __x, const pair<_T1,_T2>& __y)
+inline bool operator>=(const pair<_T1,_T2>& __x, const pair<_T1,_T2>& __y)
 {
     return !(__x < __y);
 }
 
 template <class _T1, class _T2>
-inline _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR_AFTER_CXX11
-bool
-operator<=(const pair<_T1,_T2>& __x, const pair<_T1,_T2>& __y)
+inline bool operator<=(const pair<_T1,_T2>& __x, const pair<_T1,_T2>& __y)
 {
     return !(__y < __x);
 }
 
 template <class _T1, class _T2>
-inline _LIBCPP_INLINE_VISIBILITY
-typename enable_if
+inline typename enable_if
 <
     std::__is_swappable<_T1>::value &&
     std::__is_swappable<_T2>::value,
     void
->::type
-swap(pair<_T1, _T2>& __x, pair<_T1, _T2>& __y)
+>::type swap(pair<_T1, _T2>& __x, pair<_T1, _T2>& __y)
 {
     __x.swap(__y);
 }
@@ -252,13 +228,6 @@ template <class _T1, class _T2>
 inline pair<_T1,_T2> make_pair(_T1 __x, _T2 __y)
 {
     return pair<_T1, _T2>(__x, __y);
-}
-
-template <typename _Tp>
-void swap(_Tp &x, _Tp y) {
-	_Tp tmp(x);
-	x = y;
-	y = tmp;
 }
 
 };
