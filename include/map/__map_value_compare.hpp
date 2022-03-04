@@ -16,11 +16,17 @@ public:
     __map_value_compare(_Compare c) : _Compare(c) {}
     const _Compare& key_comp() const {return *this;}
     bool operator()(const _CP& __x, const _CP& __y) const
-        {return static_cast<const _Compare&>(*this)(__x.__get_value().first, __y.__get_value().first);}
+	{
+		return static_cast<const _Compare&>(*this)(__x.__get_value().first, __y.__get_value().first);
+	}
     bool operator()(const _CP& __x, const _Key& __y) const
-        {return static_cast<const _Compare&>(*this)(__x.__get_value().first, __y);}
-    bool operator()(const _Key& __x, const _CP& __y) const
-        {return static_cast<const _Compare&>(*this)(__x, __y.__get_value().first);}
+	{
+		return static_cast<const _Compare&>(*this)(__x.__get_value().first, __y);
+	}
+	bool operator()(const _Key& __x, const _CP& __y) const
+	{
+		return static_cast<const _Compare&>(*this)(__x, __y.__get_value().first);
+	}
     void swap(__map_value_compare&__y)
     {
       using std::swap;

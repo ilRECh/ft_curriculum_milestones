@@ -37,10 +37,15 @@ struct remove_const<_Tp const>
 /// remove_volatile
 template<typename _Tp>
 struct remove_volatile
-{ typedef _Tp     type; };
+{
+	typedef _Tp     type;
+};
+
 template<typename _Tp>
 struct remove_volatile<_Tp volatile>
-{ typedef _Tp     type; };
+{
+	typedef _Tp     type;
+};
 
 /// remove_cv
 template<typename _Tp>
@@ -68,9 +73,6 @@ template<> struct is_integral_helper<unsigned long long> : public integral_const
 template<typename _Tp>
 struct is_integral : public integral_constant<bool, (is_integral_helper<typename remove_cv<_Tp>::type>::value)>
 { };
-
-template <class>
-struct __void_t { typedef void type; };
 
 template <bool _Bp, class _If, class _Then>
     struct conditional {typedef _If type;};

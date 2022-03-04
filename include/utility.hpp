@@ -1,17 +1,8 @@
 #ifndef UTILITY_HPP
 #define UTILITY_HPP
 
-#include <__config>
-#include <__tuple>
 #include "type_traits.hpp"
-#include "iterator.hpp"
-#include <cstddef>
-#include <cstring>
-#include <cstdint>
-#include <__cxx_version>
-#include <__debug>
-
-using std::is_same;
+#include "iterator_traits.hpp"
 
 namespace ft {
 
@@ -19,59 +10,44 @@ template <class _Tp, typename _Tp2 = _Tp>
 struct less
 {
     bool operator()(const _Tp& __x, const _Tp2& __y) const
-        {return __x < __y;}
+    {
+		return __x < __y;
+	}
 };
 
 struct __two {char __lx[2];};
 
-struct __is_referenceable_impl {
+struct __is_referenceable_impl
+{
     template <class _Tp> static _Tp& __test(int);
     template <class _Tp> static __two __test(...);
 };
 
 template <class _Tp>
-struct __is_referenceable : integral_constant<bool,
-    !is_same<decltype(__is_referenceable_impl::__test<_Tp>(0)), __two>::value> {};
+struct __is_referenceable : ft::integral_constant<bool,
+    !std::is_same<decltype(ft::__is_referenceable_impl::__test<_Tp>(0)), __two>::value> {};
 
 
-template <class _Tp, bool = __is_referenceable<_Tp>::value> struct __add_lvalue_reference_impl            { typedef _Tp  type; };
-template <class _Tp                                       > struct __add_lvalue_reference_impl<_Tp, true> { typedef _Tp& type; };
+template <class _Tp, bool = ft::__is_referenceable<_Tp>::value> struct __add_lvalue_reference_impl
+{
+	typedef _Tp type;
+};
 
-template <class _Tp> struct _LIBCPP_TEMPLATE_VIS add_lvalue_reference
-{typedef typename __add_lvalue_reference_impl<_Tp>::type type;};
+template <class _Tp> struct __add_lvalue_reference_impl<_Tp, true>
+{
+	typedef _Tp& type;
+};
+
+template <class _Tp>
+struct add_lvalue_reference
+{
+	typedef typename ft::__add_lvalue_reference_impl<_Tp>::type type;
+};
 
 
 template <class _Tp>
-typename add_lvalue_reference<_Tp>::type
+typename ft::add_lvalue_reference<_Tp>::type
 declval();
-
-
-// template <class _T1, class _T2 = _T1>
-// struct __less
-// {
-//     bool operator()(const _T1& __x, const _T1& __y) const {return __x < __y;}
-//     bool operator()(const _T1& __x, const _T2& __y) const {return __x < __y;}
-//     bool operator()(const _T2& __x, const _T1& __y) const {return __x < __y;}
-//     bool operator()(const _T2& __x, const _T2& __y) const {return __x < __y;}
-// };
-
-// template <class _T1>
-// struct __less<_T1, _T1>
-// {
-//     bool operator()(const _T1& __x, const _T1& __y) const {return __x < __y;}
-// };
-
-// template <class _T1>
-// struct __less<const _T1, _T1>
-// {
-//     bool operator()(const _T1& __x, const _T1& __y) const {return __x < __y;}
-// };
-
-// template <class _T1>
-// struct __less<_T1, const _T1>
-// {
-//     bool operator()(const _T1& __x, const _T1& __y) const {return __x < __y;}
-// };
 
 template <class _Compare, class _InputIterator1, class _InputIterator2>
 bool __lexicographical_compare(_InputIterator1 __first1, _InputIterator1 __last1,
@@ -93,7 +69,7 @@ bool
 lexicographical_compare(_InputIterator1 __first1, _InputIterator1 __last1,
                         _InputIterator2 __first2, _InputIterator2 __last2, _Compare __comp)
 {
-    typedef typename add_lvalue_reference<_Compare>::type _Comp_ref;
+    typedef typename ft::add_lvalue_reference<_Compare>::type _Comp_ref;
     return ft::__lexicographical_compare<_Comp_ref>(__first1, __last1, __first2, __last2, __comp);
 }
 
@@ -112,24 +88,6 @@ struct __equal_to
     bool operator()(const _T1& __x, const _T2& __y) const {return __x == __y;}
 };
 
-// template <class _T1>
-// struct __equal_to<_T1, _T1>
-// {
-//     bool operator()(const _T1& __x, const _T1& __y) const {return __x == __y;}
-// };
-
-// template <class _T1>
-// struct __equal_to<const _T1, _T1>
-// {
-//     bool operator()(const _T1& __x, const _T1& __y) const {return __x == __y;}
-// };
-
-// template <class _T1>
-// struct __equal_to<_T1, const _T1>
-// {
-//     bool operator()(const _T1& __x, const _T1& __y) const {return __x == __y;}
-// };
-
 template <class _InputIterator1, class _InputIterator2, class _BinaryPredicate>
 inline bool equal(_InputIterator1 __first1, _InputIterator1 __last1, _InputIterator2 __first2, _BinaryPredicate __pred)
 {
@@ -144,7 +102,7 @@ inline bool equal(_InputIterator1 __first1, _InputIterator1 __last1, _InputItera
 {
     typedef typename iterator_traits<_InputIterator1>::value_type __v1;
     typedef typename iterator_traits<_InputIterator2>::value_type __v2;
-    return ft::equal(__first1, __last1, __first2, __equal_to<__v1, __v2>());
+    return ft::equal(__first1, __last1, __first2, ft::__equal_to<__v1, __v2>());
 }
 
 template <class _T1, class _T2>

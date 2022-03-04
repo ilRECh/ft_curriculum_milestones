@@ -1,10 +1,8 @@
 #ifndef FT_TREE
 #define FT_TREE
 
-#include <memory>
-#include <algorithm>
-#include "type_traits.hpp"
-#include "utility.hpp"
+#include "../type_traits.hpp"
+#include "../utility.hpp"
 
 #ifdef nullptr
 #undef nullptr
@@ -27,8 +25,6 @@ using std::numeric_limits;
 using std::iterator_traits;
 using std::is_copy_constructible;
 using std::__second_tag;
-
-using ft::conditional;
 
 namespace ft {
 
@@ -557,7 +553,7 @@ struct __tree_key_value_types<__value_type<_Key, _Tp> > {
 
   template <class _Up>
   
-  static typename enable_if<__is_same_uncvref<_Up, __container_value_type>::value,
+  static typename ft::enable_if<__is_same_uncvref<_Up, __container_value_type>::value,
       key_type const&>::type
   __get_key(_Up& __t) {
     return __t.first;
@@ -571,7 +567,7 @@ struct __tree_key_value_types<__value_type<_Key, _Tp> > {
 
   template <class _Up>
   
-  static typename enable_if<__is_same_uncvref<_Up, __container_value_type>::value,
+  static typename ft::enable_if<__is_same_uncvref<_Up, __container_value_type>::value,
       __container_value_type const&>::type
   __get_value(_Up& __t) {
     return __t;
@@ -594,7 +590,7 @@ struct __tree_node_base_types {
   typedef __tree_end_node<__node_base_pointer>                  __end_node_type;
   typedef typename __rebind_pointer<_VoidPtr, __end_node_type>::type
                                                              __end_node_pointer;
-  typedef typename conditional<
+  typedef typename ft::conditional<
       is_pointer<__end_node_pointer>::value,
         __end_node_pointer,
         __node_base_pointer>::type __parent_pointer;
@@ -642,7 +638,7 @@ public:
 #if defined(_LIBCPP_ABI_TREE_REMOVE_NODE_POINTER_UB)
   typedef typename __base::__end_node_pointer __iter_pointer;
 #else
-  typedef typename conditional<
+  typedef typename ft::conditional<
       is_pointer<__node_pointer>::value,
         typename __base::__end_node_pointer,
         __node_pointer>::type __iter_pointer;

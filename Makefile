@@ -5,7 +5,7 @@ SRC			:= main.cpp
 OBJECTS		:= $(SRC:%.cpp=%.o)
 INCLUDES	:= $(wildcard include/*.hpp)\
 				$(wildcard *.hpp)
-INCLUDE		:= -I ./include
+INCLUDE		:= -I ./include -I ./include/map
 
 .PHONY: all clean fclean re
 
