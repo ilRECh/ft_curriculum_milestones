@@ -17,12 +17,13 @@ public:
 
     pointer          __right_;
     __parent_pointer __parent_;
-    bool __is_black_;
-
+    bool             __is_black_;
     
-    pointer __parent_unsafe() const { return static_cast<pointer>(__parent_);}
+    pointer __get_parent() const
+    {
+        return static_cast<pointer>(__parent_);
+    }
 
-    
     void __set_parent(pointer __p) {
         __parent_ = static_cast<__parent_pointer>(__p);
     }
