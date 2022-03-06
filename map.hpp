@@ -206,24 +206,24 @@ public:
 
     iterator insert(const_iterator __p, const value_type& __v)
     {
-		return __tree_.__insert_unique(__p.__i_, __v);
+		return __tree_.__insert_unique(__p.__treeIter, __v);
 	}
 
     template <class _InputIterator>
 	void insert(_InputIterator __f, _InputIterator __l)
 	{
 		for (const_iterator __e = cend(); __f != __l; ++__f)
-			insert(__e.__i_, *__f);
+			insert(__e.__treeIter, *__f);
 	}
 
     iterator erase(const_iterator __p)
 	{
-		return __tree_.erase(__p.__i_);
+		return __tree_.erase(__p.__treeIter);
 	}
 
     iterator erase(iterator __p)
 	{
-		return __tree_.erase(__p.__i_);
+		return __tree_.erase(__p.__treeIter);
 	}
     
 	size_type erase(const key_type& __k)
@@ -233,7 +233,7 @@ public:
 
     iterator  erase(const_iterator __f, const_iterator __l)
     {
-		return __tree_.erase(__f.__i_, __l.__i_);
+		return __tree_.erase(__f.__treeIter, __l.__treeIter);
 	}
 
     void clear() throw()
