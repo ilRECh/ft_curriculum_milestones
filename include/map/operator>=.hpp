@@ -10,7 +10,7 @@ inline bool operator>=(
 	const map<_Key, _Tp, _Compare, _Allocator>& __x,
     const map<_Key, _Tp, _Compare, _Allocator>& __y)
 {
-    return !(__x < __y);
+    return not (__x < __y);
 }
 
 } // namespace ft

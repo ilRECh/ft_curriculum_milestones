@@ -7,10 +7,10 @@
 // #define _map std::map
 #define _map ft::map
 
-// #include <stack>
+#include <stack>
 // #define _stack std::stack
-
-// #include <vector>
+#include <set>
+#include <vector>
 // #define _vector std::vector
 
 // #include <stdlib.h>

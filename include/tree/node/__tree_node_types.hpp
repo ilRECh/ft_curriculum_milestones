@@ -35,7 +35,7 @@ public:
         __node_pointer>::type __iter_pointer;
 #endif
 private:
-    static_assert(!is_const<__node_type>::value,
+    static_assert(not is_const<__node_type>::value,
                 "_NodePtr should never be a pointer to const");
     static_assert((is_same<typename __rebind_pointer<_VoidPtr, __node_type>::type,
                           _NodePtr>::value), "_VoidPtr does not rebind to _NodePtr.");

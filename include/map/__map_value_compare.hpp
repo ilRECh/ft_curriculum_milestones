@@ -7,7 +7,7 @@ using std::__libcpp_is_final;
 namespace ft {
 
 template <class _Key, class _CP, class _Compare,
-          bool = is_empty<_Compare>::value && !__libcpp_is_final<_Compare>::value>
+          bool = is_empty<_Compare>::value && not __libcpp_is_final<_Compare>::value>
 class __map_value_compare
     : private _Compare
 {

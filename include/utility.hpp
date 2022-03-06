@@ -25,7 +25,7 @@ struct __is_referenceable_impl
 
 template <class _Tp>
 struct __is_referenceable : ft::integral_constant<bool,
-    !std::is_same<decltype(ft::__is_referenceable_impl::__test<_Tp>(0)), __two>::value> {};
+    not std::is_same<decltype(ft::__is_referenceable_impl::__test<_Tp>(0)), __two>::value> {};
 
 
 template <class _Tp, bool = ft::__is_referenceable<_Tp>::value> struct __add_lvalue_reference_impl
@@ -92,7 +92,7 @@ template <class _InputIterator1, class _InputIterator2, class _BinaryPredicate>
 inline bool equal(_InputIterator1 __first1, _InputIterator1 __last1, _InputIterator2 __first2, _BinaryPredicate __pred)
 {
     for (; __first1 != __last1; ++__first1, (void) ++__first2)
-        if (!__pred(*__first1, *__first2))
+        if (not __pred(*__first1, *__first2))
             return false;
     return true;
 }
@@ -118,7 +118,8 @@ struct pair
     template <class _U1, class _U2>
     pair(const pair<_U1, _U2>& __p) : first(__p.first), second(__p.second) {}
 
-    pair& operator=(pair const& __p) {
+    pair& operator=(pair const& __p)
+    {
         first = __p.first;
         second = __p.second;
         return *this;
@@ -144,13 +145,13 @@ inline bool operator==(const pair<_T1,_T2>& __x, const pair<_T1,_T2>& __y)
 template <class _T1, class _T2>
 inline bool operator!=(const pair<_T1,_T2>& __x, const pair<_T1,_T2>& __y)
 {
-    return !(__x == __y);
+    return not (__x == __y);
 }
 
 template <class _T1, class _T2>
 inline bool operator< (const pair<_T1,_T2>& __x, const pair<_T1,_T2>& __y)
 {
-    return __x.first < __y.first || (!(__y.first < __x.first) && __x.second < __y.second);
+    return __x.first < __y.first || (not (__y.first < __x.first) && __x.second < __y.second);
 }
 
 template <class _T1, class _T2>
@@ -162,13 +163,13 @@ inline bool operator> (const pair<_T1,_T2>& __x, const pair<_T1,_T2>& __y)
 template <class _T1, class _T2>
 inline bool operator>=(const pair<_T1,_T2>& __x, const pair<_T1,_T2>& __y)
 {
-    return !(__x < __y);
+    return not (__x < __y);
 }
 
 template <class _T1, class _T2>
 inline bool operator<=(const pair<_T1,_T2>& __x, const pair<_T1,_T2>& __y)
 {
-    return !(__y < __x);
+    return not (__y < __x);
 }
 
 template <class _T1, class _T2>

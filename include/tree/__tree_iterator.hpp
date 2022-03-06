@@ -72,7 +72,7 @@ public:
 
     friend bool operator!=(const __tree_iterator& __x, const __tree_iterator& __y)
     {
-        return !(__x == __y);
+        return not (__x == __y);
     }
 
 private:
