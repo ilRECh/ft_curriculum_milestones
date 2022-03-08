@@ -12,7 +12,7 @@ class __map_const_iterator
     _TreeIterator __treeIter;
 
 public:
-    typedef bidirectional_iterator_tag iterator_category;
+    typedef ft::bidirectional_iterator_tag iterator_category;
     typedef typename _NodeTypes::__map_value_type value_type;
     typedef typename _TreeIterator::difference_type difference_type;
     typedef const value_type& reference;

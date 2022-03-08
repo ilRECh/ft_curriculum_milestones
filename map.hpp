@@ -6,7 +6,6 @@
 #include "include/utility.hpp"
 #include "include/type_traits.hpp"
 #include "include/reverse_iterator.hpp"
-
 #include "include/__value_type.hpp"
 #include "include/map/__map_node_destructor.hpp"
 #include "include/map/__map_value_compare.hpp"
@@ -50,7 +49,7 @@ private:
     typedef __map_value_compare<key_type, __value_type, key_compare> __vc;
     typedef typename std::__rebind_alloc_helper<std::allocator_traits<allocator_type>,
                                                  __value_type>::type __allocator_type;
-    typedef __tree<__value_type, __vc, __allocator_type>   __base;
+    typedef ft::__tree<__value_type, __vc, __allocator_type>   __base;
     typedef typename __base::__node_traits                 __node_traits;
     typedef std::allocator_traits<allocator_type>               __alloc_traits;
 
