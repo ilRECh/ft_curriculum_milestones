@@ -1,7 +1,7 @@
 #ifndef __TREE_NODE_BASE_HPP
 #define __TREE_NODE_BASE_HPP
 
-#include "__tree_node_types.hpp"
+#include "../node_traits/__tree_node_types.hpp"
 
 namespace ft {
 

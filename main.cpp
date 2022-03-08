@@ -118,16 +118,6 @@
 // 	return (0);
 // }
 
-struct A {
-private: 
-	int _b;
-public:
-	int &b(int privileges) {
-		(void)privileges;
-		return _b;
-	}
-};
-
 #include <map>
 
 int main() {
@@ -145,8 +135,5 @@ int main() {
 	std::cout << a[1] << std::endl;
 	a[2] = 10;
 	std::cout << a[2] << std::endl;
-	A test;
-	test.b(0) = 2;
-	std::cout << test.b(0)  << std::endl;
 	return 0;
 }

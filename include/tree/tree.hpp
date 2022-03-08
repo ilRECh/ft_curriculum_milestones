@@ -4,7 +4,6 @@
 #include "../type_traits.hpp"
 #include "../utility.hpp"
 
-
 using std::allocator;
 using std::pointer_traits;
 using std::allocator_traits;
@@ -46,8 +45,14 @@ template <class _TreeIterator> class  __map_const_iterator;
 
 }
 
-#include "node/__tree_end_node.hpp"
 #include "node_traits/__tree_key_value_types.hpp"
+#include "node_traits/__tree_node_base_types.hpp"
+#include "node_traits/__tree_map_pointer_types.hpp"
+#include "node_traits/__tree_node_types.hpp"
+#include "node/__tree_node_base.hpp"
+#include "node/__tree_node.hpp"
+#include "node/__tree_end_node.hpp"
+#include "node/__tree_node_destructor.hpp"
 #include "__tree_min.hpp"
 #include "__tree_max.hpp"
 #include "__tree_next.hpp"
@@ -406,166 +411,6 @@ __tree_remove(_NodePtr __get_root, _NodePtr __z) throw()
     }
 }
 
-// node traits
-
-template <class _VoidPtr>
-struct __tree_node_base_types {
-  typedef _VoidPtr                                               __void_pointer;
-
-  typedef __tree_node_base<__void_pointer>                      __node_base_type;
-  typedef typename __rebind_pointer<_VoidPtr, __node_base_type>::type
-                                                             __node_base_pointer;
-
-  typedef __tree_end_node<__node_base_pointer>                  __end_node_type;
-  typedef typename __rebind_pointer<_VoidPtr, __end_node_type>::type
-                                                             __end_node_pointer;
-  typedef typename ft::conditional<
-      is_pointer<__end_node_pointer>::value,
-        __end_node_pointer,
-        __node_base_pointer>::type __parent_pointer;
-
-private:
-  static_assert((is_same<typename pointer_traits<_VoidPtr>::element_type, void>::value),
-                  "_VoidPtr does not point to unqualified void type");
-};
-
-template <class _Tp, class _AllocPtr, class _KVTypes = __tree_key_value_types<_Tp>,
-         bool = _KVTypes::__is_map>
-struct __tree_map_pointer_types {};
-
-template <class _Tp, class _AllocPtr, class _KVTypes>
-struct __tree_map_pointer_types<_Tp, _AllocPtr, _KVTypes, true> {
-  typedef typename _KVTypes::__map_value_type   _Mv;
-  typedef typename __rebind_pointer<_AllocPtr, _Mv>::type
-                                                       __map_value_type_pointer;
-  typedef typename __rebind_pointer<_AllocPtr, const _Mv>::type
-                                                 __const_map_value_type_pointer;
-};
-
-template <class _NodePtr, class _NodeT = typename pointer_traits<_NodePtr>::element_type>
-struct __tree_node_types;
-
-template <class _NodePtr, class _Tp, class _VoidPtr>
-struct __tree_node_types<_NodePtr, __tree_node<_Tp, _VoidPtr> >
-    : public __tree_node_base_types<_VoidPtr>,
-             __tree_key_value_types<_Tp>,
-             __tree_map_pointer_types<_Tp, _VoidPtr>
-{
-  typedef __tree_node_base_types<_VoidPtr> __base;
-  typedef __tree_key_value_types<_Tp>      __key_base;
-  typedef __tree_map_pointer_types<_Tp, _VoidPtr> __map_pointer_base;
-public:
-
-  typedef typename pointer_traits<_NodePtr>::element_type       __node_type;
-  typedef _NodePtr                                              __node_pointer;
-
-  typedef _Tp                                                 __node_value_type;
-  typedef typename __rebind_pointer<_VoidPtr, __node_value_type>::type
-                                                      __node_value_type_pointer;
-  typedef typename __rebind_pointer<_VoidPtr, const __node_value_type>::type
-                                                __const_node_value_type_pointer;
-#if defined(_LIBCPP_ABI_TREE_REMOVE_NODE_POINTER_UB)
-  typedef typename __base::__end_node_pointer __iter_pointer;
-#else
-  typedef typename ft::conditional<
-      is_pointer<__node_pointer>::value,
-        typename __base::__end_node_pointer,
-        __node_pointer>::type __iter_pointer;
-#endif
-private:
-    static_assert(not is_const<__node_type>::value,
-                "_NodePtr should never be a pointer to const");
-    static_assert((is_same<typename __rebind_pointer<_VoidPtr, __node_type>::type,
-                          _NodePtr>::value), "_VoidPtr does not rebind to _NodePtr.");
-};
-
-template <class _ValueTp, class _VoidPtr>
-struct __make_tree_node_types {
-  typedef typename __rebind_pointer<_VoidPtr, __tree_node<_ValueTp, _VoidPtr> >::type
-                                                                        _NodePtr;
-  typedef __tree_node_types<_NodePtr> type;
-};
-
-// node
-
-template <class _VoidPtr>
-class __tree_node_base
-    : public __tree_node_base_types<_VoidPtr>::__end_node_type
-{
-    typedef __tree_node_base_types<_VoidPtr> _NodeBaseTypes;
-
-public:
-    typedef typename _NodeBaseTypes::__node_base_pointer pointer;
-    typedef typename _NodeBaseTypes::__parent_pointer __parent_pointer;
-
-    pointer          __right_;
-    __parent_pointer __parent_;
-    bool __is_black_;
-
-    
-    pointer __get_parent() const { return static_cast<pointer>(__parent_);}
-
-    
-    void __set_parent(pointer __p) {
-        __parent_ = static_cast<__parent_pointer>(__p);
-    }
-
-private:
-  ~__tree_node_base() _LIBCPP_EQUAL_DELETE;
-  __tree_node_base(__tree_node_base const&) _LIBCPP_EQUAL_DELETE;
-  __tree_node_base& operator=(__tree_node_base const&) _LIBCPP_EQUAL_DELETE;
-};
-
-template <class _Tp, class _VoidPtr>
-class __tree_node
-    : public __tree_node_base<_VoidPtr>
-{
-public:
-    typedef _Tp __node_value_type;
-
-    __node_value_type __value_;
-
-private:
-  ~__tree_node() _LIBCPP_EQUAL_DELETE;
-  __tree_node(__tree_node const&) _LIBCPP_EQUAL_DELETE;
-  __tree_node& operator=(__tree_node const&) _LIBCPP_EQUAL_DELETE;
-};
-
-
-template <class _Allocator>
-class __tree_node_destructor
-{
-    typedef _Allocator                                      allocator_type;
-    typedef allocator_traits<allocator_type>                __alloc_traits;
-
-public:
-    typedef typename __alloc_traits::pointer                pointer;
-private:
-    typedef __tree_node_types<pointer> _NodeTypes;
-    allocator_type& __na_;
-
-    __tree_node_destructor& operator=(const __tree_node_destructor&);
-
-public:
-    bool __value_constructed;
-
-    
-    explicit __tree_node_destructor(allocator_type& __na, bool __val = false) throw()
-        : __na_(__na),
-          __value_constructed(__val)
-        {}
-
-    
-    void operator()(pointer __p) throw()
-    {
-        if (__value_constructed)
-            __alloc_traits::destroy(__na_, _NodeTypes::__get_ptr(__p->__value_));
-        if (__p)
-            __alloc_traits::deallocate(__na_, __p, 1);
-    }
-
-    template <class> friend class __map_node_destructor;
-};
 
 template<class _Tp, class _Compare>
 int __diagnose_non_const_comparator();

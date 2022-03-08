@@ -21,7 +21,7 @@ struct __tree_node_base_types
     >::type                                                             __parent_pointer;
 
 private:
-  std::static_assert((is_same<typename pointer_traits<_VoidPtr>::element_type, void>::value),
+    static_assert((is_same<typename pointer_traits<_VoidPtr>::element_type, void>::value),
                   "_VoidPtr does not point to unqualified void type");
 };
 
