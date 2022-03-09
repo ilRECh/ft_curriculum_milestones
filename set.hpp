@@ -279,5 +279,12 @@ public:
 
 } // namespace ft
 
+#include "include/set/operator==.hpp"
+#include "include/set/operator<.hpp"
+#include "include/set/operator>.hpp"
+#include "include/set/operator!=.hpp"
+#include "include/set/operator>=.hpp"
+#include "include/set/operator<=.hpp"
+#include "include/set/swap.hpp"
 
 #endif // FT_SET_HPP
