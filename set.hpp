@@ -7,6 +7,7 @@
 #include "include/type_traits.hpp"
 #include "include/reverse_iterator.hpp"
 #include "include/__value_type.hpp"
+#include <memory>
 
 namespace ft {
 

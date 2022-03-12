@@ -1,5 +1,5 @@
-#ifndef __tree_rebalance_after_insert_HPP
-#define __tree_rebalance_after_insert_HPP
+#ifndef __tree_balance_after_insert_HPP
+#define __tree_balance_after_insert_HPP
 
 namespace ft {
 
@@ -76,4 +76,4 @@ void __tree_balance_after_insert(_NodePtr __get_root, _NodePtr __x) throw()
 } // namespace ft
 
 
-#endif // __tree_rebalance_after_insert_HPP
+#endif // __tree_balance_after_insert_HPP
