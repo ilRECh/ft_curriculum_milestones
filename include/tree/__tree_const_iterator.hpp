@@ -16,7 +16,7 @@ class __tree_const_iterator
     __iter_pointer __ptr_;
 
 public:
-    typedef ft::bidirectional_iterator_tag                       iterator_category;
+    typedef std::bidirectional_iterator_tag                       iterator_category;
     typedef _Tp                                                  value_type;
     typedef _DiffType                                            difference_type;
     typedef const value_type&                                    reference;

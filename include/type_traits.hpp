@@ -20,6 +20,12 @@ struct integral_constant
     static const Type                      value = __v;
     typedef Type                           value_type;
     typedef integral_constant<Type, __v>   type;
+    operator value_type() const throw()
+    {
+        Type tmp = value;
+        (void)tmp;
+        return value;
+    }
 };
 /// typedef for true_type
 typedef integral_constant<bool, true>     true_type;
@@ -69,10 +75,11 @@ template<> struct is_integral_helper<long> : public integral_constant<bool, true
 template<> struct is_integral_helper<unsigned long> : public integral_constant<bool, true> { };
 template<> struct is_integral_helper<long long> : public integral_constant<bool, true> { };
 template<> struct is_integral_helper<unsigned long long> : public integral_constant<bool, true> { };
-
+template<> struct is_integral_helper<wchar_t> : public integral_constant<bool, true> { };
+template<> struct is_integral_helper<char16_t> : public integral_constant<bool, true> { };
 template<typename _Tp>
 struct is_integral : public integral_constant<bool, (is_integral_helper<typename remove_cv<_Tp>::type>::value)>
-{ };
+{};
 
 template <bool _Bp, class _If, class _Then>
     struct conditional {typedef _If type;};

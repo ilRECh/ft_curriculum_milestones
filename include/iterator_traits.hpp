@@ -7,12 +7,6 @@
 namespace ft
 {
 
-struct input_iterator_tag {};
-struct output_iterator_tag {};
-struct forward_iterator_tag       : public ft::input_iterator_tag {};
-struct bidirectional_iterator_tag : public ft::forward_iterator_tag {};
-struct random_access_iterator_tag : public ft::bidirectional_iterator_tag {};
-
 template <class _Iter, bool> struct __iterator_traits_impl {};
 
 template <class _Iter>
@@ -32,8 +26,8 @@ struct __iterator_traits<_Iter, true>
     :  ft::__iterator_traits_impl
       <
         _Iter,
-        std::is_convertible<typename _Iter::iterator_category, ft::input_iterator_tag>::value ||
-        std::is_convertible<typename _Iter::iterator_category, ft::output_iterator_tag>::value
+        std::is_convertible<typename _Iter::iterator_category, std::input_iterator_tag>::value ||
+        std::is_convertible<typename _Iter::iterator_category, std::output_iterator_tag>::value
       >
 {};
 
@@ -49,6 +43,7 @@ struct iterator_traits
 template<class _Tp>
 struct iterator_traits<_Tp*>
 {
+    typedef void * fuckyou;
     typedef ptrdiff_t difference_type;
     typedef typename ft::remove_cv<_Tp>::type value_type;
     typedef _Tp* pointer;
