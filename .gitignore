@@ -3,4 +3,6 @@
 .vscode
 .VSCodeCounter
 pyviz.py
+*.a
+push_swap
 # python_algo/
