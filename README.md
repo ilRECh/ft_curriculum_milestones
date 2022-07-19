@@ -25,4 +25,4 @@ make
 ./count_islands [any map you like]
 ```
 #### Use:
-Just start it with the default maps.
+Just run the program with default maps.
