@@ -22,7 +22,7 @@ make
 ```
 #### Run:
 ```
-./build/apps/ircserv [port] [password]
+./count_islands [any map you like]
 ```
 #### Use:
 Just start it with the default maps.
