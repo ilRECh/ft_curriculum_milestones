@@ -117,11 +117,16 @@ fclean: libs_fclean
 libs_clean:
 	make -C $(GNL_MAKE) clean
 	make -C $(LIBFT_MAKE) clean
-	make -C $(MLX_MAKE) clean
+	@if [ -d $(HDRS_MLX_DIR) ];\
+	then\
+		make -C $(MLX_MAKE) clean;\
+	else\
+		echo minilibx does not exist;\
+	fi;
 
-libs_fclean:
+
+libs_fclean: libs_clean
 	make -C $(GNL_MAKE) fclean
 	make -C $(LIBFT_MAKE) fclean
-	make -C $(MLX_MAKE) clean
-
+	
 re: fclean all
