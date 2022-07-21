@@ -1,31 +1,31 @@
-SRCS    = get_next_line.c get_next_line_utils.c 
+SRCS	= get_next_line.c get_next_line_utils.c 
 
-OBJS    = $(SRCS:.c=.o)
+OBJS	= $(SRCS:.c=.o)
 
-HDRS    = get_next_line.h
+HDRS	= get_next_line.h
 
-NAME    = gnl.a
+NAME	= gnl.a
 
-RM    = rm -rf
-GCC    = gcc
-AR    = ar -crs
-FLAGS    = -Wall -Wextra -Werror -c
+RM	= rm -rf
+GCC	= gcc
+AR	= ar -crs
+FLAGS	= -Wall -Wextra -Werror -c
 
 %.o : %.c $(HDRS)
-    $(GCC) $(FLAGS) $(INCLUDES) $< -o $@
+	$(GCC) $(FLAGS) $(INCLUDES) $< -o $@
 
-$(NAME):    $(OBJS)
-    $(AR) $(NAME) $(OBJS)
+$(NAME):	$(OBJS)
+	$(AR) $(NAME) $(OBJS)
 
 all: $(NAME)
 
-re:    fclean all
+re:	fclean all
 
 clean:
-    $(RM) $(OBJS)
+	$(RM) $(OBJS)
 
-fclean:     clean
-    $(RM) $(NAME)
-    
-.PHONY:    
-    all clean fclean re 
+fclean: 	clean
+	$(RM) $(NAME)
+	
+.PHONY:	
+	all clean fclean re 

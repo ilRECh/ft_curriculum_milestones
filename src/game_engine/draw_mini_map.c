@@ -6,7 +6,7 @@
 /*   By: ilRECh <ilRECh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 14:33:02 by csamuro           #+#    #+#             */
-/*   Updated: 2022/07/21 13:47:22 by ilRECh           ###   ########.fr       */
+/*   Updated: 2022/07/21 13:52:36 by ilRECh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ void    drow_big_pixel(char c, t_image *img, t_point scale, t_point    px)
 {
     t_point            i;
     t_point            to;
-    unsigned int    colour;
+    unsigned int    color;
 
-    if (c == '1')
-        colour = (MLX_WHT);
-    else if (c == '0')
-        colour = (MLX_GRY);
+    if (c == STANDARD_WALL_SYM)
+        color = (MLX_WHT);
+    else if (c == STANDARD_FIELD_SYM)
+        color = (MLX_GRY);
     else
-        colour = (0xFF000000);
+        color = (0xFF000000);
     scale = pnt_s(max_min(scale.x, scale.y, true));
     i = pnt_multiple(px, scale);
     to = pnt_plus(i, scale);
@@ -39,7 +39,7 @@ void    drow_big_pixel(char c, t_image *img, t_point scale, t_point    px)
     while (++i.y <= to.y)
     {
         while (++i.x <= to.x)
-            pixel_put(img, pnt_plus(px, i), colour);
+            pixel_put(img, pnt_plus(px, i), color);
         i.x = to.x - scale.x - 1;
     }
 }

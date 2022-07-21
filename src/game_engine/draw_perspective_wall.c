@@ -6,7 +6,7 @@
 /*   By: ilRECh <ilRECh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 15:20:12 by csamuro           #+#    #+#             */
-/*   Updated: 2022/07/21 13:47:22 by ilRECh           ###   ########.fr       */
+/*   Updated: 2022/07/21 13:53:00 by ilRECh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ bool    is_wall(t_all *all, t_dpoint *point)
         return (true);
     if (point->x < 0 || point->y < 0)
         return (true);
-    if (all->map[(int)point->y][(int)point->x] == '0')
+    if (all->map[(int)point->y][(int)point->x] == STANDARD_FIELD_SYM)
         return (false);
     return (true);
 }

@@ -6,7 +6,7 @@
 /*   By: ilRECh <ilRECh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 12:36:39 by name              #+#    #+#             */
-/*   Updated: 2022/07/21 13:47:22 by ilRECh           ###   ########.fr       */
+/*   Updated: 2022/07/21 13:52:36 by ilRECh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@
 # define SCALE 64 // условный размер каждого квадратика в карте
 # define SENS_RAY 0.01
 # define DEBUG
+# define STANDARD_FIELD_SYM '0'
+# define STANDARD_WALL_SYM '1'
 
 #ifdef __linux__
 #define KEY_W 119
@@ -175,10 +177,10 @@ t_image        image(void *mlx, t_point size);
 void        image_to_image_cp(t_image *dst, t_image *src, t_point position);
 void        image_to_image_cp_insert_clr(t_image *dst, t_image *src,
                 t_point position, unsigned int ins_scolor);
-void        pixel_put(t_image *img, t_point p, unsigned int colour);
+void        pixel_put(t_image *img, t_point p, unsigned int color);
 uint32_t    pixel_get(t_image *img, t_point    p);
 t_image        *fill_rect_to_img(t_image *img, const t_point *start, \
-    const t_point *end, const unsigned int colour);
+    const t_point *end, const unsigned int color);
 void        set_background(t_all *all);
 
 // initialization

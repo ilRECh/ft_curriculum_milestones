@@ -6,7 +6,7 @@
 /*   By: ilRECh <ilRECh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 22:25:24 by name              #+#    #+#             */
-/*   Updated: 2022/07/21 13:47:22 by ilRECh           ###   ########.fr       */
+/*   Updated: 2022/07/21 13:53:45 by ilRECh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ bool    check_closed(t_all *all)
         j = -1;
         while (all->map[i][++j])
         {
-            if (all->map[i][j] == '0'
+            if (all->map[i][j] == STANDARD_FIELD_SYM
                 || all->map[i][j] == all->plrpos.direction)
                 if (check(i, j, all, true))
                     return (true);

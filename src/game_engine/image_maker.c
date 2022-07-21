@@ -6,7 +6,7 @@
 /*   By: ilRECh <ilRECh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 14:58:24 by csamuro           #+#    #+#             */
-/*   Updated: 2022/07/21 13:47:22 by ilRECh           ###   ########.fr       */
+/*   Updated: 2022/07/21 13:52:36 by ilRECh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_image    image(void *mlx, t_point size)
 // если end пустой то закрашиваю все изображение
 // со стартовой точки, (x = img.width) & (y = img.height)
 t_image    *fill_rect_to_img(t_image *img,
-    const t_point *start, const t_point *end, const unsigned int colour)
+    const t_point *start, const t_point *end, const unsigned int color)
 {
     t_point    i;
     t_point    s;
@@ -59,7 +59,7 @@ t_image    *fill_rect_to_img(t_image *img,
     while (++i.y < e.y)
     {
         while (++i.x < e.x)
-            pixel_put(img, i, colour);
+            pixel_put(img, i, color);
         i.x = s.x - 1;
     }
     return (img);

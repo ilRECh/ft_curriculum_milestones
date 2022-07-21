@@ -6,7 +6,7 @@
 /*   By: ilRECh <ilRECh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 14:54:27 by csamuro           #+#    #+#             */
-/*   Updated: 2022/07/21 13:47:22 by ilRECh           ###   ########.fr       */
+/*   Updated: 2022/07/21 13:53:12 by ilRECh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void    set_plrpos(t_all *all)
                 all->plrpos.direction = all->map[i.y][i.x];
                 all->plrpos.x = i.x;
                 all->plrpos.y = i.y;
-                all->map[i.y][i.x] = '0';
+                all->map[i.y][i.x] = STANDARD_FIELD_SYM;
                 i.y = all->map_size.y;
                 break ;
             }
