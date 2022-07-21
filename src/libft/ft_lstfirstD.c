@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstfirstD.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: name <name@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ilRECh <ilRECh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 10:05:14 by name              #+#    #+#             */
-/*   Updated: 2021/09/27 10:05:37 by name             ###   ########.fr       */
+/*   Updated: 2022/07/21 13:47:22 by ilRECh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_dlist	*ft_lstfirstD(t_dlist *lst)
+t_dlist    *ft_lstfirstD(t_dlist *lst)
 {
-	if (!lst)
-		return (NULL);
-	while (lst->prev)
-		lst = lst->prev;
-	return (lst);
+    if (!lst)
+        return (NULL);
+    while (lst->prev)
+        lst = lst->prev;
+    return (lst);
 }

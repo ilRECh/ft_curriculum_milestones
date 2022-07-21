@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstdeloneS.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: name <name@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ilRECh <ilRECh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 10:04:24 by name              #+#    #+#             */
-/*   Updated: 2021/09/27 10:04:54 by name             ###   ########.fr       */
+/*   Updated: 2022/07/21 13:47:22 by ilRECh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstdeloneS(t_slist *lst, void (*del)(void *))
+void    ft_lstdeloneS(t_slist *lst, void (*del)(void *))
 {
-	if (lst)
-		(*del)(lst->content);
-	free(lst);
+    if (lst)
+        (*del)(lst->content);
+    free(lst);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_conf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ilRECh <ilRECh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 16:01:06 by csamuro           #+#    #+#             */
-/*   Updated: 2021/10/26 16:01:08 by csamuro          ###   ########.fr       */
+/*   Updated: 2022/07/21 13:47:22 by ilRECh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,13 +79,13 @@
 #  define DOUBLE_COMPARE NULL
 # endif
 
-static int	function_by_data_type(t_function *function, t_DATA_TYPE type)
+static int    function_by_data_type(t_function *function, t_DATA_TYPE type)
 {
-	if (!function)
-		return (1);
-	if (type == INT)
-		(function->assign = INT_ASSIGN) && (function->compare = INT_COMPARE);
-	return (0);
+    if (!function)
+        return (1);
+    if (type == INT)
+        (function->assign = INT_ASSIGN) && (function->compare = INT_COMPARE);
+    return (0);
 }
 
 #endif
