@@ -63,13 +63,9 @@ bool	is_wall(t_all *all, t_dpoint *point)
 
 void	shoot_ray(t_all *all, t_dpoint *dpoint, double direction)
 {
-	t_dpoint	bias;
-	t_dpoint	vector;
-	double		x;
 	double		y;
+	double		x;
 
-	bias = dpnt_s(0);
-	vector = dpnt_set(sin(direction), cos(direction));
 	x = sin(direction) * 0.0005;
 	y = cos(direction) * 0.0005;
 	while (!is_wall(all, dpoint))

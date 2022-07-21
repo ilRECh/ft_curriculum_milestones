@@ -52,6 +52,6 @@ bool	game(t_all *all)
 	init(all);
 	key_hook(-1, all);
 	mlx_hook(all->win->win, 17, 0, &close_x, NULL);
-	mlx_hook(all->win->win, 2, 1L << 1, key_hook, all);
+	mlx_hook(all->win->win, 2, 1L << 0, key_hook, all);
 	return (false);
 }

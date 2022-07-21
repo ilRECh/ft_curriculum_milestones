@@ -31,6 +31,20 @@
 # define SENS_RAY 0.01
 # define DEBUG
 
+#ifdef __linux__
+#define KEY_W 119
+#define KEY_A 97
+#define KEY_S 115
+#define KEY_D 100
+#define KEY_ESC 65307
+#elif defined (__APPLE__)
+#define KEY_W 13
+#define KEY_A 2
+#define KEY_S 1
+#define KEY_D 0
+#define KEY_ESC 53
+#endif
+
 ///
 ///	DATA
 ///
@@ -90,7 +104,7 @@ typedef struct s_all // структура для всего вместе
 	t_win	*win;
 	t_plr	*plr;
 	t_image	*buff;
-	t_image	*whalls[4];
+	t_image	*walls[4];
 	t_image	*img_map;
 	t_point	screen_size;
 	char	**textures;

@@ -31,11 +31,11 @@ int	close_x( void )
 
 void	key_handler(int key_code, t_all *all)
 {
-	if (key_code == 0)
+	if (key_code == KEY_A)
 		all->plr->dir += degToRad(5);
-	else if (key_code == 2)
+	else if (key_code == KEY_D)
 		all->plr->dir -= degToRad(5);
-	else if (key_code == 13)
+	else if (key_code == KEY_W)
 	{
 		if (check_in_radius(all->map, dpnt_plus(conv_pltod(*all->plr), \
 			dpnt_set(sinf(all->plr->dir) / 2, 0)), 0.3f))
@@ -44,7 +44,7 @@ void	key_handler(int key_code, t_all *all)
 			dpnt_set(0, cosf(all->plr->dir) / 2)), 0.3f))
 			all->plr->y += cosf(all->plr->dir) * 0.33;
 	}
-	else if (key_code == 1)
+	else if (key_code == KEY_S)
 	{
 		if (check_in_radius(all->map, dpnt_minus(conv_pltod(*all->plr), \
 			dpnt_set(sinf(all->plr->dir) / 2, 0)), 0.3f))
@@ -53,6 +53,6 @@ void	key_handler(int key_code, t_all *all)
 			dpnt_set(0, cosf(all->plr->dir) / 2)), 0.3f))
 			all->plr->y -= cosf(all->plr->dir) * 0.33;
 	}
-	if (key_code == 53)
+	if (key_code == KEY_ESC)
 		exit (0);
 }

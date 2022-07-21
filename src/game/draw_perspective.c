@@ -16,21 +16,19 @@ void	draw_vpixel_line(t_all *all, int x, int height_wall, double x_dwall)
 {
 	int		start_ybuff;
 	double	wy[2];
-	double	coef;
 	double	idw;
 	int		iter;
 
 	x_dwall = 1 - modf(x_dwall, &idw);
-	coef = x_dwall;
-	x_dwall *= all->whalls[(int)idw]->size.x;
+	x_dwall *= all->walls[(int)idw]->size.x;
 	start_ybuff = (all->buff->size.y - height_wall) / 2;
-	wy[1] = (double)all->whalls[(int)idw]->size.y / (double)height_wall;
+	wy[1] = (double)all->walls[(int)idw]->size.y / (double)height_wall;
 	wy[0] = 0.000;
 	iter = -1;
 	while (++iter < height_wall)
 	{
 		pixel_put(all->buff, pnt_set(x, start_ybuff + iter),
-			pixel_get(all->whalls[(int)idw], pnt_set(x_dwall, wy[0])));
+			pixel_get(all->walls[(int)idw], pnt_set(x_dwall, wy[0])));
 		wy[0] += wy[1];
 	}
 }

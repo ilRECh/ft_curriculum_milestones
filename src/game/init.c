@@ -43,12 +43,12 @@ void	init_texture(t_all *all)
 	while (++i < 4)
 	{
 		if (all->textures[i])
-			all->whalls[i] = xpm_to_new_image(all, all->textures[i]);
+			all->walls[i] = xpm_to_new_image(all, all->textures[i]);
 		else
 		{
-			all->whalls[i] = new_image(all->win->mlx, pnt_s(100));
+			all->walls[i] = new_image(all->win->mlx, pnt_s(100));
 			fill_rect_to_img \
-				(all->whalls[i], NULL, NULL, create_rgb(all->colors[i]));
+				(all->walls[i], NULL, NULL, create_rgb(all->colors[i]));
 		}
 	}
 }
