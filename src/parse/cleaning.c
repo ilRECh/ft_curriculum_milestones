@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cleaning.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilRECh <ilRECh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 10:26:25 by name              #+#    #+#             */
-/*   Updated: 2021/10/25 21:19:59 by vcobbler         ###   ########.fr       */
+/*   Updated: 2022/07/21 13:30:02 by ilRECh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,5 @@ bool	fall(t_all *all)
 		free(all->map[i]);
 	free(all->map);
 	free(all->err);
-	return (true);
-}
-
-bool	free_but_i_hate_norminette(void *f)
-{
-	free(f);
 	return (true);
 }

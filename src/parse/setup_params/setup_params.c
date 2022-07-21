@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup_params.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilRECh <ilRECh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 10:48:24 by name              #+#    #+#             */
-/*   Updated: 2021/10/25 21:24:14 by vcobbler         ###   ########.fr       */
+/*   Updated: 2022/07/21 13:31:49 by ilRECh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,17 +82,20 @@ static bool	check_element_value(char **split, t_all *all, int *index)
 	return (false);
 }
 
-//possibility for a texture for the ceilling or the floor is left
-
 static bool	set_element(char **split, t_all *all, t_list *lst, int *index)
 {
 	t_dlist	*next;
 	t_dlist	*prev;
 
-	if (*index < 4 && free_but_i_hate_norminette(all->textures[*index]))
+	if (*index < 4)
+	{
+		free(all->textures[*index]);
 		all->textures[*index] = ft_strdup(split[1]);
+	}
 	else
+	{
 		set_colors(all, ft_split(split[1], ','), index);
+	}
 	next = lst->Dcur->next;
 	prev = lst->Dcur->prev;
 	if (!next && !prev)

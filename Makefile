@@ -37,8 +37,7 @@ INCLUDES 				=	-I $(HDRS_CUB_DIR)\
 							-I $(HDRS_LIBFT_DIR)\
 							-I $(HDRS_GNL_DIR)\
 							-I $(HDRS_MLX_DIR)\
-							-I /usr/include\
-							-I mlx_linux
+							-I /usr/include
 
 MLX_MAKE				=	./src/minilibx/
 MLX						=	./src/minilibx/libmlx.a
@@ -47,7 +46,7 @@ GNL						=	./src/get_next_line/gnl.a
 LIBFT_MAKE				=	./src/libft/
 LIBFT					=	./src/libft/libft.a
 
-GAME_LIST				=	colors.c\
+GAME_ENGINE_LIST		=	colors.c\
 							draw_mini_map.c\
 							draw_perspective_wall.c\
 							draw_perspective.c\
@@ -65,9 +64,11 @@ GAME_LIST				=	colors.c\
 							utils_point_math.c\
 							utils_point.c\
 							utils_trigonometry.c\
-							wrappers.c
-GAME_DIR				=	src/game/
-GAME					=	$(addprefix $(GAME_DIR), $(GAME_LIST))
+							wrappers.c\
+							start_game.c\
+
+GAME_ENGINE_DIR			=	src/game_engine/
+GAME_ENGINE				=	$(addprefix $(GAME_ENGINE_DIR), $(GAME_ENGINE_LIST))
 
 PARSE_LIST				=	parse.c\
 							setup_all.c\
@@ -84,7 +85,7 @@ PARSE_LIST				=	parse.c\
 PARSE_DIR				=	./src/parse/
 PARSE					=	$(addprefix $(PARSE_DIR), $(PARSE_LIST))
 
-OBJS					=	$(PARSE:.c=.o) main.o $(GAME:.c=.o)
+OBJS					=	$(PARSE:.c=.o) main.o $(GAME_ENGINE:.c=.o)
 
 %.o : %.c $(HDRS)
 	$(GCC) $(FLAGS) $(INCLUDES) $< -o $@

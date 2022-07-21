@@ -18,33 +18,6 @@ static void	usage(void)
 		GREEN_BOLD "./cub3d path_to_the_map\v\n" RESET);
 }
 
-int	cub3d(char *map)
-{
-	static t_all	all;
-	int				fd;
-
-	if ((!ft_strrchr(map, '.') || ft_strncmp(ft_strrchr(map, '.')
-				+ 1, "cub", 4))
-		&& printf(RED "Error\n" RESET "invalid file\n"))
-		return (1);
-	fd = open(map, O_RDONLY);
-	if ((!fd || (read(fd, NULL, 0) < 0 && !close(fd)))
-		&& printf(RED "Error\n" RESET "invalid file\n"))
-		return (1);
-	if (setup_all(&all) && printf(RED "Error\n" RESET "no space left\n"))
-		return (1);
-	if (parse(&all, fd))
-	{
-		printf(RED "Error\n" RESET "invalid file formatting: %s\n", all.err);
-		fall(&all);
-		return (1);
-	}
-	all.screen_size = pnt_set(1024, 768);
-	game(&all);
-	mlx_loop(all.win->mlx);
-	return (0);
-}
-
 int	main(int argc, char **argv)
 {
 	if (argc == 2)

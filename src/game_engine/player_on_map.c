@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   player_on_map.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ilRECh <ilRECh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 15:42:43 by csamuro           #+#    #+#             */
-/*   Updated: 2021/10/26 16:33:05 by csamuro          ###   ########.fr       */
+/*   Updated: 2022/07/21 13:28:24 by ilRECh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	in_circle(t_plr *plr, float radius, t_dpoint i)
+int	in_circle(t_player *plr, float radius, t_dpoint i)
 {
 	float	distance;
 	float	pow1;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcobbler <vcobbler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilRECh <ilRECh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/03 15:42:11 by name              #+#    #+#             */
-/*   Updated: 2021/10/29 19:44:56 by vcobbler         ###   ########.fr       */
+/*   Updated: 2022/07/21 13:26:29 by ilRECh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,13 @@ int	key_hook(int key_code, t_all *all)
 	return (0);
 }
 
-bool	game(t_all *all)
+void game(t_all *all)
 {
+	all->screen_size = pnt_set(1024, 768);
 	init(all);
 	key_hook(-1, all);
 	mlx_hook(all->win->win, 17, 0, &close_x, NULL);
 	mlx_hook(all->win->win, 2, 1L << 0, key_hook, all);
+	mlx_loop(all->win->mlx);
 	return (false);
 }

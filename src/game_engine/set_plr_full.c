@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_plr_full.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ilRECh <ilRECh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 14:54:27 by csamuro           #+#    #+#             */
-/*   Updated: 2021/10/26 16:13:29 by csamuro          ###   ########.fr       */
+/*   Updated: 2022/07/21 13:28:24 by ilRECh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static float	get_start_dir(char c)
 // Вызов должен быть осуществлен строго после ( set_plrpos(t_all, map_size); )
 void	set_plr(t_all *all, float x, float y)
 {
-	all->plr = malloc(sizeof(t_plr));
+	all->plr = malloc(sizeof(t_player));
 	all->plr->x = x;
 	all->plr->y = y;
 	all->plr->dir = get_start_dir(all->plrpos.direction);

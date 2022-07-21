@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ilRECh <ilRECh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 14:55:09 by csamuro           #+#    #+#             */
-/*   Updated: 2021/10/28 13:17:24 by csamuro          ###   ########.fr       */
+/*   Updated: 2022/07/21 13:28:59 by ilRECh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ t_point	map_len(char **maps)
 	return (point);
 }
 
-t_win	*mlx_create( int width, int height )
+t_window	*mlx_create( int width, int height )
 {
-	t_win	*win;
+	t_window	*win;
 
-	win = malloc(sizeof(t_win));
+	win = malloc(sizeof(t_window));
 	win->mlx = mlx_init();
 	win->win = mlx_new_window(win->mlx, width, height, "default");
 	return (win);

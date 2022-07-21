@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ilRECh <ilRECh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 12:36:39 by name              #+#    #+#             */
-/*   Updated: 2021/10/26 16:31:43 by csamuro          ###   ########.fr       */
+/*   Updated: 2022/07/21 13:29:58 by ilRECh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ typedef struct s_image // структура для изображений
 	int		endian;
 }	t_image;
 
-typedef struct s_win //структура для окна
+typedef struct s_window //структура для окна
 {
 	void	*mlx;
 	void	*win;
@@ -88,21 +88,21 @@ typedef struct s_win //структура для окна
 	int		line_l;
 	int		bpp;
 	int		en;
-}	t_win;
+}	t_window;
 
-typedef struct s_plr //структура для игрока и луча
+typedef struct s_player //структура для игрока и луча
 {
 	float	x;
 	float	y;
 	float	dir;
 	float	start;
 	float	end;
-}	t_plr;
+}	t_player;
 
 typedef struct s_all // структура для всего вместе
 {
-	t_win	*win;
-	t_plr	*plr;
+	t_window	*win;
+	t_player	*plr;
 	t_image	*buff;
 	t_image	*walls[4];
 	t_image	*img_map;
@@ -155,11 +155,11 @@ bool		fl(t_list *lst);
 bool		flf(t_list *lst, int fd);
 bool		fs(char **split);
 bool		fall(t_all *all);
-bool		free_but_i_hate_norminette(void *f);
 
 //
 // game
 //
+int			cub3d(char *map);
 bool		game(t_all *all);
 int			close_x(void);
 void		key_handler(int key_code, t_all *all);
@@ -184,7 +184,7 @@ void		set_background(t_all *all);
 // initialization
 void		init(t_all *all);
 t_point		map_len(char **maps);
-t_win		*mlx_create( int width, int height );
+t_window		*mlx_create( int width, int height );
 
 // utils_int
 int			max_min(int a, int b, bool updown);
@@ -193,8 +193,8 @@ int			max_min(int a, int b, bool updown);
 t_dpoint	dpnt_mod(t_dpoint dpoint);
 t_dpoint	conv_ptod(t_point point);
 t_point		conv_dtop(t_dpoint dpoint);
-t_point		conv_pltop(t_plr plr);
-t_dpoint	conv_pltod(t_plr plr);
+t_point		conv_pltop(t_player plr);
+t_dpoint	conv_pltod(t_player plr);
 t_point		pnt_s(int xy);
 t_point		pnt_set(int x, int y);
 t_dpoint	dpnt_s(double xy);

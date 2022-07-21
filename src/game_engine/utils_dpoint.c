@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_dpoint.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csamuro <csamuro@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ilRECh <ilRECh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 14:49:23 by csamuro           #+#    #+#             */
-/*   Updated: 2021/10/26 14:50:07 by csamuro          ###   ########.fr       */
+/*   Updated: 2022/07/21 13:28:24 by ilRECh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ t_dpoint	conv_ptod(t_point point)
 	return (dpoint);
 }
 
-// convert t_plr to t_dpoint
-t_dpoint	conv_pltod(t_plr plr)
+// convert t_player to t_dpoint
+t_dpoint	conv_pltod(t_player plr)
 {
 	t_dpoint	dpoint;
 
