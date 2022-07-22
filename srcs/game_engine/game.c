@@ -6,7 +6,7 @@
 /*   By: ilRECh <ilRECh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/03 15:42:11 by name              #+#    #+#             */
-/*   Updated: 2022/07/21 13:47:22 by ilRECh           ###   ########.fr       */
+/*   Updated: 2022/07/22 09:42:03 by ilRECh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,7 @@ void game(t_all *all)
     key_hook(-1, all);
     mlx_hook(all->win->win, 17, 0, &close_x, NULL);
     mlx_hook(all->win->win, 2, 1L << 0, key_hook, all);
+	mlx_do_key_autorepeatoff(all->win->mlx);
+    mlx_do_sync(all->win->mlx);
     mlx_loop(all->win->mlx);
 }
