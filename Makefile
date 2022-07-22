@@ -11,7 +11,7 @@ FLAGS					=	-Wall -Wextra -Werror -c
 ifeq ($(OS), Darwin)
 LINKS += -framework OpenGL -framework AppKit
 else ifeq ($(OS), Linux)
-LINKS += -L./src/minilibx -lmlx -L/usr/lib -I./src/minilibx -lXext -lX11 -lm -lz
+LINKS += -L./srcs/minilibx -lmlx -L/usr/lib -I./srcs/minilibx -lXext -lX11 -lm -lz
 else
 $(error OS is not defined, because uname didn't work)
 endif
@@ -20,13 +20,13 @@ HDRS_CUB				=	cub3d.h
 HDRS_CUB_DIR			=	./include/
 
 HDRS_LIBFT				=	libft.h
-HDRS_LIBFT_DIR			=	./src/libft/
+HDRS_LIBFT_DIR			=	./srcs/libft/
 
 HDRS_GNL				= 	get_next_line.h 
-HDRS_GNL_DIR			=	./src/get_next_line/
+HDRS_GNL_DIR			=	./srcs/get_next_line/
 
 HDRS_MLX				= 	mlx.h 
-HDRS_MLX_DIR			=	./src/minilibx/
+HDRS_MLX_DIR			=	./srcs/minilibx/
 
 HDRS					=	$(addprefix $(HDRS_CUB_DIR), $(HDRS_CUB)) \
 							$(addprefix $(HDRS_LIBFT_DIR), $(HDRS_LIBFT)) \
@@ -39,12 +39,12 @@ INCLUDES 				=	-I $(HDRS_CUB_DIR)\
 							-I $(HDRS_MLX_DIR)\
 							-I /usr/include
 
-MLX_MAKE				=	./src/minilibx/
-MLX						=	./src/minilibx/libmlx.a
-GNL_MAKE				=	./src/get_next_line/
-GNL						=	./src/get_next_line/gnl.a
-LIBFT_MAKE				=	./src/libft/
-LIBFT					=	./src/libft/libft.a
+MLX_MAKE				=	./srcs/minilibx/
+MLX						=	./srcs/minilibx/libmlx.a
+GNL_MAKE				=	./srcs/get_next_line/
+GNL						=	./srcs/get_next_line/gnl.a
+LIBFT_MAKE				=	./srcs/libft/
+LIBFT					=	./srcs/libft/libft.a
 
 GAME_ENGINE_LIST		=	colors.c\
 							draw_mini_map.c\
@@ -67,7 +67,7 @@ GAME_ENGINE_LIST		=	colors.c\
 							wrappers.c\
 							start_game.c\
 
-GAME_ENGINE_DIR			=	src/game_engine/
+GAME_ENGINE_DIR			=	srcs/game_engine/
 GAME_ENGINE				=	$(addprefix $(GAME_ENGINE_DIR), $(GAME_ENGINE_LIST))
 
 PARSE_LIST				=	parse.c\
@@ -82,7 +82,7 @@ PARSE_LIST				=	parse.c\
 							setup_map/spaces_to_walls.c\
 							setup_map/check_closed.c\
 							setup_map/check_extra_regions.c
-PARSE_DIR				=	./src/parse/
+PARSE_DIR				=	./srcs/parse/
 PARSE					=	$(addprefix $(PARSE_DIR), $(PARSE_LIST))
 
 OBJS					=	$(PARSE:.c=.o) main.o $(GAME_ENGINE:.c=.o)
@@ -102,8 +102,8 @@ libs:
 		echo minilibx exists;\
 	else\
 		echo minilibx does not exist;\
-		echo git clone https://github.com/42Paris/minilibx-linux.git src/minilibx;\
-		git clone https://github.com/42Paris/minilibx-linux.git src/minilibx;\
+		echo git clone https://github.com/42Paris/minilibx-linux.git srcs/minilibx;\
+		git clone https://github.com/42Paris/minilibx-linux.git srcs/minilibx;\
 	fi;
 	make -C $(LIBFT_MAKE)
 	make -C $(MLX_MAKE)
