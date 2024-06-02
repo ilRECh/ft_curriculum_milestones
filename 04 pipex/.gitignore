@@ -1,0 +1,7 @@
+*.o
+*/*.o
+file1
+file2
+*.a
+*/*.a
+pipex
