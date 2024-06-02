@@ -1,0 +1,6 @@
+*.o
+*/*.o
+.vscode
+.VSCodeCounter
+*.a
+push_swap
