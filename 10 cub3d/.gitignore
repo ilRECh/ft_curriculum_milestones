@@ -1,0 +1,14 @@
+*.o
+*/*.o
+*/*/*.o
+cub3d
+file*
+*.a
+*/*.a
+*/*/*.a
+*/*/*/*.a
+.vscode
+**/*DS_Store
+*Screen\ Shot*.png
+**/*.sh
+*/minilibx*
