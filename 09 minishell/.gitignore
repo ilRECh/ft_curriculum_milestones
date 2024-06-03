@@ -1,0 +1,15 @@
+*.o
+errors
+*/*.o
+*.a
+*/*.a
+minishell
+.vscode/
+.DS_Store
+**a.ou*
+*/*vscode*
+case
+file1
+*/file*
+file*
+!readline/lib/*.a
